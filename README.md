@@ -844,6 +844,62 @@ for (var i = 0; i < r.data.length; i++) {
 ---
 
 
+### hly('GetHistories')
+Histórico de todas as marcações de "Música tocada"
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;Object&gt;_ |  |
+| `data.*.music_id` | _String_ | ID da música |
+| `data.*.history` | _Array&lt;String&gt;_ | Date e hora no formato YYYY-MM-DD HH:MM |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetHistories');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].music_id);
+    h.log(r.data[i].history);
+}
+```
+
+---
+
+
+### hly('GetHistory', input)
+Histórico de "Música tocada"
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | ID da letra da música |
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;String&gt;_ | Data e hora no formato YYYY-MM-DD HH:MM |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetHistory', {id: '123'});
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i]);
+}
+```
+
+---
+
+
 ### hly('GetMembers')
 Lista de integrantes
 
@@ -2069,6 +2125,184 @@ _Método sem retorno_
 ---
 
 
+# Métodos User Input
+### input(param, notification = false)
+Exibir uma janela com campos de entrada para receber informações de forma interativa
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `param` | _Object_ | Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](#input-param)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **text** |
+| `notification` | _Boolean (opcional)_ | Exibe uma notificação em vez de abrir a janela diretamente |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | Se for passado apenas um item como entrada, será retornado o valor informado pelo usuário (pode ser NULL). Se múltiplas entradas forem solicitadas, será retornado um objeto (pode ser NULL) onde cada valor será informado na variável do seu respectivo ID. |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.input("Nome do Item");
+h.log("Valor informado: " + r);
+
+var param = [{type: 'password', label: 'Senha'}];
+var r = h.input(param);
+h.log("Senha informada: " + r);
+
+var param = [
+    {
+        key: 'info',
+        type: 'text',
+        label: 'Informação'
+    },{
+        key: 'type',
+        type: 'text',
+        label: 'Tipo',
+        allowed_values: ['Tipo 1', 'Tipo 2', 'Tipo 3']
+    }
+];
+var r = h.input(param);
+if (r == null) {
+    h.log("Cancelado");
+} else {
+    h.log("Informação: " + r.info);
+    h.log("Tipo: " + r.type);
+}
+
+var param = [
+    {
+        key: 'message',
+        type: 'textarea',
+        label: 'Mensagem'
+    },{
+        key: 'seconds',
+        type: 'number',
+        label: 'Segundos',
+        min: 30,
+        max: 300,
+        default_value: 60
+    }
+];
+var r = h.input(param);
+if (r == null) {
+    h.log("Cancelado");
+} else {
+    h.log("Mensagem: " + r.message);
+    h.log("Segundos: " + r.seconds);
+}
+```
+
+---
+
+
+### inputTextArea(title, notification = false)
+Solicita uma entrada em formato *textarea* possibilitando texto com múltiplas linhas
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `title` | _String_ | Nome do componente textarea |
+| `notification` | _Boolean (opcional)_ | Exibe uma notificação em vez de abrir a janela diretamente |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Retorna o texto informado pelo usuário (pode ser NULL) |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.inputTextArea("Nome do Item");
+h.log("Valor informado: " + r);
+
+var r = h.inputTextArea("Nome do Item", true); //notificação
+h.log("Valor informado: " + r);
+```
+
+---
+
+
+### itemChooser(title, items, notification = false)
+Abre uma janela para selecionar um item em uma lista de valores
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `title` | _String_ | Título na janela |
+| `items` | _Object_ | Lista de itens que serão exibidos na lista |
+| `items.*.label` | _Boolean (opcional)_ | Nome que será exibido representando o item |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | Retorna o item selecionado pelo usuário (pode ser NULL) |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.itemChooser("Selecione um item", ["abc", "xyz", "123"]);
+h.log("Item selecionado: " + r);
+
+var r = h.itemChooser("Selecione um número", [1, 2, 3, 4, 5]);
+h.log("Número selecionado: " + r);
+
+var items = [
+    {
+        id: 1,
+        type: 'test1',
+        label: 'ABC'
+    },{
+        id: 2,
+        type: 'test2',
+        label: 'XYZ'
+    },{
+        id: 3,
+        type: 'test3',
+        label: '123'
+    }
+];
+var r = h.itemChooser("Selecione um item", items, true); //notificação
+if (r == null) {
+    h.log("Cancelado");
+} else {
+    h.log("Item selecionado");
+    h.log("ID: " + r.id);
+    h.log("Tipo: " + r.type);
+    h.log("Nome: " + r.label);
+}
+
+var arr1 = ['a', 'b', 'c'];
+var arr2 = ['x', 'y', 'z'];
+var arr3 = [1, 2, 3];
+var items = [
+    {source: arr1, label: 'Lista 1 (a, b, c)'},
+    {source: arr2, label: 'Lista 2 (x, y, z)'},
+    {source: arr3, label: 'Lista 3 (1, 2, 3)'}
+];
+var r = h.itemChooser("Selecione um item", items);
+if (r == null) {
+    h.log("Cancelado");
+} else {
+    h.log("Item selecionado: " + r.source);
+}
+```
+
+---
+
+
 # Classes
 Classes complexas utilizadas como retorno em alguns métodos
 ## Lyrics
@@ -2154,4 +2388,17 @@ Classes complexas utilizadas como retorno em alguns métodos
 | ---- | :---: | ------------|
 | `seconds` | _Number_ | Tempo que cada item ficará sendo apresentado |
 | `repeat` | _Boolean_ | **true** para ficar repetindo a apresentação (voltar para o primeiro item após o último) |
+
+## Input Param
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `key` | _String_ | Chave/ID do item |
+| `type` | _String_ | Tipo de entrada. Pode ser: text, textarea, number, password, title, separator |
+| `label` | _String_ | Nome do item |
+| `default_value` | _Object (opcional)_ | Valor padrão do item |
+| `allowed_values` | _Array&lt;String&gt; (opcional)_ | Disponível se o tipo for **text**. Define uma lista de valores permitidos, para serem selecionados como um combobox |
+| `suggested_values` | _Array&lt;String&gt; (opcional)_ | Disponível se o tipo for **text**. Define uma lista de valores sugeridos, porém o usuário pode inserir qualquer valor no campo de texto |
+| `min` | _Number (opcional)_ | Disponível se o tipo for **number**. Define o valor mínimo permitido _(Padrão=*0*)_ |
+| `max` | _Number (opcional)_ | Disponível se o tipo for **number**. Define o valor máximo permitido _(Padrão=*100*)_ |
+| `show_as_combobox` | _Boolean (opcional)_ | Disponível se o tipo for **number**. Exibe a lista de valores como combobox e não como spinner _(Padrão=*false*)_ |
 
