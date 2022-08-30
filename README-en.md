@@ -1,5 +1,5 @@
 # jslib
-**PT** | [EN](README-en.md)
+**EN** | [PT](README.md)
 
 Métodos da classe JSLib disponível para uso nos scripts do programa Holyrics.
 
