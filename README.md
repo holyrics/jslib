@@ -1,4 +1,7 @@
 # jslib
+
+**PT** | [EN](README-en.md)
+
 Métodos da classe JSLib disponível para uso nos scripts do programa Holyrics.
 
 É possível utilizar a variável ```jslib``` ou a variável ```h``` para acessar os métodos disponíveis.

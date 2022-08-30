@@ -1,4 +1,7 @@
 # Holyrics - Inicia um áudio e uma contagem regressiva no retorno
+
+**PT** | [EN](Exemples-en.md)
+
 Exemplo de como iniciar a execução de um fundo musical e uma contagem regressiva para ser exibida na tela de retorno.
 
 
