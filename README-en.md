@@ -13,6 +13,8 @@ jslib.log('example');
 h.log('example');
 ```
 
+[More examples](Exemples-en.md)
+
 # Methods
 
 ### log(obj)

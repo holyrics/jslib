@@ -12,6 +12,9 @@ Por exemplo:
 jslib.log('exemplo');
 h.log('exemplo');
 ```
+
+[Mais exemplos](Exemplos.md)
+
 # Métodos 
 ### log(obj)
 Exibe a informação passada como parâmetro numa janela de log (canto inferior direito da tela, geralmente)
