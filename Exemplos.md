@@ -1,7 +1,4 @@
 # Holyrics - Inicia um áudio e uma contagem regressiva no retorno
-
-**PT** | [EN](Exemples-en.md)
-
 Exemplo de como iniciar a execução de um fundo musical e uma contagem regressiva para ser exibida na tela de retorno.
 
 
@@ -67,8 +64,9 @@ function foo() {
         } else if (json.data.length == 1) {
             h.hly('AddLyricsToPlaylist', {'id': json.data[0].id});
         } else {
-            //caso encontre mais de um resultado, vai exibir uma janela para o usuário escolher um item
-            //criando a propriedade 'label' pois é ela que será exibida na lista como nome do item
+            //caso encontre mais de um resultado
+            //vai exibir uma janela para o usuário escolher um item criando a propriedade 'label'
+            //pois é ela que será exibida na lista como nome do item
             json.data.forEach(function(m) {m.label = m.title + " (" + m.artist + ")";});
             var r = h.itemChooser(text + " - Múltiplos itens encontrados", json.data);
             if (r != null) {
@@ -188,4 +186,3 @@ function foo() {
 }
 
 ```
-

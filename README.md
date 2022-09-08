@@ -1,5 +1,4 @@
 # jslib
-
 **PT** | [EN](README-en.md)
 
 Métodos da classe JSLib disponível para uso nos scripts do programa Holyrics.
@@ -12,9 +11,6 @@ Por exemplo:
 jslib.log('exemplo');
 h.log('exemplo');
 ```
-
-[Mais exemplos](Exemplos.md)
-
 # Métodos 
 ### log(obj)
 Exibe a informação passada como parâmetro numa janela de log (canto inferior direito da tela, geralmente)
@@ -639,9 +635,8 @@ Executa uma requisição para o receptor associado e retorna a resposta do recep
 ```javascript
 //É possível realizar requisição diretamente para um receptor criado
 //Por exemplo:
-//Considerando que você tenha um receptor criado para comunicação com OBS Studio
-//via websocket e o ID do receptor seja 'abcyxz', você pode fazer uma requisição
-//como no exemplo abaixo
+//Considerando que você tenha um receptor criado para comunicação com OBS Studio via websocket e o ID do receptor seja 'abcyxz'
+//você pode fazer uma requisição como no exemplo abaixo
 var r = h.apiRequest('abcxyz', {
     'request-type': 'GetSourceActive',
     'sourceName': 'exemplo'
@@ -861,7 +856,7 @@ Histórico de todas as marcações de "Música tocada"
 | ---- | :---: | ------------|
 | `data` | _Array&lt;Object&gt;_ |  |
 | `data.*.music_id` | _String_ | ID da música |
-| `data.*.history` | _Array&lt;String&gt;_ | Date e hora no formato YYYY-MM-DD HH:MM |
+| `data.*.history` | _Array&lt;String&gt;_ | Data e hora no formato YYYY-MM-DD HH:MM |
 
 
 **Exemplo:**
@@ -1641,7 +1636,7 @@ Inicia uma contagem regressiva no painel de comunicação
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.minutes` | _Number_ | Quantidade de minutos |
-| `input.seconds` | _Number_ | QUantidade de segundos |
+| `input.seconds` | _Number_ | Quantidade de segundos |
 | `input.yellow_starts_at` | _Number (opcional)_ | Valor em segundos para definir a partir de quanto tempo a contagem regressiva ficará amarela |
 | `input.stop_at_zero` | _Boolean (opcional)_ | Parar a contagem regressiva ao chegar em zero _(Padrão=*false*)_ |
 
@@ -2207,13 +2202,13 @@ if (r == null) {
 
 
 ### inputTextArea(title, notification = false)
-Solicita uma entrada em formato *textarea* possibilitando texto com múltiplas linhas
+Solicita uma entrada em formato **textarea** possibilitando texto com múltiplas linhas
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `title` | _String_ | Nome do componente textarea |
+| `title` | _String_ | Nome do componente |
 | `notification` | _Boolean (opcional)_ | Exibe uma notificação em vez de abrir a janela diretamente |
 
 
@@ -2364,7 +2359,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | ---- | :---: | ------------|
 | `type` | _String_ | Tipo da lista de reprodução. Pode ser: temporary, service, event |
 | `name` | _String_ |  |
-| `datetime` | _String_ | Data e hora do item no formato: YYYY-MM-DD HH:MM |
+| `datetime` | _String_ | Data e hora no formato: YYYY-MM-DD HH:MM |
 | `lyrics_playlist` | _Array&lt;[Lyrics](#lyrics)&gt;_ | Lista de letras |
 | `media_playlist` | _Array&lt;[Item](#item)&gt;_ | Lista de mídias |
 | `responsible` | _[Member](#member)_ | Integrante definido como responsável pelo evento |
@@ -2407,4 +2402,3 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `min` | _Number (opcional)_ | Disponível se o tipo for **number**. Define o valor mínimo permitido _(Padrão=*0*)_ |
 | `max` | _Number (opcional)_ | Disponível se o tipo for **number**. Define o valor máximo permitido _(Padrão=*100*)_ |
 | `show_as_combobox` | _Boolean (opcional)_ | Disponível se o tipo for **number**. Exibe a lista de valores como combobox e não como spinner _(Padrão=*false*)_ |
-
