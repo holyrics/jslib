@@ -1,51 +1,51 @@
 # jslib
 **EN** | [PT](README.md)
 
-Métodos da classe JSLib disponível para uso nos scripts do programa Holyrics.
+JSLib class methods available for use in Holyrics program scripts.
 
-É possível utilizar a variável ```jslib``` ou a variável ```h``` para acessar os métodos disponíveis.
+You can use the ```jslib``` variable or the ```h``` variable to access the available methods.
 
-Por exemplo:
+For example:
 
 ```
-jslib.log('exemplo');
-h.log('exemplo');
+jslib.log('example');
+h.log('example');
 ```
-# Métodos 
+# Methods 
 ### log(obj)
-Exibe a informação passada como parâmetro numa janela de log (canto inferior direito da tela, geralmente)
+Display the information passed as a parameter in a log window (lower right corner of the screen, usually)
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `obj` | _Object_ | Qualquer objeto para ser exibido na janela de log |
+| `obj` | _Object_ | Any object to be displayed in the log window |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
-h.log('mensagem de log');
+h.log('log message');
 ```
 
 ---
 
 
 ### sleep(time)
-Pausa a execução em X milissegundos, conforme o valor especificado
+Pause execution in X milliseconds as specified value
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `time` | _Number_ | Valor em milissegundos. Mínimo=0, Máximo=60000 |
+| `time` | _Number_ | Value in milliseconds. Minimum=0, Maximum=60000 |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.sleep(200); //200ms
@@ -55,214 +55,214 @@ h.sleep(200); //200ms
 
 
 ### base64Encode(bytes)
-Codifica um array de bytes em string base64
+Encodes an array of bytes to base64 string
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `bytes` | _Array&lt;byte&gt;_ | array de bytes |
+| `bytes` | _Array&lt;byte&gt;_ | array of bytes |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _String_ | String em formato base64 |
+| _String_ | String in base64 format |
 
 
 ---
 
 
 ### base64Decode(str)
-Decodifica uma string em formato base64
+Decodes a string in base64 format
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `str` | _String_ | String em base64 |
+| `str` | _String_ | String in base64 |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Array&lt;byte&gt;_ | Array de bytes decodificado |
+| _Array&lt;byte&gt;_ | Array of bytes decoded |
 
 
 ---
 
 
 ### md5(value)
-Hash MD5 em array de bytes
+MD5 hash in byte array
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `value` | _Object_ | Valor que será calculado. Pode ser string ou array de bytes |
+| `value` | _Object_ | Value to be calculated. Can be string or byte array |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Array&lt;byte&gt;_ | hash MD5 |
+| _Array&lt;byte&gt;_ | MD5 hash |
 
 
 ---
 
 
 ### md5Str(value)
-Hash MD5
+MD5 hash
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `value` | _Object_ | Valor que será calculado. Pode ser string ou array de bytes |
+| `value` | _Object_ | Value to be calculated. Can be string or byte array |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _String_ | hash MD5 |
+| _String_ | MD5 hash |
 
 
 ---
 
 
 ### sha256(value)
-Hash SHA-256 em array de bytes
+Hash SHA-256 in byte array
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `value` | _Object_ | Valor que será calculado. Pode ser string ou array de bytes |
+| `value` | _Object_ | Value to be calculated. Can be string or byte array |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Array&lt;byte&gt;_ | hash SHA-256 |
+| _Array&lt;byte&gt;_ | SHA-256 hash |
 
 
 ---
 
 
 ### sha256Str(value)
-Hash SHA-256
+SHA-256 hash
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `value` | _Object_ | Valor que será calculado. Pode ser string ou array de bytes |
+| `value` | _Object_ | Value to be calculated. Can be string or byte array |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _String_ | hash SHA-256 |
+| _String_ | SHA-256 hash |
 
 
 ---
 
 
 ### getClipboard()
-Obtém o texto da área de transferência do sistema operacional
+Get the operating system clipboard text
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _String_ | Texto da área de transferência |
+| _String_ | Clipboard text |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var val = h.getClipboard();
-h.log('Texto da área de transferência: ' + val);
+h.log('Clipboard text: ' + val);
 ```
 
 ---
 
 
 ### normalize(str)
-Remove a acentuação da string
+Remove accent from string
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _String_ | String sem acentuação |
+| _String_ | String without accent |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.normalize("ÁÉÍÓÚÇáéíóúç");
-h.log('Texto com acentuação removida: ' + r); //AEIOUCaeiouc
+h.log('Text with accent removed: ' + r); //AEIOUCaeiouc
 ```
 
 ---
 
 
 ### store(key, value)
-Salva uma string em disco que pode ser recuperada mesmo após reiniciar o programa. O método é compartilhado com todos os scripts do programa.
+Saves a string to disk that can be recovered even after restarting the program. The method is shared with all scripts in the program.
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | chave/id para salvar a string |
-| `value` | _String_ | String que será salva |
+| `key` | _String_ | key to save the string |
+| `value` | _String_ | String to be saved |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
-h.store('abc', 'Exemplo');
+h.store('abc', 'Example');
 ```
 
 ---
 
 
 ### restore(key)
-Recupera uma string salva em disco. O método é compartilhado com todos os scripts do programa.
+Retrieves a string saved on disk. The method is shared with all scripts in the program.
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | chave/id da string salva anteriormente |
+| `key` | _String_ | Previously saved string key |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _String_ | Retorna a string salva ou NULL se não for encontrado |
+| _String_ | Returns the saved string or NULL if not found |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.restore('abc');
 if (r == null) {
-    h.log('Item abc não encontrado');
+    h.log('Item abc not found');
 } else {
     h.log('Item abc: ' + r);
 }
@@ -272,56 +272,56 @@ if (r == null) {
 
 
 ### setGlobal(key, value)
-Salva um objeto na memória que pode ser recuperado, mas é válido somente enquanto o programa estiver aberto. O método é compartilhado com todos os scripts do programa.
+Saves an object in memory that can be retrieved, but is valid only as long as the program is open. The method is shared with all scripts in the program.
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | chave/id do objeto salvo |
-| `value` | _Object_ | Objeto que será salvo na memória |
+| `key` | _String_ | Saved object key |
+| `value` | _Object_ | Object to be saved in memory |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
-h.setGlobal('xyz', 'Exemplo');
+h.setGlobal('xyz', 'Example');
 ```
 
 ---
 
 
 ### getGlobal(key, default = null)
-Recupera um objeto salvo na memória. O método é compartilhado com todos os scripts do programa.
+Retrieves an object saved in memory. The method is shared with all scripts in the program.
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | chave/id do objeto salvo na memória |
-| `default` | _Object (opcional)_ | Valor padrão se não for encontrado valor salvo anteriormente |
+| `key` | _String_ | Key of object saved in memory |
+| `default` | _Object (optional)_ | Default value if no previously saved value is found |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Object_ | Retorna o objeto salvo ou **default** se não for encontrado |
+| _Object_ | Returns the saved object or **default** if not found |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.getGlobal('xyz');
 if (r == null) {
-    h.log('Item xyz não encontrado');
+    h.log('Item xyz not found');
 } else {
     h.log('Item xyz: ' + r);
 }
 
-var r2 = h.getGlobal('xyz', 'valor padrão');
+var r2 = h.getGlobal('xyz', 'default value');
 h.log('Item xyz: ' + r2);
 ```
 
@@ -329,56 +329,56 @@ h.log('Item xyz: ' + r2);
 
 
 ### setCache(key, value)
-Salva um objeto na memória que pode ser recuperado, mas é válido somente enquanto o programa estiver aberto. O método é válido somente para o script atual.
+Saves an object in memory that can be retrieved, but is valid only as long as the program is open. The method is only valid for the current script.
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | chave/id do objeto salvo |
-| `value` | _Object_ | Objeto que será salvo na memória |
+| `key` | _String_ | Saved object key |
+| `value` | _Object_ | Object to be saved in memory |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
-h.setCache('123', 'Exemplo');
+h.setCache('123', 'Example');
 ```
 
 ---
 
 
 ### getCache(key, default = null)
-Recupera um objeto salvo na memória. O método é válido somente para o script atual.
+Retrieves an object saved in memory. The method is only valid for the current script.
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | chave/id do objeto salvo na memória |
-| `default` | _Object (opcional)_ | Valor padrão se não for encontrado valor salvo anteriormente |
+| `key` | _String_ | Key of object saved in memory |
+| `default` | _Object (optional)_ | Default value if no previously saved value is found |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Object_ | Retorna o objeto salvo ou **default** se não for encontrado |
+| _Object_ | Returns the saved object or **default** if not found |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.getCache('123');
 if (r == null) {
-    h.log('Item 123 não encontrado');
+    h.log('Item 123 not found');
 } else {
     h.log('Item 123: ' + r);
 }
 
-var r2 = h.getCache('123', 'valor padrão');
+var r2 = h.getCache('123', 'default value');
 h.log('Item 123: ' + r2);
 ```
 
@@ -386,128 +386,128 @@ h.log('Item 123: ' + r2);
 
 
 ### random(min, max, keySafeRepeat = null)
-Gera um número aleatório
+Generate a random number
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `min` | _String_ | valor mínimo |
-| `max` | _Object_ | Valor máximo |
-| `keySafeRepeat` | _Object (opcional)_ | Pode ser utilizado para evitar número repetido sorteado em sequência |
+| `min` | _String_ | minimum value |
+| `max` | _Object_ | Maximum value |
+| `keySafeRepeat` | _Object (optional)_ | Can be used to avoid repeated number drawn in sequence |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Number_ | Retorna um número aleatório de **min** a **max** |
+| _Number_ | Returns a random number from **min** to **max** |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.random(0, 10);
-h.log('Número aleatório de 0 a 10: ' + r);
-//O número sorteado pode ser repetido
+h.log('Random number from 0 to 10: ' + r);
+//The number drawn can be repeated
 r = h.random(0, 10);
-h.log('Número aleatório de 0 a 10: ' + r);
+h.log('Random number from 0 to 10: ' + r);
 
-//Para evitar repetição:
+//To avoid repetition:
 var r = h.random(0, 10, 'xyz');
-h.log('Número aleatório de 0 a 10: ' + r);
-//O número sorteado não será repetido
+h.log('Random number from 0 to 10: ' + r);
+//The number drawn will not be repeated
 r = h.random(0, 10, 'xyz');
-h.log('Número aleatório de 0 a 10: ' + r);
+h.log('Random number from 0 to 10: ' + r);
 
-//A mecânica de não repetir também funciona quando o script for executado novamente
-//e não apenas em execuções em sequência como no exemplo acima
+//The do not repeat mechanic also works when the script is run again
+//and not just in sequence executions as in the example above
 ```
 
 ---
 
 
 ### startTimer(key)
-Inicia um timer
+Start a timer
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | Chave/id do timer |
+| `key` | _String_ | Timer key |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.startTimer('xyz');
-h.sleep(2000); //2 segundos
+h.sleep(2000); //2 seconds
 var r = h.getTimer('xyz');
-h.log('Tempo decorrido: ' + r); //provavelmente 00:00:02
+h.log('Elapsed time: ' + r); //Like 00:00:02
 
-//é um método global, o valor pode ser utilizado em qualquer outro script utilizando a mesma chave
+//is a global method, the value can be used in any other script using the same key
 ```
 
 ---
 
 
 ### getTimer(key)
-Recupera quanto tempo foi decorrido em um timer de acordo com o valor **key**. Se o timer não tiver sido iniciado, o método iniciará o timer e retornará 00:00:00
+Retrieves how much time has elapsed on a timer according to the **key** value. If the timer has not been started, the method will start the timer and return 00:00:00
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | Chave/id do timer |
+| `key` | _String_ | Timer key |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _String_ | Tempo decorrido no formato HH:MM:SS |
+| _String_ | Elapsed time in format HH:MM:SS |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.getTimer('xyz');
-h.log('Tempo decorrido: ' + r);
+h.log('Elapsed time: ' + r);
 ```
 
 ---
 
 
 ### getPlaylistInfo()
-Obtém a lista de reprodução atualmente selecionada no programa
+Gets the currently selected playlist in the program
 
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `type` | _String_ | Tipo do evento da lista de reprodução. Pode ser: temporary, service, event |
-| `name` | _String_ | Nome do evento |
-| `datetime` | _String_ | Data e hora do item no formato: YYYY-MM-DD HH:MM |
+| `type` | _String_ | Playlist event type. Can be: temporary, service, event |
+| `name` | _String_ | Event name |
+| `datetime` | _String_ | Item date and time in format: YYYY-MM-DD HH:MM |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.getPlaylistInfo();
 h.log(r.name + ' - ' + r.datetime);
 switch (r.type) {
     case 'temporary':
-        h.log('A lista de reprodução é temporária');
+        h.log('Playlist is temporary');
         break;
     case 'service':
-        h.log('A lista de reprodução é de um culto');
+        h.log('The playlist is from a service');
         break;
     case 'event':
-        h.log('A lista de reprodução é de um evento');
+        h.log('The playlist is from an event');
         break;
 }
 ```
@@ -516,34 +516,34 @@ switch (r.type) {
 
 
 ### getPlayer()
-Classe player para obter informações e executar ações no player do programa
+Player class to get information and perform actions on the program's player
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _[Player](#métodos-player)_ | Objeto da classe Player |
+| _[Player](#métodos-player)_ | Player class object |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.getPlayer();
 if (r.isPlaying()) {
-    h.log('O player está em execução');
+    h.log('The player is running');
 } else {
-    h.log('O player não está em execução');
+    h.log('The player is not running');
 }
 
-//alterar volume
+//change volume
 r.setVolume(80);
 
-//deixar no mudo
+//mute
 r.setMute(true);
 
-//parar execução atual
+//stop current execution
 r.stop();
 ```
 
@@ -551,30 +551,30 @@ r.stop();
 
 
 ### scriptAction(id)
-Executa a ação de um item **Script** existente no programa
+Executes the action of an existing **Script** item in the program
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | id do item |
+| `id` | _String_ | id of item |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Boolean_ | Retorna **false** se o item não for encontrado |
+| _Boolean_ | Returns **false** if the item is not found |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.scriptAction('abcxyz');
 if (r) {
-    h.log('Ação executada');
+    h.log('Action performed');
 } else {
-    h.log('Item abcxyz não econtrado');
+    h.log('Item abcxyz not found');
 }
 ```
 
@@ -582,30 +582,30 @@ if (r) {
 
 
 ### apiAction(id)
-Executa a ação de um item API existente no programa
+Executes the action of an existing API item in the program
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | id do item |
+| `id` | _String_ | id of item |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Boolean_ | Retorna **false** se o item não for encontrado |
+| _Boolean_ | Returns **false** if the item is not found |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.apiAction('abcxyz');
 if (r) {
-    h.log('Ação executada');
+    h.log('Action performed');
 } else {
-    h.log('Item abcxyz não econtrado');
+    h.log('Item abcxyz not found');
 }
 ```
 
@@ -613,79 +613,79 @@ if (r) {
 
 
 ### apiRequest(id, raw)
-Executa uma requisição para o receptor associado e retorna a resposta do receptor. Válido somente para receptores URL
+Executes a request to the associated receiver and returns the receiver's response. Valid only for URL receivers
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | id do receptor |
-| `raw` | _Object_ | dados da requisição |
+| `id` | _String_ | id of receiver |
+| `raw` | _Object_ | requisition data |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Object_ | Retorno da requisição ou NULL para erro/timeout |
+| _Object_ | Request return or NULL for error/timeout |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
-//É possível realizar requisição diretamente para um receptor criado
-//Por exemplo:
-//Considerando que você tenha um receptor criado para comunicação com OBS Studio via websocket e o ID do receptor seja 'abcyxz'
-//você pode fazer uma requisição como no exemplo abaixo
+//It is possible to make a request directly to a receiver created
+//For example:
+//Assuming you have a receiver created to communicate with OBS Studio via websocket and the receiver ID is 'abcyxz'
+//you can make a request as in the example below
 var r = h.apiRequest('abcxyz', {
     'request-type': 'GetSourceActive',
-    'sourceName': 'exemplo'
+    'sourceName': 'example'
 });
-h.log('Resposta da requisição: ' + r);
+h.log('Requisition response: ' + r);
 var obj = JSON.parse(r);
 if (obj.sourceActive) {
-    h.log('A fonte exemplo está ativa');
+    h.log('The example source is active');
 } else {
-    h.log('A fonte exemplo não está ativa');
+    h.log('The example source is not active');
 }
 ```
 
 ---
 
 
-# Métodos HLY
+# Methods HLY
 
 
-Todas as requisições dos métodos hly(...) retornam um objeto padrão:
-| Nome | Tipo  | Descrição |
+All requests for hly(...) methods return a default object:
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `status` | _String_ | Pode ser *'ok'* ou *'error'* |
-| `error` | _String (opcional)_ | Mensagem de erro se *status* for igual a *error* |
-| `data` | _Object (opcional)_ | Conteúdo da resposta se *status* for igual a *ok* |
+| `status` | _String_ | It might be *'ok'* or *'error'* |
+| `error` | _String (optional)_ | Error message if status equals *error* |
+| `data` | _Object (optional)_ | Response content if *status* equals *ok* |
 
 
 ---
 
 ### hly('GetCurrentBackground')
-Retorna o plano de fundo da apresentação em exibição.
+Returns the background of the currently displayed presentation.
 
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data` | _[Background](#background)_ | Plano de fundo atual ou NULL se não houver apresentação em exibição |
+| `data` | _[Background](#background)_ | Current background or NULL if no presentation is displayed |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetCurrentBackground');
 if (r.data != null) {
-    h.log('ID do plano de fundo atual: ' + r.data.id);
+    h.log('Current background ID: ' + r.data.id);
 } else {
-    h.log('Não há apresentação em exibição');
+    h.log('There is no presentation on display');
 }
 ```
 
@@ -694,28 +694,28 @@ if (r.data != null) {
 
 ### hly('GetLyrics', input)
 ### hly('GetSong', input)
-Retorna uma música.
+Returns a song.
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID da música |
+| `input.id` | _String_ | ID of music |
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data` | _[Lyrics](#lyrics)_ | Música ou NULL se não for encontrado |
+| `data` | _[Lyrics](#lyrics)_ | Music or NULL if not found |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetLyrics', {id: '123'});
 if (r.data == null) {
-    h.log('Item 123 não encontrado');
+    h.log('Item 123 not found');
 } else {
     h.log('Item 123:');
     h.log(r.data);
@@ -727,18 +727,18 @@ if (r.data == null) {
 
 ### hly('GetLyricsPlaylist')
 ### hly('GetSongPlaylist')
-Lista de reprodução de letras
+Lyrics playlist
 
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `data` | _Array&lt;[Lyrics](lyrics)&gt;_ |  |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetLyricsPlaylist');
@@ -751,18 +751,18 @@ for (var i = 0; i < r.data.length; i++) {
 
 
 ### hly('GetMediaPlaylist')
-Lista de reprodução de mídia
+Media playlist
 
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `data` | _Array&lt;[Item](#item)&gt;_ |  |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetMediaPlaylist');
@@ -776,40 +776,40 @@ for (var i = 0; i < r.data.length; i++) {
 
 
 ### hly('GetBackgrounds', input)
-Lista dos temas e planos de fundo
+List of themes and backgrounds
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input` | _Object (opcional)_ | Filtro |
-| `input.type` | _String (opcional)_ | Pode ser: theme, my_video, my_image, video, image |
-| `input.tag` | _String (opcional)_ |  |
-| `input.tags` | _Array&lt;String&gt; (opcional)_ |  |
-| `input.intersection` | _Boolean (opcional)_ | Se o campo **input.tags** estiver preenchido com múltiplos itens, a opção **input.intersection** define o tipo de junção. Se **true**, o filtro retornará apenas itens que contém **todas** as tags informadas, se **false**, o filtro retornará os itens que têm pelo menos uma tag das tags informadas _(Padrão=*false*)_ |
+| `input` | _Object (optional)_ | Filter |
+| `input.type` | _String (optional)_ | It might be: theme, my_video, my_image, video, image |
+| `input.tag` | _String (optional)_ |  |
+| `input.tags` | _Array&lt;String&gt; (optional)_ |  |
+| `input.intersection` | _Boolean (optional)_ | If the **input.tags** field is populated with multiple items, the **input.intersection** option defines the type of junction. If **true**, the filter will only return items that contain **all** the informed tags, if **false**, the filter will return the items that have at least one tag of the informed tags _(Default=*false*)_ |
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `data` | _Array&lt;[Background](#background)&gt;_ |  |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
-//todos
+//all
 var r = h.hly('GetBackgrounds', {});
 for (var i = 0; i < r.data.length; i++) {
     var bg = r.data[i];
     h.log(bg.type + ": " + bg.name);
 }
 
-//somente "Meus Vídeos" e com as tags 'água' E 'azul'
+//only "My Videos" and tagged 'water' AND 'blue'
 r = h.hly('GetBackgrounds', {
     type: 'my_video',
-    tags: ['água', 'azul'],
+    tags: ['water', 'blue'],
     intersection: true
 });
 for (var i = 0; i < r.data.length; i++) {
@@ -822,18 +822,18 @@ for (var i = 0; i < r.data.length; i++) {
 
 
 ### hly('GetFavorites')
-Itens da barra de favoritos
+Favorites bar items
 
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `data` | _Array&lt;[Favorite Item](#favorite_item)&gt;_ |  |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetFavorites');
@@ -846,20 +846,20 @@ for (var i = 0; i < r.data.length; i++) {
 
 
 ### hly('GetHistories')
-Histórico de todas as marcações de "Música tocada"
+History of all tags for "Music played"
 
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `data` | _Array&lt;Object&gt;_ |  |
-| `data.*.music_id` | _String_ | ID da música |
-| `data.*.history` | _Array&lt;String&gt;_ | Data e hora no formato YYYY-MM-DD HH:MM |
+| `data.*.music_id` | _String_ | ID of music |
+| `data.*.history` | _Array&lt;String&gt;_ | Date and time in format: YYYY-MM-DD HH:MM |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetHistories');
@@ -873,23 +873,23 @@ for (var i = 0; i < r.data.length; i++) {
 
 
 ### hly('GetHistory', input)
-Histórico de "Música tocada"
+"Music played" history
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID da letra da música |
+| `input.id` | _String_ | Song lyric ID |
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data` | _Array&lt;String&gt;_ | Data e hora no formato YYYY-MM-DD HH:MM |
+| `data` | _Array&lt;String&gt;_ | Date and time in format: YYYY-MM-DD HH:MM |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetHistory', {id: '123'});
@@ -902,18 +902,18 @@ for (var i = 0; i < r.data.length; i++) {
 
 
 ### hly('GetMembers')
-Lista de integrantes
+List of members
 
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `data` | _Array&lt;[Member](#member)&gt;_ |  |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetMembers');
@@ -926,18 +926,18 @@ for (var i = 0; i < r.data.length; i++) {
 
 
 ### hly('GetRoles')
-Lista de funções
+List of functions
 
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `data` | _Array&lt;[Role](#role)&gt;_ |  |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetRoles');
@@ -950,18 +950,18 @@ for (var i = 0; i < r.data.length; i++) {
 
 
 ### hly('GetCurrentSchedule')
-Programação atual (selecionada na janela principal do programa)
+Current schedule (selected in the main program window)
 
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `data` | _[Schedule](#schedule)_ |  |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetCurrentSchedule');
@@ -978,24 +978,24 @@ for (var i = 0; i < r.data.length; i++) {
 
 
 ### hly('GetSchedules')
-Retorna a lista de programação de um mês específico
+Returns the schedule list for a specific month
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.month` | _Number_ | Mês (1-12) |
-| `input.year` | _Number_ | Ano |
+| `input.month` | _Number_ | Month (1-12) |
+| `input.year` | _Number_ | Year |
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `data` | _Array&lt;[Schedule](#schedule)&gt;_ |  |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetSchedules', {
@@ -1015,23 +1015,23 @@ for (var i = 0; i < r.data.length; i++) {
 
 
 ### hly('MediaPlaylistAction', input)
-Executa um item da lista de reprodução de mídia
+Play a media playlist item
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID do item |
+| `input.id` | _String_ | ID if item |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('MediaPlaylistAction', {id: 'abc'});
 
-//Chamadas alternativas
+//Alternate calls
 h.mediaPlaylistAction('abc');
 h.mplAction('abc');
 ```
@@ -1040,23 +1040,23 @@ h.mplAction('abc');
 
 
 ### hly('FavoriteAction', input)
-Executa um item da barra de favoritos
+Execute an item from the bookmarks bar
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID do item |
+| `input.id` | _String_ | ID if item |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('FavoriteAction', {id: 'abc'});
 
-//Chamadas alternativas
+//Alternate calls
 h.favoriteAction('abc');
 h.favAction('abc');
 ```
@@ -1066,33 +1066,33 @@ h.favAction('abc');
 
 ### hly('ShowLyrics', input)
 ### hly('ShowSong', input)
-Inicia uma apresentação de letra de música.
+Starts a lyric show.
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID do item |
+| `input.id` | _String_ | ID if item |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('ShowLyrics', {id: '123'});
 
-//procura uma música e executa o primeiro resultado encontrado
+//search for a song and execute the first result found
 var r = h.hly('SearchLyrics', {
-    text: 'título da música'
+    text: 'song title'
 });
 if (r.data.length == 0) {
-    h.log("Música não encontrada");
+    h.log("Music not found");
 } else {
     h.hly('ShowLyrics', {id: r.data[0].id});
 }
 
-//Chamadas alternativas
+//Alternate calls
 h.showLyrics('123');
 h.showSong('123');
 ```
@@ -1101,23 +1101,23 @@ h.showSong('123');
 
 
 ### hly('ShowText', input)
-Inicia uma apresentação de um item da aba texto.
+Starts a presentation of a text tab item.
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID do item |
+| `input.id` | _String_ | ID if item |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('ShowText', {id: 'abc'});
 
-//Chamada alternativa
+//Alternate call
 h.showText('abc');
 ```
 
@@ -1125,32 +1125,32 @@ h.showText('abc');
 
 
 ### hly('ShowVerse', input)
-Inicia uma apresentação de versículo da Bíblia.
+Starts a Bible verse presentation.
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input` | _Object_ | **id**, **ids** ou **references** |
-| `input.id` | _String (opcional)_ | Para exibir um versículo. ID do item no formato LLCCCVVV. Exemplo: '19023001' (ou seja, livro 19, capítulo 023, versículo 001) |
-| `input.ids` | _Array&lt;String&gt; (opcional)_ | Para exibir uma lista de versículos. Lista com o ID de cada versículo. Exemplo: ['19023001', '43003016', '45012002'] |
-| `input.references` | _String (opcional)_ | Referências. Exemplo: **João 3:16** ou **Rm 12:2** ou **Gn 1:1-3 Sl 23.1** |
+| `input` | _Object_ | **id**, **ids** or **references** |
+| `input.id` | _String (optional)_ | To display a verse. Item ID in BBCCCVVV format. Example: '19023001' (i.e. book 19, chapter 023, verse 001) |
+| `input.ids` | _Array&lt;String&gt; (optional)_ | To display a list of verses. List with the ID of each verse. Example: ['19023001', '43003016', '45012002'] |
+| `input.references` | _String (optional)_ | References. Example: **John 3:16** or **Rm 12:2** or **Gn 1:1-3 Sl 23.1** |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('ShowVerse', {id: '19023001'});
 
 h.hly('ShowVerse', {ids: ['19023001', '43003016', '45012002']});
 
-h.hly('ShowVerse', {references: 'João 3:16'});
+h.hly('ShowVerse', {references: 'John 3:16'});
 
 h.hly('ShowVerse', {references: 'Rm 12:2  Gn 1:1-3  Sl 23'});
 
-//Chamada alternativa
+//Alternate call
 h.showVerse('Rm 12:2  Gn 1:1-3  Sl 23');
 ```
 
@@ -1158,119 +1158,119 @@ h.showVerse('Rm 12:2  Gn 1:1-3  Sl 23');
 
 
 ### hly('PlayAudio', input)
-Executa um áudio ou uma lista de áudios (pasta)
+Play an audio or a list of audios (folder)
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.file` | _String_ | Nome do arquivo ou da pasta. Exemplo: **arquivo.mp3** ou **pasta** ou **pasta/arquivo.mp3** |
+| `input.file` | _String_ | File or folder name. Example: **file.mp3** or **folder** or **folder/file.mp3** |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
-h.hly('PlayAudio', {file: 'arquivo.mp3'});
-h.hly('PlayAudio', {file: 'pasta'});
-h.hly('PlayAudio', {file: 'pasta/arquivo.mp3'});
+h.hly('PlayAudio', {file: 'file.mp3'});
+h.hly('PlayAudio', {file: 'folder'});
+h.hly('PlayAudio', {file: 'folder/file.mp3'});
 
-//Chamada alternativa
-h.playAudio('arquivo.mp3');
+//Alternate call
+h.playAudio('file.mp3');
 ```
 
 ---
 
 
 ### hly('PlayVideo', input)
-Executa um vídeo ou uma lista de vídeos (pasta)
+Play a video or a list of videos (folder)
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.file` | _String_ | Nome do arquivo ou da pasta. Exemplo: **arquivo.mp4** ou **pasta** ou **pasta/arquivo.mp4** |
+| `input.file` | _String_ | File or folder name. Example: **file.mp4** or **folder** or **folder/file.mp4** |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
-h.hly('PlayVideo', {file: 'arquivo.mp4'});
-h.hly('PlayVideo', {file: 'pasta'});
-h.hly('PlayVideo', {file: 'pasta/arquivo.mp4'});
+h.hly('PlayVideo', {file: 'file.mp4'});
+h.hly('PlayVideo', {file: 'folder'});
+h.hly('PlayVideo', {file: 'folder/file.mp4'});
 
-//Chamada alternativa
-h.playVideo('arquivo.mp4');
+//Alternate call
+h.playVideo('file.mp4');
 ```
 
 ---
 
 
 ### hly('ShowImage', input)
-Apresenta uma imagem ou uma lista de imagens (pasta)
+Displays an image or a list of images (folder)
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.file` | _String_ | Nome do arquivo ou da pasta. Exemplo: **arquivo.jpg** ou **pasta** ou **pasta/arquivo.jpg** |
-| `input.automatic` | _[Automatic](#automatic-presentation) (opcional)_ | Se informado, a apresentação dos itens será automática |
+| `input.file` | _String_ | File or folder name. Example: **file.jpg** or **folder** or **folder/file.jpg** |
+| `input.automatic` | _[Automatic](#automatic-presentation) (optional)_ | If informed, the presentation of the items will be automatic |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
-h.hly('ShowImage', {file: 'arquivo.jpg'});
-h.hly('ShowImage', {file: 'pasta'});
-h.hly('ShowImage', {file: 'pasta/arquivo.jpg'});
+h.hly('ShowImage', {file: 'file.jpg'});
+h.hly('ShowImage', {file: 'folder'});
+h.hly('ShowImage', {file: 'folder/file.jpg'});
 
 h.hly('ShowImage', {
-    file: 'pasta',
+    file: 'folder',
     automatic: {
         seconds: 5,
         repeat: true
     }
 });
 
-//Chamada alternativa
-h.showImage('arquivo.jpg');
+//Alternate call
+h.showImage('file.jpg');
 ```
 
 ---
 
 
 ### hly('ShowQuickPresentation', input)
-Apresenta rápida de um texto
+Quick display of text
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.text` | _String_ | Texto que será exibido |
-| `input.theme` | _Object (opcional)_ | Filtrar tema selecionado para exibição |
-| `input.theme.id` | _String (opcional)_ | ID do tema |
-| `input.theme.name` | _String (opcional)_ | Nome do tema |
-| `input.automatic` | _[Automatic](#automatic-presentation) (opcional)_ | Se informado, a apresentação dos itens será automática |
+| `input.text` | _String_ | Text to be displayed |
+| `input.theme` | _Object (optional)_ | Filter selected theme for display |
+| `input.theme.id` | _String (optional)_ | ID of theme |
+| `input.theme.name` | _String (optional)_ | Theme name |
+| `input.automatic` | _[Automatic](#automatic-presentation) (optional)_ | If informed, the presentation of the items will be automatic |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('ShowQuickPresentation', {
-    text: "Texto que será exibido"
+    text: "Text to be displayed"
 });
 
 h.hly('ShowQuickPresentation', {
     text: "Slide 1\n\nSlide 2\n\nSlide 3",
     theme: {
-        name: "Tema 3"
+        name: "Theme 3"
     },
     automatic: {
         seconds: 5,
@@ -1283,28 +1283,28 @@ h.hly('ShowQuickPresentation', {
 
 
 ### hly('ShowAnnouncement', input)
-Apresenta um anúncio ou uma lista de anúncios
+Displays an announcement or a list of announcements
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String (opcional)_ | ID do anúncio. Pode ser **all** para exibir todos |
-| `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com o ID de cada anúncio |
-| `input.name` | _String (opcional)_ | Nome do anúncio |
-| `input.names` | _Array&lt;String&gt; (opcional)_ | Lista com o nome de cada anúncio |
-| `input.automatic` | _[Automatic](#automatic-presentation) (opcional)_ | Se informado, a apresentação dos itens será automática |
+| `input.id` | _String (optional)_ | Announcement ID. Can be **all** to display all |
+| `input.ids` | _Array&lt;String&gt; (optional)_ | List with the ID of each announcement |
+| `input.name` | _String (optional)_ | Announcement name |
+| `input.names` | _Array&lt;String&gt; (optional)_ | List with the name of each announcement |
+| `input.automatic` | _[Automatic](#automatic-presentation) (optional)_ | If informed, the presentation of the items will be automatic |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('ShowAnnouncement', {id: '123'});
 
 h.hly('ShowAnnouncement', {
-    names: ['Anúncio 1', 'Anúncio 2', 'Anúncio 3'],
+    names: ['Announcement 1', 'Announcement 2', 'Announcement 3'],
     automatic: {
         seconds: 10,
         repeat: true
@@ -1316,13 +1316,13 @@ h.hly('ShowAnnouncement', {
 
 
 ### hly('CloseCurrentPresentation')
-Encerra a apresentação atual
+End current presentation
 
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('CloseCurrentPresentation');
@@ -1332,46 +1332,46 @@ h.hly('CloseCurrentPresentation');
 
 
 ### hly('SetCurrentBackground', input)
-Altera o plano de fundo (ou tema) da apresentação atual. Se mais de um item for encontrado de acordo com os filtros, será escolhido um item da lista de forma aleatória
+Changes the background (or theme) of the current presentation. If more than one item is found according to the filters, random item will be chosen from the list
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input` | _Object (opcional)_ | Filtro |
-| `input.id` | _String (opcional)_ | ID do tema ou plano de fundo |
-| `input.name` | _String (opcional)_ | Nome do tema ou plano de fundo |
-| `input.type` | _String (opcional)_ | Pode ser: theme, my_video, my_image, video, image |
-| `input.tag` | _String (opcional)_ |  |
-| `input.tags` | _Array&lt;String&gt; (opcional)_ |  |
-| `input.intersection` | _Boolean (opcional)_ | Se o campo **input.tags** estiver preenchido com múltiplos itens, a opção **input.intersection** define o tipo de junção. Se **true**, o filtro retornará apenas itens que contém **todas** as tags informadas, se **false**, o filtro retornará os itens que têm pelo menos uma tag das tags informadas _(Padrão=*false*)_ |
+| `input` | _Object (optional)_ | Filter |
+| `input.id` | _String (optional)_ | Theme or background ID |
+| `input.name` | _String (optional)_ | Theme name or background |
+| `input.type` | _String (optional)_ | It might be: theme, my_video, my_image, video, image |
+| `input.tag` | _String (optional)_ |  |
+| `input.tags` | _Array&lt;String&gt; (optional)_ |  |
+| `input.intersection` | _Boolean (optional)_ | If the **input.tags** field is populated with multiple items, the **input.intersection** option defines the type of junction. If **true**, the filter will only return items that contain **all** the informed tags, if **false**, the filter will return the items that have at least one tag of the informed tags _(Default=*false*)_ |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('SetCurrentBackground', {id: 'abc'});
 
 h.hly('SetCurrentBackground', {name: 'xyz'});
 
-//um vídeo que esteja definido com a tag 'água'
+//a video that is defined with the tag 'water'
 h.hly('SetCurrentBackground', {
     type: 'my_video',
-    tag: 'água'
+    tag: 'water'
 });
 
-//um vídeo que esteja definido com a tag 'água' OU com a tag 'azul'
+//a video that is tagged 'water' OR tagged 'blue'
 h.hly('SetCurrentBackground', {
     type: 'my_video',
-    tags: ['água', 'azul']
+    tags: ['water', 'blue']
 });
 
-//um vídeo que esteja definido com a tag 'água' E com a tag 'azul'
+//a video that is defined with the tag 'water' AND the tag 'blue'
 h.hly('SetCurrentBackground', {
     type: 'my_video',
-    tags: ['água', 'azul'],
+    tags: ['water', 'blue'],
     intersection: true
 });
 ```
@@ -1380,18 +1380,18 @@ h.hly('SetCurrentBackground', {
 
 
 ### hly('GetBpm')
-Retorna o valor BPM atual definido no programa
+Returns the current BPM value set in the program
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Number_ | Valor BPM atual |
+| _Number_ | Current BPM value |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetBpm');
@@ -1402,18 +1402,18 @@ h.log('BPM: ' + r.data);
 
 
 ### hly('SetBpm')
-Altera o valor BPM atual do programa
+Change the current BPM value of the program
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `bpm` | _Number_ | Valor BPM |
+| `bpm` | _Number_ | BPM value |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('SetBpm', {bpm: 80});
@@ -1424,37 +1424,37 @@ h.hly('SetBpm', {bpm: 80});
 
 ### hly('SearchLyrics', input)
 ### hly('SearchSong', input)
-Realiza uma busca na lista de letras do usuário
+Performs a search in the user's lyrics list
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input` | _String_ | Filtro |
-| `input.text` | _String_ | Texto a ser pesquisado |
-| `input.title` | _Boolean (opcional)_ |  _(Padrão=*true*)_ |
-| `input.artist` | _Boolean (opcional)_ |  _(Padrão=*true*)_ |
-| `input.note` | _Boolean (opcional)_ |  _(Padrão=*true*)_ |
-| `input.lyrics` | _Boolean (opcional)_ |  _(Padrão=*false*)_ |
-| `input.group` | _String (opcional)_ |  |
+| `input` | _String_ | Filter |
+| `input.text` | _String_ | Text to be searched |
+| `input.title` | _Boolean (optional)_ |  _(Default=*true*)_ |
+| `input.artist` | _Boolean (optional)_ |  _(Default=*true*)_ |
+| `input.note` | _Boolean (optional)_ |  _(Default=*true*)_ |
+| `input.lyrics` | _Boolean (optional)_ |  _(Default=*false*)_ |
+| `input.group` | _String (optional)_ |  |
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `data` | _Array&lt;[Lyrics](#lyrics)&gt;_ |  |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('SearchLyrics', {
-    text: 'exemplo',
+    text: 'example',
     lyrics: true
 });
 if (r.data.length == 0) {
-    h.log("Nenhum resultado encontrado");
+    h.log("No results found");
 } else {
     for (var i = 0; i < r.data.length; i++) {
         var m = r.data[i];
@@ -1468,21 +1468,21 @@ if (r.data.length == 0) {
 
 ### hly('AddLyricsToPlaylist', input)
 ### hly('AddSongsToPlaylist', input)
-Adicionar letra de música na lista de reprodução
+Add song lyrics to playlist
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String (opcional)_ | ID da letra |
-| `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada letra |
-| `input.index` | _Number (opcional)_ | Posição na lista onde o item será adicionado (inicia em zero). Os itens são adicionados no final da lista por padrão. _(Padrão=*-1*)_ |
-| `input.media_playlist` | _Boolean (opcional)_ | Adicionar as letras na lista de reprodução de mídia _(Padrão=*false*)_ |
+| `input.id` | _String (optional)_ | ID of the lyrics |
+| `input.ids` | _Array&lt;String&gt; (optional)_ | List with id of each lyics |
+| `input.index` | _Number (optional)_ | Position in the list where the item will be added (starts at zero). Items are added to the end of the list by default. _(Default=*-1*)_ |
+| `input.media_playlist` | _Boolean (optional)_ | Add the lyrics to the media playlist _(Default=*false*)_ |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('AddLyricsToPlaylist', {id: '123'});
@@ -1506,21 +1506,21 @@ h.hly('AddLyricsToPlaylist', {
 
 ### hly('RemoveFromLyricsPlaylist', input)
 ### hly('RemoveFromSongPlaylist', input)
-Remover letra de música na lista de reprodução
+Remove lyrics from playlist
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String (opcional)_ | ID da letra |
-| `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada letra |
-| `input.index` | _Number (opcional)_ | Posição do item na lista que será removido (inicia em zero). |
-| `input.indexes` | _Boolean (opcional)_ | Lista com a posição de cada item na lista que será removido. (Inicia em zero) |
+| `input.id` | _String (optional)_ | ID of the lyrics |
+| `input.ids` | _Array&lt;String&gt; (optional)_ | List with id of each lyics |
+| `input.index` | _Number (optional)_ | Position of the item in the list to be removed (starts at zero). |
+| `input.indexes` | _Boolean (optional)_ | List with the position of each item in the list that will be removed. (Starts at zero) |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('RemoveFromLyricsPlaylist', {id: '123'});
@@ -1536,21 +1536,21 @@ h.hly('RemoveFromLyricsPlaylist', {indexes: [3, 4, 5]});
 
 
 ### hly('RemoveFromMediaPlaylist', input)
-Remover itens da lista de reprodução de mídia
+Remove items from media playlist
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String (opcional)_ | ID do item |
-| `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada item |
-| `input.index` | _Number (opcional)_ | Posição do item na lista que será removido (inicia em zero). |
-| `input.indexes` | _Boolean (opcional)_ | Lista com a posição de cada item na lista que será removido. (Inicia em zero) |
+| `input.id` | _String (optional)_ | ID if item |
+| `input.ids` | _Array&lt;String&gt; (optional)_ | List with id of each item |
+| `input.index` | _Number (optional)_ | Position of the item in the list to be removed (starts at zero). |
+| `input.indexes` | _Boolean (optional)_ | List with the position of each item in the list that will be removed. (Starts at zero) |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('RemoveFromMediaPlaylist', {id: 'abc'});
@@ -1567,32 +1567,32 @@ h.hly('RemoveFromMediaPlaylist', {indexes: [3, 4, 5]});
 
 ### hly('GetCommunicationPanelInfo')
 ### hly('GetCPInfo')
-Configuração atual do painel de comunicação
+Current communication panel configuration
 
 
 
-**Resposta:**
+**Response:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data.text` | _String_ | Texto atual |
-| `data.show` | _Boolean_ | Se o texto atual está em exibição |
-| `data.display_ahead` | _Boolean_ | Se a opção *'exibir à frente de tudo'* está ativada |
-| `data.alert_text` | _String_ | Texto atual do alerta |
-| `data.alert_show` | _Boolean_ | Se a exibição do alerta está ativada |
-| `data.countdown_show` | _Boolean_ | Se uma contagem regressiva está em exibição |
-| `data.countdown_time` | _Number_ | O tempo atual da contagem regressiva em exibição (em segundos) |
+| `data.text` | _String_ | Current text |
+| `data.show` | _Boolean_ | Whether the current text is displayed |
+| `data.display_ahead` | _Boolean_ | Whether the *'display in front of all'* option is enabled |
+| `data.alert_text` | _String_ | Current alert text |
+| `data.alert_show` | _Boolean_ | Whether the alert display is enabled |
+| `data.countdown_show` | _Boolean_ | If a countdown is on display |
+| `data.countdown_time` | _Number_ | The current countdown time displayed (in seconds) |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 var r = h.hly('GetCommunicationPanelInfo');
 if (r.data.countdown_show) {
-    h.log("A contagem regressiva do painel de comunicação está ativa");
-    h.log(r.data.countdown_time + " segundos");
+    h.log("Communication panel countdown is active");
+    h.log(r.data.countdown_time + " seconds");
 } else {
-    h.log("A contagem regressiva do painel de comunicação não está ativa");
+    h.log("Communication panel countdown is not active");
 }
 ```
 
@@ -1600,27 +1600,27 @@ if (r.data.countdown_show) {
 
 
 ### hly('SetAlert', input)
-Altera as configurações da mensagem de alerta
+Change alert message settings
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.text` | _String (opcional)_ | Alterar o texto de alerta |
-| `input.show` | _Boolean (opcional)_ | Exibir/ocultar o alerta |
+| `input.text` | _String (optional)_ | Change alert text |
+| `input.show` | _Boolean (optional)_ | Show/hide the alert |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('SetAlert', {
-    text: "texto de alerta",
+    text: "alert text",
     show: true
 });
 
-//remover
+//remove
 h.hly('SetAlert', {show: false});
 ```
 
@@ -1629,21 +1629,21 @@ h.hly('SetAlert', {show: false});
 
 ### hly('StartCountdownCommunicationPanel', input)
 ### hly('StartCountdownCP', input)
-Inicia uma contagem regressiva no painel de comunicação
+Starts a countdown on the communication panel
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.minutes` | _Number_ | Quantidade de minutos |
-| `input.seconds` | _Number_ | Quantidade de segundos |
-| `input.yellow_starts_at` | _Number (opcional)_ | Valor em segundos para definir a partir de quanto tempo a contagem regressiva ficará amarela |
-| `input.stop_at_zero` | _Boolean (opcional)_ | Parar a contagem regressiva ao chegar em zero _(Padrão=*false*)_ |
+| `input.minutes` | _Number_ | Number of minutes |
+| `input.seconds` | _Number_ | Number of seconds |
+| `input.yellow_starts_at` | _Number (optional)_ | Value in seconds to define how long the countdown will be yellow from |
+| `input.stop_at_zero` | _Boolean (optional)_ | Stop the countdown when it reaches zero _(Default=*false*)_ |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('StartCountdownCommunicationPanel', {minutes: 3});
@@ -1661,13 +1661,13 @@ h.hly('StartCountdownCommunicationPanel', {
 
 ### hly('StopCountdownCommunicationPanel')
 ### hly('StopCountdownCP')
-Encerra a contagem regressiva atual do painel de comunicação
+Ends current communication panel countdown
 
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('StopCountdownCommunicationPanel');
@@ -1678,29 +1678,29 @@ h.hly('StopCountdownCommunicationPanel');
 
 ### hly('SetTextCommunicationPanel', input)
 ### hly('SetTextCP', input)
-Alterar o texto do painel de comunicação
+Change communication panel text
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.text` | _Number (opcional)_ | Alterar o texto do painel de comunicação |
-| `input.show` | _Boolean (opcional)_ | Exibir/ocultar o texto |
-| `input.display_ahead` | _Boolean (opcional)_ | Alterar a opção *'exibir à frente de tudo'* |
+| `input.text` | _Number (optional)_ | Change communication panel text |
+| `input.show` | _Boolean (optional)_ | Show/hide the text |
+| `input.display_ahead` | _Boolean (optional)_ | Change the *'display in front of all'* option |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('SetTextCommunicationPanel', {
-    text: "texto painel de comunicação",
+    text: "communication panel text",
     show: true,
     display_ahead: true
 });
 
-//remover
+//remove
 h.hly('SetTextCommunicationPanel', {show: false});
 ```
 
@@ -1709,27 +1709,27 @@ h.hly('SetTextCommunicationPanel', {show: false});
 
 ### hly('SetAlertCommunicationPanel', input)
 ### hly('SetAlertCP', input)
-Alterar as configurações de alerta do painel de comunicação
+Change communication panel alert settings
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.text` | _String (opcional)_ | Alterar o texto de alerta |
-| `input.show` | _Boolean (opcional)_ | Exibir/ocultar o alerta |
+| `input.text` | _String (optional)_ | Change alert text |
+| `input.show` | _Boolean (optional)_ | Show/hide the alert |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('SetAlertCommunicationPanel', {
-    text: "texto de alerta painel de comunicação",
+    text: "communication panel alert text",
     show: true
 });
 
-//remover
+//remove
 h.hly('SetAlertCommunicationPanel', {show: false});
 ```
 
@@ -1737,19 +1737,19 @@ h.hly('SetAlertCommunicationPanel', {show: false});
 
 
 ### hly('SetLogo', input)
-Alterar as configurações da funcionalidade *Logo* do programa (menu ferramentas)
+Change the settings for the program's *Logo* functionality (tools menu)
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.enable` | _Boolean (opcional)_ | Ativar/desativar a funcionalidade |
-| `input.hide` | _Boolean (opcional)_ | Exibir/ocultar a funcionalidade |
+| `input.enable` | _Boolean (optional)_ | Enable/disable functionality |
+| `input.hide` | _Boolean (optional)_ | Show/hide functionality |
 
 
-_Método sem retorno_
+_Method does not return value_
 
-**Exemplo:**
+**Example:**
 
 ```javascript
 h.hly('SetLogo', {enable: true});
@@ -1760,45 +1760,45 @@ h.hly('SetLogo', {hide: true});
 ---
 
 
-# Métodos Player
+# Methods Player
 ### getMediaName()
-Nome da mídia atual no player
+Name of current media in player
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _String_ | Nome da mídia |
+| _String_ | Media name |
 
 
 ---
 
 
 ### getMedia()
-Caminho completo da mídia no player
+Full path of media in player
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _String_ | Caminho completo da mídia |
+| _String_ | Full media path |
 
 
 ---
 
 
 ### isPlaying()
-Verifica se o player está em execução
+Checks if the player is running
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
 | _Boolean_ |  |
 
@@ -1807,123 +1807,123 @@ Verifica se o player está em execução
 
 
 ### getDuration()
-Tempo total da mídia atual no player
+Total time of current media in player
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Number_ | Tempo total em milissegundos |
+| _Number_ | Total time in milliseconds |
 
 
 ---
 
 
 ### getCurrentTime()
-Tempo atual da mídia no player
+Current media time in player
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Number_ | Tempo atual da mídia em milissegundos |
+| _Number_ | Current media time in milliseconds |
 
 
 ---
 
 
 ### getTimeElapsed()
-Tempo decorrido da mídia no player
+Elapsed time of media in player
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _String_ | Tempo decorrido no formato HH:MM:SS |
+| _String_ | Elapsed time in format HH:MM:SS |
 
 
 ---
 
 
 ### getTimeRemaining()
-Tempo restante da mídia no player
+Remaining media time in player
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _String_ | Tempo restante no formato HH:MM:SS |
+| _String_ | Remaining time in format HH:MM:SS |
 
 
 ---
 
 
 ### play()
-Executar a ação **play** do player
+Run player **play** action
 
 
 
-_Método sem retorno_
+_Method does not return value_
 
 ---
 
 
 ### pause()
-Executar a ação **pause** do player
+Perform player **pause** action
 
 
 
-_Método sem retorno_
+_Method does not return value_
 
 ---
 
 
 ### stop()
-Executar a ação **stop** do player
+Perform player **stop** action
 
 
 
-_Método sem retorno_
+_Method does not return value_
 
 ---
 
 
 ### next()
-Passa para o próximo item da lista no player
+Moves to the next item in the list in the player
 
 
 
-_Método sem retorno_
+_Method does not return value_
 
 ---
 
 
 ### previous()
-Passa para o item anterior da lista no player
+Moves to the previous item in the list in the player
 
 
 
-_Método sem retorno_
+_Method does not return value_
 
 ---
 
 
 ### isRepeat()
-Verifica se a opção **repetir** está ativada
+Checks if the **repeat** option is enabled
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
 | _Boolean_ |  |
 
@@ -1932,28 +1932,28 @@ Verifica se a opção **repetir** está ativada
 
 
 ### setRepeat(repeat)
-Altera a opção **repetir**
+Change the **repeat** option
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `repeat` | _Boolean_ |  |
 
 
-_Método sem retorno_
+_Method does not return value_
 
 ---
 
 
 ### isExecuteAll()
-Verifica se o player está definido para executar itens em sequência
+Checks if the player is set to play items in sequence
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
 | _Boolean_ |  |
 
@@ -1962,28 +1962,28 @@ Verifica se o player está definido para executar itens em sequência
 
 
 ### setExecuteAll(executeAll)
-Altera a configuração do player para executar itens em sequência
+Change player setting to play items in sequence
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `executeAll` | _Boolean_ |  |
 
 
-_Método sem retorno_
+_Method does not return value_
 
 ---
 
 
 ### isExecuteSingle()
-Verifica se o player está definido para executar somente o item atual da lista
+Checks if the player is set to play only the current list item
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
 | _Boolean_ |  |
 
@@ -1992,28 +1992,28 @@ Verifica se o player está definido para executar somente o item atual da lista
 
 
 ### setExecuteSingle(executeSingle)
-Altera a configuração do player para executar somente o item atual da lista
+Change player setting to play only current list item
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `executeSingle` | _Boolean_ |  |
 
 
-_Método sem retorno_
+_Method does not return value_
 
 ---
 
 
 ### isShuffle()
-Verifica se a opção **aleatório** está ativada
+Checks if the **random** option is enabled
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
 | _Boolean_ |  |
 
@@ -2022,28 +2022,28 @@ Verifica se a opção **aleatório** está ativada
 
 
 ### setShuffle(shuffle)
-Altera a opção **aleatório**
+Change the **random** option
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `shuffle` | _Boolean_ |  |
 
 
-_Método sem retorno_
+_Method does not return value_
 
 ---
 
 
 ### isFullscreen()
-Verifica se a opção **tela cheia** está ativada
+Checks if the **full screen** option is enabled
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
 | _Boolean_ |  |
 
@@ -2052,58 +2052,58 @@ Verifica se a opção **tela cheia** está ativada
 
 
 ### setFullscreen(fullscreen)
-Altera a opção **tela cheia** do player
+Change player **full screen** option
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `fullscreen` | _Boolean_ |  |
 
 
-_Método sem retorno_
+_Method does not return value_
 
 ---
 
 
 ### getVolume()
-Volume atual do player
+Current player volume
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Number_ | Volume. Mínimo=0, Máximo=100 |
+| _Number_ | Volume. Minimum=0, Maximum=100 |
 
 
 ---
 
 
 ### setVolume(volume)
-Altera o volume do player
+Change the volume of the player
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `volume` | _Number_ | Mínimo=0, Máximo=100 |
+| `volume` | _Number_ | Minimum=0, Maximum=100 |
 
 
-_Método sem retorno_
+_Method does not return value_
 
 ---
 
 
 ### isMute()
-Verifica se a opção **mudo** está ativada
+Checks if the **mute** option is enabled
 
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
 | _Boolean_ |  |
 
@@ -2112,78 +2112,78 @@ Verifica se a opção **mudo** está ativada
 
 
 ### setMute(mute)
-Altera a opção **mudo**
+Change the **mute** option
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
 | `mute` | _Boolean_ |  |
 
 
-_Método sem retorno_
+_Method does not return value_
 
 ---
 
 
-# Métodos User Input
+# User input Methods
 ### input(param, notification = false)
-Exibir uma janela com campos de entrada para receber informações de forma interativa
+Display a window with input fields to receive information interactively
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `param` | _Object_ | Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](#input-param)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **text** |
-| `notification` | _Boolean (opcional)_ | Exibe uma notificação em vez de abrir a janela diretamente |
+| `param` | _Object_ | Entries that will be requested in the interface. It can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed it will be the item name and the item type will be **text** |
+| `notification` | _Boolean (optional)_ | Display a notification instead of opening the window directly |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Object_ | Se for passado apenas um item como entrada, será retornado o valor informado pelo usuário (pode ser NULL). Se múltiplas entradas forem solicitadas, será retornado um objeto (pode ser NULL) onde cada valor será informado na variável do seu respectivo ID. |
+| _Object_ | If only one item is passed as input, the value informed by the user will be returned (can be NULL). If multiple entries are requested, an object will be returned (can be NULL) where each value will be informed in the variable of its respective ID. |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
-var r = h.input("Nome do Item");
-h.log("Valor informado: " + r);
+var r = h.input("Item name");
+h.log("Reported value: " + r);
 
-var param = [{type: 'password', label: 'Senha'}];
+var param = [{type: 'password', label: 'Password'}];
 var r = h.input(param);
-h.log("Senha informada: " + r);
+h.log("Informed password: " + r);
 
 var param = [
     {
         key: 'info',
         type: 'text',
-        label: 'Informação'
+        label: 'Information'
     },{
         key: 'type',
         type: 'text',
-        label: 'Tipo',
-        allowed_values: ['Tipo 1', 'Tipo 2', 'Tipo 3']
+        label: 'Type',
+        allowed_values: ['Type 1', 'Type 2', 'Type 3']
     }
 ];
 var r = h.input(param);
 if (r == null) {
-    h.log("Cancelado");
+    h.log("Canceled");
 } else {
-    h.log("Informação: " + r.info);
-    h.log("Tipo: " + r.type);
+    h.log("Information: " + r.info);
+    h.log("Type: " + r.type);
 }
 
 var param = [
     {
         key: 'message',
         type: 'textarea',
-        label: 'Mensagem'
+        label: 'Message'
     },{
         key: 'seconds',
         type: 'number',
-        label: 'Segundos',
+        label: 'Seconds',
         min: 30,
         max: 300,
         default_value: 60
@@ -2191,10 +2191,10 @@ var param = [
 ];
 var r = h.input(param);
 if (r == null) {
-    h.log("Cancelado");
+    h.log("Canceled");
 } else {
-    h.log("Mensagem: " + r.message);
-    h.log("Segundos: " + r.seconds);
+    h.log("Message: " + r.message);
+    h.log("Seconds: " + r.seconds);
 }
 ```
 
@@ -2202,63 +2202,63 @@ if (r == null) {
 
 
 ### inputTextArea(title, notification = false)
-Solicita uma entrada em formato **textarea** possibilitando texto com múltiplas linhas
+Requests input in **textarea** format allowing multi-line text
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `title` | _String_ | Nome do componente |
-| `notification` | _Boolean (opcional)_ | Exibe uma notificação em vez de abrir a janela diretamente |
+| `title` | _String_ | Component name |
+| `notification` | _Boolean (optional)_ | Display a notification instead of opening the window directly |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _String_ | Retorna o texto informado pelo usuário (pode ser NULL) |
+| _String_ | Returns the text entered by the user (can be NULL) |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
-var r = h.inputTextArea("Nome do Item");
-h.log("Valor informado: " + r);
+var r = h.inputTextArea("Item name");
+h.log("Reported value: " + r);
 
-var r = h.inputTextArea("Nome do Item", true); //notificação
-h.log("Valor informado: " + r);
+var r = h.inputTextArea("Item name", true); //notification
+h.log("Reported value: " + r);
 ```
 
 ---
 
 
 ### itemChooser(title, items, notification = false)
-Abre uma janela para selecionar um item em uma lista de valores
+Opens a window for selecting an item from a list of values
 
-**Parâmetros:**
+**Parameters:**
 
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `title` | _String_ | Título na janela |
-| `items` | _Object_ | Lista de itens que serão exibidos na lista |
-| `items.*.label` | _Boolean (opcional)_ | Nome que será exibido representando o item |
+| `title` | _String_ | Window title |
+| `items` | _Object_ | List of items that will be displayed in the list |
+| `items.*.label` | _Boolean (optional)_ | Name that will be displayed representing the item |
 
 
-**Resposta:**
+**Response:**
 
-| Tipo  | Descrição |
+| Type  | Description |
 | :---: | ------------|
-| _Object_ | Retorna o item selecionado pelo usuário (pode ser NULL) |
+| _Object_ | Returns the item selected by the user (can be NULL) |
 
 
-**Exemplo:**
+**Example:**
 
 ```javascript
-var r = h.itemChooser("Selecione um item", ["abc", "xyz", "123"]);
-h.log("Item selecionado: " + r);
+var r = h.itemChooser("Select an item", ["abc", "xyz", "123"]);
+h.log("Selected item: " + r);
 
-var r = h.itemChooser("Selecione um número", [1, 2, 3, 4, 5]);
-h.log("Número selecionado: " + r);
+var r = h.itemChooser("Select a number", [1, 2, 3, 4, 5]);
+h.log("Selected number: " + r);
 
 var items = [
     {
@@ -2275,29 +2275,29 @@ var items = [
         label: '123'
     }
 ];
-var r = h.itemChooser("Selecione um item", items, true); //notificação
+var r = h.itemChooser("Select an item", items, true); //notification
 if (r == null) {
-    h.log("Cancelado");
+    h.log("Canceled");
 } else {
-    h.log("Item selecionado");
+    h.log("Selected item");
     h.log("ID: " + r.id);
-    h.log("Tipo: " + r.type);
-    h.log("Nome: " + r.label);
+    h.log("Type: " + r.type);
+    h.log("Name: " + r.label);
 }
 
 var arr1 = ['a', 'b', 'c'];
 var arr2 = ['x', 'y', 'z'];
 var arr3 = [1, 2, 3];
 var items = [
-    {source: arr1, label: 'Lista 1 (a, b, c)'},
-    {source: arr2, label: 'Lista 2 (x, y, z)'},
-    {source: arr3, label: 'Lista 3 (1, 2, 3)'}
+    {source: arr1, label: 'List 1 (a, b, c)'},
+    {source: arr2, label: 'List 2 (x, y, z)'},
+    {source: arr3, label: 'List 3 (1, 2, 3)'}
 ];
-var r = h.itemChooser("Selecione um item", items);
+var r = h.itemChooser("Select an item", items);
 if (r == null) {
-    h.log("Cancelado");
+    h.log("Canceled");
 } else {
-    h.log("Item selecionado: " + r.source);
+    h.log("Selected item: " + r.source);
 }
 ```
 
@@ -2305,100 +2305,100 @@ if (r == null) {
 
 
 # Classes
-Classes complexas utilizadas como retorno em alguns métodos
+Complex classes used as a return in some methods
 ## Lyrics
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | ID da música |
-| `title` | _String_ | Título da música |
-| `artist` | _String_ | Artista da música |
-| `author` | _String_ | Autor da música |
-| `note` | _String_ | Anotação da música |
-| `key` | _String_ | Tom da música |
-| `time_sig` | _String_ | Tempo da música |
-| `groups` | _Array&lt;[Group](#group)&gt;_ | Grupos onde a música está adicionada |
-| `midi` | _[Midi](#midi)_ | Atalho MIDI do item |
-| `archived` | _Boolean_ | Se a música está arquivada |
+| `id` | _String_ | ID of music |
+| `title` | _String_ | Song title |
+| `artist` | _String_ | Music artist |
+| `author` | _String_ | Music author |
+| `note` | _String_ | Music annotation |
+| `key` | _String_ | Tone of music |
+| `time_sig` | _String_ | Music time |
+| `groups` | _Array&lt;[Group](#group)&gt;_ | Groups where music is added |
+| `midi` | _[Midi](#midi)_ | Item MIDI shortcut |
+| `archived` | _Boolean_ | If the song is archived |
 
 ## Background
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | ID do item |
-| `type` | _String_ | Tipo do item. Pode ser: theme, my_video, my_image, video, image |
-| `name` | _String_ | Nome do item |
-| `tags` | _Array&lt;String&gt;_ | Lista de tags do item |
-| `bpm` | _Number_ | Valor BPM do item |
-| `midi` | _[Midi](#midi) (opcional)_ | Atalho MIDI do item |
+| `id` | _String_ | ID if item |
+| `type` | _String_ | Item type. It might be:theme, my_video, my_image, video, image |
+| `name` | _String_ | Item name |
+| `tags` | _Array&lt;String&gt;_ | Item tag list |
+| `bpm` | _Number_ | BPM value of item |
+| `midi` | _[Midi](#midi) (optional)_ | Item MIDI shortcut |
 
 ## Item
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | ID do item |
-| `type` | _String_ | Tipo do item. Pode ser: song, verse, text, audio, video, image, file, custom-text, announcement, countdown, countdown-cp, automatic_presentation, api, script |
-| `name` | _String_ | Nome do item |
+| `id` | _String_ | ID if item |
+| `type` | _String_ | Item type. It might be: song, verse, text, audio, video, image, file, custom-text, announcement, countdown, countdown-cp, automatic_presentation, api, script |
+| `name` | _String_ | Item name |
 
 ## Group
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `name` | _String_ | Nome do item |
+| `name` | _String_ | Item name |
 
-## Midi
-| Nome | Tipo  | Descrição |
+## MIDI
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `code` | _Number_ | Código midi |
-| `velocity` | _Number_ | Velocidade/intensidade midi |
+| `code` | _Number_ | MIDI code |
+| `velocity` | _Number_ | Speed/intensity midi |
 
 ## Favorite Item
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | ID do item |
-| `name` | _String_ | Nome do item |
+| `id` | _String_ | ID if item |
+| `name` | _String_ | Item name |
 
 ## Schedule
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `type` | _String_ | Tipo da lista de reprodução. Pode ser: temporary, service, event |
+| `type` | _String_ | Playlist type. Can be: temporary, service, event |
 | `name` | _String_ |  |
-| `datetime` | _String_ | Data e hora no formato: YYYY-MM-DD HH:MM |
-| `lyrics_playlist` | _Array&lt;[Lyrics](#lyrics)&gt;_ | Lista de letras |
-| `media_playlist` | _Array&lt;[Item](#item)&gt;_ | Lista de mídias |
-| `responsible` | _[Member](#member)_ | Integrante definido como responsável pelo evento |
-| `members` | _Array&lt;Object&gt;_ | Lista dos integrantes escalados |
-| `members.*.id` | _String_ | ID do integrante |
-| `members.*.name` | _String_ | Nome do integrante escalado |
-| `members.*.scheduled` | _Boolean_ | Se o integrande está escalado ou definido para uma função |
-| `roles` | _Array&lt;Object&gt;_ | Lista das funções na escala |
-| `roles.*.id` | _String_ | ID da função |
-| `roles.*.name` | _String_ | Nome da função |
-| `roles.*.member` | _[Member](#member)_ | Integrante escalado para a função |
+| `datetime` | _String_ | Date and time in format: YYYY-MM-DD HH:MM |
+| `lyrics_playlist` | _Array&lt;[Lyrics](#lyrics)&gt;_ | Lyrics list |
+| `media_playlist` | _Array&lt;[Item](#item)&gt;_ | Media list |
+| `responsible` | _[Member](#member)_ | Member defined as responsible for the event |
+| `members` | _Array&lt;Object&gt;_ | List of members |
+| `members.*.id` | _String_ | Member ID |
+| `members.*.name` | _String_ | Name of the member |
+| `members.*.scheduled` | _Boolean_ | Whether the integrand is scaled or defined for a function |
+| `roles` | _Array&lt;Object&gt;_ | List of functions on the scale |
+| `roles.*.id` | _String_ | Function ID |
+| `roles.*.name` | _String_ | Function name |
+| `roles.*.member` | _[Member](#member)_ | Member assigned to the role |
 
 ## Member
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | ID do item |
-| `name` | _String_ | Nome do item |
+| `id` | _String_ | ID if item |
+| `name` | _String_ | Item name |
 
 ## Role
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | ID do item |
-| `name` | _String_ | Nome do item |
+| `id` | _String_ | ID if item |
+| `name` | _String_ | Item name |
 
 ## Automatic Presentation
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `seconds` | _Number_ | Tempo que cada item ficará sendo apresentado |
-| `repeat` | _Boolean_ | **true** para ficar repetindo a apresentação (voltar para o primeiro item após o último) |
+| `seconds` | _Number_ | Time each item will be displayed |
+| `repeat` | _Boolean_ | **true** to keep repeating the presentation (go back to the first item after the last one) |
 
 ## Input Param
-| Nome | Tipo  | Descrição |
+| Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | Chave/ID do item |
-| `type` | _String_ | Tipo de entrada. Pode ser: text, textarea, number, password, title, separator |
-| `label` | _String_ | Nome do item |
-| `default_value` | _Object (opcional)_ | Valor padrão do item |
-| `allowed_values` | _Array&lt;String&gt; (opcional)_ | Disponível se o tipo for **text**. Define uma lista de valores permitidos, para serem selecionados como um combobox |
-| `suggested_values` | _Array&lt;String&gt; (opcional)_ | Disponível se o tipo for **text**. Define uma lista de valores sugeridos, porém o usuário pode inserir qualquer valor no campo de texto |
-| `min` | _Number (opcional)_ | Disponível se o tipo for **number**. Define o valor mínimo permitido _(Padrão=*0*)_ |
-| `max` | _Number (opcional)_ | Disponível se o tipo for **number**. Define o valor máximo permitido _(Padrão=*100*)_ |
-| `show_as_combobox` | _Boolean (opcional)_ | Disponível se o tipo for **number**. Exibe a lista de valores como combobox e não como spinner _(Padrão=*false*)_ |
+| `key` | _String_ | Key of item |
+| `type` | _String_ | Input type. Can be: text, textarea, number, password, title, separator |
+| `label` | _String_ | Item name |
+| `default_value` | _Object (optional)_ | Item default value |
+| `allowed_values` | _Array&lt;String&gt; (optional)_ | Available if type is **text**. Defines a list of allowed values, to be selected as a combobox |
+| `suggested_values` | _Array&lt;String&gt; (optional)_ | Available if type is **text**. Defines a list of suggested values, however the user can enter any value in the text field |
+| `min` | _Number (optional)_ | Available if type is **number**. Sets the minimum allowed value _(Default=*0*)_ |
+| `max` | _Number (optional)_ | Available if type is **number**. Sets the maximum allowed value _(Default=*100*)_ |
+| `show_as_combobox` | _Boolean (optional)_ | Available if type is **number**. Display the list of values as a combobox and not as a spinner _(Default=*false*)_ |

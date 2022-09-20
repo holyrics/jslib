@@ -856,7 +856,7 @@ Histórico de todas as marcações de "Música tocada"
 | ---- | :---: | ------------|
 | `data` | _Array&lt;Object&gt;_ |  |
 | `data.*.music_id` | _String_ | ID da música |
-| `data.*.history` | _Array&lt;String&gt;_ | Data e hora no formato YYYY-MM-DD HH:MM |
+| `data.*.history` | _Array&lt;String&gt;_ | Data e hora no formato: YYYY-MM-DD HH:MM |
 
 
 **Exemplo:**
@@ -886,7 +886,7 @@ Histórico de "Música tocada"
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `data` | _Array&lt;String&gt;_ | Data e hora no formato YYYY-MM-DD HH:MM |
+| `data` | _Array&lt;String&gt;_ | Data e hora no formato: YYYY-MM-DD HH:MM |
 
 
 **Exemplo:**
@@ -1245,7 +1245,7 @@ h.showImage('arquivo.jpg');
 
 
 ### hly('ShowQuickPresentation', input)
-Apresenta rápida de um texto
+Apresentação rápida de um texto
 
 **Parâmetros:**
 
