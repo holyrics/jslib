@@ -304,8 +304,8 @@
     "v": "Item date and time in format: YYYY-MM-DD HH:MM"
   },
   {
-    "k": "Data e hora no formato YYYY-MM-DD HH:MM",
-    "v": "Date and time in format YYYY-MM-DD HH:MM"
+    "k": "Data e hora no formato: YYYY-MM-DD HH:MM",
+    "v": "Date and time in format: YYYY-MM-DD HH:MM"
   },
   {
     "k": "Decodifica uma string em formato base64",
