@@ -784,7 +784,7 @@
     "v": "Methods"
   },
   {
-    "k": "Métodos da classe JSLib disponível para uso nos scripts do programa Holyrics.\n\nÉ possível utilizar a variável ```jslib``` ou a variável ```h``` para acessar os métodos disponíveis.\n\nPor exemplo:\n\n```\njslib.log('exemplo');\nh.log('exemplo');\n```\n",
+    "k": "Métodos da classe JSLib disponível para uso nos scripts do programa Holyrics.\n\nÉ possível utilizar a variável ```jslib``` ou a variável ```h``` para acessar os métodos disponíveis.\n\nPor exemplo:\n\n```\njslib.log('exemplo');\nh.log('exemplo');\n```",
     "v": "JSLib class methods available for use in Holyrics program scripts.\n\nYou can use the ```jslib``` variable or the ```h``` variable to access the available methods.\n\nFor example:\n\n```\njslib.log('example');\nh.log('example');\n```"
   },
   {
