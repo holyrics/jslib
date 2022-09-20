@@ -13,7 +13,7 @@
   },
   {
     "k": "**id**, **ids** ou **references**",
-    "v": "**id**, **ids** ou **references**"
+    "v": "**id**, **ids** or **references**"
   },
   {
     "k": "**true** para ficar repetindo a apresentação (voltar para o primeiro item após o último)",
@@ -117,11 +117,11 @@
   },
   {
     "k": "Alterar a opção *'exibir à frente de tudo'*",
-    "v": "Change the **'display in front of all'** option"
+    "v": "Change the *'display in front of all'* option"
   },
   {
     "k": "Alterar as configurações da funcionalidade *Logo* do programa (menu ferramentas)",
-    "v": "Change the settings for the program's *Logo* functionality (Tools menu)"
+    "v": "Change the settings for the program's *Logo* functionality (tools menu)"
   },
   {
     "k": "Alterar as configurações de alerta do painel de comunicação",
@@ -141,7 +141,7 @@
   },
   {
     "k": "Ano",
-    "v": "Again"
+    "v": "Year"
   },
   {
     "k": "Anotação da música",
@@ -152,7 +152,7 @@
     "v": "Announcement"
   },
   {
-    "k": "Apresenta rápida de um texto",
+    "k": "Apresentação rápida de um texto",
     "v": "Quick display of text"
   },
   {
@@ -365,7 +365,7 @@
   },
   {
     "k": "Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](#input-param)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **text**",
-    "v": "Entries that will be requested in the interface. It can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed it will be the item name and the item type will be text"
+    "v": "Entries that will be requested in the interface. It can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed it will be the item name and the item type will be **text**"
   },
   {
     "k": "Erro ao obter lista de cenas",
@@ -373,7 +373,7 @@
   },
   {
     "k": "Executa a ação de um item **Script** existente no programa",
-    "v": "Executes the action of an existing Script item in the program"
+    "v": "Executes the action of an existing **Script** item in the program"
   },
   {
     "k": "Executa a ação de um item API existente no programa",
@@ -1085,7 +1085,7 @@
   },
   {
     "k": "Recupera quanto tempo foi decorrido em um timer de acordo com o valor **key**. Se o timer não tiver sido iniciado, o método iniciará o timer e retornará 00:00:00",
-    "v": "Retrieves how much time has elapsed on a timer according to the key value. If the timer has not been started, the method will start the timer and return 00:00:00"
+    "v": "Retrieves how much time has elapsed on a timer according to the **key** value. If the timer has not been started, the method will start the timer and return 00:00:00"
   },
   {
     "k": "Recupera um objeto salvo na memória. O método é compartilhado com todos os scripts do programa.",
@@ -1101,7 +1101,7 @@
   },
   {
     "k": "Referências. Exemplo: **João 3:16** ou **Rm 12:2** ou **Gn 1:1-3 Sl 23.1**",
-    "v": "References. Example: **John 3:16** ou **Rm 12:2** ou **Gn 1:1-3 Sl 23.1**"
+    "v": "References. Example: **John 3:16** or **Rm 12:2** or **Gn 1:1-3 Sl 23.1**"
   },
   {
     "k": "Remove a acentuação da string",
@@ -1109,7 +1109,7 @@
   },
   {
     "k": "remover",
-    "v": "remover"
+    "v": "remove"
   },
   {
     "k": "Remover itens da lista de reprodução de mídia",
@@ -1265,7 +1265,7 @@
   },
   {
     "k": "Solicita uma entrada em formato **textarea** possibilitando texto com múltiplas linhas",
-    "v": "Requests input in textarea format allowing multi-line text"
+    "v": "Requests input in **textarea** format allowing multi-line text"
   },
   {
     "k": "somente \"Meus Vídeos\" e com as tags 'água' E 'azul'",
@@ -1325,7 +1325,7 @@
   },
   {
     "k": "Tempo restante no formato HH:MM:SS",
-    "v": "Remaining time in formatHH:MM:SS"
+    "v": "Remaining time in format HH:MM:SS"
   },
   {
     "k": "Tempo total da mídia atual no player",
