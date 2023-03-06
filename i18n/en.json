@@ -152,16 +152,16 @@
     "v": "Announcement"
   },
   {
-    "k": "Apresentação rápida de um texto",
-    "v": "Quick display of text"
-  },
-  {
     "k": "Apresenta um anúncio ou uma lista de anúncios",
     "v": "Displays an announcement or a list of announcements"
   },
   {
     "k": "Apresenta uma imagem ou uma lista de imagens (pasta)",
     "v": "Displays an image or a list of images (folder)"
+  },
+  {
+    "k": "Apresentação rápida de um texto",
+    "v": "Quick display of text"
   },
   {
     "k": "arquivo",
@@ -400,10 +400,6 @@
     "v": "Play a video or a list of videos (folder)"
   },
   {
-    "k": "Executa uma requisição para o receptor associado e retorna a resposta do receptor. Válido somente para receptores URL",
-    "v": "Executes a request to the associated receiver and returns the receiver's response. Valid only for URL receivers"
-  },
-  {
     "k": "Executar a ação **pause** do player",
     "v": "Perform player **pause** action"
   },
@@ -549,7 +545,7 @@
   },
   {
     "k": "ID da letra",
-    "v": "ID of the lyrics"
+    "v": "Lyrics ID"
   },
   {
     "k": "ID da letra da música",
@@ -557,7 +553,7 @@
   },
   {
     "k": "ID da música",
-    "v": "ID of music"
+    "v": "Song ID"
   },
   {
     "k": "ID do anúncio. Pode ser **all** para exibir todos",
@@ -569,11 +565,11 @@
   },
   {
     "k": "ID do item",
-    "v": "ID if item"
+    "v": "Item ID"
   },
   {
     "k": "id do item",
-    "v": "id of item"
+    "v": "item id"
   },
   {
     "k": "ID do plano de fundo atual",
@@ -581,11 +577,11 @@
   },
   {
     "k": "id do receptor",
-    "v": "id of receiver"
+    "v": "receiver id"
   },
   {
     "k": "ID do tema",
-    "v": "ID of theme"
+    "v": "Theme ID"
   },
   {
     "k": "ID do tema ou plano de fundo",
@@ -1530,5 +1526,693 @@
   {
     "k": "Volume. Mínimo=0, Máximo=100",
     "v": "Volume. Minimum=0, Maximum=100"
+  },
+  {
+    "k": "**true** ou **false**",
+    "v": "**true** or **false**"
+  },
+  {
+    "k": "a próxima linha é executada logo em seguida",
+    "v": "the next line is executed right after"
+  },
+  {
+    "k": "a próxima linha é executada somente quando a requisição for concluída",
+    "v": "the next line is executed only when the request is completed"
+  },
+  {
+    "k": "Abre uma janela de confirmação, exibindo os botões **OK** e **Cancelar**",
+    "v": "Opens a confirmation window, displaying **OK** and **Cancel** buttons"
+  },
+  {
+    "k": "Abre uma janela de confirmação, exibindo os botões **Sim** e **Não**",
+    "v": "Opens a confirmation window, displaying **Yes** and **No** buttons"
+  },
+  {
+    "k": "Abre uma janela para selecionar múltiplos itens em uma lista de valores",
+    "v": "Opens a window for selecting multiple items from a list of values"
+  },
+  {
+    "k": "Abre uma janela para selecionar um áudio",
+    "v": "Opens a window to select an audio"
+  },
+  {
+    "k": "Abre uma janela para selecionar um plano de fundo",
+    "v": "Opens a window to select a background"
+  },
+  {
+    "k": "Abre uma janela para selecionar um tema",
+    "v": "Opens a window to select a theme"
+  },
+  {
+    "k": "Abre uma janela para selecionar um vídeo",
+    "v": "Opens a window to select a video"
+  },
+  {
+    "k": "Abre uma janela para selecionar uma imagem",
+    "v": "Opens a window to select an image"
+  },
+  {
+    "k": "Abre uma janela para selecionar uma música",
+    "v": "Opens a window to select a song"
+  },
+  {
+    "k": "aguarda o retorno, pode demorar",
+    "v": "wait for the return, it may take a while"
+  },
+  {
+    "k": "Alerta",
+    "v": "Alert"
+  },
+  {
+    "k": "Alinhamento horizontal da informação no slide. left, center, right",
+    "v": "Horizontal alignment of information on the slide. left, center, right"
+  },
+  {
+    "k": "Alinhamento vertical da informação no slide. top, bottom",
+    "v": "Vertical alignment of information on the slide. top, bottom"
+  },
+  {
+    "k": "Altera o ambiente de execução atual.",
+    "v": "Change the current runtime environment."
+  },
+  {
+    "k": "Altera o estado atual da respectiva opção **F8 (papel de parede), F9 (tela vazia) ou F10 (tela preta)**",
+    "v": "Changes the current state of the respective option **F8 (wallpaper), F9 (empty screen) or F10 (black screen)**"
+  },
+  {
+    "k": "Altera o slide em exibição a partir do índice do slide",
+    "v": "Changes the slide in view from the slide index"
+  },
+  {
+    "k": "Altera o slide em exibição a partir do nome da descrição do slide",
+    "v": "Changes the slide in view from the name of the slide description"
+  },
+  {
+    "k": "Altera o valor matiz atual do programa",
+    "v": "Changes the program's current hue value"
+  },
+  {
+    "k": "Alterar as configurações de exibição de uma tela",
+    "v": "Change a screen's display settings"
+  },
+  {
+    "k": "Alterar as configurações do papel de parede",
+    "v": "Change wallpaper settings"
+  },
+  {
+    "k": "Alterar o texto do painel de comunicação. [Styled Text](#styled-text) a partir da v2.19.0",
+    "v": "Change the text of the communication panel. [Styled Text](#styled-text) from v2.19.0"
+  },
+  {
+    "k": "Altura em porcentagem em relação à altura do slide",
+    "v": "Height in percent of slide height"
+  },
+  {
+    "k": "Caso exista um campo extra chamado **Ano**, pode ser utilizado dessa forma:",
+    "v": "If there is an extra field called **Year**, it can be used like this:"
+  },
+  {
+    "k": "Área da tela com as margens aplicadas (se disponível)",
+    "v": "Screen area with margins applied (if available)"
+  },
+  {
+    "k": "Área total da tela no sistema",
+    "v": "Total screen area on the system"
+  },
+  {
+    "k": "callback da requisição",
+    "v": "request callback"
+  },
+  {
+    "k": "Cancela a execução da função agendada anteriormente.",
+    "v": "Cancels previously scheduled function execution."
+  },
+  {
+    "k": "cancela a execução da tarefa",
+    "v": "cancel task execution"
+  },
+  {
+    "k": "Coloque entre os caracteres **< >** os textos que deseja exibir",
+    "v": "Type between the characters **< >** the texts you want to display"
+  },
+  {
+    "k": "Com urgência",
+    "v": "Urgently"
+  },
+  {
+    "k": "Configurações da visão do palco. (Indisponível para tela público)",
+    "v": "Stage view settings. (Unavailable for public screen)"
+  },
+  {
+    "k": "Configurações do papel de parede",
+    "v": "Wallpaper settings"
+  },
+  {
+    "k": "cor da fonte",
+    "v": "font color"
+  },
+  {
+    "k": "Cor da fonte em hexadecimal. Se for **null**, utiliza a cor da fonte padrão do tema",
+    "v": "Font color in hexadecimal. If it is **null**, use the theme's default font color"
+  },
+  {
+    "k": "Cor em hexadecimal definida na opção **preencher**.",
+    "v": "Color in hexadecimal defined in the **fill** option."
+  },
+  {
+    "k": "Cor em hexadecimal definida na opção **preencher**. **NULL** para desativar",
+    "v": "Color in hexadecimal defined in the **fill** option. **NULL** to disable"
+  },
+  {
+    "k": "Custom Message",
+    "v": "Custom Message"
+  },
+  {
+    "k": "Custom Message Param",
+    "v": "Custom Message Param"
+  },
+  {
+    "k": "Define os tipos de apresentação que serão exibidos (disponível apenas para telas de transmissão - imagem e html)",
+    "v": "Defines the presentation types that will be displayed (only available for stream screens - image and html)"
+  },
+  {
+    "k": "Display Settings",
+    "v": "Display Settings"
+  },
+  {
+    "k": "E coloque dentro de **% %** o nome do campo que deseja utilizar",
+    "v": "And type inside **% %** the name of the field you want to use"
+  },
+  {
+    "k": "Erro da última requisição ou NULL se não houver erro",
+    "v": "Last request error or NULL if no error"
+  },
+  {
+    "k": "Estender papel de parede",
+    "v": "Extend wallpaper"
+  },
+  {
+    "k": "Executa um comando de **avançar** na apresentação atual",
+    "v": "Performs a **next** command on the current presentation"
+  },
+  {
+    "k": "Executa um comando de **voltar** na apresentação atual",
+    "v": "Performs a **back** command on the current presentation"
+  },
+  {
+    "k": "Executa uma função a cada X milissegundos. Utilize **clearInterval** para parar a execução.",
+    "v": "Runs a function every X milliseconds. Use **clearInterval** to stop execution."
+  },
+  {
+    "k": "Executa uma função após alguns milissegundos.",
+    "v": "Runs a function after a few milliseconds."
+  },
+  {
+    "k": "Executa uma requisição para o receptor associado de forma assíncrona. O resultado pode ser acessado criando uma função anônima como callback.",
+    "v": "Executes a request to the associated receiver asynchronously. The result can be accessed by creating an anonymous function as a callback."
+  },
+  {
+    "k": "Executa uma requisição para o receptor associado e retorna a resposta do receptor.",
+    "v": "Executes a request to the associated receiver and returns the receiver's response."
+  },
+  {
+    "k": "Exemplo:",
+    "v": "Example:"
+  },
+  {
+    "k": "Exibe uma notificação no canto da tela",
+    "v": "Displays a notification in the corner of the screen"
+  },
+  {
+    "k": "Exibir comentários",
+    "v": "Show comments"
+  },
+  {
+    "k": "Exibir contador de slides",
+    "v": "Show slide count"
+  },
+  {
+    "k": "Exibir conteúdo do painel de comunicação",
+    "v": "Show communication panel content"
+  },
+  {
+    "k": "Exibir descrição do slide (coro, por exemplo)",
+    "v": "Show slide description (chorus, i.e.)"
+  },
+  {
+    "k": "Exibir edições avançadas",
+    "v": "Show advanced editor"
+  },
+  {
+    "k": "Exibir em maiúsculo",
+    "v": "Show in capital letters"
+  },
+  {
+    "k": "Exibir papel de parede",
+    "v": "Show wallpaper"
+  },
+  {
+    "k": "Exibir relógio",
+    "v": "Show clock"
+  },
+  {
+    "k": "Exibir uma mensagem personalizada. Obs.: Uma mensagem personalizada não é exibida diretamente na tela. é criada uma notificação no canto da tela para o operador aceitar e exibir.",
+    "v": "Display a custom message. Note: A custom message is not displayed directly on the screen. a notification is created in the corner of the screen for the operator to accept and display."
+  },
+  {
+    "k": "função anônima utilizada como callback da requisição. function(response, error){}",
+    "v": "anonymous function used as request callback. function(response, error){}"
+  },
+  {
+    "k": "Função que será executada",
+    "v": "Function that will be executed"
+  },
+  {
+    "k": "funciona como apiRequest, porém de forma assíncrona",
+    "v": "works like apiRequest, but asynchronously"
+  },
+  {
+    "k": "ID do tema personalizado utilizado nas apresentações",
+    "v": "Custom Theme ID used in presentations"
+  },
+  {
+    "k": "ID retornado do método **setInterval**",
+    "v": "ID returned from method **setInterval**"
+  },
+  {
+    "k": "ID retornado do método **setTimeout**",
+    "v": "ID returned from method **setTimeout**"
+  },
+  {
+    "k": "Imagem",
+    "v": "Image"
+  },
+  {
+    "k": "Imagem do papel de parede em base 64",
+    "v": "Wallpaper image in base 64"
+  },
+  {
+    "k": "Índice do slide na apresentação (começa em zero)",
+    "v": "Slide index in presentation (starts at zero)"
+  },
+  {
+    "k": "Informação extra exibida na janela popup para o operador",
+    "v": "Extra information displayed in popup window for operator"
+  },
+  {
+    "k": "Informações adicionais do slide",
+    "v": "Additional slide info"
+  },
+  {
+    "k": "Intervalo em milissegundos entre cada execução",
+    "v": "Interval in milliseconds between each run"
+  },
+  {
+    "k": "itálico",
+    "v": "italic"
+  },
+  {
+    "k": "Itálido. Se for **null**, utiliza a configuração padrão do tema",
+    "v": "Italid. If it is **null**, use the default theme setting"
+  },
+  {
+    "k": "Item sendo apresentado no momento ou **null** se não tiver apresentação sendo exibida",
+    "v": "Item currently being presented or **null** if no presentation is being displayed"
+  },
+  {
+    "k": "Itens salvos na lista",
+    "v": "Items saved in the list"
+  },
+  {
+    "k": "Itens selecionados",
+    "v": "Selected items"
+  },
+  {
+    "k": "Layout da informação da primeira linha [Slide Additional Info Layout](#slide-additional-info-layout)",
+    "v": "First row information layout [Slide Additional Info Layout](#slide-additional-info-layout)"
+  },
+  {
+    "k": "Layout da informação da segunda linha [Slide Additional Info Layout](#slide-additional-info-layout)",
+    "v": "Second line information layout [Slide Additional Info Layout](#slide-additional-info-layout)"
+  },
+  {
+    "k": "Letra de música",
+    "v": "Song lyrics"
+  },
+  {
+    "k": "Lista com valores padrões para o parâmetro",
+    "v": "List with default values for the parameter"
+  },
+  {
+    "k": "Lista das configurações de exibição de cada tela",
+    "v": "List of display settings for each screen"
+  },
+  {
+    "k": "Lista das mensagens personalizadas",
+    "v": "List of custom messages"
+  },
+  {
+    "k": "Local do arquivo na aba **Imagens**",
+    "v": "File location in the **Images** tab"
+  },
+  {
+    "k": "Margens definidas na opção **Editar posição da tela**. margin.top, margin.right, margin.bottom, margin.left",
+    "v": "Margins set in **Edit screen position** option. margin.top, margin.right, margin.bottom, margin.left"
+  },
+  {
+    "k": "Mas se o campo **autor** não estiver disponível, será exibido apenas **Título**, e não **Título ()**",
+    "v": "But if the **author** field is not available, only **Title** will be displayed, not **Title ()**"
+  },
+  {
+    "k": "Mas se o campo **autor** não estiver disponível, será exibido apenas **Título**, e não **Título -**",
+    "v": "But if the **author** field is not available, only **Title** will be displayed, not **Title -**"
+  },
+  {
+    "k": "Mensagem de exemplo com o nome dos parâmetros preenchidos",
+    "v": "Example message with the name of the parameters filled in"
+  },
+  {
+    "k": "Mensagem que será exibida",
+    "v": "Message that will be displayed"
+  },
+  {
+    "k": "Mensagem sem preenchimento",
+    "v": "message without filling"
+  },
+  {
+    "k": "Modo de visualização das letras. Opções disponíveis:<br/>CURRENT_SLIDE<br/>FIRST_LINE_OF_THE_NEXT_SLIDE_WITH_SEPARATOR<br/>FIRST_LINE_OF_THE_NEXT_SLIDE_WITHOUT_SEPARATOR<br/>NEXT_SLIDE<br/>CURRENT_AND_NEXT_SLIDE<br/>ALL_SLIDES",
+    "v": "Lyrics display mode. Available options:<br/>CURRENT_SLIDE<br/>FIRST_LINE_OF_THE_NEXT_SLIDE_WITH_SEPARATOR<br/>FIRST_LINE_OF_THE_NEXT_SLIDE_WITHOUT_SEPARATOR<br/>NEXT_SLIDE<br/>CURRENT_AND_NEXT_SLIDE<br/>ALL_SLIDES"
+  },
+  {
+    "k": "não aguarda o retorno",
+    "v": "do not wait for the return"
+  },
+  {
+    "k": "não há apresentação em exibição no momento",
+    "v": "there is no presentation currently showing"
+  },
+  {
+    "k": "negrito",
+    "v": "bold"
+  },
+  {
+    "k": "Negrito. Se for **null**, utiliza a configuração padrão do tema",
+    "v": "Bold. If it is **null**, use the default theme setting"
+  },
+  {
+    "k": "Nome da descrição do slide",
+    "v": "Slide description name"
+  },
+  {
+    "k": "nome da fonte",
+    "v": "font name"
+  },
+  {
+    "k": "Nome da fonte. Se for **null**, utiliza a fonte padrão do tema.",
+    "v": "Font name. If it is **null**, it uses the theme's default font."
+  },
+  {
+    "k": "Nome da lista de reprodução salva",
+    "v": "Saved playlist name"
+  },
+  {
+    "k": "Nome da mensagem personalizada",
+    "v": "custom message name"
+  },
+  {
+    "k": "Nome da tradução",
+    "v": "translation name"
+  },
+  {
+    "k": "Nome do ambiente de execução",
+    "v": "Runtime environment name"
+  },
+  {
+    "k": "Nome do equipamento",
+    "v": "Device name"
+  },
+  {
+    "k": "Novas configurações. As configurações são individualmente opcionais. Preencha apenas os campos que deseja alterar.",
+    "v": "New settings. Settings are individually optional. Fill in only the fields you want to change."
+  },
+  {
+    "k": "Número da aba (1, 2 ou 3) da tradução da Bíblia exibida na tela, conforme traduções carregadas na janela da Bíblia",
+    "v": "Tab number (1, 2 or 3) of the Bible translation displayed on the screen, as translations are loaded in the Bible window"
+  },
+  {
+    "k": "Números selecionados",
+    "v": "Selected numbers"
+  },
+  {
+    "k": "Ocultar a tela",
+    "v": "Hide screen"
+  },
+  {
+    "k": "Para definir o item selecionado por padrão. v2.19.0+",
+    "v": "To set the item selected by default. v2.19.0+"
+  },
+  {
+    "k": "Para definir se o item será selecionado por padrão.",
+    "v": "To define if the item will be selected by default."
+  },
+  {
+    "k": "Para exibir um texto com formatação avançada, inicie o texto com **&lt;styled&gt;**",
+    "v": "To display richly formatted text, start the text with **&lt;styled&gt;**"
+  },
+  {
+    "k": "Parâmetro aceita somente números",
+    "v": "Parameter accepts only numbers"
+  },
+  {
+    "k": "Parâmetro exibido sempre em maiúsculo",
+    "v": "Parameter always displayed in uppercase"
+  },
+  {
+    "k": "Parâmetros da mensagem",
+    "v": "message parameters"
+  },
+  {
+    "k": "parar a execução",
+    "v": "stop execution"
+  },
+  {
+    "k": "Posição do parâmetro na mensagem (em número de caracteres)",
+    "v": "Parameter position in the message (in number of characters)"
+  },
+  {
+    "k": "Preenche a lista de mídias da lista de reprodução selecionada atualmente no programa com a lista informada",
+    "v": "Populates the media list of the currently selected playlist in the program with the given list"
+  },
+  {
+    "k": "Progresso da sincronização de 0 a 100",
+    "v": "Sync progress from 0 to 100"
+  },
+  {
+    "k": "próxima linha",
+    "v": "next line"
+  },
+  {
+    "k": "Realizar tarefa agora?",
+    "v": "Do task now?"
+  },
+  {
+    "k": "Rectangle",
+    "v": "Rectangle"
+  },
+  {
+    "k": "Remover quebra de linha",
+    "v": "remove line break"
+  },
+  {
+    "k": "Renderizar o texto com os efeitos contorno, brilho e sombra do tema, se disponível",
+    "v": "Render text with theme outline, glow, and shadow effects, if available"
+  },
+  {
+    "k": "Retorna **true** ou **false**",
+    "v": "Return **true** or **false**"
+  },
+  {
+    "k": "Retorna **true** ou **item not found**",
+    "v": "Return **true** or **item not found**"
+  },
+  {
+    "k": "Retorna **true** ou uma lista com os erros ocorridos",
+    "v": "Return **true** or a list of errors that occurred"
+  },
+  {
+    "k": "Retorna **true** se for uma pasta ou **false** se for arquivo.",
+    "v": "Return **true** if it's a folder or **false** if it's a file."
+  },
+  {
+    "k": "Retorna as listas de reprodução salvas",
+    "v": "Returns saved playlists"
+  },
+  {
+    "k": "Retorna o erro da última requisição apiRequest realizada.",
+    "v": "Returns the error of the last apiRequest request performed."
+  },
+  {
+    "k": "Retorna o estado atual da respectiva opção **F8 (papel de parede), F9 (tela vazia) ou F10 (tela preta)**",
+    "v": "Returns the current state of the respective option **F8 (wallpaper), F9 (empty screen) or F10 (black screen)**"
+  },
+  {
+    "k": "Retorna o estado atual da sincronização online via Google Drive™",
+    "v": "Returns the current state of online synchronization via Google Drive™"
+  },
+  {
+    "k": "Retorna o ID da tarefa. Você pode utilizar o ID para cancelar a execução.",
+    "v": "Returns the task ID. You can use the ID to cancel the run."
+  },
+  {
+    "k": "Retorna o ID da tarefa. Você pode utilizar o ID para parar a execução.",
+    "v": "Returns the task ID. You can use the ID to stop the execution."
+  },
+  {
+    "k": "Retorna o nome do ambiente de execução definido atualmente nas configurações do programa.",
+    "v": "Returns the name of the currently defined runtime environment in the program settings."
+  },
+  {
+    "k": "Retorna o nome do equipamento.",
+    "v": "Returns the device name."
+  },
+  {
+    "k": "Retorna o valor matiz atual definido no programa",
+    "v": "Returns the current hue value defined in the program"
+  },
+  {
+    "k": "Retorna os itens selecionados pelo usuário (pode ser NULL)",
+    "v": "Returns items selected by the user (can be NULL)"
+  },
+  {
+    "k": "Se a sincronização está ativada",
+    "v": "If sync is turned on"
+  },
+  {
+    "k": "Se a sincronização foi iniciada (internet disponível, por exemplo)",
+    "v": "Whether synchronization has started (internet available for example)"
+  },
+  {
+    "k": "Se transforma em: **Título (Autor)**",
+    "v": "Turns into: **Title (Author)**"
+  },
+  {
+    "k": "Se transforma em: **Título - Autor**",
+    "v": "Turns into: **Title - Author**"
+  },
+  {
+    "k": "Se transforma em: **Título - Autor, 2023**",
+    "v": "Turns into: **Title - Author, 2023**"
+  },
+  {
+    "k": "selecionado por padrão",
+    "v": "selected by default"
+  },
+  {
+    "k": "Selecione os itens",
+    "v": "select the items"
+  },
+  {
+    "k": "Selecione os números",
+    "v": "select the numbers"
+  },
+  {
+    "k": "Slide Additional Info",
+    "v": "Slide Additional Info"
+  },
+  {
+    "k": "Stage View",
+    "v": "Stage View"
+  },
+  {
+    "k": "sublinhado",
+    "v": "underlined"
+  },
+  {
+    "k": "Tags HTML disponíveis",
+    "v": "HTML tags available"
+  },
+  {
+    "k": "tamanho relativo da fonte",
+    "v": "relative font size"
+  },
+  {
+    "k": "Também é possível utilizar os campos **extras** criados pelo próprio usuário para as músicas, por exemplo:",
+    "v": "It is also possible to use the **extra** fields created by the user for the songs, for example:"
+  },
+  {
+    "k": "tarefa que será executada a cada 15 segundos",
+    "v": "task that will run every 15 seconds"
+  },
+  {
+    "k": "tarefa que será executada em 60 segundos",
+    "v": "task that will run in 60 seconds"
+  },
+  {
+    "k": "Tarefa realizada",
+    "v": "Task accomplished"
+  },
+  {
+    "k": "Tempo em milissegundos para aguardar até a execução",
+    "v": "Time in milliseconds to wait until execution"
+  },
+  {
+    "k": "Tempo para a notificação ser ocultada automaticamente. Se o valor for menor ou igual a zero a notificação não será ocultada automaticamente.",
+    "v": "Time for the notification to be automatically hidden. If the value is less than or equal to zero, the notification will not be automatically hidden."
+  },
+  {
+    "k": "Texto",
+    "v": "Text"
+  },
+  {
+    "k": "Texto que será exibido. [Styled Text](#styled-text) a partir da v2.19.0",
+    "v": "Text to be displayed. [Styled Text](#styled-text) from v2.19.0"
+  },
+  {
+    "k": "Título da janela",
+    "v": "Window title"
+  },
+  {
+    "k": "Troca o estado atual da respectiva opção **F8 (papel de parede), F9 (tela vazia) ou F10 (tela preta)**",
+    "v": "Changes the current state of the respective option **F8 (wallpaper), F9 (empty screen) or F10 (black screen)**"
+  },
+  {
+    "k": "um versículo sendo apresentado",
+    "v": "a verse being presented"
+  },
+  {
+    "k": "uma música sendo apresentada",
+    "v": "a song being performed"
+  },
+  {
+    "k": "Utilizar o tema personalizado nos textos",
+    "v": "Use custom theme in texts"
+  },
+  {
+    "k": "Utilizar o tema personalizado nos versículos",
+    "v": "Use custom theme in verses"
+  },
+  {
+    "k": "Valor matiz atual. Mínimo=0, Máximo=360. Retorna **null** se desativado.",
+    "v": "Current hue value. Minimum=0, Maximum=360. Returns **null** if disabled."
+  },
+  {
+    "k": "Valor matiz. Mínimo=0, Máximo=360 ou **null** para desativar.",
+    "v": "Hue value. Minimum=0, Maximum=360 or **null** to disable."
+  },
+  {
+    "k": "Variável adicionada na posição especificada conforme valor retornado em **variables.*.position** da classe CustomMessage.",
+    "v": "Variable added at the specified position according to the value returned in **variables.*.position** of the CustomMessage class."
+  },
+  {
+    "k": "Verifica se o ambiente de execução atual é igual ao passado por parâmetro.",
+    "v": "Checks whether the current execution environment is the same as the one passed by parameter."
+  },
+  {
+    "k": "Versículo",
+    "v": "Verse"
+  },
+  {
+    "k": "Visão do palco ativada",
+    "v": "Stage view enabled"
   }
 ]
