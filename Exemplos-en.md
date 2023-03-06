@@ -168,7 +168,7 @@ function foo() {
     //displays a window for selecting a scene, displaying the list of all scenes
     var selectedScene = h.itemChooser('Select a scene', scenes);
     if (selectedScene == null) {
-        //cancelado pelo usuário
+        //canceled by user
         return;
     }
 

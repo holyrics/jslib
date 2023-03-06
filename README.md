@@ -613,7 +613,7 @@ if (r) {
 
 
 ### apiRequest(id, raw)
-Executa uma requisição para o receptor associado e retorna a resposta do receptor. Válido somente para receptores URL
+Executa uma requisição para o receptor associado e retorna a resposta do receptor.
 
 **Parâmetros:**
 
@@ -649,6 +649,263 @@ if (obj.sourceActive) {
     h.log('A fonte exemplo não está ativa');
 }
 ```
+
+---
+
+
+### getApiRequestLastError()
+- v2.19.0
+
+Retorna o erro da última requisição apiRequest realizada.
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Erro da última requisição ou NULL se não houver erro |
+
+
+---
+
+
+### apiRequestAsync(id, raw, callback = null)
+- v2.19.0
+
+Executa uma requisição para o receptor associado de forma assíncrona. O resultado pode ser acessado criando uma função anônima como callback.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | id do receptor |
+| `raw` | _Object_ | dados da requisição |
+| `callback` | _Function (opcional)_ | função anônima utilizada como callback da requisição. function(response, error){} |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+//funciona como apiRequest, porém de forma assíncrona
+//
+//aguarda o retorno, pode demorar
+//a próxima linha é executada somente quando a requisição for concluída
+var r = h.apiRequest('abcxyz', {
+  'request-type': 'GetSceneList'
+});
+//próxima linha
+
+//não aguarda o retorno
+//a próxima linha é executada logo em seguida
+h.apiRequestAsync('abcxyz', {
+  'request-type': 'GetSceneList'
+}, function(response, error) {
+  //callback da requisição
+});
+//próxima linha
+```
+
+---
+
+
+### setTimeout(function, timeout)
+- v2.19.0
+
+Executa uma função após alguns milissegundos.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `function` | _Function_ | Função que será executada |
+| `timeout` | _Number_ | Tempo em milissegundos para aguardar até a execução |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Number_ | Retorna o ID da tarefa. Você pode utilizar o ID para cancelar a execução. |
+
+
+**Exemplo:**
+
+```javascript
+var id = h.setTimeout(function(){
+  //tarefa que será executada em 60 segundos
+}, 60000);
+```
+
+---
+
+
+### clearTimeout(id)
+- v2.19.0
+
+Cancela a execução da função agendada anteriormente.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _Function_ | ID retornado do método **setTimeout** |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var id = h.setTimeout(function(){
+  //tarefa que será executada em 60 segundos
+}, 60000);
+
+//cancela a execução da tarefa
+h.clearTimeout(id);
+```
+
+---
+
+
+### setInterval(function, timeout)
+- v2.19.0
+
+Executa uma função a cada X milissegundos. Utilize **clearInterval** para parar a execução.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `function` | _Function_ | Função que será executada |
+| `timeout` | _Number_ | Intervalo em milissegundos entre cada execução |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Number_ | Retorna o ID da tarefa. Você pode utilizar o ID para parar a execução. |
+
+
+**Exemplo:**
+
+```javascript
+var id = h.setInterval(function(){
+    //tarefa que será executada a cada 15 segundos
+}, 15000);
+```
+
+---
+
+
+### clearInterval(id)
+- v2.19.0
+
+Cancela a execução da função agendada anteriormente.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _Function_ | ID retornado do método **setInterval** |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var id = h.setInterval(function(){
+    //tarefa que será executada a cada 15 segundos
+}, 15000);
+
+//parar a execução
+h.clearInterval(id);
+```
+
+---
+
+
+### getHostname()
+- v2.19.0
+
+Retorna o nome do equipamento.
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Nome do equipamento |
+
+
+---
+
+
+### getRuntimeEnvironment()
+### getRE()
+- v2.19.0
+
+Retorna o nome do ambiente de execução definido atualmente nas configurações do programa.
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Nome do ambiente de execução |
+
+
+---
+
+
+### setRuntimeEnvironment(name)
+### setRE(name)
+- v2.19.0
+
+Altera o ambiente de execução atual.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ | Nome do ambiente de execução |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Retorna **true** ou **item not found** |
+
+
+---
+
+
+### isRuntimeEnvironment(name)
+### isRE(name)
+- v2.19.0
+
+Verifica se o ambiente de execução atual é igual ao passado por parâmetro.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ | Nome do ambiente de execução |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Retorna **true** ou **false** |
+
 
 ---
 
@@ -735,7 +992,7 @@ Lista de reprodução de letras
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `data` | _Array&lt;[Lyrics](lyrics)&gt;_ |  |
+| `data` | _Array&lt;[Lyrics](#lyrics)&gt;_ |  |
 
 
 **Exemplo:**
@@ -830,7 +1087,7 @@ Itens da barra de favoritos
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `data` | _Array&lt;[Favorite Item](#favorite_item)&gt;_ |  |
+| `data` | _Array&lt;[Favorite Item](#favorite-item)&gt;_ |  |
 
 
 **Exemplo:**
@@ -1251,7 +1508,7 @@ Apresentação rápida de um texto
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.text` | _String_ | Texto que será exibido |
+| `input.text` | _String_ | Texto que será exibido. [Styled Text](#styled-text) a partir da v2.19.0 |
 | `input.theme` | _Object (opcional)_ | Filtrar tema selecionado para exibição |
 | `input.theme.id` | _String (opcional)_ | ID do tema |
 | `input.theme.name` | _String (opcional)_ | Nome do tema |
@@ -1401,14 +1658,14 @@ h.log('BPM: ' + r.data);
 ---
 
 
-### hly('SetBpm')
+### hly('SetBpm', input)
 Altera o valor BPM atual do programa
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `bpm` | _Number_ | Valor BPM |
+| `input.bpm` | _Number_ | Valor BPM |
 
 
 _Método sem retorno_
@@ -1684,7 +1941,7 @@ Alterar o texto do painel de comunicação
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.text` | _Number (opcional)_ | Alterar o texto do painel de comunicação |
+| `input.text` | _Number (opcional)_ | Alterar o texto do painel de comunicação. [Styled Text](#styled-text) a partir da v2.19.0 |
 | `input.show` | _Boolean (opcional)_ | Exibir/ocultar o texto |
 | `input.display_ahead` | _Boolean (opcional)_ | Alterar a opção *'exibir à frente de tudo'* |
 
@@ -1755,6 +2012,497 @@ _Método sem retorno_
 h.hly('SetLogo', {enable: true});
 
 h.hly('SetLogo', {hide: true});
+```
+
+---
+
+
+### hly('GetCurrentPresentation')
+- v2.19.0
+
+Item sendo apresentado no momento ou **null** se não tiver apresentação sendo exibida
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _[Item](#item)_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetCurrentPresentation');
+if (r.data == null) {
+    //não há apresentação em exibição no momento
+}
+
+switch (r.data.type) {
+    case 'song':
+        //uma música sendo apresentada
+        break;
+    case 'verse':
+        //um versículo sendo apresentado
+        break;
+}
+```
+
+---
+
+
+### hly('GetCustomMessages')
+- v2.19.0
+
+Lista das mensagens personalizadas
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[CustomMessage](#custom-message)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetCustomMessages');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+```
+
+---
+
+
+### hly('ShowCustomMessage', input)
+- v2.19.0
+
+Exibir uma mensagem personalizada. Obs.: Uma mensagem personalizada não é exibida diretamente na tela. é criada uma notificação no canto da tela para o operador aceitar e exibir.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.name` | _String_ | Nome da mensagem personalizada |
+| `input.position_?` | _Object_ | Variável adicionada na posição especificada conforme valor retornado em **variables.*.position** da classe CustomMessage. |
+| `input.note` | _String_ | Informação extra exibida na janela popup para o operador |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('ShowCustomMessage', {
+    name: 'name',
+    position_15: 'Value 1',
+    position_28: 'Value 2',
+    note: 'Com urgência'
+});
+```
+
+---
+
+
+### hly('GetHue')
+- v2.19.0
+
+Retorna o valor matiz atual definido no programa
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Number_ | Valor matiz atual. Mínimo=0, Máximo=360. Retorna **null** se desativado. |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetHue');
+h.log('HUE: ' + r.data);
+```
+
+---
+
+
+### hly('SetHue', input)
+- v2.19.0
+
+Altera o valor matiz atual do programa
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.hue` | _Number_ | Valor matiz. Mínimo=0, Máximo=360 ou **null** para desativar. |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('SetHue', {hue: 250});
+
+h.hly('SetHue', {hue: null});
+```
+
+---
+
+
+### hly('GetF8')
+### hly('GetF9')
+### hly('GetF10')
+- v2.19.0
+
+Retorna o estado atual da respectiva opção **F8 (papel de parede), F9 (tela vazia) ou F10 (tela preta)**
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Boolean_ | **true** ou **false** |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetF8');
+h.log('F8: ' + r.data);
+
+var r = h.hly('GetF9');
+h.log('F9: ' + r.data);
+
+var r = h.hly('GetF10');
+h.log('F10: ' + r.data);
+```
+
+---
+
+
+### hly('SetF8', input)
+### hly('SetF9', input)
+### hly('SetF10', input)
+- v2.19.0
+
+Altera o estado atual da respectiva opção **F8 (papel de parede), F9 (tela vazia) ou F10 (tela preta)**
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.enable` | _Boolean_ | **true** ou **false** |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('SetF8', {enable: true});
+
+h.hly('SetF9', {enable: false});
+
+h.hly('SetF10', {enable: true});
+```
+
+---
+
+
+### hly('ToggleF8')
+### hly('ToggleF9')
+### hly('ToggleF10')
+- v2.19.0
+
+Troca o estado atual da respectiva opção **F8 (papel de parede), F9 (tela vazia) ou F10 (tela preta)**
+
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('ToggleF8');
+
+h.hly('ToggleF9');
+
+h.hly('ToggleF10');
+```
+
+---
+
+
+### hly('ActionNext')
+- v2.19.0
+
+Executa um comando de **avançar** na apresentação atual
+
+
+
+_Método sem retorno_
+
+---
+
+
+### hly('ActionPrevious')
+- v2.19.0
+
+Executa um comando de **voltar** na apresentação atual
+
+
+
+_Método sem retorno_
+
+---
+
+
+### hly('ActionGoToIndex', input)
+- v2.19.0
+
+Altera o slide em exibição a partir do índice do slide
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.index` | _Number_ | Índice do slide na apresentação (começa em zero) |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('ActionGoToIndex', {index: 3});
+```
+
+---
+
+
+### hly('ActionGoToSlideDescription', input)
+- v2.19.0
+
+Altera o slide em exibição a partir do nome da descrição do slide
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.name` | _String_ | Nome da descrição do slide |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('ActionGoToSlideDescription', {name: 'Verse 1'});
+```
+
+---
+
+
+### hly('GetWallpaperSettings')
+- v2.19.0
+
+Configurações do papel de parede
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data.image_base64` | _String_ | Imagem do papel de parede em base 64 |
+| `data.enabled` | _Boolean_ | Exibir papel de parede |
+| `data.fill_color` | _String_ | Cor em hexadecimal definida na opção **preencher**. |
+| `data.extend` | _Boolean_ | Estender papel de parede |
+| `data.show_clock` | _Boolean_ | Exibir relógio |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetWallpaperSettings');
+h.log('Wallpaper enabled: ' + r.data.enabled);
+```
+
+---
+
+
+### hly('SetWallpaperSettings', input)
+- v2.19.0
+
+Alterar as configurações do papel de parede
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.file` | _String (opcional)_ | Local do arquivo na aba **Imagens** |
+| `input.enabled` | _Boolean (opcional)_ | Exibir papel de parede |
+| `input.fill_color` | _String (opcional)_ | Cor em hexadecimal definida na opção **preencher**. **NULL** para desativar |
+| `input.extend` | _Boolean (opcional)_ | Estender papel de parede |
+| `input.show_clock` | _Boolean (opcional)_ | Exibir relógio |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | Retorna **true** ou uma lista com os erros ocorridos |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('SetWallpaperSettings', {
+    file: 'image.jpg',
+    enabled: true,
+    fill_color: '000000'
+});
+```
+
+---
+
+
+### hly('GetDisplaySettings')
+- v2.19.0
+
+Lista das configurações de exibição de cada tela
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[DisplaySettings](#display-settings)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetDisplaySettings');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].id);
+    h.log(r.data[i].name);
+    h.log('');
+}
+```
+
+---
+
+
+### hly('SetDisplaySettings', input)
+- v2.19.0
+
+Alterar as configurações de exibição de uma tela
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input` | _[DisplaySettings](#display-settings)_ | Novas configurações. As configurações são individualmente opcionais. Preencha apenas os campos que deseja alterar. |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | Retorna **true** ou uma lista com os erros ocorridos |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('SetDisplaySettings', {
+    id: 'public',
+    margin: {
+        top: 10, right: 5, bottom: 10, left: 5
+    }
+});
+```
+
+---
+
+
+### hly('GetSyncStatus')
+- v2.19.0
+
+Retorna o estado atual da sincronização online via Google Drive™
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data.enabled` | _Boolean_ | Se a sincronização está ativada |
+| `data.started` | _Boolean_ | Se a sincronização foi iniciada (internet disponível, por exemplo) |
+| `data.progress` | _Number_ | Progresso da sincronização de 0 a 100 |
+
+
+---
+
+
+### hly('GetSavedPlaylists')
+- v2.19.0
+
+Retorna as listas de reprodução salvas
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;Object&gt;_ |  |
+| `data.*.id` | _String_ | ID do item |
+| `data.*.name` | _String_ | Nome do item |
+| `data.*.items` | _Array&lt;[Item](#item)&gt;_ | Itens salvos na lista |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetSavedPlaylists');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+```
+
+---
+
+
+### hly('LoadSavedPlaylist', input)
+- v2.19.0
+
+Preenche a lista de mídias da lista de reprodução selecionada atualmente no programa com a lista informada
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.name` | _String_ | Nome da lista de reprodução salva |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('LoadSavedPlaylist', {name: 'name'});
 ```
 
 ---
@@ -2241,7 +2989,9 @@ Abre uma janela para selecionar um item em uma lista de valores
 | ---- | :---: | ------------|
 | `title` | _String_ | Título na janela |
 | `items` | _Object_ | Lista de itens que serão exibidos na lista |
-| `items.*.label` | _Boolean (opcional)_ | Nome que será exibido representando o item |
+| `items.*.label` | _String (opcional)_ | Nome que será exibido representando o item |
+| `items.*.selected` | _Boolean (opcional)_ | Para definir o item selecionado por padrão. v2.19.0+ |
+| `notification` | _Boolean (opcional)_ | Exibe uma notificação em vez de abrir a janela diretamente |
 
 
 **Resposta:**
@@ -2268,7 +3018,8 @@ var items = [
     },{
         id: 2,
         type: 'test2',
-        label: 'XYZ'
+        label: 'XYZ',
+        selected: true //selecionado por padrão
     },{
         id: 3,
         type: 'test3',
@@ -2298,6 +3049,343 @@ if (r == null) {
     h.log("Cancelado");
 } else {
     h.log("Item selecionado: " + r.source);
+}
+```
+
+---
+
+
+### multipleItemChooser(title, items, notification = false)
+- v2.19.0
+
+Abre uma janela para selecionar múltiplos itens em uma lista de valores
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `title` | _String_ | Título na janela |
+| `items` | _Object_ | Lista de itens que serão exibidos na lista |
+| `items.*.label` | _String (opcional)_ | Nome que será exibido representando o item |
+| `items.*.selected` | _Boolean (opcional)_ | Para definir se o item será selecionado por padrão. |
+| `notification` | _Boolean (opcional)_ | Exibe uma notificação em vez de abrir a janela diretamente |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | Retorna os itens selecionados pelo usuário (pode ser NULL) |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.multipleItemChooser("Selecione os itens", ["abc", "xyz", "123"]);
+h.log("Itens selecionados: " + r);
+
+var r = h.multipleItemChooser("Selecione os números", [1, 2, 3, 4, 5]);
+h.log("Números selecionados: " + r);
+
+var items = [
+    {
+        id: 1,
+        type: 'test1',
+        label: 'ABC',
+        selected: true //selecionado por padrão
+    },{
+        id: 2,
+        type: 'test2',
+        label: 'XYZ'
+    },{
+        id: 3,
+        type: 'test3',
+        label: '123',
+        selected: true //selecionado por padrão
+    }
+];
+var r = h.multipleItemChooser("Selecione os itens", items, true); //notificação
+if (r == null) {
+    h.log("Cancelado");
+} else {
+    h.log("Itens selecionados");
+    for (var i = 0; i < r.length; i++) {
+        h.log("ID: " + r[i].id);
+        h.log("Tipo: " + r[i].type);
+        h.log("Nome: " + r[i].label);
+    }
+}
+```
+
+---
+
+
+### confirm(msg, title = 'Confirm', notification = false)
+- v2.19.0
+
+Abre uma janela de confirmação, exibindo os botões **OK** e **Cancelar**
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `msg` | _String_ | Mensagem que será exibida |
+| `title` | _String_ | Título da janela |
+| `notification` | _Boolean (opcional)_ | Exibe uma notificação em vez de abrir a janela diretamente |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Boolean_ | Retorna **true** ou **false** |
+
+
+**Exemplo:**
+
+```javascript
+if (h.confirm("Realizar tarefa agora?", "title")) {
+    //ok
+} else {
+    //cancel
+}
+```
+
+---
+
+
+### yesNo(msg, title = 'Confirm', notification = false)
+- v2.19.0
+
+Abre uma janela de confirmação, exibindo os botões **Sim** e **Não**
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `msg` | _String_ | Mensagem que será exibida |
+| `title` | _String_ | Título da janela |
+| `notification` | _Boolean (opcional)_ | Exibe uma notificação em vez de abrir a janela diretamente |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Boolean_ | Retorna **true** ou **false** |
+
+
+**Exemplo:**
+
+```javascript
+if (h.yesNo("Realizar tarefa agora?", "title")) {
+    //yes
+} else {
+    //no
+}
+```
+
+---
+
+
+### notification(msg, duration = 0)
+### notificationError(msg, duration = 0)
+### notificationWarning(msg, duration = 0)
+- v2.19.0
+
+Exibe uma notificação no canto da tela
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `msg` | _String_ | Mensagem que será exibida |
+| `duration` | _Number (opcional)_ | Tempo para a notificação ser ocultada automaticamente. Se o valor for menor ou igual a zero a notificação não será ocultada automaticamente. |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.notification("Tarefa realizada");
+```
+
+---
+
+
+### lyricsChooser()
+### songChooser()
+- v2.19.0
+
+Abre uma janela para selecionar uma música
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _[Lyrics](#lyrics)_ | Retorna o item selecionado pelo usuário (pode ser NULL) |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.lyricsChooser();
+if (r == null) {
+    h.log("Cancelado");
+} else {
+    h.log("Item selecionado: " + r.title);
+}
+```
+
+---
+
+
+### themeChooser()
+- v2.19.0
+
+Abre uma janela para selecionar um tema
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _[Background](#background)_ | Retorna o item selecionado pelo usuário (pode ser NULL) |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.themeChooser();
+if (r == null) {
+    h.log("Cancelado");
+} else {
+    h.log("Item selecionado: " + r.name);
+}
+```
+
+---
+
+
+### imageChooser()
+- v2.19.0
+
+Abre uma janela para selecionar uma imagem
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+|  | _Object_ | Retorna o item selecionado pelo usuário (pode ser NULL) |
+| `*.id` | _String_ | ID do item |
+| `*.name` | _String_ | Nome do item |
+| `*.isDir` | _Boolean_ | Retorna **true** se for uma pasta ou **false** se for arquivo. |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.imageChooser();
+if (r == null) {
+    h.log("Cancelado");
+} else {
+    h.log("Item selecionado: " + r.name);
+}
+```
+
+---
+
+
+### audioChooser()
+- v2.19.0
+
+Abre uma janela para selecionar um áudio
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+|  | _Object_ | Retorna o item selecionado pelo usuário (pode ser NULL) |
+| `*.id` | _String_ | ID do item |
+| `*.name` | _String_ | Nome do item |
+| `*.isDir` | _Boolean_ | Retorna **true** se for uma pasta ou **false** se for arquivo. |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.audioChooser();
+if (r == null) {
+    h.log("Cancelado");
+} else {
+    h.log("Item selecionado: " + r.name);
+}
+```
+
+---
+
+
+### videoChooser()
+- v2.19.0
+
+Abre uma janela para selecionar um vídeo
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+|  | _Object_ | Retorna o item selecionado pelo usuário (pode ser NULL) |
+| `*.id` | _String_ | ID do item |
+| `*.name` | _String_ | Nome do item |
+| `*.isDir` | _Boolean_ | Retorna **true** se for uma pasta ou **false** se for arquivo. |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.videoChooser();
+if (r == null) {
+    h.log("Cancelado");
+} else {
+    h.log("Item selecionado: " + r.name);
+}
+```
+
+---
+
+
+### backgroundChooser()
+- v2.19.0
+
+Abre uma janela para selecionar um plano de fundo
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _[Background](#background)_ | Retorna o item selecionado pelo usuário (pode ser NULL) |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.backgroundChooser();
+if (r == null) {
+    h.log("Cancelado");
+} else {
+    h.log("Item selecionado: " + r.name);
 }
 ```
 
@@ -2402,3 +3490,130 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `min` | _Number (opcional)_ | Disponível se o tipo for **number**. Define o valor mínimo permitido _(Padrão=*0*)_ |
 | `max` | _Number (opcional)_ | Disponível se o tipo for **number**. Define o valor máximo permitido _(Padrão=*100*)_ |
 | `show_as_combobox` | _Boolean (opcional)_ | Disponível se o tipo for **number**. Exibe a lista de valores como combobox e não como spinner _(Padrão=*false*)_ |
+
+## Display Settings
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID do item |
+| `name` | _String_ | Nome do item |
+| `stage_view` | _[StageView](#stage-view)_ | Configurações da visão do palco. (Indisponível para tela público) |
+| `slide_info` | _[SlideAdditionalInfo](#slide-additional-info)_ | Informações adicionais do slide |
+| `slide_translation` | _String_ | Nome da tradução |
+| `bible_version_tab` | _Number_ | Número da aba (1, 2 ou 3) da tradução da Bíblia exibida na tela, conforme traduções carregadas na janela da Bíblia |
+| `margin` | _Object_ | Margens definidas na opção **Editar posição da tela**. margin.top, margin.right, margin.bottom, margin.left |
+| `area` | _[Rectangle](#rectangle)_ | Área da tela com as margens aplicadas (se disponível) |
+| `total_area` | _[Rectangle](#rectangle)_ | Área total da tela no sistema |
+| `hide` | _Boolean_ | Ocultar a tela |
+| `show_items` | _Object_ | Define os tipos de apresentação que serão exibidos (disponível apenas para telas de transmissão - imagem e html) |
+| `show_items.lyrics` | _Boolean_ | Letra de música |
+| `show_items.text` | _Boolean_ | Texto |
+| `show_items.verse` | _Boolean_ | Versículo |
+| `show_items.image` | _Boolean_ | Imagem |
+| `show_items.alert` | _Boolean_ | Alerta |
+| `show_items.announcement` | _Boolean_ | Anúncio |
+
+## Stage View
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `enabled` | _Boolean_ | Visão do palco ativada |
+| `preview_mode` | _String_ | Modo de visualização das letras. Opções disponíveis:<br/>CURRENT_SLIDE<br/>FIRST_LINE_OF_THE_NEXT_SLIDE_WITH_SEPARATOR<br/>FIRST_LINE_OF_THE_NEXT_SLIDE_WITHOUT_SEPARATOR<br/>NEXT_SLIDE<br/>CURRENT_AND_NEXT_SLIDE<br/>ALL_SLIDES |
+| `uppercase` | _Boolean_ | Exibir em maiúsculo |
+| `remove_line_break` | _Boolean_ | Remover quebra de linha |
+| `show_comment` | _Boolean_ | Exibir comentários |
+| `show_advanced_editor` | _Boolean_ | Exibir edições avançadas |
+| `show_communication_panel` | _Boolean_ | Exibir conteúdo do painel de comunicação |
+| `custom_theme` | _Number_ | ID do tema personalizado utilizado nas apresentações |
+| `apply_custom_theme_to_bible` | _Boolean_ | Utilizar o tema personalizado nos versículos |
+| `apply_custom_theme_to_text` | _Boolean_ | Utilizar o tema personalizado nos textos |
+
+## Slide Additional Info
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `info_1` | _Object_ |  |
+| `info_1.show_page_count` | _Boolean_ | Exibir contador de slides |
+| `info_1.show_slide_description` | _Boolean_ | Exibir descrição do slide (coro, por exemplo) |
+| `info_1.horizontal_align` | _String_ | Alinhamento horizontal da informação no slide. left, center, right |
+| `info_1.vertical_align` | _String_ | Alinhamento vertical da informação no slide. top, bottom |
+| `info_2` | _Object_ |  |
+| `info_2.show` | _Boolean_ |  |
+| `info_2.layout_row_1` | _String_ | Layout da informação da primeira linha [Slide Additional Info Layout](#slide-additional-info-layout) |
+| `info_2.layout_row_2` | _String (opcional)_ | Layout da informação da segunda linha [Slide Additional Info Layout](#slide-additional-info-layout) |
+| `info_2.horizontal_align` | _String_ | Alinhamento horizontal da informação no slide. left, center, right |
+| `info_2.vertical_align` | _String_ | Alinhamento vertical da informação no slide. top, bottom |
+| `font` | _Object_ |  |
+| `font.name` | _String_ | Nome da fonte. Se for **null**, utiliza a fonte padrão do tema. |
+| `font.bold` | _Boolean_ | Negrito. Se for **null**, utiliza a configuração padrão do tema |
+| `font.italic` | _Boolean_ | Itálido. Se for **null**, utiliza a configuração padrão do tema |
+| `font.color` | _String_ | Cor da fonte em hexadecimal. Se for **null**, utiliza a cor da fonte padrão do tema |
+| `height` | _Number_ | Altura em porcentagem em relação à altura do slide |
+| `paint_theme_effect` | _String_ | Renderizar o texto com os efeitos contorno, brilho e sombra do tema, se disponível |
+
+## Rectangle
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `x` | _Number_ |  |
+| `y` | _Number_ |  |
+| `width` | _Number_ |  |
+| `height` | _Number_ |  |
+
+## Custom Message
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID do item |
+| `name` | _String_ | Nome do item |
+| `message_model` | _String_ | Mensagem sem preenchimento |
+| `message_example` | _String_ | Mensagem de exemplo com o nome dos parâmetros preenchidos |
+| `variables` | _Array&lt;[CustomMessageParam](#custom-message-param)&gt;_ | Parâmetros da mensagem |
+
+## Custom Message Param
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `position` | _Number_ | Posição do parâmetro na mensagem (em número de caracteres) |
+| `name` | _String_ | Nome do item |
+| `only_number` | _Boolean_ | Parâmetro aceita somente números |
+| `uppercase` | _Boolean_ | Parâmetro exibido sempre em maiúsculo |
+| `suggestions` | _Array&lt;String&gt; (opcional)_ | Lista com valores padrões para o parâmetro |
+
+# Slide Additional Info Layout
+Coloque entre os caracteres **< >** os textos que deseja exibir
+<br/>
+E coloque dentro de **% %** o nome do campo que deseja utilizar
+<br/>
+Exemplo:
+
+`<%title%>< (%author%)>`
+<br/>
+Se transforma em: **Título (Autor)**
+<br/>
+Mas se o campo **autor** não estiver disponível, será exibido apenas **Título**, e não **Título ()**
+<br/>
+
+`<%title%>< - %author%>`
+<br/>
+Se transforma em: **Título - Autor**
+<br/>
+Mas se o campo **autor** não estiver disponível, será exibido apenas **Título**, e não **Título -**
+<br/>
+
+Também é possível utilizar os campos **extras** criados pelo próprio usuário para as músicas, por exemplo:
+<br/>
+Caso exista um campo extra chamado **Ano**, pode ser utilizado dessa forma:
+<br/>
+`<title>< - %author%><, %Ano%>`
+<br/>
+Se transforma em: **Título - Autor, 2023**
+
+# Styled Text
+Para exibir um texto com formatação avançada, inicie o texto com **&lt;styled&gt;**
+
+Tags HTML disponíveis
+
+```
+<styled>
+<b>negrito</b>
+<i>itálico</i>
+<u>sublinhado</u>
+<color:0000FF>cor da fonte</color>
+<font:Times New Roman>nome da fonte</font>
+<size:70>tamanho relativo da fonte 70%</size>
+```

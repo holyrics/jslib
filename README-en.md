@@ -557,7 +557,7 @@ Executes the action of an existing **Script** item in the program
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | id of item |
+| `id` | _String_ | item id |
 
 
 **Response:**
@@ -588,7 +588,7 @@ Executes the action of an existing API item in the program
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | id of item |
+| `id` | _String_ | item id |
 
 
 **Response:**
@@ -613,13 +613,13 @@ if (r) {
 
 
 ### apiRequest(id, raw)
-Executes a request to the associated receiver and returns the receiver's response. Valid only for URL receivers
+Executes a request to the associated receiver and returns the receiver's response.
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | id of receiver |
+| `id` | _String_ | receiver id |
 | `raw` | _Object_ | requisition data |
 
 
@@ -649,6 +649,263 @@ if (obj.sourceActive) {
     h.log('The example source is not active');
 }
 ```
+
+---
+
+
+### getApiRequestLastError()
+- v2.19.0
+
+Returns the error of the last apiRequest request performed.
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Last request error or NULL if no error |
+
+
+---
+
+
+### apiRequestAsync(id, raw, callback = null)
+- v2.19.0
+
+Executes a request to the associated receiver asynchronously. The result can be accessed by creating an anonymous function as a callback.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | receiver id |
+| `raw` | _Object_ | requisition data |
+| `callback` | _Function (optional)_ | anonymous function used as request callback. function(response, error){} |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+//works like apiRequest, but asynchronously
+//
+//wait for the return, it may take a while
+//the next line is executed only when the request is completed
+var r = h.apiRequest('abcxyz', {
+  'request-type': 'GetSceneList'
+});
+//next line
+
+//do not wait for the return
+//the next line is executed right after
+h.apiRequestAsync('abcxyz', {
+  'request-type': 'GetSceneList'
+}, function(response, error) {
+  //request callback
+});
+//next line
+```
+
+---
+
+
+### setTimeout(function, timeout)
+- v2.19.0
+
+Runs a function after a few milliseconds.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `function` | _Function_ | Function that will be executed |
+| `timeout` | _Number_ | Time in milliseconds to wait until execution |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Number_ | Returns the task ID. You can use the ID to cancel the run. |
+
+
+**Example:**
+
+```javascript
+var id = h.setTimeout(function(){
+  //task that will run in 60 seconds
+}, 60000);
+```
+
+---
+
+
+### clearTimeout(id)
+- v2.19.0
+
+Cancels previously scheduled function execution.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _Function_ | ID returned from method **setTimeout** |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+var id = h.setTimeout(function(){
+  //task that will run in 60 seconds
+}, 60000);
+
+//cancel task execution
+h.clearTimeout(id);
+```
+
+---
+
+
+### setInterval(function, timeout)
+- v2.19.0
+
+Runs a function every X milliseconds. Use **clearInterval** to stop execution.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `function` | _Function_ | Function that will be executed |
+| `timeout` | _Number_ | Interval in milliseconds between each run |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Number_ | Returns the task ID. You can use the ID to stop the execution. |
+
+
+**Example:**
+
+```javascript
+var id = h.setInterval(function(){
+    //task that will run every 15 seconds
+}, 15000);
+```
+
+---
+
+
+### clearInterval(id)
+- v2.19.0
+
+Cancels previously scheduled function execution.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _Function_ | ID returned from method **setInterval** |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+var id = h.setInterval(function(){
+    //task that will run every 15 seconds
+}, 15000);
+
+//stop execution
+h.clearInterval(id);
+```
+
+---
+
+
+### getHostname()
+- v2.19.0
+
+Returns the device name.
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Device name |
+
+
+---
+
+
+### getRuntimeEnvironment()
+### getRE()
+- v2.19.0
+
+Returns the name of the currently defined runtime environment in the program settings.
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Runtime environment name |
+
+
+---
+
+
+### setRuntimeEnvironment(name)
+### setRE(name)
+- v2.19.0
+
+Change the current runtime environment.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `name` | _String_ | Runtime environment name |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Return **true** or **item not found** |
+
+
+---
+
+
+### isRuntimeEnvironment(name)
+### isRE(name)
+- v2.19.0
+
+Checks whether the current execution environment is the same as the one passed by parameter.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `name` | _String_ | Runtime environment name |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Return **true** or **false** |
+
 
 ---
 
@@ -700,7 +957,7 @@ Returns a song.
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID of music |
+| `input.id` | _String_ | Song ID |
 
 
 **Response:**
@@ -735,7 +992,7 @@ Lyrics playlist
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data` | _Array&lt;[Lyrics](lyrics)&gt;_ |  |
+| `data` | _Array&lt;[Lyrics](#lyrics)&gt;_ |  |
 
 
 **Example:**
@@ -830,7 +1087,7 @@ Favorites bar items
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data` | _Array&lt;[Favorite Item](#favorite_item)&gt;_ |  |
+| `data` | _Array&lt;[Favorite Item](#favorite-item)&gt;_ |  |
 
 
 **Example:**
@@ -855,7 +1112,7 @@ History of all tags for "Music played"
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `data` | _Array&lt;Object&gt;_ |  |
-| `data.*.music_id` | _String_ | ID of music |
+| `data.*.music_id` | _String_ | Song ID |
 | `data.*.history` | _Array&lt;String&gt;_ | Date and time in format: YYYY-MM-DD HH:MM |
 
 
@@ -1021,7 +1278,7 @@ Play a media playlist item
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID if item |
+| `input.id` | _String_ | Item ID |
 
 
 _Method does not return value_
@@ -1046,7 +1303,7 @@ Execute an item from the bookmarks bar
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID if item |
+| `input.id` | _String_ | Item ID |
 
 
 _Method does not return value_
@@ -1072,7 +1329,7 @@ Starts a lyric show.
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID if item |
+| `input.id` | _String_ | Item ID |
 
 
 _Method does not return value_
@@ -1107,7 +1364,7 @@ Starts a presentation of a text tab item.
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID if item |
+| `input.id` | _String_ | Item ID |
 
 
 _Method does not return value_
@@ -1251,9 +1508,9 @@ Quick display of text
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.text` | _String_ | Text to be displayed |
+| `input.text` | _String_ | Text to be displayed. [Styled Text](#styled-text) from v2.19.0 |
 | `input.theme` | _Object (optional)_ | Filter selected theme for display |
-| `input.theme.id` | _String (optional)_ | ID of theme |
+| `input.theme.id` | _String (optional)_ | Theme ID |
 | `input.theme.name` | _String (optional)_ | Theme name |
 | `input.automatic` | _[Automatic](#automatic-presentation) (optional)_ | If informed, the presentation of the items will be automatic |
 
@@ -1401,14 +1658,14 @@ h.log('BPM: ' + r.data);
 ---
 
 
-### hly('SetBpm')
+### hly('SetBpm', input)
 Change the current BPM value of the program
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `bpm` | _Number_ | BPM value |
+| `input.bpm` | _Number_ | BPM value |
 
 
 _Method does not return value_
@@ -1474,7 +1731,7 @@ Add song lyrics to playlist
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String (optional)_ | ID of the lyrics |
+| `input.id` | _String (optional)_ | Lyrics ID |
 | `input.ids` | _Array&lt;String&gt; (optional)_ | List with id of each lyics |
 | `input.index` | _Number (optional)_ | Position in the list where the item will be added (starts at zero). Items are added to the end of the list by default. _(Default=*-1*)_ |
 | `input.media_playlist` | _Boolean (optional)_ | Add the lyrics to the media playlist _(Default=*false*)_ |
@@ -1512,7 +1769,7 @@ Remove lyrics from playlist
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String (optional)_ | ID of the lyrics |
+| `input.id` | _String (optional)_ | Lyrics ID |
 | `input.ids` | _Array&lt;String&gt; (optional)_ | List with id of each lyics |
 | `input.index` | _Number (optional)_ | Position of the item in the list to be removed (starts at zero). |
 | `input.indexes` | _Boolean (optional)_ | List with the position of each item in the list that will be removed. (Starts at zero) |
@@ -1542,7 +1799,7 @@ Remove items from media playlist
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String (optional)_ | ID if item |
+| `input.id` | _String (optional)_ | Item ID |
 | `input.ids` | _Array&lt;String&gt; (optional)_ | List with id of each item |
 | `input.index` | _Number (optional)_ | Position of the item in the list to be removed (starts at zero). |
 | `input.indexes` | _Boolean (optional)_ | List with the position of each item in the list that will be removed. (Starts at zero) |
@@ -1684,7 +1941,7 @@ Change communication panel text
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.text` | _Number (optional)_ | Change communication panel text |
+| `input.text` | _Number (optional)_ | Change the text of the communication panel. [Styled Text](#styled-text) from v2.19.0 |
 | `input.show` | _Boolean (optional)_ | Show/hide the text |
 | `input.display_ahead` | _Boolean (optional)_ | Change the *'display in front of all'* option |
 
@@ -1755,6 +2012,497 @@ _Method does not return value_
 h.hly('SetLogo', {enable: true});
 
 h.hly('SetLogo', {hide: true});
+```
+
+---
+
+
+### hly('GetCurrentPresentation')
+- v2.19.0
+
+Item currently being presented or **null** if no presentation is being displayed
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _[Item](#item)_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetCurrentPresentation');
+if (r.data == null) {
+    //there is no presentation currently showing
+}
+
+switch (r.data.type) {
+    case 'song':
+        //a song being performed
+        break;
+    case 'verse':
+        //a verse being presented
+        break;
+}
+```
+
+---
+
+
+### hly('GetCustomMessages')
+- v2.19.0
+
+List of custom messages
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[CustomMessage](#custom-message)&gt;_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetCustomMessages');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+```
+
+---
+
+
+### hly('ShowCustomMessage', input)
+- v2.19.0
+
+Display a custom message. Note: A custom message is not displayed directly on the screen. a notification is created in the corner of the screen for the operator to accept and display.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.name` | _String_ | custom message name |
+| `input.position_?` | _Object_ | Variable added at the specified position according to the value returned in **variables.*.position** of the CustomMessage class. |
+| `input.note` | _String_ | Extra information displayed in popup window for operator |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('ShowCustomMessage', {
+    name: 'name',
+    position_15: 'Value 1',
+    position_28: 'Value 2',
+    note: 'Urgently'
+});
+```
+
+---
+
+
+### hly('GetHue')
+- v2.19.0
+
+Returns the current hue value defined in the program
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Number_ | Current hue value. Minimum=0, Maximum=360. Returns **null** if disabled. |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetHue');
+h.log('HUE: ' + r.data);
+```
+
+---
+
+
+### hly('SetHue', input)
+- v2.19.0
+
+Changes the program's current hue value
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.hue` | _Number_ | Hue value. Minimum=0, Maximum=360 or **null** to disable. |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('SetHue', {hue: 250});
+
+h.hly('SetHue', {hue: null});
+```
+
+---
+
+
+### hly('GetF8')
+### hly('GetF9')
+### hly('GetF10')
+- v2.19.0
+
+Returns the current state of the respective option **F8 (wallpaper), F9 (empty screen) or F10 (black screen)**
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Boolean_ | **true** or **false** |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetF8');
+h.log('F8: ' + r.data);
+
+var r = h.hly('GetF9');
+h.log('F9: ' + r.data);
+
+var r = h.hly('GetF10');
+h.log('F10: ' + r.data);
+```
+
+---
+
+
+### hly('SetF8', input)
+### hly('SetF9', input)
+### hly('SetF10', input)
+- v2.19.0
+
+Changes the current state of the respective option **F8 (wallpaper), F9 (empty screen) or F10 (black screen)**
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.enable` | _Boolean_ | **true** or **false** |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('SetF8', {enable: true});
+
+h.hly('SetF9', {enable: false});
+
+h.hly('SetF10', {enable: true});
+```
+
+---
+
+
+### hly('ToggleF8')
+### hly('ToggleF9')
+### hly('ToggleF10')
+- v2.19.0
+
+Changes the current state of the respective option **F8 (wallpaper), F9 (empty screen) or F10 (black screen)**
+
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('ToggleF8');
+
+h.hly('ToggleF9');
+
+h.hly('ToggleF10');
+```
+
+---
+
+
+### hly('ActionNext')
+- v2.19.0
+
+Performs a **next** command on the current presentation
+
+
+
+_Method does not return value_
+
+---
+
+
+### hly('ActionPrevious')
+- v2.19.0
+
+Performs a **back** command on the current presentation
+
+
+
+_Method does not return value_
+
+---
+
+
+### hly('ActionGoToIndex', input)
+- v2.19.0
+
+Changes the slide in view from the slide index
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.index` | _Number_ | Slide index in presentation (starts at zero) |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('ActionGoToIndex', {index: 3});
+```
+
+---
+
+
+### hly('ActionGoToSlideDescription', input)
+- v2.19.0
+
+Changes the slide in view from the name of the slide description
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.name` | _String_ | Slide description name |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('ActionGoToSlideDescription', {name: 'Verse 1'});
+```
+
+---
+
+
+### hly('GetWallpaperSettings')
+- v2.19.0
+
+Wallpaper settings
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data.image_base64` | _String_ | Wallpaper image in base 64 |
+| `data.enabled` | _Boolean_ | Show wallpaper |
+| `data.fill_color` | _String_ | Color in hexadecimal defined in the **fill** option. |
+| `data.extend` | _Boolean_ | Extend wallpaper |
+| `data.show_clock` | _Boolean_ | Show clock |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetWallpaperSettings');
+h.log('Wallpaper enabled: ' + r.data.enabled);
+```
+
+---
+
+
+### hly('SetWallpaperSettings', input)
+- v2.19.0
+
+Change wallpaper settings
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.file` | _String (optional)_ | File location in the **Images** tab |
+| `input.enabled` | _Boolean (optional)_ | Show wallpaper |
+| `input.fill_color` | _String (optional)_ | Color in hexadecimal defined in the **fill** option. **NULL** to disable |
+| `input.extend` | _Boolean (optional)_ | Extend wallpaper |
+| `input.show_clock` | _Boolean (optional)_ | Show clock |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | Return **true** or a list of errors that occurred |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('SetWallpaperSettings', {
+    file: 'image.jpg',
+    enabled: true,
+    fill_color: '000000'
+});
+```
+
+---
+
+
+### hly('GetDisplaySettings')
+- v2.19.0
+
+List of display settings for each screen
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[DisplaySettings](#display-settings)&gt;_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetDisplaySettings');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].id);
+    h.log(r.data[i].name);
+    h.log('');
+}
+```
+
+---
+
+
+### hly('SetDisplaySettings', input)
+- v2.19.0
+
+Change a screen's display settings
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input` | _[DisplaySettings](#display-settings)_ | New settings. Settings are individually optional. Fill in only the fields you want to change. |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | Return **true** or a list of errors that occurred |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('SetDisplaySettings', {
+    id: 'public',
+    margin: {
+        top: 10, right: 5, bottom: 10, left: 5
+    }
+});
+```
+
+---
+
+
+### hly('GetSyncStatus')
+- v2.19.0
+
+Returns the current state of online synchronization via Google Drive™
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data.enabled` | _Boolean_ | If sync is turned on |
+| `data.started` | _Boolean_ | Whether synchronization has started (internet available for example) |
+| `data.progress` | _Number_ | Sync progress from 0 to 100 |
+
+
+---
+
+
+### hly('GetSavedPlaylists')
+- v2.19.0
+
+Returns saved playlists
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;Object&gt;_ |  |
+| `data.*.id` | _String_ | Item ID |
+| `data.*.name` | _String_ | Item name |
+| `data.*.items` | _Array&lt;[Item](#item)&gt;_ | Items saved in the list |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetSavedPlaylists');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+```
+
+---
+
+
+### hly('LoadSavedPlaylist', input)
+- v2.19.0
+
+Populates the media list of the currently selected playlist in the program with the given list
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.name` | _String_ | Saved playlist name |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('LoadSavedPlaylist', {name: 'name'});
 ```
 
 ---
@@ -2241,7 +2989,9 @@ Opens a window for selecting an item from a list of values
 | ---- | :---: | ------------|
 | `title` | _String_ | Window title |
 | `items` | _Object_ | List of items that will be displayed in the list |
-| `items.*.label` | _Boolean (optional)_ | Name that will be displayed representing the item |
+| `items.*.label` | _String (optional)_ | Name that will be displayed representing the item |
+| `items.*.selected` | _Boolean (optional)_ | To set the item selected by default. v2.19.0+ |
+| `notification` | _Boolean (optional)_ | Display a notification instead of opening the window directly |
 
 
 **Response:**
@@ -2268,7 +3018,8 @@ var items = [
     },{
         id: 2,
         type: 'test2',
-        label: 'XYZ'
+        label: 'XYZ',
+        selected: true //selected by default
     },{
         id: 3,
         type: 'test3',
@@ -2304,12 +3055,349 @@ if (r == null) {
 ---
 
 
+### multipleItemChooser(title, items, notification = false)
+- v2.19.0
+
+Opens a window for selecting multiple items from a list of values
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `title` | _String_ | Window title |
+| `items` | _Object_ | List of items that will be displayed in the list |
+| `items.*.label` | _String (optional)_ | Name that will be displayed representing the item |
+| `items.*.selected` | _Boolean (optional)_ | To define if the item will be selected by default. |
+| `notification` | _Boolean (optional)_ | Display a notification instead of opening the window directly |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | Returns items selected by the user (can be NULL) |
+
+
+**Example:**
+
+```javascript
+var r = h.multipleItemChooser("select the items", ["abc", "xyz", "123"]);
+h.log("Selected items: " + r);
+
+var r = h.multipleItemChooser("select the numbers", [1, 2, 3, 4, 5]);
+h.log("Selected numbers: " + r);
+
+var items = [
+    {
+        id: 1,
+        type: 'test1',
+        label: 'ABC',
+        selected: true //selected by default
+    },{
+        id: 2,
+        type: 'test2',
+        label: 'XYZ'
+    },{
+        id: 3,
+        type: 'test3',
+        label: '123',
+        selected: true //selected by default
+    }
+];
+var r = h.multipleItemChooser("select the items", items, true); //notification
+if (r == null) {
+    h.log("Canceled");
+} else {
+    h.log("Selected items");
+    for (var i = 0; i < r.length; i++) {
+        h.log("ID: " + r[i].id);
+        h.log("Type: " + r[i].type);
+        h.log("Name: " + r[i].label);
+    }
+}
+```
+
+---
+
+
+### confirm(msg, title = 'Confirm', notification = false)
+- v2.19.0
+
+Opens a confirmation window, displaying **OK** and **Cancel** buttons
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `msg` | _String_ | Message that will be displayed |
+| `title` | _String_ | Window title |
+| `notification` | _Boolean (optional)_ | Display a notification instead of opening the window directly |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Boolean_ | Return **true** or **false** |
+
+
+**Example:**
+
+```javascript
+if (h.confirm("Do task now?", "title")) {
+    //ok
+} else {
+    //cancel
+}
+```
+
+---
+
+
+### yesNo(msg, title = 'Confirm', notification = false)
+- v2.19.0
+
+Opens a confirmation window, displaying **Yes** and **No** buttons
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `msg` | _String_ | Message that will be displayed |
+| `title` | _String_ | Window title |
+| `notification` | _Boolean (optional)_ | Display a notification instead of opening the window directly |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Boolean_ | Return **true** or **false** |
+
+
+**Example:**
+
+```javascript
+if (h.yesNo("Do task now?", "title")) {
+    //yes
+} else {
+    //no
+}
+```
+
+---
+
+
+### notification(msg, duration = 0)
+### notificationError(msg, duration = 0)
+### notificationWarning(msg, duration = 0)
+- v2.19.0
+
+Displays a notification in the corner of the screen
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `msg` | _String_ | Message that will be displayed |
+| `duration` | _Number (optional)_ | Time for the notification to be automatically hidden. If the value is less than or equal to zero, the notification will not be automatically hidden. |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.notification("Task accomplished");
+```
+
+---
+
+
+### lyricsChooser()
+### songChooser()
+- v2.19.0
+
+Opens a window to select a song
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _[Lyrics](#lyrics)_ | Returns the item selected by the user (can be NULL) |
+
+
+**Example:**
+
+```javascript
+var r = h.lyricsChooser();
+if (r == null) {
+    h.log("Canceled");
+} else {
+    h.log("Selected item: " + r.title);
+}
+```
+
+---
+
+
+### themeChooser()
+- v2.19.0
+
+Opens a window to select a theme
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _[Background](#background)_ | Returns the item selected by the user (can be NULL) |
+
+
+**Example:**
+
+```javascript
+var r = h.themeChooser();
+if (r == null) {
+    h.log("Canceled");
+} else {
+    h.log("Selected item: " + r.name);
+}
+```
+
+---
+
+
+### imageChooser()
+- v2.19.0
+
+Opens a window to select an image
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+|  | _Object_ | Returns the item selected by the user (can be NULL) |
+| `*.id` | _String_ | Item ID |
+| `*.name` | _String_ | Item name |
+| `*.isDir` | _Boolean_ | Return **true** if it's a folder or **false** if it's a file. |
+
+
+**Example:**
+
+```javascript
+var r = h.imageChooser();
+if (r == null) {
+    h.log("Canceled");
+} else {
+    h.log("Selected item: " + r.name);
+}
+```
+
+---
+
+
+### audioChooser()
+- v2.19.0
+
+Opens a window to select an audio
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+|  | _Object_ | Returns the item selected by the user (can be NULL) |
+| `*.id` | _String_ | Item ID |
+| `*.name` | _String_ | Item name |
+| `*.isDir` | _Boolean_ | Return **true** if it's a folder or **false** if it's a file. |
+
+
+**Example:**
+
+```javascript
+var r = h.audioChooser();
+if (r == null) {
+    h.log("Canceled");
+} else {
+    h.log("Selected item: " + r.name);
+}
+```
+
+---
+
+
+### videoChooser()
+- v2.19.0
+
+Opens a window to select a video
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+|  | _Object_ | Returns the item selected by the user (can be NULL) |
+| `*.id` | _String_ | Item ID |
+| `*.name` | _String_ | Item name |
+| `*.isDir` | _Boolean_ | Return **true** if it's a folder or **false** if it's a file. |
+
+
+**Example:**
+
+```javascript
+var r = h.videoChooser();
+if (r == null) {
+    h.log("Canceled");
+} else {
+    h.log("Selected item: " + r.name);
+}
+```
+
+---
+
+
+### backgroundChooser()
+- v2.19.0
+
+Opens a window to select a background
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _[Background](#background)_ | Returns the item selected by the user (can be NULL) |
+
+
+**Example:**
+
+```javascript
+var r = h.backgroundChooser();
+if (r == null) {
+    h.log("Canceled");
+} else {
+    h.log("Selected item: " + r.name);
+}
+```
+
+---
+
+
 # Classes
 Complex classes used as a return in some methods
 ## Lyrics
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | ID of music |
+| `id` | _String_ | Song ID |
 | `title` | _String_ | Song title |
 | `artist` | _String_ | Music artist |
 | `author` | _String_ | Music author |
@@ -2323,7 +3411,7 @@ Complex classes used as a return in some methods
 ## Background
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | ID if item |
+| `id` | _String_ | Item ID |
 | `type` | _String_ | Item type. It might be:theme, my_video, my_image, video, image |
 | `name` | _String_ | Item name |
 | `tags` | _Array&lt;String&gt;_ | Item tag list |
@@ -2333,7 +3421,7 @@ Complex classes used as a return in some methods
 ## Item
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | ID if item |
+| `id` | _String_ | Item ID |
 | `type` | _String_ | Item type. It might be: song, verse, text, audio, video, image, file, custom-text, announcement, countdown, countdown-cp, automatic_presentation, api, script |
 | `name` | _String_ | Item name |
 
@@ -2351,7 +3439,7 @@ Complex classes used as a return in some methods
 ## Favorite Item
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | ID if item |
+| `id` | _String_ | Item ID |
 | `name` | _String_ | Item name |
 
 ## Schedule
@@ -2375,13 +3463,13 @@ Complex classes used as a return in some methods
 ## Member
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | ID if item |
+| `id` | _String_ | Item ID |
 | `name` | _String_ | Item name |
 
 ## Role
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `id` | _String_ | ID if item |
+| `id` | _String_ | Item ID |
 | `name` | _String_ | Item name |
 
 ## Automatic Presentation
@@ -2402,3 +3490,130 @@ Complex classes used as a return in some methods
 | `min` | _Number (optional)_ | Available if type is **number**. Sets the minimum allowed value _(Default=*0*)_ |
 | `max` | _Number (optional)_ | Available if type is **number**. Sets the maximum allowed value _(Default=*100*)_ |
 | `show_as_combobox` | _Boolean (optional)_ | Available if type is **number**. Display the list of values as a combobox and not as a spinner _(Default=*false*)_ |
+
+## Display Settings
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `name` | _String_ | Item name |
+| `stage_view` | _[StageView](#stage-view)_ | Stage view settings. (Unavailable for public screen) |
+| `slide_info` | _[SlideAdditionalInfo](#slide-additional-info)_ | Additional slide info |
+| `slide_translation` | _String_ | translation name |
+| `bible_version_tab` | _Number_ | Tab number (1, 2 or 3) of the Bible translation displayed on the screen, as translations are loaded in the Bible window |
+| `margin` | _Object_ | Margins set in **Edit screen position** option. margin.top, margin.right, margin.bottom, margin.left |
+| `area` | _[Rectangle](#rectangle)_ | Screen area with margins applied (if available) |
+| `total_area` | _[Rectangle](#rectangle)_ | Total screen area on the system |
+| `hide` | _Boolean_ | Hide screen |
+| `show_items` | _Object_ | Defines the presentation types that will be displayed (only available for stream screens - image and html) |
+| `show_items.lyrics` | _Boolean_ | Song lyrics |
+| `show_items.text` | _Boolean_ | Text |
+| `show_items.verse` | _Boolean_ | Verse |
+| `show_items.image` | _Boolean_ | Image |
+| `show_items.alert` | _Boolean_ | Alert |
+| `show_items.announcement` | _Boolean_ | Announcement |
+
+## Stage View
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `enabled` | _Boolean_ | Stage view enabled |
+| `preview_mode` | _String_ | Lyrics display mode. Available options:<br/>CURRENT_SLIDE<br/>FIRST_LINE_OF_THE_NEXT_SLIDE_WITH_SEPARATOR<br/>FIRST_LINE_OF_THE_NEXT_SLIDE_WITHOUT_SEPARATOR<br/>NEXT_SLIDE<br/>CURRENT_AND_NEXT_SLIDE<br/>ALL_SLIDES |
+| `uppercase` | _Boolean_ | Show in capital letters |
+| `remove_line_break` | _Boolean_ | remove line break |
+| `show_comment` | _Boolean_ | Show comments |
+| `show_advanced_editor` | _Boolean_ | Show advanced editor |
+| `show_communication_panel` | _Boolean_ | Show communication panel content |
+| `custom_theme` | _Number_ | Custom Theme ID used in presentations |
+| `apply_custom_theme_to_bible` | _Boolean_ | Use custom theme in verses |
+| `apply_custom_theme_to_text` | _Boolean_ | Use custom theme in texts |
+
+## Slide Additional Info
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `info_1` | _Object_ |  |
+| `info_1.show_page_count` | _Boolean_ | Show slide count |
+| `info_1.show_slide_description` | _Boolean_ | Show slide description (chorus, i.e.) |
+| `info_1.horizontal_align` | _String_ | Horizontal alignment of information on the slide. left, center, right |
+| `info_1.vertical_align` | _String_ | Vertical alignment of information on the slide. top, bottom |
+| `info_2` | _Object_ |  |
+| `info_2.show` | _Boolean_ |  |
+| `info_2.layout_row_1` | _String_ | First row information layout [Slide Additional Info Layout](#slide-additional-info-layout) |
+| `info_2.layout_row_2` | _String (optional)_ | Second line information layout [Slide Additional Info Layout](#slide-additional-info-layout) |
+| `info_2.horizontal_align` | _String_ | Horizontal alignment of information on the slide. left, center, right |
+| `info_2.vertical_align` | _String_ | Vertical alignment of information on the slide. top, bottom |
+| `font` | _Object_ |  |
+| `font.name` | _String_ | Font name. If it is **null**, it uses the theme's default font. |
+| `font.bold` | _Boolean_ | Bold. If it is **null**, use the default theme setting |
+| `font.italic` | _Boolean_ | Italid. If it is **null**, use the default theme setting |
+| `font.color` | _String_ | Font color in hexadecimal. If it is **null**, use the theme's default font color |
+| `height` | _Number_ | Height in percent of slide height |
+| `paint_theme_effect` | _String_ | Render text with theme outline, glow, and shadow effects, if available |
+
+## Rectangle
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `x` | _Number_ |  |
+| `y` | _Number_ |  |
+| `width` | _Number_ |  |
+| `height` | _Number_ |  |
+
+## Custom Message
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `name` | _String_ | Item name |
+| `message_model` | _String_ | message without filling |
+| `message_example` | _String_ | Example message with the name of the parameters filled in |
+| `variables` | _Array&lt;[CustomMessageParam](#custom-message-param)&gt;_ | message parameters |
+
+## Custom Message Param
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `position` | _Number_ | Parameter position in the message (in number of characters) |
+| `name` | _String_ | Item name |
+| `only_number` | _Boolean_ | Parameter accepts only numbers |
+| `uppercase` | _Boolean_ | Parameter always displayed in uppercase |
+| `suggestions` | _Array&lt;String&gt; (optional)_ | List with default values for the parameter |
+
+# Slide Additional Info Layout
+Type between the characters **< >** the texts you want to display
+<br/>
+And type inside **% %** the name of the field you want to use
+<br/>
+Example:
+
+`<%title%>< (%author%)>`
+<br/>
+Turns into: **Title (Author)**
+<br/>
+But if the **author** field is not available, only **Title** will be displayed, not **Title ()**
+<br/>
+
+`<%title%>< - %author%>`
+<br/>
+Turns into: **Title - Author**
+<br/>
+But if the **author** field is not available, only **Title** will be displayed, not **Title -**
+<br/>
+
+It is also possible to use the **extra** fields created by the user for the songs, for example:
+<br/>
+If there is an extra field called **Year**, it can be used like this:
+<br/>
+`<title>< - %author%><, %Year%>`
+<br/>
+Turns into: **Title - Author, 2023**
+
+# Styled Text
+To display richly formatted text, start the text with **&lt;styled&gt;**
+
+HTML tags available
+
+```
+<styled>
+<b>bold</b>
+<i>italic</i>
+<u>underlined</u>
+<color:0000FF>font color</color>
+<font:Times New Roman>font name</font>
+<size:70>relative font size 70%</size>
+```
