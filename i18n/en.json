@@ -2244,8 +2244,8 @@
     "v": "File name. Example: **file.ap**"
   },
   {
-    "k": "Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo",
-    "v": "Returns the file list of the respective tab: audio, video, image, file"
+    "k": "Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem",
+    "v": "Returns the file list of the respective tab: audio, video, image"
   },
   {
     "k": "Retorna as informações do player",
