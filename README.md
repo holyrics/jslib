@@ -11,6 +11,170 @@ Por exemplo:
 jslib.log('exemplo');
 h.log('exemplo');
 ```
+---
+
+- [Métodos](#métodos)
+  - [log](#logobj)
+  - [sleep](#sleeptime)
+  - [base64Encode](#base64encodebytes)
+  - [base64Decode](#base64decodestr)
+  - [md5](#md5value)
+  - [md5Str](#md5strvalue)
+  - [sha256](#sha256value)
+  - [sha256Str](#sha256strvalue)
+  - [getClipboard](#getclipboard)
+  - [normalize](#normalizestr)
+  - [store](#storekey-value)
+  - [restore](#restorekey)
+  - [setGlobal](#setglobalkey-value)
+  - [getGlobal](#getglobalkey-default--null)
+  - [setCache](#setcachekey-value)
+  - [getCache](#getcachekey-default--null)
+  - [random](#randommin-max-keysaferepeat--null)
+  - [startTimer](#starttimerkey)
+  - [getTimer](#gettimerkey)
+  - [getPlaylistInfo](#getplaylistinfo)
+  - [getPlayer](#getplayer)
+  - [scriptAction](#scriptactionid)
+  - [apiAction](#apiactionid)
+  - [apiRequest](#apirequestid-raw)
+  - [getApiRequestLastError](#getapirequestlasterror)
+  - [apiRequestAsync](#apirequestasyncid-raw-callback--null)
+  - [setTimeout](#settimeoutfunction-timeout)
+  - [clearTimeout](#cleartimeoutid)
+  - [setInterval](#setintervalfunction-timeout)
+  - [clearInterval](#clearintervalid)
+  - [getHostname](#gethostname)
+  - [getRuntimeEnvironment](#getruntimeenvironment)
+  - [setRuntimeEnvironment](#setruntimeenvironmentname)
+  - [isRuntimeEnvironment](#isruntimeenvironmentname)
+- [Métodos HLY](#métodos-hly)
+  - [GetCurrentBackground](#hlygetcurrentbackground)
+  - [GetLyrics](#hlygetlyrics-input)
+  - [GetLyricsPlaylist](#hlygetlyricsplaylist)
+  - [GetMediaPlaylist](#hlygetmediaplaylist)
+  - [GetBackgrounds](#hlygetbackgrounds-input)
+  - [GetFavorites](#hlygetfavorites)
+  - [GetHistories](#hlygethistories)
+  - [GetHistory](#hlygethistory-input)
+  - [GetMembers](#hlygetmembers)
+  - [GetRoles](#hlygetroles)
+  - [GetCurrentSchedule](#hlygetcurrentschedule)
+  - [GetSchedules](#hlygetschedules-input)
+  - [GetMediaPlayerInfo](#hlygetmediaplayerinfo)
+  - [MediaPlaylistAction](#hlymediaplaylistaction-input)
+  - [FavoriteAction](#hlyfavoriteaction-input)
+  - [ShowLyrics](#hlyshowlyrics-input)
+  - [ShowText](#hlyshowtext-input)
+  - [ShowVerse](#hlyshowverse-input)
+  - [PlayAudio](#hlyplayaudio-input)
+  - [PlayVideo](#hlyplayvideo-input)
+  - [ShowImage](#hlyshowimage-input)
+  - [ShowQuickPresentation](#hlyshowquickpresentation-input)
+  - [ShowAnnouncement](#hlyshowannouncement-input)
+  - [CloseCurrentPresentation](#hlyclosecurrentpresentation)
+  - [SetCurrentBackground](#hlysetcurrentbackground-input)
+  - [GetBpm](#hlygetbpm)
+  - [SetBpm](#hlysetbpm-input)
+  - [SearchLyrics](#hlysearchlyrics-input)
+  - [AddLyricsToPlaylist](#hlyaddlyricstoplaylist-input)
+  - [RemoveFromLyricsPlaylist](#hlyremovefromlyricsplaylist-input)
+  - [RemoveFromMediaPlaylist](#hlyremovefrommediaplaylist-input)
+  - [GetCommunicationPanelInfo](#hlygetcommunicationpanelinfo)
+  - [SetAlert](#hlysetalert-input)
+  - [StartCountdownCommunicationPanel](#hlystartcountdowncommunicationpanel-input)
+  - [StopCountdownCommunicationPanel](#hlystopcountdowncommunicationpanel)
+  - [SetTextCommunicationPanel](#hlysettextcommunicationpanel-input)
+  - [SetAlertCommunicationPanel](#hlysetalertcommunicationpanel-input)
+  - [SetLogo](#hlysetlogo-input)
+  - [GetCurrentPresentation](#hlygetcurrentpresentation)
+  - [GetCustomMessages](#hlygetcustommessages)
+  - [ShowCustomMessage](#hlyshowcustommessage-input)
+  - [GetHue](#hlygethue)
+  - [SetHue](#hlysethue-input)
+  - [GetF8 - F9 - F10](#hlygetf8)
+  - [SetF8 - F9 - F10](#hlysetf8-input)
+  - [ToggleF8 - F9 - F10](#hlytogglef8)
+  - [ActionNext](#hlyactionnext)
+  - [ActionPrevious](#hlyactionprevious)
+  - [ActionGoToIndex](#hlyactiongotoindex-input)
+  - [ActionGoToSlideDescription](#hlyactiongotoslidedescription-input)
+  - [GetWallpaperSettings](#hlygetwallpapersettings)
+  - [SetWallpaperSettings](#hlysetwallpapersettings-input)
+  - [GetDisplaySettings](#hlygetdisplaysettings)
+  - [SetDisplaySettings](#hlysetdisplaysettings-input)
+  - [GetSyncStatus](#hlygetsyncstatus)
+  - [GetSavedPlaylists](#hlygetsavedplaylists)
+  - [LoadSavedPlaylist](#hlyloadsavedplaylist-input)
+  - [PlayAutomaticPresentation](#hlyplayautomaticpresentation-input)
+  - [MediaPlayerAction](#hlymediaplayeraction-input)
+  - [GetAudios - GetVideos - GetImages](#hlygetaudios-input)
+  - [GetRuntimeEnvironment](#hlygetruntimeenvironment)
+  - [SetRuntimeEnvironment](#hlysetruntimeenvironment-input)
+  - [ApiAction](#hlyapiaction-input)
+  - [ScriptAction](#hlyscriptaction-input)
+  - [ApiRequest](#hlyapirequest-input)
+- [Métodos Player](#métodos-player)
+  - [getMediaName](#getmedianame)
+  - [getMedia](#getmedia)
+  - [isPlaying](#isplaying)
+  - [getDuration](#getduration)
+  - [getCurrentTime](#getcurrenttime)
+  - [getTimeElapsed](#gettimeelapsed)
+  - [getTimeRemaining](#gettimeremaining)
+  - [play](#play)
+  - [pause](#pause)
+  - [stop](#stop)
+  - [next](#next)
+  - [previous](#previous)
+  - [isRepeat](#isrepeat)
+  - [setRepeat](#setrepeatrepeat)
+  - [isExecuteAll](#isexecuteall)
+  - [setExecuteAll](#setexecuteallexecuteall)
+  - [isExecuteSingle](#isexecutesingle)
+  - [setExecuteSingle](#setexecutesingleexecutesingle)
+  - [isShuffle](#isshuffle)
+  - [setShuffle](#setshuffleshuffle)
+  - [isFullscreen](#isfullscreen)
+  - [setFullscreen](#setfullscreenfullscreen)
+  - [getVolume](#getvolume)
+  - [setVolume](#setvolumevolume)
+  - [isMute](#ismute)
+  - [setMute](#setmutemute)
+- [Métodos User Input](#métodos-user-input)
+  - [input](#inputparam-notification--false)
+  - [inputTextArea](#inputtextareatitle-notification--false)
+  - [itemChooser](#itemchoosertitle-items-notification--false)
+  - [multipleItemChooser](#multipleitemchoosertitle-items-notification--false)
+  - [confirm](#confirmmsg-title--confirm-notification--false)
+  - [yesNo](#yesnomsg-title--confirm-notification--false)
+  - [notification](#notificationmsg-duration--0)
+  - [lyricsChooser](#lyricschooser)
+  - [themeChooser](#themechooser)
+  - [imageChooser](#imagechooser)
+  - [audioChooser](#audiochooser)
+  - [videoChooser](#videochooser)
+  - [backgroundChooser](#backgroundchooser)
+- [Classes](#classes)
+  - [Lyrics](#lyrics)
+  - [Background](#background)
+  - [Item](#item)
+  - [Group](#group)
+  - [Midi](#midi)
+  - [Favorite Item](#favorite-item)
+  - [Schedule](#schedule)
+  - [Member](#member)
+  - [Role](#role)
+  - [Automatic Presentation](#automatic-presentation)
+  - [Input Param](#input-param)
+  - [Display Settings](#display-settings)
+  - [Stage View](#stage-view)
+  - [Slide Additional Info](#slide-additional-info)
+  - [Rectangle](#rectangle)
+  - [Custom Message](#custom-message)
+  - [Custom Message Param](#custom-message-param)
+
+
 # Métodos 
 ### log(obj)
 Exibe a informação passada como parâmetro numa janela de log (canto inferior direito da tela, geralmente)
@@ -694,16 +858,16 @@ _Método sem retorno_
 //aguarda o retorno, pode demorar
 //a próxima linha é executada somente quando a requisição for concluída
 var r = h.apiRequest('abcxyz', {
-  'request-type': 'GetSceneList'
+    'request-type': 'GetSceneList'
 });
 //próxima linha
 
 //não aguarda o retorno
 //a próxima linha é executada logo em seguida
 h.apiRequestAsync('abcxyz', {
-  'request-type': 'GetSceneList'
-}, function(response, error) {
-  //callback da requisição
+    'request-type': 'GetSceneList'
+}, function (response, error) {
+    //callback da requisição
 });
 //próxima linha
 ```
@@ -734,8 +898,8 @@ Executa uma função após alguns milissegundos.
 **Exemplo:**
 
 ```javascript
-var id = h.setTimeout(function(){
-  //tarefa que será executada em 60 segundos
+var id = h.setTimeout(function () {
+    //tarefa que será executada em 60 segundos
 }, 60000);
 ```
 
@@ -759,8 +923,8 @@ _Método sem retorno_
 **Exemplo:**
 
 ```javascript
-var id = h.setTimeout(function(){
-  //tarefa que será executada em 60 segundos
+var id = h.setTimeout(function () {
+    //tarefa que será executada em 60 segundos
 }, 60000);
 
 //cancela a execução da tarefa
@@ -793,7 +957,7 @@ Executa uma função a cada X milissegundos. Utilize **clearInterval** para para
 **Exemplo:**
 
 ```javascript
-var id = h.setInterval(function(){
+var id = h.setInterval(function () {
     //tarefa que será executada a cada 15 segundos
 }, 15000);
 ```
@@ -818,7 +982,7 @@ _Método sem retorno_
 **Exemplo:**
 
 ```javascript
-var id = h.setInterval(function(){
+var id = h.setInterval(function () {
     //tarefa que será executada a cada 15 segundos
 }, 15000);
 
@@ -881,7 +1045,7 @@ Altera o ambiente de execução atual.
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _String_ | Retorna **true** ou **item not found** |
+| _Object_ | Retorna **true** ou **item not found** |
 
 
 ---
@@ -904,13 +1068,13 @@ Verifica se o ambiente de execução atual é igual ao passado por parâmetro.
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _String_ | Retorna **true** ou **false** |
+| _Boolean_ | Retorna **true** ou **false** |
 
 
 ---
 
 
-# Métodos HLY
+# Métodos HLY 
 
 
 Todas as requisições dos métodos hly(...) retornam um objeto padrão:
@@ -922,6 +1086,7 @@ Todas as requisições dos métodos hly(...) retornam um objeto padrão:
 
 
 ---
+
 
 ### hly('GetCurrentBackground')
 Retorna o plano de fundo da apresentação em exibição.
@@ -1234,7 +1399,7 @@ for (var i = 0; i < r.data.length; i++) {
 ---
 
 
-### hly('GetSchedules')
+### hly('GetSchedules', input)
 Retorna a lista de programação de um mês específico
 
 **Parâmetros:**
@@ -1265,6 +1430,44 @@ for (var i = 0; i < r.data.length; i++) {
     h.log(s.name);
     h.log(s.lyrics_playlist);
     h.log(s.media_playlist);
+}
+```
+
+---
+
+
+### hly('GetMediaPlayerInfo')
+Retorna as informações do player
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ | Nome da mídia atual no player |
+| `path` | _String_ | Caminho completo da mídia no player |
+| `playing` | _Boolean_ | Verifica se o player está em execução |
+| `duration_ms` | _Number_ | Tempo total em milissegundos |
+| `time_ms` | _Number_ | Tempo atual da mídia em milissegundos |
+| `time_elapsed` | _String_ | Tempo decorrido no formato HH:MM:SS |
+| `time_remaining` | _String_ | Tempo restante no formato HH:MM:SS |
+| `volume` | _Number_ | Volume atual do player. Mínimo=0, Máximo=100 |
+| `mute` | _Boolean_ | Verifica se a opção **mudo** está ativada |
+| `repeat` | _Boolean_ | Verifica se a opção **repetir** está ativada |
+| `execute_single` | _Boolean_ | Verifica se o player está definido para executar somente o item atual da lista |
+| `shuffle` | _Boolean_ | Verifica se a opção **aleatório** está ativada |
+| `fullscreen` | _Boolean_ | Verifica se a opção **tela cheia** está ativada |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetMediaPlayerInfo');
+if (r.data.playing) {
+    h.log('O player está em execução');
+} else {
+    h.log('O player não está em execução');
 }
 ```
 
@@ -2508,7 +2711,288 @@ var r = h.hly('LoadSavedPlaylist', {name: 'name'});
 ---
 
 
-# Métodos Player
+### hly('PlayAutomaticPresentation', input)
+### hly('PlayAP')
+- v2.19.0
+
+Executa um item apresentação automática
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.file` | _String_ | Nome do arquivo. Exemplo: **arquivo.ap** |
+| `input.theme` | _Object (opcional)_ | Filtrar tema selecionado para exibição |
+| `input.theme.id` | _String (opcional)_ | ID do tema |
+| `input.theme.name` | _String (opcional)_ | Nome do tema |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('PlayAutomaticPresentation', {file: 'arquivo.ap'});
+
+h.hly('PlayAP', {file: 'arquivo.ap'});
+
+h.hly('PlayAP', {
+    file: 'arquivo.ap',
+    theme: {
+        name: "Tema 3"
+    }
+});
+```
+
+---
+
+
+### hly('MediaPlayerAction', input)
+- v2.19.0
+
+Executa ações no player
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `action` | _String (opcional)_ | Nome da ação que será executada no player. play, pause, stop, next, previous |
+| `volume` | _Number (opcional)_ | Altera o volume do player. Mínimo=0, Máximo=100 |
+| `mute` | _Boolean (opcional)_ | Altera a opção **mudo** |
+| `repeat` | _Boolean (opcional)_ | Altera a opção **repetir** |
+| `shuffle` | _Boolean (opcional)_ | Altera a opção **aleatório** |
+| `execute_single` | _Boolean (opcional)_ | Altera a configuração do player para executar somente o item atual da lista |
+| `fullscreen` | _Boolean (opcional)_ | Altera a opção **tela cheia** do player |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('MediaPlayerAction', { 
+    mute: false,
+    repeat: true,
+    volume: 80,
+    action: 'play' 
+});
+
+//alterar volume
+h.hly('MediaPlayerAction', { volume: 80 });
+
+//deixar no mudo
+h.hly('MediaPlayerAction', { mute: true });
+
+//parar execução atual
+h.hly('MediaPlayerAction', { action: 'stop' });
+```
+
+---
+
+
+### hly('GetAudios', input)
+### hly('GetVideos', input)
+### hly('GetImages', input)
+- v2.19.0
+
+Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.folder` | _String (opcional)_ | Nome da subpasta para listar os arquivos |
+| `input.filter` | _Number (opcional)_ | Filtrar arquivos pelo nome |
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;Object&gt;_ |  |
+| `data.*.name` | _String_ | Nome do item |
+| `data.*.isDir` | _Boolean_ | Retorna **true** se for uma pasta ou **false** se for arquivo. |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetAudios');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+
+var r = h.hly('GetVideos', { folder: 'abc' });
+
+var r = h.hly('GetImages', { filter: 'text' });
+
+var r = h.hly('GetFiles', { 
+    folder: 'name 1/name 2',
+    filter: 'text'
+});
+```
+
+---
+
+
+### hly('GetRuntimeEnvironment')
+### hly('GetRE')
+- v2.19.0
+
+Retorna o nome do ambiente de execução definido atualmente nas configurações do programa.
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Nome do ambiente de execução |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetRuntimeEnvironment');
+h.log('current runtime environment: ' + r.data);
+```
+
+---
+
+
+### hly('SetRuntimeEnvironment', input)
+### hly('SetRE', input)
+- v2.19.0
+
+Altera o ambiente de execução atual.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.name` | _String_ | Nome do ambiente de execução |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('SetRuntimeEnvironment', { name: 'abc' });
+```
+
+---
+
+
+### hly('ApiAction', input)
+- v2.19.0
+
+Executa a ação de um item API existente no programa
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | ID do item |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('ApiAction', { id: 'abcxyz' });
+
+if (r.status == 'ok') {
+    h.log('Ação executada');
+} else {
+    h.log('Erro: ' + r.error);
+}
+```
+
+---
+
+
+### hly('ScriptAction', input)
+- v2.19.0
+
+Executa a ação de um item **Script** existente no programa
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | ID do item |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('ScriptAction', { id: 'abcxyz' });
+
+if (r.status == 'ok') {
+    h.log('Ação executada');
+} else {
+    h.log('Erro: ' + r.error);
+}
+```
+
+---
+
+
+### hly('ApiRequest', input)
+- v2.19.0
+
+Executa uma requisição para o receptor associado e retorna a resposta do receptor.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | id do receptor |
+| `input.raw` | _String_ | dados da requisição |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | Retorno da requisição ou NULL para erro/timeout |
+
+
+**Exemplo:**
+
+```javascript
+//É possível realizar requisição diretamente para um receptor criado
+//Por exemplo:
+//Considerando que você tenha um receptor criado para comunicação com OBS Studio via websocket e o ID do receptor seja 'abcyxz'
+//você pode fazer uma requisição como no exemplo abaixo
+var r = h.hly('ApiRequest', {
+    id: 'abcxyz',
+    raw: {
+        'request-type': 'GetSourceActive',
+        'sourceName': 'exemplo'
+    }
+});
+if (r.status == 'ok') {
+    h.log('Resposta da requisição: ' + r.data);
+    var obj = JSON.parse(r.data);
+    if (obj.sourceActive) {
+        h.log('A fonte exemplo está ativa');
+    } else {
+        h.log('A fonte exemplo não está ativa');
+    }
+} else {
+    h.log('Erro: ' + r.error);
+}
+```
+
+---
+
+
+# Métodos Player 
 ### getMediaName()
 Nome da mídia atual no player
 
@@ -2874,7 +3358,7 @@ _Método sem retorno_
 ---
 
 
-# Métodos User Input
+# Métodos User Input 
 ### input(param, notification = false)
 Exibir uma janela com campos de entrada para receber informações de forma interativa
 
@@ -2908,7 +3392,7 @@ var param = [
         key: 'info',
         type: 'text',
         label: 'Informação'
-    },{
+    }, {
         key: 'type',
         type: 'text',
         label: 'Tipo',
@@ -2928,7 +3412,7 @@ var param = [
         key: 'message',
         type: 'textarea',
         label: 'Mensagem'
-    },{
+    }, {
         key: 'seconds',
         type: 'number',
         label: 'Segundos',
@@ -3015,12 +3499,12 @@ var items = [
         id: 1,
         type: 'test1',
         label: 'ABC'
-    },{
+    }, {
         id: 2,
         type: 'test2',
         label: 'XYZ',
         selected: true //selecionado por padrão
-    },{
+    }, {
         id: 3,
         type: 'test3',
         label: '123'
@@ -3093,11 +3577,11 @@ var items = [
         type: 'test1',
         label: 'ABC',
         selected: true //selecionado por padrão
-    },{
+    }, {
         id: 2,
         type: 'test2',
         label: 'XYZ'
-    },{
+    }, {
         id: 3,
         type: 'test3',
         label: '123',
@@ -3392,7 +3876,7 @@ if (r == null) {
 ---
 
 
-# Classes
+# Classes 
 Classes complexas utilizadas como retorno em alguns métodos
 ## Lyrics
 | Nome | Tipo  | Descrição |
