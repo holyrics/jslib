@@ -49,49 +49,35 @@ h.log('exemplo');
   - [setRuntimeEnvironment](#setruntimeenvironmentname)
   - [isRuntimeEnvironment](#isruntimeenvironmentname)
 - [Métodos HLY](#métodos-hly)
-  - [GetCurrentBackground](#hlygetcurrentbackground)
   - [GetLyrics](#hlygetlyrics-input)
-  - [GetLyricsPlaylist](#hlygetlyricsplaylist)
-  - [GetMediaPlaylist](#hlygetmediaplaylist)
-  - [GetBackgrounds](#hlygetbackgrounds-input)
-  - [GetFavorites](#hlygetfavorites)
-  - [GetHistories](#hlygethistories)
-  - [GetHistory](#hlygethistory-input)
-  - [GetMembers](#hlygetmembers)
-  - [GetRoles](#hlygetroles)
-  - [GetCurrentSchedule](#hlygetcurrentschedule)
-  - [GetSchedules](#hlygetschedules-input)
-  - [GetMediaPlayerInfo](#hlygetmediaplayerinfo)
-  - [MediaPlaylistAction](#hlymediaplaylistaction-input)
-  - [FavoriteAction](#hlyfavoriteaction-input)
+  - [SearchLyrics](#hlysearchlyrics-input)
   - [ShowLyrics](#hlyshowlyrics-input)
   - [ShowText](#hlyshowtext-input)
   - [ShowVerse](#hlyshowverse-input)
+  - [GetAudios - GetVideos - GetImages](#hlygetaudios-input)
   - [PlayAudio](#hlyplayaudio-input)
   - [PlayVideo](#hlyplayvideo-input)
   - [ShowImage](#hlyshowimage-input)
-  - [ShowQuickPresentation](#hlyshowquickpresentation-input)
   - [ShowAnnouncement](#hlyshowannouncement-input)
-  - [CloseCurrentPresentation](#hlyclosecurrentpresentation)
-  - [SetCurrentBackground](#hlysetcurrentbackground-input)
-  - [GetBpm](#hlygetbpm)
-  - [SetBpm](#hlysetbpm-input)
-  - [SearchLyrics](#hlysearchlyrics-input)
-  - [AddLyricsToPlaylist](#hlyaddlyricstoplaylist-input)
-  - [RemoveFromLyricsPlaylist](#hlyremovefromlyricsplaylist-input)
-  - [RemoveFromMediaPlaylist](#hlyremovefrommediaplaylist-input)
-  - [GetCommunicationPanelInfo](#hlygetcommunicationpanelinfo)
-  - [SetAlert](#hlysetalert-input)
-  - [StartCountdownCommunicationPanel](#hlystartcountdowncommunicationpanel-input)
-  - [StopCountdownCommunicationPanel](#hlystopcountdowncommunicationpanel)
-  - [SetTextCommunicationPanel](#hlysettextcommunicationpanel-input)
-  - [SetAlertCommunicationPanel](#hlysetalertcommunicationpanel-input)
-  - [SetLogo](#hlysetlogo-input)
-  - [GetCurrentPresentation](#hlygetcurrentpresentation)
   - [GetCustomMessages](#hlygetcustommessages)
   - [ShowCustomMessage](#hlyshowcustommessage-input)
-  - [GetHue](#hlygethue)
-  - [SetHue](#hlysethue-input)
+  - [ShowQuickPresentation](#hlyshowquickpresentation-input)
+  - [PlayAutomaticPresentation](#hlyplayautomaticpresentation-input)
+  - [GetMediaPlayerInfo](#hlygetmediaplayerinfo)
+  - [MediaPlayerAction](#hlymediaplayeraction-input)
+  - [GetLyricsPlaylist](#hlygetlyricsplaylist)
+  - [AddLyricsToPlaylist](#hlyaddlyricstoplaylist-input)
+  - [RemoveFromLyricsPlaylist](#hlyremovefromlyricsplaylist-input)
+  - [GetMediaPlaylist](#hlygetmediaplaylist)
+  - [MediaPlaylistAction](#hlymediaplaylistaction-input)
+  - [RemoveFromMediaPlaylist](#hlyremovefrommediaplaylist-input)
+  - [GetFavorites](#hlygetfavorites)
+  - [FavoriteAction](#hlyfavoriteaction-input)
+  - [ApiAction](#hlyapiaction-input)
+  - [ScriptAction](#hlyscriptaction-input)
+  - [ApiRequest](#hlyapirequest-input)
+  - [GetCurrentPresentation](#hlygetcurrentpresentation)
+  - [CloseCurrentPresentation](#hlyclosecurrentpresentation)
   - [GetF8 - F9 - F10](#hlygetf8)
   - [SetF8 - F9 - F10](#hlysetf8-input)
   - [ToggleF8 - F9 - F10](#hlytogglef8)
@@ -99,21 +85,35 @@ h.log('exemplo');
   - [ActionPrevious](#hlyactionprevious)
   - [ActionGoToIndex](#hlyactiongotoindex-input)
   - [ActionGoToSlideDescription](#hlyactiongotoslidedescription-input)
+  - [GetCurrentBackground](#hlygetcurrentbackground)
+  - [GetBackgrounds](#hlygetbackgrounds-input)
+  - [SetCurrentBackground](#hlysetcurrentbackground-input)
+  - [SetAlert](#hlysetalert-input)
+  - [GetCurrentSchedule](#hlygetcurrentschedule)
+  - [GetSchedules](#hlygetschedules-input)
+  - [GetSavedPlaylists](#hlygetsavedplaylists)
+  - [LoadSavedPlaylist](#hlyloadsavedplaylist-input)
+  - [GetHistory](#hlygethistory-input)
+  - [GetHistories](#hlygethistories)
+  - [GetMembers](#hlygetmembers)
+  - [GetRoles](#hlygetroles)
+  - [GetCommunicationPanelInfo](#hlygetcommunicationpanelinfo)
+  - [StartCountdownCommunicationPanel](#hlystartcountdowncommunicationpanel-input)
+  - [StopCountdownCommunicationPanel](#hlystopcountdowncommunicationpanel)
+  - [SetTextCommunicationPanel](#hlysettextcommunicationpanel-input)
+  - [SetAlertCommunicationPanel](#hlysetalertcommunicationpanel-input)
   - [GetWallpaperSettings](#hlygetwallpapersettings)
   - [SetWallpaperSettings](#hlysetwallpapersettings-input)
   - [GetDisplaySettings](#hlygetdisplaysettings)
   - [SetDisplaySettings](#hlysetdisplaysettings-input)
-  - [GetSyncStatus](#hlygetsyncstatus)
-  - [GetSavedPlaylists](#hlygetsavedplaylists)
-  - [LoadSavedPlaylist](#hlyloadsavedplaylist-input)
-  - [PlayAutomaticPresentation](#hlyplayautomaticpresentation-input)
-  - [MediaPlayerAction](#hlymediaplayeraction-input)
-  - [GetAudios - GetVideos - GetImages](#hlygetaudios-input)
+  - [GetBpm](#hlygetbpm)
+  - [SetBpm](#hlysetbpm-input)
+  - [GetHue](#hlygethue)
+  - [SetHue](#hlysethue-input)
   - [GetRuntimeEnvironment](#hlygetruntimeenvironment)
   - [SetRuntimeEnvironment](#hlysetruntimeenvironment-input)
-  - [ApiAction](#hlyapiaction-input)
-  - [ScriptAction](#hlyscriptaction-input)
-  - [ApiRequest](#hlyapirequest-input)
+  - [SetLogo](#hlysetlogo-input)
+  - [GetSyncStatus](#hlygetsyncstatus)
 - [Métodos Player](#métodos-player)
   - [getMediaName](#getmedianame)
   - [getMedia](#getmedia)
@@ -1088,32 +1088,6 @@ Todas as requisições dos métodos hly(...) retornam um objeto padrão:
 ---
 
 
-### hly('GetCurrentBackground')
-Retorna o plano de fundo da apresentação em exibição.
-
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _[Background](#background)_ | Plano de fundo atual ou NULL se não houver apresentação em exibição |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetCurrentBackground');
-if (r.data != null) {
-    h.log('ID do plano de fundo atual: ' + r.data.id);
-} else {
-    h.log('Não há apresentação em exibição');
-}
-```
-
----
-
-
 ### hly('GetLyrics', input)
 ### hly('GetSong', input)
 Retorna uma música.
@@ -1147,10 +1121,21 @@ if (r.data == null) {
 ---
 
 
-### hly('GetLyricsPlaylist')
-### hly('GetSongPlaylist')
-Lista de reprodução de letras
+### hly('SearchLyrics', input)
+### hly('SearchSong', input)
+Realiza uma busca na lista de letras do usuário
 
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input` | _String_ | Filtro |
+| `input.text` | _String_ | Texto a ser pesquisado |
+| `input.title` | _Boolean (opcional)_ |  _(Padrão=*true*)_ |
+| `input.artist` | _Boolean (opcional)_ |  _(Padrão=*true*)_ |
+| `input.note` | _Boolean (opcional)_ |  _(Padrão=*true*)_ |
+| `input.lyrics` | _Boolean (opcional)_ |  _(Padrão=*false*)_ |
+| `input.group` | _String (opcional)_ |  |
 
 
 **Resposta:**
@@ -1163,362 +1148,18 @@ Lista de reprodução de letras
 **Exemplo:**
 
 ```javascript
-var r = h.hly('GetLyricsPlaylist');
-for (var i = 0; i < r.data.length; i++) {
-    h.log(r.data[i].title);
-}
-```
-
----
-
-
-### hly('GetMediaPlaylist')
-Lista de reprodução de mídia
-
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _Array&lt;[Item](#item)&gt;_ |  |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetMediaPlaylist');
-for (var i = 0; i < r.data.length; i++) {
-    var item = r.data[i];
-    h.log(item.type + ": " + item.name);
-}
-```
-
----
-
-
-### hly('GetBackgrounds', input)
-Lista dos temas e planos de fundo
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input` | _Object (opcional)_ | Filtro |
-| `input.type` | _String (opcional)_ | Pode ser: theme, my_video, my_image, video, image |
-| `input.tag` | _String (opcional)_ |  |
-| `input.tags` | _Array&lt;String&gt; (opcional)_ |  |
-| `input.intersection` | _Boolean (opcional)_ | Se o campo **input.tags** estiver preenchido com múltiplos itens, a opção **input.intersection** define o tipo de junção. Se **true**, o filtro retornará apenas itens que contém **todas** as tags informadas, se **false**, o filtro retornará os itens que têm pelo menos uma tag das tags informadas _(Padrão=*false*)_ |
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _Array&lt;[Background](#background)&gt;_ |  |
-
-
-**Exemplo:**
-
-```javascript
-//todos
-var r = h.hly('GetBackgrounds', {});
-for (var i = 0; i < r.data.length; i++) {
-    var bg = r.data[i];
-    h.log(bg.type + ": " + bg.name);
-}
-
-//somente "Meus Vídeos" e com as tags 'água' E 'azul'
-r = h.hly('GetBackgrounds', {
-    type: 'my_video',
-    tags: ['água', 'azul'],
-    intersection: true
+var r = h.hly('SearchLyrics', {
+    text: 'exemplo',
+    lyrics: true
 });
-for (var i = 0; i < r.data.length; i++) {
-    var bg = r.data[i];
-    h.log(bg.name);
-}
-```
-
----
-
-
-### hly('GetFavorites')
-Itens da barra de favoritos
-
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _Array&lt;[Favorite Item](#favorite-item)&gt;_ |  |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetFavorites');
-for (var i = 0; i < r.data.length; i++) {
-    h.log(r.data[i].name);
-}
-```
-
----
-
-
-### hly('GetHistories')
-Histórico de todas as marcações de "Música tocada"
-
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _Array&lt;Object&gt;_ |  |
-| `data.*.music_id` | _String_ | ID da música |
-| `data.*.history` | _Array&lt;String&gt;_ | Data e hora no formato: YYYY-MM-DD HH:MM |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetHistories');
-for (var i = 0; i < r.data.length; i++) {
-    h.log(r.data[i].music_id);
-    h.log(r.data[i].history);
-}
-```
-
----
-
-
-### hly('GetHistory', input)
-Histórico de "Música tocada"
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.id` | _String_ | ID da letra da música |
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _Array&lt;String&gt;_ | Data e hora no formato: YYYY-MM-DD HH:MM |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetHistory', {id: '123'});
-for (var i = 0; i < r.data.length; i++) {
-    h.log(r.data[i]);
-}
-```
-
----
-
-
-### hly('GetMembers')
-Lista de integrantes
-
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _Array&lt;[Member](#member)&gt;_ |  |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetMembers');
-for (var i = 0; i < r.data.length; i++) {
-    h.log(r.data[i].name);
-}
-```
-
----
-
-
-### hly('GetRoles')
-Lista de funções
-
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _Array&lt;[Role](#role)&gt;_ |  |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetRoles');
-for (var i = 0; i < r.data.length; i++) {
-    h.log(r.data[i].name);
-}
-```
-
----
-
-
-### hly('GetCurrentSchedule')
-Programação atual (selecionada na janela principal do programa)
-
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _[Schedule](#schedule)_ |  |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetCurrentSchedule');
-for (var i = 0; i < r.data.length; i++) {
-    var s = r.data[i];
-    h.log(s.datetime);
-    h.log(s.name);
-    h.log(s.lyrics_playlist);
-    h.log(s.media_playlist);
-}
-```
-
----
-
-
-### hly('GetSchedules', input)
-Retorna a lista de programação de um mês específico
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.month` | _Number_ | Mês (1-12) |
-| `input.year` | _Number_ | Ano |
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _Array&lt;[Schedule](#schedule)&gt;_ |  |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetSchedules', {
-    month: 8,
-    year: 2022
-});
-for (var i = 0; i < r.data.length; i++) {
-    var s = r.data[i];
-    h.log(s.datetime);
-    h.log(s.name);
-    h.log(s.lyrics_playlist);
-    h.log(s.media_playlist);
-}
-```
-
----
-
-
-### hly('GetMediaPlayerInfo')
-Retorna as informações do player
-
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `name` | _String_ | Nome da mídia atual no player |
-| `path` | _String_ | Caminho completo da mídia no player |
-| `playing` | _Boolean_ | Verifica se o player está em execução |
-| `duration_ms` | _Number_ | Tempo total em milissegundos |
-| `time_ms` | _Number_ | Tempo atual da mídia em milissegundos |
-| `time_elapsed` | _String_ | Tempo decorrido no formato HH:MM:SS |
-| `time_remaining` | _String_ | Tempo restante no formato HH:MM:SS |
-| `volume` | _Number_ | Volume atual do player. Mínimo=0, Máximo=100 |
-| `mute` | _Boolean_ | Verifica se a opção **mudo** está ativada |
-| `repeat` | _Boolean_ | Verifica se a opção **repetir** está ativada |
-| `execute_single` | _Boolean_ | Verifica se o player está definido para executar somente o item atual da lista |
-| `shuffle` | _Boolean_ | Verifica se a opção **aleatório** está ativada |
-| `fullscreen` | _Boolean_ | Verifica se a opção **tela cheia** está ativada |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetMediaPlayerInfo');
-if (r.data.playing) {
-    h.log('O player está em execução');
+if (r.data.length == 0) {
+    h.log("Nenhum resultado encontrado");
 } else {
-    h.log('O player não está em execução');
+    for (var i = 0; i < r.data.length; i++) {
+        var m = r.data[i];
+        h.log(m.title);
+    }
 }
-```
-
----
-
-
-### hly('MediaPlaylistAction', input)
-Executa um item da lista de reprodução de mídia
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.id` | _String_ | ID do item |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('MediaPlaylistAction', {id: 'abc'});
-
-//Chamadas alternativas
-h.mediaPlaylistAction('abc');
-h.mplAction('abc');
-```
-
----
-
-
-### hly('FavoriteAction', input)
-Executa um item da barra de favoritos
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.id` | _String_ | ID do item |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('FavoriteAction', {id: 'abc'});
-
-//Chamadas alternativas
-h.favoriteAction('abc');
-h.favAction('abc');
 ```
 
 ---
@@ -1617,6 +1258,51 @@ h.showVerse('Rm 12:2  Gn 1:1-3  Sl 23');
 ---
 
 
+### hly('GetAudios', input)
+### hly('GetVideos', input)
+### hly('GetImages', input)
+- v2.19.0
+
+Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.folder` | _String (opcional)_ | Nome da subpasta para listar os arquivos |
+| `input.filter` | _String (opcional)_ | Filtrar arquivos pelo nome |
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;Object&gt;_ |  |
+| `data.*.name` | _String_ | Nome do item |
+| `data.*.isDir` | _Boolean_ | Retorna **true** se for uma pasta ou **false** se for arquivo. |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetAudios');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+
+var r = h.hly('GetVideos', { folder: 'abc' });
+
+var r = h.hly('GetImages', { filter: 'text' });
+
+var r = h.hly('GetFiles', { 
+    folder: 'name 1/name 2',
+    filter: 'text'
+});
+```
+
+---
+
+
 ### hly('PlayAudio', input)
 Executa um áudio ou uma lista de áudios (pasta)
 
@@ -1704,44 +1390,6 @@ h.showImage('arquivo.jpg');
 ---
 
 
-### hly('ShowQuickPresentation', input)
-Apresentação rápida de um texto
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.text` | _String_ | Texto que será exibido. [Styled Text](#styled-text) a partir da v2.19.0 |
-| `input.theme` | _Object (opcional)_ | Filtrar tema selecionado para exibição |
-| `input.theme.id` | _String (opcional)_ | ID do tema |
-| `input.theme.name` | _String (opcional)_ | Nome do tema |
-| `input.automatic` | _[Automatic](#automatic-presentation) (opcional)_ | Se informado, a apresentação dos itens será automática |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('ShowQuickPresentation', {
-    text: "Texto que será exibido"
-});
-
-h.hly('ShowQuickPresentation', {
-    text: "Slide 1\n\nSlide 2\n\nSlide 3",
-    theme: {
-        name: "Tema 3"
-    },
-    automatic: {
-        seconds: 5,
-        repeat: true
-    }
-});
-```
-
----
-
-
 ### hly('ShowAnnouncement', input)
 Apresenta um anúncio ou uma lista de anúncios
 
@@ -1770,486 +1418,6 @@ h.hly('ShowAnnouncement', {
         repeat: true
     }
 });
-```
-
----
-
-
-### hly('CloseCurrentPresentation')
-Encerra a apresentação atual
-
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('CloseCurrentPresentation');
-```
-
----
-
-
-### hly('SetCurrentBackground', input)
-Altera o plano de fundo (ou tema) da apresentação atual. Se mais de um item for encontrado de acordo com os filtros, será escolhido um item da lista de forma aleatória
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input` | _Object (opcional)_ | Filtro |
-| `input.id` | _String (opcional)_ | ID do tema ou plano de fundo |
-| `input.name` | _String (opcional)_ | Nome do tema ou plano de fundo |
-| `input.type` | _String (opcional)_ | Pode ser: theme, my_video, my_image, video, image |
-| `input.tag` | _String (opcional)_ |  |
-| `input.tags` | _Array&lt;String&gt; (opcional)_ |  |
-| `input.intersection` | _Boolean (opcional)_ | Se o campo **input.tags** estiver preenchido com múltiplos itens, a opção **input.intersection** define o tipo de junção. Se **true**, o filtro retornará apenas itens que contém **todas** as tags informadas, se **false**, o filtro retornará os itens que têm pelo menos uma tag das tags informadas _(Padrão=*false*)_ |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('SetCurrentBackground', {id: 'abc'});
-
-h.hly('SetCurrentBackground', {name: 'xyz'});
-
-//um vídeo que esteja definido com a tag 'água'
-h.hly('SetCurrentBackground', {
-    type: 'my_video',
-    tag: 'água'
-});
-
-//um vídeo que esteja definido com a tag 'água' OU com a tag 'azul'
-h.hly('SetCurrentBackground', {
-    type: 'my_video',
-    tags: ['água', 'azul']
-});
-
-//um vídeo que esteja definido com a tag 'água' E com a tag 'azul'
-h.hly('SetCurrentBackground', {
-    type: 'my_video',
-    tags: ['água', 'azul'],
-    intersection: true
-});
-```
-
----
-
-
-### hly('GetBpm')
-Retorna o valor BPM atual definido no programa
-
-
-
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ | Valor BPM atual |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetBpm');
-h.log('BPM: ' + r.data);
-```
-
----
-
-
-### hly('SetBpm', input)
-Altera o valor BPM atual do programa
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.bpm` | _Number_ | Valor BPM |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('SetBpm', {bpm: 80});
-```
-
----
-
-
-### hly('SearchLyrics', input)
-### hly('SearchSong', input)
-Realiza uma busca na lista de letras do usuário
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input` | _String_ | Filtro |
-| `input.text` | _String_ | Texto a ser pesquisado |
-| `input.title` | _Boolean (opcional)_ |  _(Padrão=*true*)_ |
-| `input.artist` | _Boolean (opcional)_ |  _(Padrão=*true*)_ |
-| `input.note` | _Boolean (opcional)_ |  _(Padrão=*true*)_ |
-| `input.lyrics` | _Boolean (opcional)_ |  _(Padrão=*false*)_ |
-| `input.group` | _String (opcional)_ |  |
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _Array&lt;[Lyrics](#lyrics)&gt;_ |  |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('SearchLyrics', {
-    text: 'exemplo',
-    lyrics: true
-});
-if (r.data.length == 0) {
-    h.log("Nenhum resultado encontrado");
-} else {
-    for (var i = 0; i < r.data.length; i++) {
-        var m = r.data[i];
-        h.log(m.title);
-    }
-}
-```
-
----
-
-
-### hly('AddLyricsToPlaylist', input)
-### hly('AddSongsToPlaylist', input)
-Adicionar letra de música na lista de reprodução
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.id` | _String (opcional)_ | ID da letra |
-| `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada letra |
-| `input.index` | _Number (opcional)_ | Posição na lista onde o item será adicionado (inicia em zero). Os itens são adicionados no final da lista por padrão. _(Padrão=*-1*)_ |
-| `input.media_playlist` | _Boolean (opcional)_ | Adicionar as letras na lista de reprodução de mídia _(Padrão=*false*)_ |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('AddLyricsToPlaylist', {id: '123'});
-
-h.hly('AddLyricsToPlaylist', {ids: ['123', '456']});
-
-h.hly('AddLyricsToPlaylist', {
-    ids: ['123', '456'],
-    index: 3
-});
-
-h.hly('AddLyricsToPlaylist', {
-    ids: ['123', '456'],
-    index: 3,
-    media_playlist: true
-});
-```
-
----
-
-
-### hly('RemoveFromLyricsPlaylist', input)
-### hly('RemoveFromSongPlaylist', input)
-Remover letra de música na lista de reprodução
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.id` | _String (opcional)_ | ID da letra |
-| `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada letra |
-| `input.index` | _Number (opcional)_ | Posição do item na lista que será removido (inicia em zero). |
-| `input.indexes` | _Boolean (opcional)_ | Lista com a posição de cada item na lista que será removido. (Inicia em zero) |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('RemoveFromLyricsPlaylist', {id: '123'});
-
-h.hly('RemoveFromLyricsPlaylist', {ids: ['123', '456']});
-
-h.hly('RemoveFromLyricsPlaylist', {index: 3});
-
-h.hly('RemoveFromLyricsPlaylist', {indexes: [3, 4, 5]});
-```
-
----
-
-
-### hly('RemoveFromMediaPlaylist', input)
-Remover itens da lista de reprodução de mídia
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.id` | _String (opcional)_ | ID do item |
-| `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada item |
-| `input.index` | _Number (opcional)_ | Posição do item na lista que será removido (inicia em zero). |
-| `input.indexes` | _Boolean (opcional)_ | Lista com a posição de cada item na lista que será removido. (Inicia em zero) |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('RemoveFromMediaPlaylist', {id: 'abc'});
-
-h.hly('RemoveFromMediaPlaylist', {ids: ['abc', 'xyz']});
-
-h.hly('RemoveFromMediaPlaylist', {index: 3});
-
-h.hly('RemoveFromMediaPlaylist', {indexes: [3, 4, 5]});
-```
-
----
-
-
-### hly('GetCommunicationPanelInfo')
-### hly('GetCPInfo')
-Configuração atual do painel de comunicação
-
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data.text` | _String_ | Texto atual |
-| `data.show` | _Boolean_ | Se o texto atual está em exibição |
-| `data.display_ahead` | _Boolean_ | Se a opção *'exibir à frente de tudo'* está ativada |
-| `data.alert_text` | _String_ | Texto atual do alerta |
-| `data.alert_show` | _Boolean_ | Se a exibição do alerta está ativada |
-| `data.countdown_show` | _Boolean_ | Se uma contagem regressiva está em exibição |
-| `data.countdown_time` | _Number_ | O tempo atual da contagem regressiva em exibição (em segundos) |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetCommunicationPanelInfo');
-if (r.data.countdown_show) {
-    h.log("A contagem regressiva do painel de comunicação está ativa");
-    h.log(r.data.countdown_time + " segundos");
-} else {
-    h.log("A contagem regressiva do painel de comunicação não está ativa");
-}
-```
-
----
-
-
-### hly('SetAlert', input)
-Altera as configurações da mensagem de alerta
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.text` | _String (opcional)_ | Alterar o texto de alerta |
-| `input.show` | _Boolean (opcional)_ | Exibir/ocultar o alerta |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('SetAlert', {
-    text: "texto de alerta",
-    show: true
-});
-
-//remover
-h.hly('SetAlert', {show: false});
-```
-
----
-
-
-### hly('StartCountdownCommunicationPanel', input)
-### hly('StartCountdownCP', input)
-Inicia uma contagem regressiva no painel de comunicação
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.minutes` | _Number_ | Quantidade de minutos |
-| `input.seconds` | _Number_ | Quantidade de segundos |
-| `input.yellow_starts_at` | _Number (opcional)_ | Valor em segundos para definir a partir de quanto tempo a contagem regressiva ficará amarela |
-| `input.stop_at_zero` | _Boolean (opcional)_ | Parar a contagem regressiva ao chegar em zero _(Padrão=*false*)_ |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('StartCountdownCommunicationPanel', {minutes: 3});
-
-h.hly('StartCountdownCommunicationPanel', {
-    minutes: 1,
-    seconds: 30,
-    yellow_starts_at: 30,
-    stop_at_zero: true
-});
-```
-
----
-
-
-### hly('StopCountdownCommunicationPanel')
-### hly('StopCountdownCP')
-Encerra a contagem regressiva atual do painel de comunicação
-
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('StopCountdownCommunicationPanel');
-```
-
----
-
-
-### hly('SetTextCommunicationPanel', input)
-### hly('SetTextCP', input)
-Alterar o texto do painel de comunicação
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.text` | _Number (opcional)_ | Alterar o texto do painel de comunicação. [Styled Text](#styled-text) a partir da v2.19.0 |
-| `input.show` | _Boolean (opcional)_ | Exibir/ocultar o texto |
-| `input.display_ahead` | _Boolean (opcional)_ | Alterar a opção *'exibir à frente de tudo'* |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('SetTextCommunicationPanel', {
-    text: "texto painel de comunicação",
-    show: true,
-    display_ahead: true
-});
-
-//remover
-h.hly('SetTextCommunicationPanel', {show: false});
-```
-
----
-
-
-### hly('SetAlertCommunicationPanel', input)
-### hly('SetAlertCP', input)
-Alterar as configurações de alerta do painel de comunicação
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.text` | _String (opcional)_ | Alterar o texto de alerta |
-| `input.show` | _Boolean (opcional)_ | Exibir/ocultar o alerta |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('SetAlertCommunicationPanel', {
-    text: "texto de alerta painel de comunicação",
-    show: true
-});
-
-//remover
-h.hly('SetAlertCommunicationPanel', {show: false});
-```
-
----
-
-
-### hly('SetLogo', input)
-Alterar as configurações da funcionalidade *Logo* do programa (menu ferramentas)
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.enable` | _Boolean (opcional)_ | Ativar/desativar a funcionalidade |
-| `input.hide` | _Boolean (opcional)_ | Exibir/ocultar a funcionalidade |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.hly('SetLogo', {enable: true});
-
-h.hly('SetLogo', {hide: true});
-```
-
----
-
-
-### hly('GetCurrentPresentation')
-- v2.19.0
-
-Item sendo apresentado no momento ou **null** se não tiver apresentação sendo exibida
-
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _[Item](#item)_ |  |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetCurrentPresentation');
-if (r.data == null) {
-    //não há apresentação em exibição no momento
-}
-
-switch (r.data.type) {
-    case 'song':
-        //uma música sendo apresentada
-        break;
-    case 'verse':
-        //um versículo sendo apresentado
-        break;
-}
 ```
 
 ---
@@ -2311,40 +1479,18 @@ h.hly('ShowCustomMessage', {
 ---
 
 
-### hly('GetHue')
-- v2.19.0
-
-Retorna o valor matiz atual definido no programa
-
-
-
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ | Valor matiz atual. Mínimo=0, Máximo=360. Retorna **null** se desativado. |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetHue');
-h.log('HUE: ' + r.data);
-```
-
----
-
-
-### hly('SetHue', input)
-- v2.19.0
-
-Altera o valor matiz atual do programa
+### hly('ShowQuickPresentation', input)
+Apresentação rápida de um texto
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.hue` | _Number_ | Valor matiz. Mínimo=0, Máximo=360 ou **null** para desativar. |
+| `input.text` | _String_ | Texto que será exibido. [Styled Text](#styled-text) a partir da v2.19.0 |
+| `input.theme` | _Object (opcional)_ | Filtrar tema selecionado para exibição |
+| `input.theme.id` | _String (opcional)_ | ID do tema |
+| `input.theme.name` | _String (opcional)_ | Nome do tema |
+| `input.automatic` | _[Automatic](#automatic-presentation) (opcional)_ | Se informado, a apresentação dos itens será automática |
 
 
 _Método sem retorno_
@@ -2352,9 +1498,519 @@ _Método sem retorno_
 **Exemplo:**
 
 ```javascript
-h.hly('SetHue', {hue: 250});
+h.hly('ShowQuickPresentation', {
+    text: "Texto que será exibido"
+});
 
-h.hly('SetHue', {hue: null});
+h.hly('ShowQuickPresentation', {
+    text: "Slide 1\n\nSlide 2\n\nSlide 3",
+    theme: {
+        name: "Tema 3"
+    },
+    automatic: {
+        seconds: 5,
+        repeat: true
+    }
+});
+```
+
+---
+
+
+### hly('PlayAutomaticPresentation', input)
+### hly('PlayAP')
+- v2.19.0
+
+Executa um item apresentação automática
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.file` | _String_ | Nome do arquivo. Exemplo: **arquivo.ap** |
+| `input.theme` | _Object (opcional)_ | Filtrar tema selecionado para exibição |
+| `input.theme.id` | _String (opcional)_ | ID do tema |
+| `input.theme.name` | _String (opcional)_ | Nome do tema |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('PlayAutomaticPresentation', {file: 'arquivo.ap'});
+
+h.hly('PlayAP', {file: 'arquivo.ap'});
+
+h.hly('PlayAP', {
+    file: 'arquivo.ap',
+    theme: {
+        name: "Tema 3"
+    }
+});
+```
+
+---
+
+
+### hly('GetMediaPlayerInfo')
+Retorna as informações do player
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ | Nome da mídia atual no player |
+| `path` | _String_ | Caminho completo da mídia no player |
+| `playing` | _Boolean_ | Verifica se o player está em execução |
+| `duration_ms` | _Number_ | Tempo total em milissegundos |
+| `time_ms` | _Number_ | Tempo atual da mídia em milissegundos |
+| `time_elapsed` | _String_ | Tempo decorrido no formato HH:MM:SS |
+| `time_remaining` | _String_ | Tempo restante no formato HH:MM:SS |
+| `volume` | _Number_ | Volume atual do player. Mínimo=0, Máximo=100 |
+| `mute` | _Boolean_ | Verifica se a opção **mudo** está ativada |
+| `repeat` | _Boolean_ | Verifica se a opção **repetir** está ativada |
+| `execute_single` | _Boolean_ | Verifica se o player está definido para executar somente o item atual da lista |
+| `shuffle` | _Boolean_ | Verifica se a opção **aleatório** está ativada |
+| `fullscreen` | _Boolean_ | Verifica se a opção **tela cheia** está ativada |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetMediaPlayerInfo');
+if (r.data.playing) {
+    h.log('O player está em execução');
+} else {
+    h.log('O player não está em execução');
+}
+```
+
+---
+
+
+### hly('MediaPlayerAction', input)
+- v2.19.0
+
+Executa ações no player
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `action` | _String (opcional)_ | Nome da ação que será executada no player. play, pause, stop, next, previous |
+| `volume` | _Number (opcional)_ | Altera o volume do player. Mínimo=0, Máximo=100 |
+| `mute` | _Boolean (opcional)_ | Altera a opção **mudo** |
+| `repeat` | _Boolean (opcional)_ | Altera a opção **repetir** |
+| `shuffle` | _Boolean (opcional)_ | Altera a opção **aleatório** |
+| `execute_single` | _Boolean (opcional)_ | Altera a configuração do player para executar somente o item atual da lista |
+| `fullscreen` | _Boolean (opcional)_ | Altera a opção **tela cheia** do player |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('MediaPlayerAction', { 
+    mute: false,
+    repeat: true,
+    volume: 80,
+    action: 'play' 
+});
+
+//alterar volume
+h.hly('MediaPlayerAction', { volume: 80 });
+
+//deixar no mudo
+h.hly('MediaPlayerAction', { mute: true });
+
+//parar execução atual
+h.hly('MediaPlayerAction', { action: 'stop' });
+```
+
+---
+
+
+### hly('GetLyricsPlaylist')
+### hly('GetSongPlaylist')
+Lista de reprodução de letras
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[Lyrics](#lyrics)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetLyricsPlaylist');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].title);
+}
+```
+
+---
+
+
+### hly('AddLyricsToPlaylist', input)
+### hly('AddSongsToPlaylist', input)
+Adicionar letra de música na lista de reprodução
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String (opcional)_ | ID da letra |
+| `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada letra |
+| `input.index` | _Number (opcional)_ | Posição na lista onde o item será adicionado (inicia em zero). Os itens são adicionados no final da lista por padrão. _(Padrão=*-1*)_ |
+| `input.media_playlist` | _Boolean (opcional)_ | Adicionar as letras na lista de reprodução de mídia _(Padrão=*false*)_ |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('AddLyricsToPlaylist', {id: '123'});
+
+h.hly('AddLyricsToPlaylist', {ids: ['123', '456']});
+
+h.hly('AddLyricsToPlaylist', {
+    ids: ['123', '456'],
+    index: 3
+});
+
+h.hly('AddLyricsToPlaylist', {
+    ids: ['123', '456'],
+    index: 3,
+    media_playlist: true
+});
+```
+
+---
+
+
+### hly('RemoveFromLyricsPlaylist', input)
+### hly('RemoveFromSongPlaylist', input)
+Remover letra de música na lista de reprodução
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String (opcional)_ | ID da letra |
+| `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada letra |
+| `input.index` | _Number (opcional)_ | Posição do item na lista que será removido (inicia em zero). |
+| `input.indexes` | _Array&lt;Number&gt; (opcional)_ | Lista com a posição de cada item na lista que será removido. (Inicia em zero) |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('RemoveFromLyricsPlaylist', {id: '123'});
+
+h.hly('RemoveFromLyricsPlaylist', {ids: ['123', '456']});
+
+h.hly('RemoveFromLyricsPlaylist', {index: 3});
+
+h.hly('RemoveFromLyricsPlaylist', {indexes: [3, 4, 5]});
+```
+
+---
+
+
+### hly('GetMediaPlaylist')
+Lista de reprodução de mídia
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[Item](#item)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetMediaPlaylist');
+for (var i = 0; i < r.data.length; i++) {
+    var item = r.data[i];
+    h.log(item.type + ": " + item.name);
+}
+```
+
+---
+
+
+### hly('MediaPlaylistAction', input)
+Executa um item da lista de reprodução de mídia
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | ID do item |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('MediaPlaylistAction', {id: 'abc'});
+
+//Chamadas alternativas
+h.mediaPlaylistAction('abc');
+h.mplAction('abc');
+```
+
+---
+
+
+### hly('RemoveFromMediaPlaylist', input)
+Remover itens da lista de reprodução de mídia
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String (opcional)_ | ID do item |
+| `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada item |
+| `input.index` | _Number (opcional)_ | Posição do item na lista que será removido (inicia em zero). |
+| `input.indexes` | _Array&lt;Number&gt; (opcional)_ | Lista com a posição de cada item na lista que será removido. (Inicia em zero) |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('RemoveFromMediaPlaylist', {id: 'abc'});
+
+h.hly('RemoveFromMediaPlaylist', {ids: ['abc', 'xyz']});
+
+h.hly('RemoveFromMediaPlaylist', {index: 3});
+
+h.hly('RemoveFromMediaPlaylist', {indexes: [3, 4, 5]});
+```
+
+---
+
+
+### hly('GetFavorites')
+Itens da barra de favoritos
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[Favorite Item](#favorite-item)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetFavorites');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+```
+
+---
+
+
+### hly('FavoriteAction', input)
+Executa um item da barra de favoritos
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | ID do item |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('FavoriteAction', {id: 'abc'});
+
+//Chamadas alternativas
+h.favoriteAction('abc');
+h.favAction('abc');
+```
+
+---
+
+
+### hly('ApiAction', input)
+- v2.19.0
+
+Executa a ação de um item API existente no programa
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | ID do item |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('ApiAction', { id: 'abcxyz' });
+
+if (r.status == 'ok') {
+    h.log('Ação executada');
+} else {
+    h.log('Erro: ' + r.error);
+}
+```
+
+---
+
+
+### hly('ScriptAction', input)
+- v2.19.0
+
+Executa a ação de um item **Script** existente no programa
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | ID do item |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('ScriptAction', { id: 'abcxyz' });
+
+if (r.status == 'ok') {
+    h.log('Ação executada');
+} else {
+    h.log('Erro: ' + r.error);
+}
+```
+
+---
+
+
+### hly('ApiRequest', input)
+- v2.19.0
+
+Executa uma requisição para o receptor associado e retorna a resposta do receptor.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | id do receptor |
+| `input.raw` | _Object_ | dados da requisição |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | Retorno da requisição ou NULL para erro/timeout |
+
+
+**Exemplo:**
+
+```javascript
+//É possível realizar requisição diretamente para um receptor criado
+//Por exemplo:
+//Considerando que você tenha um receptor criado para comunicação com OBS Studio via websocket e o ID do receptor seja 'abcyxz'
+//você pode fazer uma requisição como no exemplo abaixo
+var r = h.hly('ApiRequest', {
+    id: 'abcxyz',
+    raw: {
+        'request-type': 'GetSourceActive',
+        'sourceName': 'exemplo'
+    }
+});
+if (r.status == 'ok') {
+    h.log('Resposta da requisição: ' + r.data);
+    var obj = JSON.parse(r.data);
+    if (obj.sourceActive) {
+        h.log('A fonte exemplo está ativa');
+    } else {
+        h.log('A fonte exemplo não está ativa');
+    }
+} else {
+    h.log('Erro: ' + r.error);
+}
+```
+
+---
+
+
+### hly('GetCurrentPresentation')
+- v2.19.0
+
+Item sendo apresentado no momento ou **null** se não tiver apresentação sendo exibida
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _[Item](#item)_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetCurrentPresentation');
+if (r.data == null) {
+    //não há apresentação em exibição no momento
+}
+
+switch (r.data.type) {
+    case 'song':
+        //uma música sendo apresentada
+        break;
+    case 'verse':
+        //um versículo sendo apresentado
+        break;
+}
+```
+
+---
+
+
+### hly('CloseCurrentPresentation')
+Encerra a apresentação atual
+
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('CloseCurrentPresentation');
 ```
 
 ---
@@ -2515,6 +2171,518 @@ h.hly('ActionGoToSlideDescription', {name: 'Verse 1'});
 ---
 
 
+### hly('GetCurrentBackground')
+Retorna o plano de fundo da apresentação em exibição.
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _[Background](#background)_ | Plano de fundo atual ou NULL se não houver apresentação em exibição |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetCurrentBackground');
+if (r.data != null) {
+    h.log('ID do plano de fundo atual: ' + r.data.id);
+} else {
+    h.log('Não há apresentação em exibição');
+}
+```
+
+---
+
+
+### hly('GetBackgrounds', input)
+Lista dos temas e planos de fundo
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input` | _Object (opcional)_ | Filtro |
+| `input.type` | _String (opcional)_ | Pode ser: theme, my_video, my_image, video, image |
+| `input.tag` | _String (opcional)_ |  |
+| `input.tags` | _Array&lt;String&gt; (opcional)_ |  |
+| `input.intersection` | _Boolean (opcional)_ | Se o campo **input.tags** estiver preenchido com múltiplos itens, a opção **input.intersection** define o tipo de junção. Se **true**, o filtro retornará apenas itens que contém **todas** as tags informadas, se **false**, o filtro retornará os itens que têm pelo menos uma tag das tags informadas _(Padrão=*false*)_ |
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[Background](#background)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+//todos
+var r = h.hly('GetBackgrounds', {});
+for (var i = 0; i < r.data.length; i++) {
+    var bg = r.data[i];
+    h.log(bg.type + ": " + bg.name);
+}
+
+//somente "Meus Vídeos" e com as tags 'água' E 'azul'
+r = h.hly('GetBackgrounds', {
+    type: 'my_video',
+    tags: ['água', 'azul'],
+    intersection: true
+});
+for (var i = 0; i < r.data.length; i++) {
+    var bg = r.data[i];
+    h.log(bg.name);
+}
+```
+
+---
+
+
+### hly('SetCurrentBackground', input)
+Altera o plano de fundo (ou tema) da apresentação atual. Se mais de um item for encontrado de acordo com os filtros, será escolhido um item da lista de forma aleatória
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input` | _Object (opcional)_ | Filtro |
+| `input.id` | _String (opcional)_ | ID do tema ou plano de fundo |
+| `input.name` | _String (opcional)_ | Nome do tema ou plano de fundo |
+| `input.type` | _String (opcional)_ | Pode ser: theme, my_video, my_image, video, image |
+| `input.tag` | _String (opcional)_ |  |
+| `input.tags` | _Array&lt;String&gt; (opcional)_ |  |
+| `input.intersection` | _Boolean (opcional)_ | Se o campo **input.tags** estiver preenchido com múltiplos itens, a opção **input.intersection** define o tipo de junção. Se **true**, o filtro retornará apenas itens que contém **todas** as tags informadas, se **false**, o filtro retornará os itens que têm pelo menos uma tag das tags informadas _(Padrão=*false*)_ |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('SetCurrentBackground', {id: 'abc'});
+
+h.hly('SetCurrentBackground', {name: 'xyz'});
+
+//um vídeo que esteja definido com a tag 'água'
+h.hly('SetCurrentBackground', {
+    type: 'my_video',
+    tag: 'água'
+});
+
+//um vídeo que esteja definido com a tag 'água' OU com a tag 'azul'
+h.hly('SetCurrentBackground', {
+    type: 'my_video',
+    tags: ['água', 'azul']
+});
+
+//um vídeo que esteja definido com a tag 'água' E com a tag 'azul'
+h.hly('SetCurrentBackground', {
+    type: 'my_video',
+    tags: ['água', 'azul'],
+    intersection: true
+});
+```
+
+---
+
+
+### hly('SetAlert', input)
+Altera as configurações da mensagem de alerta
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.text` | _String (opcional)_ | Alterar o texto de alerta |
+| `input.show` | _Boolean (opcional)_ | Exibir/ocultar o alerta |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('SetAlert', {
+    text: "texto de alerta",
+    show: true
+});
+
+//remover
+h.hly('SetAlert', {show: false});
+```
+
+---
+
+
+### hly('GetCurrentSchedule')
+Programação atual (selecionada na janela principal do programa)
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _[Schedule](#schedule)_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetCurrentSchedule');
+for (var i = 0; i < r.data.length; i++) {
+    var s = r.data[i];
+    h.log(s.datetime);
+    h.log(s.name);
+    h.log(s.lyrics_playlist);
+    h.log(s.media_playlist);
+}
+```
+
+---
+
+
+### hly('GetSchedules', input)
+Retorna a lista de programação de um mês específico
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.month` | _Number_ | Mês (1-12) |
+| `input.year` | _Number_ | Ano |
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[Schedule](#schedule)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetSchedules', {
+    month: 8,
+    year: 2022
+});
+for (var i = 0; i < r.data.length; i++) {
+    var s = r.data[i];
+    h.log(s.datetime);
+    h.log(s.name);
+    h.log(s.lyrics_playlist);
+    h.log(s.media_playlist);
+}
+```
+
+---
+
+
+### hly('GetSavedPlaylists')
+- v2.19.0
+
+Retorna as listas de reprodução salvas
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;Object&gt;_ |  |
+| `data.*.id` | _String_ | ID do item |
+| `data.*.name` | _String_ | Nome do item |
+| `data.*.items` | _Array&lt;[Item](#item)&gt;_ | Itens salvos na lista |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetSavedPlaylists');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+```
+
+---
+
+
+### hly('LoadSavedPlaylist', input)
+- v2.19.0
+
+Preenche a lista de mídias da lista de reprodução selecionada atualmente no programa com a lista informada
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.name` | _String_ | Nome da lista de reprodução salva |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('LoadSavedPlaylist', {name: 'name'});
+```
+
+---
+
+
+### hly('GetHistory', input)
+Histórico de "Música tocada"
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | ID da letra da música |
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;String&gt;_ | Data e hora no formato: YYYY-MM-DD HH:MM |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetHistory', {id: '123'});
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i]);
+}
+```
+
+---
+
+
+### hly('GetHistories')
+Histórico de todas as marcações de "Música tocada"
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;Object&gt;_ |  |
+| `data.*.music_id` | _String_ | ID da música |
+| `data.*.history` | _Array&lt;String&gt;_ | Data e hora no formato: YYYY-MM-DD HH:MM |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetHistories');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].music_id);
+    h.log(r.data[i].history);
+}
+```
+
+---
+
+
+### hly('GetMembers')
+Lista de integrantes
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[Member](#member)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetMembers');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+```
+
+---
+
+
+### hly('GetRoles')
+Lista de funções
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[Role](#role)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetRoles');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+```
+
+---
+
+
+### hly('GetCommunicationPanelInfo')
+### hly('GetCPInfo')
+Configuração atual do painel de comunicação
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data.text` | _String_ | Texto atual |
+| `data.show` | _Boolean_ | Se o texto atual está em exibição |
+| `data.display_ahead` | _Boolean_ | Se a opção *'exibir à frente de tudo'* está ativada |
+| `data.alert_text` | _String_ | Texto atual do alerta |
+| `data.alert_show` | _Boolean_ | Se a exibição do alerta está ativada |
+| `data.countdown_show` | _Boolean_ | Se uma contagem regressiva está em exibição |
+| `data.countdown_time` | _Number_ | O tempo atual da contagem regressiva em exibição (em segundos) |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetCommunicationPanelInfo');
+if (r.data.countdown_show) {
+    h.log("A contagem regressiva do painel de comunicação está ativa");
+    h.log(r.data.countdown_time + " segundos");
+} else {
+    h.log("A contagem regressiva do painel de comunicação não está ativa");
+}
+```
+
+---
+
+
+### hly('StartCountdownCommunicationPanel', input)
+### hly('StartCountdownCP', input)
+Inicia uma contagem regressiva no painel de comunicação
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.minutes` | _Number_ | Quantidade de minutos |
+| `input.seconds` | _Number_ | Quantidade de segundos |
+| `input.yellow_starts_at` | _Number (opcional)_ | Valor em segundos para definir a partir de quanto tempo a contagem regressiva ficará amarela |
+| `input.stop_at_zero` | _Boolean (opcional)_ | Parar a contagem regressiva ao chegar em zero _(Padrão=*false*)_ |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('StartCountdownCommunicationPanel', {minutes: 3});
+
+h.hly('StartCountdownCommunicationPanel', {
+    minutes: 1,
+    seconds: 30,
+    yellow_starts_at: 30,
+    stop_at_zero: true
+});
+```
+
+---
+
+
+### hly('StopCountdownCommunicationPanel')
+### hly('StopCountdownCP')
+Encerra a contagem regressiva atual do painel de comunicação
+
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('StopCountdownCommunicationPanel');
+```
+
+---
+
+
+### hly('SetTextCommunicationPanel', input)
+### hly('SetTextCP', input)
+Alterar o texto do painel de comunicação
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.text` | _String (opcional)_ | Alterar o texto do painel de comunicação. [Styled Text](#styled-text) a partir da v2.19.0 |
+| `input.show` | _Boolean (opcional)_ | Exibir/ocultar o texto |
+| `input.display_ahead` | _Boolean (opcional)_ | Alterar a opção *'exibir à frente de tudo'* |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('SetTextCommunicationPanel', {
+    text: "texto painel de comunicação",
+    show: true,
+    display_ahead: true
+});
+
+//remover
+h.hly('SetTextCommunicationPanel', {show: false});
+```
+
+---
+
+
+### hly('SetAlertCommunicationPanel', input)
+### hly('SetAlertCP', input)
+Alterar as configurações de alerta do painel de comunicação
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.text` | _String (opcional)_ | Alterar o texto de alerta |
+| `input.show` | _Boolean (opcional)_ | Exibir/ocultar o alerta |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('SetAlertCommunicationPanel', {
+    text: "texto de alerta painel de comunicação",
+    show: true
+});
+
+//remover
+h.hly('SetAlertCommunicationPanel', {show: false});
+```
+
+---
+
+
 ### hly('GetWallpaperSettings')
 - v2.19.0
 
@@ -2640,91 +2808,36 @@ var r = h.hly('SetDisplaySettings', {
 ---
 
 
-### hly('GetSyncStatus')
-- v2.19.0
-
-Retorna o estado atual da sincronização online via Google Drive™
+### hly('GetBpm')
+Retorna o valor BPM atual definido no programa
 
 
 
 **Resposta:**
 
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data.enabled` | _Boolean_ | Se a sincronização está ativada |
-| `data.started` | _Boolean_ | Se a sincronização foi iniciada (internet disponível, por exemplo) |
-| `data.progress` | _Number_ | Progresso da sincronização de 0 a 100 |
-
-
----
-
-
-### hly('GetSavedPlaylists')
-- v2.19.0
-
-Retorna as listas de reprodução salvas
-
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _Array&lt;Object&gt;_ |  |
-| `data.*.id` | _String_ | ID do item |
-| `data.*.name` | _String_ | Nome do item |
-| `data.*.items` | _Array&lt;[Item](#item)&gt;_ | Itens salvos na lista |
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Number_ | Valor BPM atual |
 
 
 **Exemplo:**
 
 ```javascript
-var r = h.hly('GetSavedPlaylists');
-for (var i = 0; i < r.data.length; i++) {
-    h.log(r.data[i].name);
-}
+var r = h.hly('GetBpm');
+h.log('BPM: ' + r.data);
 ```
 
 ---
 
 
-### hly('LoadSavedPlaylist', input)
-- v2.19.0
-
-Preenche a lista de mídias da lista de reprodução selecionada atualmente no programa com a lista informada
-
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.name` | _String_ | Nome da lista de reprodução salva |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('LoadSavedPlaylist', {name: 'name'});
-```
-
----
-
-
-### hly('PlayAutomaticPresentation', input)
-### hly('PlayAP')
-- v2.19.0
-
-Executa um item apresentação automática
+### hly('SetBpm', input)
+Altera o valor BPM atual do programa
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.file` | _String_ | Nome do arquivo. Exemplo: **arquivo.ap** |
-| `input.theme` | _Object (opcional)_ | Filtrar tema selecionado para exibição |
-| `input.theme.id` | _String (opcional)_ | ID do tema |
-| `input.theme.name` | _String (opcional)_ | Nome do tema |
+| `input.bpm` | _Number_ | Valor BPM |
 
 
 _Método sem retorno_
@@ -2732,37 +2845,46 @@ _Método sem retorno_
 **Exemplo:**
 
 ```javascript
-h.hly('PlayAutomaticPresentation', {file: 'arquivo.ap'});
-
-h.hly('PlayAP', {file: 'arquivo.ap'});
-
-h.hly('PlayAP', {
-    file: 'arquivo.ap',
-    theme: {
-        name: "Tema 3"
-    }
-});
+h.hly('SetBpm', {bpm: 80});
 ```
 
 ---
 
 
-### hly('MediaPlayerAction', input)
+### hly('GetHue')
 - v2.19.0
 
-Executa ações no player
+Retorna o valor matiz atual definido no programa
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Number_ | Valor matiz atual. Mínimo=0, Máximo=360. Retorna **null** se desativado. |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetHue');
+h.log('HUE: ' + r.data);
+```
+
+---
+
+
+### hly('SetHue', input)
+- v2.19.0
+
+Altera o valor matiz atual do programa
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `action` | _String (opcional)_ | Nome da ação que será executada no player. play, pause, stop, next, previous |
-| `volume` | _Number (opcional)_ | Altera o volume do player. Mínimo=0, Máximo=100 |
-| `mute` | _Boolean (opcional)_ | Altera a opção **mudo** |
-| `repeat` | _Boolean (opcional)_ | Altera a opção **repetir** |
-| `shuffle` | _Boolean (opcional)_ | Altera a opção **aleatório** |
-| `execute_single` | _Boolean (opcional)_ | Altera a configuração do player para executar somente o item atual da lista |
-| `fullscreen` | _Boolean (opcional)_ | Altera a opção **tela cheia** do player |
+| `input.hue` | _Number_ | Valor matiz. Mínimo=0, Máximo=360 ou **null** para desativar. |
 
 
 _Método sem retorno_
@@ -2770,66 +2892,9 @@ _Método sem retorno_
 **Exemplo:**
 
 ```javascript
-h.hly('MediaPlayerAction', { 
-    mute: false,
-    repeat: true,
-    volume: 80,
-    action: 'play' 
-});
+h.hly('SetHue', {hue: 250});
 
-//alterar volume
-h.hly('MediaPlayerAction', { volume: 80 });
-
-//deixar no mudo
-h.hly('MediaPlayerAction', { mute: true });
-
-//parar execução atual
-h.hly('MediaPlayerAction', { action: 'stop' });
-```
-
----
-
-
-### hly('GetAudios', input)
-### hly('GetVideos', input)
-### hly('GetImages', input)
-- v2.19.0
-
-Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.folder` | _String (opcional)_ | Nome da subpasta para listar os arquivos |
-| `input.filter` | _Number (opcional)_ | Filtrar arquivos pelo nome |
-
-
-**Resposta:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `data` | _Array&lt;Object&gt;_ |  |
-| `data.*.name` | _String_ | Nome do item |
-| `data.*.isDir` | _Boolean_ | Retorna **true** se for uma pasta ou **false** se for arquivo. |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('GetAudios');
-for (var i = 0; i < r.data.length; i++) {
-    h.log(r.data[i].name);
-}
-
-var r = h.hly('GetVideos', { folder: 'abc' });
-
-var r = h.hly('GetImages', { filter: 'text' });
-
-var r = h.hly('GetFiles', { 
-    folder: 'name 1/name 2',
-    filter: 'text'
-});
+h.hly('SetHue', {hue: null});
 ```
 
 ---
@@ -2884,16 +2949,15 @@ h.hly('SetRuntimeEnvironment', { name: 'abc' });
 ---
 
 
-### hly('ApiAction', input)
-- v2.19.0
-
-Executa a ação de um item API existente no programa
+### hly('SetLogo', input)
+Alterar as configurações da funcionalidade *Logo* do programa (menu ferramentas)
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID do item |
+| `input.enable` | _Boolean (opcional)_ | Ativar/desativar a funcionalidade |
+| `input.hide` | _Boolean (opcional)_ | Exibir/ocultar a funcionalidade |
 
 
 _Método sem retorno_
@@ -2901,93 +2965,29 @@ _Método sem retorno_
 **Exemplo:**
 
 ```javascript
-var r = h.hly('ApiAction', { id: 'abcxyz' });
+h.hly('SetLogo', {enable: true});
 
-if (r.status == 'ok') {
-    h.log('Ação executada');
-} else {
-    h.log('Erro: ' + r.error);
-}
+h.hly('SetLogo', {hide: true});
 ```
 
 ---
 
 
-### hly('ScriptAction', input)
+### hly('GetSyncStatus')
 - v2.19.0
 
-Executa a ação de um item **Script** existente no programa
+Retorna o estado atual da sincronização online via Google Drive™
 
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.id` | _String_ | ID do item |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-var r = h.hly('ScriptAction', { id: 'abcxyz' });
-
-if (r.status == 'ok') {
-    h.log('Ação executada');
-} else {
-    h.log('Erro: ' + r.error);
-}
-```
-
----
-
-
-### hly('ApiRequest', input)
-- v2.19.0
-
-Executa uma requisição para o receptor associado e retorna a resposta do receptor.
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `input.id` | _String_ | id do receptor |
-| `input.raw` | _String_ | dados da requisição |
 
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Object_ | Retorno da requisição ou NULL para erro/timeout |
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data.enabled` | _Boolean_ | Se a sincronização está ativada |
+| `data.started` | _Boolean_ | Se a sincronização foi iniciada (internet disponível, por exemplo) |
+| `data.progress` | _Number_ | Progresso da sincronização de 0 a 100 |
 
-
-**Exemplo:**
-
-```javascript
-//É possível realizar requisição diretamente para um receptor criado
-//Por exemplo:
-//Considerando que você tenha um receptor criado para comunicação com OBS Studio via websocket e o ID do receptor seja 'abcyxz'
-//você pode fazer uma requisição como no exemplo abaixo
-var r = h.hly('ApiRequest', {
-    id: 'abcxyz',
-    raw: {
-        'request-type': 'GetSourceActive',
-        'sourceName': 'exemplo'
-    }
-});
-if (r.status == 'ok') {
-    h.log('Resposta da requisição: ' + r.data);
-    var obj = JSON.parse(r.data);
-    if (obj.sourceActive) {
-        h.log('A fonte exemplo está ativa');
-    } else {
-        h.log('A fonte exemplo não está ativa');
-    }
-} else {
-    h.log('Erro: ' + r.error);
-}
-```
 
 ---
 
