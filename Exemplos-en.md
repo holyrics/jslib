@@ -55,7 +55,7 @@ function foo() {
     var arr = clipboard.split("\n");
     for (var k in arr) {
         var text = arr[k];
-        if (text.trim() == '') { //skip empty values
+        if (text.trim() == '' || text.trim().startsWith('//'))
             continue;
         }
         var json = h.hly('SearchSong', {'text': text});
