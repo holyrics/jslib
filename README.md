@@ -2943,9 +2943,9 @@ Item sendo apresentado no momento ou **null** se não tiver apresentação sendo
 | `data.id` | _String_ | ID do item |
 | `data.type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `api`  `script` |
 | `data.name` | _String_ | Nome do item |
-| `data.slide_number` | _Number_ | Começa em 1 |
-| `data.total_slides` | _Number_ | Total de slides |
-| `data.slide_type` | _String_ | Um dos seguintes valores: `default`  `wallpaper`  `blank`  `black`  `final_slide` |
+| `data.slide_number` | _Number_ | Começa em 1 `v2.20.0+` |
+| `data.total_slides` | _Number_ | Total de slides `v2.20.0+` |
+| `data.slide_type` | _String_ | Um dos seguintes valores: `default`  `wallpaper`  `blank`  `black`  `final_slide` `v2.20.0+` |
 
 
 **Exemplo:**
