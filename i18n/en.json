@@ -1420,12 +1420,12 @@
     "v": "To display richly formatted text, start the text with **&lt;styled&gt;**"
   },
   {
-    "k": "Para exibir um versículo. ID do item no formato LLCCCVVV. Exemplo: '19023001' (ou seja, livro 19, capítulo 023, versículo 001)",
-    "v": "To display a verse. Item ID in BBCCCVVV format. Example: '19023001' (i.e. book 19, chapter 023, verse 001)"
+    "k": "Para exibir um versículo. ID do item no formato LLCCCVVV.<br/>Exemplo: '19023001' (livro 19, capítulo 023, versículo 001)",
+    "v": "To display a verse. Item ID in BBCCCVVV format.<br/>Example: '19023001' (book 19, chapter 023, verse 001)"
   },
   {
-    "k": "Para exibir uma lista de versículos. Lista com o ID de cada versículo. Exemplo: ['19023001', '43003016', '45012002']",
-    "v": "To display a list of verses. List with the ID of each verse. Example: ['19023001', '43003016', '45012002']"
+    "k": "Para exibir uma lista de versículos. Lista com o ID de cada versículo.<br/>Exemplo: ['19023001', '43003016', '45012002']",
+    "v": "To display a list of verses. List with the ID of each verse.<br/>Example: ['19023001', '43003016', '45012002']"
   },
   {
     "k": "Parâmetro aceita somente números",
