@@ -15,6 +15,12 @@ h.log('example');
 
 - [Methods](#methods)
   - [log](#logobj)
+  - [log](#logkey--null-obj-args--null)
+  - [log.enable](#logenablekey)
+  - [log.enableAll](#logenableall)
+  - [log.isEnabled](#logisenabledkey)
+  - [log.setShowLogKey](#logsetshowlogkeyvalue)
+  - [log.isShowLogKey](#logisshowlogkey)
   - [sleep](#sleeptime)
   - [base64Encode](#base64encodebytes)
   - [base64Decode](#base64decodestr)
@@ -22,6 +28,8 @@ h.log('example');
   - [md5Str](#md5strvalue)
   - [sha256](#sha256value)
   - [sha256Str](#sha256strvalue)
+  - [sha512](#sha512value)
+  - [sha512Str](#sha512strvalue)
   - [getClipboard](#getclipboard)
   - [normalize](#normalizestr)
   - [store](#storekey-value)
@@ -31,12 +39,14 @@ h.log('example');
   - [setCache](#setcachekey-value)
   - [getCache](#getcachekey-default--null)
   - [random](#randommin-max-keysaferepeat--null)
-  - [startTimer](#starttimerkey)
-  - [getTimer](#gettimerkey)
+  - [startTimer](#starttimerkey--default)
+  - [getTimer](#gettimerkey--default)
+  - [startCountdown](#startcountdownkey--default-seconds)
+  - [getCountdown](#getcountdownkey--default)
   - [getPlaylistInfo](#getplaylistinfo)
   - [getPlayer](#getplayer)
-  - [scriptAction](#scriptactionid)
-  - [apiAction](#apiactionid)
+  - [scriptAction](#scriptactionid-input--null)
+  - [apiAction](#apiactionid-input--null)
   - [apiRequest](#apirequestid-raw)
   - [getApiRequestLastError](#getapirequestlasterror)
   - [apiRequestAsync](#apirequestasyncid-raw-callback--null)
@@ -48,6 +58,16 @@ h.log('example');
   - [getRuntimeEnvironment](#getruntimeenvironment)
   - [setRuntimeEnvironment](#setruntimeenvironmentname)
   - [isRuntimeEnvironment](#isruntimeenvironmentname)
+  - [getVersion](#getversion)
+  - [isMinimumVersion](#isminimumversionversion)
+  - [getLanguage](#getlanguage)
+  - [isLanguage](#islanguagelanguage)
+  - [getUITheme](#getuitheme)
+  - [isUITheme](#isuithemevalue)
+  - [format.secondsToHMS](#formatsecondstohmsseconds-separator--)
+  - [format.secondsToMS](#formatsecondstomsseconds-separator--)
+  - [format.minutesToHM](#formatminutestohmminutes-separator--)
+  - [date.getSecondOfDay](#dategetsecondofday)
 - [Methods HLY](#methods-hly)
   - [GetLyrics](#hlygetlyrics-input)
   - [SearchLyrics](#hlysearchlyrics-input)
@@ -62,7 +82,12 @@ h.log('example');
   - [GetCustomMessages](#hlygetcustommessages)
   - [ShowCustomMessage](#hlyshowcustommessage-input)
   - [ShowQuickPresentation](#hlyshowquickpresentation-input)
+  - [ShowCountdown](#hlyshowcountdown-input)
+  - [ShowQuiz](#hlyshowquiz-input)
+  - [QuizAction](#hlyquizaction-input)
   - [PlayAutomaticPresentation](#hlyplayautomaticpresentation-input)
+  - [GetAutomaticPresentationPlayerInfo](#hlygetautomaticpresentationplayerinfo)
+  - [AutomaticPresentationPlayerAction](#hlyautomaticpresentationplayeraction-input)
   - [GetMediaPlayerInfo](#hlygetmediaplayerinfo)
   - [MediaPlayerAction](#hlymediaplayeraction-input)
   - [GetLyricsPlaylist](#hlygetlyricsplaylist)
@@ -70,6 +95,7 @@ h.log('example');
   - [RemoveFromLyricsPlaylist](#hlyremovefromlyricsplaylist-input)
   - [GetMediaPlaylist](#hlygetmediaplaylist)
   - [MediaPlaylistAction](#hlymediaplaylistaction-input)
+  - [AddToPlaylist](#hlyaddtoplaylist-input)
   - [RemoveFromMediaPlaylist](#hlyremovefrommediaplaylist-input)
   - [GetFavorites](#hlygetfavorites)
   - [FavoriteAction](#hlyfavoriteaction-input)
@@ -88,6 +114,7 @@ h.log('example');
   - [GetCurrentBackground](#hlygetcurrentbackground)
   - [GetBackgrounds](#hlygetbackgrounds-input)
   - [SetCurrentBackground](#hlysetcurrentbackground-input)
+  - [GetColorMap](#hlygetcolormap-input)
   - [SetAlert](#hlysetalert-input)
   - [GetCurrentSchedule](#hlygetcurrentschedule)
   - [GetSchedules](#hlygetschedules-input)
@@ -98,10 +125,14 @@ h.log('example');
   - [GetMembers](#hlygetmembers)
   - [GetRoles](#hlygetroles)
   - [GetCommunicationPanelInfo](#hlygetcommunicationpanelinfo)
+  - [SetCommunicationPanelSettings](#hlysetcommunicationpanelsettings-input)
   - [StartCountdownCommunicationPanel](#hlystartcountdowncommunicationpanel-input)
   - [StopCountdownCommunicationPanel](#hlystopcountdowncommunicationpanel)
+  - [StartTimerCommunicationPanel](#hlystarttimercommunicationpanel)
+  - [StopTimerCommunicationPanel](#hlystoptimercommunicationpanel)
   - [SetTextCommunicationPanel](#hlysettextcommunicationpanel-input)
   - [SetAlertCommunicationPanel](#hlysetalertcommunicationpanel-input)
+  - [CommunicationPanelCallAttention](#hlycommunicationpanelcallattention)
   - [GetWallpaperSettings](#hlygetwallpapersettings)
   - [SetWallpaperSettings](#hlysetwallpapersettings-input)
   - [GetDisplaySettings](#hlygetdisplaysettings)
@@ -120,6 +151,7 @@ h.log('example');
   - [isPlaying](#isplaying)
   - [getDuration](#getduration)
   - [getCurrentTime](#getcurrenttime)
+  - [setCurrentTime](#setcurrenttimetime)
   - [getTimeElapsed](#gettimeelapsed)
   - [getTimeRemaining](#gettimeremaining)
   - [play](#play)
@@ -173,6 +205,23 @@ h.log('example');
   - [Rectangle](#rectangle)
   - [Custom Message](#custom-message)
   - [Custom Message Param](#custom-message-param)
+  - [Quiz Question](#quiz-question)
+  - [Quiz Settings](#quiz-settings)
+  - [AddItem](#additem)
+  - [AddItemTitle](#additemtitle)
+  - [AddItemSong](#additemsong)
+  - [AddItemVerse](#additemverse)
+  - [AddItemText](#additemtext)
+  - [AddItemAudio](#additemaudio)
+  - [AddItemVideo](#additemvideo)
+  - [AddItemImage](#additemimage)
+  - [AddItemAutomaticPresentation](#additemautomaticpresentation)
+  - [AddItemAnnouncement](#additemannouncement)
+  - [AddItemCountdown](#additemcountdown)
+  - [AddItemCountdownCommunicationPanel](#additemcountdowncommunicationpanel)
+  - [AddItemTextCommunicationPanel](#additemtextcommunicationpanel)
+  - [AddItemScript](#additemscript)
+  - [AddItemAPI](#additemapi)
 
 
 # Methods 
@@ -192,6 +241,168 @@ _Method does not return value_
 
 ```javascript
 h.log('log message');
+```
+
+---
+
+
+### log(key = null, obj, args = null)
+### log.add(key = null, obj, args = null)
+- v2.20.0
+
+Display the information passed as a parameter in a log window (lower right corner of the screen, usually)
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `key` | _String_ | Chave/id de gerenciamento do log |
+| `obj` | _Object_ | Any object to be displayed in the log window |
+| `args` | _Array&lt;Object&gt;_ | Parâmetros para formatação de uma mensagem de log |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.log('xyz', 'log message');
+
+h.log('xyz', 'log message {} abc {}', ['value 1', 'value 2']);
+//output:
+//log message value 1 abc value 2
+
+h.log('log message {} abc {}', ['value 1', 'value 2']);
+//output:
+//log message value 1 abc value 2
+```
+
+---
+
+
+### log.enable(key)
+### log.disable(key)
+- v2.20.0
+
+Ativar/desativar a visualização de logs da chave/id passada por parâmetro. Todas as chaves/ids iniciam desativadas por padrão
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `key` | _String_ | Chave/id de gerenciamento do log |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.log.enable('xyz');
+h.log.disable('xyz');
+```
+
+---
+
+
+### log.enableAll()
+### log.disableAll()
+- v2.20.0
+
+Ativa/desativa a visualização de todos os logs
+
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.log.enableAll();
+h.log.disableAll();
+```
+
+---
+
+
+### log.isEnabled(key)
+### log.isDisabled(key)
+- v2.20.0
+
+Verifica se a visualização está ativada/desativada para a respectiva chave/id
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `key` | _String_ | Chave/id de gerenciamento do log |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Boolean_ |  |
+
+
+**Example:**
+
+```javascript
+if (h.log.isEnabled('xyz')) {
+    //...
+}
+
+if (h.log.isDisabled('xyz')) {
+    //...
+}
+```
+
+---
+
+
+### log.setShowLogKey(value)
+- v2.20.0
+
+Ativa/desativa a exibição chave/id junto da mensagem na janela de log
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `value` | _Boolean_ |  |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.log.setShowLogKey(false);
+```
+
+---
+
+
+### log.isShowLogKey()
+- v2.20.0
+
+Verifica se a exibição da chave está ativada
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Boolean_ |  |
+
+
+**Example:**
+
+```javascript
+if (h.log.isShowLogKey()) {
+    //...
+}
 ```
 
 ---
@@ -333,6 +544,50 @@ SHA-256 hash
 | Type  | Description |
 | :---: | ------------|
 | _String_ | SHA-256 hash |
+
+
+---
+
+
+### sha512(value)
+- v2.20.0
+
+Hash SHA-512 em array de bytes
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `value` | _Object_ | Value to be calculated. Can be string or byte array |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Array&lt;byte&gt;_ | hash SHA-512 |
+
+
+---
+
+
+### sha512Str(value)
+- v2.20.0
+
+Hash SHA-512
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `value` | _Object_ | Value to be calculated. Can be string or byte array |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | hash SHA-512 |
 
 
 ---
@@ -591,14 +846,14 @@ h.log('Random number from 0 to 10: ' + r);
 ---
 
 
-### startTimer(key)
+### startTimer(key = 'default')
 Start a timer
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | Timer key |
+| `key` | _String (optional)_ | Timer key `Default: 'default'` |
 
 
 _Method does not return value_
@@ -617,14 +872,14 @@ h.log('Elapsed time: ' + r); //Like 00:00:02
 ---
 
 
-### getTimer(key)
+### getTimer(key = 'default')
 Retrieves how much time has elapsed on a timer according to the **key** value. If the timer has not been started, the method will start the timer and return 00:00:00
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | Timer key |
+| `key` | _String (optional)_ | Timer key `Default: 'default'` |
 
 
 **Response:**
@@ -639,6 +894,64 @@ Retrieves how much time has elapsed on a timer according to the **key** value. I
 ```javascript
 var r = h.getTimer('xyz');
 h.log('Elapsed time: ' + r);
+```
+
+---
+
+
+### startCountdown(key = 'default', seconds)
+- v2.20.0
+
+Inicia uma contagem regressiva
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `key` | _String (optional)_ | Chave/id da contagem regressiva `Default: 'default'` |
+| `seconds` | _Number_ | Duração total da contagem regressiva em segundos |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.startCountdown('xyz', 300);
+h.sleep(2000); //2 seconds
+var r = h.getCountdown('xyz');
+h.log('Tempo restante: ' + r); //provavelmente 00:04:58
+
+//is a global method, the value can be used in any other script using the same key
+```
+
+---
+
+
+### getCountdown(key = 'default')
+- v2.20.0
+
+Recupera quanto tempo resta em uma contagem regressiva de acordo com o valor **key**.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `key` | _String (optional)_ | Chave/id da contagem regressiva `Default: 'default'` |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Tempo restante no formato HH:MM:SS (retorna valores negativos após limite de tempo) |
+
+
+**Example:**
+
+```javascript
+var r = h.getCountdown('xyz');
+h.log('Tempo restante: ' + r);
 ```
 
 ---
@@ -714,7 +1027,7 @@ r.stop();
 ---
 
 
-### scriptAction(id)
+### scriptAction(id, input = null)
 Executes the action of an existing **Script** item in the program
 
 **Parameters:**
@@ -722,6 +1035,7 @@ Executes the action of an existing **Script** item in the program
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `id` | _String_ | item id |
+| `input` | _Object (optional)_ | Valores que serão definidos para [Function Input](https://github.com/holyrics/Scripts/blob/main/FunctionInput.md) `v2.20.0+` |
 
 
 **Response:**
@@ -740,12 +1054,22 @@ if (r) {
 } else {
     h.log('Item abcxyz not found');
 }
+
+var r = h.scriptAction('abcxyz', {
+    id_example_1: 'abc',
+    id_example_2: 10
+});
+if (r) {
+    h.log('Action performed');
+} else {
+    h.log('Item abcxyz not found');
+}
 ```
 
 ---
 
 
-### apiAction(id)
+### apiAction(id, input = null)
 Executes the action of an existing API item in the program
 
 **Parameters:**
@@ -753,6 +1077,7 @@ Executes the action of an existing API item in the program
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `id` | _String_ | item id |
+| `input` | _Object (optional)_ | Valores que serão definidos para [Function Input](https://github.com/holyrics/Scripts/blob/main/FunctionInput.md) `v2.20.0+` |
 
 
 **Response:**
@@ -766,6 +1091,16 @@ Executes the action of an existing API item in the program
 
 ```javascript
 var r = h.apiAction('abcxyz');
+if (r) {
+    h.log('Action performed');
+} else {
+    h.log('Item abcxyz not found');
+}
+
+var r = h.apiAction('abcxyz', {
+    id_example_1: 'abc',
+    id_example_2: 10
+});
 if (r) {
     h.log('Action performed');
 } else {
@@ -1074,6 +1409,322 @@ Checks whether the current execution environment is the same as the one passed b
 ---
 
 
+### getVersion()
+- v2.20.0
+
+Retorna a versão atual do programa.
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Versão no formato: X.Y.Z |
+
+
+**Example:**
+
+```javascript
+if (h.getVersion() == "2.20.0") {
+    //...
+}
+```
+
+---
+
+
+### isMinimumVersion(version)
+### isMinVersion(version)
+- v2.20.0
+
+Verifica se a versão do programa é igual ou superior ao informado por parâmetro.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `value` | _String_ | Versão no formato: X.Y.Z |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Boolean_ |  |
+
+
+**Example:**
+
+```javascript
+if (h.isMinimumVersion('2.20.0')) {
+    //A versão atual é igual ou superior a 2.20.0
+}
+```
+
+---
+
+
+### getLanguage()
+- v2.20.0
+
+Retorna o idioma atual definido nas configurações do programa.
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Idioma no formato ISO 639 two-letter |
+
+
+**Example:**
+
+```javascript
+switch (h.getLanguage()) {
+    case 'en':
+        //...
+        break;
+    case 'pt':
+        //...
+        break;
+    case 'es':
+        //...
+        break;
+    default:
+        //...
+        break;
+}
+```
+
+---
+
+
+### isLanguage(language)
+- v2.20.0
+
+Verifica se o idioma atual definido nas configurações do programa é igual ao valor passado por parâmetro.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `language` | _String_ | Idioma no formato ISO 639 two-letter |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Boolean_ |  |
+
+
+**Example:**
+
+```javascript
+if (h.isLanguage('pt')) {
+    //...
+}
+```
+
+---
+
+
+### getUITheme()
+- v2.20.0
+
+Retorna o tema atual da interface do programa.
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Um dos seguintes valores: DEFAULT, DARK_SOFT, DARK_MEDIUM, DARK_STRONG |
+
+
+**Example:**
+
+```javascript
+if (h.getUITheme() == 'DEFAULT') {
+    //...
+}
+```
+
+---
+
+
+### isUITheme(value)
+- v2.20.0
+
+Verifica se o tema atual atual da interface é igual ao valor passado por parâmetro.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `value` | _String_ | Theme name |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Boolean_ |  |
+
+
+**Example:**
+
+```javascript
+if (h.isUITheme('DARK_STRONG')) {
+    //...
+}
+```
+
+---
+
+
+### format.secondsToHMS(seconds, separator = ':')
+### secToHMS(seconds, separator)
+- v2.20.0
+
+Formatar uma quantidade de segundos como hora|minuto|segundo.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `seconds` | _Number_ | Quantidade total de segundos |
+| `separator` | _String (optional)_ | Separador `Default: ':'` |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Valor formatado |
+
+
+**Example:**
+
+```javascript
+var r = h.format.secondsToHMS(3905);
+h.log(r);
+//output:
+//01:05:05
+
+var r = h.format.secondsToHMS(3905, ',');
+h.log(r);
+//output:
+//01,05,05
+//
+```
+
+---
+
+
+### format.secondsToMS(seconds, separator = ':')
+### secToMS(seconds, separator)
+- v2.20.0
+
+Formatar uma quantidade de segundos como minuto|segundo.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `seconds` | _Number_ | Quantidade total de segundos |
+| `separator` | _String (optional)_ | Separador `Default: ':'` |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Valor formatado |
+
+
+**Example:**
+
+```javascript
+var r = h.format.secondsToMS(305);
+h.log(r);
+//output:
+//00:05:05
+
+var r = h.format.secondsToMS(305, ',');
+h.log(r);
+//output:
+//00,05,05
+```
+
+---
+
+
+### format.minutesToHM(minutes, separator = ':')
+- v2.20.0
+
+Formatar uma quantidade de minutos como hora|minuto.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `minutes` | _Number_ | Quantidade total de minutos |
+| `separator` | _String (optional)_ | Separador `Default: ':'` |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Valor formatado |
+
+
+**Example:**
+
+```javascript
+var r = h.format.minutesToHM(90);
+h.log(r);
+//output:
+//01:30
+
+var r = h.format.minutesToHM(90, ',');
+h.log(r);
+//output:
+//01,30
+```
+
+---
+
+
+### date.getSecondOfDay()
+- v2.20.0
+
+Retorna a quantidade total de segundos do dia (hour * 3600 + minute * 60 + second)
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Number_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.date.getSecondOfDay();
+//00:00:00 = 0
+//23:59:59 = 86399
+```
+
+---
+
+
 # Methods HLY 
 
 
@@ -1131,10 +1782,10 @@ Performs a search in the user's lyrics list
 | ---- | :---: | ------------|
 | `input` | _String_ | Filter |
 | `input.text` | _String_ | Text to be searched |
-| `input.title` | _Boolean (optional)_ |  _(Default=*true*)_ |
-| `input.artist` | _Boolean (optional)_ |  _(Default=*true*)_ |
-| `input.note` | _Boolean (optional)_ |  _(Default=*true*)_ |
-| `input.lyrics` | _Boolean (optional)_ |  _(Default=*false*)_ |
+| `input.title` | _Boolean (optional)_ |  `Default: true` |
+| `input.artist` | _Boolean (optional)_ |  `Default: true` |
+| `input.note` | _Boolean (optional)_ |  `Default: true` |
+| `input.lyrics` | _Boolean (optional)_ |  `Default: false` |
 | `input.group` | _String (optional)_ |  |
 
 
@@ -1233,8 +1884,8 @@ Starts a Bible verse presentation.
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input` | _Object_ | **id**, **ids** or **references** |
-| `input.id` | _String (optional)_ | To display a verse. Item ID in BBCCCVVV format. Example: '19023001' (i.e. book 19, chapter 023, verse 001) |
-| `input.ids` | _Array&lt;String&gt; (optional)_ | To display a list of verses. List with the ID of each verse. Example: ['19023001', '43003016', '45012002'] |
+| `input.id` | _String (optional)_ | To display a verse. Item ID in BBCCCVVV format.<br/>Example: '19023001' (book 19, chapter 023, verse 001) |
+| `input.ids` | _Array&lt;String&gt; (optional)_ | To display a list of verses. List with the ID of each verse.<br/>Example: ['19023001', '43003016', '45012002'] |
 | `input.references` | _String (optional)_ | References. Example: **John 3:16** or **Rm 12:2** or **Gn 1:1-3 Sl 23.1** |
 
 
@@ -1290,11 +1941,11 @@ for (var i = 0; i < r.data.length; i++) {
     h.log(r.data[i].name);
 }
 
-var r = h.hly('GetVideos', { folder: 'abc' });
+var r = h.hly('GetVideos', {folder: 'abc'});
 
-var r = h.hly('GetImages', { filter: 'text' });
+var r = h.hly('GetImages', {filter: 'text'});
 
-var r = h.hly('GetFiles', { 
+var r = h.hly('GetFiles', {
     folder: 'name 1/name 2',
     filter: 'text'
 });
@@ -1517,8 +2168,131 @@ h.hly('ShowQuickPresentation', {
 ---
 
 
+### hly('ShowCountdown', input)
+- v2.20.0
+
+Exibir uma contagem regressiva na tela público
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.time` | _String_ | HH:MM ou MM:SS |
+| `input.exact_time` | _String (optional)_ | Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos) `Default: false` |
+| `input.text_before` | _String (optional)_ | Texto exibido na parte superior da contagem regressiva |
+| `input.text_after` | _String (optional)_ | Texto exibido na parte inferior da contagem regressiva |
+| `input.zero_fill` | _Boolean (optional)_ | Preencher o campo 'minuto' com zero à esquerda `Default: false` |
+| `input.countdown_relative_size` | _Number (optional)_ | Tamanho relativo da contagem regressiva `Default: 250` |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('ShowCountdown', {
+    time: '05:00', //5 minutes
+    zero_fill: true
+});
+
+h.hly('ShowCountdown', {
+    time: '19:00', //19:00
+    exact_time: true,
+    text_after: 'Example'
+});
+```
+
+---
+
+
+### hly('ShowQuiz', input)
+- v2.20.0
+
+Iniciar uma apresentação no formato múltipla escolha
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.questions` | _Array&lt;[QuizQuestion](#quiz-question)&gt;_ | Questões para exibir |
+| `input.settings` | _[QuizSettings](#quiz-settings)_ | Configurações |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('ShowQuiz', {
+    questions: [
+        {
+            title: 'Example 1',
+            alternatives: [
+                'Example 1a',
+                'Example 2a',
+                'Example 3a',
+                'Example 4a'
+            ],
+            correct_alternative_number: 2
+        }, {
+            title: 'Example 2',
+            alternatives: [
+                'Example 1b',
+                'Example 2b',
+                'Example 3b',
+                'Example 4b'
+            ],
+            correct_alternative_number: 2
+        }
+    ],
+    settings: {
+        display_alternatives_one_by_one: false,
+        alternative_char_type: 'number'
+    }
+});
+```
+
+---
+
+
+### hly('QuizAction', input)
+- v2.20.0
+
+Executar uma ação em uma apresentação de múltipla escolha
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.action` | _String (optional)_ | Um dos seguintes valores: `previous_slide`  `next_slide`  `previous_question`  `next_question`  `show_result`  `close` |
+| `input.hide_alternative` | _Number (optional)_ | Ocultar uma alternativa. Começa em 1 |
+| `input.select_alternative` | _Number (optional)_ | Selecionar uma alternativa. Começa em 1 |
+| `input.countdown` | _Number (optional)_ | Iniciar uma contagem regressiva. [1-120] |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('QuizAction', { 
+    action: 'next_slide'
+});
+
+h.hly('QuizAction', {
+    hide_alternative: 3
+});
+
+h.hly('QuizAction', {
+    select_alternative: 1
+});
+```
+
+---
+
+
 ### hly('PlayAutomaticPresentation', input)
-### hly('PlayAP')
+### hly('PlayAP', input)
 - v2.19.0
 
 Play an automatic presentation item
@@ -1548,6 +2322,71 @@ h.hly('PlayAP', {
         name: "Theme 3"
     }
 });
+
+//Alternate calls
+h.playAutomaticPresentation('file.ap');
+h.playAP('file.ap');
+```
+
+---
+
+
+### hly('GetAutomaticPresentationPlayerInfo')
+### hly('GetAPPlayerInfo')
+- v2.20.0
+
+Retorna as informações da apresentação automática em exibição
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data.name` | _String_ | Item name |
+| `data.playing` | _Boolean_ | Checks if the player is running |
+| `data.time_ms` | _Number_ | Current media time in milliseconds |
+| `data.volume` | _Number_ | Current player volume. Minimum=0, Maximum=100 |
+| `data.mute` | _Boolean_ | Checks if the **mute** option is enabled |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetAutomaticPresentationPlayerInfo');
+if (r.data.name == 'abc') {
+    //...
+}
+```
+
+---
+
+
+### hly('AutomaticPresentationPlayerAction', input)
+### hly('APPlayerAction', input)
+- v2.20.0
+
+Perform actions in the player
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.action` | _String (optional)_ | Name of the action that will be performed on the player. play, pause, stop |
+| `input.volume` | _Number (optional)_ | Change the volume of the player. Minimum=0, Maximum=100 |
+| `input.mute` | _Boolean (optional)_ | Change the **mute** option |
+| `input.time_ms` | _Boolean (optional)_ | Alterar o tempo atual da mídia em milissegundos `v2.20.0+` |
+
+
+**Example:**
+
+```javascript
+h.hly('AutomaticPresentationPlayerAction', {
+    action: 'play',
+    volume: 80
+});
 ```
 
 ---
@@ -1562,19 +2401,19 @@ Returns player information
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `name` | _String_ | Name of current media in player |
-| `path` | _String_ | Full path of media in player |
-| `playing` | _Boolean_ | Checks if the player is running |
-| `duration_ms` | _Number_ | Total time in milliseconds |
-| `time_ms` | _Number_ | Current media time in milliseconds |
-| `time_elapsed` | _String_ | Elapsed time in format HH:MM:SS |
-| `time_remaining` | _String_ | Remaining time in format HH:MM:SS |
-| `volume` | _Number_ | Current player volume. Minimum=0, Maximum=100 |
-| `mute` | _Boolean_ | Checks if the **mute** option is enabled |
-| `repeat` | _Boolean_ | Checks if the **repeat** option is enabled |
-| `execute_single` | _Boolean_ | Checks if the player is set to play only the current list item |
-| `shuffle` | _Boolean_ | Checks if the **random** option is enabled |
-| `fullscreen` | _Boolean_ | Checks if the **full screen** option is enabled |
+| `data.name` | _String_ | Name of current media in player |
+| `data.path` | _String_ | Full path of media in player |
+| `data.playing` | _Boolean_ | Checks if the player is running |
+| `data.duration_ms` | _Number_ | Total time in milliseconds |
+| `data.time_ms` | _Number_ | Current media time in milliseconds |
+| `data.time_elapsed` | _String_ | Elapsed time in format HH:MM:SS |
+| `data.time_remaining` | _String_ | Remaining time in format HH:MM:SS |
+| `data.volume` | _Number_ | Current player volume. Minimum=0, Maximum=100 |
+| `data.mute` | _Boolean_ | Checks if the **mute** option is enabled |
+| `data.repeat` | _Boolean_ | Checks if the **repeat** option is enabled |
+| `data.execute_single` | _Boolean_ | Checks if the player is set to play only the current list item |
+| `data.shuffle` | _Boolean_ | Checks if the **random** option is enabled |
+| `data.fullscreen` | _Boolean_ | Checks if the **full screen** option is enabled |
 
 
 **Example:**
@@ -1600,13 +2439,14 @@ Perform actions in the player
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `action` | _String (optional)_ | Name of the action that will be performed on the player. play, pause, stop, next, previous |
-| `volume` | _Number (optional)_ | Change the volume of the player. Minimum=0, Maximum=100 |
-| `mute` | _Boolean (optional)_ | Change the **mute** option |
-| `repeat` | _Boolean (optional)_ | Change the **repeat** option |
-| `shuffle` | _Boolean (optional)_ | Change the **random** option |
-| `execute_single` | _Boolean (optional)_ | Change player setting to play only current list item |
-| `fullscreen` | _Boolean (optional)_ | Change player **full screen** option |
+| `input.action` | _String (optional)_ | Name of the action that will be performed on the player. play, pause, stop, next, previous |
+| `input.volume` | _Number (optional)_ | Change the volume of the player. Minimum=0, Maximum=100 |
+| `input.mute` | _Boolean (optional)_ | Change the **mute** option |
+| `input.repeat` | _Boolean (optional)_ | Change the **repeat** option |
+| `input.shuffle` | _Boolean (optional)_ | Change the **random** option |
+| `input.execute_single` | _Boolean (optional)_ | Change player setting to play only current list item |
+| `input.fullscreen` | _Boolean (optional)_ | Change player **full screen** option |
+| `input.time_ms` | _Boolean (optional)_ | Alterar o tempo atual da mídia em milissegundos `v2.20.0+` |
 
 
 _Method does not return value_
@@ -1614,21 +2454,21 @@ _Method does not return value_
 **Example:**
 
 ```javascript
-h.hly('MediaPlayerAction', { 
+h.hly('MediaPlayerAction', {
     mute: false,
     repeat: true,
     volume: 80,
-    action: 'play' 
+    action: 'play'
 });
 
 //change volume
-h.hly('MediaPlayerAction', { volume: 80 });
+h.hly('MediaPlayerAction', {volume: 80});
 
 //mute
-h.hly('MediaPlayerAction', { mute: true });
+h.hly('MediaPlayerAction', {mute: true});
 
 //stop current execution
-h.hly('MediaPlayerAction', { action: 'stop' });
+h.hly('MediaPlayerAction', {action: 'stop'});
 ```
 
 ---
@@ -1669,8 +2509,8 @@ Add song lyrics to playlist
 | ---- | :---: | ------------|
 | `input.id` | _String (optional)_ | Lyrics ID |
 | `input.ids` | _Array&lt;String&gt; (optional)_ | List with id of each lyics |
-| `input.index` | _Number (optional)_ | Position in the list where the item will be added (starts at zero). Items are added to the end of the list by default. _(Default=*-1*)_ |
-| `input.media_playlist` | _Boolean (optional)_ | Add the lyrics to the media playlist _(Default=*false*)_ |
+| `input.index` | _Number (optional)_ | Position in the list where the item will be added (starts at zero). Items are added to the end of the list by default. `Default: -1` |
+| `input.media_playlist` | _Boolean (optional)_ | Add the lyrics to the media playlist `Default: false` |
 
 
 _Method does not return value_
@@ -1778,6 +2618,130 @@ h.mplAction('abc');
 ---
 
 
+### hly('AddToPlaylist', input)
+- v2.20.0
+
+Adicionar itens à lista de reprodução de mídias
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.items` | _Array&lt;[AddItem](#additem)&gt;_ | Lista com os itens que serão adicionados |
+| `input.index` | _Number (optional)_ | Position in the list where the item will be added (starts at zero). Items are added to the end of the list by default. `Default: -1` |
+| `input.ignore_duplicates` | _Boolean (optional)_ | Não duplicar itens ao adicionar novos itens, ou seja, não adiciona um item se ele já estiver na lista. `Default: false` |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+var r = h.hly('AddToPlaylist', {
+    items: [
+        {
+            type: 'song',
+            id: 123456
+        }, {
+            type: 'song',
+            id: 12345678
+        }
+    ],
+    index: 3,
+    ignore_duplicates: true
+});
+
+if (r.status != 'ok') {
+    h.log(r.error);
+}
+
+var items = [
+    {
+        type: 'title',
+        name: 'Título',
+        background_color: "000080"
+    }, {
+        type: 'song',
+        id: 12345678
+    }, {
+        type: 'verse',
+        id: '19023001'
+    }, {
+        type: 'verse',
+        ids: ['19023001', '43003016']
+    }, {
+        type: 'verse',
+        references: 'Sl 23.1 Rm 12:2'
+    }, {
+        type: 'text',
+        id: 'abcxyz'
+    }, {
+        type: 'audio',
+        name: 'example.mp3'
+    }, {
+        type: 'video',
+        name: 'example.mp4'
+    }, {
+        type: 'image',
+        name: 'example.jpg'
+    }, {
+        type: 'automatic_presentation',
+        name: 'example.ap'
+    }, {
+        type: 'title',
+        name: 'Título 2'
+    }, {
+        type: 'announcement',
+        id: 12345678
+    }, {
+        type: 'announcement',
+        ids: [123, 456]
+    }, {
+        type: 'announcement',
+        name: 'example'
+    }, {
+        type: 'announcement',
+        names: ['example 2', 'example 3']
+    }, {
+        type: 'announcement',
+        id: 'all',
+        automatic: {
+            seconds: 8,
+            repeat: false
+        }
+    }, {
+        type: 'title',
+        name: 'Título 3'
+    }, {
+        type: 'countdown',
+        time: '03:15'
+    }, {
+        type: 'countdown_cp',
+        minutes: 15,
+        stop_at_zero: true
+    }, {
+        type: 'cp_text',
+        text: 'example'
+    }, {
+        type: 'script',
+        id: 'abcxyz'
+    }, {
+        type: 'api',
+        id: 'abcxyz'
+    }
+];
+
+var r = h.hly('AddToPlaylist', {
+    items: items
+});
+if (r.status != 'ok') {
+    h.log(r.error);
+}
+```
+
+---
+
+
 ### hly('RemoveFromMediaPlaylist', input)
 Remove items from media playlist
 
@@ -1874,7 +2838,7 @@ _Method does not return value_
 **Example:**
 
 ```javascript
-var r = h.hly('ApiAction', { id: 'abcxyz' });
+var r = h.hly('ApiAction', {id: 'abcxyz'});
 
 if (r.status == 'ok') {
     h.log('Action performed');
@@ -1903,7 +2867,7 @@ _Method does not return value_
 **Example:**
 
 ```javascript
-var r = h.hly('ScriptAction', { id: 'abcxyz' });
+var r = h.hly('ScriptAction', {id: 'abcxyz'});
 
 if (r.status == 'ok') {
     h.log('Action performed');
@@ -1976,7 +2940,12 @@ Item currently being presented or **null** if no presentation is being displayed
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data` | _[Item](#item)_ |  |
+| `data.id` | _String_ | Item ID |
+| `data.type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `api`  `script` |
+| `data.name` | _String_ | Item name |
+| `data.slide_number` | _Number_ | Começa em 1 |
+| `data.total_slides` | _Number_ | Total de slides |
+| `data.slide_type` | _String_ | Um dos seguintes valores: `default`  `wallpaper`  `blank`  `black`  `final_slide` |
 
 
 **Example:**
@@ -2208,7 +3177,7 @@ List of themes and backgrounds
 | `input.type` | _String (optional)_ | It might be: theme, my_video, my_image, video, image |
 | `input.tag` | _String (optional)_ |  |
 | `input.tags` | _Array&lt;String&gt; (optional)_ |  |
-| `input.intersection` | _Boolean (optional)_ | If the **input.tags** field is populated with multiple items, the **input.intersection** option defines the type of junction. If **true**, the filter will only return items that contain **all** the informed tags, if **false**, the filter will return the items that have at least one tag of the informed tags _(Default=*false*)_ |
+| `input.intersection` | _Boolean (optional)_ | If the **input.tags** field is populated with multiple items, the **input.intersection** option defines the type of junction. If **true**, the filter will only return items that contain **all** the informed tags, if **false**, the filter will return the items that have at least one tag of the informed tags `Default: false` |
 
 
 **Response:**
@@ -2256,7 +3225,7 @@ Changes the background (or theme) of the current presentation. If more than one 
 | `input.type` | _String (optional)_ | It might be: theme, my_video, my_image, video, image |
 | `input.tag` | _String (optional)_ |  |
 | `input.tags` | _Array&lt;String&gt; (optional)_ |  |
-| `input.intersection` | _Boolean (optional)_ | If the **input.tags** field is populated with multiple items, the **input.intersection** option defines the type of junction. If **true**, the filter will only return items that contain **all** the informed tags, if **false**, the filter will return the items that have at least one tag of the informed tags _(Default=*false*)_ |
+| `input.intersection` | _Boolean (optional)_ | If the **input.tags** field is populated with multiple items, the **input.intersection** option defines the type of junction. If **true**, the filter will only return items that contain **all** the informed tags, if **false**, the filter will return the items that have at least one tag of the informed tags `Default: false` |
 
 
 _Method does not return value_
@@ -2286,6 +3255,73 @@ h.hly('SetCurrentBackground', {
     tags: ['water', 'blue'],
     intersection: true
 });
+```
+
+---
+
+
+### hly('GetColorMap', input)
+- v2.20.0
+
+Retorna as informações de cor predominante de um respectivo tipo de item<br/>O array retornado contém 8 índices, e cada índice corresponde ao trecho conforme imagem de exemplo a seguir.<br/> <br/>![Color Map Example](https://holyrics.com.br/images/color_map_item_example.png)<br/>
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.type` | _String_ | Um dos seguintes valores:<br/>**background** - um item de tema ou plano de fundo<br/>**presentation** - apresentação atual em exibição<br/>**image** - uma imagem da aba 'imagens'<br/>**video** - um vídeo da aba 'vídeos'<br/>**printscreen** - um printscreen atual de uma tela do sistema<br/> |
+| `input.source` | _Object (optional)_ | O item de acordo com o tipo informado:<br/>**background** - ID do tema ou plano de fundo<br/>**presentation** - não é necessário informar um valor, a apresentação da tela público será retornada<br/>**image** - o nome do arquivo da aba 'imagens'<br/>**video** - o nome do arquivo da aba 'vídeos'<br/>**printscreen** `opcional` -  o nome da tela (public, screen_2, screen_3, ...); o padrão é `public`<br/> |
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;Object&gt;_ |  |
+| `data.*.hex` | _String_ | Cor no formato hexadecimal |
+| `data.*.red` | _Number_ | Vermelho  0-255 |
+| `data.*.green` | _Number_ | Verde  0-255 |
+| `data.*.blue` | _Number_ | Azul  0-255 |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetColorMap', {
+    type: 'background',
+    source: 12345678
+});
+
+if (r.data[0].red >= 200) {
+    //red >= 200
+}
+
+var r = h.hly('GetColorMap', {
+    type: 'presentation'
+});
+
+var r = h.hly('GetColorMap', {
+    type: 'image',
+    source: 'example.png'
+});
+
+var r = h.hly('GetColorMap', {
+    type: 'video',
+    source: 'dir/video.mp4'
+});
+
+var r = h.hly('GetColorMap', {
+    type: 'printscreen'
+});
+
+var r = h.hly('GetColorMap', {
+    type: 'printscreen',
+    source: 'screen_2'
+});
+
+//Alternate calls
+var arr = h.getColorMap('presentation');
+var arr = h.getColorMap('video', 'filename.mp4');
 ```
 
 ---
@@ -2335,13 +3371,11 @@ Current schedule (selected in the main program window)
 
 ```javascript
 var r = h.hly('GetCurrentSchedule');
-for (var i = 0; i < r.data.length; i++) {
-    var s = r.data[i];
-    h.log(s.datetime);
-    h.log(s.name);
-    h.log(s.lyrics_playlist);
-    h.log(s.media_playlist);
-}
+var s = r.data[0];
+h.log(s.datetime);
+h.log(s.name);
+h.log(s.lyrics_playlist);
+h.log(s.media_playlist);
 ```
 
 ---
@@ -2542,6 +3576,7 @@ for (var i = 0; i < r.data.length; i++) {
 
 ### hly('GetCommunicationPanelInfo')
 ### hly('GetCPInfo')
+### hly('GetCPSettings')
 Current communication panel configuration
 
 
@@ -2557,6 +3592,18 @@ Current communication panel configuration
 | `data.alert_show` | _Boolean_ | Whether the alert display is enabled |
 | `data.countdown_show` | _Boolean_ | If a countdown is on display |
 | `data.countdown_time` | _Number_ | The current countdown time displayed (in seconds) |
+| `data.stopwatch_show` | _Boolean_ | Se um cronômetro está em exibição `v2.20.0+` |
+| `data.stopwatch_time` | _Number_ | O tempo atual do cronômetro em exibição (em segundos) `v2.20.0+` |
+| `data.theme` | _Number_ | Theme ID `v2.20.0+` |
+| `data.countdown_font_relative_size` | _Number_ | Tamanho relativo da contagem regressiva `v2.20.0+` |
+| `data.countdown_font_color` | _String_ | Cor da fonte da contagem regressiva `v2.20.0+` |
+| `data.stopwatch_font_color` | _String_ | Cor da fonte do cronômetro `v2.20.0+` |
+| `data.time_font_color` | _String_ | Cor da fonte da hora `v2.20.0+` |
+| `data.display_clock_as_background` | _Boolean_ | Exibir relógio como plano de fundo `v2.20.0+` |
+| `data.display_clock_on_alert` | _Boolean_ | Exibir relógio no alerta `v2.20.0+` |
+| `data.countdown_display_location` | _String_ | Local de exibição da contagem regressiva ou cronômetro. `FULLSCREEN`  `FULLSCREEN_OR_ALERT`  `ALERT` `v2.20.0+` |
+| `data.display_clock_with_countdown_fullscreen` | _Boolean_ | Exibir relógio junto da contagem regressiva ou cronômetro quando exibido em tela cheia `v2.20.0+` |
+| `data.display_vlc_player_remaining_time` | _Boolean_ | Exibir tempo restante da mídia em execução no VLC Player `v2.20.0+` |
 
 
 **Example:**
@@ -2574,6 +3621,47 @@ if (r.data.countdown_show) {
 ---
 
 
+### hly('SetCommunicationPanelSettings', input)
+### hly('SetCPSettings')
+- v2.20.0
+
+Alterar configuração atual do painel de comunicação
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.text` | _String (optional)_ | Current text |
+| `input.show` | _Boolean (optional)_ | Exibir o texto atual |
+| `input.display_ahead` | _Boolean (optional)_ | Opção *'exibir à frente de tudo'* |
+| `input.theme` | _Boolean (optional)_ | ID ou nome do tema padrão |
+| `input.alert_text` | _String (optional)_ | Current alert text |
+| `input.alert_show` | _Boolean (optional)_ | Ativar a exibição do alerta |
+| `input.countdown_font_relative_size` | _Number (optional)_ | Tamanho relativo da contagem regressiva |
+| `input.countdown_font_color` | _String (optional)_ | Cor da fonte da contagem regressiva |
+| `input.stopwatch_font_color` | _String (optional)_ | Cor da fonte do cronômetro |
+| `input.time_font_color` | _String (optional)_ | Cor da fonte da hora |
+| `input.display_clock_as_background` | _Boolean (optional)_ | Exibir relógio como plano de fundo |
+| `input.display_clock_on_alert` | _Boolean (optional)_ | Exibir relógio no alerta |
+| `input.countdown_display_location` | _String (optional)_ | Local de exibição da contagem regressiva ou cronômetro. `FULLSCREEN`  `FULLSCREEN_OR_ALERT`  `ALERT` |
+| `input.display_clock_with_countdown_fullscreen` | _Boolean (optional)_ | Exibir relógio junto da contagem regressiva ou cronômetro quando exibido em tela cheia |
+| `input.display_vlc_player_remaining_time` | _Boolean (optional)_ | Exibir tempo restante da mídia em execução no VLC Player |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+var r = h.hly('SetCommunicationPanelSettings', {
+    display_clock_as_background: false,
+    display_clock_on_alert: true
+});
+```
+
+---
+
+
 ### hly('StartCountdownCommunicationPanel', input)
 ### hly('StartCountdownCP', input)
 Starts a countdown on the communication panel
@@ -2585,7 +3673,7 @@ Starts a countdown on the communication panel
 | `input.minutes` | _Number_ | Number of minutes |
 | `input.seconds` | _Number_ | Number of seconds |
 | `input.yellow_starts_at` | _Number (optional)_ | Value in seconds to define how long the countdown will be yellow from |
-| `input.stop_at_zero` | _Boolean (optional)_ | Stop the countdown when it reaches zero _(Default=*false*)_ |
+| `input.stop_at_zero` | _Boolean (optional)_ | Stop the countdown when it reaches zero `Default: false` |
 
 
 _Method does not return value_
@@ -2618,6 +3706,46 @@ _Method does not return value_
 
 ```javascript
 h.hly('StopCountdownCommunicationPanel');
+```
+
+---
+
+
+### hly('StartTimerCommunicationPanel')
+### hly('StartTimerCP', input)
+- v2.20.0
+
+Inicia um cronômetro no painel de comunicação
+
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('StartTimerCommunicationPanel');
+h.hly('StartTimerCP');
+```
+
+---
+
+
+### hly('StopTimerCommunicationPanel')
+### hly('StopTimerCP')
+- v2.20.0
+
+Encerra o cronômetro atual do painel de comunicação
+
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('StopTimerCommunicationPanel');
+h.hly('StopTimerCP');
 ```
 
 ---
@@ -2678,6 +3806,25 @@ h.hly('SetAlertCommunicationPanel', {
 
 //remove
 h.hly('SetAlertCommunicationPanel', {show: false});
+```
+
+---
+
+
+### hly('CommunicationPanelCallAttention')
+### hly('CPCallAttention')
+- v2.20.0
+
+Executa a opção 'chamar atenção' disponível no painel de comunicação
+
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('CommunicationPanelCallAttention');
 ```
 
 ---
@@ -2943,7 +4090,7 @@ _Method does not return value_
 **Example:**
 
 ```javascript
-h.hly('SetRuntimeEnvironment', { name: 'abc' });
+h.hly('SetRuntimeEnvironment', {name: 'abc'});
 ```
 
 ---
@@ -3064,6 +4211,23 @@ Current media time in player
 | :---: | ------------|
 | _Number_ | Current media time in milliseconds |
 
+
+---
+
+
+### setCurrentTime(time)
+- v2.20.0
+
+Alterar o tempo atual da mídia em milissegundos
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `time` | _Number_ | Alterar o tempo atual da mídia em milissegundos |
+
+
+_Method does not return value_
 
 ---
 
@@ -3886,6 +5050,7 @@ Complex classes used as a return in some methods
 | `artist` | _String_ | Music artist |
 | `author` | _String_ | Music author |
 | `note` | _String_ | Music annotation |
+| `copyright` | _String_ | Copyright da música |
 | `key` | _String_ | Tone of music |
 | `time_sig` | _String_ | Music time |
 | `groups` | _Array&lt;[Group](#group)&gt;_ | Groups where music is added |
@@ -3906,7 +5071,7 @@ Complex classes used as a return in some methods
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `id` | _String_ | Item ID |
-| `type` | _String_ | Item type. It might be: song, verse, text, audio, video, image, file, custom-text, announcement, countdown, countdown-cp, automatic_presentation, api, script |
+| `type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `api`  `script` |
 | `name` | _String_ | Item name |
 
 ## Group
@@ -3971,9 +5136,9 @@ Complex classes used as a return in some methods
 | `default_value` | _Object (optional)_ | Item default value |
 | `allowed_values` | _Array&lt;String&gt; (optional)_ | Available if type is **text**. Defines a list of allowed values, to be selected as a combobox |
 | `suggested_values` | _Array&lt;String&gt; (optional)_ | Available if type is **text**. Defines a list of suggested values, however the user can enter any value in the text field |
-| `min` | _Number (optional)_ | Available if type is **number**. Sets the minimum allowed value _(Default=*0*)_ |
-| `max` | _Number (optional)_ | Available if type is **number**. Sets the maximum allowed value _(Default=*100*)_ |
-| `show_as_combobox` | _Boolean (optional)_ | Available if type is **number**. Display the list of values as a combobox and not as a spinner _(Default=*false*)_ |
+| `min` | _Number (optional)_ | Available if type is **number**. Sets the minimum allowed value `Default: 0` |
+| `max` | _Number (optional)_ | Available if type is **number**. Sets the maximum allowed value `Default: 100` |
+| `show_as_combobox` | _Boolean (optional)_ | Available if type is **number**. Display the list of values as a combobox and not as a spinner `Default: false` |
 
 ## Display Settings
 | Name | Type  | Description |
@@ -3995,6 +5160,8 @@ Complex classes used as a return in some methods
 | `show_items.image` | _Boolean_ | Image |
 | `show_items.alert` | _Boolean_ | Alert |
 | `show_items.announcement` | _Boolean_ | Announcement |
+| `media_player.show` | _Boolean_ | Exibir VLC Player `v2.20.0+` |
+| `media_player.margin` | _[Rectangle](#rectangle)_ | Margem para exibição dos vídeos pelo VLC Player `v2.20.0+` |
 
 ## Stage View
 | Name | Type  | Description |
@@ -4057,6 +5224,139 @@ Complex classes used as a return in some methods
 | `only_number` | _Boolean_ | Parameter accepts only numbers |
 | `uppercase` | _Boolean_ | Parameter always displayed in uppercase |
 | `suggestions` | _Array&lt;String&gt; (optional)_ | List with default values for the parameter |
+
+## Quiz Question
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `title` | _String_ | Pergunta |
+| `alternatives` | _Array&lt;String&gt;_ | Alternativas |
+| `correct_alternative_number` | _Number (optional)_ | Número da alternativa correta. Começa em 1 `Default: 1` |
+| `source` | _String (optional)_ | Fonte da resposta |
+
+## Quiz Settings
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `correct_answer_color_font` | _String (optional)_ | Cor da fonte para a resposta correta |
+| `correct_answer_color_background` | _String (optional)_ | Cor de fundo para a resposta correta |
+| `incorrect_answer_color_font` | _String (optional)_ | Cor da fonte para a resposta incorreta |
+| `incorrect_answer_color_background` | _String (optional)_ | Cor de fundo para a resposta incorreta |
+| `question_and_alternatives_different_slides` | _Boolean (optional)_ | Exibir a pergunta e as alternativas em slides separados `Default: false` |
+| `display_alternatives_one_by_one` | _Boolean (optional)_ | Exibir as alternativas uma a uma `Default: true` |
+| `alternative_char_type` | _String (optional)_ | Tipo de caractere para listar as alternativas `number (1, 2, 3...)`  `alpha (A, B, C...)` `Default: 'alpha'` |
+| `alternative_separator_char` | _String (optional)_ | Caractere separador. Valores permitidos:  ` `  `.`  `)`  `-`  `:` `Default: '.'` |
+
+## AddItem
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `api`  `script` |
+
+## AddItemTitle
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | title |
+| `name` | _String_ | Item name |
+| `background_color` | _String (optional)_ | Cor de fundo em hexadecimal, exemplo: 000080 |
+| `collapsed` | _Boolean (optional)_ |  `Default: false` |
+
+## AddItemSong
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | song |
+| `id` | _String_ | Item ID |
+
+## AddItemVerse
+**id**, **ids** or **references**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | verse |
+| `id` | _String (optional)_ | To display a verse. Item ID in BBCCCVVV format.<br/>Example: '19023001' (book 19, chapter 023, verse 001) |
+| `ids` | _Array&lt;String&gt; (optional)_ | To display a list of verses. List with the ID of each verse.<br/>Example: ['19023001', '43003016', '45012002'] |
+| `references` | _String (optional)_ | References. Example: **John 3:16** or **Rm 12:2** or **Gn 1:1-3 Sl 23.1** |
+
+## AddItemText
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | text |
+| `id` | _String_ | Item ID |
+
+## AddItemAudio
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | audio |
+| `name` | _String_ | Nome do arquivo |
+
+## AddItemVideo
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | video |
+| `name` | _String_ | Nome do arquivo |
+
+## AddItemImage
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | image |
+| `name` | _String_ | Nome do arquivo |
+
+## AddItemAutomaticPresentation
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | automatic_presentation |
+| `name` | _String_ | Nome do arquivo |
+
+## AddItemAnnouncement
+**id**, **ids**, **name** ou **names**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | announcement |
+| `id` | _String (optional)_ | Announcement ID. Can be **all** to display all |
+| `ids` | _Array&lt;String&gt; (optional)_ | List with the ID of each announcement |
+| `name` | _String (optional)_ | Announcement name |
+| `names` | _Array&lt;String&gt; (optional)_ | List with the name of each announcement |
+| `automatic` | _[Automatic](#automatic-presentation) (optional)_ | If informed, the presentation of the items will be automatic |
+
+## AddItemCountdown
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | countdown |
+| `time` | _String_ | HH:MM ou MM:SS |
+| `exact_time` | _String (optional)_ | Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos) `Default: false` |
+| `text_before` | _String (optional)_ | Texto exibido na parte superior da contagem regressiva |
+| `text_after` | _String (optional)_ | Texto exibido na parte inferior da contagem regressiva |
+| `zero_fill` | _Boolean (optional)_ | Preencher o campo 'minuto' com zero à esquerda `Default: false` |
+| `countdown_relative_size` | _Number (optional)_ | Tamanho relativo da contagem regressiva `Default: 250` |
+
+## AddItemCountdownCommunicationPanel
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | countdown_cp |
+| `minutes` | _Number_ | Number of minutes |
+| `seconds` | _Number_ | Number of seconds |
+| `stop_at_zero` | _Boolean (optional)_ | Stop the countdown when it reaches zero `Default: false` |
+| `description` | _String_ | Descrição do item |
+
+## AddItemTextCommunicationPanel
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | cp_text |
+| `name` | _String_ | Item name |
+| `text` | _String_ | Text |
+| `display_ahead` | _Boolean (optional)_ | Change the *'display in front of all'* option |
+
+## AddItemScript
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | script |
+| `description` | _String_ | Descrição do item |
+| `inputs` | _Object (optional)_ | Valor padrão para [Function Input](https://github.com/holyrics/Scripts/blob/main/FunctionInput.md) |
+
+## AddItemAPI
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | api |
+| `description` | _String_ | Descrição do item |
+| `inputs` | _Object (optional)_ | Valor padrão para [Function Input](https://github.com/holyrics/Scripts/blob/main/FunctionInput.md) |
 
 # Slide Additional Info Layout
 Type between the characters **< >** the texts you want to display

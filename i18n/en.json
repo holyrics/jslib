@@ -544,6 +544,10 @@
     "v": "Entries that will be requested in the interface. It can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed it will be the item name and the item type will be **text**"
   },
   {
+    "k": "Erro",
+    "v": "Error"
+  },
+  {
     "k": "Erro ao obter lista de cenas",
     "v": "Error getting scene list"
   },
@@ -564,6 +568,10 @@
     "v": "Executes the action of an existing API item in the program"
   },
   {
+    "k": "Executa ações no player",
+    "v": "Perform actions in the player"
+  },
+  {
     "k": "executa o arquivo 'fundo musical.mp3' da pasta de áudio",
     "v": "plays the 'musical background.mp3' file from the audio folder"
   },
@@ -578,6 +586,10 @@
   {
     "k": "Executa um comando de **voltar** na apresentação atual",
     "v": "Performs a **back** command on the current presentation"
+  },
+  {
+    "k": "Executa um item apresentação automática",
+    "v": "Play an automatic presentation item"
   },
   {
     "k": "Executa um item da barra de favoritos",
@@ -726,6 +738,10 @@
   {
     "k": "Favorite Item",
     "v": "Favorite Item"
+  },
+  {
+    "k": "Filtrar arquivos pelo nome",
+    "v": "Filter files by name"
   },
   {
     "k": "Filtrar tema selecionado para exibição",
@@ -1080,10 +1096,6 @@
     "v": "Item tag list"
   },
   {
-    "k": "Lista dos integrantes escalados",
-    "v": "List of members"
-  },
-  {
     "k": "Lista dos temas e planos de fundo",
     "v": "List of themes and backgrounds"
   },
@@ -1228,6 +1240,10 @@
     "v": "Name"
   },
   {
+    "k": "Nome da ação que será executada no player.",
+    "v": "Name of the action that will be performed on the player."
+  },
+  {
     "k": "Nome da descrição do slide",
     "v": "Slide description name"
   },
@@ -1264,6 +1280,10 @@
     "v": "file name"
   },
   {
+    "k": "Nome da subpasta para listar os arquivos",
+    "v": "Subfolder name to list files"
+  },
+  {
     "k": "Nome da tradução",
     "v": "translation name"
   },
@@ -1286,6 +1306,10 @@
   {
     "k": "Nome do arquivo ou da pasta. Exemplo: **arquivo.mp4** ou **pasta** ou **pasta/arquivo.mp4**",
     "v": "File or folder name. Example: **file.mp4** or **folder** or **folder/file.mp4**"
+  },
+  {
+    "k": "Nome do arquivo. Exemplo: **arquivo.ap**",
+    "v": "File name. Example: **file.ap**"
   },
   {
     "k": "Nome do componente",
@@ -1644,12 +1668,20 @@
     "v": "Return **true** if it's a folder or **false** if it's a file."
   },
   {
+    "k": "Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem",
+    "v": "Returns the file list of the respective tab: audio, video, image"
+  },
+  {
     "k": "Retorna a lista de programação de um mês específico",
     "v": "Returns the schedule list for a specific month"
   },
   {
     "k": "Retorna a string salva ou NULL se não for encontrado",
     "v": "Returns the saved string or NULL if not found"
+  },
+  {
+    "k": "Retorna as informações do player",
+    "v": "Returns player information"
   },
   {
     "k": "Retorna as listas de reprodução salvas",
@@ -2024,10 +2056,6 @@
     "v": "Playlist event type. Can be: temporary, service, event"
   },
   {
-    "k": "Tipo do item. Pode ser: song, verse, text, audio, video, image, file, custom-text, announcement, countdown, countdown-cp, automatic_presentation, api, script",
-    "v": "Item type. It might be: song, verse, text, audio, video, image, file, custom-text, announcement, countdown, countdown-cp, automatic_presentation, api, script"
-  },
-  {
     "k": "Tipo do item. Pode ser: theme, my_video, my_image, video, image",
     "v": "Item type. It might be:theme, my_video, my_image, video, image"
   },
@@ -2216,39 +2244,551 @@
     "v": "Volume. Minimum=0, Maximum=100"
   },
   {
-    "k": "Erro",
-    "v": "Error"
+    "k": "**id**, **ids**, **name** ou **names**",
+    "v": "**id**, **ids**, **name** ou **names**"
   },
   {
-    "k": "Executa ações no player",
-    "v": "Perform actions in the player"
+    "k": "A versão atual é igual ou superior a",
+    "v": "A versão atual é igual ou superior a"
   },
   {
-    "k": "Executa um item apresentação automática",
-    "v": "Play an automatic presentation item"
+    "k": "AddItem",
+    "v": "AddItem"
   },
   {
-    "k": "Filtrar arquivos pelo nome",
-    "v": "Filter files by name"
+    "k": "AddItemAnnouncement",
+    "v": "AddItemAnnouncement"
   },
   {
-    "k": "Nome da ação que será executada no player.",
-    "v": "Name of the action that will be performed on the player."
+    "k": "AddItemAPI",
+    "v": "AddItemAPI"
   },
   {
-    "k": "Nome da subpasta para listar os arquivos",
-    "v": "Subfolder name to list files"
+    "k": "AddItemAudio",
+    "v": "AddItemAudio"
   },
   {
-    "k": "Nome do arquivo. Exemplo: **arquivo.ap**",
-    "v": "File name. Example: **file.ap**"
+    "k": "AddItemAutomaticPresentation",
+    "v": "AddItemAutomaticPresentation"
   },
   {
-    "k": "Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem",
-    "v": "Returns the file list of the respective tab: audio, video, image"
+    "k": "AddItemCountdown",
+    "v": "AddItemCountdown"
   },
   {
-    "k": "Retorna as informações do player",
-    "v": "Returns player information"
+    "k": "AddItemCountdownCommunicationPanel",
+    "v": "AddItemCountdownCommunicationPanel"
+  },
+  {
+    "k": "AddItemImage",
+    "v": "AddItemImage"
+  },
+  {
+    "k": "AddItemScript",
+    "v": "AddItemScript"
+  },
+  {
+    "k": "AddItemSong",
+    "v": "AddItemSong"
+  },
+  {
+    "k": "AddItemText",
+    "v": "AddItemText"
+  },
+  {
+    "k": "AddItemTextCommunicationPanel",
+    "v": "AddItemTextCommunicationPanel"
+  },
+  {
+    "k": "AddItemTitle",
+    "v": "AddItemTitle"
+  },
+  {
+    "k": "AddItemVerse",
+    "v": "AddItemVerse"
+  },
+  {
+    "k": "AddItemVideo",
+    "v": "AddItemVideo"
+  },
+  {
+    "k": "Adicionar itens à lista de reprodução de mídias",
+    "v": "Adicionar itens à lista de reprodução de mídias"
+  },
+  {
+    "k": "Alterar configuração atual do painel de comunicação",
+    "v": "Alterar configuração atual do painel de comunicação"
+  },
+  {
+    "k": "Alterar o tempo atual da mídia em milissegundos",
+    "v": "Alterar o tempo atual da mídia em milissegundos"
+  },
+  {
+    "k": "Alternativas",
+    "v": "Alternativas"
+  },
+  {
+    "k": "announcement",
+    "v": "announcement"
+  },
+  {
+    "k": "api",
+    "v": "api"
+  },
+  {
+    "k": "Ativa/desativa a exibição chave/id junto da mensagem na janela de log",
+    "v": "Ativa/desativa a exibição chave/id junto da mensagem na janela de log"
+  },
+  {
+    "k": "Ativa/desativa a visualização de todos os logs",
+    "v": "Ativa/desativa a visualização de todos os logs"
+  },
+  {
+    "k": "Ativar a exibição do alerta",
+    "v": "Ativar a exibição do alerta"
+  },
+  {
+    "k": "Ativar/desativar a visualização de logs da chave/id passada por parâmetro. Todas as chaves/ids iniciam desativadas por padrão",
+    "v": "Ativar/desativar a visualização de logs da chave/id passada por parâmetro. Todas as chaves/ids iniciam desativadas por padrão"
+  },
+  {
+    "k": "audio",
+    "v": "audio"
+  },
+  {
+    "k": "automatic_presentation",
+    "v": "automatic_presentation"
+  },
+  {
+    "k": "Azul",
+    "v": "Azul"
+  },
+  {
+    "k": "Caractere separador. Valores permitidos:  ` `  `.`  `)`  `-`  `:`",
+    "v": "Caractere separador. Valores permitidos:  ` `  `.`  `)`  `-`  `:`"
+  },
+  {
+    "k": "Chave/id da contagem regressiva",
+    "v": "Chave/id da contagem regressiva"
+  },
+  {
+    "k": "Chave/id de gerenciamento do log",
+    "v": "Chave/id de gerenciamento do log"
+  },
+  {
+    "k": "Classes",
+    "v": "Classes"
+  },
+  {
+    "k": "Começa em 1",
+    "v": "Começa em 1"
+  },
+  {
+    "k": "Configurações",
+    "v": "Configurações"
+  },
+  {
+    "k": "Copyright da música",
+    "v": "Copyright da música"
+  },
+  {
+    "k": "Cor da fonte da contagem regressiva",
+    "v": "Cor da fonte da contagem regressiva"
+  },
+  {
+    "k": "Cor da fonte da hora",
+    "v": "Cor da fonte da hora"
+  },
+  {
+    "k": "Cor da fonte do cronômetro",
+    "v": "Cor da fonte do cronômetro"
+  },
+  {
+    "k": "Cor da fonte para a resposta correta",
+    "v": "Cor da fonte para a resposta correta"
+  },
+  {
+    "k": "Cor da fonte para a resposta incorreta",
+    "v": "Cor da fonte para a resposta incorreta"
+  },
+  {
+    "k": "Cor de fundo em hexadecimal, exemplo: 000080",
+    "v": "Cor de fundo em hexadecimal, exemplo: 000080"
+  },
+  {
+    "k": "Cor de fundo para a resposta correta",
+    "v": "Cor de fundo para a resposta correta"
+  },
+  {
+    "k": "Cor de fundo para a resposta incorreta",
+    "v": "Cor de fundo para a resposta incorreta"
+  },
+  {
+    "k": "Cor no formato hexadecimal",
+    "v": "Cor no formato hexadecimal"
+  },
+  {
+    "k": "countdown",
+    "v": "countdown"
+  },
+  {
+    "k": "countdown_cp",
+    "v": "countdown_cp"
+  },
+  {
+    "k": "cp_text",
+    "v": "cp_text"
+  },
+  {
+    "k": "Descrição do item",
+    "v": "Descrição do item"
+  },
+  {
+    "k": "Duração total da contagem regressiva em segundos",
+    "v": "Duração total da contagem regressiva em segundos"
+  },
+  {
+    "k": "Encerra o cronômetro atual do painel de comunicação",
+    "v": "Encerra o cronômetro atual do painel de comunicação"
+  },
+  {
+    "k": "Example",
+    "v": "Example"
+  },
+  {
+    "k": "Executa a opção 'chamar atenção' disponível no painel de comunicação",
+    "v": "Executa a opção 'chamar atenção' disponível no painel de comunicação"
+  },
+  {
+    "k": "Executar uma ação em uma apresentação de múltipla escolha",
+    "v": "Executar uma ação em uma apresentação de múltipla escolha"
+  },
+  {
+    "k": "Exibir a pergunta e as alternativas em slides separados",
+    "v": "Exibir a pergunta e as alternativas em slides separados"
+  },
+  {
+    "k": "Exibir as alternativas uma a uma",
+    "v": "Exibir as alternativas uma a uma"
+  },
+  {
+    "k": "Exibir o texto atual",
+    "v": "Exibir o texto atual"
+  },
+  {
+    "k": "Exibir relógio como plano de fundo",
+    "v": "Exibir relógio como plano de fundo"
+  },
+  {
+    "k": "Exibir relógio junto da contagem regressiva ou cronômetro quando exibido em tela cheia",
+    "v": "Exibir relógio junto da contagem regressiva ou cronômetro quando exibido em tela cheia"
+  },
+  {
+    "k": "Exibir relógio no alerta",
+    "v": "Exibir relógio no alerta"
+  },
+  {
+    "k": "Exibir tempo restante da mídia em execução no VLC Player",
+    "v": "Exibir tempo restante da mídia em execução no VLC Player"
+  },
+  {
+    "k": "Exibir uma contagem regressiva na tela público",
+    "v": "Exibir uma contagem regressiva na tela público"
+  },
+  {
+    "k": "Exibir VLC Player",
+    "v": "Exibir VLC Player"
+  },
+  {
+    "k": "Fonte da resposta",
+    "v": "Fonte da resposta"
+  },
+  {
+    "k": "Formatar uma quantidade de minutos como hora|minuto.",
+    "v": "Formatar uma quantidade de minutos como hora|minuto."
+  },
+  {
+    "k": "Formatar uma quantidade de segundos como hora|minuto|segundo.",
+    "v": "Formatar uma quantidade de segundos como hora|minuto|segundo."
+  },
+  {
+    "k": "Formatar uma quantidade de segundos como minuto|segundo.",
+    "v": "Formatar uma quantidade de segundos como minuto|segundo."
+  },
+  {
+    "k": "hash SHA-512",
+    "v": "hash SHA-512"
+  },
+  {
+    "k": "Hash SHA-512",
+    "v": "Hash SHA-512"
+  },
+  {
+    "k": "Hash SHA-512 em array de bytes",
+    "v": "Hash SHA-512 em array de bytes"
+  },
+  {
+    "k": "HH:MM ou MM:SS",
+    "v": "HH:MM ou MM:SS"
+  },
+  {
+    "k": "ID ou nome do tema padrão",
+    "v": "ID ou nome do tema padrão"
+  },
+  {
+    "k": "Idioma no formato ISO 639 two-letter",
+    "v": "Idioma no formato ISO 639 two-letter"
+  },
+  {
+    "k": "image",
+    "v": "image"
+  },
+  {
+    "k": "Inicia um cronômetro no painel de comunicação",
+    "v": "Inicia um cronômetro no painel de comunicação"
+  },
+  {
+    "k": "Inicia uma contagem regressiva",
+    "v": "Inicia uma contagem regressiva"
+  },
+  {
+    "k": "Iniciar uma apresentação no formato múltipla escolha",
+    "v": "Iniciar uma apresentação no formato múltipla escolha"
+  },
+  {
+    "k": "Iniciar uma contagem regressiva",
+    "v": "Iniciar uma contagem regressiva"
+  },
+  {
+    "k": "Lista com os itens que serão adicionados",
+    "v": "Lista com os itens que serão adicionados"
+  },
+  {
+    "k": "Local de exibição da contagem regressiva ou cronômetro.",
+    "v": "Local de exibição da contagem regressiva ou cronômetro."
+  },
+  {
+    "k": "Margem para exibição dos vídeos pelo VLC Player",
+    "v": "Margem para exibição dos vídeos pelo VLC Player"
+  },
+  {
+    "k": "Não duplicar itens ao adicionar novos itens, ou seja, não adiciona um item se ele já estiver na lista.",
+    "v": "Não duplicar itens ao adicionar novos itens, ou seja, não adiciona um item se ele já estiver na lista."
+  },
+  {
+    "k": "Nome do arquivo",
+    "v": "Nome do arquivo"
+  },
+  {
+    "k": "Número da alternativa correta. Começa em 1",
+    "v": "Número da alternativa correta. Começa em 1"
+  },
+  {
+    "k": "O item de acordo com o tipo informado:",
+    "v": "O item de acordo com o tipo informado:"
+  },
+  {
+    "k": "o nome da tela",
+    "v": "o nome da tela"
+  },
+  {
+    "k": "O tempo atual do cronômetro em exibição (em segundos)",
+    "v": "O tempo atual do cronômetro em exibição (em segundos)"
+  },
+  {
+    "k": "Ocultar uma alternativa. Começa em 1",
+    "v": "Ocultar uma alternativa. Começa em 1"
+  },
+  {
+    "k": "Opção *'exibir à frente de tudo'*",
+    "v": "Opção *'exibir à frente de tudo'*"
+  },
+  {
+    "k": "Parâmetros para formatação de uma mensagem de log",
+    "v": "Parâmetros para formatação de uma mensagem de log"
+  },
+  {
+    "k": "Pergunta",
+    "v": "Pergunta"
+  },
+  {
+    "k": "Preencher o campo 'minuto' com zero à esquerda",
+    "v": "Preencher o campo 'minuto' com zero à esquerda"
+  },
+  {
+    "k": "provavelmente 00:04:58",
+    "v": "provavelmente 00:04:58"
+  },
+  {
+    "k": "Quantidade total de minutos",
+    "v": "Quantidade total de minutos"
+  },
+  {
+    "k": "Quantidade total de segundos",
+    "v": "Quantidade total de segundos"
+  },
+  {
+    "k": "Questões para exibir",
+    "v": "Questões para exibir"
+  },
+  {
+    "k": "Quiz Question",
+    "v": "Quiz Question"
+  },
+  {
+    "k": "Quiz Settings",
+    "v": "Quiz Settings"
+  },
+  {
+    "k": "Recupera quanto tempo resta em uma contagem regressiva de acordo com o valor **key**.",
+    "v": "Recupera quanto tempo resta em uma contagem regressiva de acordo com o valor **key**."
+  },
+  {
+    "k": "Retorna a quantidade total de segundos do dia",
+    "v": "Retorna a quantidade total de segundos do dia"
+  },
+  {
+    "k": "Retorna a versão atual do programa.",
+    "v": "Retorna a versão atual do programa."
+  },
+  {
+    "k": "Retorna as informações da apresentação automática em exibição",
+    "v": "Retorna as informações da apresentação automática em exibição"
+  },
+  {
+    "k": "Retorna as informações de cor predominante de um respectivo tipo de item<br/>O array retornado contém 8 índices, e cada índice corresponde ao trecho conforme imagem de exemplo a seguir.<br/> <br/>![Color Map Example](https://holyrics.com.br/images/color_map_item_example.png)<br/>",
+    "v": "Retorna as informações de cor predominante de um respectivo tipo de item<br/>O array retornado contém 8 índices, e cada índice corresponde ao trecho conforme imagem de exemplo a seguir.<br/> <br/>![Color Map Example](https://holyrics.com.br/images/color_map_item_example.png)<br/>"
+  },
+  {
+    "k": "Retorna o idioma atual definido nas configurações do programa.",
+    "v": "Retorna o idioma atual definido nas configurações do programa."
+  },
+  {
+    "k": "Retorna o tema atual da interface do programa.",
+    "v": "Retorna o tema atual da interface do programa."
+  },
+  {
+    "k": "script",
+    "v": "script"
+  },
+  {
+    "k": "Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos)",
+    "v": "Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos)"
+  },
+  {
+    "k": "Se um cronômetro está em exibição",
+    "v": "Se um cronômetro está em exibição"
+  },
+  {
+    "k": "Selecionar uma alternativa. Começa em 1",
+    "v": "Selecionar uma alternativa. Começa em 1"
+  },
+  {
+    "k": "Separador",
+    "v": "Separador"
+  },
+  {
+    "k": "song",
+    "v": "song"
+  },
+  {
+    "k": "Tamanho relativo da contagem regressiva",
+    "v": "Tamanho relativo da contagem regressiva"
+  },
+  {
+    "k": "Tempo restante",
+    "v": "Tempo restante"
+  },
+  {
+    "k": "Tempo restante no formato HH:MM:SS (retorna valores negativos após limite de tempo)",
+    "v": "Tempo restante no formato HH:MM:SS (retorna valores negativos após limite de tempo)"
+  },
+  {
+    "k": "text",
+    "v": "text"
+  },
+  {
+    "k": "Texto exibido na parte inferior da contagem regressiva",
+    "v": "Texto exibido na parte inferior da contagem regressiva"
+  },
+  {
+    "k": "Texto exibido na parte superior da contagem regressiva",
+    "v": "Texto exibido na parte superior da contagem regressiva"
+  },
+  {
+    "k": "Tipo de caractere para listar as alternativas `number (1, 2, 3...)`  `alpha (A, B, C...)`",
+    "v": "Tipo de caractere para listar as alternativas `number (1, 2, 3...)`  `alpha (A, B, C...)`"
+  },
+  {
+    "k": "Tipo do item. Pode ser:",
+    "v": "Tipo do item. Pode ser:"
+  },
+  {
+    "k": "title",
+    "v": "title"
+  },
+  {
+    "k": "Título",
+    "v": "Título"
+  },
+  {
+    "k": "Total de slides",
+    "v": "Total de slides"
+  },
+  {
+    "k": "Um dos seguintes valores:",
+    "v": "Um dos seguintes valores:"
+  },
+  {
+    "k": "Valor formatado",
+    "v": "Valor formatado"
+  },
+  {
+    "k": "Valor padrão para",
+    "v": "Valor padrão para"
+  },
+  {
+    "k": "Valores que serão definidos para",
+    "v": "Valores que serão definidos para"
+  },
+  {
+    "k": "Verde",
+    "v": "Verde"
+  },
+  {
+    "k": "Verifica se a exibição da chave está ativada",
+    "v": "Verifica se a exibição da chave está ativada"
+  },
+  {
+    "k": "Verifica se a versão do programa é igual ou superior ao informado por parâmetro.",
+    "v": "Verifica se a versão do programa é igual ou superior ao informado por parâmetro."
+  },
+  {
+    "k": "Verifica se a visualização está ativada/desativada para a respectiva chave/id",
+    "v": "Verifica se a visualização está ativada/desativada para a respectiva chave/id"
+  },
+  {
+    "k": "Verifica se o idioma atual definido nas configurações do programa é igual ao valor passado por parâmetro.",
+    "v": "Verifica se o idioma atual definido nas configurações do programa é igual ao valor passado por parâmetro."
+  },
+  {
+    "k": "Verifica se o tema atual atual da interface é igual ao valor passado por parâmetro.",
+    "v": "Verifica se o tema atual atual da interface é igual ao valor passado por parâmetro."
+  },
+  {
+    "k": "Vermelho",
+    "v": "Vermelho"
+  },
+  {
+    "k": "Versão no formato:",
+    "v": "Versão no formato:"
+  },
+  {
+    "k": "verse",
+    "v": "verse"
+  },
+  {
+    "k": "video",
+    "v": "video"
   }
 ]
