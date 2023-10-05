@@ -2178,7 +2178,7 @@ Exibir uma contagem regressiva na tela público
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.time` | _String_ | HH:MM ou MM:SS |
-| `input.exact_time` | _String (opcional)_ | Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos) `Padrão: false` |
+| `input.exact_time` | _Boolean (opcional)_ | Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos) `Padrão: false` |
 | `input.text_before` | _String (opcional)_ | Texto exibido na parte superior da contagem regressiva |
 | `input.text_after` | _String (opcional)_ | Texto exibido na parte inferior da contagem regressiva |
 | `input.zero_fill` | _Boolean (opcional)_ | Preencher o campo 'minuto' com zero à esquerda `Padrão: false` |
@@ -2368,17 +2368,17 @@ if (r.data.name == 'abc') {
 
 Executa ações no player
 
-
-
-**Resposta:**
+**Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.action` | _String (opcional)_ | Nome da ação que será executada no player. play, pause, stop |
 | `input.volume` | _Number (opcional)_ | Altera o volume do player. Mínimo=0, Máximo=100 |
 | `input.mute` | _Boolean (opcional)_ | Altera a opção **mudo** |
-| `input.time_ms` | _Boolean (opcional)_ | Alterar o tempo atual da mídia em milissegundos `v2.20.0+` |
+| `input.time_ms` | _Boolean (opcional)_ | Alterar o tempo atual da mídia em milissegundos |
 
+
+_Método sem retorno_
 
 **Exemplo:**
 
@@ -5321,7 +5321,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | ---- | :---: | ------------|
 | `type` | _String_ | countdown |
 | `time` | _String_ | HH:MM ou MM:SS |
-| `exact_time` | _String (opcional)_ | Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos) `Padrão: false` |
+| `exact_time` | _Boolean (opcional)_ | Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos) `Padrão: false` |
 | `text_before` | _String (opcional)_ | Texto exibido na parte superior da contagem regressiva |
 | `text_after` | _String (opcional)_ | Texto exibido na parte inferior da contagem regressiva |
 | `zero_fill` | _Boolean (opcional)_ | Preencher o campo 'minuto' com zero à esquerda `Padrão: false` |
