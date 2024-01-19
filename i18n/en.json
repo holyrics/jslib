@@ -16,6 +16,10 @@
     "v": "**id**, **ids** or **references**"
   },
   {
+    "k": "**id**, **ids**, **name** ou **names**",
+    "v": "**id**, **ids**, **name** or **names**"
+  },
+  {
     "k": "**true** ou **false**",
     "v": "**true** or **false**"
   },
@@ -26,6 +30,10 @@
   {
     "k": "2 segundos",
     "v": "2 seconds"
+  },
+  {
+    "k": "`displaying` `closing` `change`",
+    "v": "`displaying` `closing` `change`"
   },
   {
     "k": "A contagem regressiva do painel de comunicação está ativa",
@@ -68,6 +76,14 @@
     "v": "the next line is executed only when the request is completed"
   },
   {
+    "k": "A versão atual é igual ou superior a",
+    "v": "The current version is equal to or greater than"
+  },
+  {
+    "k": "Abre a janela de sorteio a partir de uma lista de itens",
+    "v": "Opens the draw window from a list of items"
+  },
+  {
     "k": "Abre uma janela de confirmação, exibindo os botões **OK** e **Cancelar**",
     "v": "Opens a confirmation window, displaying **OK** and **Cancel** buttons"
   },
@@ -108,12 +124,28 @@
     "v": "Opens a window to select a song"
   },
   {
+    "k": "Abreviação da versão ou o nome do atalho, se começar com '#shortcut '",
+    "v": "Abbreviation of the version or the name of the shortcut, if it starts with '#shortcut '"
+  },
+  {
+    "k": "Abreviação da versão. Disponível se o item for um atalho, ou seja se 'key' começar com '#shortcut '",
+    "v": "Abbreviation of the version. Available if the item is a shortcut, that is if 'key' starts with '#shortcut '"
+  },
+  {
     "k": "Ação executada",
     "v": "Action performed"
   },
   {
+    "k": "Ação que será executada",
+    "v": "Action to be executed"
+  },
+  {
     "k": "Adicionar as letras na lista de reprodução de mídia",
     "v": "Add the lyrics to the media playlist"
+  },
+  {
+    "k": "Adicionar itens à lista de reprodução de mídias",
+    "v": "Add items to the media playlist"
   },
   {
     "k": "Adicionar letra de música na lista de reprodução",
@@ -130,6 +162,10 @@
   {
     "k": "Alerta",
     "v": "Alert"
+  },
+  {
+    "k": "Alinhamento",
+    "v": "Alignment"
   },
   {
     "k": "Alinhamento horizontal da informação no slide. left, center, right",
@@ -192,6 +228,10 @@
     "v": "Change the current BPM value of the program"
   },
   {
+    "k": "Altera o valor de um campo da interface do programa",
+    "v": "Change the value of a field in the program interface"
+  },
+  {
     "k": "Altera o valor matiz atual do programa",
     "v": "Changes the program's current hue value"
   },
@@ -216,8 +256,28 @@
     "v": "Change a screen's display settings"
   },
   {
+    "k": "Alterar as configurações de um efeito de transição",
+    "v": "Change the settings of a transition effect"
+  },
+  {
+    "k": "Alterar as configurações do módulo Bíblia",
+    "v": "Change the settings of the Bible module"
+  },
+  {
     "k": "Alterar as configurações do papel de parede",
     "v": "Change wallpaper settings"
+  },
+  {
+    "k": "Alterar configuração atual do painel de comunicação",
+    "v": "Change the current setting of the communication panel"
+  },
+  {
+    "k": "Alterar duração de um item da lista de reprodução de mídia.",
+    "v": "Change duration of an item in the media playlist."
+  },
+  {
+    "k": "Alterar o tempo atual da mídia em milissegundos",
+    "v": "Change the current media time in milliseconds"
   },
   {
     "k": "Alterar o texto de alerta",
@@ -232,12 +292,24 @@
     "v": "Change the text of the communication panel. [Styled Text](#styled-text) from v2.19.0"
   },
   {
+    "k": "alterar para um tema personalizado",
+    "v": "change to a custom theme"
+  },
+  {
     "k": "alterar volume",
     "v": "change volume"
   },
   {
+    "k": "Alternativas",
+    "v": "Alternatives"
+  },
+  {
     "k": "Altura em porcentagem em relação à altura do slide",
     "v": "Height in percent of slide height"
+  },
+  {
+    "k": "announcement",
+    "v": "announcement"
   },
   {
     "k": "Ano",
@@ -250,6 +322,22 @@
   {
     "k": "Anúncio",
     "v": "Announcement"
+  },
+  {
+    "k": "api",
+    "v": "api"
+  },
+  {
+    "k": "Aplicar efeito 'blur' no brilho e sombra",
+    "v": "Apply 'blur' effect on brightness and shadow"
+  },
+  {
+    "k": "Aplicar mapeamento de versículos",
+    "v": "Apply verse mapping"
+  },
+  {
+    "k": "Aplicar quebra de linha",
+    "v": "Apply line break"
   },
   {
     "k": "Apresenta um anúncio ou uma lista de anúncios",
@@ -284,6 +372,10 @@
     "v": "Array of bytes decoded"
   },
   {
+    "k": "Array de bytes do arquivo",
+    "v": "Byte array of the file"
+  },
+  {
     "k": "Artista da música",
     "v": "Music artist"
   },
@@ -292,12 +384,32 @@
     "v": "Item MIDI shortcut"
   },
   {
+    "k": "Ativa/desativa a exibição chave/id junto da mensagem na janela de log",
+    "v": "Enable/disable the display of key/id along with the message in the log window"
+  },
+  {
+    "k": "Ativa/desativa a visualização de todos os logs",
+    "v": "Enable/disable the display of all logs"
+  },
+  {
+    "k": "Ativar a exibição do alerta",
+    "v": "Enable the display of the alert"
+  },
+  {
     "k": "Ativar/desativar a funcionalidade",
     "v": "Enable/disable functionality"
   },
   {
-    "k": "Automatic Presentation",
-    "v": "Automatic Presentation"
+    "k": "Ativar/desativar a visualização de logs da chave/id passada por parâmetro. Todas as chaves/ids iniciam desativadas por padrão",
+    "v": "Enable/disable the display of logs from the key/id passed as a parameter. All keys/ids start disabled by default"
+  },
+  {
+    "k": "audio",
+    "v": "audio"
+  },
+  {
+    "k": "automatic_presentation",
+    "v": "automatic_presentation"
   },
   {
     "k": "Autor da música",
@@ -308,8 +420,16 @@
     "v": "blue"
   },
   {
-    "k": "Background",
-    "v": "Background"
+    "k": "Azul",
+    "v": "Blue"
+  },
+  {
+    "k": "BPM da música",
+    "v": "BPM of the song"
+  },
+  {
+    "k": "Bytes do arquivo em formato base64",
+    "v": "File bytes in base64 format"
   },
   {
     "k": "callback da requisição",
@@ -322,6 +442,10 @@
   {
     "k": "Caminho completo da mídia no player",
     "v": "Full path of media in player"
+  },
+  {
+    "k": "Caminho da pasta de localização",
+    "v": "Path of the location folder"
   },
   {
     "k": "Cancela a execução da função agendada anteriormente.",
@@ -340,6 +464,14 @@
     "v": "canceled by user"
   },
   {
+    "k": "Caractere aleatório da string abcd",
+    "v": "Random character from the string abcd"
+  },
+  {
+    "k": "Caractere separador. Valores permitidos:  ` `  `.`  `)`  `-`  `:`",
+    "v": "Separator character. Allowed values:  ` `  `.`  `)`  `-`  `:`"
+  },
+  {
     "k": "caso encontre mais de um resultado",
     "v": "If found more than one result"
   },
@@ -356,12 +488,24 @@
     "v": "Alternate calls"
   },
   {
+    "k": "Charset para conversão dos bytes decodificados",
+    "v": "Charset for conversion of decoded bytes"
+  },
+  {
+    "k": "Chave/id da contagem regressiva",
+    "v": "Key/id of the countdown"
+  },
+  {
     "k": "chave/id da string salva anteriormente",
     "v": "Previously saved string key"
   },
   {
-    "k": "Chave/ID do item",
-    "v": "Key of item"
+    "k": "Chave/id de gerenciamento do log",
+    "v": "Key/id of log management"
+  },
+  {
+    "k": "chave/id do objeto",
+    "v": "object key/id"
   },
   {
     "k": "chave/id do objeto salvo",
@@ -380,8 +524,16 @@
     "v": "key to save the string"
   },
   {
+    "k": "checksum",
+    "v": "checksum"
+  },
+  {
     "k": "Classe player para obter informações e executar ações no player do programa",
     "v": "Player class to get information and perform actions on the program's player"
+  },
+  {
+    "k": "Classes",
+    "v": "Classes"
   },
   {
     "k": "Classes complexas utilizadas como retorno em alguns métodos",
@@ -390,6 +542,10 @@
   {
     "k": "Codifica um array de bytes em string base64",
     "v": "Encodes an array of bytes to base64 string"
+  },
+  {
+    "k": "Codificação do arquivo",
+    "v": "File encoding"
   },
   {
     "k": "Código midi",
@@ -404,16 +560,48 @@
     "v": "Urgently"
   },
   {
+    "k": "Combinações possíveis",
+    "v": "Possible combinations"
+  },
+  {
+    "k": "Começa em 1",
+    "v": "Starts at 1"
+  },
+  {
+    "k": "Comentário",
+    "v": "Comment"
+  },
+  {
     "k": "Configuração atual do painel de comunicação",
     "v": "Current communication panel configuration"
+  },
+  {
+    "k": "Configurações",
+    "v": "Settings"
   },
   {
     "k": "Configurações da visão do palco. (Indisponível para tela público)",
     "v": "Stage view settings. (Unavailable for public screen)"
   },
   {
+    "k": "Configurações de exibição",
+    "v": "Display settings"
+  },
+  {
+    "k": "Configurações do módulo Bíblia",
+    "v": "Bible module settings"
+  },
+  {
     "k": "Configurações do papel de parede",
     "v": "Wallpaper settings"
+  },
+  {
+    "k": "Configurações para execução da mídia",
+    "v": "Settings for media execution"
+  },
+  {
+    "k": "Configurações para modificar o Tema selecionado para exibição",
+    "v": "Settings to modify the selected Theme for display"
   },
   {
     "k": "considerando que você tenha um receptor criado para comunicação com o OBS",
@@ -432,12 +620,84 @@
     "v": "Response content if *status* equals *ok*"
   },
   {
+    "k": "Conteúdo do arquivo em formato de texto",
+    "v": "File content in text format"
+  },
+  {
+    "k": "Conteúdo do item",
+    "v": "Item content"
+  },
+  {
+    "k": "Contorno",
+    "v": "Outline"
+  },
+  {
+    "k": "Converte um CSV (string) em um array bidimensional",
+    "v": "Converts a CSV (string) into a two-dimensional array"
+  },
+  {
+    "k": "Copyright da música",
+    "v": "Music copyright"
+  },
+  {
+    "k": "Cor base do plano de fundo ao diminuir a opacidade",
+    "v": "Base color of the background when reducing opacity"
+  },
+  {
     "k": "cor da fonte",
     "v": "font color"
   },
   {
+    "k": "Cor da fonte da contagem regressiva",
+    "v": "Color of the countdown font"
+  },
+  {
+    "k": "Cor da fonte da hora",
+    "v": "Color of the time font"
+  },
+  {
+    "k": "Cor da fonte do cronômetro",
+    "v": "Color of the stopwatch font"
+  },
+  {
     "k": "Cor da fonte em hexadecimal. Se for **null**, utiliza a cor da fonte padrão do tema",
     "v": "Font color in hexadecimal. If it is **null**, use the theme's default font color"
+  },
+  {
+    "k": "Cor da fonte no formato hexadecimal",
+    "v": "Font color in hexadecimal format"
+  },
+  {
+    "k": "Cor da fonte para a resposta correta",
+    "v": "Font color for the correct answer"
+  },
+  {
+    "k": "Cor da fonte para a resposta incorreta",
+    "v": "Font color for the incorrect answer"
+  },
+  {
+    "k": "Cor de fundo",
+    "v": "Background color"
+  },
+  {
+    "k": "Cor de fundo em hexadecimal, exemplo: 000080",
+    "v": "Background color in hexadecimal, example: 000080"
+  },
+  {
+    "k": "Cor de fundo no formato hexadecimal",
+    "v": "Background color in hexadecimal format"
+  },
+  {
+    "k": "Cor de fundo para a resposta correta",
+    "v": "Background color for the correct answer"
+  },
+  {
+    "k": "Cor de fundo para a resposta incorreta",
+    "v": "Background color for the incorrect answer"
+  },
+  {
+    "k": "Cor em hexadecimal",
+    "v": "Color in hexadecimal"
   },
   {
     "k": "Cor em hexadecimal definida na opção **preencher**.",
@@ -448,16 +708,24 @@
     "v": "Color in hexadecimal defined in the **fill** option. **NULL** to disable"
   },
   {
+    "k": "Cor no formato hexadecimal",
+    "v": "Color in hexadecimal format"
+  },
+  {
+    "k": "countdown",
+    "v": "countdown"
+  },
+  {
+    "k": "countdown_cp",
+    "v": "countdown_cp"
+  },
+  {
+    "k": "cp_text",
+    "v": "cp_text"
+  },
+  {
     "k": "cria um array com somente o nome da cena",
     "v": "create an array with only the scene name"
-  },
-  {
-    "k": "Custom Message",
-    "v": "Custom Message"
-  },
-  {
-    "k": "Custom Message Param",
-    "v": "Custom Message Param"
   },
   {
     "k": "dados da requisição",
@@ -492,28 +760,60 @@
     "v": "Description"
   },
   {
-    "k": "Display Settings",
-    "v": "Display Settings"
+    "k": "Descrição do item",
+    "v": "Item description"
   },
   {
-    "k": "Disponível se o tipo for **number**. Define o valor máximo permitido",
-    "v": "Available if type is **number**. Sets the maximum allowed value"
+    "k": "Disponível para",
+    "v": "Available for"
   },
   {
-    "k": "Disponível se o tipo for **number**. Define o valor mínimo permitido",
-    "v": "Available if type is **number**. Sets the minimum allowed value"
+    "k": "Disponível se **include_slide_preview=true**",
+    "v": "Available if **include_slide_preview=true**"
   },
   {
-    "k": "Disponível se o tipo for **number**. Exibe a lista de valores como combobox e não como spinner",
-    "v": "Available if type is **number**. Display the list of values as a combobox and not as a spinner"
+    "k": "Disponível se **include_slides=true**",
+    "v": "Available if **include_slides=true**"
   },
   {
-    "k": "Disponível se o tipo for **text**. Define uma lista de valores permitidos, para serem selecionados como um combobox",
-    "v": "Available if type is **text**. Defines a list of allowed values, to be selected as a combobox"
+    "k": "Disponível se for uma apresentação de música",
+    "v": "Available if it is a music presentation"
   },
   {
-    "k": "Disponível se o tipo for **text**. Define uma lista de valores sugeridos, porém o usuário pode inserir qualquer valor no campo de texto",
-    "v": "Available if type is **text**. Defines a list of suggested values, however the user can enter any value in the text field"
+    "k": "Disponível somente para transição de texto",
+    "v": "Available only for text transition"
+  },
+  {
+    "k": "documentação",
+    "v": "documentation"
+  },
+  {
+    "k": "Documentação",
+    "v": "Documentation"
+  },
+  {
+    "k": "Duração do item (em segundos)",
+    "v": "Item duration (in seconds)"
+  },
+  {
+    "k": "Duração em milissegundos",
+    "v": "Duration in milliseconds"
+  },
+  {
+    "k": "Duração em segundos",
+    "v": "Duration in seconds"
+  },
+  {
+    "k": "Duração em segundos para o acesso à variável expirar",
+    "v": "Duration in seconds for the variable access to expire"
+  },
+  {
+    "k": "Duração total da contagem regressiva em segundos",
+    "v": "Total duration of the countdown in seconds"
+  },
+  {
+    "k": "Duração total da transição",
+    "v": "Total duration of the transition"
   },
   {
     "k": "E coloque dentro de **% %** o nome do campo que deseja utilizar",
@@ -524,12 +824,40 @@
     "v": "and not just in sequence executions as in the example above"
   },
   {
+    "k": "É o mesmo que `getGlobal` seguido de `setGlobal`.",
+    "v": "It's the same as `getGlobal` followed by `setGlobal`."
+  },
+  {
+    "k": "É o mesmo que `getGlobal` seguido de `setGlobalNext`.",
+    "v": "It's the same as `getGlobal` followed by `setGlobalNext`."
+  },
+  {
+    "k": "É o mesmo que `setGlobal`, porém o parâmetro `values` é uma lista de itens, e o valor que será salvo em `setGlobal` é o próximo item da lista (baseado no item atual) ou o primeiro item da lista (se o item atual for null, ou for o último item da lista, ou não existir na lista).",
+    "v": "It's the same as `setGlobal`, but the `values` parameter is a list of items, and the value that will be saved in `setGlobal` is the next item in the list (based on the current item) or the first item in the list (if the current item is null, or is the last item in the list, or does not exist in the list)."
+  },
+  {
+    "k": "É o mesmo que `setGlobalNext` seguido de `getGlobal`",
+    "v": "It's the same as `setGlobalNext` followed by `getGlobal`"
+  },
+  {
+    "k": "É possível adicionar um parâmetro adicional do tipo `string` como argumento nas chamadas acima para ser utilizado como 'keySafeRepeat' (para evitar um valor repetido ser sorteado em sequência)",
+    "v": "It is possible to add an additional parameter of type `string` as an argument in the above calls to be used as 'keySafeRepeat' (to avoid a repeated value being drawn in sequence)"
+  },
+  {
     "k": "É possível realizar requisição diretamente para um receptor criado",
     "v": "It is possible to make a request directly to a receiver created"
   },
   {
     "k": "é um método global, o valor pode ser utilizado em qualquer outro script utilizando a mesma chave",
     "v": "is a global method, the value can be used in any other script using the same key"
+  },
+  {
+    "k": "Efeitos da fonte",
+    "v": "Font effects"
+  },
+  {
+    "k": "em milissegundos",
+    "v": "in milliseconds"
   },
   {
     "k": "Encerra a apresentação atual",
@@ -540,8 +868,12 @@
     "v": "Ends current communication panel countdown"
   },
   {
-    "k": "Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](#input-param)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **text**",
-    "v": "Entries that will be requested in the interface. It can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed it will be the item name and the item type will be **text**"
+    "k": "Encerra o cronômetro atual do painel de comunicação",
+    "v": "End the current stopwatch of the communication panel"
+  },
+  {
+    "k": "Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](#input-param)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string**",
+    "v": "Entries that will be requested in the interface. Can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string**"
   },
   {
     "k": "Erro",
@@ -556,8 +888,20 @@
     "v": "Last request error or NULL if no error"
   },
   {
+    "k": "Espaçamento entre caracteres",
+    "v": "Spacing between characters"
+  },
+  {
+    "k": "Espaçamento entre linhas",
+    "v": "Line spacing"
+  },
+  {
     "k": "Estender papel de parede",
     "v": "Extend wallpaper"
+  },
+  {
+    "k": "Example",
+    "v": "Example"
   },
   {
     "k": "Executa a ação de um item **Script** existente no programa",
@@ -568,12 +912,20 @@
     "v": "Executes the action of an existing API item in the program"
   },
   {
+    "k": "Executa a opção 'chamar atenção' disponível no painel de comunicação",
+    "v": "Execute the 'call attention' option available in the communication panel"
+  },
+  {
     "k": "Executa ações no player",
     "v": "Perform actions in the player"
   },
   {
     "k": "executa o arquivo 'fundo musical.mp3' da pasta de áudio",
     "v": "plays the 'musical background.mp3' file from the audio folder"
+  },
+  {
+    "k": "Executa um arquivo. Disponível apenas para extensões seguras, como áudio, vídeo, imagem, documentos, etc.",
+    "v": "Execute a file. Available only for safe extensions, such as audio, video, image, documents, etc."
   },
   {
     "k": "Executa um áudio ou uma lista de áudios (pasta)",
@@ -632,12 +984,16 @@
     "v": "Perform player **stop** action"
   },
   {
-    "k": "exemplo",
-    "v": "example"
+    "k": "Executar uma ação em uma apresentação de múltipla escolha",
+    "v": "Execute an action in a multiple choice presentation"
   },
   {
     "k": "Exemplo",
     "v": "Example"
+  },
+  {
+    "k": "exemplo",
+    "v": "example"
   },
   {
     "k": "exemplo caso tenha uma pasta com vários áudios e queira executar um aleatoriamente",
@@ -684,6 +1040,14 @@
     "v": "Displays a notification in the corner of the screen"
   },
   {
+    "k": "Exibir a pergunta e as alternativas em slides separados",
+    "v": "Display the question and alternatives on separate slides"
+  },
+  {
+    "k": "Exibir as alternativas uma a uma",
+    "v": "Display the alternatives one by one"
+  },
+  {
     "k": "Exibir comentários",
     "v": "Show comments"
   },
@@ -700,12 +1064,32 @@
     "v": "Show slide description (chorus, i.e.)"
   },
   {
+    "k": "Exibir duas versões",
+    "v": "Display two versions"
+  },
+  {
     "k": "Exibir edições avançadas",
     "v": "Show advanced editor"
   },
   {
     "k": "Exibir em maiúsculo",
     "v": "Show in capital letters"
+  },
+  {
+    "k": "Exibir imagem seguinte",
+    "v": "Display next image"
+  },
+  {
+    "k": "Exibir o texto atual",
+    "v": "Display the current text"
+  },
+  {
+    "k": "Exibir o texto do versículo em maiúsculo",
+    "v": "Display the verse text in uppercase"
+  },
+  {
+    "k": "Exibir o texto em maiúsculo",
+    "v": "Display the text in uppercase"
   },
   {
     "k": "Exibir papel de parede",
@@ -716,12 +1100,40 @@
     "v": "Show clock"
   },
   {
+    "k": "Exibir relógio como plano de fundo",
+    "v": "Display clock as background"
+  },
+  {
+    "k": "Exibir relógio junto da contagem regressiva ou cronômetro quando exibido em tela cheia",
+    "v": "Display clock along with the countdown or stopwatch when displayed in full screen"
+  },
+  {
+    "k": "Exibir relógio no alerta",
+    "v": "Display clock in the alert"
+  },
+  {
+    "k": "Exibir somente a referência do versículo",
+    "v": "Display only the verse reference"
+  },
+  {
+    "k": "Exibir tempo restante da mídia em execução no VLC Player",
+    "v": "Display remaining time of the media playing in VLC Player"
+  },
+  {
+    "k": "Exibir uma contagem regressiva na tela público",
+    "v": "Display a countdown on the public screen"
+  },
+  {
     "k": "Exibir uma janela com campos de entrada para receber informações de forma interativa",
     "v": "Display a window with input fields to receive information interactively"
   },
   {
     "k": "Exibir uma mensagem personalizada. Obs.: Uma mensagem personalizada não é exibida diretamente na tela. é criada uma notificação no canto da tela para o operador aceitar e exibir.",
     "v": "Display a custom message. Note: A custom message is not displayed directly on the screen. a notification is created in the corner of the screen for the operator to accept and display."
+  },
+  {
+    "k": "Exibir VLC Player",
+    "v": "Display VLC Player"
   },
   {
     "k": "Exibir/ocultar a funcionalidade",
@@ -736,8 +1148,8 @@
     "v": "Show/hide the text"
   },
   {
-    "k": "Favorite Item",
-    "v": "Favorite Item"
+    "k": "Fazer o componente receber o foco do sistema",
+    "v": "Make the component receive system focus"
   },
   {
     "k": "Filtrar arquivos pelo nome",
@@ -750,6 +1162,30 @@
   {
     "k": "Filtro",
     "v": "Filter"
+  },
+  {
+    "k": "Fonte",
+    "v": "Source"
+  },
+  {
+    "k": "Fonte da resposta",
+    "v": "Answer font"
+  },
+  {
+    "k": "Fonte personalizada para a contagem regressiva",
+    "v": "Custom font for countdown"
+  },
+  {
+    "k": "Formatar uma quantidade de minutos como hora|minuto.",
+    "v": "Format a number of minutes as hour|minute."
+  },
+  {
+    "k": "Formatar uma quantidade de segundos como hora|minuto|segundo.",
+    "v": "Format a number of seconds as hour|minute|second."
+  },
+  {
+    "k": "Formatar uma quantidade de segundos como minuto|segundo.",
+    "v": "Format a number of seconds as minute|second."
   },
   {
     "k": "função anônima utilizada como callback da requisição. function(response, error){}",
@@ -772,12 +1208,16 @@
     "v": "Generate a random number"
   },
   {
-    "k": "Group",
-    "v": "Group"
+    "k": "global_action",
+    "v": "global_action"
   },
   {
     "k": "Grupos onde a música está adicionada",
     "v": "Groups where music is added"
+  },
+  {
+    "k": "hash",
+    "v": "hash"
   },
   {
     "k": "Hash MD5",
@@ -792,16 +1232,32 @@
     "v": "MD5 hash in byte array"
   },
   {
-    "k": "hash SHA-256",
+    "k": "Hash SHA-256",
     "v": "SHA-256 hash"
   },
   {
-    "k": "Hash SHA-256",
+    "k": "hash SHA-256",
     "v": "SHA-256 hash"
   },
   {
     "k": "Hash SHA-256 em array de bytes",
     "v": "Hash SHA-256 in byte array"
+  },
+  {
+    "k": "Hash SHA-512",
+    "v": "SHA-512 hash"
+  },
+  {
+    "k": "hash SHA-512",
+    "v": "SHA-512 hash"
+  },
+  {
+    "k": "Hash SHA-512 em array de bytes",
+    "v": "SHA-512 hash in byte array"
+  },
+  {
+    "k": "HH:MM ou MM:SS",
+    "v": "HH:MM or MM:SS"
   },
   {
     "k": "Histórico de \"Música tocada\"",
@@ -836,6 +1292,10 @@
     "v": "Song ID"
   },
   {
+    "k": "ID de um Tema existente para utilizar como cópia inicial ao criar um novo item",
+    "v": "ID of an existing Theme to use as initial copy when creating a new item"
+  },
+  {
     "k": "ID do anúncio. Pode ser **all** para exibir todos",
     "v": "Announcement ID. Can be **all** to display all"
   },
@@ -856,6 +1316,10 @@
     "v": "Current background ID"
   },
   {
+    "k": "ID do plano de fundo personalizado",
+    "v": "ID of the custom background"
+  },
+  {
     "k": "id do receptor",
     "v": "receiver id"
   },
@@ -864,12 +1328,48 @@
     "v": "Theme ID"
   },
   {
+    "k": "ID do Tema",
+    "v": "Theme ID"
+  },
+  {
+    "k": "ID do Tema de exibição para as diferentes telas do sistema",
+    "v": "Display Theme ID for the different system screens"
+  },
+  {
+    "k": "ID do tema do slide",
+    "v": "Slide theme ID"
+  },
+  {
     "k": "ID do tema ou plano de fundo",
     "v": "Theme or background ID"
   },
   {
+    "k": "ID do tema ou plano de fundo salvo para o slide",
+    "v": "ID of the theme or background saved for the slide"
+  },
+  {
     "k": "ID do tema personalizado utilizado nas apresentações",
     "v": "Custom Theme ID used in presentations"
+  },
+  {
+    "k": "ID do tema salvo para o texto",
+    "v": "ID of the theme saved for the text"
+  },
+  {
+    "k": "ID do texto",
+    "v": "Text ID"
+  },
+  {
+    "k": "ID dos itens",
+    "v": "Item IDs"
+  },
+  {
+    "k": "ID ou nome do tema padrão",
+    "v": "ID or name of the default theme"
+  },
+  {
+    "k": "ID ou nome do Tema utilizado para exibir o texto",
+    "v": "ID or name of the Theme used to display the text"
   },
   {
     "k": "ID retornado do método **setInterval**",
@@ -880,12 +1380,32 @@
     "v": "ID returned from method **setTimeout**"
   },
   {
+    "k": "Idioma no formato ISO 639 two-letter",
+    "v": "Language in ISO 639 two-letter format"
+  },
+  {
+    "k": "image",
+    "v": "image"
+  },
+  {
     "k": "Imagem",
     "v": "Image"
   },
   {
     "k": "Imagem do papel de parede em base 64",
     "v": "Wallpaper image in base 64"
+  },
+  {
+    "k": "Imagem no formato base64",
+    "v": "Image in base64 format"
+  },
+  {
+    "k": "Incluir comentários (se houver) no texto dos slides",
+    "v": "Include comments (if any) in the slide text"
+  },
+  {
+    "k": "Incluir imagem preview do slide",
+    "v": "Include slide preview image"
   },
   {
     "k": "Índice do slide na apresentação (começa em zero)",
@@ -908,6 +1428,10 @@
     "v": "starts the countdown on the return screen, with the number of minutes selected"
   },
   {
+    "k": "Inicia um cronômetro no painel de comunicação",
+    "v": "Start a stopwatch on the communication panel"
+  },
+  {
     "k": "Inicia um timer",
     "v": "Start a timer"
   },
@@ -924,12 +1448,20 @@
     "v": "Starts a Bible verse presentation."
   },
   {
+    "k": "Inicia uma contagem regressiva",
+    "v": "Start a countdown"
+  },
+  {
     "k": "Inicia uma contagem regressiva no painel de comunicação",
     "v": "Starts a countdown on the communication panel"
   },
   {
-    "k": "Input Param",
-    "v": "Input Param"
+    "k": "Iniciar uma apresentação no formato múltipla escolha",
+    "v": "Start a multiple choice presentation"
+  },
+  {
+    "k": "Iniciar uma contagem regressiva",
+    "v": "Start a countdown"
   },
   {
     "k": "Integrante definido como responsável pelo evento",
@@ -948,12 +1480,12 @@
     "v": "italic"
   },
   {
-    "k": "Itálido. Se for **null**, utiliza a configuração padrão do tema",
-    "v": "Italid. If it is **null**, use the default theme setting"
+    "k": "Itálico",
+    "v": "Italic"
   },
   {
-    "k": "Item",
-    "v": "Item"
+    "k": "Itálido. Se for **null**, utiliza a configuração padrão do tema",
+    "v": "Italid. If it is **null**, use the default theme setting"
   },
   {
     "k": "Item 123",
@@ -1020,6 +1552,10 @@
     "v": "Second line information layout [Slide Additional Info Layout](#slide-additional-info-layout)"
   },
   {
+    "k": "Ler um arquivo da biblioteca do programa",
+    "v": "Read a file from the program library"
+  },
+  {
     "k": "Letra de música",
     "v": "Song lyrics"
   },
@@ -1048,12 +1584,36 @@
     "v": "List with the name of each announcement"
   },
   {
+    "k": "Lista com os itens para serem sorteados",
+    "v": "List with the items to be drawn"
+  },
+  {
+    "k": "Lista com os itens que serão adicionados",
+    "v": "List with the items that will be added"
+  },
+  {
+    "k": "Lista com os nomes alternativos",
+    "v": "List with alternative names"
+  },
+  {
+    "k": "Lista com os slides da apresentação atual",
+    "v": "List with the slides of the current presentation"
+  },
+  {
     "k": "Lista com valores padrões para o parâmetro",
     "v": "List with default values for the parameter"
   },
   {
+    "k": "Lista da configuração dos efeitos de transição",
+    "v": "List of transition effect configuration"
+  },
+  {
     "k": "Lista das configurações de exibição de cada tela",
     "v": "List of display settings for each screen"
+  },
+  {
+    "k": "Lista das descrições do slide disponíveis",
+    "v": "List of available slide descriptions"
   },
   {
     "k": "Lista das funções na escala",
@@ -1104,12 +1664,24 @@
     "v": "default list with possible duration (in minutes) of the countdown"
   },
   {
+    "k": "Local de exibição da contagem regressiva ou cronômetro.",
+    "v": "Location of the countdown or stopwatch display."
+  },
+  {
     "k": "Local do arquivo na aba **Imagens**",
     "v": "File location in the **Images** tab"
   },
   {
-    "k": "Lyrics",
-    "v": "Lyrics"
+    "k": "Mapa chave/valor onde a chave é o nome do campo **variables.*.name** da classe CustomMessage",
+    "v": "Key/value map where the key is the field name **variables.*.name** of the CustomMessage class"
+  },
+  {
+    "k": "Mapa de objetos extras (adicionados pelo usuário)",
+    "v": "Map of extra objects (added by the user)"
+  },
+  {
+    "k": "Margem para exibição dos vídeos pelo VLC Player",
+    "v": "Margin for displaying videos by VLC Player"
   },
   {
     "k": "Margens definidas na opção **Editar posição da tela**. margin.top, margin.right, margin.bottom, margin.left",
@@ -1122,10 +1694,6 @@
   {
     "k": "Mas se o campo **autor** não estiver disponível, será exibido apenas **Título**, e não **Título -**",
     "v": "But if the **author** field is not available, only **Title** will be displayed, not **Title -**"
-  },
-  {
-    "k": "Member",
-    "v": "Member"
   },
   {
     "k": "Mensagem",
@@ -1156,6 +1724,10 @@
     "v": "Month (1-12)"
   },
   {
+    "k": "Método alternativo",
+    "v": "Alternative method"
+  },
+  {
     "k": "Método sem retorno",
     "v": "Method does not return value"
   },
@@ -1178,10 +1750,6 @@
   {
     "k": "Métodos User Input",
     "v": "User input Methods"
-  },
-  {
-    "k": "Midi",
-    "v": "MIDI"
   },
   {
     "k": "Mínimo=0, Máximo=100",
@@ -1208,8 +1776,16 @@
     "v": "Music or NULL if not found"
   },
   {
+    "k": "n >= 2",
+    "v": "n >= 2"
+  },
+  {
     "k": "não aguarda o retorno",
     "v": "do not wait for the return"
+  },
+  {
+    "k": "Não duplicar itens ao adicionar novos itens, ou seja, não adiciona um item se ele já estiver na lista.",
+    "v": "Do not duplicate items when adding new items, that is, do not add an item if it is already on the list."
   },
   {
     "k": "Não há apresentação em exibição",
@@ -1220,8 +1796,16 @@
     "v": "there is no presentation currently showing"
   },
   {
+    "k": "Não repete o valor sorteado anteriormente",
+    "v": "Does not repeat the previously drawn value"
+  },
+  {
     "k": "negrito",
     "v": "bold"
+  },
+  {
+    "k": "Negrito",
+    "v": "Bold"
   },
   {
     "k": "Negrito. Se for **null**, utiliza a configuração padrão do tema",
@@ -1240,6 +1824,10 @@
     "v": "Name"
   },
   {
+    "k": "Nome curto do item",
+    "v": "Short name of the item"
+  },
+  {
     "k": "Nome da ação que será executada no player.",
     "v": "Name of the action that will be performed on the player."
   },
@@ -1250,6 +1838,10 @@
   {
     "k": "nome da fonte",
     "v": "font name"
+  },
+  {
+    "k": "Nome da fonte",
+    "v": "Font name"
   },
   {
     "k": "Nome da fonte. Se for **null**, utiliza a fonte padrão do tema.",
@@ -1288,12 +1880,24 @@
     "v": "translation name"
   },
   {
+    "k": "Nome da versão",
+    "v": "Version name"
+  },
+  {
     "k": "Nome do ambiente de execução",
     "v": "Runtime environment name"
   },
   {
     "k": "Nome do anúncio",
     "v": "Announcement name"
+  },
+  {
+    "k": "Nome do arquivo",
+    "v": "File name"
+  },
+  {
+    "k": "Nome do arquivo na biblioteca",
+    "v": "File name in the library"
   },
   {
     "k": "Nome do arquivo ou da pasta. Exemplo: **arquivo.jpg** ou **pasta** ou **pasta/arquivo.jpg**",
@@ -1328,11 +1932,11 @@
     "v": "Name of the member"
   },
   {
-    "k": "Nome do item",
+    "k": "Nome do Item",
     "v": "Item name"
   },
   {
-    "k": "Nome do Item",
+    "k": "Nome do item",
     "v": "Item name"
   },
   {
@@ -1342,6 +1946,10 @@
   {
     "k": "Nome do tema ou plano de fundo",
     "v": "Theme name or background"
+  },
+  {
+    "k": "Nome ou abreviação da tradução utilizada",
+    "v": "Name or abbreviation of the translation used"
   },
   {
     "k": "Nome que será exibido representando o item",
@@ -1356,6 +1964,10 @@
     "v": "New settings. Settings are individually optional. Fill in only the fields you want to change."
   },
   {
+    "k": "Novo valor",
+    "v": "New value"
+  },
+  {
     "k": "Número aleatório de 0 a 10",
     "v": "Random number from 0 to 10"
   },
@@ -1364,12 +1976,32 @@
     "v": "Tab number (1, 2 or 3) of the Bible translation displayed on the screen, as translations are loaded in the Bible window"
   },
   {
+    "k": "Número da alternativa correta. Começa em 1",
+    "v": "Number of the correct alternative. Starts at 1"
+  },
+  {
+    "k": "Número do slide (começa em 1)",
+    "v": "Slide number (starts at 1)"
+  },
+  {
     "k": "Número selecionado",
     "v": "Selected number"
   },
   {
     "k": "Números selecionados",
     "v": "Selected numbers"
+  },
+  {
+    "k": "O item de acordo com o tipo informado:",
+    "v": "The item according to the type informed:"
+  },
+  {
+    "k": "O mesmo que `apiRequest(id, raw)`, porém lança uma exception ao ocorrer um erro, em vez de retornar **null**",
+    "v": "The same as `apiRequest(id, raw)`, but throws an exception when an error occurs, instead of returning **null**"
+  },
+  {
+    "k": "o nome da tela",
+    "v": "the name of the screen"
   },
   {
     "k": "O número sorteado não será repetido",
@@ -1388,8 +2020,16 @@
     "v": "The player is not running"
   },
   {
+    "k": "o tema selecionado será modificado para a fonte 'Arial' em itálico",
+    "v": "the selected theme will be modified to the 'Arial' font in italic"
+  },
+  {
     "k": "O tempo atual da contagem regressiva em exibição (em segundos)",
     "v": "The current countdown time displayed (in seconds)"
+  },
+  {
+    "k": "O tempo atual do cronômetro em exibição (em segundos)",
+    "v": "The current time of the timer on display (in seconds)"
   },
   {
     "k": "Objeto da classe Player",
@@ -1398,6 +2038,10 @@
   {
     "k": "Objeto que será salvo na memória",
     "v": "Object to be saved in memory"
+  },
+  {
+    "k": "Objeto, array, map ou lista com os possíveis valores",
+    "v": "Object, array, map or list with possible values"
   },
   {
     "k": "OBS - Listar e alterar cena (ws v4)",
@@ -1416,12 +2060,32 @@
     "v": "Get the operating system clipboard text"
   },
   {
+    "k": "Obter um valor aleatório baseado nos valores de entrada",
+    "v": "Get a random value based on input values"
+  },
+  {
     "k": "Ocultar a tela",
     "v": "Hide screen"
   },
   {
+    "k": "Ocultar uma alternativa. Começa em 1",
+    "v": "Hide an alternative. Starts at 1"
+  },
+  {
+    "k": "Opacidade",
+    "v": "Opacity"
+  },
+  {
+    "k": "Opção *'exibir à frente de tudo'*",
+    "v": "Option *'display ahead of everything'*"
+  },
+  {
     "k": "opcional",
     "v": "optional"
+  },
+  {
+    "k": "Ordem dos slides (índice a partir do 1), separado por vírgula",
+    "v": "Order of slides (index from 1), separated by comma"
   },
   {
     "k": "Padrão",
@@ -1468,6 +2132,10 @@
     "v": "message parameters"
   },
   {
+    "k": "Parâmetros para formatação de uma mensagem de log",
+    "v": "Parameters for formatting a log message"
+  },
+  {
     "k": "Parar a contagem regressiva ao chegar em zero",
     "v": "Stop the countdown when it reaches zero"
   },
@@ -1500,8 +2168,20 @@
     "v": "Pause execution in X milliseconds as specified value"
   },
   {
+    "k": "Pergunta",
+    "v": "Question"
+  },
+  {
+    "k": "Plano de fundo",
+    "v": "Background"
+  },
+  {
     "k": "Plano de fundo atual ou NULL se não houver apresentação em exibição",
     "v": "Current background or NULL if no presentation is displayed"
+  },
+  {
+    "k": "Pode ser",
+    "v": "Can be"
   },
   {
     "k": "Pode ser *'ok'* ou *'error'*",
@@ -1516,16 +2196,16 @@
     "v": "can be: obs studio closed, webservice disabled, incorrect ip, incorrect password, etc."
   },
   {
-    "k": "Pode ser: theme, my_video, my_image, video, image",
-    "v": "It might be: theme, my_video, my_image, video, image"
-  },
-  {
     "k": "pois é ela que será exibida na lista como nome do item",
     "v": "because it will be displayed in the list as the item name"
   },
   {
     "k": "Por exemplo",
     "v": "For example"
+  },
+  {
+    "k": "Posição do item na lista (inicia em zero).",
+    "v": "Item position in the list (starts at zero)."
   },
   {
     "k": "Posição do item na lista que será removido (inicia em zero).",
@@ -1544,6 +2224,10 @@
     "v": "Populates the media list of the currently selected playlist in the program with the given list"
   },
   {
+    "k": "Preencher o campo 'minuto' com zero à esquerda",
+    "v": "Fill in the 'minute' field with zero on the left"
+  },
+  {
     "k": "procura uma música e executa o primeiro resultado encontrado",
     "v": "search for a song and execute the first result found"
   },
@@ -1558,6 +2242,10 @@
   {
     "k": "provavelmente 00:00:02",
     "v": "Like 00:00:02"
+  },
+  {
+    "k": "provavelmente 00:04:58",
+    "v": "probably 00:04:58"
   },
   {
     "k": "próxima linha",
@@ -1576,8 +2264,32 @@
     "v": "Number of seconds"
   },
   {
+    "k": "Quantidade de versículos exibidos na projeção",
+    "v": "Number of verses displayed in the projection"
+  },
+  {
+    "k": "Quantidade total de minutos",
+    "v": "Total amount of minutes"
+  },
+  {
+    "k": "Quantidade total de segundos",
+    "v": "Total amount of seconds"
+  },
+  {
+    "k": "Questões para exibir",
+    "v": "Questions to display"
+  },
+  {
+    "k": "Realiza o efeito de transição apenas dentro da margem definida no Tema",
+    "v": "Performs the transition effect only within the margin defined in the Theme"
+  },
+  {
     "k": "Realiza uma busca na lista de letras do usuário",
     "v": "Performs a search in the user's lyrics list"
+  },
+  {
+    "k": "Realiza uma busca na lista de textos do usuário",
+    "v": "Performs a search in the user's text list"
   },
   {
     "k": "realiza uma requisição direta ao obs para alterar a cena atual",
@@ -1592,12 +2304,20 @@
     "v": "Do task now?"
   },
   {
-    "k": "Rectangle",
-    "v": "Rectangle"
+    "k": "Recupera quanto tempo foi decorrido (em milésimos de segundo) em um timer de acordo com o valor **key**. Se o timer não tiver sido iniciado, o método iniciará o timer e retornará 0",
+    "v": "Recovers how much time has elapsed (in milliseconds) on a timer according to the value **key**. If the timer has not been started, the method will start the timer and return 0"
+  },
+  {
+    "k": "Recupera quanto tempo foi decorrido (em segundos) em um timer de acordo com o valor **key**. Se o timer não tiver sido iniciado, o método iniciará o timer e retornará 0",
+    "v": "Recovers how much time has elapsed (in seconds) on a timer according to the value **key**. If the timer has not been started, the method will start the timer and return 0"
   },
   {
     "k": "Recupera quanto tempo foi decorrido em um timer de acordo com o valor **key**. Se o timer não tiver sido iniciado, o método iniciará o timer e retornará 00:00:00",
     "v": "Retrieves how much time has elapsed on a timer according to the **key** value. If the timer has not been started, the method will start the timer and return 00:00:00"
+  },
+  {
+    "k": "Recupera quanto tempo resta em uma contagem regressiva de acordo com o valor **key**.",
+    "v": "Recovers how much time is left in a countdown according to the **key** value."
   },
   {
     "k": "Recupera um objeto salvo na memória. O método é compartilhado com todos os scripts do programa.",
@@ -1614,6 +2334,10 @@
   {
     "k": "Referências. Exemplo: **João 3:16** ou **Rm 12:2** ou **Gn 1:1-3 Sl 23.1**",
     "v": "References. Example: **John 3:16** or **Rm 12:2** or **Gn 1:1-3 Sl 23.1**"
+  },
+  {
+    "k": "Registrar um gatilho para execução",
+    "v": "Register a trigger for execution"
   },
   {
     "k": "Remove a acentuação da string",
@@ -1634,6 +2358,10 @@
   {
     "k": "Remover quebra de linha",
     "v": "remove line break"
+  },
+  {
+    "k": "Remover um gatilho registrado",
+    "v": "Remove a registered trigger"
   },
   {
     "k": "Renderizar o texto com os efeitos contorno, brilho e sombra do tema, se disponível",
@@ -1664,20 +2392,76 @@
     "v": "Return **true** or a list of errors that occurred"
   },
   {
+    "k": "Retorna **true** para removido. Retorna **false** para ID não foi encontrado",
+    "v": "Returns **true** for removed. Returns **false** for ID was not found"
+  },
+  {
     "k": "Retorna **true** se for uma pasta ou **false** se for arquivo.",
     "v": "Return **true** if it's a folder or **false** if it's a file."
   },
   {
-    "k": "Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem",
-    "v": "Returns the file list of the respective tab: audio, video, image"
+    "k": "Retorna a duração da mídia",
+    "v": "Returns the duration of the media"
+  },
+  {
+    "k": "Retorna a imagem miniatura de um item no programa",
+    "v": "Returns the thumbnail image of an item in the program"
+  },
+  {
+    "k": "Retorna a lista de APIs",
+    "v": "Returns the list of APIs"
+  },
+  {
+    "k": "Retorna a lista de apresentações automáticas",
+    "v": "Returns the list of automatic presentations"
+  },
+  {
+    "k": "Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo",
+    "v": "Returns the list of files from the respective tab: audio, video, image, file"
+  },
+  {
+    "k": "Retorna a lista de gatilhos registrados",
+    "v": "Returns the list of registered triggers"
+  },
+  {
+    "k": "Retorna a lista de músicas",
+    "v": "Returns the list of songs"
   },
   {
     "k": "Retorna a lista de programação de um mês específico",
     "v": "Returns the schedule list for a specific month"
   },
   {
+    "k": "Retorna a lista de scripts",
+    "v": "Returns the list of scripts"
+  },
+  {
+    "k": "Retorna a lista de textos",
+    "v": "Returns the list of texts"
+  },
+  {
+    "k": "Retorna a lista de versões disponíveis da Bíblia, e também dos atalhos associados",
+    "v": "Returns the list of available versions of the Bible, and also the associated shortcuts"
+  },
+  {
+    "k": "Retorna a quantidade total de segundos do dia",
+    "v": "Returns the total amount of seconds of the day"
+  },
+  {
     "k": "Retorna a string salva ou NULL se não for encontrado",
     "v": "Returns the saved string or NULL if not found"
+  },
+  {
+    "k": "Retorna a versão atual do programa.",
+    "v": "Returns the current version of the program."
+  },
+  {
+    "k": "Retorna as informações da apresentação automática em exibição",
+    "v": "Returns the information of the automatic presentation on display"
+  },
+  {
+    "k": "Retorna as informações de cor predominante de um respectivo tipo de item<br/>O array retornado contém 8 índices, e cada índice corresponde ao trecho conforme imagem de exemplo a seguir.<br/> <br/>![Color Map Example](https://holyrics.com.br/images/color_map_item_example.png)<br/>",
+    "v": "Returns the information of the predominant color of a respective type of item<br/>The returned array contains 8 indices, and each index corresponds to the section according to the following example image.<br/> <br/>![Color Map Example](https://holyrics.com.br/images/color_map_item_example.png)<br/>"
   },
   {
     "k": "Retorna as informações do player",
@@ -1686,6 +2470,10 @@
   {
     "k": "Retorna as listas de reprodução salvas",
     "v": "Returns saved playlists"
+  },
+  {
+    "k": "Retorna o **checksum** do parâmetro informado",
+    "v": "Returns the **checksum** of the informed parameter"
   },
   {
     "k": "Retorna o erro da última requisição apiRequest realizada.",
@@ -1700,12 +2488,24 @@
     "v": "Returns the current state of online synchronization via Google Drive™"
   },
   {
+    "k": "Retorna o hash do parâmetro informado",
+    "v": "Returns the hash of the informed parameter"
+  },
+  {
     "k": "Retorna o ID da tarefa. Você pode utilizar o ID para cancelar a execução.",
     "v": "Returns the task ID. You can use the ID to cancel the run."
   },
   {
     "k": "Retorna o ID da tarefa. Você pode utilizar o ID para parar a execução.",
     "v": "Returns the task ID. You can use the ID to stop the execution."
+  },
+  {
+    "k": "Retorna o ID do item registrado (gerado automaticamente se **input.id** for **null**)",
+    "v": "Returns the ID of the registered item (automatically generated if **input.id** is **null**)"
+  },
+  {
+    "k": "Retorna o idioma atual definido nas configurações do programa.",
+    "v": "Returns the current language set in the program settings."
   },
   {
     "k": "Retorna o item selecionado pelo usuário (pode ser NULL)",
@@ -1728,12 +2528,20 @@
     "v": "Returns the background of the currently displayed presentation."
   },
   {
+    "k": "Retorna o tema atual da interface do programa.",
+    "v": "Returns the current theme of the program interface."
+  },
+  {
     "k": "Retorna o texto informado pelo usuário (pode ser NULL)",
     "v": "Returns the text entered by the user (can be NULL)"
   },
   {
     "k": "Retorna o valor BPM atual definido no programa",
     "v": "Returns the current BPM value set in the program"
+  },
+  {
+    "k": "Retorna o valor de um campo da interface do programa",
+    "v": "Returns the value of a field from the program interface"
   },
   {
     "k": "Retorna o valor matiz atual definido no programa",
@@ -1744,12 +2552,44 @@
     "v": "Returns items selected by the user (can be NULL)"
   },
   {
+    "k": "Retorna um campo aleatório do objeto x",
+    "v": "Returns a random field from object x"
+  },
+  {
+    "k": "Retorna um caractere aleatório da string x",
+    "v": "Returns a random character from string x"
+  },
+  {
     "k": "Retorna um número aleatório de **min** a **max**",
     "v": "Returns a random number from **min** to **max**"
   },
   {
+    "k": "Retorna um objeto aleatório do array x",
+    "v": "Returns a random object from array x"
+  },
+  {
+    "k": "Retorna um texto.",
+    "v": "Returns a text."
+  },
+  {
+    "k": "Retorna um valor aleatório de 0 a x",
+    "v": "Returns a random value from 0 to x"
+  },
+  {
+    "k": "Retorna um valor aleatório de x a y",
+    "v": "Returns a random value from x to y"
+  },
+  {
     "k": "Retorna uma música.",
     "v": "Returns a song."
+  },
+  {
+    "k": "Retornar a lista de slides da apresentação atual. Indisponível para apresentação de versículos.",
+    "v": "Return the list of slides from the current presentation. Unavailable for verse presentation."
+  },
+  {
+    "k": "Retorno da requisição",
+    "v": "Request return"
   },
   {
     "k": "Retorno da requisição ou NULL para erro/timeout",
@@ -1757,11 +2597,7 @@
   },
   {
     "k": "Rm 12:2  Gn 1:1-3  Sl 23",
-    "v": "Rm 12:2  Gn 1:1-3  Sl 23"
-  },
-  {
-    "k": "Role",
-    "v": "Role"
+    "v": "Rm 12:2  Gn 1:1-3  Ps 23"
   },
   {
     "k": "Salva um objeto na memória que pode ser recuperado, mas é válido somente enquanto o programa estiver aberto. O método é compartilhado com todos os scripts do programa.",
@@ -1776,8 +2612,12 @@
     "v": "Saves a string to disk that can be recovered even after restarting the program. The method is shared with all scripts in the program."
   },
   {
-    "k": "Schedule",
-    "v": "Schedule"
+    "k": "script",
+    "v": "script"
+  },
+  {
+    "k": "Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos)",
+    "v": "If **true**, `time` should be HH:MM (exact hour and minute). If **false**, `time` should be MM:SS (amount of minutes and seconds)"
   },
   {
     "k": "Se a exibição do alerta está ativada",
@@ -1800,12 +2640,20 @@
     "v": "Whether synchronization has started (internet available for example)"
   },
   {
+    "k": "Se está ativado ou desativado",
+    "v": "Whether it is enabled or disabled"
+  },
+  {
     "k": "Se for passado apenas um item como entrada, será retornado o valor informado pelo usuário (pode ser NULL). Se múltiplas entradas forem solicitadas, será retornado um objeto (pode ser NULL) onde cada valor será informado na variável do seu respectivo ID.",
     "v": "If only one item is passed as input, the value informed by the user will be returned (can be NULL). If multiple entries are requested, an object will be returned (can be NULL) where each value will be informed in the variable of its respective ID."
   },
   {
     "k": "Se informado, a apresentação dos itens será automática",
     "v": "If informed, the presentation of the items will be automatic"
+  },
+  {
+    "k": "Se necessário adicionar o mesmo parâmetro, adicione `*_n` no final do nome, começando em 2",
+    "v": "If necessary to add the same parameter, add `*_n` at the end of the name, starting at 2"
   },
   {
     "k": "Se o campo **input.tags** estiver preenchido com múltiplos itens, a opção **input.intersection** define o tipo de junção. Se **true**, o filtro retornará apenas itens que contém **todas** as tags informadas, se **false**, o filtro retornará os itens que têm pelo menos uma tag das tags informadas",
@@ -1832,6 +2680,10 @@
     "v": "Turns into: **Title - Author, 2023**"
   },
   {
+    "k": "Se um cronômetro está em exibição",
+    "v": "If a timer is on display"
+  },
+  {
     "k": "Se uma contagem regressiva está em exibição",
     "v": "If a countdown is on display"
   },
@@ -1846,6 +2698,10 @@
   {
     "k": "selecionado por padrão",
     "v": "selected by default"
+  },
+  {
+    "k": "Selecionar uma alternativa. Começa em 1",
+    "v": "Select an alternative. Starts at 1"
   },
   {
     "k": "Selecione os itens",
@@ -1876,12 +2732,12 @@
     "v": "Informed password"
   },
   {
-    "k": "Slide 1\\n\\nSlide 2\\n\\nSlide 3",
-    "v": "Slide 1\\n\\nSlide 2\\n\\nSlide 3"
+    "k": "Separador",
+    "v": "Separator"
   },
   {
-    "k": "Slide Additional Info",
-    "v": "Slide Additional Info"
+    "k": "Slide 1\\n\\nSlide 2\\n\\nSlide 3",
+    "v": "Slide 1\\n\\nSlide 2\\n\\nSlide 3"
   },
   {
     "k": "Solicita uma entrada em formato **textarea** possibilitando texto com múltiplas linhas",
@@ -1892,8 +2748,12 @@
     "v": "only \"My Videos\" and tagged 'water' AND 'blue'"
   },
   {
-    "k": "Stage View",
-    "v": "Stage View"
+    "k": "song",
+    "v": "song"
+  },
+  {
+    "k": "String decodificada",
+    "v": "Decoded string"
   },
   {
     "k": "String em base64",
@@ -1902,6 +2762,10 @@
   {
     "k": "String em formato base64",
     "v": "String in base64 format"
+  },
+  {
+    "k": "String no formato CSV",
+    "v": "String in CSV format"
   },
   {
     "k": "String que será salva",
@@ -1918,6 +2782,18 @@
   {
     "k": "Tags HTML disponíveis",
     "v": "HTML tags available"
+  },
+  {
+    "k": "Tamanho",
+    "v": "Size"
+  },
+  {
+    "k": "Tamanho do preview no formato WxH",
+    "v": "Preview size in WxH format"
+  },
+  {
+    "k": "Tamanho relativo da contagem regressiva",
+    "v": "Relative size of the countdown"
   },
   {
     "k": "tamanho relativo da fonte",
@@ -1944,6 +2820,22 @@
     "v": "Theme 3"
   },
   {
+    "k": "Tema personalizado",
+    "v": "Custom theme"
+  },
+  {
+    "k": "Tema personalizado para exibir o texto",
+    "v": "Custom theme to display the text"
+  },
+  {
+    "k": "Tema personalizado utilizado para exibir a apresentação automática",
+    "v": "Custom theme used to display the automatic presentation"
+  },
+  {
+    "k": "Tema personalizado utilizado para exibir o texto",
+    "v": "Custom theme used to display the text"
+  },
+  {
     "k": "Tempo atual da mídia em milissegundos",
     "v": "Current media time in milliseconds"
   },
@@ -1964,12 +2856,28 @@
     "v": "Elapsed time of media in player"
   },
   {
+    "k": "Tempo decorrido em milésimos de segundo",
+    "v": "Elapsed time in milliseconds"
+  },
+  {
+    "k": "Tempo decorrido em segundos",
+    "v": "Elapsed time in seconds"
+  },
+  {
     "k": "Tempo decorrido no formato HH:MM:SS",
     "v": "Elapsed time in format HH:MM:SS"
   },
   {
     "k": "Tempo em milissegundos para aguardar até a execução",
     "v": "Time in milliseconds to wait until execution"
+  },
+  {
+    "k": "Tempo final para execução no formato SS, MM:SS ou HH:MM:SS",
+    "v": "End time for execution in SS, MM:SS or HH:MM:SS format"
+  },
+  {
+    "k": "Tempo inicial para execução no formato SS, MM:SS ou HH:MM:SS",
+    "v": "Start time for execution in SS, MM:SS or HH:MM:SS format"
   },
   {
     "k": "Tempo para a notificação ser ocultada automaticamente. Se o valor for menor ou igual a zero a notificação não será ocultada automaticamente.",
@@ -1980,12 +2888,28 @@
     "v": "Time each item will be displayed"
   },
   {
+    "k": "Tempo restante",
+    "v": "Remaining time"
+  },
+  {
     "k": "Tempo restante da mídia no player",
     "v": "Remaining media time in player"
   },
   {
+    "k": "Tempo restante em milissegundos (retorna valores negativos após limite de tempo)",
+    "v": "Remaining time in milliseconds (returns negative values after time limit)"
+  },
+  {
+    "k": "Tempo restante em segundos (retorna valores negativos após limite de tempo)",
+    "v": "Remaining time in seconds (returns negative values after time limit)"
+  },
+  {
     "k": "Tempo restante no formato HH:MM:SS",
     "v": "Remaining time in format HH:MM:SS"
+  },
+  {
+    "k": "Tempo restante no formato HH:MM:SS (retorna valores negativos após limite de tempo)",
+    "v": "Remaining time in the format HH:MM:SS (returns negative values after time limit)"
   },
   {
     "k": "Tempo total da mídia atual no player",
@@ -1994,6 +2918,10 @@
   {
     "k": "Tempo total em milissegundos",
     "v": "Total time in milliseconds"
+  },
+  {
+    "k": "text",
+    "v": "text"
   },
   {
     "k": "Texto",
@@ -2028,6 +2956,22 @@
     "v": "communication panel alert text"
   },
   {
+    "k": "Texto do slide",
+    "v": "Slide text"
+  },
+  {
+    "k": "Texto exibido na parte inferior da contagem regressiva",
+    "v": "Text displayed at the bottom of the countdown"
+  },
+  {
+    "k": "Texto exibido na parte superior da contagem regressiva",
+    "v": "Text displayed at the top of the countdown"
+  },
+  {
+    "k": "Texto ou NULL se não for encontrado",
+    "v": "Text or NULL if not found"
+  },
+  {
     "k": "texto painel de comunicação",
     "v": "communication panel text"
   },
@@ -2048,28 +2992,68 @@
     "v": "Playlist type. Can be: temporary, service, event"
   },
   {
-    "k": "Tipo de entrada. Pode ser: text, textarea, number, password, title, separator",
-    "v": "Input type. Can be: text, textarea, number, password, title, separator"
+    "k": "Tipo de caractere para listar as alternativas `number (1, 2, 3...)`  `alpha (A, B, C...)`",
+    "v": "Type of character to list the alternatives `number (1, 2, 3...)`  `alpha (A, B, C...)`"
+  },
+  {
+    "k": "Tipo de efeito",
+    "v": "Type of effect"
+  },
+  {
+    "k": "Tipo de ordenação dos livros da Bíblia",
+    "v": "Type of sorting of the books of the Bible"
+  },
+  {
+    "k": "Tipo de separação na exibição de múltiplos versículos",
+    "v": "Type of separation in the display of multiple verses"
+  },
+  {
+    "k": "Tipo de visualização dos livros da Bíblia",
+    "v": "Type of view of the books of the Bible"
   },
   {
     "k": "Tipo do evento da lista de reprodução. Pode ser: temporary, service, event",
     "v": "Playlist event type. Can be: temporary, service, event"
   },
   {
-    "k": "Tipo do item. Pode ser: theme, my_video, my_image, video, image",
-    "v": "Item type. It might be:theme, my_video, my_image, video, image"
+    "k": "Tipo do item",
+    "v": "Type of item"
+  },
+  {
+    "k": "Tipo do item. Pode ser:",
+    "v": "Type of item. It can be:"
+  },
+  {
+    "k": "Tipo do plano de fundo",
+    "v": "Type of background"
+  },
+  {
+    "k": "title",
+    "v": "title"
+  },
+  {
+    "k": "Título",
+    "v": "Title"
   },
   {
     "k": "Título da janela",
     "v": "Window title"
   },
   {
+    "k": "Título da música",
+    "v": "Song title"
+  },
+  {
     "k": "título da música",
     "v": "song title"
   },
   {
-    "k": "Título da música",
-    "v": "Song title"
+    "k": "Título do item",
+    "v": "Item title"
+  },
+  {
+    "k": "Título do texto",
+    "v": "Text title"
   },
   {
     "k": "Título na janela",
@@ -2088,8 +3072,20 @@
     "v": "Tone of music"
   },
   {
+    "k": "Total de slides",
+    "v": "Total slides"
+  },
+  {
     "k": "Troca o estado atual da respectiva opção **F8 (papel de parede), F9 (tela vazia) ou F10 (tela preta)**",
     "v": "Changes the current state of the respective option **F8 (wallpaper), F9 (empty screen) or F10 (black screen)**"
+  },
+  {
+    "k": "Um alias para o formatador padrão em Java java.util.Formatter",
+    "v": "An alias for the default formatter in Java java.util.Formatter"
+  },
+  {
+    "k": "Um dos seguintes valores:",
+    "v": "One of the following values:"
   },
   {
     "k": "um versículo sendo apresentado",
@@ -2112,6 +3108,18 @@
     "v": "a song being performed"
   },
   {
+    "k": "uri",
+    "v": "uri"
+  },
+  {
+    "k": "Utiliza a mesma estrutura/sintaxe da funcionalidade FunctionInput",
+    "v": "Uses the same structure/syntax as the FunctionInput feature"
+  },
+  {
+    "k": "Utilizar o tema personalizado na opção **Apresentação Rápida**",
+    "v": "Use the custom theme in the **Quick Presentation** option"
+  },
+  {
     "k": "Utilizar o tema personalizado nos textos",
     "v": "Use custom theme in texts"
   },
@@ -2126,6 +3134,10 @@
   {
     "k": "vai exibir uma janela para o usuário escolher um item criando a propriedade 'label'",
     "v": "will display a window for the user to choose an item by creating the 'label' property"
+  },
+  {
+    "k": "Valor",
+    "v": "Value"
   },
   {
     "k": "Valor BPM",
@@ -2144,8 +3156,20 @@
     "v": "Value in milliseconds. Minimum=0, Maximum=60000"
   },
   {
+    "k": "Valor em porcentagem baseado na altura da linha",
+    "v": "Value in percentage based on the line height"
+  },
+  {
+    "k": "Valor em porcentagem, baseado na altura do slide",
+    "v": "Value in percentage, based on the slide height"
+  },
+  {
     "k": "Valor em segundos para definir a partir de quanto tempo a contagem regressiva ficará amarela",
     "v": "Value in seconds to define how long the countdown will be yellow from"
+  },
+  {
+    "k": "Valor formatado",
+    "v": "Formatted value"
   },
   {
     "k": "Valor informado",
@@ -2172,8 +3196,8 @@
     "v": "default value"
   },
   {
-    "k": "Valor padrão do item",
-    "v": "Item default value"
+    "k": "Valor padrão para",
+    "v": "Default value for"
   },
   {
     "k": "Valor padrão se não for encontrado valor salvo anteriormente",
@@ -2184,12 +3208,32 @@
     "v": "Value to be calculated. Can be string or byte array"
   },
   {
+    "k": "Valores aceitos",
+    "v": "Accepted values"
+  },
+  {
+    "k": "Valores que serão definidos para",
+    "v": "Values that will be set for"
+  },
+  {
     "k": "Variável adicionada na posição especificada conforme valor retornado em **variables.*.position** da classe CustomMessage.",
     "v": "Variable added at the specified position according to the value returned in **variables.*.position** of the CustomMessage class."
   },
   {
     "k": "Velocidade/intensidade midi",
     "v": "Speed/intensity midi"
+  },
+  {
+    "k": "Ver exemplo",
+    "v": "See example"
+  },
+  {
+    "k": "Verde",
+    "v": "Green"
+  },
+  {
+    "k": "Verifica se a exibição da chave está ativada",
+    "v": "Checks if the display of the key is activated"
   },
   {
     "k": "Verifica se a opção **aleatório** está ativada",
@@ -2208,8 +3252,24 @@
     "v": "Checks if the **full screen** option is enabled"
   },
   {
+    "k": "Verifica se a versão do programa é igual ou superior ao informado por parâmetro.",
+    "v": "Checks if the program version is equal to or higher than the one informed by parameter."
+  },
+  {
+    "k": "Verifica se a visualização está ativada/desativada para a respectiva chave/id",
+    "v": "Checks if the visualization is enabled/disabled for the respective key/id"
+  },
+  {
+    "k": "Verifica se existe o arquivo com o nome informado",
+    "v": "Checks if there is a file with the informed name"
+  },
+  {
     "k": "Verifica se o ambiente de execução atual é igual ao passado por parâmetro.",
     "v": "Checks whether the current execution environment is the same as the one passed by parameter."
+  },
+  {
+    "k": "Verifica se o idioma atual definido nas configurações do programa é igual ao valor passado por parâmetro.",
+    "v": "Checks if the current language set in the program settings is equal to the value passed by parameter."
   },
   {
     "k": "Verifica se o player está definido para executar itens em sequência",
@@ -2224,8 +3284,48 @@
     "v": "Checks if the player is running"
   },
   {
+    "k": "Verifica se o tema atual atual da interface é igual ao valor passado por parâmetro.",
+    "v": "Checks if the current theme of the interface is equal to the value passed by parameter."
+  },
+  {
+    "k": "Verifica se os dois caminhos são iguais, ignorando distinção de maiúsculo para Windows e considerando '\\' e '/' como iguais",
+    "v": "Checks if the two paths are the same, ignoring case distinction for Windows and considering '\\' and '/' as equal"
+  },
+  {
+    "k": "Verifica se um gatilho com o ID específico já está registrado",
+    "v": "Checks if a trigger with the specific ID is already registered"
+  },
+  {
+    "k": "Vermelho",
+    "v": "Red"
+  },
+  {
+    "k": "Versão da Bíblia definida na primeira aba",
+    "v": "Bible version set in the first tab"
+  },
+  {
+    "k": "Versão da Bíblia definida na segunda aba",
+    "v": "Bible version set in the second tab"
+  },
+  {
+    "k": "Versão da Bíblia definida na terceira aba",
+    "v": "Bible version set in the third tab"
+  },
+  {
+    "k": "Versão no formato:",
+    "v": "Version in the format:"
+  },
+  {
+    "k": "verse",
+    "v": "verse"
+  },
+  {
     "k": "Versículo",
     "v": "Verse"
+  },
+  {
+    "k": "video",
+    "v": "video"
   },
   {
     "k": "Visão do palco ativada",
@@ -2242,553 +3342,5 @@
   {
     "k": "Volume. Mínimo=0, Máximo=100",
     "v": "Volume. Minimum=0, Maximum=100"
-  },
-  {
-    "k": "**id**, **ids**, **name** ou **names**",
-    "v": "**id**, **ids**, **name** ou **names**"
-  },
-  {
-    "k": "A versão atual é igual ou superior a",
-    "v": "A versão atual é igual ou superior a"
-  },
-  {
-    "k": "AddItem",
-    "v": "AddItem"
-  },
-  {
-    "k": "AddItemAnnouncement",
-    "v": "AddItemAnnouncement"
-  },
-  {
-    "k": "AddItemAPI",
-    "v": "AddItemAPI"
-  },
-  {
-    "k": "AddItemAudio",
-    "v": "AddItemAudio"
-  },
-  {
-    "k": "AddItemAutomaticPresentation",
-    "v": "AddItemAutomaticPresentation"
-  },
-  {
-    "k": "AddItemCountdown",
-    "v": "AddItemCountdown"
-  },
-  {
-    "k": "AddItemCountdownCommunicationPanel",
-    "v": "AddItemCountdownCommunicationPanel"
-  },
-  {
-    "k": "AddItemImage",
-    "v": "AddItemImage"
-  },
-  {
-    "k": "AddItemScript",
-    "v": "AddItemScript"
-  },
-  {
-    "k": "AddItemSong",
-    "v": "AddItemSong"
-  },
-  {
-    "k": "AddItemText",
-    "v": "AddItemText"
-  },
-  {
-    "k": "AddItemTextCommunicationPanel",
-    "v": "AddItemTextCommunicationPanel"
-  },
-  {
-    "k": "AddItemTitle",
-    "v": "AddItemTitle"
-  },
-  {
-    "k": "AddItemVerse",
-    "v": "AddItemVerse"
-  },
-  {
-    "k": "AddItemVideo",
-    "v": "AddItemVideo"
-  },
-  {
-    "k": "Adicionar itens à lista de reprodução de mídias",
-    "v": "Adicionar itens à lista de reprodução de mídias"
-  },
-  {
-    "k": "Alterar configuração atual do painel de comunicação",
-    "v": "Alterar configuração atual do painel de comunicação"
-  },
-  {
-    "k": "Alterar o tempo atual da mídia em milissegundos",
-    "v": "Alterar o tempo atual da mídia em milissegundos"
-  },
-  {
-    "k": "Alternativas",
-    "v": "Alternativas"
-  },
-  {
-    "k": "announcement",
-    "v": "announcement"
-  },
-  {
-    "k": "api",
-    "v": "api"
-  },
-  {
-    "k": "Ativa/desativa a exibição chave/id junto da mensagem na janela de log",
-    "v": "Ativa/desativa a exibição chave/id junto da mensagem na janela de log"
-  },
-  {
-    "k": "Ativa/desativa a visualização de todos os logs",
-    "v": "Ativa/desativa a visualização de todos os logs"
-  },
-  {
-    "k": "Ativar a exibição do alerta",
-    "v": "Ativar a exibição do alerta"
-  },
-  {
-    "k": "Ativar/desativar a visualização de logs da chave/id passada por parâmetro. Todas as chaves/ids iniciam desativadas por padrão",
-    "v": "Ativar/desativar a visualização de logs da chave/id passada por parâmetro. Todas as chaves/ids iniciam desativadas por padrão"
-  },
-  {
-    "k": "audio",
-    "v": "audio"
-  },
-  {
-    "k": "automatic_presentation",
-    "v": "automatic_presentation"
-  },
-  {
-    "k": "Azul",
-    "v": "Azul"
-  },
-  {
-    "k": "Caractere separador. Valores permitidos:  ` `  `.`  `)`  `-`  `:`",
-    "v": "Caractere separador. Valores permitidos:  ` `  `.`  `)`  `-`  `:`"
-  },
-  {
-    "k": "Chave/id da contagem regressiva",
-    "v": "Chave/id da contagem regressiva"
-  },
-  {
-    "k": "Chave/id de gerenciamento do log",
-    "v": "Chave/id de gerenciamento do log"
-  },
-  {
-    "k": "Classes",
-    "v": "Classes"
-  },
-  {
-    "k": "Começa em 1",
-    "v": "Começa em 1"
-  },
-  {
-    "k": "Configurações",
-    "v": "Configurações"
-  },
-  {
-    "k": "Copyright da música",
-    "v": "Copyright da música"
-  },
-  {
-    "k": "Cor da fonte da contagem regressiva",
-    "v": "Cor da fonte da contagem regressiva"
-  },
-  {
-    "k": "Cor da fonte da hora",
-    "v": "Cor da fonte da hora"
-  },
-  {
-    "k": "Cor da fonte do cronômetro",
-    "v": "Cor da fonte do cronômetro"
-  },
-  {
-    "k": "Cor da fonte para a resposta correta",
-    "v": "Cor da fonte para a resposta correta"
-  },
-  {
-    "k": "Cor da fonte para a resposta incorreta",
-    "v": "Cor da fonte para a resposta incorreta"
-  },
-  {
-    "k": "Cor de fundo em hexadecimal, exemplo: 000080",
-    "v": "Cor de fundo em hexadecimal, exemplo: 000080"
-  },
-  {
-    "k": "Cor de fundo para a resposta correta",
-    "v": "Cor de fundo para a resposta correta"
-  },
-  {
-    "k": "Cor de fundo para a resposta incorreta",
-    "v": "Cor de fundo para a resposta incorreta"
-  },
-  {
-    "k": "Cor no formato hexadecimal",
-    "v": "Cor no formato hexadecimal"
-  },
-  {
-    "k": "countdown",
-    "v": "countdown"
-  },
-  {
-    "k": "countdown_cp",
-    "v": "countdown_cp"
-  },
-  {
-    "k": "cp_text",
-    "v": "cp_text"
-  },
-  {
-    "k": "Descrição do item",
-    "v": "Descrição do item"
-  },
-  {
-    "k": "Duração total da contagem regressiva em segundos",
-    "v": "Duração total da contagem regressiva em segundos"
-  },
-  {
-    "k": "Encerra o cronômetro atual do painel de comunicação",
-    "v": "Encerra o cronômetro atual do painel de comunicação"
-  },
-  {
-    "k": "Example",
-    "v": "Example"
-  },
-  {
-    "k": "Executa a opção 'chamar atenção' disponível no painel de comunicação",
-    "v": "Executa a opção 'chamar atenção' disponível no painel de comunicação"
-  },
-  {
-    "k": "Executar uma ação em uma apresentação de múltipla escolha",
-    "v": "Executar uma ação em uma apresentação de múltipla escolha"
-  },
-  {
-    "k": "Exibir a pergunta e as alternativas em slides separados",
-    "v": "Exibir a pergunta e as alternativas em slides separados"
-  },
-  {
-    "k": "Exibir as alternativas uma a uma",
-    "v": "Exibir as alternativas uma a uma"
-  },
-  {
-    "k": "Exibir o texto atual",
-    "v": "Exibir o texto atual"
-  },
-  {
-    "k": "Exibir relógio como plano de fundo",
-    "v": "Exibir relógio como plano de fundo"
-  },
-  {
-    "k": "Exibir relógio junto da contagem regressiva ou cronômetro quando exibido em tela cheia",
-    "v": "Exibir relógio junto da contagem regressiva ou cronômetro quando exibido em tela cheia"
-  },
-  {
-    "k": "Exibir relógio no alerta",
-    "v": "Exibir relógio no alerta"
-  },
-  {
-    "k": "Exibir tempo restante da mídia em execução no VLC Player",
-    "v": "Exibir tempo restante da mídia em execução no VLC Player"
-  },
-  {
-    "k": "Exibir uma contagem regressiva na tela público",
-    "v": "Exibir uma contagem regressiva na tela público"
-  },
-  {
-    "k": "Exibir VLC Player",
-    "v": "Exibir VLC Player"
-  },
-  {
-    "k": "Fonte da resposta",
-    "v": "Fonte da resposta"
-  },
-  {
-    "k": "Formatar uma quantidade de minutos como hora|minuto.",
-    "v": "Formatar uma quantidade de minutos como hora|minuto."
-  },
-  {
-    "k": "Formatar uma quantidade de segundos como hora|minuto|segundo.",
-    "v": "Formatar uma quantidade de segundos como hora|minuto|segundo."
-  },
-  {
-    "k": "Formatar uma quantidade de segundos como minuto|segundo.",
-    "v": "Formatar uma quantidade de segundos como minuto|segundo."
-  },
-  {
-    "k": "hash SHA-512",
-    "v": "hash SHA-512"
-  },
-  {
-    "k": "Hash SHA-512",
-    "v": "Hash SHA-512"
-  },
-  {
-    "k": "Hash SHA-512 em array de bytes",
-    "v": "Hash SHA-512 em array de bytes"
-  },
-  {
-    "k": "HH:MM ou MM:SS",
-    "v": "HH:MM ou MM:SS"
-  },
-  {
-    "k": "ID ou nome do tema padrão",
-    "v": "ID ou nome do tema padrão"
-  },
-  {
-    "k": "Idioma no formato ISO 639 two-letter",
-    "v": "Idioma no formato ISO 639 two-letter"
-  },
-  {
-    "k": "image",
-    "v": "image"
-  },
-  {
-    "k": "Inicia um cronômetro no painel de comunicação",
-    "v": "Inicia um cronômetro no painel de comunicação"
-  },
-  {
-    "k": "Inicia uma contagem regressiva",
-    "v": "Inicia uma contagem regressiva"
-  },
-  {
-    "k": "Iniciar uma apresentação no formato múltipla escolha",
-    "v": "Iniciar uma apresentação no formato múltipla escolha"
-  },
-  {
-    "k": "Iniciar uma contagem regressiva",
-    "v": "Iniciar uma contagem regressiva"
-  },
-  {
-    "k": "Lista com os itens que serão adicionados",
-    "v": "Lista com os itens que serão adicionados"
-  },
-  {
-    "k": "Local de exibição da contagem regressiva ou cronômetro.",
-    "v": "Local de exibição da contagem regressiva ou cronômetro."
-  },
-  {
-    "k": "Margem para exibição dos vídeos pelo VLC Player",
-    "v": "Margem para exibição dos vídeos pelo VLC Player"
-  },
-  {
-    "k": "Não duplicar itens ao adicionar novos itens, ou seja, não adiciona um item se ele já estiver na lista.",
-    "v": "Não duplicar itens ao adicionar novos itens, ou seja, não adiciona um item se ele já estiver na lista."
-  },
-  {
-    "k": "Nome do arquivo",
-    "v": "Nome do arquivo"
-  },
-  {
-    "k": "Número da alternativa correta. Começa em 1",
-    "v": "Número da alternativa correta. Começa em 1"
-  },
-  {
-    "k": "O item de acordo com o tipo informado:",
-    "v": "O item de acordo com o tipo informado:"
-  },
-  {
-    "k": "o nome da tela",
-    "v": "o nome da tela"
-  },
-  {
-    "k": "O tempo atual do cronômetro em exibição (em segundos)",
-    "v": "O tempo atual do cronômetro em exibição (em segundos)"
-  },
-  {
-    "k": "Ocultar uma alternativa. Começa em 1",
-    "v": "Ocultar uma alternativa. Começa em 1"
-  },
-  {
-    "k": "Opção *'exibir à frente de tudo'*",
-    "v": "Opção *'exibir à frente de tudo'*"
-  },
-  {
-    "k": "Parâmetros para formatação de uma mensagem de log",
-    "v": "Parâmetros para formatação de uma mensagem de log"
-  },
-  {
-    "k": "Pergunta",
-    "v": "Pergunta"
-  },
-  {
-    "k": "Preencher o campo 'minuto' com zero à esquerda",
-    "v": "Preencher o campo 'minuto' com zero à esquerda"
-  },
-  {
-    "k": "provavelmente 00:04:58",
-    "v": "provavelmente 00:04:58"
-  },
-  {
-    "k": "Quantidade total de minutos",
-    "v": "Quantidade total de minutos"
-  },
-  {
-    "k": "Quantidade total de segundos",
-    "v": "Quantidade total de segundos"
-  },
-  {
-    "k": "Questões para exibir",
-    "v": "Questões para exibir"
-  },
-  {
-    "k": "Quiz Question",
-    "v": "Quiz Question"
-  },
-  {
-    "k": "Quiz Settings",
-    "v": "Quiz Settings"
-  },
-  {
-    "k": "Recupera quanto tempo resta em uma contagem regressiva de acordo com o valor **key**.",
-    "v": "Recupera quanto tempo resta em uma contagem regressiva de acordo com o valor **key**."
-  },
-  {
-    "k": "Retorna a quantidade total de segundos do dia",
-    "v": "Retorna a quantidade total de segundos do dia"
-  },
-  {
-    "k": "Retorna a versão atual do programa.",
-    "v": "Retorna a versão atual do programa."
-  },
-  {
-    "k": "Retorna as informações da apresentação automática em exibição",
-    "v": "Retorna as informações da apresentação automática em exibição"
-  },
-  {
-    "k": "Retorna as informações de cor predominante de um respectivo tipo de item<br/>O array retornado contém 8 índices, e cada índice corresponde ao trecho conforme imagem de exemplo a seguir.<br/> <br/>![Color Map Example](https://holyrics.com.br/images/color_map_item_example.png)<br/>",
-    "v": "Retorna as informações de cor predominante de um respectivo tipo de item<br/>O array retornado contém 8 índices, e cada índice corresponde ao trecho conforme imagem de exemplo a seguir.<br/> <br/>![Color Map Example](https://holyrics.com.br/images/color_map_item_example.png)<br/>"
-  },
-  {
-    "k": "Retorna o idioma atual definido nas configurações do programa.",
-    "v": "Retorna o idioma atual definido nas configurações do programa."
-  },
-  {
-    "k": "Retorna o tema atual da interface do programa.",
-    "v": "Retorna o tema atual da interface do programa."
-  },
-  {
-    "k": "script",
-    "v": "script"
-  },
-  {
-    "k": "Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos)",
-    "v": "Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos)"
-  },
-  {
-    "k": "Se um cronômetro está em exibição",
-    "v": "Se um cronômetro está em exibição"
-  },
-  {
-    "k": "Selecionar uma alternativa. Começa em 1",
-    "v": "Selecionar uma alternativa. Começa em 1"
-  },
-  {
-    "k": "Separador",
-    "v": "Separador"
-  },
-  {
-    "k": "song",
-    "v": "song"
-  },
-  {
-    "k": "Tamanho relativo da contagem regressiva",
-    "v": "Tamanho relativo da contagem regressiva"
-  },
-  {
-    "k": "Tempo restante",
-    "v": "Tempo restante"
-  },
-  {
-    "k": "Tempo restante no formato HH:MM:SS (retorna valores negativos após limite de tempo)",
-    "v": "Tempo restante no formato HH:MM:SS (retorna valores negativos após limite de tempo)"
-  },
-  {
-    "k": "text",
-    "v": "text"
-  },
-  {
-    "k": "Texto exibido na parte inferior da contagem regressiva",
-    "v": "Texto exibido na parte inferior da contagem regressiva"
-  },
-  {
-    "k": "Texto exibido na parte superior da contagem regressiva",
-    "v": "Texto exibido na parte superior da contagem regressiva"
-  },
-  {
-    "k": "Tipo de caractere para listar as alternativas `number (1, 2, 3...)`  `alpha (A, B, C...)`",
-    "v": "Tipo de caractere para listar as alternativas `number (1, 2, 3...)`  `alpha (A, B, C...)`"
-  },
-  {
-    "k": "Tipo do item. Pode ser:",
-    "v": "Tipo do item. Pode ser:"
-  },
-  {
-    "k": "title",
-    "v": "title"
-  },
-  {
-    "k": "Título",
-    "v": "Título"
-  },
-  {
-    "k": "Total de slides",
-    "v": "Total de slides"
-  },
-  {
-    "k": "Um dos seguintes valores:",
-    "v": "Um dos seguintes valores:"
-  },
-  {
-    "k": "Valor formatado",
-    "v": "Valor formatado"
-  },
-  {
-    "k": "Valor padrão para",
-    "v": "Valor padrão para"
-  },
-  {
-    "k": "Valores que serão definidos para",
-    "v": "Valores que serão definidos para"
-  },
-  {
-    "k": "Verde",
-    "v": "Verde"
-  },
-  {
-    "k": "Verifica se a exibição da chave está ativada",
-    "v": "Verifica se a exibição da chave está ativada"
-  },
-  {
-    "k": "Verifica se a versão do programa é igual ou superior ao informado por parâmetro.",
-    "v": "Verifica se a versão do programa é igual ou superior ao informado por parâmetro."
-  },
-  {
-    "k": "Verifica se a visualização está ativada/desativada para a respectiva chave/id",
-    "v": "Verifica se a visualização está ativada/desativada para a respectiva chave/id"
-  },
-  {
-    "k": "Verifica se o idioma atual definido nas configurações do programa é igual ao valor passado por parâmetro.",
-    "v": "Verifica se o idioma atual definido nas configurações do programa é igual ao valor passado por parâmetro."
-  },
-  {
-    "k": "Verifica se o tema atual atual da interface é igual ao valor passado por parâmetro.",
-    "v": "Verifica se o tema atual atual da interface é igual ao valor passado por parâmetro."
-  },
-  {
-    "k": "Vermelho",
-    "v": "Vermelho"
-  },
-  {
-    "k": "Versão no formato:",
-    "v": "Versão no formato:"
-  },
-  {
-    "k": "verse",
-    "v": "verse"
-  },
-  {
-    "k": "video",
-    "v": "video"
   }
 ]
