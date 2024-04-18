@@ -7267,7 +7267,7 @@ Open a program window
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `name` | _String_ | Window name. {{Pode ser}}: `main` `bible` `communication_panel` `chat` |
+| `name` | _String_ | Window name. Can be: `main` `bible` `communication_panel` `chat` |
 
 
 _Method does not return value_
@@ -7303,6 +7303,17 @@ Complex classes used as a return in some methods
 | `bpm` | _Number_ | BPM of the song |
 | `time_sig` | _String_ | Music time.<br>Can be: `2/2` `2/4` `3/4` `4/4` `5/4` `6/4` `3/8` `6/8` `7/8` `9/8` `12/8` |
 | `groups` | _Array&lt;[Group](#group)&gt;_ | Groups where music is added |
+| `linked_audio_file` | _String_ | Caminho do arquivo de áudio linkado com a música `v2.22.0+` |
+| `linked_backing_track_file` | _String_ | Caminho do arquivo de áudio (playback) linkado com a música `v2.22.0+` |
+| `streaming` | _Object_ | URI ou ID dos streamings `v2.22.0+` |
+| `streaming.audio` | _Object_ | Áudio `v2.22.0+` |
+| `streaming.audio.spotify` | _String_ |  `v2.22.0+` |
+| `streaming.audio.youtube` | _String_ |  `v2.22.0+` |
+| `streaming.audio.deezer` | _String_ |  `v2.22.0+` |
+| `streaming.backing_track` | _Object_ | Playback `v2.22.0+` |
+| `streaming.backing_track.spotify` | _String_ |  `v2.22.0+` |
+| `streaming.backing_track.youtube` | _String_ |  `v2.22.0+` |
+| `streaming.backing_track.deezer` | _String_ |  `v2.22.0+` |
 | `midi` | _[Midi](#midi)_ | Item MIDI shortcut |
 | `extras` | _Object_ | Map of extra objects (added by the user) `v2.21.0+` |
 | `archived` | _Boolean_ | If the song is archived |
@@ -7640,7 +7651,7 @@ Complex classes used as a return in some methods
 | `name` | _String_ | Item name |
 | `name` | _String_ | Event name |
 | `datetime` | _String_ | Date and time format: YYYY-MM-DD HH:MM |
-| `wallpaper` | _String_ | Path to the location of the file used as the event wallpaper |
+| `wallpaper` | _String_ | Caminho relativo do arquivo utilizado como papel de parede do evento |
 
 ## Schedule
 | Name | Type  | Description |
@@ -7947,10 +7958,13 @@ Display settings
 | `uppercase` | _Boolean_ | Display the verse text in uppercase |
 | `show_only_reference` | _Boolean_ | Display only the verse reference |
 | `show_two_versions` | _Boolean_ | `deprecated` Replaced for: `show_second_version` `show_third_version`<br>Display two versions. |
+| `show_second_version` | _Boolean_ | Exibir segunda versão `v2.22.0+` |
+| `show_third_version` | _Boolean_ | Exibir terceira versão `v2.22.0+` |
 | `book_panel_type` | _String_ | Type of view of the books of the Bible `grid` `list` |
 | `book_panel_order` | _String_ | Type of sorting of the books of the Bible |
 | `book_panel_order_available_items` | _Array&lt;String&gt;_ |  |
 | `multiple_verses_separator_type` | _String_ | Type of separation in the display of multiple verses. Can be: no_line_break, single_line_break, double_line_break |
+| `multiple_versions_separator_type` | _String_ | Tipo de separação na exibição de múltiplas versões. Can be: no_line_break, single_line_break, double_line_break `v2.22.0+` |
 | `versification` | _Boolean_ | Apply verse mapping |
 | `theme` | _Object_ | Display Theme ID for the different system screens |
 | `theme.public` | _String_ |  |

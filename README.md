@@ -7267,7 +7267,7 @@ Abre uma janela do programa
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `name` | _String_ | Nome da janela. {{Pode ser}}: `main` `bible` `communication_panel` `chat` |
+| `name` | _String_ | Nome da janela. Pode ser: `main` `bible` `communication_panel` `chat` |
 
 
 _Método sem retorno_
@@ -7303,6 +7303,17 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `bpm` | _Number_ | BPM da música |
 | `time_sig` | _String_ | Tempo da música.<br>Pode ser: `2/2` `2/4` `3/4` `4/4` `5/4` `6/4` `3/8` `6/8` `7/8` `9/8` `12/8` |
 | `groups` | _Array&lt;[Group](#group)&gt;_ | Grupos onde a música está adicionada |
+| `linked_audio_file` | _String_ | Caminho do arquivo de áudio linkado com a música `v2.22.0+` |
+| `linked_backing_track_file` | _String_ | Caminho do arquivo de áudio (playback) linkado com a música `v2.22.0+` |
+| `streaming` | _Object_ | URI ou ID dos streamings `v2.22.0+` |
+| `streaming.audio` | _Object_ | Áudio `v2.22.0+` |
+| `streaming.audio.spotify` | _String_ |  `v2.22.0+` |
+| `streaming.audio.youtube` | _String_ |  `v2.22.0+` |
+| `streaming.audio.deezer` | _String_ |  `v2.22.0+` |
+| `streaming.backing_track` | _Object_ | Playback `v2.22.0+` |
+| `streaming.backing_track.spotify` | _String_ |  `v2.22.0+` |
+| `streaming.backing_track.youtube` | _String_ |  `v2.22.0+` |
+| `streaming.backing_track.deezer` | _String_ |  `v2.22.0+` |
 | `midi` | _[Midi](#midi)_ | Atalho MIDI do item |
 | `extras` | _Object_ | Mapa de objetos extras (adicionados pelo usuário) `v2.21.0+` |
 | `archived` | _Boolean_ | Se a música está arquivada |
@@ -7640,7 +7651,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `name` | _String_ | Nome do item |
 | `name` | _String_ | Nome do evento |
 | `datetime` | _String_ | Data e hora no formato: YYYY-MM-DD HH:MM |
-| `wallpaper` | _String_ | Caminho do local do arquivo utilizado como papel de parede do evento |
+| `wallpaper` | _String_ | Caminho relativo do arquivo utilizado como papel de parede do evento |
 
 ## Schedule
 | Nome | Tipo  | Descrição |
@@ -7947,10 +7958,13 @@ Configurações de exibição
 | `uppercase` | _Boolean_ | Exibir o texto do versículo em maiúsculo |
 | `show_only_reference` | _Boolean_ | Exibir somente a referência do versículo |
 | `show_two_versions` | _Boolean_ | `deprecated` Substituído por: `show_second_version` `show_third_version`<br>Exibir duas versões. |
+| `show_second_version` | _Boolean_ | Exibir segunda versão `v2.22.0+` |
+| `show_third_version` | _Boolean_ | Exibir terceira versão `v2.22.0+` |
 | `book_panel_type` | _String_ | Tipo de visualização dos livros da Bíblia `grid` `list` |
 | `book_panel_order` | _String_ | Tipo de ordenação dos livros da Bíblia |
 | `book_panel_order_available_items` | _Array&lt;String&gt;_ |  |
 | `multiple_verses_separator_type` | _String_ | Tipo de separação na exibição de múltiplos versículos. Pode ser: no_line_break, single_line_break, double_line_break |
+| `multiple_versions_separator_type` | _String_ | Tipo de separação na exibição de múltiplas versões. Pode ser: no_line_break, single_line_break, double_line_break `v2.22.0+` |
 | `versification` | _Boolean_ | Aplicar mapeamento de versículos |
 | `theme` | _Object_ | ID do Tema de exibição para as diferentes telas do sistema |
 | `theme.public` | _String_ |  |
