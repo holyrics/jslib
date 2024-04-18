@@ -3904,7 +3904,12 @@ Retorna a próxima música da lista de reprodução. Pode ser null
 
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _[Lyrics](#lyrics)_ |  |
+
 
 **Exemplo:**
 
@@ -3922,7 +3927,12 @@ Retorna o próximo item executável da lista de reprodução de mídia. Pode ser
 
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _[Item](#item)_ |  |
+
 
 **Exemplo:**
 
@@ -3976,7 +3986,12 @@ Retorna a música anterior da lista de reprodução. Pode ser null
 
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _[Lyrics](#lyrics)_ |  |
+
 
 **Exemplo:**
 
@@ -3994,7 +4009,12 @@ Retorna o item anterior executável da lista de reprodução de mídia. Pode ser
 
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _[Item](#item)_ |  |
+
 
 **Exemplo:**
 

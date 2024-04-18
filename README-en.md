@@ -3904,7 +3904,12 @@ Returns the next song in the playlist. Can be null
 
 
 
-_Method does not return value_
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _[Lyrics](#lyrics)_ |  |
+
 
 **Example:**
 
@@ -3922,7 +3927,12 @@ Returns the next executable item from the media playlist. Can be null
 
 
 
-_Method does not return value_
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _[Item](#item)_ |  |
+
 
 **Example:**
 
@@ -3976,7 +3986,12 @@ Returns the previous song in the playlist. Can be null
 
 
 
-_Method does not return value_
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _[Lyrics](#lyrics)_ |  |
+
 
 **Example:**
 
@@ -3994,7 +4009,12 @@ Returns the previous executable item from the media playlist. Can be null
 
 
 
-_Method does not return value_
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _[Item](#item)_ |  |
+
 
 **Example:**
 
