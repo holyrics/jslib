@@ -176,7 +176,7 @@ h.log('example');
   - [GetMembers](#hlygetmembers)
   - [GetRoles](#hlygetroles)
   - [GetServices](#hlygetservices)
-  - [GetEvents](#hlygetevents)
+  - [GetEvents](#hlygetevents-input)
   - [GetAnnouncement](#hlygetannouncement-input)
   - [GetAnnouncements](#hlygetannouncements)
   - [GetCommunicationPanelInfo](#hlygetcommunicationpanelinfo)
@@ -5304,11 +5304,17 @@ for (var i = 0; i < r.data.length; i++) {
 ---
 
 
-### hly('GetEvents')
+### hly('GetEvents', input)
 - v2.22.0
 
 Event list
 
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.month` | _Number_ | Month (1-12) |
+| `input.year` | _Number_ | Year |
 
 
 **Response:**
@@ -5321,7 +5327,10 @@ Event list
 **Example:**
 
 ```javascript
-var r = h.hly('GetEvents');
+var r = h.hly('GetEvents', {
+    month: 8,
+    year: 2022
+});
 for (var i = 0; i < r.data.length; i++) {
     h.log(r.data[i].name);
 }
