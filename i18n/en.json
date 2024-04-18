@@ -768,14 +768,6 @@
     "v": "Available for"
   },
   {
-    "k": "Disponível se **include_slide_preview=true**",
-    "v": "Available if **include_slide_preview=true**"
-  },
-  {
-    "k": "Disponível se **include_slides=true**",
-    "v": "Available if **include_slides=true**"
-  },
-  {
     "k": "Disponível se for uma apresentação de música",
     "v": "Available if it is a music presentation"
   },
@@ -2324,10 +2316,6 @@
     "v": "Retrieves an object saved in memory. The method is shared with all scripts in the program."
   },
   {
-    "k": "Recupera um objeto salvo na memória. O método é válido somente para o script atual.",
-    "v": "Retrieves an object saved in memory. The method is only valid for the current script."
-  },
-  {
     "k": "Recupera uma string salva em disco. O método é compartilhado com todos os scripts do programa.",
     "v": "Retrieves a string saved on disk. The method is shared with all scripts in the program."
   },
@@ -2602,10 +2590,6 @@
   {
     "k": "Salva um objeto na memória que pode ser recuperado, mas é válido somente enquanto o programa estiver aberto. O método é compartilhado com todos os scripts do programa.",
     "v": "Saves an object in memory that can be retrieved, but is valid only as long as the program is open. The method is shared with all scripts in the program."
-  },
-  {
-    "k": "Salva um objeto na memória que pode ser recuperado, mas é válido somente enquanto o programa estiver aberto. O método é válido somente para o script atual.",
-    "v": "Saves an object in memory that can be retrieved, but is valid only as long as the program is open. The method is only valid for the current script."
   },
   {
     "k": "Salva uma string em disco que pode ser recuperada mesmo após reiniciar o programa. O método é compartilhado com todos os scripts do programa.",
@@ -3342,5 +3326,309 @@
   {
     "k": "Volume. Mínimo=0, Máximo=100",
     "v": "Volume. Minimum=0, Maximum=100"
+  },
+  {
+    "k": "Abas",
+    "v": "Tabs"
+  },
+  {
+    "k": "Abre uma janela do programa",
+    "v": "Open a program window"
+  },
+  {
+    "k": "Abre uma janela para selecionar um item Texto",
+    "v": "Opens a window for selecting a Text item"
+  },
+  {
+    "k": "Adicionar metadados na resposta",
+    "v": "Add metadata to the response"
+  },
+  {
+    "k": "Adicionar thumbnail na resposta (80x45)",
+    "v": "Add thumbnail to response (80x45)"
+  },
+  {
+    "k": "Ajuste da imagem",
+    "v": "Image adjustment"
+  },
+  {
+    "k": "Alterar um item da lista de reprodução de letra de música",
+    "v": "Change a Lyrics Playlist Item"
+  },
+  {
+    "k": "Alterar um item da lista de reprodução de mídia",
+    "v": "Change a media playlist item"
+  },
+  {
+    "k": "Altura",
+    "v": "Height"
+  },
+  {
+    "k": "Anotações",
+    "v": "Notes"
+  },
+  {
+    "k": "Aplicar efeito blur",
+    "v": "Apply blur effect"
+  },
+  {
+    "k": "Array de bytes",
+    "v": "Byte array"
+  },
+  {
+    "k": "O método gera um exception para charset inválido",
+    "v": "The method generates an exception for invalid charset"
+  },
+  {
+    "k": "audio ou vídeo",
+    "v": "audio or vídeo"
+  },
+  {
+    "k": "Cabeçalho",
+    "v": "Header"
+  },
+  {
+    "k": "Caminho do local do arquivo utilizado como papel de parede do evento",
+    "v": "Path to the location of the file used as the event wallpaper"
+  },
+  {
+    "k": "Codificação do texto",
+    "v": "Text encoding"
+  },
+  {
+    "k": "Codificação utilizada",
+    "v": "Coding used"
+  },
+  {
+    "k": "Converte um array de bytes em string",
+    "v": "Convert a byte array to a string"
+  },
+  {
+    "k": "Converte uma string em array de bytes",
+    "v": "Converts a string to a byte array"
+  },
+  {
+    "k": "Data de modificação do arquivo",
+    "v": "File modification date"
+  },
+  {
+    "k": "Data e hora no formato",
+    "v": "Date and time format"
+  },
+  {
+    "k": "Descrição do slide",
+    "v": "Slide description"
+  },
+  {
+    "k": "Dia da semana",
+    "v": "Day of the week"
+  },
+  {
+    "k": "Disponível para imagens",
+    "v": "Available for images"
+  },
+  {
+    "k": "Disponível se",
+    "v": "Available if"
+  },
+  {
+    "k": "Disponível se o arquivo for",
+    "v": "Available if the file is"
+  },
+  {
+    "k": "Duração do arquivo",
+    "v": "File duration"
+  },
+  {
+    "k": "Executa a música anterior da lista de reprodução",
+    "v": "Play the previous song in the playlist"
+  },
+  {
+    "k": "Executa a próxima música da lista de reprodução",
+    "v": "Play the next song in the playlist"
+  },
+  {
+    "k": "Executa o item anterior da lista de reprodução de mídia",
+    "v": "Plays the previous item in the media playlist"
+  },
+  {
+    "k": "Executa o próximo item da lista de reprodução de mídia",
+    "v": "Plays the next item in the media playlist"
+  },
+  {
+    "k": "Exibir imagens com transparência",
+    "v": "Display images with transparency"
+  },
+  {
+    "k": "Funções",
+    "v": "Roles"
+  },
+  {
+    "k": "Habilidades",
+    "v": "Skills"
+  },
+  {
+    "k": "Hora",
+    "v": "Hour"
+  },
+  {
+    "k": "ID do anúncio",
+    "v": "Announcement ID"
+  },
+  {
+    "k": "ID do tema atual",
+    "v": "Current theme ID"
+  },
+  {
+    "k": "imagem ou vídeo",
+    "v": "imagem or vídeo"
+  },
+  {
+    "k": "Índice do item na lista",
+    "v": "Index of the item in the list"
+  },
+  {
+    "k": "Largura",
+    "v": "Width"
+  },
+  {
+    "k": "Lista com as semanas ocultadas",
+    "v": "List of hidden weeks"
+  },
+  {
+    "k": "Lista de anúncios",
+    "v": "Announcement list"
+  },
+  {
+    "k": "Lista de cultos",
+    "v": "Service list"
+  },
+  {
+    "k": "Lista de eventos",
+    "v": "Event list"
+  },
+  {
+    "k": "Lista de times",
+    "v": "Team list"
+  },
+  {
+    "k": "Lista dos IDs das músicas",
+    "v": "List of song IDs"
+  },
+  {
+    "k": "Minuto",
+    "v": "Minute"
+  },
+  {
+    "k": "Name",
+    "v": "Name"
+  },
+  {
+    "k": "Nome da aba",
+    "v": "Tab name"
+  },
+  {
+    "k": "Nome da janela",
+    "v": "Window name"
+  },
+  {
+    "k": "Nome detalhado do sistema operacional",
+    "v": "Detailed operating system name"
+  },
+  {
+    "k": "Novo item",
+    "v": "New item"
+  },
+  {
+    "k": "Pode ser null",
+    "v": "Can be null"
+  },
+  {
+    "k": "Retorna a música anterior da lista de reprodução",
+    "v": "Returns the previous song in the playlist"
+  },
+  {
+    "k": "Retorna a próxima música da lista de reprodução",
+    "v": "Returns the next song in the playlist"
+  },
+  {
+    "k": "Retorna as configurações da mensagem de alerta",
+    "v": "Returns alert message settings"
+  },
+  {
+    "k": "Retorna informações da versão do programa em execução",
+    "v": "Returns information about the version of the running program"
+  },
+  {
+    "k": "Retorna o item anterior executável da lista de reprodução de mídia",
+    "v": "Returns the previous executable item from the media playlist"
+  },
+  {
+    "k": "Retorna o próximo item executável da lista de reprodução de mídia",
+    "v": "Returns the next executable item from the media playlist"
+  },
+  {
+    "k": "Retorna o tema da apresentação em exibição.",
+    "v": "Returns the theme of the presentation currently displayed."
+  },
+  {
+    "k": "Salvar um conteúdo em um arquivo TXT. Pode gerar Exception.",
+    "v": "Save content to a TXT file. May generate Exception."
+  },
+  {
+    "k": "Salvar um conteúdo em uma planilha XLSX. Pode gerar Exception.",
+    "v": "Save content to an XLSX spreadsheet. May generate Exception."
+  },
+  {
+    "k": "Se o item está arquivado",
+    "v": "If the item is archived"
+  },
+  {
+    "k": "Semana",
+    "v": "Week"
+  },
+  {
+    "k": "Sistema operacional",
+    "v": "Operational system"
+  },
+  {
+    "k": "String decodificada",
+    "v": "Decoded String"
+  },
+  {
+    "k": "Substituído por",
+    "v": "Replaced for"
+  },
+  {
+    "k": "Tamanho do arquivo",
+    "v": "File size"
+  },
+  {
+    "k": "Tema atual ou NULL se não houver apresentação em exibição",
+    "v": "Current theme or NULL if there is no presentation displayed"
+  },
+  {
+    "k": "Texto do anúncio",
+    "v": "Announcement text"
+  },
+  {
+    "k": "Texto que será codificado",
+    "v": "Text that will be encoded"
+  },
+  {
+    "k": "Texto que será salvo",
+    "v": "Text that will be saved"
+  },
+  {
+    "k": "Time",
+    "v": "Team"
+  },
+  {
+    "k": "Título das colunas",
+    "v": "Column titles"
+  },
+  {
+    "k": "Versão do programa",
+    "v": "Program version"
   }
 ]
