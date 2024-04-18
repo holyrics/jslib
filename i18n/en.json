@@ -80,6 +80,10 @@
     "v": "The current version is equal to or greater than"
   },
   {
+    "k": "Abas",
+    "v": "Tabs"
+  },
+  {
     "k": "Abre a janela de sorteio a partir de uma lista de itens",
     "v": "Opens the draw window from a list of items"
   },
@@ -92,6 +96,10 @@
     "v": "Opens a confirmation window, displaying **Yes** and **No** buttons"
   },
   {
+    "k": "Abre uma janela do programa",
+    "v": "Open a program window"
+  },
+  {
     "k": "Abre uma janela para selecionar múltiplos itens em uma lista de valores",
     "v": "Opens a window for selecting multiple items from a list of values"
   },
@@ -102,6 +110,10 @@
   {
     "k": "Abre uma janela para selecionar um item em uma lista de valores",
     "v": "Opens a window for selecting an item from a list of values"
+  },
+  {
+    "k": "Abre uma janela para selecionar um item Texto",
+    "v": "Opens a window for selecting a Text item"
   },
   {
     "k": "Abre uma janela para selecionar um plano de fundo",
@@ -152,12 +164,24 @@
     "v": "Add song lyrics to playlist"
   },
   {
+    "k": "Adicionar metadados na resposta",
+    "v": "Add metadata to the response"
+  },
+  {
+    "k": "Adicionar thumbnail na resposta (80x45)",
+    "v": "Add thumbnail to response (80x45)"
+  },
+  {
     "k": "água",
     "v": "water"
   },
   {
     "k": "aguarda o retorno, pode demorar",
     "v": "wait for the return, it may take a while"
+  },
+  {
+    "k": "Ajuste da imagem",
+    "v": "Image adjustment"
   },
   {
     "k": "Alerta",
@@ -296,12 +320,24 @@
     "v": "change to a custom theme"
   },
   {
+    "k": "Alterar um item da lista de reprodução de letra de música",
+    "v": "Change a Lyrics Playlist Item"
+  },
+  {
+    "k": "Alterar um item da lista de reprodução de mídia",
+    "v": "Change a media playlist item"
+  },
+  {
     "k": "alterar volume",
     "v": "change volume"
   },
   {
     "k": "Alternativas",
     "v": "Alternatives"
+  },
+  {
+    "k": "Altura",
+    "v": "Height"
   },
   {
     "k": "Altura em porcentagem em relação à altura do slide",
@@ -320,6 +356,10 @@
     "v": "Music annotation"
   },
   {
+    "k": "Anotações",
+    "v": "Notes"
+  },
+  {
     "k": "Anúncio",
     "v": "Announcement"
   },
@@ -330,6 +370,10 @@
   {
     "k": "Aplicar efeito 'blur' no brilho e sombra",
     "v": "Apply 'blur' effect on brightness and shadow"
+  },
+  {
+    "k": "Aplicar efeito blur",
+    "v": "Apply blur effect"
   },
   {
     "k": "Aplicar mapeamento de versículos",
@@ -366,6 +410,10 @@
   {
     "k": "array de bytes",
     "v": "array of bytes"
+  },
+  {
+    "k": "Array de bytes",
+    "v": "Byte array"
   },
   {
     "k": "Array de bytes decodificado",
@@ -408,6 +456,10 @@
     "v": "audio"
   },
   {
+    "k": "audio ou vídeo",
+    "v": "audio or vídeo"
+  },
+  {
     "k": "automatic_presentation",
     "v": "automatic_presentation"
   },
@@ -432,6 +484,10 @@
     "v": "File bytes in base64 format"
   },
   {
+    "k": "Cabeçalho",
+    "v": "Header"
+  },
+  {
     "k": "callback da requisição",
     "v": "request callback"
   },
@@ -446,6 +502,10 @@
   {
     "k": "Caminho da pasta de localização",
     "v": "Path of the location folder"
+  },
+  {
+    "k": "Caminho relativo do arquivo utilizado como papel de parede do evento",
+    "v": "Relative path of the file used as the event wallpaper"
   },
   {
     "k": "Cancela a execução da função agendada anteriormente.",
@@ -548,6 +608,14 @@
     "v": "File encoding"
   },
   {
+    "k": "Codificação do texto",
+    "v": "Text encoding"
+  },
+  {
+    "k": "Codificação utilizada",
+    "v": "Coding used"
+  },
+  {
     "k": "Código midi",
     "v": "MIDI code"
   },
@@ -632,8 +700,16 @@
     "v": "Outline"
   },
   {
+    "k": "Converte um array de bytes em string",
+    "v": "Convert a byte array to a string"
+  },
+  {
     "k": "Converte um CSV (string) em um array bidimensional",
     "v": "Converts a CSV (string) into a two-dimensional array"
+  },
+  {
+    "k": "Converte uma string em array de bytes",
+    "v": "Converts a string to a byte array"
   },
   {
     "k": "Copyright da música",
@@ -732,8 +808,16 @@
     "v": "requisition data"
   },
   {
+    "k": "Data de modificação do arquivo",
+    "v": "File modification date"
+  },
+  {
     "k": "Data e hora do item no formato: YYYY-MM-DD HH:MM",
     "v": "Item date and time in format: YYYY-MM-DD HH:MM"
+  },
+  {
+    "k": "Data e hora no formato",
+    "v": "Date and time format"
   },
   {
     "k": "Data e hora no formato: YYYY-MM-DD HH:MM",
@@ -764,12 +848,32 @@
     "v": "Item description"
   },
   {
+    "k": "Descrição do slide",
+    "v": "Slide description"
+  },
+  {
+    "k": "Dia da semana",
+    "v": "Day of the week"
+  },
+  {
     "k": "Disponível para",
     "v": "Available for"
   },
   {
+    "k": "Disponível para imagens",
+    "v": "Available for images"
+  },
+  {
+    "k": "Disponível se",
+    "v": "Available if"
+  },
+  {
     "k": "Disponível se for uma apresentação de música",
     "v": "Available if it is a music presentation"
+  },
+  {
+    "k": "Disponível se o arquivo for",
+    "v": "Available if the file is"
   },
   {
     "k": "Disponível somente para transição de texto",
@@ -782,6 +886,10 @@
   {
     "k": "Documentação",
     "v": "Documentation"
+  },
+  {
+    "k": "Duração do arquivo",
+    "v": "File duration"
   },
   {
     "k": "Duração do item (em segundos)",
@@ -904,8 +1012,16 @@
     "v": "Executes the action of an existing API item in the program"
   },
   {
+    "k": "Executa a música anterior da lista de reprodução",
+    "v": "Play the previous song in the playlist"
+  },
+  {
     "k": "Executa a opção 'chamar atenção' disponível no painel de comunicação",
     "v": "Execute the 'call attention' option available in the communication panel"
+  },
+  {
+    "k": "Executa a próxima música da lista de reprodução",
+    "v": "Play the next song in the playlist"
   },
   {
     "k": "Executa ações no player",
@@ -914,6 +1030,14 @@
   {
     "k": "executa o arquivo 'fundo musical.mp3' da pasta de áudio",
     "v": "plays the 'musical background.mp3' file from the audio folder"
+  },
+  {
+    "k": "Executa o item anterior da lista de reprodução de mídia",
+    "v": "Plays the previous item in the media playlist"
+  },
+  {
+    "k": "Executa o próximo item da lista de reprodução de mídia",
+    "v": "Plays the next item in the media playlist"
   },
   {
     "k": "Executa um arquivo. Disponível apenas para extensões seguras, como áudio, vídeo, imagem, documentos, etc.",
@@ -1072,6 +1196,10 @@
     "v": "Display next image"
   },
   {
+    "k": "Exibir imagens com transparência",
+    "v": "Display images with transparency"
+  },
+  {
     "k": "Exibir o texto atual",
     "v": "Display the current text"
   },
@@ -1192,6 +1320,10 @@
     "v": "works like apiRequest, but asynchronously"
   },
   {
+    "k": "Funções",
+    "v": "Roles"
+  },
+  {
     "k": "fundo musical",
     "v": "musical background"
   },
@@ -1206,6 +1338,10 @@
   {
     "k": "Grupos onde a música está adicionada",
     "v": "Groups where music is added"
+  },
+  {
+    "k": "Habilidades",
+    "v": "Skills"
   },
   {
     "k": "hash",
@@ -1268,6 +1404,10 @@
     "v": "Holyrics - Starts an audio and countdown on return"
   },
   {
+    "k": "Hora",
+    "v": "Hour"
+  },
+  {
     "k": "ID da função",
     "v": "Function ID"
   },
@@ -1286,6 +1426,10 @@
   {
     "k": "ID de um Tema existente para utilizar como cópia inicial ao criar um novo item",
     "v": "ID of an existing Theme to use as initial copy when creating a new item"
+  },
+  {
+    "k": "ID do anúncio",
+    "v": "Announcement ID"
   },
   {
     "k": "ID do anúncio. Pode ser **all** para exibir todos",
@@ -1322,6 +1466,10 @@
   {
     "k": "ID do Tema",
     "v": "Theme ID"
+  },
+  {
+    "k": "ID do tema atual",
+    "v": "Current theme ID"
   },
   {
     "k": "ID do Tema de exibição para as diferentes telas do sistema",
@@ -1392,12 +1540,20 @@
     "v": "Image in base64 format"
   },
   {
+    "k": "imagem ou vídeo",
+    "v": "imagem or vídeo"
+  },
+  {
     "k": "Incluir comentários (se houver) no texto dos slides",
     "v": "Include comments (if any) in the slide text"
   },
   {
     "k": "Incluir imagem preview do slide",
     "v": "Include slide preview image"
+  },
+  {
+    "k": "Índice do item na lista",
+    "v": "Index of the item in the list"
   },
   {
     "k": "Índice do slide na apresentação (começa em zero)",
@@ -1536,6 +1692,10 @@
     "v": "John 3:16"
   },
   {
+    "k": "Largura",
+    "v": "Width"
+  },
+  {
     "k": "Layout da informação da primeira linha [Slide Additional Info Layout](#slide-additional-info-layout)",
     "v": "First row information layout [Slide Additional Info Layout](#slide-additional-info-layout)"
   },
@@ -1558,6 +1718,10 @@
   {
     "k": "Lista com a posição de cada item na lista que será removido. (Inicia em zero)",
     "v": "List with the position of each item in the list that will be removed. (Starts at zero)"
+  },
+  {
+    "k": "Lista com as semanas ocultadas",
+    "v": "List of hidden weeks"
   },
   {
     "k": "Lista com id de cada item",
@@ -1616,6 +1780,18 @@
     "v": "List of custom messages"
   },
   {
+    "k": "Lista de anúncios",
+    "v": "Announcement list"
+  },
+  {
+    "k": "Lista de cultos",
+    "v": "Service list"
+  },
+  {
+    "k": "Lista de eventos",
+    "v": "Event list"
+  },
+  {
     "k": "Lista de funções",
     "v": "List of functions"
   },
@@ -1646,6 +1822,14 @@
   {
     "k": "Lista de tags do item",
     "v": "Item tag list"
+  },
+  {
+    "k": "Lista de times",
+    "v": "Team list"
+  },
+  {
+    "k": "Lista dos IDs das músicas",
+    "v": "List of song IDs"
   },
   {
     "k": "Lista dos temas e planos de fundo",
@@ -1748,6 +1932,10 @@
     "v": "Minimum=0, Maximum=100"
   },
   {
+    "k": "Minuto",
+    "v": "Minute"
+  },
+  {
     "k": "minutos",
     "v": "minutes"
   },
@@ -1770,6 +1958,10 @@
   {
     "k": "n >= 2",
     "v": "n >= 2"
+  },
+  {
+    "k": "Name",
+    "v": "Name"
   },
   {
     "k": "não aguarda o retorno",
@@ -1820,6 +2012,10 @@
     "v": "Short name of the item"
   },
   {
+    "k": "Nome da aba",
+    "v": "Tab name"
+  },
+  {
     "k": "Nome da ação que será executada no player.",
     "v": "Name of the action that will be performed on the player."
   },
@@ -1842,6 +2038,10 @@
   {
     "k": "Nome da função",
     "v": "Function name"
+  },
+  {
+    "k": "Nome da janela",
+    "v": "Window name"
   },
   {
     "k": "Nome da lista de reprodução salva",
@@ -1874,6 +2074,10 @@
   {
     "k": "Nome da versão",
     "v": "Version name"
+  },
+  {
+    "k": "Nome detalhado do sistema operacional",
+    "v": "Detailed operating system name"
   },
   {
     "k": "Nome do ambiente de execução",
@@ -1956,6 +2160,10 @@
     "v": "New settings. Settings are individually optional. Fill in only the fields you want to change."
   },
   {
+    "k": "Novo item",
+    "v": "New item"
+  },
+  {
     "k": "Novo valor",
     "v": "New value"
   },
@@ -1990,6 +2198,10 @@
   {
     "k": "O mesmo que `apiRequest(id, raw)`, porém lança uma exception ao ocorrer um erro, em vez de retornar **null**",
     "v": "The same as `apiRequest(id, raw)`, but throws an exception when an error occurs, instead of returning **null**"
+  },
+  {
+    "k": "O método gera um exception para charset inválido",
+    "v": "The method generates an exception for invalid charset"
   },
   {
     "k": "o nome da tela",
@@ -2178,6 +2390,10 @@
   {
     "k": "Pode ser *'ok'* ou *'error'*",
     "v": "It might be *'ok'* or *'error'*"
+  },
+  {
+    "k": "Pode ser null",
+    "v": "Can be null"
   },
   {
     "k": "Pode ser utilizado para evitar número repetido sorteado em sequência",
@@ -2432,6 +2648,14 @@
     "v": "Returns the list of available versions of the Bible, and also the associated shortcuts"
   },
   {
+    "k": "Retorna a música anterior da lista de reprodução",
+    "v": "Returns the previous song in the playlist"
+  },
+  {
+    "k": "Retorna a próxima música da lista de reprodução",
+    "v": "Returns the next song in the playlist"
+  },
+  {
     "k": "Retorna a quantidade total de segundos do dia",
     "v": "Returns the total amount of seconds of the day"
   },
@@ -2442,6 +2666,10 @@
   {
     "k": "Retorna a versão atual do programa.",
     "v": "Returns the current version of the program."
+  },
+  {
+    "k": "Retorna as configurações da mensagem de alerta",
+    "v": "Returns alert message settings"
   },
   {
     "k": "Retorna as informações da apresentação automática em exibição",
@@ -2458,6 +2686,10 @@
   {
     "k": "Retorna as listas de reprodução salvas",
     "v": "Returns saved playlists"
+  },
+  {
+    "k": "Retorna informações da versão do programa em execução",
+    "v": "Returns information about the version of the running program"
   },
   {
     "k": "Retorna o **checksum** do parâmetro informado",
@@ -2496,6 +2728,10 @@
     "v": "Returns the current language set in the program settings."
   },
   {
+    "k": "Retorna o item anterior executável da lista de reprodução de mídia",
+    "v": "Returns the previous executable item from the media playlist"
+  },
+  {
     "k": "Retorna o item selecionado pelo usuário (pode ser NULL)",
     "v": "Returns the item selected by the user (can be NULL)"
   },
@@ -2516,8 +2752,16 @@
     "v": "Returns the background of the currently displayed presentation."
   },
   {
+    "k": "Retorna o próximo item executável da lista de reprodução de mídia",
+    "v": "Returns the next executable item from the media playlist"
+  },
+  {
     "k": "Retorna o tema atual da interface do programa.",
     "v": "Returns the current theme of the program interface."
+  },
+  {
+    "k": "Retorna o tema da apresentação em exibição.",
+    "v": "Returns the theme of the presentation currently displayed."
   },
   {
     "k": "Retorna o texto informado pelo usuário (pode ser NULL)",
@@ -2596,6 +2840,14 @@
     "v": "Saves a string to disk that can be recovered even after restarting the program. The method is shared with all scripts in the program."
   },
   {
+    "k": "Salvar um conteúdo em um arquivo TXT. Pode gerar Exception.",
+    "v": "Save content to a TXT file. May generate Exception."
+  },
+  {
+    "k": "Salvar um conteúdo em uma planilha XLSX. Pode gerar Exception.",
+    "v": "Save content to an XLSX spreadsheet. May generate Exception."
+  },
+  {
     "k": "script",
     "v": "script"
   },
@@ -2646,6 +2898,10 @@
   {
     "k": "Se o integrande está escalado ou definido para uma função",
     "v": "Whether the integrand is scaled or defined for a function"
+  },
+  {
+    "k": "Se o item está arquivado",
+    "v": "If the item is archived"
   },
   {
     "k": "Se o texto atual está em exibição",
@@ -2708,6 +2964,10 @@
     "v": "Select a scene"
   },
   {
+    "k": "Semana",
+    "v": "Week"
+  },
+  {
     "k": "Senha",
     "v": "Password"
   },
@@ -2718,6 +2978,10 @@
   {
     "k": "Separador",
     "v": "Separator"
+  },
+  {
+    "k": "Sistema operacional",
+    "v": "Operational system"
   },
   {
     "k": "Slide 1\\n\\nSlide 2\\n\\nSlide 3",
@@ -2737,7 +3001,7 @@
   },
   {
     "k": "String decodificada",
-    "v": "Decoded string"
+    "v": "Decoded String"
   },
   {
     "k": "String em base64",
@@ -2764,12 +3028,20 @@
     "v": "underlined"
   },
   {
+    "k": "Substituído por",
+    "v": "Replaced for"
+  },
+  {
     "k": "Tags HTML disponíveis",
     "v": "HTML tags available"
   },
   {
     "k": "Tamanho",
     "v": "Size"
+  },
+  {
+    "k": "Tamanho do arquivo",
+    "v": "File size"
   },
   {
     "k": "Tamanho do preview no formato WxH",
@@ -2802,6 +3074,10 @@
   {
     "k": "Tema 3",
     "v": "Theme 3"
+  },
+  {
+    "k": "Tema atual ou NULL se não houver apresentação em exibição",
+    "v": "Current theme or NULL if there is no presentation displayed"
   },
   {
     "k": "Tema personalizado",
@@ -2940,6 +3216,10 @@
     "v": "communication panel alert text"
   },
   {
+    "k": "Texto do anúncio",
+    "v": "Announcement text"
+  },
+  {
     "k": "Texto do slide",
     "v": "Slide text"
   },
@@ -2960,12 +3240,24 @@
     "v": "communication panel text"
   },
   {
+    "k": "Texto que será codificado",
+    "v": "Text that will be encoded"
+  },
+  {
     "k": "Texto que será exibido",
     "v": "Text to be displayed"
   },
   {
     "k": "Texto que será exibido. [Styled Text](#styled-text) a partir da v2.19.0",
     "v": "Text to be displayed. [Styled Text](#styled-text) from v2.19.0"
+  },
+  {
+    "k": "Texto que será salvo",
+    "v": "Text that will be saved"
+  },
+  {
+    "k": "Time",
+    "v": "Team"
   },
   {
     "k": "Tipo",
@@ -3030,6 +3322,10 @@
   {
     "k": "título da música",
     "v": "song title"
+  },
+  {
+    "k": "Título das colunas",
+    "v": "Column titles"
   },
   {
     "k": "Título do item",
@@ -3296,6 +3592,10 @@
     "v": "Bible version set in the third tab"
   },
   {
+    "k": "Versão do programa",
+    "v": "Program version"
+  },
+  {
     "k": "Versão no formato:",
     "v": "Version in the format:"
   },
@@ -3328,307 +3628,35 @@
     "v": "Volume. Minimum=0, Maximum=100"
   },
   {
-    "k": "Abas",
-    "v": "Tabs"
+    "k": "Áudio",
+    "v": "Audio"
   },
   {
-    "k": "Abre uma janela do programa",
-    "v": "Open a program window"
+    "k": "Caminho do arquivo de áudio (playback) linkado com a música",
+    "v": "Path of the audio file (backing track) linked to the song"
   },
   {
-    "k": "Abre uma janela para selecionar um item Texto",
-    "v": "Opens a window for selecting a Text item"
+    "k": "Caminho do arquivo de áudio linkado com a música",
+    "v": "Path of the audio file linked to the song"
   },
   {
-    "k": "Adicionar metadados na resposta",
-    "v": "Add metadata to the response"
+    "k": "Exibir segunda versão",
+    "v": "Show second version"
   },
   {
-    "k": "Adicionar thumbnail na resposta (80x45)",
-    "v": "Add thumbnail to response (80x45)"
+    "k": "Exibir terceira versão",
+    "v": "Show third version"
   },
   {
-    "k": "Ajuste da imagem",
-    "v": "Image adjustment"
+    "k": "Playback",
+    "v": "Backing track"
   },
   {
-    "k": "Alterar um item da lista de reprodução de letra de música",
-    "v": "Change a Lyrics Playlist Item"
+    "k": "Tipo de separação na exibição de múltiplas versões",
+    "v": "Separation type in multiple version view"
   },
   {
-    "k": "Alterar um item da lista de reprodução de mídia",
-    "v": "Change a media playlist item"
-  },
-  {
-    "k": "Altura",
-    "v": "Height"
-  },
-  {
-    "k": "Anotações",
-    "v": "Notes"
-  },
-  {
-    "k": "Aplicar efeito blur",
-    "v": "Apply blur effect"
-  },
-  {
-    "k": "Array de bytes",
-    "v": "Byte array"
-  },
-  {
-    "k": "O método gera um exception para charset inválido",
-    "v": "The method generates an exception for invalid charset"
-  },
-  {
-    "k": "audio ou vídeo",
-    "v": "audio or vídeo"
-  },
-  {
-    "k": "Cabeçalho",
-    "v": "Header"
-  },
-  {
-    "k": "Caminho do local do arquivo utilizado como papel de parede do evento",
-    "v": "Path to the location of the file used as the event wallpaper"
-  },
-  {
-    "k": "Codificação do texto",
-    "v": "Text encoding"
-  },
-  {
-    "k": "Codificação utilizada",
-    "v": "Coding used"
-  },
-  {
-    "k": "Converte um array de bytes em string",
-    "v": "Convert a byte array to a string"
-  },
-  {
-    "k": "Converte uma string em array de bytes",
-    "v": "Converts a string to a byte array"
-  },
-  {
-    "k": "Data de modificação do arquivo",
-    "v": "File modification date"
-  },
-  {
-    "k": "Data e hora no formato",
-    "v": "Date and time format"
-  },
-  {
-    "k": "Descrição do slide",
-    "v": "Slide description"
-  },
-  {
-    "k": "Dia da semana",
-    "v": "Day of the week"
-  },
-  {
-    "k": "Disponível para imagens",
-    "v": "Available for images"
-  },
-  {
-    "k": "Disponível se",
-    "v": "Available if"
-  },
-  {
-    "k": "Disponível se o arquivo for",
-    "v": "Available if the file is"
-  },
-  {
-    "k": "Duração do arquivo",
-    "v": "File duration"
-  },
-  {
-    "k": "Executa a música anterior da lista de reprodução",
-    "v": "Play the previous song in the playlist"
-  },
-  {
-    "k": "Executa a próxima música da lista de reprodução",
-    "v": "Play the next song in the playlist"
-  },
-  {
-    "k": "Executa o item anterior da lista de reprodução de mídia",
-    "v": "Plays the previous item in the media playlist"
-  },
-  {
-    "k": "Executa o próximo item da lista de reprodução de mídia",
-    "v": "Plays the next item in the media playlist"
-  },
-  {
-    "k": "Exibir imagens com transparência",
-    "v": "Display images with transparency"
-  },
-  {
-    "k": "Funções",
-    "v": "Roles"
-  },
-  {
-    "k": "Habilidades",
-    "v": "Skills"
-  },
-  {
-    "k": "Hora",
-    "v": "Hour"
-  },
-  {
-    "k": "ID do anúncio",
-    "v": "Announcement ID"
-  },
-  {
-    "k": "ID do tema atual",
-    "v": "Current theme ID"
-  },
-  {
-    "k": "imagem ou vídeo",
-    "v": "imagem or vídeo"
-  },
-  {
-    "k": "Índice do item na lista",
-    "v": "Index of the item in the list"
-  },
-  {
-    "k": "Largura",
-    "v": "Width"
-  },
-  {
-    "k": "Lista com as semanas ocultadas",
-    "v": "List of hidden weeks"
-  },
-  {
-    "k": "Lista de anúncios",
-    "v": "Announcement list"
-  },
-  {
-    "k": "Lista de cultos",
-    "v": "Service list"
-  },
-  {
-    "k": "Lista de eventos",
-    "v": "Event list"
-  },
-  {
-    "k": "Lista de times",
-    "v": "Team list"
-  },
-  {
-    "k": "Lista dos IDs das músicas",
-    "v": "List of song IDs"
-  },
-  {
-    "k": "Minuto",
-    "v": "Minute"
-  },
-  {
-    "k": "Name",
-    "v": "Name"
-  },
-  {
-    "k": "Nome da aba",
-    "v": "Tab name"
-  },
-  {
-    "k": "Nome da janela",
-    "v": "Window name"
-  },
-  {
-    "k": "Nome detalhado do sistema operacional",
-    "v": "Detailed operating system name"
-  },
-  {
-    "k": "Novo item",
-    "v": "New item"
-  },
-  {
-    "k": "Pode ser null",
-    "v": "Can be null"
-  },
-  {
-    "k": "Retorna a música anterior da lista de reprodução",
-    "v": "Returns the previous song in the playlist"
-  },
-  {
-    "k": "Retorna a próxima música da lista de reprodução",
-    "v": "Returns the next song in the playlist"
-  },
-  {
-    "k": "Retorna as configurações da mensagem de alerta",
-    "v": "Returns alert message settings"
-  },
-  {
-    "k": "Retorna informações da versão do programa em execução",
-    "v": "Returns information about the version of the running program"
-  },
-  {
-    "k": "Retorna o item anterior executável da lista de reprodução de mídia",
-    "v": "Returns the previous executable item from the media playlist"
-  },
-  {
-    "k": "Retorna o próximo item executável da lista de reprodução de mídia",
-    "v": "Returns the next executable item from the media playlist"
-  },
-  {
-    "k": "Retorna o tema da apresentação em exibição.",
-    "v": "Returns the theme of the presentation currently displayed."
-  },
-  {
-    "k": "Salvar um conteúdo em um arquivo TXT. Pode gerar Exception.",
-    "v": "Save content to a TXT file. May generate Exception."
-  },
-  {
-    "k": "Salvar um conteúdo em uma planilha XLSX. Pode gerar Exception.",
-    "v": "Save content to an XLSX spreadsheet. May generate Exception."
-  },
-  {
-    "k": "Se o item está arquivado",
-    "v": "If the item is archived"
-  },
-  {
-    "k": "Semana",
-    "v": "Week"
-  },
-  {
-    "k": "Sistema operacional",
-    "v": "Operational system"
-  },
-  {
-    "k": "String decodificada",
-    "v": "Decoded String"
-  },
-  {
-    "k": "Substituído por",
-    "v": "Replaced for"
-  },
-  {
-    "k": "Tamanho do arquivo",
-    "v": "File size"
-  },
-  {
-    "k": "Tema atual ou NULL se não houver apresentação em exibição",
-    "v": "Current theme or NULL if there is no presentation displayed"
-  },
-  {
-    "k": "Texto do anúncio",
-    "v": "Announcement text"
-  },
-  {
-    "k": "Texto que será codificado",
-    "v": "Text that will be encoded"
-  },
-  {
-    "k": "Texto que será salvo",
-    "v": "Text that will be saved"
-  },
-  {
-    "k": "Time",
-    "v": "Team"
-  },
-  {
-    "k": "Título das colunas",
-    "v": "Column titles"
-  },
-  {
-    "k": "Versão do programa",
-    "v": "Program version"
+    "k": "URI ou ID dos streamings",
+    "v": "URI or ID of the streamings"
   }
 ]
