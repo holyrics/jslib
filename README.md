@@ -44,8 +44,6 @@ h.log('exemplo');
   - [getGlobalAndSet](#getglobalandsetkey-default--null-newvalue)
   - [getGlobalAndSetNext](#getglobalandsetnextkey-values)
   - [setGlobalNextAndGet](#setglobalnextandgetkey-values)
-  - [setCache](#setcachekey-value)
-  - [getCache](#getcachekey-default--null)
   - [random](#randommin-max-keysaferepeat--null)
   - [random](#randomx-y-z)
   - [startTimer](#starttimerkey--default)
@@ -92,6 +90,10 @@ h.log('exemplo');
   - [readAudioAsBase64](#readaudioasbase64file)
   - [readFileAsText](#readfileastextfile-charset--utf8)
   - [isPathEquals](#ispathequalsa-b)
+  - [bytesToString](#bytestostringbytes-charset--utf8)
+  - [stringToBytes](#stringtobytesstring-charset--utf8)
+  - [exportTXT](#exporttxttext-settings--null)
+  - [exportXLSX](#exportxlsxdata)
 - [Métodos HLY](#métodos-hly)
   - [GetLyrics](#hlygetlyrics-input)
   - [GetSongs](#hlygetsongs)
@@ -124,8 +126,18 @@ h.log('exemplo');
   - [GetLyricsPlaylist](#hlygetlyricsplaylist)
   - [AddLyricsToPlaylist](#hlyaddlyricstoplaylist-input)
   - [RemoveFromLyricsPlaylist](#hlyremovefromlyricsplaylist-input)
+  - [SetLyricsPlaylistItem](#hlysetlyricsplaylistitem-input)
   - [GetMediaPlaylist](#hlygetmediaplaylist)
+  - [SetMediaPlaylistItem](#hlysetmediaplaylistitem-input)
   - [MediaPlaylistAction](#hlymediaplaylistaction-input)
+  - [GetNextSongPlaylist](#hlygetnextsongplaylist)
+  - [GetNextMediaPlaylist](#hlygetnextmediaplaylist)
+  - [ShowNextSongPlaylist](#hlyshownextsongplaylist)
+  - [ShowNextMediaPlaylist](#hlyshownextmediaplaylist)
+  - [GetPreviousSongPlaylist](#hlygetprevioussongplaylist)
+  - [GetPreviousMediaPlaylist](#hlygetpreviousmediaplaylist)
+  - [ShowPreviousSongPlaylist](#hlyshowprevioussongplaylist)
+  - [ShowPreviousMediaPlaylist](#hlyshowpreviousmediaplaylist)
   - [AddToPlaylist](#hlyaddtoplaylist-input)
   - [RemoveFromMediaPlaylist](#hlyremovefrommediaplaylist-input)
   - [SetPlaylistItemDuration](#hlysetplaylistitemduration-input)
@@ -147,10 +159,12 @@ h.log('exemplo');
   - [ActionGoToIndex](#hlyactiongotoindex-input)
   - [ActionGoToSlideDescription](#hlyactiongotoslidedescription-input)
   - [GetCurrentBackground](#hlygetcurrentbackground)
+  - [GetCurrentTheme](#hlygetcurrenttheme)
   - [GetBackgrounds](#hlygetbackgrounds-input)
   - [SetCurrentBackground](#hlysetcurrentbackground-input)
   - [GetThumbnail](#hlygetthumbnail-input)
   - [GetColorMap](#hlygetcolormap-input)
+  - [GetAlert](#hlygetalert)
   - [SetAlert](#hlysetalert-input)
   - [GetCurrentSchedule](#hlygetcurrentschedule)
   - [GetSchedules](#hlygetschedules-input)
@@ -158,8 +172,13 @@ h.log('exemplo');
   - [LoadSavedPlaylist](#hlyloadsavedplaylist-input)
   - [GetHistory](#hlygethistory-input)
   - [GetHistories](#hlygethistories)
+  - [GetTeams](#hlygetteams)
   - [GetMembers](#hlygetmembers)
   - [GetRoles](#hlygetroles)
+  - [GetServices](#hlygetservices)
+  - [GetEvents](#hlygetevents)
+  - [GetAnnouncement](#hlygetannouncement-input)
+  - [GetAnnouncements](#hlygetannouncements)
   - [GetCommunicationPanelInfo](#hlygetcommunicationpanelinfo)
   - [SetCommunicationPanelSettings](#hlysetcommunicationpanelsettings-input)
   - [StartCountdownCommunicationPanel](#hlystartcountdowncommunicationpanel-input)
@@ -189,7 +208,8 @@ h.log('exemplo');
   - [GetInterfaceInput](#hlygetinterfaceinput-input)
   - [SetInterfaceInput](#hlysetinterfaceinput-input)
   - [OpenDrawLots](#hlyopendrawlots-input)
-  - [getMediaDuration](#hlygetmediaduration-input)
+  - [GetMediaDuration](#hlygetmediaduration-input)
+  - [GetVersion](#hlygetversion)
 - [Métodos Player](#métodos-player)
   - [getMediaName](#getmedianame)
   - [getMedia](#getmedia)
@@ -227,11 +247,13 @@ h.log('exemplo');
   - [yesNo](#yesnomsg-title--confirm-notification--false)
   - [notification](#notificationmsg-duration--0)
   - [lyricsChooser](#lyricschooser)
+  - [textChooser](#textchooser)
   - [themeChooser](#themechooser)
   - [imageChooser](#imagechooser)
   - [audioChooser](#audiochooser)
   - [videoChooser](#videochooser)
   - [backgroundChooser](#backgroundchooser)
+  - [openWindow](#openwindowname)
 - [Classes](#classes)
   - [Lyrics](#lyrics)
   - [Text](#text)
@@ -240,9 +262,13 @@ h.log('exemplo');
   - [Slide Description](#slide-description)
   - [Item](#item)
   - [Group](#group)
+  - [Announcement](#announcement)
   - [Midi](#midi)
   - [Favorite Item](#favorite-item)
+  - [Service](#service)
+  - [Event](#event)
   - [Schedule](#schedule)
+  - [Team](#team)
   - [Member](#member)
   - [Role](#role)
   - [Automatic Presentation](#automatic-presentation)
@@ -1046,63 +1072,6 @@ var r = h.setGlobalNextAndGet('xyz', ['a', 'b', 'c']);
 r = h.setGlobalNextAndGet('xyz', ['a', 'b', 'c']);
 //r == 'b'
 //h.getGlobal('xyz') == 'b'
-```
-
----
-
-
-### setCache(key, value)
-Salva um objeto na memória que pode ser recuperado, mas é válido somente enquanto o programa estiver aberto. O método é válido somente para o script atual.
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `key` | _String_ | chave/id do objeto salvo |
-| `value` | _Object_ | Objeto que será salvo na memória |
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.setCache('123', 'Exemplo');
-```
-
----
-
-
-### getCache(key, default = null)
-Recupera um objeto salvo na memória. O método é válido somente para o script atual.
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `key` | _String_ | chave/id do objeto salvo na memória |
-| `default` | _Object (opcional)_ | Valor padrão se não for encontrado valor salvo anteriormente |
-
-
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Object_ | Retorna o objeto salvo ou **default** se não for encontrado |
-
-
-**Exemplo:**
-
-```javascript
-var r = h.getCache('123');
-if (r == null) {
-    h.log('Item 123 não encontrado');
-} else {
-    h.log('Item 123: ' + r);
-}
-
-var r2 = h.getCache('123', 'valor padrão');
-h.log('Item 123: ' + r2);
 ```
 
 ---
@@ -2550,6 +2519,123 @@ h.isPathEquals('file.jpg', 'file.jpeg');
 ---
 
 
+### bytesToString(bytes, charset = 'UTF-8')
+- v2.22.0
+
+Converte um array de bytes em string
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `bytes` | _Array&lt;byte&gt;_ | Array de bytes |
+| `charset` | _String (opcional)_ | Codificação utilizada `Padrão: UTF-8` |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | String decodificada. O método gera um exception para charset inválido |
+
+
+---
+
+
+### stringToBytes(string, charset = 'UTF-8')
+- v2.22.0
+
+Converte uma string em array de bytes
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `string` | _String_ | Texto que será codificado |
+| `charset` | _String (opcional)_ | Codificação utilizada `Padrão: UTF-8` |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Array&lt;byte&gt;_ | Array de bytes. O método gera um exception para charset inválido |
+
+
+---
+
+
+### exportTXT(text, settings = null)
+- v2.22.0
+
+Salvar um conteúdo em um arquivo TXT. Pode gerar Exception.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `text` | _String_ | Texto que será salvo |
+| `settings` | _Object (opcional)_ | Configurações |
+| `settings.name` | _String (opcional)_ | Nome do arquivo `Padrão: YYYY-MM-DD_HH-MM-SS` |
+| `settings.charset` | _String (opcional)_ | Codificação do texto `Padrão: UTF-8` |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.exportTXT("abc", {
+    name: "txt filename"
+});
+```
+
+---
+
+
+### exportXLSX(data)
+- v2.22.0
+
+Salvar um conteúdo em uma planilha XLSX. Pode gerar Exception.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data.name` | _String (opcional)_ | Nome do arquivo `Padrão: YYYY-MM-DD_HH-MM-SS` |
+| `data.sheets` | _Array&lt;Object&gt;_ | Abas |
+| `data.sheets.*.name` | _String_ | Nome da aba |
+| `data.sheets.*.header` | _String_ | Cabeçalho |
+| `data.sheets.*.cols_name` | _Array&lt;String&gt;_ | Título das colunas |
+| `data.sheets.*.grid` | _Array&lt;Array&lt;String&gt;&gt;_ | Abas |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.exportXLSX({
+    name: "xlsx filename",
+    sheets: [
+      {
+        name: "Name",
+        header: "Example",
+        cols_name: ["Col 1", "Col 2", "Col 3", "Col 4"],
+        grid: [
+          ['a', 'b', 'c', 'd'], //ROW 1
+          ['e', 'f', 'g', 'h'], //ROW 2
+          ['i', 'j', 'k', 'l'], //ROW 3
+          ['m', 'n', 'o', 'p']  //ROW 4
+         ]
+      }
+    ]
+});
+```
+
+---
+
+
 # Métodos HLY 
 
 
@@ -2876,6 +2962,8 @@ Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo
 | ---- | :---: | ------------|
 | `input.folder` | _String (opcional)_ | Nome da subpasta para listar os arquivos |
 | `input.filter` | _String (opcional)_ | Filtrar arquivos pelo nome |
+| `input.include_metadata` | _Boolean (opcional)_ | Adicionar metadados na resposta `Padrão: false` `v2.22.0+` |
+| `input.include_thumbnail` | _Boolean (opcional)_ | Adicionar thumbnail na resposta (80x45) `Padrão: false` `v2.22.0+` |
 
 
 **Resposta:**
@@ -2885,6 +2973,17 @@ Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo
 | `data` | _Array&lt;Object&gt;_ |  |
 | `data.*.name` | _String_ | Nome do item |
 | `data.*.isDir` | _Boolean_ | Retorna **true** se for uma pasta ou **false** se for arquivo. |
+| <br>Disponível se **include_metadata=true** |  |  |
+| `data.*.length` | _Number_ | Tamanho do arquivo (bytes). Disponível se **isDir=false** `v2.22.0+` |
+| `data.*.modified_time` | _String_ | Data de modificação do arquivo. Data e hora no formato: YYYY-MM-DD HH:MM `v2.22.0+` |
+| `data.*.duration_ms` | _Number_ | Duração do arquivo. Disponível se o arquivo for: audio ou vídeo `v2.22.0+` |
+| `data.*.width` | _Number_ | Largura. Disponível se o arquivo for: imagem ou vídeo `v2.22.0+` |
+| `data.*.height` | _Number_ | Altura. Disponível se o arquivo for: imagem ou vídeo `v2.22.0+` |
+| `data.*.position` | _String_ | Ajuste da imagem. Disponível para imagens. Pode ser: `adjust` `extend` `fill` `v2.22.0+` |
+| `data.*.blur` | _Boolean_ | Aplicar efeito blur `v2.22.0+` |
+| `data.*.transparent` | _Boolean_ | Exibir imagens com transparência `v2.22.0+` |
+| <br>Disponível se **include_thumbnail=true** |  |  |
+| `data.*.thumbnail` | _String_ | Imagem no formato base64 `v2.22.0+` |
 
 
 **Exemplo:**
@@ -2938,10 +3037,8 @@ h.hly('PlayAudio', {
 h.playAudio('arquivo.mp3');
 
 h.playAudio('arquivo.mp3', {
-    settings: {
-        volume: 90,
-        start_time: '30'
-    }
+    volume: 90,
+    start_time: '30'
 });
 ```
 
@@ -2977,10 +3074,8 @@ h.hly('PlayVideo', {file: 'pasta/arquivo.mp4'});
 h.playVideo('arquivo.mp4');
 
 h.playVideo('arquivo.mp4', {
-    settings: {
-        volume: 0,
-        repeat: true
-    }
+    volume: 0,
+    repeat: true
 });
 ```
 
@@ -3694,6 +3789,34 @@ h.hly('RemoveFromLyricsPlaylist', {indexes: [3, 4, 5]});
 ---
 
 
+### hly('SetLyricsPlaylistItem', input)
+### hly('SetSongPlaylistItem', input)
+- v2.22.0
+
+Alterar um item da lista de reprodução de letra de música
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.index` | _Number_ | Índice do item na lista |
+| `input.song_id` | _String_ | Novo item |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('SetLyricsPlaylistItem', {
+    index: 2,
+    song_id: '123'
+});
+```
+
+---
+
+
 ### hly('GetMediaPlaylist')
 Lista de reprodução de mídia
 
@@ -3719,6 +3842,36 @@ for (var i = 0; i < r.data.length; i++) {
 ---
 
 
+### hly('SetMediaPlaylistItem', input)
+- v2.22.0
+
+Alterar um item da lista de reprodução de mídia
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.index` | _Number_ | Índice do item na lista |
+| `input.item` | _[AddItem](#additem)_ | Novo item |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('SetMediaPlaylistItem', {
+    index: 2,
+    item: {
+        type: 'song',
+        id: '123'
+    }
+});
+```
+
+---
+
+
 ### hly('MediaPlaylistAction', input)
 Executa um item da lista de reprodução de mídia
 
@@ -3739,6 +3892,150 @@ h.hly('MediaPlaylistAction', {id: 'abc'});
 //Chamadas alternativas
 h.mediaPlaylistAction('abc');
 h.mplAction('abc');
+```
+
+---
+
+
+### hly('GetNextSongPlaylist')
+- v2.22.0
+
+Retorna a próxima música da lista de reprodução. Pode ser null
+
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetNextSongPlaylist');
+```
+
+---
+
+
+### hly('GetNextMediaPlaylist')
+- v2.22.0
+
+Retorna o próximo item executável da lista de reprodução de mídia. Pode ser null
+
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetNextMediaPlaylist');
+```
+
+---
+
+
+### hly('ShowNextSongPlaylist')
+- v2.22.0
+
+Executa a próxima música da lista de reprodução
+
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('ShowNextSongPlaylist');
+```
+
+---
+
+
+### hly('ShowNextMediaPlaylist')
+- v2.22.0
+
+Executa o próximo item da lista de reprodução de mídia
+
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('ShowNextMediaPlaylist');
+```
+
+---
+
+
+### hly('GetPreviousSongPlaylist')
+- v2.22.0
+
+Retorna a música anterior da lista de reprodução. Pode ser null
+
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetPreviousSongPlaylist');
+```
+
+---
+
+
+### hly('GetPreviousMediaPlaylist')
+- v2.22.0
+
+Retorna o item anterior executável da lista de reprodução de mídia. Pode ser null
+
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetPreviousMediaPlaylist');
+```
+
+---
+
+
+### hly('ShowPreviousSongPlaylist')
+- v2.22.0
+
+Executa a música anterior da lista de reprodução
+
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('ShowPreviousSongPlaylist');
+```
+
+---
+
+
+### hly('ShowPreviousMediaPlaylist')
+- v2.22.0
+
+Executa o item anterior da lista de reprodução de mídia
+
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('ShowPreviousMediaPlaylist');
 ```
 
 ---
@@ -4180,7 +4477,7 @@ Item sendo apresentado no momento ou **null** se não tiver apresentação sendo
 | `input.include_slides` | _Boolean (opcional)_ | Retornar a lista de slides da apresentação atual. Indisponível para apresentação de versículos. `Padrão: false` `v2.21.0+` |
 | `input.include_slide_comment` | _Boolean (opcional)_ | Incluir comentários (se houver) no texto dos slides. Disponível se **include_slides=true**. `Padrão: false` `v2.21.0+` |
 | `input.include_slide_preview` | _Boolean (opcional)_ | Incluir imagem preview do slide. Disponível se **include_slides=true**. `Padrão: false` `v2.21.0+` |
-| `sinput.lide_preview_size` | _String (opcional)_ | Tamanho do preview no formato WxH (ex. 320x180).<br>Disponível se **include_slide_preview=true** `Padrão: false` `v2.21.0+` |
+| `input.lide_preview_size` | _String (opcional)_ | Tamanho do preview no formato WxH (ex. 320x180). (max 640x360)<br>Disponível se **include_slide_preview=true** `Padrão: false` `v2.21.0+` |
 
 
 **Resposta:**
@@ -4406,6 +4703,34 @@ Retorna o plano de fundo da apresentação em exibição.
 var r = h.hly('GetCurrentBackground');
 if (r.data != null) {
     h.log('ID do plano de fundo atual: ' + r.data.id);
+} else {
+    h.log('Não há apresentação em exibição');
+}
+```
+
+---
+
+
+### hly('GetCurrentTheme')
+- v2.22.0
+
+Retorna o tema da apresentação em exibição.
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _[Background](#background)_ | Tema atual ou NULL se não houver apresentação em exibição |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetCurrentTheme');
+if (r.data != null) {
+    h.log('ID do tema atual: ' + r.data.id);
 } else {
     h.log('Não há apresentação em exibição');
 }
@@ -4655,6 +4980,31 @@ var arr = h.getColorMap('video', 'filename.mp4');
 ---
 
 
+### hly('GetAlert')
+- v2.20.0
+
+Retorna as configurações da mensagem de alerta
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data.text` | _String_ | Texto atual do alerta |
+| `data.show` | _Boolean_ | Se a exibição do alerta está ativada |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetAlert');
+h.log(r.text);
+```
+
+---
+
+
 ### hly('SetAlert', input)
 Altera as configurações da mensagem de alerta
 
@@ -4692,7 +5042,7 @@ Programação atual (selecionada na janela principal do programa)
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `data` | _[Schedule](#schedule)_ |  |
+| `data` | _Array&lt;[Schedule](#schedule)&gt;_ |  |
 
 
 **Exemplo:**
@@ -4854,6 +5204,32 @@ for (var i = 0; i < r.data.length; i++) {
 ---
 
 
+### hly('GetTeams')
+- v2.22.0
+
+Lista de times
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[Team](#team)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetTeams');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+```
+
+---
+
+
 ### hly('GetMembers')
 Lista de integrantes
 
@@ -4894,6 +5270,116 @@ Lista de funções
 
 ```javascript
 var r = h.hly('GetRoles');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+```
+
+---
+
+
+### hly('GetServices')
+- v2.22.0
+
+Lista de cultos
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[Service](#service)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetServices');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+```
+
+---
+
+
+### hly('GetEvents')
+- v2.22.0
+
+Lista de eventos
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[Event](#event)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetEvents');
+for (var i = 0; i < r.data.length; i++) {
+    h.log(r.data[i].name);
+}
+```
+
+---
+
+
+### hly('GetAnnouncement', input)
+- v2.22.0
+
+Anúncio
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String (opcional)_ | ID do anúncio |
+| `input.name` | _String (opcional)_ | Nome do anúncio |
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _[Announcement](#announcement)_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetAnnouncement', {
+    id: '123'
+});
+h.log(r.data.name);
+```
+
+---
+
+
+### hly('GetAnnouncements')
+- v2.22.0
+
+Lista de anúncios
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;[Announcement](#announcement)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetAnnouncements');
 for (var i = 0; i < r.data.length; i++) {
     h.log(r.data[i].name);
 }
@@ -4962,7 +5448,9 @@ Alterar configuração atual do painel de comunicação
 | `input.text` | _String (opcional)_ | Texto atual |
 | `input.show` | _Boolean (opcional)_ | Exibir o texto atual |
 | `input.display_ahead` | _Boolean (opcional)_ | Opção *'exibir à frente de tudo'* |
-| `input.theme` | _Number (opcional)_ | ID ou nome do tema padrão |
+| `input.theme` | _Object (opcional)_ | ID ou nome do tema padrão |
+| `input.theme.id` | _String (opcional)_ |  |
+| `input.theme.name` | _String (opcional)_ |  |
 | `input.custom_theme` | _[Theme](#theme) (opcional)_ | Tema personalizado `v2.21.0+` |
 | `input.alert_text` | _String (opcional)_ | Texto atual do alerta |
 | `input.alert_show` | _Boolean (opcional)_ | Ativar a exibição do alerta |
@@ -5175,7 +5663,8 @@ Configurações do papel de parede
 | `data.image_base64` | _String_ | Imagem do papel de parede em base 64 |
 | `data.enabled` | _Boolean_ | Exibir papel de parede |
 | `data.fill_color` | _String_ | Cor em hexadecimal definida na opção **preencher**. |
-| `data.extend` | _Boolean_ | Estender papel de parede |
+| `data.extend` | _Boolean_ | `deprecated` Substituído por `adjust_type`<br>Estender papel de parede |
+| `data.adjust_type` | _String_ | Ajuste da imagem: Pode ser: `ADJUST` `EXTEND` `FILL` `ADJUST_BLUR` `v2.22.0+` |
 | `data.show_clock` | _Boolean_ | Exibir relógio |
 
 
@@ -5201,7 +5690,8 @@ Alterar as configurações do papel de parede
 | `input.file` | _String (opcional)_ | Local do arquivo na aba **Imagens** |
 | `input.enabled` | _Boolean (opcional)_ | Exibir papel de parede |
 | `input.fill_color` | _String (opcional)_ | Cor em hexadecimal definida na opção **preencher**. **NULL** para desativar |
-| `input.extend` | _Boolean (opcional)_ | Estender papel de parede |
+| `input.extend` | _Boolean (opcional)_ | `deprecated` Substituído por `adjust_type`<br>Estender papel de parede |
+| `data.adjust_type` | _String_ | Ajuste da imagem: Pode ser: `ADJUST` `EXTEND` `FILL` `ADJUST_BLUR` `v2.22.0+` |
 | `input.show_clock` | _Boolean (opcional)_ | Exibir relógio |
 
 
@@ -5746,7 +6236,7 @@ h.hly('OpenDrawLots', {
 ---
 
 
-### hly('getMediaDuration', input)
+### hly('GetMediaDuration', input)
 - v2.21.0
 
 Retorna a duração da mídia
@@ -5772,11 +6262,39 @@ Retorna a duração da mídia
 **Exemplo:**
 
 ```javascript
-var r = h.hly('getMediaDuration', {
+var r = h.hly('GetMediaDuration', {
     type: 'audio',
     name: 'file.mp3'
 });
 h.log("Duration: " + r.data.duration + "s");
+```
+
+---
+
+
+### hly('GetVersion')
+- v2.22.0
+
+Retorna informações da versão do programa em execução
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data.version` | _String_ | Versão do programa |
+| `data.platform` | _String_ | Sistema operacional. Pode ser: `win` `uni` `osx` |
+| `data.platformDescription` | _String_ | Nome detalhado do sistema operacional |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetVersion');
+h.log(r.data.version);
+h.log(r.data.plaftorm);
+h.log(r.data.plaftormDescription);
 ```
 
 ---
@@ -6534,6 +7052,34 @@ if (r == null) {
 ---
 
 
+### textChooser()
+- v2.22.0
+
+Abre uma janela para selecionar um item Texto
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _[Text](#text)_ | Retorna o item selecionado pelo usuário (pode ser NULL) |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.textChooser();
+if (r == null) {
+    h.log("Cancelado");
+} else {
+    h.log("Item selecionado: " + r.title);
+}
+```
+
+---
+
+
 ### themeChooser()
 - v2.19.0
 
@@ -6683,6 +7229,31 @@ if (r == null) {
 ---
 
 
+### openWindow(name)
+- v2.22.0
+
+Abre uma janela do programa
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ | Nome da janela. {{Pode ser}}: `main` `bible` `communication_panel` `chat` |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.openWindow('main');
+
+h.openWindow('bible');
+```
+
+---
+
+
 # Classes 
 Classes complexas utilizadas como retorno em alguns métodos
 ## Lyrics
@@ -6696,6 +7267,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `copyright` | _String_ | Copyright da música |
 | `slides` | _Array&lt;Object&gt;_ |  `v2.21.0+` |
 | `slides.*.text` | _String_ | Texto do slide `v2.21.0+` |
+| `slides.*.slide_description` | _Number_ | Descrição do slide `v2.21.1+` |
 | `slides.*.background_id` | _Number_ | ID do tema ou plano de fundo salvo para o slide `v2.21.0+` |
 | `order` | _String_ | Ordem dos slides (índice a partir do 1), separado por vírgula `v2.21.0+` |
 | `key` | _String_ | Tom da música.<br>Pode ser: `C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm` |
@@ -6719,14 +7291,17 @@ Classes complexas utilizadas como retorno em alguns métodos
   "slides": [
     {
       "text": "Slide 1 line 1\nSlide 1 line 2",
+      "slide_description": "Verse 1",
       "background_id": null
     },
     {
       "text": "Slide 2 line 1\nSlide 2 line 2",
+      "slide_description": "Chorus",
       "background_id": null
     },
     {
       "text": "Slide 3 line 1\nSlide 3 line 2",
+      "slide_description": "Verse 3",
       "background_id": null
     }
   ],
@@ -6735,6 +7310,20 @@ Classes complexas utilizadas como retorno em alguns métodos
   "bpm": 0.0,
   "time_sig": "",
   "groups": [],
+  "linked_audio_file": "",
+  "linked_backing_track_file": "",
+  "streaming": {
+    "audio": {
+      "spotify": "",
+      "youtube": "",
+      "deezer": ""
+    },
+    "backing_track": {
+      "spotify": "",
+      "youtube": "",
+      "deezer": ""
+    }
+  },
   "extras": {
     "extra": ""
   },
@@ -6966,13 +7555,22 @@ Classes complexas utilizadas como retorno em alguns métodos
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `id` | _String_ | ID do item |
-| `type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `uri`  `global_action`  `api`  `script` |
+| `type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script` |
 | `name` | _String_ | Nome do item |
 
 ## Group
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `name` | _String_ | Nome do item |
+| `songs` | _Array&lt;Number&gt;_ | Lista dos IDs das músicas |
+
+## Announcement
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID do item |
+| `name` | _String_ | Nome do item |
+| `text` | _String_ | Texto do anúncio |
+| `archived` | _Boolean_ | Se o item está arquivado |
 
 ## Midi
 | Nome | Tipo  | Descrição |
@@ -6996,6 +7594,25 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `id` | _String_ | ID do item |
 | `name` | _String_ | Nome do item |
 
+## Service
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ | Nome do item |
+| `week` | _String_ | Semana. Pode ser: `all` `first` `second` `third` `fourth` `last` |
+| `day` | _String_ | Dia da semana. Pode ser: `sun` `mon` `tue` `wed` `thu` `fri` `sat` |
+| `hour` | _String_ | Hora [0-23] |
+| `minute` | _String_ | Minuto [0-59] |
+| `type` | _String_ | Tipo do item. Pode ser: `service` `event` |
+| `hide_week` | _Array&lt;String&gt;_ | Lista com as semanas ocultadas. Disponível se `week=all` |
+
+## Event
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ | Nome do item |
+| `name` | _String_ | Nome do evento |
+| `datetime` | _String_ | Data e hora no formato: YYYY-MM-DD HH:MM |
+| `wallpaper` | _String_ | Caminho do local do arquivo utilizado como papel de parede do evento |
+
 ## Schedule
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
@@ -7013,6 +7630,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `roles.*.id` | _String_ | ID da função |
 | `roles.*.name` | _String_ | Nome da função |
 | `roles.*.member` | _[Member](#member)_ | Integrante escalado para a função |
+| `notes` | _String_ | Anotações `v2.21.0+` |
 <details>
   <summary>Ver exemplo</summary>
 
@@ -7063,22 +7681,33 @@ Classes complexas utilizadas como retorno em alguns métodos
   ],
   "responsible": null,
   "members": [],
-  "roles": []
+  "roles": [],
+  "notes": ""
 }
 ```
 </details>
+
+## Team
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID do item |
+| `name` | _String_ | Nome do item |
+| `description` | _String_ | Descrição do item |
 
 ## Member
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `id` | _String_ | ID do item |
 | `name` | _String_ | Nome do item |
+| `skills` | _String_ | Habilidades |
+| `roles` | _Array&lt;[Role](#role)&gt;_ | Funções |
 
 ## Role
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `id` | _String_ | ID do item |
 | `name` | _String_ | Nome do item |
+| `team` | _[Team](#team)_ | Time |
 
 ## Automatic Presentation
 | Nome | Tipo  | Descrição |
@@ -7288,7 +7917,7 @@ Configurações de exibição
 | `show_x_verses` | _Number_ | Quantidade de versículos exibidos na projeção |
 | `uppercase` | _Boolean_ | Exibir o texto do versículo em maiúsculo |
 | `show_only_reference` | _Boolean_ | Exibir somente a referência do versículo |
-| `show_two_versions` | _Boolean_ | Exibir duas versões |
+| `show_two_versions` | _Boolean_ | `deprecated` Substituído por: `show_second_version` `show_third_version`<br>Exibir duas versões. |
 | `book_panel_type` | _String_ | Tipo de visualização dos livros da Bíblia `grid` `list` |
 | `book_panel_order` | _String_ | Tipo de ordenação dos livros da Bíblia |
 | `book_panel_order_available_items` | _Array&lt;String&gt;_ |  |
@@ -7309,12 +7938,15 @@ Configurações de exibição
   "uppercase": false,
   "show_only_reference": false,
   "show_two_versions": false,
+  "show_second_version": false,
+  "show_third_version": false,
   "book_panel_type": "grid",
   "book_panel_order": "automatic",
   "book_panel_order_available_items": [
     "automatic", "standard", "ru", "tyv"
   ],
   "multiple_verses_separator_type": "double_line_break",
+  "multiple_versions_separator_type": "double_line_break",
   "versification": true,
   "theme": {
     "public": 123,
@@ -7553,7 +8185,7 @@ Configurações de exibição
 ## AddItem
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `uri`  `global_action`  `api`  `script` |
+| `type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script` |
 
 ## AddItemTitle
 | Nome | Tipo  | Descrição |
@@ -7642,7 +8274,8 @@ Configurações de exibição
 {
   "id": "",
   "type": "audio",
-  "name": "file.mp3"
+  "name": "file.mp3",
+  "isDir": false
 }
 ```
 </details>
@@ -7660,7 +8293,8 @@ Configurações de exibição
 {
   "id": "",
   "type": "video",
-  "name": "file.mp4"
+  "name": "file.mp4",
+  "isDir": false
 }
 ```
 </details>
