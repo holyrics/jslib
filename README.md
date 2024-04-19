@@ -1594,37 +1594,31 @@ if (obj.sourceActive) {
 //Parâmetros disponíveis para requisição
 var r = h.apiRequest('receiver_id', {
     //parâmetro adicionado ao final da url definida no receptor
-    //opcional
-    url_suffix: 'test.php?x=1&y=2&z=3',
-    //
+    url_suffix: 'test.php?x=1&y=2&z=3', /* opcional */
+    
     //cabeçalho da requisição
-    //opcional
-    headers: {
+    headers: { /* opcional */
         Authorization: '1234'
     },
-    //
+    
     //corpo da requisição (exceto para tipo GET)
     //pode ser byte array para UDP e TCP
     //data: h.createByteBuffer().putString('example').toBytes(),
     data: "example",
-    //
+    
     //codificação da resposta da requisição, utf-8 por padrão
     //response_data_type: "string;iso-8859-1",
     //response_data_type: "base64",
-    //opcional
-    response_data_type: "string;utf-8",
-    //
+    response_data_type: "string;utf-8", /* opcional */
+    
     //Disponível para: UDP
-    //opcional
-    wait_for_response: true,
-    //
+    wait_for_response: true, /* opcional */
+    
     //Disponível para: UDP
-    //opcional
-    port: 1234,
-    //
+    port: 1234, /* opcional */
+    
     //timeout ms - default: 5000 - UDP: 2000
-    //opcional
-    timeout: 5000 //ms
+    timeout: 5000 /* opcional */
 });
 ```
 

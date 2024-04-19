@@ -1591,40 +1591,34 @@ if (obj.sourceActive) {
 
 //-------------------------------------------------
 
-//Parâmetros disponíveis para requisição
+//Parameters available for request
 var r = h.apiRequest('receiver_id', {
-    //parâmetro adicionado ao final da url definida no receptor
-    //optional
-    url_suffix: 'test.php?x=1&y=2&z=3',
-    //
-    //cabeçalho da requisição
-    //optional
-    headers: {
+    //parameter added to the end of the url defined in the receiver
+    url_suffix: 'test.php?x=1&y=2&z=3', /* optional */
+    
+    //request header
+    headers: { /* optional */
         Authorization: '1234'
     },
-    //
-    //corpo da requisição (exceto para tipo GET)
-    //pode ser byte array para UDP e TCP
+    
+    //request body (except for GET type)
+    //can be byte array for UDP and TCP
     //data: h.createByteBuffer().putString('example').toBytes(),
     data: "example",
-    //
-    //codificação da resposta da requisição, utf-8 por padrão
+    
+    //request response encoding, utf-8 by default
     //response_data_type: "string;iso-8859-1",
     //response_data_type: "base64",
-    //optional
-    response_data_type: "string;utf-8",
-    //
+    response_data_type: "string;utf-8", /* optional */
+    
     //Available for: UDP
-    //optional
-    wait_for_response: true,
-    //
+    wait_for_response: true, /* optional */
+    
     //Available for: UDP
-    //optional
-    port: 1234,
-    //
+    port: 1234, /* optional */
+    
     //timeout ms - default: 5000 - UDP: 2000
-    //optional
-    timeout: 5000 //ms
+    timeout: 5000 /* optional */
 });
 ```
 
@@ -2679,7 +2673,7 @@ h.exportXLSX({
 ### createByteBuffer()
 - v2.22.0
 
-Cria um objeto para armazenar dados em forma binária.
+Creates an object to store data in binary form.
 
 
 
@@ -2718,7 +2712,7 @@ var str2 = buf.toString("ISO-8859-1"); //charset
 ### createByteBufferToRead(reader)
 - v2.22.0
 
-Cria um objeto preenchido com bytes para leitura em forma binária.
+Creates an object filled with bytes for reading in binary form.
 
 **Parameters:**
 
