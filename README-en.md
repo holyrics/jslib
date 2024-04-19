@@ -90,10 +90,12 @@ h.log('example');
   - [readAudioAsBase64](#readaudioasbase64file)
   - [readFileAsText](#readfileastextfile-charset--utf8)
   - [isPathEquals](#ispathequalsa-b)
-  - [bytesToString](#bytestostringbytes-charset--utf8)
-  - [stringToBytes](#stringtobytesstring-charset--utf8)
+  - [bytesToString](#bytestostringbytes-charset--utf-8)
+  - [stringToBytes](#stringtobytesstring-charset--utf-8)
   - [exportTXT](#exporttxttext-settings--null)
   - [exportXLSX](#exportxlsxdata)
+  - [createByteBuffer](#createbytebuffer)
+  - [createByteBufferToRead](#createbytebuffertoreadreader)
 - [Methods HLY](#methods-hly)
   - [GetLyrics](#hlygetlyrics-input)
   - [GetSongs](#hlygetsongs)
@@ -1575,7 +1577,7 @@ Executes a request to the associated receiver and returns the receiver's respons
 //For example:
 //Assuming you have a receiver created to communicate with OBS Studio via websocket and the receiver ID is 'abcyxz'
 //you can make a request as in the example below
-var r = h.apiRequest('abcxyz', {
+var r = h.apiRequest('receiver_id', {
     'request-type': 'GetSourceActive',
     'sourceName': 'example'
 });
@@ -1586,6 +1588,44 @@ if (obj.sourceActive) {
 } else {
     h.log('The example source is not active');
 }
+
+//-------------------------------------------------
+
+//Parâmetros disponíveis para requisição
+var r = h.apiRequest('receiver_id', {
+    //parâmetro adicionado ao final da url definida no receptor
+    //optional
+    url_suffix: 'test.php?x=1&y=2&z=3',
+    //
+    //cabeçalho da requisição
+    //optional
+    headers: {
+        Authorization: '1234'
+    },
+    //
+    //corpo da requisição (exceto para tipo GET)
+    //pode ser byte array para UDP e TCP
+    //data: h.createByteBuffer().putString('example').toBytes(),
+    data: "example",
+    //
+    //codificação da resposta da requisição, utf-8 por padrão
+    //response_data_type: "string;iso-8859-1",
+    //response_data_type: "base64",
+    //optional
+    response_data_type: "string;utf-8",
+    //
+    //Available for: UDP
+    //optional
+    wait_for_response: true,
+    //
+    //Available for: UDP
+    //optional
+    port: 1234,
+    //
+    //timeout ms - default: 5000 - UDP: 2000
+    //optional
+    timeout: 5000 //ms
+});
 ```
 
 ---
@@ -2631,6 +2671,91 @@ h.exportXLSX({
       }
     ]
 });
+```
+
+---
+
+
+### createByteBuffer()
+- v2.22.0
+
+Cria um objeto para armazenar dados em forma binária.
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _ByteBuffer_ |  |
+
+
+**Example:**
+
+```javascript
+var buf = h.createByteBuffer();
+buf.putByte(48); //1 byte
+buf.putInt(123); //4 bytes
+buf.putLong(1234); //8 bytes
+buf.putFloat(3.0); //4 bytes
+buf.putDouble(4.0); //8 bytes
+buf.putString("text"); //utf-8 default
+buf.putString("text", "ISO-8859-1"); //text, charset
+
+//add byte(48) 128 times
+buf.fill(48, 128); //byte, times
+
+var bytes = buf.toBytes();
+var hex = buf.toHex();
+var base64 = buf.toBase64();
+var str1 = buf.toString(); //utf-8 default
+var str2 = buf.toString("ISO-8859-1"); //charset
+```
+
+---
+
+
+### createByteBufferToRead(reader)
+- v2.22.0
+
+Cria um objeto preenchido com bytes para leitura em forma binária.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `reader` | _Array&lt;byte&gt;_ | Byte array |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _ByteBuffer_ |  |
+
+
+**Example:**
+
+```javascript
+var bytes = [
+    48,
+    0, 0, 0, 123,
+    0, 0, 0, 0, 0, 0, 4, -46,
+    64, 64, 0, 0, 
+    64, 16, 0, 0, 0, 0, 0, 0,
+    116, 101, 120, 116,
+    116, 101, 120, 116
+];
+var buf = h.createByteBufferToRead(bytes);
+
+var b = buf.readByte(); //1 byte
+var i = buf.readInt(); //4 bytes
+var l = buf.readLong(); //8 bytes
+var f = buf.readFloat(); //4 bytes
+var d = buf.readDouble(); //8 bytes
+var s1 = buf.readString(4); //length, utf-8 default
+var s2 = buf.readString(4, "ISO-8859-1"); //length, charset
+var b2 = buf.readBytes(128); //length
 ```
 
 ---
@@ -7303,14 +7428,14 @@ Complex classes used as a return in some methods
 | `bpm` | _Number_ | BPM of the song |
 | `time_sig` | _String_ | Music time.<br>Can be: `2/2` `2/4` `3/4` `4/4` `5/4` `6/4` `3/8` `6/8` `7/8` `9/8` `12/8` |
 | `groups` | _Array&lt;[Group](#group)&gt;_ | Groups where music is added |
-| `linked_audio_file` | _String_ | Caminho do arquivo de áudio linkado com a música `v2.22.0+` |
-| `linked_backing_track_file` | _String_ | Caminho do arquivo de áudio (playback) linkado com a música `v2.22.0+` |
-| `streaming` | _Object_ | URI ou ID dos streamings `v2.22.0+` |
-| `streaming.audio` | _Object_ | Áudio `v2.22.0+` |
+| `linked_audio_file` | _String_ | Path of the audio file linked to the song `v2.22.0+` |
+| `linked_backing_track_file` | _String_ | Path of the audio file (backing track) linked to the song `v2.22.0+` |
+| `streaming` | _Object_ | URI or ID of the streamings `v2.22.0+` |
+| `streaming.audio` | _Object_ | Audio `v2.22.0+` |
 | `streaming.audio.spotify` | _String_ |  `v2.22.0+` |
 | `streaming.audio.youtube` | _String_ |  `v2.22.0+` |
 | `streaming.audio.deezer` | _String_ |  `v2.22.0+` |
-| `streaming.backing_track` | _Object_ | Playback `v2.22.0+` |
+| `streaming.backing_track` | _Object_ | Backing track `v2.22.0+` |
 | `streaming.backing_track.spotify` | _String_ |  `v2.22.0+` |
 | `streaming.backing_track.youtube` | _String_ |  `v2.22.0+` |
 | `streaming.backing_track.deezer` | _String_ |  `v2.22.0+` |
@@ -7640,18 +7765,17 @@ Complex classes used as a return in some methods
 | `name` | _String_ | Item name |
 | `week` | _String_ | Week. Can be: `all` `first` `second` `third` `fourth` `last` |
 | `day` | _String_ | Day of the week. Can be: `sun` `mon` `tue` `wed` `thu` `fri` `sat` |
-| `hour` | _String_ | Hour [0-23] |
-| `minute` | _String_ | Minute [0-59] |
+| `hour` | _Number_ | Hour [0-23] |
+| `minute` | _Number_ | Minute [0-59] |
 | `type` | _String_ | Type of item. Can be: `service` `event` |
 | `hide_week` | _Array&lt;String&gt;_ | List of hidden weeks. Available if `week=all` |
 
 ## Event
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `name` | _String_ | Item name |
 | `name` | _String_ | Event name |
 | `datetime` | _String_ | Date and time format: YYYY-MM-DD HH:MM |
-| `wallpaper` | _String_ | Caminho relativo do arquivo utilizado como papel de parede do evento |
+| `wallpaper` | _String_ | Relative path of the file used as the event wallpaper |
 
 ## Schedule
 | Name | Type  | Description |
@@ -7958,13 +8082,13 @@ Display settings
 | `uppercase` | _Boolean_ | Display the verse text in uppercase |
 | `show_only_reference` | _Boolean_ | Display only the verse reference |
 | `show_two_versions` | _Boolean_ | `deprecated` Replaced for: `show_second_version` `show_third_version`<br>Display two versions. |
-| `show_second_version` | _Boolean_ | Exibir segunda versão `v2.22.0+` |
-| `show_third_version` | _Boolean_ | Exibir terceira versão `v2.22.0+` |
+| `show_second_version` | _Boolean_ | Show second version `v2.22.0+` |
+| `show_third_version` | _Boolean_ | Show third version `v2.22.0+` |
 | `book_panel_type` | _String_ | Type of view of the books of the Bible `grid` `list` |
 | `book_panel_order` | _String_ | Type of sorting of the books of the Bible |
 | `book_panel_order_available_items` | _Array&lt;String&gt;_ |  |
 | `multiple_verses_separator_type` | _String_ | Type of separation in the display of multiple verses. Can be: no_line_break, single_line_break, double_line_break |
-| `multiple_versions_separator_type` | _String_ | Tipo de separação na exibição de múltiplas versões. Can be: no_line_break, single_line_break, double_line_break `v2.22.0+` |
+| `multiple_versions_separator_type` | _String_ | Separation type in multiple version view. Can be: no_line_break, single_line_break, double_line_break `v2.22.0+` |
 | `versification` | _Boolean_ | Apply verse mapping |
 | `theme` | _Object_ | Display Theme ID for the different system screens |
 | `theme.public` | _String_ |  |

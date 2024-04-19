@@ -90,10 +90,12 @@ h.log('exemplo');
   - [readAudioAsBase64](#readaudioasbase64file)
   - [readFileAsText](#readfileastextfile-charset--utf8)
   - [isPathEquals](#ispathequalsa-b)
-  - [bytesToString](#bytestostringbytes-charset--utf8)
-  - [stringToBytes](#stringtobytesstring-charset--utf8)
+  - [bytesToString](#bytestostringbytes-charset--utf-8)
+  - [stringToBytes](#stringtobytesstring-charset--utf-8)
   - [exportTXT](#exporttxttext-settings--null)
   - [exportXLSX](#exportxlsxdata)
+  - [createByteBuffer](#createbytebuffer)
+  - [createByteBufferToRead](#createbytebuffertoreadreader)
 - [Métodos HLY](#métodos-hly)
   - [GetLyrics](#hlygetlyrics-input)
   - [GetSongs](#hlygetsongs)
@@ -1575,7 +1577,7 @@ Executa uma requisição para o receptor associado e retorna a resposta do recep
 //Por exemplo:
 //Considerando que você tenha um receptor criado para comunicação com OBS Studio via websocket e o ID do receptor seja 'abcyxz'
 //você pode fazer uma requisição como no exemplo abaixo
-var r = h.apiRequest('abcxyz', {
+var r = h.apiRequest('receiver_id', {
     'request-type': 'GetSourceActive',
     'sourceName': 'exemplo'
 });
@@ -1586,6 +1588,44 @@ if (obj.sourceActive) {
 } else {
     h.log('A fonte exemplo não está ativa');
 }
+
+//-------------------------------------------------
+
+//Parâmetros disponíveis para requisição
+var r = h.apiRequest('receiver_id', {
+    //parâmetro adicionado ao final da url definida no receptor
+    //opcional
+    url_suffix: 'test.php?x=1&y=2&z=3',
+    //
+    //cabeçalho da requisição
+    //opcional
+    headers: {
+        Authorization: '1234'
+    },
+    //
+    //corpo da requisição (exceto para tipo GET)
+    //pode ser byte array para UDP e TCP
+    //data: h.createByteBuffer().putString('example').toBytes(),
+    data: "example",
+    //
+    //codificação da resposta da requisição, utf-8 por padrão
+    //response_data_type: "string;iso-8859-1",
+    //response_data_type: "base64",
+    //opcional
+    response_data_type: "string;utf-8",
+    //
+    //Disponível para: UDP
+    //opcional
+    wait_for_response: true,
+    //
+    //Disponível para: UDP
+    //opcional
+    port: 1234,
+    //
+    //timeout ms - default: 5000 - UDP: 2000
+    //opcional
+    timeout: 5000 //ms
+});
 ```
 
 ---
@@ -2631,6 +2671,91 @@ h.exportXLSX({
       }
     ]
 });
+```
+
+---
+
+
+### createByteBuffer()
+- v2.22.0
+
+Cria um objeto para armazenar dados em forma binária.
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _ByteBuffer_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var buf = h.createByteBuffer();
+buf.putByte(48); //1 byte
+buf.putInt(123); //4 bytes
+buf.putLong(1234); //8 bytes
+buf.putFloat(3.0); //4 bytes
+buf.putDouble(4.0); //8 bytes
+buf.putString("text"); //utf-8 default
+buf.putString("text", "ISO-8859-1"); //text, charset
+
+//add byte(48) 128 times
+buf.fill(48, 128); //byte, times
+
+var bytes = buf.toBytes();
+var hex = buf.toHex();
+var base64 = buf.toBase64();
+var str1 = buf.toString(); //utf-8 default
+var str2 = buf.toString("ISO-8859-1"); //charset
+```
+
+---
+
+
+### createByteBufferToRead(reader)
+- v2.22.0
+
+Cria um objeto preenchido com bytes para leitura em forma binária.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `reader` | _Array&lt;byte&gt;_ | Array de bytes |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _ByteBuffer_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var bytes = [
+    48,
+    0, 0, 0, 123,
+    0, 0, 0, 0, 0, 0, 4, -46,
+    64, 64, 0, 0, 
+    64, 16, 0, 0, 0, 0, 0, 0,
+    116, 101, 120, 116,
+    116, 101, 120, 116
+];
+var buf = h.createByteBufferToRead(bytes);
+
+var b = buf.readByte(); //1 byte
+var i = buf.readInt(); //4 bytes
+var l = buf.readLong(); //8 bytes
+var f = buf.readFloat(); //4 bytes
+var d = buf.readDouble(); //8 bytes
+var s1 = buf.readString(4); //length, utf-8 default
+var s2 = buf.readString(4, "ISO-8859-1"); //length, charset
+var b2 = buf.readBytes(128); //length
 ```
 
 ---
@@ -7640,15 +7765,14 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `name` | _String_ | Nome do item |
 | `week` | _String_ | Semana. Pode ser: `all` `first` `second` `third` `fourth` `last` |
 | `day` | _String_ | Dia da semana. Pode ser: `sun` `mon` `tue` `wed` `thu` `fri` `sat` |
-| `hour` | _String_ | Hora [0-23] |
-| `minute` | _String_ | Minuto [0-59] |
+| `hour` | _Number_ | Hora [0-23] |
+| `minute` | _Number_ | Minuto [0-59] |
 | `type` | _String_ | Tipo do item. Pode ser: `service` `event` |
 | `hide_week` | _Array&lt;String&gt;_ | Lista com as semanas ocultadas. Disponível se `week=all` |
 
 ## Event
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `name` | _String_ | Nome do item |
 | `name` | _String_ | Nome do evento |
 | `datetime` | _String_ | Data e hora no formato: YYYY-MM-DD HH:MM |
 | `wallpaper` | _String_ | Caminho relativo do arquivo utilizado como papel de parede do evento |
