@@ -456,6 +456,10 @@
     "v": "audio"
   },
   {
+    "k": "Áudio",
+    "v": "Audio"
+  },
+  {
     "k": "audio ou vídeo",
     "v": "audio or vídeo"
   },
@@ -502,6 +506,14 @@
   {
     "k": "Caminho da pasta de localização",
     "v": "Path of the location folder"
+  },
+  {
+    "k": "Caminho do arquivo de áudio (playback) linkado com a música",
+    "v": "Path of the audio file (backing track) linked to the song"
+  },
+  {
+    "k": "Caminho do arquivo de áudio linkado com a música",
+    "v": "Path of the audio file linked to the song"
   },
   {
     "k": "Caminho relativo do arquivo utilizado como papel de parede do evento",
@@ -1232,12 +1244,20 @@
     "v": "Display clock in the alert"
   },
   {
+    "k": "Exibir segunda versão",
+    "v": "Show second version"
+  },
+  {
     "k": "Exibir somente a referência do versículo",
     "v": "Display only the verse reference"
   },
   {
     "k": "Exibir tempo restante da mídia em execução no VLC Player",
     "v": "Display remaining time of the media playing in VLC Player"
+  },
+  {
+    "k": "Exibir terceira versão",
+    "v": "Show third version"
   },
   {
     "k": "Exibir uma contagem regressiva na tela público",
@@ -2384,6 +2404,10 @@
     "v": "Current background or NULL if no presentation is displayed"
   },
   {
+    "k": "Playback",
+    "v": "Backing track"
+  },
+  {
     "k": "Pode ser",
     "v": "Can be"
   },
@@ -3280,6 +3304,10 @@
     "v": "Type of sorting of the books of the Bible"
   },
   {
+    "k": "Tipo de separação na exibição de múltiplas versões",
+    "v": "Separation type in multiple version view"
+  },
+  {
     "k": "Tipo de separação na exibição de múltiplos versículos",
     "v": "Type of separation in the display of multiple verses"
   },
@@ -3390,6 +3418,10 @@
   {
     "k": "uri",
     "v": "uri"
+  },
+  {
+    "k": "URI ou ID dos streamings",
+    "v": "URI or ID of the streamings"
   },
   {
     "k": "Utiliza a mesma estrutura/sintaxe da funcionalidade FunctionInput",
@@ -3628,35 +3660,35 @@
     "v": "Volume. Minimum=0, Maximum=100"
   },
   {
-    "k": "Áudio",
-    "v": "Audio"
+    "k": "cabeçalho da requisição",
+    "v": "request header"
   },
   {
-    "k": "Caminho do arquivo de áudio (playback) linkado com a música",
-    "v": "Path of the audio file (backing track) linked to the song"
+    "k": "codificação da resposta da requisição, utf-8 por padrão",
+    "v": "request response encoding, utf-8 by default"
   },
   {
-    "k": "Caminho do arquivo de áudio linkado com a música",
-    "v": "Path of the audio file linked to the song"
+    "k": "corpo da requisição (exceto para tipo GET)",
+    "v": "request body (except for GET type)"
   },
   {
-    "k": "Exibir segunda versão",
-    "v": "Show second version"
+    "k": "Cria um objeto para armazenar dados em forma binária.",
+    "v": "Creates an object to store data in binary form."
   },
   {
-    "k": "Exibir terceira versão",
-    "v": "Show third version"
+    "k": "Cria um objeto preenchido com bytes para leitura em forma binária.",
+    "v": "Creates an object filled with bytes for reading in binary form."
   },
   {
-    "k": "Playback",
-    "v": "Backing track"
+    "k": "parâmetro adicionado ao final da url definida no receptor",
+    "v": "parameter added to the end of the url defined in the receiver"
   },
   {
-    "k": "Tipo de separação na exibição de múltiplas versões",
-    "v": "Separation type in multiple version view"
+    "k": "Parâmetros disponíveis para requisição",
+    "v": "Parameters available for request"
   },
   {
-    "k": "URI ou ID dos streamings",
-    "v": "URI or ID of the streamings"
+    "k": "pode ser byte array para UDP e TCP",
+    "v": "can be byte array for UDP and TCP"
   }
 ]
