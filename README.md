@@ -1032,7 +1032,7 @@ Classe para executar ações de criptografia e armazenamento de dados protegidos
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _[SecurityUtils](#métodos-securityutils)_ | Objeto da classe SecurityUtils |
+| _[SecurityUtils](métodos-securityutils)_ | Objeto da classe SecurityUtils |
 
 
 **Exemplo:**
@@ -3045,7 +3045,7 @@ Obter o valor atual de uma variável do sistema
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `value` | _String_ | Variável do sistema na sintaxe real de uso. Exemplo: @js{sys_var_name} |
+| `value` | _String_ | Variável do sistema na sintaxe real de uso. Exemplo: `@js{sys_var_name}` |
 
 
 **Resposta:**
@@ -3882,7 +3882,7 @@ Cria uma conexão WebSocket. Pode gerar Exception.
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `receiver` | _String_ | Valores aceitos<br>ID ou nome receptor<br>Host ou IP de destino, caso esteja adicionado na lista de requisições permitidas<br>$`{{menu arquivo}} > configurações > avançado > javascript > configurações > requisições permitidas` |
+| `receiver` | _String_ | Valores aceitos<br>ID ou nome receptor<br>Host ou IP de destino, caso esteja adicionado na lista de requisições permitidas<br>`menu arquivo > configurações > avançado > javascript > configurações > requisições permitidas` |
 | `cacheID` | _String (opcional)_ | ID utilizado como valor para obter a conexão já existente, em vez de criar uma nova conexão |
 | `modelToCreate` | _Object (opcional)_ | Ações utilizadas ao criar uma nova conexão |
 | `modelToCreate.headers` | _Object (opcional)_ |  |
@@ -3950,7 +3950,7 @@ Cria uma conexão TCP. Pode gerar Exception.
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `receiver` | _String_ | Valores aceitos<br>ID ou nome receptor<br>Host ou IP de destino, caso esteja adicionado na lista de requisições permitidas<br>$`{{menu arquivo}} > configurações > avançado > javascript > configurações > requisições permitidas` |
+| `receiver` | _String_ | Valores aceitos<br>ID ou nome receptor<br>Host ou IP de destino, caso esteja adicionado na lista de requisições permitidas<br>`menu arquivo > configurações > avançado > javascript > configurações > requisições permitidas` |
 | `cacheID` | _String (opcional)_ | ID utilizado como valor para obter a conexão já existente, em vez de criar uma nova conexão |
 | `modelToCreate` | _Object (opcional)_ | Ações utilizadas ao criar uma nova conexão |
 | `modelToCreate.on_message` | _Function_ | Executado a cada nova mensagem recebida<br>O objeto `message` é do tipo:  [ByteBufferReader](https://github.com/holyrics/jslib/blob/main/doc/pt/ByteBufferReader.md)<br>`function(message) { ... }` |
@@ -7132,10 +7132,10 @@ Configurações do papel de parede
 | `data.extend` | _Boolean_ | `deprecated` Substituído por `adjust_type`<br>Estender papel de parede |
 | `data.adjust_type` | _String_ | Ajuste da imagem: Pode ser: `ADJUST` `EXTEND` `FILL` `ADJUST_BLUR` `v2.22.0+` |
 | `data.show_clock` | _Boolean_ | Exibir relógio |
-| `data.by_screen` | _Object (opcional)_ | Configuração independente por tela `v2.23.0+` |
-| `data.by_screen.default` | _[WallpaperSettings](#wallpaper-settings) (opcional)_ | Configuração padrão `v2.23.0+` |
-| `data.by_screen.public` | _[WallpaperSettings](#wallpaper-settings) (opcional)_ | Configuração personalizada para a tela ou **null** se estiver utilizando a configuração padrão `v2.23.0+` |
-| `data.by_screen.screen_n` | _[WallpaperSettings](#wallpaper-settings) (opcional)_ | n >= 2  `v2.23.0+` |
+| `data.by_screen` | _Object_ | Configuração independente por tela `v2.23.0+` |
+| `data.by_screen.default` | _[WallpaperSettings](#wallpaper-settings)_ | Configuração padrão `v2.23.0+` |
+| `data.by_screen.public` | _[WallpaperSettings](#wallpaper-settings)_ | Configuração personalizada para a tela ou **null** se estiver utilizando a configuração padrão `v2.23.0+` |
+| `data.by_screen.screen_n` | _[WallpaperSettings](#wallpaper-settings)_ | n >= 2  `v2.23.0+` |
 
 
 **Exemplo:**
@@ -8149,7 +8149,7 @@ A mesma função de `h.input(...)`, porém salva automaticamente o valor em `set
 | ---- | :---: | ------------|
 | `saveTo` | _String_ | Chave de armazenamento utilizado para salvar e recuperar o valor dos itens.<br>`h.setGlobal(saveTo, ...)`<br>`h.getGlobal(saveTo, ...)`<br>`h.store(saveTo, ...)`<br>`h.restore(saveTo, ...)` |
 | `saveToStore` | _Boolean_ | **true** para salvar o valor também em `h.store(saveTo, ...)`, ou seja, a configuração se mantém salva mesmo após reiniciar o programa `Padrão: true` |
-| `data` | _Object_ | Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](#input-param)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string**.<br>`saveTo` pode ser a chave de armazenamento  caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente |
+| `data` | _Object_ | Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](#input-param)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string**.<br>`data` pode ser `saveTo` (chave de armazenamento) caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente |
 
 
 **Resposta:**

@@ -1032,7 +1032,7 @@ Class to perform encryption actions and store data protected with a password
 
 | Type  | Description |
 | :---: | ------------|
-| _[SecurityUtils](#métodos-securityutils)_ | SecurityUtils class object |
+| _[SecurityUtils](securityutils-methods)_ | SecurityUtils class object |
 
 
 **Example:**
@@ -3045,7 +3045,7 @@ Get the current value of a system variable
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `value` | _String_ | System variable in the actual usage syntax. Example: @js{sys_var_name} |
+| `value` | _String_ | System variable in the actual usage syntax. Example: `@js{sys_var_name}` |
 
 
 **Response:**
@@ -3882,7 +3882,7 @@ Creates a WebSocket connection. May generate Exception.
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `receiver` | _String_ | Accepted values<br>Receiver ID or name<br>Host or destination IP, if added to the list of allowed requests<br>$`{{menu arquivo}} > settings > advanced > javascript > settings > allowed requests` |
+| `receiver` | _String_ | Accepted values<br>Receiver ID or name<br>Host or destination IP, if added to the list of allowed requests<br>`file menu > settings > advanced > javascript > settings > allowed requests` |
 | `cacheID` | _String (optional)_ | ID used as a value to obtain the existing connection, instead of creating a new one |
 | `modelToCreate` | _Object (optional)_ | Actions used when creating a new connection |
 | `modelToCreate.headers` | _Object (optional)_ |  |
@@ -3950,7 +3950,7 @@ Creates a TCP connection. May generate Exception.
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `receiver` | _String_ | Accepted values<br>Receiver ID or name<br>Host or destination IP, if added to the list of allowed requests<br>$`{{menu arquivo}} > settings > advanced > javascript > settings > allowed requests` |
+| `receiver` | _String_ | Accepted values<br>Receiver ID or name<br>Host or destination IP, if added to the list of allowed requests<br>`file menu > settings > advanced > javascript > settings > allowed requests` |
 | `cacheID` | _String (optional)_ | ID used as a value to obtain the existing connection, instead of creating a new one |
 | `modelToCreate` | _Object (optional)_ | Actions used when creating a new connection |
 | `modelToCreate.on_message` | _Function_ | Executed for each new message received<br>The `message` object is of the type:  [ByteBufferReader](https://github.com/holyrics/jslib/blob/main/doc/en/ByteBufferReader.md)<br>`function(message) { ... }` |
@@ -7132,10 +7132,10 @@ Wallpaper settings
 | `data.extend` | _Boolean_ | `deprecated` Replaced for `adjust_type`<br>Extend wallpaper |
 | `data.adjust_type` | _String_ | Image adjustment: Can be: `ADJUST` `EXTEND` `FILL` `ADJUST_BLUR` `v2.22.0+` |
 | `data.show_clock` | _Boolean_ | Show clock |
-| `data.by_screen` | _Object (optional)_ | Independent configuration per screen `v2.23.0+` |
-| `data.by_screen.default` | _[WallpaperSettings](#wallpaper-settings) (optional)_ | Default configuration `v2.23.0+` |
-| `data.by_screen.public` | _[WallpaperSettings](#wallpaper-settings) (optional)_ | Custom configuration for the screen or **null** if using the default configuration `v2.23.0+` |
-| `data.by_screen.screen_n` | _[WallpaperSettings](#wallpaper-settings) (optional)_ | n >= 2  `v2.23.0+` |
+| `data.by_screen` | _Object_ | Independent configuration per screen `v2.23.0+` |
+| `data.by_screen.default` | _[WallpaperSettings](#wallpaper-settings)_ | Default configuration `v2.23.0+` |
+| `data.by_screen.public` | _[WallpaperSettings](#wallpaper-settings)_ | Custom configuration for the screen or **null** if using the default configuration `v2.23.0+` |
+| `data.by_screen.screen_n` | _[WallpaperSettings](#wallpaper-settings)_ | n >= 2  `v2.23.0+` |
 
 
 **Example:**
@@ -8149,7 +8149,7 @@ The same function as `h.input(...)`, but automatically saves the value in `setGl
 | ---- | :---: | ------------|
 | `saveTo` | _String_ | Storage key used to save and retrieve the value of items.<br>`h.setGlobal(saveTo, ...)`<br>`h.getGlobal(saveTo, ...)`<br>`h.store(saveTo, ...)`<br>`h.restore(saveTo, ...)` |
 | `saveToStore` | _Boolean_ | **true** to save the value also in `h.store(saveTo, ...)`, meaning the configuration remains saved even after restarting the program `Default: true` |
-| `data` | _Object_ | Entries that will be requested in the interface. Can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string**.<br>`saveTo` can be the storage key if the method `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` has been called previously |
+| `data` | _Object_ | Entries that will be requested in the interface. Can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string**.<br>`data` pode ser `saveTo` (chave de armazenamento) caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente |
 
 
 **Response:**
