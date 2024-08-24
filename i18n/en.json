@@ -40,10 +40,6 @@
     "v": "2 seconds"
   },
   {
-    "k": "`saveTo` pode ser a chave de armazenamento  caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente",
-    "v": "`saveTo` can be the storage key if the method `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` has been called previously"
-  },
-  {
     "k": "A contagem regressiva do painel de comunicação está ativa",
     "v": "Communication panel countdown is active"
   },
@@ -2204,10 +2200,6 @@
     "v": "Lyrics display mode"
   },
   {
-    "k": "Opções disponíveis",
-    "v": "Available options"
-  },
-  {
     "k": "Múltiplos itens encontrados",
     "v": "Multiple items found"
   },
@@ -2448,12 +2440,12 @@
     "v": "Selected numbers"
   },
   {
-    "k": "O item de acordo com o tipo informado:",
-    "v": "The item according to the type informed:"
+    "k": "O array retornado contém 8 índices, e cada índice corresponde ao trecho conforme imagem de exemplo a seguir",
+    "v": "The returned array contains 8 indices, and each index corresponds to the section according to the following example image"
   },
   {
-    "k": "porém lança uma exception ao ocorrer um erro, em vez de retornar **null**",
-    "v": "but throws an exception when an error occurs, instead of returning **null**"
+    "k": "O item de acordo com o tipo informado:",
+    "v": "The item according to the type informed:"
   },
   {
     "k": "O mesmo que",
@@ -2586,6 +2578,10 @@
   {
     "k": "Opcional se `text` for declarado",
     "v": "Optional if `text` is declared"
+  },
+  {
+    "k": "Opções disponíveis",
+    "v": "Available options"
   },
   {
     "k": "Ordem dos slides (índice a partir do 1), separado por vírgula",
@@ -2746,6 +2742,10 @@
   {
     "k": "Por exemplo, se a permissão não estiver liberada",
     "v": "For example, if the permission is not enabled"
+  },
+  {
+    "k": "porém lança uma exception ao ocorrer um erro, em vez de retornar **null**",
+    "v": "but throws an exception when an error occurs, instead of returning **null**"
   },
   {
     "k": "porém os objetos complexos serão exibidos em formato 'pretty-print'",
@@ -3062,10 +3062,6 @@
   {
     "k": "Retorna as informações de cor predominante de um respectivo tipo de item",
     "v": "Returns the information of the predominant color of a respective type of item"
-  },
-  {
-    "k": "O array retornado contém 8 índices, e cada índice corresponde ao trecho conforme imagem de exemplo a seguir",
-    "v": "The returned array contains 8 indices, and each index corresponds to the section according to the following example image"
   },
   {
     "k": "Retorna as informações do player",
@@ -3450,6 +3446,10 @@
   {
     "k": "Tamanho relativo da fonte",
     "v": "Relative font size"
+  },
+  {
+    "k": "tamanho relativo da fonte",
+    "v": "relative font size"
   },
   {
     "k": "Também é possível utilizar os campos **extras** criados pelo próprio usuário para as músicas, por exemplo:",
@@ -4070,5 +4070,9 @@
   {
     "k": "Volume atual do player",
     "v": "Current player volume"
+  },
+  {
+    "k": "`data` pode ser `saveTo` (chave de armazenamento) caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente",
+    "v": "`data` can be `saveTo` (storage key) if the `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` method was called previously"
   }
 ]
