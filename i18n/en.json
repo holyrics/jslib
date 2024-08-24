@@ -32,10 +32,6 @@
     "v": "2 seconds"
   },
   {
-    "k": "`displaying` `closing` `change`",
-    "v": "`displaying` `closing` `change`"
-  },
-  {
     "k": "A contagem regressiva do painel de comunicação está ativa",
     "v": "Communication panel countdown is active"
   },
@@ -198,10 +194,6 @@
   {
     "k": "Alinhamento vertical da informação no slide. top, bottom",
     "v": "Vertical alignment of information on the slide. top, bottom"
-  },
-  {
-    "k": "Altera a configuração do player para executar itens em sequência",
-    "v": "Change player setting to play items in sequence"
   },
   {
     "k": "Altera a configuração do player para executar somente o item atual da lista",
@@ -492,12 +484,12 @@
     "v": "Header"
   },
   {
-    "k": "callback da requisição",
-    "v": "request callback"
+    "k": "cabeçalho da requisição",
+    "v": "request header"
   },
   {
-    "k": "Caminho completo da mídia",
-    "v": "Full media path"
+    "k": "callback da requisição",
+    "v": "request callback"
   },
   {
     "k": "Caminho completo da mídia no player",
@@ -568,10 +560,6 @@
     "v": "Key/id of the countdown"
   },
   {
-    "k": "chave/id da string salva anteriormente",
-    "v": "Previously saved string key"
-  },
-  {
     "k": "Chave/id de gerenciamento do log",
     "v": "Key/id of log management"
   },
@@ -592,10 +580,6 @@
     "v": "Timer key"
   },
   {
-    "k": "chave/id para salvar a string",
-    "v": "key to save the string"
-  },
-  {
     "k": "checksum",
     "v": "checksum"
   },
@@ -614,6 +598,10 @@
   {
     "k": "Codifica um array de bytes em string base64",
     "v": "Encodes an array of bytes to base64 string"
+  },
+  {
+    "k": "codificação da resposta da requisição, utf-8 por padrão",
+    "v": "request response encoding, utf-8 by default"
   },
   {
     "k": "Codificação do arquivo",
@@ -800,6 +788,10 @@
     "v": "Color in hexadecimal format"
   },
   {
+    "k": "corpo da requisição (exceto para tipo GET)",
+    "v": "request body (except for GET type)"
+  },
+  {
     "k": "countdown",
     "v": "countdown"
   },
@@ -814,6 +806,14 @@
   {
     "k": "cria um array com somente o nome da cena",
     "v": "create an array with only the scene name"
+  },
+  {
+    "k": "Cria um objeto para armazenar dados em forma binária.",
+    "v": "Creates an object to store data in binary form."
+  },
+  {
+    "k": "Cria um objeto preenchido com bytes para leitura em forma binária.",
+    "v": "Creates an object filled with bytes for reading in binary form."
   },
   {
     "k": "dados da requisição",
@@ -1098,18 +1098,6 @@
   {
     "k": "Executa uma requisição para o receptor associado e retorna a resposta do receptor.",
     "v": "Executes a request to the associated receiver and returns the receiver's response."
-  },
-  {
-    "k": "Executar a ação **pause** do player",
-    "v": "Perform player **pause** action"
-  },
-  {
-    "k": "Executar a ação **play** do player",
-    "v": "Run player **play** action"
-  },
-  {
-    "k": "Executar a ação **stop** do player",
-    "v": "Perform player **stop** action"
   },
   {
     "k": "Executar uma ação em uma apresentação de múltipla escolha",
@@ -1940,10 +1928,6 @@
     "v": "Methods HLY"
   },
   {
-    "k": "Métodos Player",
-    "v": "Methods Player"
-  },
-  {
     "k": "Métodos User Input",
     "v": "User input Methods"
   },
@@ -2070,10 +2054,6 @@
   {
     "k": "Nome da mensagem personalizada",
     "v": "custom message name"
-  },
-  {
-    "k": "Nome da mídia",
-    "v": "Media name"
   },
   {
     "k": "Nome da mídia atual no player",
@@ -2256,10 +2236,6 @@
     "v": "The current time of the timer on display (in seconds)"
   },
   {
-    "k": "Objeto da classe Player",
-    "v": "Player class object"
-  },
-  {
     "k": "Objeto que será salvo na memória",
     "v": "Object to be saved in memory"
   },
@@ -2328,10 +2304,6 @@
     "v": "To avoid repetition"
   },
   {
-    "k": "Para exibir um texto com formatação avançada, inicie o texto com **&lt;styled&gt;**",
-    "v": "To display richly formatted text, start the text with **&lt;styled&gt;**"
-  },
-  {
     "k": "Para exibir um versículo. ID do item no formato LLCCCVVV.<br/>Exemplo: '19023001' (livro 19, capítulo 023, versículo 001)",
     "v": "To display a verse. Item ID in BBCCCVVV format.<br/>Example: '19023001' (book 19, chapter 023, verse 001)"
   },
@@ -2344,6 +2316,10 @@
     "v": "Parameter accepts only numbers"
   },
   {
+    "k": "parâmetro adicionado ao final da url definida no receptor",
+    "v": "parameter added to the end of the url defined in the receiver"
+  },
+  {
     "k": "Parâmetro exibido sempre em maiúsculo",
     "v": "Parameter always displayed in uppercase"
   },
@@ -2354,6 +2330,10 @@
   {
     "k": "Parâmetros da mensagem",
     "v": "message parameters"
+  },
+  {
+    "k": "Parâmetros disponíveis para requisição",
+    "v": "Parameters available for request"
   },
   {
     "k": "Parâmetros para formatação de uma mensagem de log",
@@ -2370,14 +2350,6 @@
   {
     "k": "parar execução atual",
     "v": "stop current execution"
-  },
-  {
-    "k": "Passa para o item anterior da lista no player",
-    "v": "Moves to the previous item in the list in the player"
-  },
-  {
-    "k": "Passa para o próximo item da lista no player",
-    "v": "Moves to the next item in the list in the player"
   },
   {
     "k": "passando o nome da cena selecionada anteriormente como parâmetro",
@@ -2414,6 +2386,10 @@
   {
     "k": "Pode ser *'ok'* ou *'error'*",
     "v": "It might be *'ok'* or *'error'*"
+  },
+  {
+    "k": "pode ser byte array para UDP e TCP",
+    "v": "can be byte array for UDP and TCP"
   },
   {
     "k": "Pode ser null",
@@ -2556,10 +2532,6 @@
     "v": "Retrieves an object saved in memory. The method is shared with all scripts in the program."
   },
   {
-    "k": "Recupera uma string salva em disco. O método é compartilhado com todos os scripts do programa.",
-    "v": "Retrieves a string saved on disk. The method is shared with all scripts in the program."
-  },
-  {
     "k": "Referências. Exemplo: **João 3:16** ou **Rm 12:2** ou **Gn 1:1-3 Sl 23.1**",
     "v": "References. Example: **John 3:16** or **Rm 12:2** or **Gn 1:1-3 Sl 23.1**"
   },
@@ -2682,10 +2654,6 @@
   {
     "k": "Retorna a quantidade total de segundos do dia",
     "v": "Returns the total amount of seconds of the day"
-  },
-  {
-    "k": "Retorna a string salva ou NULL se não for encontrado",
-    "v": "Returns the saved string or NULL if not found"
   },
   {
     "k": "Retorna a versão atual do programa.",
@@ -2858,10 +2826,6 @@
   {
     "k": "Salva um objeto na memória que pode ser recuperado, mas é válido somente enquanto o programa estiver aberto. O método é compartilhado com todos os scripts do programa.",
     "v": "Saves an object in memory that can be retrieved, but is valid only as long as the program is open. The method is shared with all scripts in the program."
-  },
-  {
-    "k": "Salva uma string em disco que pode ser recuperada mesmo após reiniciar o programa. O método é compartilhado com todos os scripts do programa.",
-    "v": "Saves a string to disk that can be recovered even after restarting the program. The method is shared with all scripts in the program."
   },
   {
     "k": "Salvar um conteúdo em um arquivo TXT. Pode gerar Exception.",
@@ -3040,10 +3004,6 @@
     "v": "String in CSV format"
   },
   {
-    "k": "String que será salva",
-    "v": "String to be saved"
-  },
-  {
     "k": "String sem acentuação",
     "v": "String without accent"
   },
@@ -3124,20 +3084,12 @@
     "v": "Current media time in milliseconds"
   },
   {
-    "k": "Tempo atual da mídia no player",
-    "v": "Current media time in player"
-  },
-  {
     "k": "Tempo da música",
     "v": "Music time"
   },
   {
     "k": "Tempo decorrido",
     "v": "Elapsed time"
-  },
-  {
-    "k": "Tempo decorrido da mídia no player",
-    "v": "Elapsed time of media in player"
   },
   {
     "k": "Tempo decorrido em milésimos de segundo",
@@ -3176,10 +3128,6 @@
     "v": "Remaining time"
   },
   {
-    "k": "Tempo restante da mídia no player",
-    "v": "Remaining media time in player"
-  },
-  {
     "k": "Tempo restante em milissegundos (retorna valores negativos após limite de tempo)",
     "v": "Remaining time in milliseconds (returns negative values after time limit)"
   },
@@ -3194,10 +3142,6 @@
   {
     "k": "Tempo restante no formato HH:MM:SS (retorna valores negativos após limite de tempo)",
     "v": "Remaining time in the format HH:MM:SS (returns negative values after time limit)"
-  },
-  {
-    "k": "Tempo total da mídia atual no player",
-    "v": "Total time of current media in player"
   },
   {
     "k": "Tempo total em milissegundos",
@@ -3584,10 +3528,6 @@
     "v": "Checks if the current language set in the program settings is equal to the value passed by parameter."
   },
   {
-    "k": "Verifica se o player está definido para executar itens em sequência",
-    "v": "Checks if the player is set to play items in sequence"
-  },
-  {
     "k": "Verifica se o player está definido para executar somente o item atual da lista",
     "v": "Checks if the player is set to play only the current list item"
   },
@@ -3656,39 +3596,555 @@
     "v": "Current player volume"
   },
   {
-    "k": "Volume. Mínimo=0, Máximo=100",
-    "v": "Volume. Minimum=0, Maximum=100"
+    "k": "**true** para recuperar o valor também em `h.restore(key, ...)`",
+    "v": "**true** to retrieve the value also in `h.restore(key, ...)`"
   },
   {
-    "k": "cabeçalho da requisição",
-    "v": "request header"
+    "k": "**true** para salvar o valor também em `h.store(saveTo, ...)`, ou seja, a configuração se mantém salva mesmo após reiniciar o programa",
+    "v": "**true** to save the value also in `h.store(saveTo, ...)`, meaning the configuration remains saved even after restarting the program"
   },
   {
-    "k": "codificação da resposta da requisição, utf-8 por padrão",
-    "v": "request response encoding, utf-8 by default"
+    "k": "`saveTo` pode ser a chave de armazenamento  caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente",
+    "v": "`saveTo` can be the storage key if the method `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` has been called previously"
   },
   {
-    "k": "corpo da requisição (exceto para tipo GET)",
-    "v": "request body (except for GET type)"
+    "k": "A mesma função de `h.input(...)`, porém salva automaticamente o valor em `setGlobal` e `store`, e também exibe o valor atual salvo anteriormente",
+    "v": "The same function as `h.input(...)`, but automatically saves the value in `setGlobal` and `store`, and also displays the current value saved previously"
   },
   {
-    "k": "Cria um objeto para armazenar dados em forma binária.",
-    "v": "Creates an object to store data in binary form."
+    "k": "A partir da `v2.23.0` é possível passar o host ou ip diretamente, porém é necessário adicionar o host/ip na lista de requisições permitidas",
+    "v": "From `v2.23.0` it is possible to pass the host or IP directly, but it is necessary to add the host/IP to the list of allowed requests"
   },
   {
-    "k": "Cria um objeto preenchido com bytes para leitura em forma binária.",
-    "v": "Creates an object filled with bytes for reading in binary form."
+    "k": "A partir da v2.23.0",
+    "v": "From v2.23.0"
   },
   {
-    "k": "parâmetro adicionado ao final da url definida no receptor",
-    "v": "parameter added to the end of the url defined in the receiver"
+    "k": "Abreviação do livro",
+    "v": "Book abbreviation"
   },
   {
-    "k": "Parâmetros disponíveis para requisição",
-    "v": "Parameters available for request"
+    "k": "Ações utilizadas ao criar uma nova conexão",
+    "v": "Actions used when creating a new connection"
   },
   {
-    "k": "pode ser byte array para UDP e TCP",
-    "v": "can be byte array for UDP and TCP"
+    "k": "Adiciona uma variável do sistema que pode ser utilizada dentro dos textos exibidos pelo programa",
+    "v": "Adds a system variable that can be used within the texts displayed by the program"
+  },
+  {
+    "k": "Alinhamento vertical",
+    "v": "Vertical alignment"
+  },
+  {
+    "k": "Alterar as configurações do rodapé de apresentação",
+    "v": "Change the presentation footer settings"
+  },
+  {
+    "k": "Alterna o valor atual",
+    "v": "Toggle the current value"
+  },
+  {
+    "k": "Altura da linha",
+    "v": "Line height"
+  },
+  {
+    "k": "Array de números",
+    "v": "Array of numbers"
+  },
+  {
+    "k": "avançado",
+    "v": "advanced"
+  },
+  {
+    "k": "Barra de favoritos",
+    "v": "Favorites bar"
+  },
+  {
+    "k": "Capítulo",
+    "v": "Chapter"
+  },
+  {
+    "k": "Caso um id não seja informado, será utilizada a lista de livros da Bíblia principal selecionada no programa",
+    "v": "If an ID is not provided, the list of books from the main Bible selected in the program will be used"
+  },
+  {
+    "k": "Chave de armazenamento utilizado para salvar e recuperar o valor dos itens",
+    "v": "Storage key used to save and retrieve the value of items"
+  },
+  {
+    "k": "Chave de segurança",
+    "v": "Security key"
+  },
+  {
+    "k": "chave/id do objeto salvo anteriormente",
+    "v": "key/id of the previously saved object"
+  },
+  {
+    "k": "chave/id para salvar o objeto",
+    "v": "key/id to save the object"
+  },
+  {
+    "k": "Classe para executar ações de criptografia e armazenamento de dados protegidos com senha",
+    "v": "Class to perform encryption actions and store data protected with a password"
+  },
+  {
+    "k": "Classe que representa o player da apresentação automática do programa",
+    "v": "Class representing the program's automatic presentation player"
+  },
+  {
+    "k": "Configuração independente por tela",
+    "v": "Independent configuration per screen"
+  },
+  {
+    "k": "Configuração padrão",
+    "v": "Default configuration"
+  },
+  {
+    "k": "Configuração personalizada para a tela ou **null** se estiver utilizando a configuração padrão",
+    "v": "Custom configuration for the screen or **null** if using the default configuration"
+  },
+  {
+    "k": "configurações",
+    "v": "settings"
+  },
+  {
+    "k": "Configurações do relógio",
+    "v": "Clock settings"
+  },
+  {
+    "k": "Configurações do rodapé de apresentação",
+    "v": "Presentation footer settings"
+  },
+  {
+    "k": "Conjunto chave/valor",
+    "v": "Key/value pair"
+  },
+  {
+    "k": "Converte uma string no formato xml em um objeto JavaScript",
+    "v": "Converts a string in XML format to a JavaScript object"
+  },
+  {
+    "k": "Converter todas as variáveis do sistema no valor passado para o valor atual da respectiva variável",
+    "v": "Convert all system variables in the passed value to the current value of the respective variable"
+  },
+  {
+    "k": "Converter um objeto em json",
+    "v": "Convert an object to JSON"
+  },
+  {
+    "k": "Converter um objeto em json no formato 'pretty-print'",
+    "v": "Convert an object to JSON in 'pretty-print' format"
+  },
+  {
+    "k": "Cor da sombra",
+    "v": "Shadow color"
+  },
+  {
+    "k": "Cor do brilho",
+    "v": "Glow color"
+  },
+  {
+    "k": "Cor do contorno",
+    "v": "Outline color"
+  },
+  {
+    "k": "Cor do fundo do ícone do botão **Atenção**",
+    "v": "Background color of the **Attention** button icon"
+  },
+  {
+    "k": "Cor do ícone do botão **Atenção**",
+    "v": "Icon color of the **Attention** button"
+  },
+  {
+    "k": "Cria um `stream` para facilitar manipulações de uma lista",
+    "v": "Creates a `stream` to facilitate list manipulations"
+  },
+  {
+    "k": "Cria uma conexão TCP",
+    "v": "Creates a TCP connection"
+  },
+  {
+    "k": "Cria uma conexão WebSocket",
+    "v": "Creates a WebSocket connection"
+  },
+  {
+    "k": "Descriptografar um valor",
+    "v": "Decrypt a value"
+  },
+  {
+    "k": "Disponível atualmente para:",
+    "v": "Currently available for:"
+  },
+  {
+    "k": "Duração do slide para uso em apresentações automáticas",
+    "v": "Slide duration for use in automatic presentations"
+  },
+  {
+    "k": "Encriptar um valor",
+    "v": "Encrypt a value"
+  },
+  {
+    "k": "Enviar mensagem ao chat Holyrics",
+    "v": "Send message to Holyrics chat"
+  },
+  {
+    "k": "Executado a cada 1 segundo enquanto a conexão estiver aberta",
+    "v": "Executed every 1 second while the connection is open"
+  },
+  {
+    "k": "Executado a cada nova mensagem recebida",
+    "v": "Executed for each new message received"
+  },
+  {
+    "k": "Executado ao encerrar a conexão",
+    "v": "Executed when the connection is closed"
+  },
+  {
+    "k": "Executado ao iniciar a conexão",
+    "v": "Executed when the connection starts"
+  },
+  {
+    "k": "Executado quando ocorrer um erro",
+    "v": "Executed when an error occurs"
+  },
+  {
+    "k": "Força a atualização de um componente da interface",
+    "v": "Forces the update of an interface component"
+  },
+  {
+    "k": "Function que será executada para obter o retorno e exibir o conteúdo no lugar da variável declarada na apresentação",
+    "v": "Function that will be executed to get the return and display the content in place of the variable declared in the presentation"
+  },
+  {
+    "k": "Host ou IP de destino, caso esteja adicionado na lista de requisições permitidas",
+    "v": "Host or destination IP, if added to the list of allowed requests"
+  },
+  {
+    "k": "ID da versão da Bíblia",
+    "v": "Bible version ID"
+  },
+  {
+    "k": "ID do idioma do conjunto de livros",
+    "v": "Language ID of the book set"
+  },
+  {
+    "k": "ID do livro",
+    "v": "Book ID"
+  },
+  {
+    "k": "ID do versículo",
+    "v": "Verse ID"
+  },
+  {
+    "k": "ID ou nome do receptor",
+    "v": "Receiver ID or name"
+  },
+  {
+    "k": "ID ou nome receptor",
+    "v": "Receiver ID or name"
+  },
+  {
+    "k": "ID utilizado como valor para obter a conexão já existente, em vez de criar uma nova conexão",
+    "v": "ID used as a value to obtain the existing connection, instead of creating a new one"
+  },
+  {
+    "k": "Identifica as possíveis referências bíblicas no texto informado",
+    "v": "Identifies possible biblical references in the provided text"
+  },
+  {
+    "k": "Índice inicial da apresentação",
+    "v": "Initial index of the presentation"
+  },
+  {
+    "k": "Informação sobre início e duração de cada slide da apresentação",
+    "v": "Information about the start and duration of each slide in the presentation"
+  },
+  {
+    "k": "Limite superior (exclusivo)",
+    "v": "Upper limit (exclusive)"
+  },
+  {
+    "k": "Limite superior (inclusivo)",
+    "v": "Upper limit (inclusive)"
+  },
+  {
+    "k": "lista de caracteres que deverão ser removidos do início e final do valor",
+    "v": "List of characters to be removed from the beginning and end of the value"
+  },
+  {
+    "k": "Lista detalhada das referências",
+    "v": "Detailed list of references"
+  },
+  {
+    "k": "Mensagem de texto para envio ao chat Holyrics",
+    "v": "Text message to send to the Holyrics chat"
+  },
+  {
+    "k": "menu arquivo",
+    "v": "file menu"
+  },
+  {
+    "k": "Métodos SecurityUtils",
+    "v": "SecurityUtils methods"
+  },
+  {
+    "k": "Nome da versão ou nome do atalho",
+    "v": "Version name or shortcut name"
+  },
+  {
+    "k": "Nome do livro",
+    "v": "Book name"
+  },
+  {
+    "k": "O mesmo que `h.log(key, obj, ...args)`",
+    "v": "The same as `h.log(key, obj, ...args)`"
+  },
+  {
+    "k": "O mesmo que `h.log(obj)`",
+    "v": "The same as `h.log(obj)`"
+  },
+  {
+    "k": "O mesmo que `h.logf(key, obj, ...args)`",
+    "v": "The same as `h.logf(key, obj, ...args)`"
+  },
+  {
+    "k": "O método original em JavaScript faz replace apenas da primeira ocorrências",
+    "v": "The original method in JavaScript replaces only the first occurrence"
+  },
+  {
+    "k": "O objeto `message` é do tipo: ",
+    "v": "The `message` object is of the type: "
+  },
+  {
+    "k": "O valor definido em `default_value` de cada item será retornado caso não exista valor previamente armazenado",
+    "v": "The value defined in `default_value` of each item will be returned if there is no previously stored value"
+  },
+  {
+    "k": "O valor será armazenado apenas ao clicar em OK na janela de configurações",
+    "v": "The value will only be stored when clicking OK in the settings window"
+  },
+  {
+    "k": "Objeto com os valores previamente armazenados, onde cada chave é o `id` do respectivo `input`",
+    "v": "Object with previously stored values, where each key is the `id` of the respective `input`"
+  },
+  {
+    "k": "Objeto da classe SecurityUtils",
+    "v": "SecurityUtils class object"
+  },
+  {
+    "k": "Objeto que será salvo",
+    "v": "Object to be saved"
+  },
+  {
+    "k": "Obter o valor atual de uma variável do sistema",
+    "v": "Get the current value of a system variable"
+  },
+  {
+    "k": "Olá",
+    "v": "Hello"
+  },
+  {
+    "k": "Opcional se `slides` for declarado",
+    "v": "Optional if `slides` is declared"
+  },
+  {
+    "k": "Opcional se `text` for declarado",
+    "v": "Optional if `text` is declared"
+  },
+  {
+    "k": "ou",
+    "v": "or"
+  },
+  {
+    "k": "Para exibir um texto com formatação avançada, inicie o texto com **<styled>**",
+    "v": "To display text with advanced formatting, start the text with **<styled>**"
+  },
+  {
+    "k": "Para obter a lista dos IDs disponíveis, veja",
+    "v": "To get the list of available IDs, see"
+  },
+  {
+    "k": "Para utilizar esta ação é necessário liberar a permissão nas configurações",
+    "v": "To use this action, you need to enable permission in the settings"
+  },
+  {
+    "k": "Parâmetro alternativo para apresentações mais complexas",
+    "v": "Alternative parameter for more complex presentations"
+  },
+  {
+    "k": "permissões avançadas",
+    "v": "advanced permissions"
+  },
+  {
+    "k": "Pode gerar Exception",
+    "v": "May generate Exception"
+  },
+  {
+    "k": "Por exemplo, se a permissão não estiver liberada",
+    "v": "For example, if the permission is not enabled"
+  },
+  {
+    "k": "porém os objetos complexos serão exibidos em formato 'pretty-print'",
+    "v": "but complex objects will be displayed in 'pretty-print' format"
+  },
+  {
+    "k": "porém sem precisar informar key",
+    "v": "but without needing to provide key"
+  },
+  {
+    "k": "Quantidade de linhas",
+    "v": "Number of lines"
+  },
+  {
+    "k": "Realiza um replace em todas as ocorrências da string em JavaScript",
+    "v": "Performs a replace on all occurrences of the string in JavaScript"
+  },
+  {
+    "k": "Recupera o objeto salvo em disco",
+    "v": "Retrieves the object saved on disk"
+  },
+  {
+    "k": "Referência do versículo",
+    "v": "Verse reference"
+  },
+  {
+    "k": "Remove caracteres do início e final de uma string",
+    "v": "Removes characters from the beginning and end of a string"
+  },
+  {
+    "k": "Remove todos os valores dentro de `<>` (inclusive)",
+    "v": "Removes all values within `<>` (inclusive)"
+  },
+  {
+    "k": "Remove uma variável do sistema adicionada por h.addSysVar(...)",
+    "v": "Removes a system variable added by h.addSysVar(...)"
+  },
+  {
+    "k": "requisições permitidas",
+    "v": "allowed requests"
+  },
+  {
+    "k": "Retorna **false** se a mensagem não for enviada",
+    "v": "Returns **false** if the message is not sent"
+  },
+  {
+    "k": "Retorna a informação de um receptor ou **null** se não for encontrado",
+    "v": "Returns the information of a receiver or **null** if not found"
+  },
+  {
+    "k": "Retorna a lista do conjunto de livros disponíveis em diferentes idiomas",
+    "v": "Returns the list of available book sets in different languages"
+  },
+  {
+    "k": "Retorna a versão atual da biblioteca JSCommunity no programa.",
+    "v": "Returns the current version of the JSCommunity library in the program."
+  },
+  {
+    "k": "Retorna um conjunto de livros da Bíblia",
+    "v": "Returns a set of Bible books"
+  },
+  {
+    "k": "Retorna uma apresentação automática",
+    "v": "Returns an automatic presentation"
+  },
+  {
+    "k": "Salva um objeto em disco que pode ser recuperado mesmo após reiniciar o programa",
+    "v": "Saves an object to disk that can be retrieved even after restarting the program"
+  },
+  {
+    "k": "Seleciona um versículo na janela da Bíblia",
+    "v": "Selects a verse in the Bible window"
+  },
+  {
+    "k": "String no formato XML",
+    "v": "String in XML format"
+  },
+  {
+    "k": "String que será pesquisada e substituída",
+    "v": "String to be searched and replaced"
+  },
+  {
+    "k": "Tema",
+    "v": "Theme"
+  },
+  {
+    "k": "Tempo final da apresentação em milissegundos",
+    "v": "End time of the presentation in milliseconds"
+  },
+  {
+    "k": "Tempo inicial da apresentação em milissegundos",
+    "v": "Start time of the presentation in milliseconds"
+  },
+  {
+    "k": "Texto para identificação",
+    "v": "Text for identification"
+  },
+  {
+    "k": "Texto que será convertido",
+    "v": "Text to be converted"
+  },
+  {
+    "k": "Todos os métodos a seguir têm a mesma documentação do respectivo método original",
+    "v": "All the following methods have the same documentation as the respective original method"
+  },
+  {
+    "k": "Útil para conexões que precisam enviar um 'ping' para manter a conexão aberta",
+    "v": "Useful for connections that need to send a 'ping' to keep the connection open"
+  },
+  {
+    "k": "Valor compatível para exibição no **JavaScript Monitor**",
+    "v": "Compatible value for display in **JavaScript Monitor**"
+  },
+  {
+    "k": "Valor criptografado em Base64",
+    "v": "Value encrypted in Base64"
+  },
+  {
+    "k": "Valor de substituição",
+    "v": "Replacement value"
+  },
+  {
+    "k": "Valor descriptografado",
+    "v": "Decrypted value"
+  },
+  {
+    "k": "Valor em Base64 para ser descriptografado",
+    "v": "Base64 value to be decrypted"
+  },
+  {
+    "k": "Valor inicial (inclusivo)",
+    "v": "Initial value (inclusive)"
+  },
+  {
+    "k": "Valor padrão retornado se não for encontrado objeto salvo anteriormente",
+    "v": "Default value returned if no previously saved object is found"
+  },
+  {
+    "k": "Valor para ser encriptado",
+    "v": "Value to be encrypted"
+  },
+  {
+    "k": "Valor que será editado",
+    "v": "Value to be edited"
+  },
+  {
+    "k": "Valor que será pesquisado",
+    "v": "Value to be searched"
+  },
+  {
+    "k": "Valor traduzido do item, onde o nome do parâmetro `???` é o nome da tradução",
+    "v": "Translated value of the item, where the parameter name `???` is the name of the translation"
+  },
+  {
+    "k": "Variável do sistema na sintaxe real de uso",
+    "v": "System variable in the actual usage syntax"
+  },
+  {
+    "k": "Verifica se a versão da biblioteca JSCommunity no programa é igual ou superior ao informado por parâmetro.",
+    "v": "Checks if the version of the JSCommunity library in the program is equal to or greater than the one specified by parameter."
+  },
+  {
+    "k": "Versões anteriores a `2.23.0` são compatíveis apenas com objeto do tipo `string`",
+    "v": "Versions prior to `2.23.0` are only compatible with objects of type `string`"
   }
 ]
