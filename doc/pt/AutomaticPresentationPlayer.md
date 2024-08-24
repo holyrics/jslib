@@ -129,13 +129,13 @@ Tempo total da mídia atual no player
 
 Informação sobre o slide atual em exibição
 
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-|  | _[AutomaticPresentationSlideInfo](https://github.com/holyrics/jslib/blob/main/doc/pt/AutomaticPresentationSlideInfo.md)_ | Slide atual em exibição. Pode ser null. |
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _[AutomaticPresentationSlideInfo](https://github.com/holyrics/jslib/blob/main/doc/pt/AutomaticPresentationSlideInfo.md)_ | Slide atual em exibição. Pode ser null. |
+
 
 ---

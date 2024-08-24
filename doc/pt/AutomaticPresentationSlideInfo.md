@@ -18,14 +18,14 @@
 
 
 
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-|  | _Number_ | Número do slide. Começa em zero |
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Number_ | Número do slide. Começa em zero |
+
 
 ---
 
@@ -35,14 +35,14 @@ _Método sem retorno_
 
 
 
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-|  | _String_ | Texto do slide |
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Texto do slide |
+
 
 ---
 
@@ -52,14 +52,14 @@ _Método sem retorno_
 
 
 
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-|  | _String_ | Descrição do slide |
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Descrição do slide |
+
 
 ---
 
@@ -69,14 +69,14 @@ _Método sem retorno_
 
 
 
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-|  | _Number_ | Tempo inicial da apresentação em milissegundos |
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Number_ | Tempo inicial da apresentação em milissegundos |
+
 
 ---
 
@@ -86,14 +86,14 @@ _Método sem retorno_
 
 
 
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-|  | _Number_ | Tempo final da apresentação em milissegundos |
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Number_ | Tempo final da apresentação em milissegundos |
+
 
 ---
 
@@ -103,14 +103,14 @@ _Método sem retorno_
 
 
 
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-|  | _Number_ | Duração em milissegundos |
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Number_ | Duração em milissegundos |
+
 
 ---
 
@@ -120,13 +120,13 @@ _Método sem retorno_
 
 
 
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-|  | _Number_ | Tempo atual do slide. `time >= 0 && time <= duration` |
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Number_ | Tempo atual do slide. `time >= 0 && time <= duration` |
+
 
 ---
