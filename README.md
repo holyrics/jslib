@@ -1032,7 +1032,7 @@ Classe para executar ações de criptografia e armazenamento de dados protegidos
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _[SecurityUtils](métodos-securityutils)_ | Objeto da classe SecurityUtils |
+| _[SecurityUtils](#métodos-securityutils)_ | Objeto da classe SecurityUtils |
 
 
 **Exemplo:**

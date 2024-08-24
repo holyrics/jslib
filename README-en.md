@@ -1032,7 +1032,7 @@ Class to perform encryption actions and store data protected with a password
 
 | Type  | Description |
 | :---: | ------------|
-| _[SecurityUtils](securityutils-methods)_ | SecurityUtils class object |
+| _[SecurityUtils](#securityutils-methods)_ | SecurityUtils class object |
 
 
 **Example:**
@@ -8149,7 +8149,7 @@ The same function as `h.input(...)`, but automatically saves the value in `setGl
 | ---- | :---: | ------------|
 | `saveTo` | _String_ | Storage key used to save and retrieve the value of items.<br>`h.setGlobal(saveTo, ...)`<br>`h.getGlobal(saveTo, ...)`<br>`h.store(saveTo, ...)`<br>`h.restore(saveTo, ...)` |
 | `saveToStore` | _Boolean_ | **true** to save the value also in `h.store(saveTo, ...)`, meaning the configuration remains saved even after restarting the program `Default: true` |
-| `data` | _Object_ | Entries that will be requested in the interface. Can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string**.<br>`data` pode ser `saveTo` (chave de armazenamento) caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente |
+| `data` | _Object_ | Entries that will be requested in the interface. Can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string**.<br>`data` can be `saveTo` (storage key) if the `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` method was called previously |
 
 
 **Response:**
