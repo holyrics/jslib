@@ -16,28 +16,38 @@ h.log('exemplo');
 - [Métodos](#métodos)
   - [log](#logobj)
   - [log](#logkey--null-obj-args--null)
+  - [logf](#logfobj-args--null)
+  - [logfp](#logfpobj-args--null)
+  - [logp](#logpobj)
+  - [log](#logkey--null-obj-args--null)
+  - [log.setEnabled](#logsetenabledkey-enabled)
   - [log.enable](#logenablekey)
   - [log.enableAll](#logenableall)
   - [log.isEnabled](#logisenabledkey)
   - [log.setShowLogKey](#logsetshowlogkeyvalue)
   - [log.isShowLogKey](#logisshowlogkey)
+  - [log.toggleEnabled](#logtoggleenabledkey)
   - [sleep](#sleeptime)
   - [base64Encode](#base64encodebytes)
   - [base64Decode](#base64decodestr)
   - [base64DecodeAsString](#base64decodeasstringstr-charset--utf8)
+  - [uuid](#uuid)
   - [hash](#hashhashname-data)
   - [hashBytes](#hashbyteshashname-data)
-  - [checksum](#checksumchecksumname-data)
+  - [checksum](#checksumhashname-data)
   - [md5](#md5value)
   - [md5Str](#md5strvalue)
   - [sha256](#sha256value)
   - [sha256Str](#sha256strvalue)
   - [sha512](#sha512value)
   - [sha512Str](#sha512strvalue)
+  - [security](#securitysecuritykey)
+  - [toJson](#tojsonobj)
+  - [toPrettyJson](#toprettyjsonobj)
   - [getClipboard](#getclipboard)
   - [normalize](#normalizestr)
   - [store](#storekey-value)
-  - [restore](#restorekey)
+  - [restore](#restorekey-default--null)
   - [setGlobal](#setglobalkey-value-ttl--0)
   - [getGlobal](#getglobalkey-default--null)
   - [setGlobalNext](#setglobalnextkey-values-ttl--0)
@@ -56,15 +66,16 @@ h.log('exemplo');
   - [getCountdownSeconds](#getcountdownsecondskey)
   - [getPlaylistInfo](#getplaylistinfo)
   - [getPlayer](#getplayer)
+  - [getAutomaticPresentationPlayer](#getautomaticpresentationplayer)
   - [scriptAction](#scriptactionid-input--null)
   - [apiAction](#apiactionid-input--null)
   - [apiRequest](#apirequestid-raw)
   - [getApiRequestLastError](#getapirequestlasterror)
   - [apiRequestAsync](#apirequestasyncid-raw-callback--null)
   - [apiRequestEx](#apirequestexid-raw)
-  - [setTimeout](#settimeoutfunction-timeout)
+  - [setTimeout](#settimeoutfunction-timeout-name--null)
   - [clearTimeout](#cleartimeoutid)
-  - [setInterval](#setintervalfunction-timeout)
+  - [setInterval](#setintervalfunction-timeout-name--null)
   - [clearInterval](#clearintervalid)
   - [getHostname](#gethostname)
   - [getRuntimeEnvironment](#getruntimeenvironment)
@@ -76,26 +87,49 @@ h.log('exemplo');
   - [isLanguage](#islanguagelanguage)
   - [getUITheme](#getuitheme)
   - [isUITheme](#isuithemevalue)
+  - [getCommunityVersion](#getcommunityversion)
+  - [isMinimumCommunityVersion](#isminimumcommunityversionversion)
   - [format.secondsToHMS](#formatsecondstohmsseconds-separator--)
   - [format.secondsToMS](#formatsecondstomsseconds-separator--)
   - [format.minutesToHM](#formatminutestohmminutes-separator--)
   - [format.f](#formatfformat-params)
   - [date.getSecondOfDay](#dategetsecondofday)
+  - [date.getSecondOfDay](#dategetsecondofdayhour-minute-second)
   - [csvToArray](#csvtoarraycsv)
+  - [xmlToJson](#xmltojsonxml)
   - [addTriggerListener](#addtriggerlistenerinput)
   - [removeTriggerListener](#removetriggerlistenerid)
   - [containsTriggerListener](#containstriggerlistenerid)
   - [getTriggerListeners](#gettriggerlisteners)
+  - [addSysVar](#addsysvarname-function)
+  - [removeSysVar](#removesysvarname)
+  - [getSysVar](#getsysvarvalue)
+  - [applySysVar](#applysysvarvalue)
   - [readAudio](#readaudiofile)
   - [readAudioAsBase64](#readaudioasbase64file)
   - [readFileAsText](#readfileastextfile-charset--utf8)
   - [isPathEquals](#ispathequalsa-b)
   - [bytesToString](#bytestostringbytes-charset--utf-8)
   - [stringToBytes](#stringtobytesstring-charset--utf-8)
+  - [trim](#trimvalue-trim)
+  - [strReplace](#strreplacesearch-replace-subject)
+  - [strRemoveTags](#strremovetagsvalue)
   - [exportTXT](#exporttxttext-settings--null)
   - [exportXLSX](#exportxlsxdata)
   - [createByteBuffer](#createbytebuffer)
   - [createByteBufferToRead](#createbytebuffertoreadreader)
+  - [stream](#streamobj)
+  - [intStreamOf](#intstreamofobj)
+  - [intStreamRange](#intstreamrangestartinclusive-endexclusive)
+  - [intStreamRangeClosed](#intstreamrangeclosedstartinclusive-endinclusive)
+  - [chat.sendMessage](#chatsendmessagemessage)
+  - [identifyVerseReferences](#identifyversereferencesvalue-languageid--null)
+  - [getAvailableBibleBooks](#getavailablebiblebooks)
+  - [getBibleBooks](#getbiblebookslanguageid)
+  - [getReceiverInfo](#getreceiverinfoid)
+  - [registerSettings](#registersettingskey-fromstore-inputs)
+  - [ws](#wsreceiver-cacheid-modeltocreate)
+  - [tcp](#tcpreceiver-cacheid-modeltocreate)
 - [Métodos HLY](#métodos-hly)
   - [GetLyrics](#hlygetlyrics-input)
   - [GetSongs](#hlygetsongs)
@@ -120,6 +154,7 @@ h.log('exemplo');
   - [ShowQuiz](#hlyshowquiz-input)
   - [QuizAction](#hlyquizaction-input)
   - [GetAutomaticPresentations](#hlygetautomaticpresentations)
+  - [GetAutomaticPresentation](#hlygetautomaticpresentation-input)
   - [PlayAutomaticPresentation](#hlyplayautomaticpresentation-input)
   - [GetAutomaticPresentationPlayerInfo](#hlygetautomaticpresentationplayerinfo)
   - [AutomaticPresentationPlayerAction](#hlyautomaticpresentationplayeraction-input)
@@ -197,8 +232,11 @@ h.log('exemplo');
   - [GetTransitionEffectSettings](#hlygettransitioneffectsettings)
   - [SetTransitionEffectSettings](#hlysettransitioneffectsettings-input)
   - [GetBibleVersions](#hlygetbibleversions)
+  - [GetBibleVersionsV2](#hlygetbibleversionsv2)
   - [GetBibleSettings](#hlygetbiblesettings)
   - [SetBibleSettings](#hlysetbiblesettings-input)
+  - [GetPresentationFooterSettings](#hlygetpresentationfootersettings)
+  - [SetPresentationFooterSettings](#hlysetpresentationfootersettings-input)
   - [GetBpm](#hlygetbpm)
   - [SetBpm](#hlysetbpm-input)
   - [GetHue](#hlygethue)
@@ -209,39 +247,19 @@ h.log('exemplo');
   - [GetSyncStatus](#hlygetsyncstatus)
   - [GetInterfaceInput](#hlygetinterfaceinput-input)
   - [SetInterfaceInput](#hlysetinterfaceinput-input)
+  - [SelectVerse](#hlyselectverse-input)
   - [OpenDrawLots](#hlyopendrawlots-input)
   - [GetMediaDuration](#hlygetmediaduration-input)
   - [GetVersion](#hlygetversion)
-- [Métodos Player](#métodos-player)
-  - [getMediaName](#getmedianame)
-  - [getMedia](#getmedia)
-  - [isPlaying](#isplaying)
-  - [getDuration](#getduration)
-  - [getCurrentTime](#getcurrenttime)
-  - [setCurrentTime](#setcurrenttimetime)
-  - [getTimeElapsed](#gettimeelapsed)
-  - [getTimeRemaining](#gettimeremaining)
-  - [play](#play)
-  - [pause](#pause)
-  - [stop](#stop)
-  - [next](#next)
-  - [previous](#previous)
-  - [isRepeat](#isrepeat)
-  - [setRepeat](#setrepeatrepeat)
-  - [isExecuteAll](#isexecuteall)
-  - [setExecuteAll](#setexecuteallexecuteall)
-  - [isExecuteSingle](#isexecutesingle)
-  - [setExecuteSingle](#setexecutesingleexecutesingle)
-  - [isShuffle](#isshuffle)
-  - [setShuffle](#setshuffleshuffle)
-  - [isFullscreen](#isfullscreen)
-  - [setFullscreen](#setfullscreenfullscreen)
-  - [getVolume](#getvolume)
-  - [setVolume](#setvolumevolume)
-  - [isMute](#ismute)
-  - [setMute](#setmutemute)
+- [Métodos SecurityUtils](#métodos-securityutils)
+  - [encrypt](#encryptvalue)
+  - [decrypt](#decryptbase64)
+  - [encryptObj](#encryptobjvalue)
+  - [decryptObj](#decryptobjbase64)
+  - [relativeMethods](#relativemethods)
 - [Métodos User Input](#métodos-user-input)
   - [input](#inputparam-notification--false)
+  - [settings](#settingssaveto-savetostore-data)
   - [inputTextArea](#inputtextareatitle-notification--false)
   - [itemChooser](#itemchoosertitle-items-notification--false)
   - [multipleItemChooser](#multipleitemchoosertitle-items-notification--false)
@@ -256,6 +274,7 @@ h.log('exemplo');
   - [videoChooser](#videochooser)
   - [backgroundChooser](#backgroundchooser)
   - [openWindow](#openwindowname)
+  - [repaint](#repaintid)
 - [Classes](#classes)
   - [Lyrics](#lyrics)
   - [Text](#text)
@@ -274,6 +293,7 @@ h.log('exemplo');
   - [Member](#member)
   - [Role](#role)
   - [Automatic Presentation](#automatic-presentation)
+  - [Automatic](#automatic)
   - [Presentation Slide Info](#presentation-slide-info)
   - [Input Param](#input-param)
   - [Trigger Item](#trigger-item)
@@ -289,21 +309,30 @@ h.log('exemplo');
   - [Custom Message Param](#custom-message-param)
   - [Quiz Question](#quiz-question)
   - [Quiz Settings](#quiz-settings)
+  - [Quick Presentation Slide](#quick-presentation-slide)
+  - [Theme Filter](#theme-filter)
+  - [Translations](#translations)
+  - [Wallpaper Settings](#wallpaper-settings)
+  - [Clock Settings](#clock-settings)
+  - [Bible Book List](#bible-book-list)
+  - [Bible Book Info](#bible-book-info)
+  - [Verse Reference Group](#verse-reference-group)
+  - [Verse Reference](#verse-reference)
   - [AddItem](#additem)
   - [AddItemTitle](#additemtitle)
   - [AddItemSong](#additemsong)
   - [AddItemVerse](#additemverse)
   - [AddItemText](#additemtext)
-  - [AddItemAudio](#additemaudio)
-  - [AddItemVideo](#additemvideo)
-  - [AddItemImage](#additemimage)
+  - [AddItemAddItemAudio](#additemadditemaudio)
+  - [AddItemAddItemVideo](#additemadditemvideo)
+  - [AddItemAddItemImage](#additemadditemimage)
   - [AddItemAutomaticPresentation](#additemautomaticpresentation)
   - [AddItemAnnouncement](#additemannouncement)
   - [AddItemCountdown](#additemcountdown)
   - [AddItemCountdownCommunicationPanel](#additemcountdowncommunicationpanel)
   - [AddItemTextCommunicationPanel](#additemtextcommunicationpanel)
-  - [AddItemScript](#additemscript)
-  - [AddItemAPI](#additemapi)
+  - [AddItemAddItemScript](#additemadditemscript)
+  - [AddItemAddItemAPI](#additemadditemapi)
   - [AddItemURI](#additemuri)
   - [AddItemGlobalAction](#additemglobalaction)
 
@@ -342,7 +371,7 @@ Exibe a informação passada como parâmetro numa janela de log (canto inferior 
 | ---- | :---: | ------------|
 | `key` | _String_ | Chave/id de gerenciamento do log |
 | `obj` | _Object_ | Qualquer objeto para ser exibido na janela de log |
-| `args` | _Array&lt;Object&gt;_ | Parâmetros para formatação de uma mensagem de log |
+| `args` | _Array&lt;Object&gt; (opcional)_ | Parâmetros para formatação de uma mensagem de log |
 
 
 _Método sem retorno_
@@ -359,6 +388,158 @@ h.log('xyz', 'mensagem de log {} abc {}', ['value 1', 'value 2']);
 h.log('mensagem de log {} abc {}', ['value 1', 'value 2']);
 //output:
 //mensagem de log value 1 abc value 2
+```
+
+---
+
+
+### logf(obj, args = null)
+- v2.23.0
+
+O mesmo que `h.log(key, obj, ...args)`, porém sem precisar informar key
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `obj` | _Object_ | Qualquer objeto para ser exibido na janela de log |
+| `args` | _Array&lt;Object&gt; (opcional)_ | Parâmetros para formatação de uma mensagem de log |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.logf('mensagem de log');
+
+h.logf('mensagem de log {} abc {}', 'value 1', 'value 2');
+```
+
+---
+
+
+### logfp(obj, args = null)
+### logpf(obj, args = null)
+- v2.23.0
+
+O mesmo que `h.logf(key, obj, ...args)`, porém os objetos complexos serão exibidos em formato 'pretty-print'
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `obj` | _Object_ | Qualquer objeto para ser exibido na janela de log |
+| `args` | _Array&lt;Object&gt; (opcional)_ | Parâmetros para formatação de uma mensagem de log |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var example = {
+    key1: 'value1',
+    key2: 'value2'
+};
+h.logfp("Item:\n{}", example);
+/* OUTPUT
+Item:
+{
+  "key1": "value1",
+  "key2": "value2"
+}
+*/
+```
+
+---
+
+
+### logp(obj)
+- v2.23.0
+
+O mesmo que `h.log(obj)`, porém os objetos complexos serão exibidos em formato 'pretty-print'
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `obj` | _Object_ | Qualquer objeto para ser exibido na janela de log |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var example = {
+    key1: 'value1',
+    key2: 'value2'
+};
+h.logp(example);
+/* OUTPUT
+{
+  "key1": "value1",
+  "key2": "value2"
+}
+*/
+```
+
+---
+
+
+### log(key = null, obj, args = null)
+- v2.23.0
+
+Exibe a informação passada como parâmetro numa janela de log (canto inferior direito da tela, geralmente)
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `key` | _String_ | Chave/id de gerenciamento do log |
+| `obj` | _Object_ | Qualquer objeto para ser exibido na janela de log |
+| `args` | _Array&lt;Object&gt; (opcional)_ | Parâmetros para formatação de uma mensagem de log |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.log('xyz', 'mensagem de log');
+
+h.log('xyz', 'mensagem de log {} abc {}', ['value 1', 'value 2']);
+//output:
+//mensagem de log value 1 abc value 2
+
+h.log('mensagem de log {} abc {}', ['value 1', 'value 2']);
+//output:
+//mensagem de log value 1 abc value 2
+```
+
+---
+
+
+### log.setEnabled(key, enabled)
+- v2.23.0
+
+Ativar/desativar a visualização de logs da chave/id passada por parâmetro. Todas as chaves/ids iniciam desativadas por padrão
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `key` | _String_ | Chave/id de gerenciamento do log |
+| `enabled` | _Boolean_ |  |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.log.setEnabled('xyz', true);
 ```
 
 ---
@@ -492,6 +673,30 @@ if (h.log.isShowLogKey()) {
 ---
 
 
+### log.toggleEnabled(key)
+### log.toggle(key)
+- v2.23.0
+
+Alterna o valor atual
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `key` | _String_ | Chave/id de gerenciamento do log |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.log.toggleEnabled('xyz');
+```
+
+---
+
+
 ### sleep(time)
 Pausa a execução em X milissegundos, conforme o valor especificado
 
@@ -576,6 +781,29 @@ Decodifica uma string em formato base64
 ---
 
 
+### uuid()
+- v2.23.0
+
+UUID
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | UUID |
+
+
+**Exemplo:**
+
+```javascript
+var uuid = h.uuid();
+```
+
+---
+
+
 ### hash(hashName, data)
 - v2.21.0
 
@@ -634,7 +862,7 @@ var bytes = h.hashBytes('SHA-512', "Exemplo");
 ---
 
 
-### checksum(checksumName, data)
+### checksum(hashName, data)
 - v2.21.0
 
 Retorna o **checksum** do parâmetro informado
@@ -787,6 +1015,111 @@ Hash SHA-512
 ---
 
 
+### security(securityKey)
+### sec(securityKey)
+- v2.23.0
+
+Classe para executar ações de criptografia e armazenamento de dados protegidos com senha
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `securityKey` | _String_ | Chave de segurança |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _[SecurityUtils](#métodos-securityutils)_ | Objeto da classe SecurityUtils |
+
+
+**Exemplo:**
+
+```javascript
+var sec = h.security('key');
+var b64 = sec.enc('Test');
+// b64: rNFZfSWo/J+ggo11cxPNxg==
+var val = sec.dec(b64);
+// val: Test
+```
+
+---
+
+
+### toJson(obj)
+- v2.23.0
+
+Converter um objeto em json
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `obj` | _Object_ |  |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var example = {
+    key1: 'value1',
+    key2: 'value2'
+};
+var r = h.toJson(example);
+//{"key1": "value1","key2": "value2"}
+```
+
+---
+
+
+### toPrettyJson(obj)
+### toJsonPretty(obj)
+- v2.23.0
+
+Converter um objeto em json no formato 'pretty-print'
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `obj` | _Object_ |  |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var example = {
+    key1: 'value1',
+    key2: 'value2'
+};
+var r = h.toPrettyJson(example);
+/*
+{
+    "key1": "value1",
+    "key2": "value2"
+}
+*/
+```
+
+---
+
+
 ### getClipboard()
 Obtém o texto da área de transferência do sistema operacional
 
@@ -812,6 +1145,11 @@ h.log('Texto da área de transferência: ' + val);
 ### normalize(str)
 Remove a acentuação da string
 
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `str` | _String_ |  |
 
 
 **Resposta:**
@@ -832,14 +1170,14 @@ h.log('Texto com acentuação removida: ' + r); //AEIOUCaeiouc
 
 
 ### store(key, value)
-Salva uma string em disco que pode ser recuperada mesmo após reiniciar o programa. O método é compartilhado com todos os scripts do programa.
+Salva um objeto em disco que pode ser recuperado mesmo após reiniciar o programa
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `key` | _String_ | chave/id para salvar a string |
-| `value` | _String_ | String que será salva |
+| `key` | _String_ | chave/id para salvar o objeto |
+| `value` | _Object_ | Objeto que será salvo. Versões anteriores a `2.23.0` são compatíveis apenas com objeto do tipo `string` |
 
 
 _Método sem retorno_
@@ -853,21 +1191,22 @@ h.store('abc', 'Exemplo');
 ---
 
 
-### restore(key)
-Recupera uma string salva em disco. O método é compartilhado com todos os scripts do programa.
+### restore(key, default = null)
+Recupera o objeto salvo em disco
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `key` | _String_ | chave/id da string salva anteriormente |
+| `key` | _String_ | chave/id do objeto salvo anteriormente |
+| `default` | _Object (opcional)_ | Valor padrão retornado se não for encontrado objeto salvo anteriormente `v2.23.0+` |
 
 
 **Resposta:**
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _String_ | Retorna a string salva ou NULL se não for encontrado |
+| _Object_ | Retorna o objeto salvo ou **default** se não for encontrado. Versões anteriores a `2.23.0` são compatíveis apenas com objeto do tipo `string` |
 
 
 **Exemplo:**
@@ -879,6 +1218,10 @@ if (r == null) {
 } else {
     h.log('Item abc: ' + r);
 }
+
+
+var r = h.restore('xyz', {});
+h.logfp('Item xyz: {}', r);
 ```
 
 ---
@@ -1442,7 +1785,7 @@ Classe player para obter informações e executar ações no player do programa
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _[Player](#métodos-player)_ | Objeto da classe Player |
+| _[Player](https://github.com/holyrics/jslib/blob/main/doc/pt/Player.md)_ |  |
 
 
 **Exemplo:**
@@ -1463,6 +1806,33 @@ r.setMute(true);
 
 //parar execução atual
 r.stop();
+```
+
+---
+
+
+### getAutomaticPresentationPlayer()
+### getAPPlayer()
+- v2.23.0
+
+Classe que representa o player da apresentação automática do programa
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _[AutomaticPresentationPlayer](https://github.com/holyrics/jslib/blob/main/doc/pt/AutomaticPresentationPlayer.md)_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.getAPPlayer();
+if (r.isPlaying()) {
+    h.logf('Total time: {} - Slide time: {}', r.getTime(), r.getSlide().getTime());
+}
 ```
 
 ---
@@ -1553,7 +1923,9 @@ if (r) {
 
 
 ### apiRequest(id, raw)
-Executa uma requisição para o receptor associado e retorna a resposta do receptor.
+Executa uma requisição para o receptor associado e retorna a resposta do receptor.<br>
+A partir da `v2.23.0` é possível passar o host ou ip diretamente, porém é necessário adicionar o host/ip na lista de requisições permitidas.<br>
+menu arquivo > configurações > avançado > javascript > configurações > requisições permitidas
 
 **Parâmetros:**
 
@@ -1588,6 +1960,19 @@ if (obj.sourceActive) {
 } else {
     h.log('A fonte exemplo não está ativa');
 }
+
+//Exemplo ao adicionar um host/ip na lista de requisições permitidas
+var r = h.apiRequest('https://example.com/api.php', {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer token'
+    },
+    data: { /*json*/ }
+});
+
+var r = h.apiRequest('http://192.168.0.123', {
+    data: "raw"
+});
 
 //-------------------------------------------------
 
@@ -1686,7 +2071,7 @@ h.apiRequestAsync('abcxyz', {
 ### apiRequestEx(id, raw)
 - v2.21.0
 
-O mesmo que `apiRequest(id, raw)`, porém lança uma exception ao ocorrer um erro, em vez de retornar **null**
+O mesmo que}} `apiRequest(id, raw)`, porém lança uma exception ao ocorrer um erro, em vez de retornar **null**
 
 **Parâmetros:**
 
@@ -1706,7 +2091,7 @@ O mesmo que `apiRequest(id, raw)`, porém lança uma exception ao ocorrer um err
 ---
 
 
-### setTimeout(function, timeout)
+### setTimeout(function, timeout, name = null)
 - v2.19.0
 
 Executa uma função após alguns milissegundos.
@@ -1717,6 +2102,7 @@ Executa uma função após alguns milissegundos.
 | ---- | :---: | ------------|
 | `function` | _Function_ | Função que será executada |
 | `timeout` | _Number_ | Tempo em milissegundos para aguardar até a execução |
+| `name` | _String (opcional)_ | Nome do item. Valor compatível para exibição no **JavaScript Monitor** `v2.23.0+` |
 
 
 **Resposta:**
@@ -1765,7 +2151,7 @@ h.clearTimeout(id);
 ---
 
 
-### setInterval(function, timeout)
+### setInterval(function, timeout, name = null)
 - v2.19.0
 
 Executa uma função a cada X milissegundos. Utilize **clearInterval** para parar a execução.
@@ -1776,6 +2162,7 @@ Executa uma função a cada X milissegundos. Utilize **clearInterval** para para
 | ---- | :---: | ------------|
 | `function` | _Function_ | Função que será executada |
 | `timeout` | _Number_ | Intervalo em milissegundos entre cada execução |
+| `name` | _String (opcional)_ | Nome do item. Valor compatível para exibição no **JavaScript Monitor** `v2.23.0+` |
 
 
 **Resposta:**
@@ -1940,7 +2327,7 @@ Verifica se a versão do programa é igual ou superior ao informado por parâmet
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `value` | _String_ | Versão no formato: X.Y.Z |
+| `version` | _String_ | Versão no formato: X.Y.Z |
 
 
 **Resposta:**
@@ -2078,6 +2465,46 @@ if (h.isUITheme('DARK_STRONG')) {
     //...
 }
 ```
+
+---
+
+
+### getCommunityVersion()
+- v2.23.0
+
+Retorna a versão atual da biblioteca JSCommunity no programa.
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Versão no formato: X.Y.Z |
+
+
+---
+
+
+### isMinimumCommunityVersion(version)
+### isMinCommunityVersion(version)
+- v2.23.0
+
+Verifica se a versão da biblioteca JSCommunity no programa é igual ou superior ao informado por parâmetro.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `version` | _String_ | Versão no formato: X.Y.Z |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Boolean_ |  |
+
 
 ---
 
@@ -2251,6 +2678,36 @@ var r = h.date.getSecondOfDay();
 ---
 
 
+### date.getSecondOfDay(hour, minute, second)
+- v2.20.0
+
+Retorna a quantidade total de segundos do dia (hour * 3600 + minute * 60 + second)
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `hour` | _Number_ |  |
+| `minute` | _Number_ |  |
+| `second` | _Number_ |  |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Number_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.date.getSecondOfDay(18, 30, 0);
+```
+
+---
+
+
 ### csvToArray(csv)
 - v2.21.0
 
@@ -2281,6 +2738,92 @@ var r = h.csvToArray(csv);
 //  ['ab', 'c', 'd', 'e'],
 //  ['f', 'gh', 'i', 'j']
 //]
+```
+
+---
+
+
+### xmlToJson(xml)
+- v2.23.0
+
+Converte uma string no formato xml em um objeto JavaScript. Pode gerar Exception.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `xml` | _String_ | String no formato XML |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var xml = ''
+    + '<?xml version="1.0" encoding="utf-8"?>'
+    + '<song>'
+    + '  <title>Example 1</title>'
+    + '  <author>Example 2</author>'
+    + '  <verses>'
+    + '    <verse desc="Verse 1">Slide 1 Line 1<br/>Slide 1 Line 2</verse>'
+    + '    <verse desc="Chorus">Slide 2 Line 1<br/>Slide 2 Line 2</verse>'
+    + '    <verse desc="Verse 2">Slide 3 Line 1<br/>Slide 3 Line 2</verse>'
+    + '  </verses>'
+    + '</song>';
+var r = h.xmlToJson(xml);
+h.log(r);
+/*
+{
+  "song": {
+    "title": [{ "content": "Example 1" }],
+    "author": [{ "content": "Example 2" }],
+    "verses": [{
+        "content": "    Slide 1 Line 1Slide 1 Line 2    Slide 2 Line 1Slide 2 Line 2    Slide 3 Line 1Slide 3 Line 2  ",
+        "verse": [{
+            "content": "Slide 1 Line 1\nSlide 1 Line 2",
+            "desc": "Verse 1"
+          }, {
+            "content": "Slide 2 Line 1\nSlide 2 Line 2",
+            "desc": "Chorus"
+          }, {
+            "content": "Slide 3 Line 1\nSlide 3 Line 2",
+            "desc": "Verse 2"
+          }]
+      }]
+  }
+}
+*/
+
+r.song.title[0].content; //Example 1
+r.song.title0; //Example 1
+
+r.song.author[0].content; //Example 2
+r.song.author0; //Example 2
+
+r.song.verses[0].verse;
+/*
+[{
+  "content":"Slide 1 Line 1\nSlide 1 Line 2","desc":"Verse 1"},
+  {"content":"Slide 2 Line 1\nSlide 2 Line 2","desc":"Chorus"},
+  {"content":"Slide 3 Line 1\nSlide 3 Line 2","desc":"Verse 2"
+}]
+*/
+
+r.song.verses0.verse.forEach(v => h.log(v.content));
+/*
+Slide 1 Line 1
+Slide 1 Line 2
+Slide 2 Line 1
+Slide 2 Line 2
+Slide 3 Line 1
+Slide 3 Line 2
+*/
 ```
 
 ---
@@ -2339,7 +2882,7 @@ h.addTriggerListener({
     when: 'change',
     item: 'bpm',
     action: function (obj) {
-        h.log("", "BPM changed, {} to {}", [obj.new_value, obj.old_value]);
+        h.log("", "BPM changed, {} to {}", [obj.old_value, obj.new_value]);
     }
 });
 h.setTimeout(function () {
@@ -2421,6 +2964,131 @@ var items = h.getTriggerListeners();
 for (var i = 0; i < items.length; i++) {
     h.log("ID: " + items[i].id);
 }
+```
+
+---
+
+
+### addSysVar(name, function)
+- v2.23.0
+
+Adiciona uma variável do sistema que pode ser utilizada dentro dos textos exibidos pelo programa
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ | Nome do item |
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `function` | _Function_ | Function que será executada para obter o retorno e exibir o conteúdo no lugar da variável declarada na apresentação |
+
+
+**Exemplo:**
+
+```javascript
+h.addSysVar('now', function() {
+    return Date.now();
+});
+var r = h.getSysVar('@js{now}');
+h.log(r);
+
+
+h.addSysVar('sum', function(a, b) {
+    return a + b;
+});
+var r = h.getSysVar('@js{sum(3, 4)}');
+h.log(r); //7
+```
+
+---
+
+
+### removeSysVar(name)
+- v2.23.0
+
+Remove uma variável do sistema adicionada por h.addSysVar(...)
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ | Nome do item |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Boolean_ |  |
+
+
+**Exemplo:**
+
+```javascript
+h.removeSysVar('sum');
+```
+
+---
+
+
+### getSysVar(value)
+- v2.23.0
+
+Obter o valor atual de uma variável do sistema
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `value` | _String_ | Variável do sistema na sintaxe real de uso. Exemplo: @js{sys_var_name} |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.getSysVar("@js{sum(3, 4)}");
+// r: 7
+```
+
+---
+
+
+### applySysVar(value)
+- v2.23.0
+
+Converter todas as variáveis do sistema no valor passado para o valor atual da respectiva variável
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `value` | _String_ | Texto que será convertido |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.applySysVar("3 + 4 = @js{sum(3, 4)}");
+// r: 3 + 4 = 7
 ```
 
 ---
@@ -2599,6 +3267,109 @@ Converte uma string em array de bytes
 ---
 
 
+### trim(value, trim)
+- v2.23.0
+
+Remove caracteres do início e final de uma string
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `value` | _String_ | Valor que será editado |
+| `trim` | _String_ | lista de caracteres que deverão ser removidos do início e final do valor |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var str = ' ?abc xyz .';
+var r = h.trim(str, " .?");
+h.log(r);
+// output
+// abc xyz
+```
+
+---
+
+
+### strReplace(search, replace, subject)
+- v2.23.0
+
+Realiza um replace em todas as ocorrências da string em JavaScript. O método original em JavaScript faz replace apenas da primeira ocorrências.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `search` | _String_ | Valor que será pesquisado |
+| `replace` | _String_ | Valor de substituição |
+| `subject` | _String_ | String que será pesquisada e substituída |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.strReplace("e", "?", "example test");
+h.log(r);
+// output
+// ?xampl? t?st
+
+
+var r = "example test".replace("e", "?");
+h.log(r);
+// output
+// ?xample test
+```
+
+---
+
+
+### strRemoveTags(value)
+- v2.23.0
+
+Remove todos os valores dentro de `<>` (inclusive)
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `value` | _String_ | Valor que será editado |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.strRemoveTags("example <a> test</b>");
+h.log(r);
+// output
+// example  test
+```
+
+---
+
+
 ### exportTXT(text, settings = null)
 - v2.22.0
 
@@ -2681,7 +3452,7 @@ Cria um objeto para armazenar dados em forma binária.
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _ByteBuffer_ |  |
+| _[ByteBufferReader](https://github.com/holyrics/jslib/blob/main/doc/pt/ByteBufferReader.md)_ |  |
 
 
 **Exemplo:**
@@ -2725,7 +3496,7 @@ Cria um objeto preenchido com bytes para leitura em forma binária.
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _ByteBuffer_ |  |
+| _[ByteBufferWriter](https://github.com/holyrics/jslib/blob/main/doc/pt/ByteBufferWriter.md)_ |  |
 
 
 **Exemplo:**
@@ -2750,6 +3521,473 @@ var d = buf.readDouble(); //8 bytes
 var s1 = buf.readString(4); //length, utf-8 default
 var s2 = buf.readString(4, "ISO-8859-1"); //length, charset
 var b2 = buf.readBytes(128); //length
+```
+
+---
+
+
+### stream(obj)
+- v2.23.0
+
+Cria um `stream` para facilitar manipulações de uma lista
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `obj` | _Object_ | Array ou Object |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | [Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md) |
+
+
+**Exemplo:**
+
+```javascript
+var arr = ['x', 'y', 'z', 'a', 'b', 'c'];
+var sortedArr = h.stream(arr)
+  .filter(o => o !== 'x')
+  .sorted()
+  .toArray();
+h.log(sortedArr);
+// output
+// ['a', 'b', 'c', 'y', 'z']
+```
+
+---
+
+
+### intStreamOf(obj)
+- v2.23.0
+
+Cria um `stream` para facilitar manipulações de uma lista
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `obj` | _Array&lt;Number&gt;_ | Array de números |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | [IntStream](https://github.com/holyrics/jslib/blob/main/doc/pt/IntStream.md) |
+
+
+**Exemplo:**
+
+```javascript
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var r = h.intStreamOf(arr)
+         //1, 3, 7, 9
+         .filter(n => n != 5 && n % 2 == 1)
+         .sum();
+h.log(r);
+// output
+// 20
+```
+
+---
+
+
+### intStreamRange(startInclusive, endExclusive)
+- v2.23.0
+
+Cria um `stream` para facilitar manipulações de uma lista
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `startInclusive` | _Number_ | Valor inicial (inclusivo) |
+| `endExclusive` | _Number_ | Limite superior (exclusivo) |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | [IntStream](https://github.com/holyrics/jslib/blob/main/doc/pt/IntStream.md) |
+
+
+**Exemplo:**
+
+```javascript
+h.intStreamRange(0, 10); // 0...9
+```
+
+---
+
+
+### intStreamRangeClosed(startInclusive, endInclusive)
+- v2.23.0
+
+Cria um `stream` para facilitar manipulações de uma lista
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `startInclusive` | _Number_ | Valor inicial (inclusivo) |
+| `endExclusive` | _Number_ | Limite superior (inclusivo) |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | [IntStream](https://github.com/holyrics/jslib/blob/main/doc/pt/IntStream.md) |
+
+
+**Exemplo:**
+
+```javascript
+h.intStreamRangeClosed(0, 10); // 0...10
+```
+
+---
+
+
+### chat.sendMessage(message)
+- v2.23.0
+
+Enviar mensagem ao chat Holyrics.<br>
+Para utilizar esta ação é necessário liberar a permissão nas configurações<br>menu arquivo > configurações > avançado > javascript > configurações > permissões avançadas
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `message` | _String_ | Mensagem de texto para envio ao chat Holyrics |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Boolean_ | Retorna **false** se a mensagem não for enviada. Por exemplo, se a permissão não estiver liberada. |
+
+
+**Exemplo:**
+
+```javascript
+h.chat.sendMessage("Olá");
+```
+
+---
+
+
+### identifyVerseReferences(value, languageID = null)
+- v2.23.0
+
+Identifica as possíveis referências bíblicas no texto informado
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `value` | _String_ | Texto para identificação |
+| `languageID` | _String (opcional)_ | ID do idioma do conjunto de livros.<br>Caso um id não seja informado, será utilizada a lista de livros da Bíblia principal selecionada no programa.<br>Para obter a lista dos IDs disponíveis, veja: `h.getAvailableBibleBooks()` |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Array&lt;[VerseReferenceGroup](#verse-reference-group)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.identifyVerseReferences("... ... Rm 12:2  Gn 1:1-3  Sl 23 ... ...");
+r.forEach(function(g) {
+    g.verses.forEach(function(v) {
+        h.log(v.id);
+    });
+});
+// output
+// 45012002
+// 01001001
+// 01001002
+// 01001003
+// 19023001
+// 19023002
+// 19023003
+// 19023004
+// 19023005
+// 19023006
+```
+
+---
+
+
+### getAvailableBibleBooks()
+- v2.23.0
+
+Retorna a lista do conjunto de livros disponíveis em diferentes idiomas
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Array&lt;[BibleBookList](#bible-book-list)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+h.getAvailableBibleBooks().forEach(function(o) {
+    h.logf('{}: {}', o.id, o.name);
+});
+// output
+// pt: Português
+// en: English
+// ...
+// ...
+```
+
+---
+
+
+### getBibleBooks(languageID)
+- v2.23.0
+
+Retorna um conjunto de livros da Bíblia
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `languageID` | _String_ | ID do idioma do conjunto de livros |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Array&lt;[BibleBookInfo](#bible-book-info)&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+h.getBibleBooks('en').forEach(function(b) {
+    h.logf('{}: {} - {}', b.id, b.name, b.abbrev);
+});
+// output
+// 1: Genesis - Gn
+// 2: Exodus - Ex
+// ...
+// ...
+// 66: Revelation - Rev
+```
+
+---
+
+
+### getReceiverInfo(id)
+- v2.23.0
+
+Retorna a informação de um receptor ou **null** se não for encontrado
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID ou nome do receptor |
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID do item |
+| `type` | _String_ | Tipo do item |
+| `name` | _String_ | Nome do item |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.getReceiverInfo(id);
+h.logf('{} {} {}', r.id, r.type, r.name);
+```
+
+---
+
+
+### registerSettings(key, fromStore, inputs)
+### registerSettings(key, inputs)
+### loadSettings(key, fromStore, inputs)
+### loadSettings(key, inputs)
+- v2.23.0
+
+
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `key` | _String_ | Chave de armazenamento utilizado para salvar e recuperar o valor dos itens.<br>`h.getGlobal(key, ...)`<br>`h.restore(key, ...)` |
+| `fromStore` | _Boolean_ | **true** para recuperar o valor também em `h.restore(key, ...)` `Padrão: true` |
+| `inputs` | _Array&lt;[InputParam](#input-param)&gt;_ | Objeto com os valores previamente armazenados, onde cada chave é o `id` do respectivo `input`.<br>O valor definido em `default_value` de cada item será retornado caso não exista valor previamente armazenado |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | Objeto com os valores previamente armazenados, onde cada chave é o `id` do respectivo `input`.<br>O valor definido em `default_value` de cada item será retornado caso não exista valor previamente armazenado |
+
+
+**Exemplo:**
+
+```javascript
+var inputs = [
+  {
+    id: 'message',
+    type: 'string'
+  }, {
+    id: 'duration',
+    type: 'number',
+    default_value: 10
+  }
+];
+
+var r = h.registerSettings('settings_name', inputs);
+//r.message
+//r.duration
+```
+
+---
+
+
+### ws(receiver, cacheID, modelToCreate)
+### ws(receiver, cacheIDOrModelToCreate)
+### ws(receiver)
+- v2.23.0
+
+Cria uma conexão WebSocket. Pode gerar Exception.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `receiver` | _String_ | Valores aceitos<br>ID ou nome receptor<br>Host ou IP de destino, caso esteja adicionado na lista de requisições permitidas<br>$`{{menu arquivo}} > configurações > avançado > javascript > configurações > requisições permitidas` |
+| `cacheID` | _String (opcional)_ | ID utilizado como valor para obter a conexão já existente, em vez de criar uma nova conexão |
+| `modelToCreate` | _Object (opcional)_ | Ações utilizadas ao criar uma nova conexão |
+| `modelToCreate.headers` | _Object (opcional)_ |  |
+| `modelToCreate.on_open` | _Function (opcional)_ | Executado ao iniciar a conexão<br>`function(evt) { /* evt.source; evt.http_status; evt.http_status_message; */ }` |
+| `modelToCreate.on_message` | _Function_ | Executado a cada nova mensagem recebida<br>O objeto `message` é do tipo:  string<br>`function(message) { ... }` |
+| `modelToCreate.on_error` | _Function (opcional)_ | Executado quando ocorrer um erro<br>`function(evt) { /* evt.source; evt.error; */ }` |
+| `modelToCreate.on_close` | _Function (opcional)_ | Executado ao encerrar a conexão<br>`function(evt) { /* evt.source; evt.code; evt.reason; */ }` |
+| `modelToCreate.loop` | _Function (opcional)_ | Executado a cada 1 segundo enquanto a conexão estiver aberta<br>Útil para conexões que precisam enviar um 'ping' para manter a conexão aberta<br>`function(evt) { /* evt.source; */ }` |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _[WebSocketClient](https://github.com/holyrics/jslib/blob/main/doc/pt/WebSocketClient.md)_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var client = createWebSocket('receiver_id');
+client.send('message'); // utf-8
+// client.send(h.toJson({message:'test'}));
+
+function createWebSocket(receiver) {
+  var client = h.ws(receiver);
+  if (client != null) {
+    return client;
+  }
+  return h.ws(receiver, {
+    on_open: function (evt) {
+      //evt.source;
+      //evt.http_status;
+      //evt.http_status_message;
+    },
+    on_message: function (msg) {
+      h.log(msg);
+    },
+    on_error: function (evt) {
+      h.logf('websocket error: {} - {}', receiver, evt.error);
+    },
+    on_close: function (evt) {
+      //evt.source;
+      //evt.core;
+      //evt.reason;
+    },
+    loop: function (evt) {
+      evt.source.send('ping');
+    }
+  });
+}
+```
+
+---
+
+
+### tcp(receiver, cacheID, modelToCreate)
+### tcp(receiver, cacheIDOrModelToCreate)
+### tcp(receiver)
+- v2.23.0
+
+Cria uma conexão TCP. Pode gerar Exception.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `receiver` | _String_ | Valores aceitos<br>ID ou nome receptor<br>Host ou IP de destino, caso esteja adicionado na lista de requisições permitidas<br>$`{{menu arquivo}} > configurações > avançado > javascript > configurações > requisições permitidas` |
+| `cacheID` | _String (opcional)_ | ID utilizado como valor para obter a conexão já existente, em vez de criar uma nova conexão |
+| `modelToCreate` | _Object (opcional)_ | Ações utilizadas ao criar uma nova conexão |
+| `modelToCreate.on_message` | _Function_ | Executado a cada nova mensagem recebida<br>O objeto `message` é do tipo:  [ByteBufferReader](https://github.com/holyrics/jslib/blob/main/doc/pt/ByteBufferReader.md)<br>`function(message) { ... }` |
+| `modelToCreate.on_close` | _Function (opcional)_ | Executado ao encerrar a conexão<br>`function(evt) { /* evt.source; */ }` |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _[TCPClient](https://github.com/holyrics/jslib/blob/main/doc/pt/TCPClient.md)_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var client = createTCP('receiver_id');
+client.send('message'); // utf-8
+
+var buf = h.createByteBuffer()
+           .putString('message', 'ascii');
+client.send(buf);
+
+function createTCP(receiver) {
+  var client = h.tcp(receiver);
+  if (client != null) {
+    return client;
+  }
+  return h.tcp(receiver, {
+    on_message: function (msg) {
+      h.log(msg);
+    },
+    on_close: function (evt) {
+      //evt.source;
+    }
+  });
+}
 ```
 
 ---
@@ -2882,6 +4120,7 @@ Inicia uma apresentação de letra de música.
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | ID do item |
+| `input.initial_index` | _Number (opcional)_ | Índice inicial da apresentação `Padrão: 0` `v2.23.0+` |
 
 
 _Método sem retorno_
@@ -3014,6 +4253,7 @@ Inicia uma apresentação de um item da aba texto.
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | ID do item |
+| `input.initial_index` | _Number (opcional)_ | Índice inicial da apresentação `Padrão: 0` `v2.23.0+` |
 
 
 _Método sem retorno_
@@ -3209,7 +4449,7 @@ Apresenta uma imagem ou uma lista de imagens (pasta)
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.file` | _String_ | Nome do arquivo ou da pasta. Exemplo: **arquivo.jpg** ou **pasta** ou **pasta/arquivo.jpg** |
-| `input.automatic` | _[Automatic](#automatic-presentation) (opcional)_ | Se informado, a apresentação dos itens será automática |
+| `input.automatic` | _[Automatic](#automatic) (opcional)_ | Se informado, a apresentação dos itens será automática |
 
 
 _Método sem retorno_
@@ -3320,7 +4560,7 @@ Apresenta um anúncio ou uma lista de anúncios
 | `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com o ID de cada anúncio |
 | `input.name` | _String (opcional)_ | Nome do anúncio |
 | `input.names` | _Array&lt;String&gt; (opcional)_ | Lista com o nome de cada anúncio |
-| `input.automatic` | _[Automatic](#automatic-presentation) (opcional)_ | Se informado, a apresentação dos itens será automática |
+| `input.automatic` | _[Automatic](#automatic) (opcional)_ | Se informado, a apresentação dos itens será automática |
 
 
 _Método sem retorno_
@@ -3417,13 +4657,12 @@ Apresentação rápida de um texto
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.text` | _String_ | Texto que será exibido. [Styled Text](#styled-text) a partir da v2.19.0 |
-| `input.theme` | _Object (opcional)_ | Filtrar tema selecionado para exibição |
-| `input.theme.id` | _String (opcional)_ | ID do tema |
-| `input.theme.name` | _String (opcional)_ | Nome do tema |
-| `input.theme.edit` | _[Theme](#theme) (opcional)_ | Configurações para modificar o Tema selecionado para exibição `v2.21.0+` |
+| `input.text` | _String_ | Texto que será exibido. [Styled Text](#styled-text) a partir da v2.19.0<br>Opcional se `slides` for declarado |
+| `input.slides` | _Array&lt;[QuickPresentationSlide](#quick-presentation-slide)&gt;_ | Parâmetro alternativo para apresentações mais complexas<br>Opcional se `text` for declarado `v2.23.0+` |
+| `input.theme` | _[ThemeFilter](#theme-filter) (opcional)_ | Filtrar tema selecionado para exibição |
 | `input.custom_theme` | _[Theme](#theme) (opcional)_ | Tema personalizado utilizado para exibir o texto `v2.21.0+` |
-| `input.automatic` | _[Automatic](#automatic-presentation) (opcional)_ | Se informado, a apresentação dos itens será automática |
+| `input.automatic` | _[Automatic](#automatic) (opcional)_ | Se informado, a apresentação dos itens será automática |
+| `input.initial_index` | _Number (opcional)_ | Índice inicial da apresentação `Padrão: 0` `v2.23.0+` |
 
 
 _Método sem retorno_
@@ -3465,6 +4704,45 @@ h.hly('ShowQuickPresentation', {
             id: "000000"
         }
     }
+});
+
+h.hly('ShowQuickPresentation', {
+    slides: [
+        {
+            text: "Texto que será exibido (1)",
+            theme: {
+                name: "Tema 1"
+            }
+        }, {
+            text: "Texto que será exibido (2)",
+            duration: 20,
+            translations: {
+                "translation_name_1": "Exemplo",
+                "translation_name_2": "Exemplo"
+            }
+        }, {
+            text: "Texto que será exibido (3)",
+            duration: 15,
+            custom_theme: {
+                font: {
+                    color: "FFFFFF"
+                },
+                background: {
+                    type: "color",
+                    id: "000000"
+                }
+            }
+        }
+    ],
+    //default theme
+    theme: {
+        name: "Tema"
+    },
+    automatic: {
+        seconds: 10,
+        repeat: true
+    },
+    initial_index: 2
 });
 ```
 
@@ -3623,6 +4901,40 @@ var r = h.hly('GetAutomaticPresentations');
 for (var i = 0; i < r.data.length; i++) {
     h.log(r.data[i].name);
 }
+```
+
+---
+
+
+### hly('GetAutomaticPresentation', input)
+### hly('GetAP', input)
+- v2.21.0
+
+Retorna uma apresentação automática
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `file` | _String_ | Nome do arquivo. Exemplo: **arquivo.ap** |
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _[AutomaticPresentation](#automatic-presentation)_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetAutomaticPresentation', {file: 'arquivo.ap'});
+h.log(r.name);
+h.log(r.song);
+r.timeline.forEach(function(o) {
+    h.log(o.duration);
+});
 ```
 
 ---
@@ -3971,7 +5283,7 @@ Alterar um item da lista de reprodução de mídia
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.index` | _Number_ | Índice do item na lista |
-| `input.item` | _[AddItem](#additem)_ | Novo item |
+| `input.item` | _[AddItem](#add-item)_ | Novo item |
 
 
 _Método sem retorno_
@@ -4189,7 +5501,7 @@ Adicionar itens à lista de reprodução de mídias
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.items` | _Array&lt;[AddItem](#additem)&gt;_ | Lista com os itens que serão adicionados |
+| `input.items` | _Array&lt;[AddItem](#add-item)&gt;_ | Lista com os itens que serão adicionados |
 | `input.index` | _Number (opcional)_ | Posição na lista onde o item será adicionado (inicia em zero). Os itens são adicionados no final da lista por padrão. `Padrão: -1` |
 | `input.ignore_duplicates` | _Boolean (opcional)_ | Não duplicar itens ao adicionar novos itens, ou seja, não adiciona um item se ele já estiver na lista. `Padrão: false` |
 
@@ -4557,7 +5869,9 @@ if (r.status == 'ok') {
 ### hly('ApiRequest', input)
 - v2.19.0
 
-Executa uma requisição para o receptor associado e retorna a resposta do receptor.
+Executa uma requisição para o receptor associado e retorna a resposta do receptor.<br>
+A partir da `v2.23.0` é possível passar o host ou ip diretamente, porém é necessário adicionar o host/ip na lista de requisições permitidas.<br>
+menu arquivo > configurações > avançado > javascript > configurações > requisições permitidas
 
 **Parâmetros:**
 
@@ -5055,7 +6369,7 @@ for (var i = 0; i < r.data.length; i++) {
 ### hly('GetColorMap', input)
 - v2.20.0
 
-Retorna as informações de cor predominante de um respectivo tipo de item<br/>O array retornado contém 8 índices, e cada índice corresponde ao trecho conforme imagem de exemplo a seguir.<br/> <br/>![Color Map Example](https://holyrics.com.br/images/color_map_item_example.png)<br/>
+Retorna as informações de cor predominante de um respectivo tipo de item.<br/>O array retornado contém 8 índices, e cada índice corresponde ao trecho conforme imagem de exemplo a seguir.<br/> <br/>![Color Map Example](https://holyrics.com.br/images/color_map_item_example.png)<br/>
 
 **Parâmetros:**
 
@@ -5566,6 +6880,8 @@ Configuração atual do painel de comunicação
 | `data.countdown_display_location` | _String_ | Local de exibição da contagem regressiva ou cronômetro. `FULLSCREEN`  `FULLSCREEN_OR_ALERT`  `ALERT` `v2.20.0+` |
 | `data.display_clock_with_countdown_fullscreen` | _Boolean_ | Exibir relógio junto da contagem regressiva ou cronômetro quando exibido em tela cheia `v2.20.0+` |
 | `data.display_vlc_player_remaining_time` | _Boolean_ | Exibir tempo restante da mídia em execução no VLC Player `v2.20.0+` |
+| `data.attention_icon_color` | _String_ | Cor do ícone do botão **Atenção** `v2.23.0+` |
+| `data.attention_background_color` | _String_ | Cor do fundo do ícone do botão **Atenção** `v2.23.0+` |
 
 
 **Exemplo:**
@@ -5611,6 +6927,8 @@ Alterar configuração atual do painel de comunicação
 | `input.countdown_display_location` | _String (opcional)_ | Local de exibição da contagem regressiva ou cronômetro. `FULLSCREEN`  `FULLSCREEN_OR_ALERT`  `ALERT` |
 | `input.display_clock_with_countdown_fullscreen` | _Boolean (opcional)_ | Exibir relógio junto da contagem regressiva ou cronômetro quando exibido em tela cheia |
 | `input.display_vlc_player_remaining_time` | _Boolean (opcional)_ | Exibir tempo restante da mídia em execução no VLC Player |
+| `input.attention_icon_color` | _String (opcional)_ | Cor do ícone do botão **Atenção** `v2.23.0+` |
+| `input.attention_background_color` | _String (opcional)_ | Cor do fundo do ícone do botão **Atenção** `v2.23.0+` |
 
 
 _Método sem retorno_
@@ -5814,6 +7132,10 @@ Configurações do papel de parede
 | `data.extend` | _Boolean_ | `deprecated` Substituído por `adjust_type`<br>Estender papel de parede |
 | `data.adjust_type` | _String_ | Ajuste da imagem: Pode ser: `ADJUST` `EXTEND` `FILL` `ADJUST_BLUR` `v2.22.0+` |
 | `data.show_clock` | _Boolean_ | Exibir relógio |
+| `data.by_screen` | _Object (opcional)_ | Configuração independente por tela `v2.23.0+` |
+| `data.by_screen.default` | _[WallpaperSettings](#wallpaper-settings) (opcional)_ | Configuração padrão `v2.23.0+` |
+| `data.by_screen.public` | _[WallpaperSettings](#wallpaper-settings) (opcional)_ | Configuração personalizada para a tela ou **null** se estiver utilizando a configuração padrão `v2.23.0+` |
+| `data.by_screen.screen_n` | _[WallpaperSettings](#wallpaper-settings) (opcional)_ | n >= 2  `v2.23.0+` |
 
 
 **Exemplo:**
@@ -5839,8 +7161,12 @@ Alterar as configurações do papel de parede
 | `input.enabled` | _Boolean (opcional)_ | Exibir papel de parede |
 | `input.fill_color` | _String (opcional)_ | Cor em hexadecimal definida na opção **preencher**. **NULL** para desativar |
 | `input.extend` | _Boolean (opcional)_ | `deprecated` Substituído por `adjust_type`<br>Estender papel de parede |
-| `data.adjust_type` | _String_ | Ajuste da imagem: Pode ser: `ADJUST` `EXTEND` `FILL` `ADJUST_BLUR` `v2.22.0+` |
+| `input.adjust_type` | _String_ | Ajuste da imagem: Pode ser: `ADJUST` `EXTEND` `FILL` `ADJUST_BLUR` `v2.22.0+` |
 | `input.show_clock` | _Boolean (opcional)_ | Exibir relógio |
+| `input.by_screen` | _Object (opcional)_ | Configuração independente por tela `v2.23.0+` |
+| `input.by_screen.default` | _[WallpaperSettings](#wallpaper-settings) (opcional)_ | Configuração padrão `v2.23.0+` |
+| `input.by_screen.public` | _[WallpaperSettings](#wallpaper-settings) (opcional)_ | Configuração personalizada para a tela ou **null** se estiver utilizando a configuração padrão `v2.23.0+` |
+| `input.by_screen.screen_n` | _[WallpaperSettings](#wallpaper-settings) (opcional)_ | n >= 2 `v2.23.0+` |
 
 
 **Resposta:**
@@ -5935,10 +7261,10 @@ Lista da configuração dos efeitos de transição
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `music` | _[TransitionEffectSettings](#transition-effect-settings)_ |  |
-| `bible` | _[TransitionEffectSettings](#transition-effect-settings)_ |  |
-| `image` | _[TransitionEffectSettings](#transition-effect-settings)_ |  |
-| `announcement` | _[TransitionEffectSettings](#transition-effect-settings)_ |  |
+| `music` | _Array&lt;[TransitionEffectSettings](#transition-effect-settings)&gt;_ |  |
+| `bible` | _Array&lt;[TransitionEffectSettings](#transition-effect-settings)&gt;_ |  |
+| `image` | _Array&lt;[TransitionEffectSettings](#transition-effect-settings)&gt;_ |  |
+| `announcement` | _Array&lt;[TransitionEffectSettings](#transition-effect-settings)&gt;_ |  |
 
 
 **Exemplo:**
@@ -6023,7 +7349,7 @@ var r = h.hly('SetTransitionEffectSettings', {
 ### hly('GetBibleVersions')
 - v2.21.0
 
-Retorna a lista de versões disponíveis da Bíblia, e também dos atalhos associados
+`deprecated` Substituído por: hly('GetBibleVersionsV2')<br>Retorna a lista de versões disponíveis da Bíblia, e também dos atalhos associados
 
 
 
@@ -6031,7 +7357,7 @@ Retorna a lista de versões disponíveis da Bíblia, e também dos atalhos assoc
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `data` | _Object_ |  |
+| `data` | _Array&lt;Object&gt;_ |  |
 | `data.*.key` | _String_ | Abreviação da versão ou o nome do atalho, se começar com '#shortcut ' |
 | `data.*.title` | _String_ | Nome da versão |
 | `data.*.version` | _String (opcional)_ | Abreviação da versão. Disponível se o item for um atalho, ou seja se 'key' começar com '#shortcut ' |
@@ -6053,6 +7379,36 @@ for (var i = 0; i < r.data.length; i++) {
 ---
 
 
+### hly('GetBibleVersionsV2')
+- v2.23.0
+
+Retorna a lista de versões disponíveis da Bíblia, e também dos atalhos associados
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;Object&gt;_ |  |
+| `data.*.key` | _String_ | ID do item |
+| `data.*.version` | _String_ | ID da versão da Bíblia |
+| `data.*.title` | _String_ | Nome da versão ou nome do atalho |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetBibleVersionsV2');
+for (var i = 0; i < r.data.length; i++) {
+    var o = r.data[i];
+    h.logf("ID: {}, Version: {}, Title: {}", [o.id, o.version, o.title]);
+}
+```
+
+---
+
+
 ### hly('GetBibleSettings')
 - v2.21.0
 
@@ -6064,7 +7420,7 @@ Configurações do módulo Bíblia
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `data` | _[BibleSettings](#bible-settings)_ |  |
+| `data` | _Array&lt;[BibleSettings](#bible-settings)&gt;_ |  |
 
 
 **Exemplo:**
@@ -6105,6 +7461,59 @@ var r = h.hly('SetBibleSettings', {
     theme: {
         'public': '123'
     }
+});
+```
+
+---
+
+
+### hly('GetPresentationFooterSettings')
+- v2.23.0
+
+Configurações do rodapé de apresentação
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data.rows` | _Number_ | Quantidade de linhas. `1 ~ 4` |
+| `data.preview_mode` | _String_ | Valores aceitos: `text` `image` |
+| `data.minimized` | _Boolean_ |  |
+
+
+---
+
+
+### hly('SetPresentationFooterSettings', input)
+- v2.23.0
+
+Alterar as configurações do rodapé de apresentação
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.rows` | _Number_ | Quantidade de linhas. `1 ~ 4` |
+| `input.preview_mode` | _String_ | Valores aceitos: `text` `image` |
+| `input.minimized` | _Boolean_ |  |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | Retorna **true** ou uma lista com os erros ocorridos |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('SetPresentationFooterSettings', {
+    minimized: false,
+    preview_mode: 'text',
+    rows: 2
 });
 ```
 
@@ -6359,6 +7768,30 @@ h.hly('SetInterfaceInput', {
 ---
 
 
+### hly('SelectVerse', input)
+- v2.21.0
+
+Seleciona um versículo na janela da Bíblia
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String (opcional)_ | ID do versículo |
+| `input.reference` | _String (opcional)_ | Referência do versículo |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('SelectVerse', { id: '43003016' });
+```
+
+---
+
+
 ### hly('OpenDrawLots', input)
 - v2.21.0
 
@@ -6448,385 +7881,183 @@ h.log(r.data.plaftormDescription);
 ---
 
 
-# Métodos Player 
-### getMediaName()
-Nome da mídia atual no player
+# Métodos SecurityUtils 
+### encrypt(value)
+### enc(value)
+- v2.23.0
 
-
-
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _String_ | Nome da mídia |
-
-
----
-
-
-### getMedia()
-Caminho completo da mídia no player
-
-
-
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _String_ | Caminho completo da mídia |
-
-
----
-
-
-### isPlaying()
-Verifica se o player está em execução
-
-
-
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
-
-
----
-
-
-### getDuration()
-Tempo total da mídia atual no player
-
-
-
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ | Tempo total em milissegundos |
-
-
----
-
-
-### getCurrentTime()
-Tempo atual da mídia no player
-
-
-
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ | Tempo atual da mídia em milissegundos |
-
-
----
-
-
-### setCurrentTime(time)
-- v2.20.0
-
-Alterar o tempo atual da mídia em milissegundos
+Encriptar um valor `String`
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `time` | _Number_ | Alterar o tempo atual da mídia em milissegundos |
-
-
-_Método sem retorno_
-
----
-
-
-### getTimeElapsed()
-Tempo decorrido da mídia no player
-
+| `value` | _String_ | Valor para ser encriptado |
 
 
 **Resposta:**
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _String_ | Tempo decorrido no formato HH:MM:SS |
+| _String_ | Valor criptografado em Base64 |
 
 
----
+**Exemplo:**
 
-
-### getTimeRemaining()
-Tempo restante da mídia no player
-
-
-
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _String_ | Tempo restante no formato HH:MM:SS |
-
+```javascript
+var b64 = h.sec('key').encrypt('Test');
+// b64: rNFZfSWo/J+ggo11cxPNxg==
+```
 
 ---
 
 
-### play()
-Executar a ação **play** do player
+### decrypt(base64)
+### dec(base64)
+- v2.23.0
 
-
-
-_Método sem retorno_
-
----
-
-
-### pause()
-Executar a ação **pause** do player
-
-
-
-_Método sem retorno_
-
----
-
-
-### stop()
-Executar a ação **stop** do player
-
-
-
-_Método sem retorno_
-
----
-
-
-### next()
-Passa para o próximo item da lista no player
-
-
-
-_Método sem retorno_
-
----
-
-
-### previous()
-Passa para o item anterior da lista no player
-
-
-
-_Método sem retorno_
-
----
-
-
-### isRepeat()
-Verifica se a opção **repetir** está ativada
-
-
-
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
-
-
----
-
-
-### setRepeat(repeat)
-Altera a opção **repetir**
+Descriptografar um valor `String`
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `repeat` | _Boolean_ |  |
-
-
-_Método sem retorno_
-
----
-
-
-### isExecuteAll()
-Verifica se o player está definido para executar itens em sequência
-
+| `base64` | _String_ | Valor em Base64 para ser descriptografado |
 
 
 **Resposta:**
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _Boolean_ |  |
+| _String_ | Valor descriptografado |
 
+
+**Exemplo:**
+
+```javascript
+var r = h.sec('key').decrypt('rNFZfSWo/J+ggo11cxPNxg==');
+// r: Test
+```
 
 ---
 
 
-### setExecuteAll(executeAll)
-Altera a configuração do player para executar itens em sequência
+### encryptObj(value)
+### encObj(value)
+- v2.23.0
+
+Encriptar um valor `Object`
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `executeAll` | _Boolean_ |  |
-
-
-_Método sem retorno_
-
----
-
-
-### isExecuteSingle()
-Verifica se o player está definido para executar somente o item atual da lista
-
+| `value` | _Object_ | Valor para ser encriptado |
 
 
 **Resposta:**
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _Boolean_ |  |
+| _String_ | Valor criptografado em Base64 |
 
+
+**Exemplo:**
+
+```javascript
+var example = {
+  a: 1,
+  b: 2
+};
+var b64 = h.sec('key').encObj(example);
+h.log(b64);
+// b64: nO2IFVws9KhnhxvQ3IBX2g==
+```
 
 ---
 
 
-### setExecuteSingle(executeSingle)
-Altera a configuração do player para executar somente o item atual da lista
+### decryptObj(base64)
+### decObj(base64)
+- v2.23.0
+
+Descriptografar um valor `Object`
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `executeSingle` | _Boolean_ |  |
-
-
-_Método sem retorno_
-
----
-
-
-### isShuffle()
-Verifica se a opção **aleatório** está ativada
-
+| `base64` | _String_ | Valor em Base64 para ser descriptografado |
 
 
 **Resposta:**
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _Boolean_ |  |
+| _Object_ | Valor descriptografado |
 
+
+**Exemplo:**
+
+```javascript
+var val = h.sec('key').dec('nO2IFVws9KhnhxvQ3IBX2g==');
+h.log(val);
+// val: { a: 1, b: 2 }
+```
 
 ---
 
 
-### setShuffle(shuffle)
-Altera a opção **aleatório**
+### relativeMethods
+- v2.23.0
 
-**Parâmetros:**
+Todos os métodos a seguir têm a mesma documentação do respectivo método original.
+```
+store(key, value)
 
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `shuffle` | _Boolean_ |  |
+restore(key, default = null)
+
+setGlobal(key, value, ttl = 0)
+
+getGlobal(key, default = null)
+
+setGlobalNext(key, values, ttl = 0)
+
+getGlobalAndSet(key, default = null, newValue)
+
+getGlobalAndSet(key, newValue)
+
+getGlobalAndSetNext(key, values)
+
+setGlobalNextAndGet(key, values)
+```
+
+
 
 
 _Método sem retorno_
 
----
+**Exemplo:**
 
+```javascript
+var sec = h.sec('key');
 
-### isFullscreen()
-Verifica se a opção **tela cheia** está ativada
+sec.store('name', 'value');
+var r = sec.restore('name', '');
+// r: value
 
+sec.store('name2', { a: 1 });
+var r = sec.restore('name2', {});
+// r: { a: 1 }
 
+sec.setGlobal('name', 'value');
+var r = sec.getGlobal('name', '');
+// r: value
 
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
-
-
----
-
-
-### setFullscreen(fullscreen)
-Altera a opção **tela cheia** do player
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `fullscreen` | _Boolean_ |  |
-
-
-_Método sem retorno_
-
----
-
-
-### getVolume()
-Volume atual do player
-
-
-
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ | Volume. Mínimo=0, Máximo=100 |
-
-
----
-
-
-### setVolume(volume)
-Altera o volume do player
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `volume` | _Number_ | Mínimo=0, Máximo=100 |
-
-
-_Método sem retorno_
-
----
-
-
-### isMute()
-Verifica se a opção **mudo** está ativada
-
-
-
-**Resposta:**
-
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
-
-
----
-
-
-### setMute(mute)
-Altera a opção **mudo**
-
-**Parâmetros:**
-
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `mute` | _Boolean_ |  |
-
-
-_Método sem retorno_
+sec.setGlobal('name2', { a: 1 });
+var r = sec.getGlobal('name2', {});
+// r: { a: 1 }
+```
 
 ---
 
@@ -6853,7 +8084,7 @@ Exibir uma janela com campos de entrada para receber informações de forma inte
 **Exemplo:**
 
 ```javascript
-var r = h.input("Nome do Item");
+var r = h.input("Nome do item");
 h.log("Valor informado: " + r);
 
 var param = [{type: 'password', name: 'Senha'}];
@@ -6906,6 +8137,49 @@ if (r == null) {
 ---
 
 
+### settings(saveTo, saveToStore, data)
+### settings(saveTo, data)
+- v2.23.0
+
+A mesma função de `h.input(...)`, porém salva automaticamente o valor em `setGlobal` e `store`, e também exibe o valor atual salvo anteriormente.<br>O valor será armazenado apenas ao clicar em OK na janela de configurações
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `saveTo` | _String_ | Chave de armazenamento utilizado para salvar e recuperar o valor dos itens.<br>`h.setGlobal(saveTo, ...)`<br>`h.getGlobal(saveTo, ...)`<br>`h.store(saveTo, ...)`<br>`h.restore(saveTo, ...)` |
+| `saveToStore` | _Boolean_ | **true** para salvar o valor também em `h.store(saveTo, ...)`, ou seja, a configuração se mantém salva mesmo após reiniciar o programa `Padrão: true` |
+| `data` | _Object_ | Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](#input-param)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string**.<br>`saveTo` pode ser a chave de armazenamento  caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | Se for passado apenas um item como entrada, será retornado o valor informado pelo usuário (pode ser NULL). Se múltiplas entradas forem solicitadas, será retornado um objeto (pode ser NULL) onde cada valor será informado na variável do seu respectivo ID. |
+
+
+**Exemplo:**
+
+```javascript
+var inputs = [
+  {
+    id: 'message',
+    type: 'string'
+  }, {
+    id: 'duration',
+    type: 'number',
+    default_value: 10
+  }
+];
+var r = h.settings('settings_name', inputs);
+//r.message
+//r.duration
+```
+
+---
+
+
 ### inputTextArea(title, notification = false)
 Solicita uma entrada em formato **textarea** possibilitando texto com múltiplas linhas
 
@@ -6927,10 +8201,10 @@ Solicita uma entrada em formato **textarea** possibilitando texto com múltiplas
 **Exemplo:**
 
 ```javascript
-var r = h.inputTextArea("Nome do Item");
+var r = h.inputTextArea("Nome do item");
 h.log("Valor informado: " + r);
 
-var r = h.inputTextArea("Nome do Item", true); //notificação
+var r = h.inputTextArea("Nome do item", true); //notificação
 h.log("Valor informado: " + r);
 ```
 
@@ -7386,7 +8660,7 @@ Abre uma janela do programa
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `name` | _String_ | Nome da janela. Pode ser: `main` `bible` `communication_panel` `chat` |
+| `name` | _String_ | Nome da janela. Pode ser: `main` `bible` `communication_panel` `chat`<br> <br>**v2.23.0+**<br>`js_playground` `js_monitor_interval` `js_monitor_timeout` `js_monitor_trigger` `js_monitor_global` `js_monitor_timer_and_countdown`  |
 
 
 _Método sem retorno_
@@ -7397,6 +8671,29 @@ _Método sem retorno_
 h.openWindow('main');
 
 h.openWindow('bible');
+```
+
+---
+
+
+### repaint(id)
+- v2.23.0
+
+Força a atualização de um componente da interface.<br>Disponível atualmente para: Barra de favoritos
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID do item |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.repaint('favorite_id');
 ```
 
 ---
@@ -7450,18 +8747,24 @@ Classes complexas utilizadas como retorno em alguns métodos
   "slides": [
     {
       "text": "Slide 1 line 1\nSlide 1 line 2",
+      "styled_text": "Slide 1 line 1\nSlide 1 line 2",
       "slide_description": "Verse 1",
-      "background_id": null
+      "background_id": null,
+      "translations": null
     },
     {
       "text": "Slide 2 line 1\nSlide 2 line 2",
+      "styled_text": "Slide 2 line 1\nSlide 2 line 2",
       "slide_description": "Chorus",
-      "background_id": null
+      "background_id": null,
+      "translations": null
     },
     {
       "text": "Slide 3 line 1\nSlide 3 line 2",
+      "styled_text": "Slide 3 line 1\nSlide 3 line 2",
       "slide_description": "Verse 3",
-      "background_id": null
+      "background_id": null,
+      "translations": null
     }
   ],
   "order": "1,2,3,2,2",
@@ -7513,15 +8816,21 @@ Classes complexas utilizadas como retorno em alguns métodos
   "slides": [
     {
       "text": "Slide 1 line 1\nSlide 1 line 2",
-      "background_id": null
+      "styled_text": "Slide 1 line 1\nSlide 1 line 2",
+      "background_id": null,
+      "translations": null
     },
     {
       "text": "Slide 2 line 1\nSlide 2 line 2",
-      "background_id": null
+      "styled_text": "Slide 2 line 1\nSlide 2 line 2",
+      "background_id": null,
+      "translations": null
     },
     {
       "text": "Slide 3 line 1\nSlide 3 line 2",
-      "background_id": null
+      "styled_text": "Slide 3 line 1\nSlide 3 line 2",
+      "background_id": null,
+      "translations": null
     }
   ]
 }
@@ -7870,6 +9179,19 @@ Classes complexas utilizadas como retorno em alguns métodos
 ## Automatic Presentation
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
+| `name` | _String_ | Nome do item |
+| `duration` | _Number_ | Duração em milissegundos |
+| `starts_with` | _String_ | Valores aceitos: `title` `blank` |
+| `song` | _[Lyrics](#lyrics)_ |  |
+| `timeline` | _Array&lt;Object&gt;_ | Informação sobre início e duração de cada slide da apresentação |
+| `timeline.*.number` | _Number_ | number >= 0 |
+| `timeline.*.start` | _Number_ | Tempo inicial da apresentação em milissegundos |
+| `timeline.*.end` | _Number_ | Tempo final da apresentação em milissegundos |
+| `timeline.*.duration` | _Number_ | Duração em milissegundos |
+
+## Automatic
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
 | `seconds` | _Number_ | Tempo que cada item ficará sendo apresentado |
 | `repeat` | _Boolean_ | **true** para ficar repetindo a apresentação (voltar para o primeiro item após o último) |
 
@@ -7890,8 +9212,8 @@ Utiliza a mesma estrutura/sintaxe da funcionalidade FunctionInput [documentaçã
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `id` | _String (opcional)_ | ID do item |
-| `when` | _String_ | `displaying` `closing` `change` |
-| `item` | _String_ | Tipo do item. Pode ser:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` |
+| `when` | _String_ | `displaying` `closing` `change` `event` |
+| `item` | _String_ | Tipo do item. Pode ser:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue`<br><br>**when=event**: `new_message_chat` |
 | `action` | _Function_ | Ação que será executada |
 <details>
   <summary>Ver exemplo</summary>
@@ -7901,7 +9223,8 @@ Utiliza a mesma estrutura/sintaxe da funcionalidade FunctionInput [documentaçã
   "id": "",
   "when": "displaying",
   "item": "any_song",
-  "action": function(obj) { /* TODO */ }
+  "action": function(obj) { /* TODO */ },
+  "name": "name"
 }
 ```
 </details>
@@ -8343,6 +9666,234 @@ Configurações de exibição
 ```
 </details>
 
+## Quick Presentation Slide
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `text` | _String_ | Texto do slide |
+| `theme` | _[ThemeFilter](#theme-filter) (opcional)_ | Filtrar tema selecionado para exibição |
+| `custom_theme` | _[Theme](#theme) (opcional)_ | Tema personalizado utilizado para exibir o texto |
+| `translations` | _[Translations](#translations) (opcional)_ |  |
+| `duration` | _Number (opcional)_ | Duração do slide para uso em apresentações automáticas |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "text": "text",
+  "duration": 3,
+  "translations": {
+    "key1": "value1", "key2": "value2"
+  },
+  "theme": {
+    "name": "...", "edit": {
+      "font": {
+        "name": "Arial",
+        "size": 10,
+        "bold": true,
+        "color": "FFFFFF"
+      },
+      "background": {
+        "type": "color",
+        "id": "000000"
+      }
+    }
+  }
+}
+```
+</details>
+
+## Theme Filter
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String (opcional)_ | ID do tema ou plano de fundo |
+| `name` | _String (opcional)_ | Nome do tema ou plano de fundo |
+| `edit` | _[Theme](#theme) (opcional)_ | Configurações para modificar o Tema selecionado para exibição |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "name": "...",
+  "edit": {
+    "font": {
+      "name": "Arial",
+      "size": 10,
+      "bold": true,
+      "color": "FFFFFF"
+    },
+    "background": {
+      "type": "color",
+      "id": "000000"
+    }
+  }
+}
+```
+</details>
+
+## Translations
+Conjunto chave/valor
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `???` | _String_ | Valor traduzido do item, onde o nome do parâmetro `???` é o nome da tradução |
+| `???` | _String_ |  |
+| `...` | _String_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "key1": "value1",
+  "key2": "value2"
+}
+```
+</details>
+
+## Wallpaper Settings
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `enabled` | _Boolean_ | Exibir papel de parede |
+| `fill_color` | _String_ | Cor em hexadecimal definida na opção **preencher**. |
+| `clock` | _[ClockSettings](#clock-settings)_ | Configurações do relógio |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "enabled": null,
+  "fill_color": null,
+  "clock": {
+    "enabled": false,
+    "font_name": "", "bold": false,
+    "italic": false,
+    "color": "FF0000", "background": "000000", "height": 12,
+    "position": "top_right", "corner": 0
+  }
+}
+```
+</details>
+
+## Clock Settings
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `enabled` | _Boolean_ |  |
+| `font_name` | _String_ | Nome da fonte |
+| `bold` | _Boolean_ | Negrito |
+| `italic` | _Boolean_ | Itálico |
+| `color` | _String_ | Cor no formato hexadecimal (RGBA) |
+| `background` | _String_ | Cor no formato hexadecimal (RGBA) |
+| `height` | _Number_ | Valor em porcentagem baseado na altura da linha.<br>Valores aceitos: `6` `7` `8` `9` `10` `12` `14` `15` `16` `18` `20` `25` `30` `35` `40` |
+| `position` | _Boolean_ | Valores aceitos: `top_left` `top_center` `top_right` `middle_left` `middle_center` `middle_right` `bottom_left` `bottom_center` `bottom_right` |
+| `corner` | _Number_ | `0 ~ 100` |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "enabled": false,
+  "font_name": "",
+  "bold": false,
+  "italic": false,
+  "color": "FF0000",
+  "background": "000000",
+  "height": 12,
+  "position": "top_right",
+  "corner": 0
+}
+```
+</details>
+
+## Bible Book List
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ |  |
+| `name` | _String_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": "en",
+  "name": "English"
+}
+```
+</details>
+
+## Bible Book Info
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID do livro `01 ~ 66` |
+| `name` | _String_ | Nome do livro |
+| `abbrev` | _String_ | Abreviação do livro |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": "01",
+  "name": "Genesis",
+  "abbrev": "Gn"
+}
+```
+</details>
+
+## Verse Reference Group
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `reference` | _String_ | Referências. Exemplo: **João 3:16** ou **Rm 12:2** ou **Gn 1:1-3 Sl 23.1** |
+| `ids` | _Array&lt;String&gt;_ | Exemplo:  ['19023001', '43003016', '45012002'] |
+| `verses` | _Array&lt;[VerseReference](#verse-reference)&gt;_ | Lista detalhada das referências |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "reference": "Ps 23.1-2",
+  "ids": [
+    "19023001", "19023002"
+  ],
+  "verses": [
+    {
+      "id": "19023001",
+      "book": 19,
+      "chapter": 23,
+      "verse": 1,
+      "reference": "Psalms 23.1"
+    },
+    {
+      "id": "19023002",
+      "book": 19,
+      "chapter": 23,
+      "verse": 2,
+      "reference": "Psalms 23.2"
+    }
+  ]
+}
+```
+</details>
+
+## Verse Reference
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID do item |
+| `book` | _Number_ | ID do livro `1 ~ 66` |
+| `chapter` | _Number_ | Capítulo |
+| `verse` | _Number_ | Versículo |
+| `reference` | _String_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": "19023001",
+  "book": 19,
+  "chapter": 23,
+  "verse": 1,
+  "reference": "Psalms 23.1"
+}
+```
+</details>
+
 ## AddItem
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
@@ -8422,7 +9973,7 @@ Configurações de exibição
 ```
 </details>
 
-## AddItemAudio
+## AddItemAddItemAudio
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `type` | _String_ | audio |
@@ -8441,7 +9992,7 @@ Configurações de exibição
 ```
 </details>
 
-## AddItemVideo
+## AddItemAddItemVideo
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `type` | _String_ | video |
@@ -8460,7 +10011,7 @@ Configurações de exibição
 ```
 </details>
 
-## AddItemImage
+## AddItemAddItemImage
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `type` | _String_ | image |
@@ -8502,7 +10053,7 @@ Configurações de exibição
 | `ids` | _Array&lt;String&gt; (opcional)_ | Lista com o ID de cada anúncio |
 | `name` | _String (opcional)_ | Nome do anúncio |
 | `names` | _Array&lt;String&gt; (opcional)_ | Lista com o nome de cada anúncio |
-| `automatic` | _[Automatic](#automatic-presentation) (opcional)_ | Se informado, a apresentação dos itens será automática |
+| `automatic` | _[Automatic](#automatic) (opcional)_ | Se informado, a apresentação dos itens será automática |
 <details>
   <summary>Ver exemplo</summary>
 
@@ -8597,7 +10148,7 @@ Configurações de exibição
 ```
 </details>
 
-## AddItemScript
+## AddItemAddItemScript
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `type` | _String_ | script |
@@ -8619,7 +10170,7 @@ Configurações de exibição
 ```
 </details>
 
-## AddItemAPI
+## AddItemAddItemAPI
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `type` | _String_ | api |
@@ -8697,16 +10248,29 @@ Caso exista um campo extra chamado **Ano**, pode ser utilizado dessa forma:
 Se transforma em: **Título - Autor, 2023**
 
 # Styled Text
-Para exibir um texto com formatação avançada, inicie o texto com **&lt;styled&gt;**
+Para exibir um texto com formatação avançada, inicie o texto com **<styled>**
 
 Tags HTML disponíveis
 
-```
+```html
 <styled>
 <b>negrito</b>
 <i>itálico</i>
 <u>sublinhado</u>
-<color:0000FF>cor da fonte</color>
-<font:Times New Roman>nome da fonte</font>
-<size:70>tamanho relativo da fonte 70%</size>
+<color:0000FF>Cor da fonte</color>
+<font:Arial>Nome da fonte</font>
+<size:70>Tamanho relativo da fonte 70%</size>
+
+A partir da v2.23.0
+<line-height:100>Altura da linha</line-height>
+<valign:0>Alinhamento vertical  -200 ~ 200  </valign>
+<bgcolor:000000>Cor de fundo</bgcolor>
+<brightness-color:000000>Cor do brilho</brightness-color>
+<brightness-weight:50>  0 ~ 100  </brightness-weight>
+<outline-color:000000>Cor do contorno</outline-color>
+<outline-weight:50>  0 ~ 100  </outline-weight>
+<shadow-color:000000>Cor da sombra</shadow-color>
+<shadow-x-weight:50>  -100 ~ 100  </shadow-x-weight>
+<shadow-y-weight:-50>  -100 ~ 100  </shadow-y-weight>
+<blur>Aplicar efeito blur</blur>
 ```

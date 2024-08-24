@@ -16,28 +16,38 @@ h.log('example');
 - [Methods](#methods)
   - [log](#logobj)
   - [log](#logkey--null-obj-args--null)
+  - [logf](#logfobj-args--null)
+  - [logfp](#logfpobj-args--null)
+  - [logp](#logpobj)
+  - [log](#logkey--null-obj-args--null)
+  - [log.setEnabled](#logsetenabledkey-enabled)
   - [log.enable](#logenablekey)
   - [log.enableAll](#logenableall)
   - [log.isEnabled](#logisenabledkey)
   - [log.setShowLogKey](#logsetshowlogkeyvalue)
   - [log.isShowLogKey](#logisshowlogkey)
+  - [log.toggleEnabled](#logtoggleenabledkey)
   - [sleep](#sleeptime)
   - [base64Encode](#base64encodebytes)
   - [base64Decode](#base64decodestr)
   - [base64DecodeAsString](#base64decodeasstringstr-charset--utf8)
+  - [uuid](#uuid)
   - [hash](#hashhashname-data)
   - [hashBytes](#hashbyteshashname-data)
-  - [checksum](#checksumchecksumname-data)
+  - [checksum](#checksumhashname-data)
   - [md5](#md5value)
   - [md5Str](#md5strvalue)
   - [sha256](#sha256value)
   - [sha256Str](#sha256strvalue)
   - [sha512](#sha512value)
   - [sha512Str](#sha512strvalue)
+  - [security](#securitysecuritykey)
+  - [toJson](#tojsonobj)
+  - [toPrettyJson](#toprettyjsonobj)
   - [getClipboard](#getclipboard)
   - [normalize](#normalizestr)
   - [store](#storekey-value)
-  - [restore](#restorekey)
+  - [restore](#restorekey-default--null)
   - [setGlobal](#setglobalkey-value-ttl--0)
   - [getGlobal](#getglobalkey-default--null)
   - [setGlobalNext](#setglobalnextkey-values-ttl--0)
@@ -56,15 +66,16 @@ h.log('example');
   - [getCountdownSeconds](#getcountdownsecondskey)
   - [getPlaylistInfo](#getplaylistinfo)
   - [getPlayer](#getplayer)
+  - [getAutomaticPresentationPlayer](#getautomaticpresentationplayer)
   - [scriptAction](#scriptactionid-input--null)
   - [apiAction](#apiactionid-input--null)
   - [apiRequest](#apirequestid-raw)
   - [getApiRequestLastError](#getapirequestlasterror)
   - [apiRequestAsync](#apirequestasyncid-raw-callback--null)
   - [apiRequestEx](#apirequestexid-raw)
-  - [setTimeout](#settimeoutfunction-timeout)
+  - [setTimeout](#settimeoutfunction-timeout-name--null)
   - [clearTimeout](#cleartimeoutid)
-  - [setInterval](#setintervalfunction-timeout)
+  - [setInterval](#setintervalfunction-timeout-name--null)
   - [clearInterval](#clearintervalid)
   - [getHostname](#gethostname)
   - [getRuntimeEnvironment](#getruntimeenvironment)
@@ -76,26 +87,49 @@ h.log('example');
   - [isLanguage](#islanguagelanguage)
   - [getUITheme](#getuitheme)
   - [isUITheme](#isuithemevalue)
+  - [getCommunityVersion](#getcommunityversion)
+  - [isMinimumCommunityVersion](#isminimumcommunityversionversion)
   - [format.secondsToHMS](#formatsecondstohmsseconds-separator--)
   - [format.secondsToMS](#formatsecondstomsseconds-separator--)
   - [format.minutesToHM](#formatminutestohmminutes-separator--)
   - [format.f](#formatfformat-params)
   - [date.getSecondOfDay](#dategetsecondofday)
+  - [date.getSecondOfDay](#dategetsecondofdayhour-minute-second)
   - [csvToArray](#csvtoarraycsv)
+  - [xmlToJson](#xmltojsonxml)
   - [addTriggerListener](#addtriggerlistenerinput)
   - [removeTriggerListener](#removetriggerlistenerid)
   - [containsTriggerListener](#containstriggerlistenerid)
   - [getTriggerListeners](#gettriggerlisteners)
+  - [addSysVar](#addsysvarname-function)
+  - [removeSysVar](#removesysvarname)
+  - [getSysVar](#getsysvarvalue)
+  - [applySysVar](#applysysvarvalue)
   - [readAudio](#readaudiofile)
   - [readAudioAsBase64](#readaudioasbase64file)
   - [readFileAsText](#readfileastextfile-charset--utf8)
   - [isPathEquals](#ispathequalsa-b)
   - [bytesToString](#bytestostringbytes-charset--utf-8)
   - [stringToBytes](#stringtobytesstring-charset--utf-8)
+  - [trim](#trimvalue-trim)
+  - [strReplace](#strreplacesearch-replace-subject)
+  - [strRemoveTags](#strremovetagsvalue)
   - [exportTXT](#exporttxttext-settings--null)
   - [exportXLSX](#exportxlsxdata)
   - [createByteBuffer](#createbytebuffer)
   - [createByteBufferToRead](#createbytebuffertoreadreader)
+  - [stream](#streamobj)
+  - [intStreamOf](#intstreamofobj)
+  - [intStreamRange](#intstreamrangestartinclusive-endexclusive)
+  - [intStreamRangeClosed](#intstreamrangeclosedstartinclusive-endinclusive)
+  - [chat.sendMessage](#chatsendmessagemessage)
+  - [identifyVerseReferences](#identifyversereferencesvalue-languageid--null)
+  - [getAvailableBibleBooks](#getavailablebiblebooks)
+  - [getBibleBooks](#getbiblebookslanguageid)
+  - [getReceiverInfo](#getreceiverinfoid)
+  - [registerSettings](#registersettingskey-fromstore-inputs)
+  - [ws](#wsreceiver-cacheid-modeltocreate)
+  - [tcp](#tcpreceiver-cacheid-modeltocreate)
 - [Methods HLY](#methods-hly)
   - [GetLyrics](#hlygetlyrics-input)
   - [GetSongs](#hlygetsongs)
@@ -120,6 +154,7 @@ h.log('example');
   - [ShowQuiz](#hlyshowquiz-input)
   - [QuizAction](#hlyquizaction-input)
   - [GetAutomaticPresentations](#hlygetautomaticpresentations)
+  - [GetAutomaticPresentation](#hlygetautomaticpresentation-input)
   - [PlayAutomaticPresentation](#hlyplayautomaticpresentation-input)
   - [GetAutomaticPresentationPlayerInfo](#hlygetautomaticpresentationplayerinfo)
   - [AutomaticPresentationPlayerAction](#hlyautomaticpresentationplayeraction-input)
@@ -197,8 +232,11 @@ h.log('example');
   - [GetTransitionEffectSettings](#hlygettransitioneffectsettings)
   - [SetTransitionEffectSettings](#hlysettransitioneffectsettings-input)
   - [GetBibleVersions](#hlygetbibleversions)
+  - [GetBibleVersionsV2](#hlygetbibleversionsv2)
   - [GetBibleSettings](#hlygetbiblesettings)
   - [SetBibleSettings](#hlysetbiblesettings-input)
+  - [GetPresentationFooterSettings](#hlygetpresentationfootersettings)
+  - [SetPresentationFooterSettings](#hlysetpresentationfootersettings-input)
   - [GetBpm](#hlygetbpm)
   - [SetBpm](#hlysetbpm-input)
   - [GetHue](#hlygethue)
@@ -209,39 +247,19 @@ h.log('example');
   - [GetSyncStatus](#hlygetsyncstatus)
   - [GetInterfaceInput](#hlygetinterfaceinput-input)
   - [SetInterfaceInput](#hlysetinterfaceinput-input)
+  - [SelectVerse](#hlyselectverse-input)
   - [OpenDrawLots](#hlyopendrawlots-input)
   - [GetMediaDuration](#hlygetmediaduration-input)
   - [GetVersion](#hlygetversion)
-- [Methods Player](#methods-player)
-  - [getMediaName](#getmedianame)
-  - [getMedia](#getmedia)
-  - [isPlaying](#isplaying)
-  - [getDuration](#getduration)
-  - [getCurrentTime](#getcurrenttime)
-  - [setCurrentTime](#setcurrenttimetime)
-  - [getTimeElapsed](#gettimeelapsed)
-  - [getTimeRemaining](#gettimeremaining)
-  - [play](#play)
-  - [pause](#pause)
-  - [stop](#stop)
-  - [next](#next)
-  - [previous](#previous)
-  - [isRepeat](#isrepeat)
-  - [setRepeat](#setrepeatrepeat)
-  - [isExecuteAll](#isexecuteall)
-  - [setExecuteAll](#setexecuteallexecuteall)
-  - [isExecuteSingle](#isexecutesingle)
-  - [setExecuteSingle](#setexecutesingleexecutesingle)
-  - [isShuffle](#isshuffle)
-  - [setShuffle](#setshuffleshuffle)
-  - [isFullscreen](#isfullscreen)
-  - [setFullscreen](#setfullscreenfullscreen)
-  - [getVolume](#getvolume)
-  - [setVolume](#setvolumevolume)
-  - [isMute](#ismute)
-  - [setMute](#setmutemute)
+- [SecurityUtils methods](#securityutils-methods)
+  - [encrypt](#encryptvalue)
+  - [decrypt](#decryptbase64)
+  - [encryptObj](#encryptobjvalue)
+  - [decryptObj](#decryptobjbase64)
+  - [relativeMethods](#relativemethods)
 - [User input Methods](#user-input-methods)
   - [input](#inputparam-notification--false)
+  - [settings](#settingssaveto-savetostore-data)
   - [inputTextArea](#inputtextareatitle-notification--false)
   - [itemChooser](#itemchoosertitle-items-notification--false)
   - [multipleItemChooser](#multipleitemchoosertitle-items-notification--false)
@@ -256,6 +274,7 @@ h.log('example');
   - [videoChooser](#videochooser)
   - [backgroundChooser](#backgroundchooser)
   - [openWindow](#openwindowname)
+  - [repaint](#repaintid)
 - [Classes](#classes)
   - [Lyrics](#lyrics)
   - [Text](#text)
@@ -274,6 +293,7 @@ h.log('example');
   - [Member](#member)
   - [Role](#role)
   - [Automatic Presentation](#automatic-presentation)
+  - [Automatic](#automatic)
   - [Presentation Slide Info](#presentation-slide-info)
   - [Input Param](#input-param)
   - [Trigger Item](#trigger-item)
@@ -289,21 +309,30 @@ h.log('example');
   - [Custom Message Param](#custom-message-param)
   - [Quiz Question](#quiz-question)
   - [Quiz Settings](#quiz-settings)
+  - [Quick Presentation Slide](#quick-presentation-slide)
+  - [Theme Filter](#theme-filter)
+  - [Translations](#translations)
+  - [Wallpaper Settings](#wallpaper-settings)
+  - [Clock Settings](#clock-settings)
+  - [Bible Book List](#bible-book-list)
+  - [Bible Book Info](#bible-book-info)
+  - [Verse Reference Group](#verse-reference-group)
+  - [Verse Reference](#verse-reference)
   - [AddItem](#additem)
   - [AddItemTitle](#additemtitle)
   - [AddItemSong](#additemsong)
   - [AddItemVerse](#additemverse)
   - [AddItemText](#additemtext)
-  - [AddItemAudio](#additemaudio)
-  - [AddItemVideo](#additemvideo)
-  - [AddItemImage](#additemimage)
+  - [AddItemAddItemAudio](#additemadditemaudio)
+  - [AddItemAddItemVideo](#additemadditemvideo)
+  - [AddItemAddItemImage](#additemadditemimage)
   - [AddItemAutomaticPresentation](#additemautomaticpresentation)
   - [AddItemAnnouncement](#additemannouncement)
   - [AddItemCountdown](#additemcountdown)
   - [AddItemCountdownCommunicationPanel](#additemcountdowncommunicationpanel)
   - [AddItemTextCommunicationPanel](#additemtextcommunicationpanel)
-  - [AddItemScript](#additemscript)
-  - [AddItemAPI](#additemapi)
+  - [AddItemAddItemScript](#additemadditemscript)
+  - [AddItemAddItemAPI](#additemadditemapi)
   - [AddItemURI](#additemuri)
   - [AddItemGlobalAction](#additemglobalaction)
 
@@ -342,7 +371,7 @@ Display the information passed as a parameter in a log window (lower right corne
 | ---- | :---: | ------------|
 | `key` | _String_ | Key/id of log management |
 | `obj` | _Object_ | Any object to be displayed in the log window |
-| `args` | _Array&lt;Object&gt;_ | Parameters for formatting a log message |
+| `args` | _Array&lt;Object&gt; (optional)_ | Parameters for formatting a log message |
 
 
 _Method does not return value_
@@ -359,6 +388,158 @@ h.log('xyz', 'log message {} abc {}', ['value 1', 'value 2']);
 h.log('log message {} abc {}', ['value 1', 'value 2']);
 //output:
 //log message value 1 abc value 2
+```
+
+---
+
+
+### logf(obj, args = null)
+- v2.23.0
+
+The same as `h.log(key, obj, ...args)`, but without needing to provide key
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `obj` | _Object_ | Any object to be displayed in the log window |
+| `args` | _Array&lt;Object&gt; (optional)_ | Parameters for formatting a log message |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.logf('log message');
+
+h.logf('log message {} abc {}', 'value 1', 'value 2');
+```
+
+---
+
+
+### logfp(obj, args = null)
+### logpf(obj, args = null)
+- v2.23.0
+
+The same as `h.logf(key, obj, ...args)`, but complex objects will be displayed in 'pretty-print' format
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `obj` | _Object_ | Any object to be displayed in the log window |
+| `args` | _Array&lt;Object&gt; (optional)_ | Parameters for formatting a log message |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+var example = {
+    key1: 'value1',
+    key2: 'value2'
+};
+h.logfp("Item:\n{}", example);
+/* OUTPUT
+Item:
+{
+  "key1": "value1",
+  "key2": "value2"
+}
+*/
+```
+
+---
+
+
+### logp(obj)
+- v2.23.0
+
+The same as `h.log(obj)`, but complex objects will be displayed in 'pretty-print' format
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `obj` | _Object_ | Any object to be displayed in the log window |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+var example = {
+    key1: 'value1',
+    key2: 'value2'
+};
+h.logp(example);
+/* OUTPUT
+{
+  "key1": "value1",
+  "key2": "value2"
+}
+*/
+```
+
+---
+
+
+### log(key = null, obj, args = null)
+- v2.23.0
+
+Display the information passed as a parameter in a log window (lower right corner of the screen, usually)
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `key` | _String_ | Key/id of log management |
+| `obj` | _Object_ | Any object to be displayed in the log window |
+| `args` | _Array&lt;Object&gt; (optional)_ | Parameters for formatting a log message |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.log('xyz', 'log message');
+
+h.log('xyz', 'log message {} abc {}', ['value 1', 'value 2']);
+//output:
+//log message value 1 abc value 2
+
+h.log('log message {} abc {}', ['value 1', 'value 2']);
+//output:
+//log message value 1 abc value 2
+```
+
+---
+
+
+### log.setEnabled(key, enabled)
+- v2.23.0
+
+Enable/disable the display of logs from the key/id passed as a parameter. All keys/ids start disabled by default
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `key` | _String_ | Key/id of log management |
+| `enabled` | _Boolean_ |  |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.log.setEnabled('xyz', true);
 ```
 
 ---
@@ -492,6 +673,30 @@ if (h.log.isShowLogKey()) {
 ---
 
 
+### log.toggleEnabled(key)
+### log.toggle(key)
+- v2.23.0
+
+Toggle the current value
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `key` | _String_ | Key/id of log management |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.log.toggleEnabled('xyz');
+```
+
+---
+
+
 ### sleep(time)
 Pause execution in X milliseconds as specified value
 
@@ -576,6 +781,29 @@ Decodes a string in base64 format
 ---
 
 
+### uuid()
+- v2.23.0
+
+UUID
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | UUID |
+
+
+**Example:**
+
+```javascript
+var uuid = h.uuid();
+```
+
+---
+
+
 ### hash(hashName, data)
 - v2.21.0
 
@@ -634,7 +862,7 @@ var bytes = h.hashBytes('SHA-512', "Example");
 ---
 
 
-### checksum(checksumName, data)
+### checksum(hashName, data)
 - v2.21.0
 
 Returns the **checksum** of the informed parameter
@@ -787,6 +1015,111 @@ SHA-512 hash
 ---
 
 
+### security(securityKey)
+### sec(securityKey)
+- v2.23.0
+
+Class to perform encryption actions and store data protected with a password
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `securityKey` | _String_ | Security key |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _[SecurityUtils](#métodos-securityutils)_ | SecurityUtils class object |
+
+
+**Example:**
+
+```javascript
+var sec = h.security('key');
+var b64 = sec.enc('Test');
+// b64: rNFZfSWo/J+ggo11cxPNxg==
+var val = sec.dec(b64);
+// val: Test
+```
+
+---
+
+
+### toJson(obj)
+- v2.23.0
+
+Convert an object to JSON
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `obj` | _Object_ |  |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Example:**
+
+```javascript
+var example = {
+    key1: 'value1',
+    key2: 'value2'
+};
+var r = h.toJson(example);
+//{"key1": "value1","key2": "value2"}
+```
+
+---
+
+
+### toPrettyJson(obj)
+### toJsonPretty(obj)
+- v2.23.0
+
+Convert an object to JSON in 'pretty-print' format
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `obj` | _Object_ |  |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Example:**
+
+```javascript
+var example = {
+    key1: 'value1',
+    key2: 'value2'
+};
+var r = h.toPrettyJson(example);
+/*
+{
+    "key1": "value1",
+    "key2": "value2"
+}
+*/
+```
+
+---
+
+
 ### getClipboard()
 Get the operating system clipboard text
 
@@ -812,6 +1145,11 @@ h.log('Clipboard text: ' + val);
 ### normalize(str)
 Remove accent from string
 
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `str` | _String_ |  |
 
 
 **Response:**
@@ -832,14 +1170,14 @@ h.log('Text with accent removed: ' + r); //AEIOUCaeiouc
 
 
 ### store(key, value)
-Saves a string to disk that can be recovered even after restarting the program. The method is shared with all scripts in the program.
+Saves an object to disk that can be retrieved even after restarting the program
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | key to save the string |
-| `value` | _String_ | String to be saved |
+| `key` | _String_ | key/id to save the object |
+| `value` | _Object_ | Object to be saved. Versions prior to `2.23.0` are only compatible with objects of type `string` |
 
 
 _Method does not return value_
@@ -853,21 +1191,22 @@ h.store('abc', 'Example');
 ---
 
 
-### restore(key)
-Retrieves a string saved on disk. The method is shared with all scripts in the program.
+### restore(key, default = null)
+Retrieves the object saved on disk
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String_ | Previously saved string key |
+| `key` | _String_ | key/id of the previously saved object |
+| `default` | _Object (optional)_ | Default value returned if no previously saved object is found `v2.23.0+` |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _String_ | Returns the saved string or NULL if not found |
+| _Object_ | Returns the saved object or **default** if not found. Versions prior to `2.23.0` are only compatible with objects of type `string` |
 
 
 **Example:**
@@ -879,6 +1218,10 @@ if (r == null) {
 } else {
     h.log('Item abc: ' + r);
 }
+
+
+var r = h.restore('xyz', {});
+h.logfp('Item xyz: {}', r);
 ```
 
 ---
@@ -1442,7 +1785,7 @@ Player class to get information and perform actions on the program's player
 
 | Type  | Description |
 | :---: | ------------|
-| _[Player](#métodos-player)_ | Player class object |
+| _[Player](https://github.com/holyrics/jslib/blob/main/doc/en/Player.md)_ |  |
 
 
 **Example:**
@@ -1463,6 +1806,33 @@ r.setMute(true);
 
 //stop current execution
 r.stop();
+```
+
+---
+
+
+### getAutomaticPresentationPlayer()
+### getAPPlayer()
+- v2.23.0
+
+Class representing the program's automatic presentation player
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _[AutomaticPresentationPlayer](https://github.com/holyrics/jslib/blob/main/doc/en/AutomaticPresentationPlayer.md)_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.getAPPlayer();
+if (r.isPlaying()) {
+    h.logf('Total time: {} - Slide time: {}', r.getTime(), r.getSlide().getTime());
+}
 ```
 
 ---
@@ -1553,7 +1923,9 @@ if (r) {
 
 
 ### apiRequest(id, raw)
-Executes a request to the associated receiver and returns the receiver's response.
+Executes a request to the associated receiver and returns the receiver's response.<br>
+From `v2.23.0` it is possible to pass the host or IP directly, but it is necessary to add the host/IP to the list of allowed requests.<br>
+file menu > settings > advanced > javascript > settings > allowed requests
 
 **Parameters:**
 
@@ -1588,6 +1960,19 @@ if (obj.sourceActive) {
 } else {
     h.log('The example source is not active');
 }
+
+//Exemplo ao adicionar um host/ip na lista de requisições permitidas
+var r = h.apiRequest('https://example.com/api.php', {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer token'
+    },
+    data: { /*json*/ }
+});
+
+var r = h.apiRequest('http://192.168.0.123', {
+    data: "raw"
+});
 
 //-------------------------------------------------
 
@@ -1686,7 +2071,7 @@ h.apiRequestAsync('abcxyz', {
 ### apiRequestEx(id, raw)
 - v2.21.0
 
-The same as `apiRequest(id, raw)`, but throws an exception when an error occurs, instead of returning **null**
+O mesmo que}} `apiRequest(id, raw)`, but throws an exception when an error occurs, instead of returning **null**
 
 **Parameters:**
 
@@ -1706,7 +2091,7 @@ The same as `apiRequest(id, raw)`, but throws an exception when an error occurs,
 ---
 
 
-### setTimeout(function, timeout)
+### setTimeout(function, timeout, name = null)
 - v2.19.0
 
 Runs a function after a few milliseconds.
@@ -1717,6 +2102,7 @@ Runs a function after a few milliseconds.
 | ---- | :---: | ------------|
 | `function` | _Function_ | Function that will be executed |
 | `timeout` | _Number_ | Time in milliseconds to wait until execution |
+| `name` | _String (optional)_ | Item name. Compatible value for display in **JavaScript Monitor** `v2.23.0+` |
 
 
 **Response:**
@@ -1765,7 +2151,7 @@ h.clearTimeout(id);
 ---
 
 
-### setInterval(function, timeout)
+### setInterval(function, timeout, name = null)
 - v2.19.0
 
 Runs a function every X milliseconds. Use **clearInterval** to stop execution.
@@ -1776,6 +2162,7 @@ Runs a function every X milliseconds. Use **clearInterval** to stop execution.
 | ---- | :---: | ------------|
 | `function` | _Function_ | Function that will be executed |
 | `timeout` | _Number_ | Interval in milliseconds between each run |
+| `name` | _String (optional)_ | Item name. Compatible value for display in **JavaScript Monitor** `v2.23.0+` |
 
 
 **Response:**
@@ -1940,7 +2327,7 @@ Checks if the program version is equal to or higher than the one informed by par
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `value` | _String_ | Version in the format: X.Y.Z |
+| `version` | _String_ | Version in the format: X.Y.Z |
 
 
 **Response:**
@@ -2078,6 +2465,46 @@ if (h.isUITheme('DARK_STRONG')) {
     //...
 }
 ```
+
+---
+
+
+### getCommunityVersion()
+- v2.23.0
+
+Returns the current version of the JSCommunity library in the program.
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Version in the format: X.Y.Z |
+
+
+---
+
+
+### isMinimumCommunityVersion(version)
+### isMinCommunityVersion(version)
+- v2.23.0
+
+Checks if the version of the JSCommunity library in the program is equal to or greater than the one specified by parameter.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `version` | _String_ | Version in the format: X.Y.Z |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Boolean_ |  |
+
 
 ---
 
@@ -2251,6 +2678,36 @@ var r = h.date.getSecondOfDay();
 ---
 
 
+### date.getSecondOfDay(hour, minute, second)
+- v2.20.0
+
+Returns the total amount of seconds of the day (hour * 3600 + minute * 60 + second)
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `hour` | _Number_ |  |
+| `minute` | _Number_ |  |
+| `second` | _Number_ |  |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Number_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.date.getSecondOfDay(18, 30, 0);
+```
+
+---
+
+
 ### csvToArray(csv)
 - v2.21.0
 
@@ -2281,6 +2738,92 @@ var r = h.csvToArray(csv);
 //  ['ab', 'c', 'd', 'e'],
 //  ['f', 'gh', 'i', 'j']
 //]
+```
+
+---
+
+
+### xmlToJson(xml)
+- v2.23.0
+
+Converts a string in XML format to a JavaScript object. May generate Exception.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `xml` | _String_ | String in XML format |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ |  |
+
+
+**Example:**
+
+```javascript
+var xml = ''
+    + '<?xml version="1.0" encoding="utf-8"?>'
+    + '<song>'
+    + '  <title>Example 1</title>'
+    + '  <author>Example 2</author>'
+    + '  <verses>'
+    + '    <verse desc="Verse 1">Slide 1 Line 1<br/>Slide 1 Line 2</verse>'
+    + '    <verse desc="Chorus">Slide 2 Line 1<br/>Slide 2 Line 2</verse>'
+    + '    <verse desc="Verse 2">Slide 3 Line 1<br/>Slide 3 Line 2</verse>'
+    + '  </verses>'
+    + '</song>';
+var r = h.xmlToJson(xml);
+h.log(r);
+/*
+{
+  "song": {
+    "title": [{ "content": "Example 1" }],
+    "author": [{ "content": "Example 2" }],
+    "verses": [{
+        "content": "    Slide 1 Line 1Slide 1 Line 2    Slide 2 Line 1Slide 2 Line 2    Slide 3 Line 1Slide 3 Line 2  ",
+        "verse": [{
+            "content": "Slide 1 Line 1\nSlide 1 Line 2",
+            "desc": "Verse 1"
+          }, {
+            "content": "Slide 2 Line 1\nSlide 2 Line 2",
+            "desc": "Chorus"
+          }, {
+            "content": "Slide 3 Line 1\nSlide 3 Line 2",
+            "desc": "Verse 2"
+          }]
+      }]
+  }
+}
+*/
+
+r.song.title[0].content; //Example 1
+r.song.title0; //Example 1
+
+r.song.author[0].content; //Example 2
+r.song.author0; //Example 2
+
+r.song.verses[0].verse;
+/*
+[{
+  "content":"Slide 1 Line 1\nSlide 1 Line 2","desc":"Verse 1"},
+  {"content":"Slide 2 Line 1\nSlide 2 Line 2","desc":"Chorus"},
+  {"content":"Slide 3 Line 1\nSlide 3 Line 2","desc":"Verse 2"
+}]
+*/
+
+r.song.verses0.verse.forEach(v => h.log(v.content));
+/*
+Slide 1 Line 1
+Slide 1 Line 2
+Slide 2 Line 1
+Slide 2 Line 2
+Slide 3 Line 1
+Slide 3 Line 2
+*/
 ```
 
 ---
@@ -2339,7 +2882,7 @@ h.addTriggerListener({
     when: 'change',
     item: 'bpm',
     action: function (obj) {
-        h.log("", "BPM changed, {} to {}", [obj.new_value, obj.old_value]);
+        h.log("", "BPM changed, {} to {}", [obj.old_value, obj.new_value]);
     }
 });
 h.setTimeout(function () {
@@ -2421,6 +2964,131 @@ var items = h.getTriggerListeners();
 for (var i = 0; i < items.length; i++) {
     h.log("ID: " + items[i].id);
 }
+```
+
+---
+
+
+### addSysVar(name, function)
+- v2.23.0
+
+Adds a system variable that can be used within the texts displayed by the program
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `name` | _String_ | Item name |
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `function` | _Function_ | Function that will be executed to get the return and display the content in place of the variable declared in the presentation |
+
+
+**Example:**
+
+```javascript
+h.addSysVar('now', function() {
+    return Date.now();
+});
+var r = h.getSysVar('@js{now}');
+h.log(r);
+
+
+h.addSysVar('sum', function(a, b) {
+    return a + b;
+});
+var r = h.getSysVar('@js{sum(3, 4)}');
+h.log(r); //7
+```
+
+---
+
+
+### removeSysVar(name)
+- v2.23.0
+
+Removes a system variable added by h.addSysVar(...)
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `name` | _String_ | Item name |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Boolean_ |  |
+
+
+**Example:**
+
+```javascript
+h.removeSysVar('sum');
+```
+
+---
+
+
+### getSysVar(value)
+- v2.23.0
+
+Get the current value of a system variable
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `value` | _String_ | System variable in the actual usage syntax. Example: @js{sys_var_name} |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.getSysVar("@js{sum(3, 4)}");
+// r: 7
+```
+
+---
+
+
+### applySysVar(value)
+- v2.23.0
+
+Convert all system variables in the passed value to the current value of the respective variable
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `value` | _String_ | Text to be converted |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.applySysVar("3 + 4 = @js{sum(3, 4)}");
+// r: 3 + 4 = 7
 ```
 
 ---
@@ -2599,6 +3267,109 @@ Converts a string to a byte array
 ---
 
 
+### trim(value, trim)
+- v2.23.0
+
+Removes characters from the beginning and end of a string
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `value` | _String_ | Value to be edited |
+| `trim` | _String_ | List of characters to be removed from the beginning and end of the value |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Example:**
+
+```javascript
+var str = ' ?abc xyz .';
+var r = h.trim(str, " .?");
+h.log(r);
+// output
+// abc xyz
+```
+
+---
+
+
+### strReplace(search, replace, subject)
+- v2.23.0
+
+Performs a replace on all occurrences of the string in JavaScript. The original method in JavaScript replaces only the first occurrence.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `search` | _String_ | Value to be searched |
+| `replace` | _String_ | Replacement value |
+| `subject` | _String_ | String to be searched and replaced |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.strReplace("e", "?", "example test");
+h.log(r);
+// output
+// ?xampl? t?st
+
+
+var r = "example test".replace("e", "?");
+h.log(r);
+// output
+// ?xample test
+```
+
+---
+
+
+### strRemoveTags(value)
+- v2.23.0
+
+Removes all values within `<>` (inclusive)
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `value` | _String_ | Value to be edited |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.strRemoveTags("example <a> test</b>");
+h.log(r);
+// output
+// example  test
+```
+
+---
+
+
 ### exportTXT(text, settings = null)
 - v2.22.0
 
@@ -2681,7 +3452,7 @@ Creates an object to store data in binary form.
 
 | Type  | Description |
 | :---: | ------------|
-| _ByteBuffer_ |  |
+| _[ByteBufferReader](https://github.com/holyrics/jslib/blob/main/doc/en/ByteBufferReader.md)_ |  |
 
 
 **Example:**
@@ -2725,7 +3496,7 @@ Creates an object filled with bytes for reading in binary form.
 
 | Type  | Description |
 | :---: | ------------|
-| _ByteBuffer_ |  |
+| _[ByteBufferWriter](https://github.com/holyrics/jslib/blob/main/doc/en/ByteBufferWriter.md)_ |  |
 
 
 **Example:**
@@ -2750,6 +3521,473 @@ var d = buf.readDouble(); //8 bytes
 var s1 = buf.readString(4); //length, utf-8 default
 var s2 = buf.readString(4, "ISO-8859-1"); //length, charset
 var b2 = buf.readBytes(128); //length
+```
+
+---
+
+
+### stream(obj)
+- v2.23.0
+
+Creates a `stream` to facilitate list manipulations
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `obj` | _Object_ | Array or Object |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | [Stream](https://github.com/holyrics/jslib/blob/main/doc/en/Stream.md) |
+
+
+**Example:**
+
+```javascript
+var arr = ['x', 'y', 'z', 'a', 'b', 'c'];
+var sortedArr = h.stream(arr)
+  .filter(o => o !== 'x')
+  .sorted()
+  .toArray();
+h.log(sortedArr);
+// output
+// ['a', 'b', 'c', 'y', 'z']
+```
+
+---
+
+
+### intStreamOf(obj)
+- v2.23.0
+
+Creates a `stream` to facilitate list manipulations
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `obj` | _Array&lt;Number&gt;_ | Array of numbers |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | [IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md) |
+
+
+**Example:**
+
+```javascript
+var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var r = h.intStreamOf(arr)
+         //1, 3, 7, 9
+         .filter(n => n != 5 && n % 2 == 1)
+         .sum();
+h.log(r);
+// output
+// 20
+```
+
+---
+
+
+### intStreamRange(startInclusive, endExclusive)
+- v2.23.0
+
+Creates a `stream` to facilitate list manipulations
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `startInclusive` | _Number_ | Initial value (inclusive) |
+| `endExclusive` | _Number_ | Upper limit (exclusive) |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | [IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md) |
+
+
+**Example:**
+
+```javascript
+h.intStreamRange(0, 10); // 0...9
+```
+
+---
+
+
+### intStreamRangeClosed(startInclusive, endInclusive)
+- v2.23.0
+
+Creates a `stream` to facilitate list manipulations
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `startInclusive` | _Number_ | Initial value (inclusive) |
+| `endExclusive` | _Number_ | Upper limit (inclusive) |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | [IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md) |
+
+
+**Example:**
+
+```javascript
+h.intStreamRangeClosed(0, 10); // 0...10
+```
+
+---
+
+
+### chat.sendMessage(message)
+- v2.23.0
+
+Send message to Holyrics chat.<br>
+To use this action, you need to enable permission in the settings<br>file menu > settings > advanced > javascript > settings > advanced permissions
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `message` | _String_ | Text message to send to the Holyrics chat |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Boolean_ | Returns **false** if the message is not sent. For example, if the permission is not enabled. |
+
+
+**Example:**
+
+```javascript
+h.chat.sendMessage("Hello");
+```
+
+---
+
+
+### identifyVerseReferences(value, languageID = null)
+- v2.23.0
+
+Identifies possible biblical references in the provided text
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `value` | _String_ | Text for identification |
+| `languageID` | _String (optional)_ | Language ID of the book set.<br>If an ID is not provided, the list of books from the main Bible selected in the program will be used.<br>To get the list of available IDs, see: `h.getAvailableBibleBooks()` |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Array&lt;[VerseReferenceGroup](#verse-reference-group)&gt;_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.identifyVerseReferences("... ... Rm 12:2  Gn 1:1-3  Ps 23 ... ...");
+r.forEach(function(g) {
+    g.verses.forEach(function(v) {
+        h.log(v.id);
+    });
+});
+// output
+// 45012002
+// 01001001
+// 01001002
+// 01001003
+// 19023001
+// 19023002
+// 19023003
+// 19023004
+// 19023005
+// 19023006
+```
+
+---
+
+
+### getAvailableBibleBooks()
+- v2.23.0
+
+Returns the list of available book sets in different languages
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Array&lt;[BibleBookList](#bible-book-list)&gt;_ |  |
+
+
+**Example:**
+
+```javascript
+h.getAvailableBibleBooks().forEach(function(o) {
+    h.logf('{}: {}', o.id, o.name);
+});
+// output
+// pt: Português
+// en: English
+// ...
+// ...
+```
+
+---
+
+
+### getBibleBooks(languageID)
+- v2.23.0
+
+Returns a set of Bible books
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `languageID` | _String_ | Language ID of the book set |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Array&lt;[BibleBookInfo](#bible-book-info)&gt;_ |  |
+
+
+**Example:**
+
+```javascript
+h.getBibleBooks('en').forEach(function(b) {
+    h.logf('{}: {} - {}', b.id, b.name, b.abbrev);
+});
+// output
+// 1: Genesis - Gn
+// 2: Exodus - Ex
+// ...
+// ...
+// 66: Revelation - Rev
+```
+
+---
+
+
+### getReceiverInfo(id)
+- v2.23.0
+
+Returns the information of a receiver or **null** if not found
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Receiver ID or name |
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `type` | _String_ | Type of item |
+| `name` | _String_ | Item name |
+
+
+**Example:**
+
+```javascript
+var r = h.getReceiverInfo(id);
+h.logf('{} {} {}', r.id, r.type, r.name);
+```
+
+---
+
+
+### registerSettings(key, fromStore, inputs)
+### registerSettings(key, inputs)
+### loadSettings(key, fromStore, inputs)
+### loadSettings(key, inputs)
+- v2.23.0
+
+
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `key` | _String_ | Storage key used to save and retrieve the value of items.<br>`h.getGlobal(key, ...)`<br>`h.restore(key, ...)` |
+| `fromStore` | _Boolean_ | **true** to retrieve the value also in `h.restore(key, ...)` `Default: true` |
+| `inputs` | _Array&lt;[InputParam](#input-param)&gt;_ | Object with previously stored values, where each key is the `id` of the respective `input`.<br>The value defined in `default_value` of each item will be returned if there is no previously stored value |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | Object with previously stored values, where each key is the `id` of the respective `input`.<br>The value defined in `default_value` of each item will be returned if there is no previously stored value |
+
+
+**Example:**
+
+```javascript
+var inputs = [
+  {
+    id: 'message',
+    type: 'string'
+  }, {
+    id: 'duration',
+    type: 'number',
+    default_value: 10
+  }
+];
+
+var r = h.registerSettings('settings_name', inputs);
+//r.message
+//r.duration
+```
+
+---
+
+
+### ws(receiver, cacheID, modelToCreate)
+### ws(receiver, cacheIDOrModelToCreate)
+### ws(receiver)
+- v2.23.0
+
+Creates a WebSocket connection. May generate Exception.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `receiver` | _String_ | Accepted values<br>Receiver ID or name<br>Host or destination IP, if added to the list of allowed requests<br>$`{{menu arquivo}} > settings > advanced > javascript > settings > allowed requests` |
+| `cacheID` | _String (optional)_ | ID used as a value to obtain the existing connection, instead of creating a new one |
+| `modelToCreate` | _Object (optional)_ | Actions used when creating a new connection |
+| `modelToCreate.headers` | _Object (optional)_ |  |
+| `modelToCreate.on_open` | _Function (optional)_ | Executed when the connection starts<br>`function(evt) { /* evt.source; evt.http_status; evt.http_status_message; */ }` |
+| `modelToCreate.on_message` | _Function_ | Executed for each new message received<br>The `message` object is of the type:  string<br>`function(message) { ... }` |
+| `modelToCreate.on_error` | _Function (optional)_ | Executed when an error occurs<br>`function(evt) { /* evt.source; evt.error; */ }` |
+| `modelToCreate.on_close` | _Function (optional)_ | Executed when the connection is closed<br>`function(evt) { /* evt.source; evt.code; evt.reason; */ }` |
+| `modelToCreate.loop` | _Function (optional)_ | Executed every 1 second while the connection is open<br>Useful for connections that need to send a 'ping' to keep the connection open<br>`function(evt) { /* evt.source; */ }` |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _[WebSocketClient](https://github.com/holyrics/jslib/blob/main/doc/en/WebSocketClient.md)_ |  |
+
+
+**Example:**
+
+```javascript
+var client = createWebSocket('receiver_id');
+client.send('message'); // utf-8
+// client.send(h.toJson({message:'test'}));
+
+function createWebSocket(receiver) {
+  var client = h.ws(receiver);
+  if (client != null) {
+    return client;
+  }
+  return h.ws(receiver, {
+    on_open: function (evt) {
+      //evt.source;
+      //evt.http_status;
+      //evt.http_status_message;
+    },
+    on_message: function (msg) {
+      h.log(msg);
+    },
+    on_error: function (evt) {
+      h.logf('websocket error: {} - {}', receiver, evt.error);
+    },
+    on_close: function (evt) {
+      //evt.source;
+      //evt.core;
+      //evt.reason;
+    },
+    loop: function (evt) {
+      evt.source.send('ping');
+    }
+  });
+}
+```
+
+---
+
+
+### tcp(receiver, cacheID, modelToCreate)
+### tcp(receiver, cacheIDOrModelToCreate)
+### tcp(receiver)
+- v2.23.0
+
+Creates a TCP connection. May generate Exception.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `receiver` | _String_ | Accepted values<br>Receiver ID or name<br>Host or destination IP, if added to the list of allowed requests<br>$`{{menu arquivo}} > settings > advanced > javascript > settings > allowed requests` |
+| `cacheID` | _String (optional)_ | ID used as a value to obtain the existing connection, instead of creating a new one |
+| `modelToCreate` | _Object (optional)_ | Actions used when creating a new connection |
+| `modelToCreate.on_message` | _Function_ | Executed for each new message received<br>The `message` object is of the type:  [ByteBufferReader](https://github.com/holyrics/jslib/blob/main/doc/en/ByteBufferReader.md)<br>`function(message) { ... }` |
+| `modelToCreate.on_close` | _Function (optional)_ | Executed when the connection is closed<br>`function(evt) { /* evt.source; */ }` |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _[TCPClient](https://github.com/holyrics/jslib/blob/main/doc/en/TCPClient.md)_ |  |
+
+
+**Example:**
+
+```javascript
+var client = createTCP('receiver_id');
+client.send('message'); // utf-8
+
+var buf = h.createByteBuffer()
+           .putString('message', 'ascii');
+client.send(buf);
+
+function createTCP(receiver) {
+  var client = h.tcp(receiver);
+  if (client != null) {
+    return client;
+  }
+  return h.tcp(receiver, {
+    on_message: function (msg) {
+      h.log(msg);
+    },
+    on_close: function (evt) {
+      //evt.source;
+    }
+  });
+}
 ```
 
 ---
@@ -2882,6 +4120,7 @@ Starts a lyric show.
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | Item ID |
+| `input.initial_index` | _Number (optional)_ | Initial index of the presentation `Default: 0` `v2.23.0+` |
 
 
 _Method does not return value_
@@ -3014,6 +4253,7 @@ Starts a presentation of a text tab item.
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | Item ID |
+| `input.initial_index` | _Number (optional)_ | Initial index of the presentation `Default: 0` `v2.23.0+` |
 
 
 _Method does not return value_
@@ -3209,7 +4449,7 @@ Displays an image or a list of images (folder)
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.file` | _String_ | File or folder name. Example: **file.jpg** or **folder** or **folder/file.jpg** |
-| `input.automatic` | _[Automatic](#automatic-presentation) (optional)_ | If informed, the presentation of the items will be automatic |
+| `input.automatic` | _[Automatic](#automatic) (optional)_ | If informed, the presentation of the items will be automatic |
 
 
 _Method does not return value_
@@ -3320,7 +4560,7 @@ Displays an announcement or a list of announcements
 | `input.ids` | _Array&lt;String&gt; (optional)_ | List with the ID of each announcement |
 | `input.name` | _String (optional)_ | Announcement name |
 | `input.names` | _Array&lt;String&gt; (optional)_ | List with the name of each announcement |
-| `input.automatic` | _[Automatic](#automatic-presentation) (optional)_ | If informed, the presentation of the items will be automatic |
+| `input.automatic` | _[Automatic](#automatic) (optional)_ | If informed, the presentation of the items will be automatic |
 
 
 _Method does not return value_
@@ -3417,13 +4657,12 @@ Quick display of text
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.text` | _String_ | Text to be displayed. [Styled Text](#styled-text) from v2.19.0 |
-| `input.theme` | _Object (optional)_ | Filter selected theme for display |
-| `input.theme.id` | _String (optional)_ | Theme ID |
-| `input.theme.name` | _String (optional)_ | Theme name |
-| `input.theme.edit` | _[Theme](#theme) (optional)_ | Settings to modify the selected Theme for display `v2.21.0+` |
+| `input.text` | _String_ | Text to be displayed. [Styled Text](#styled-text) from v2.19.0<br>Optional if `slides` is declared |
+| `input.slides` | _Array&lt;[QuickPresentationSlide](#quick-presentation-slide)&gt;_ | Alternative parameter for more complex presentations<br>Optional if `text` is declared `v2.23.0+` |
+| `input.theme` | _[ThemeFilter](#theme-filter) (optional)_ | Filter selected theme for display |
 | `input.custom_theme` | _[Theme](#theme) (optional)_ | Custom theme used to display the text `v2.21.0+` |
-| `input.automatic` | _[Automatic](#automatic-presentation) (optional)_ | If informed, the presentation of the items will be automatic |
+| `input.automatic` | _[Automatic](#automatic) (optional)_ | If informed, the presentation of the items will be automatic |
+| `input.initial_index` | _Number (optional)_ | Initial index of the presentation `Default: 0` `v2.23.0+` |
 
 
 _Method does not return value_
@@ -3465,6 +4704,45 @@ h.hly('ShowQuickPresentation', {
             id: "000000"
         }
     }
+});
+
+h.hly('ShowQuickPresentation', {
+    slides: [
+        {
+            text: "Text to be displayed (1)",
+            theme: {
+                name: "Theme 1"
+            }
+        }, {
+            text: "Text to be displayed (2)",
+            duration: 20,
+            translations: {
+                "translation_name_1": "Example",
+                "translation_name_2": "Example"
+            }
+        }, {
+            text: "Text to be displayed (3)",
+            duration: 15,
+            custom_theme: {
+                font: {
+                    color: "FFFFFF"
+                },
+                background: {
+                    type: "color",
+                    id: "000000"
+                }
+            }
+        }
+    ],
+    //default theme
+    theme: {
+        name: "Theme"
+    },
+    automatic: {
+        seconds: 10,
+        repeat: true
+    },
+    initial_index: 2
 });
 ```
 
@@ -3623,6 +4901,40 @@ var r = h.hly('GetAutomaticPresentations');
 for (var i = 0; i < r.data.length; i++) {
     h.log(r.data[i].name);
 }
+```
+
+---
+
+
+### hly('GetAutomaticPresentation', input)
+### hly('GetAP', input)
+- v2.21.0
+
+Returns an automatic presentation
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `file` | _String_ | File name. Example: **file.ap** |
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _[AutomaticPresentation](#automatic-presentation)_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetAutomaticPresentation', {file: 'file.ap'});
+h.log(r.name);
+h.log(r.song);
+r.timeline.forEach(function(o) {
+    h.log(o.duration);
+});
 ```
 
 ---
@@ -3971,7 +5283,7 @@ Change a media playlist item
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.index` | _Number_ | Index of the item in the list |
-| `input.item` | _[AddItem](#additem)_ | New item |
+| `input.item` | _[AddItem](#add-item)_ | New item |
 
 
 _Method does not return value_
@@ -4189,7 +5501,7 @@ Add items to the media playlist
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.items` | _Array&lt;[AddItem](#additem)&gt;_ | List with the items that will be added |
+| `input.items` | _Array&lt;[AddItem](#add-item)&gt;_ | List with the items that will be added |
 | `input.index` | _Number (optional)_ | Position in the list where the item will be added (starts at zero). Items are added to the end of the list by default. `Default: -1` |
 | `input.ignore_duplicates` | _Boolean (optional)_ | Do not duplicate items when adding new items, that is, do not add an item if it is already on the list. `Default: false` |
 
@@ -4557,7 +5869,9 @@ if (r.status == 'ok') {
 ### hly('ApiRequest', input)
 - v2.19.0
 
-Executes a request to the associated receiver and returns the receiver's response.
+Executes a request to the associated receiver and returns the receiver's response.<br>
+From `v2.23.0` it is possible to pass the host or IP directly, but it is necessary to add the host/IP to the list of allowed requests.<br>
+file menu > settings > advanced > javascript > settings > allowed requests
 
 **Parameters:**
 
@@ -5055,7 +6369,7 @@ for (var i = 0; i < r.data.length; i++) {
 ### hly('GetColorMap', input)
 - v2.20.0
 
-Returns the information of the predominant color of a respective type of item<br/>The returned array contains 8 indices, and each index corresponds to the section according to the following example image.<br/> <br/>![Color Map Example](https://holyrics.com.br/images/color_map_item_example.png)<br/>
+Returns the information of the predominant color of a respective type of item.<br/>The returned array contains 8 indices, and each index corresponds to the section according to the following example image.<br/> <br/>![Color Map Example](https://holyrics.com.br/images/color_map_item_example.png)<br/>
 
 **Parameters:**
 
@@ -5566,6 +6880,8 @@ Current communication panel configuration
 | `data.countdown_display_location` | _String_ | Location of the countdown or stopwatch display. `FULLSCREEN`  `FULLSCREEN_OR_ALERT`  `ALERT` `v2.20.0+` |
 | `data.display_clock_with_countdown_fullscreen` | _Boolean_ | Display clock along with the countdown or stopwatch when displayed in full screen `v2.20.0+` |
 | `data.display_vlc_player_remaining_time` | _Boolean_ | Display remaining time of the media playing in VLC Player `v2.20.0+` |
+| `data.attention_icon_color` | _String_ | Icon color of the **Attention** button `v2.23.0+` |
+| `data.attention_background_color` | _String_ | Background color of the **Attention** button icon `v2.23.0+` |
 
 
 **Example:**
@@ -5611,6 +6927,8 @@ Change the current setting of the communication panel
 | `input.countdown_display_location` | _String (optional)_ | Location of the countdown or stopwatch display. `FULLSCREEN`  `FULLSCREEN_OR_ALERT`  `ALERT` |
 | `input.display_clock_with_countdown_fullscreen` | _Boolean (optional)_ | Display clock along with the countdown or stopwatch when displayed in full screen |
 | `input.display_vlc_player_remaining_time` | _Boolean (optional)_ | Display remaining time of the media playing in VLC Player |
+| `input.attention_icon_color` | _String (optional)_ | Icon color of the **Attention** button `v2.23.0+` |
+| `input.attention_background_color` | _String (optional)_ | Background color of the **Attention** button icon `v2.23.0+` |
 
 
 _Method does not return value_
@@ -5814,6 +7132,10 @@ Wallpaper settings
 | `data.extend` | _Boolean_ | `deprecated` Replaced for `adjust_type`<br>Extend wallpaper |
 | `data.adjust_type` | _String_ | Image adjustment: Can be: `ADJUST` `EXTEND` `FILL` `ADJUST_BLUR` `v2.22.0+` |
 | `data.show_clock` | _Boolean_ | Show clock |
+| `data.by_screen` | _Object (optional)_ | Independent configuration per screen `v2.23.0+` |
+| `data.by_screen.default` | _[WallpaperSettings](#wallpaper-settings) (optional)_ | Default configuration `v2.23.0+` |
+| `data.by_screen.public` | _[WallpaperSettings](#wallpaper-settings) (optional)_ | Custom configuration for the screen or **null** if using the default configuration `v2.23.0+` |
+| `data.by_screen.screen_n` | _[WallpaperSettings](#wallpaper-settings) (optional)_ | n >= 2  `v2.23.0+` |
 
 
 **Example:**
@@ -5839,8 +7161,12 @@ Change wallpaper settings
 | `input.enabled` | _Boolean (optional)_ | Show wallpaper |
 | `input.fill_color` | _String (optional)_ | Color in hexadecimal defined in the **fill** option. **NULL** to disable |
 | `input.extend` | _Boolean (optional)_ | `deprecated` Replaced for `adjust_type`<br>Extend wallpaper |
-| `data.adjust_type` | _String_ | Image adjustment: Can be: `ADJUST` `EXTEND` `FILL` `ADJUST_BLUR` `v2.22.0+` |
+| `input.adjust_type` | _String_ | Image adjustment: Can be: `ADJUST` `EXTEND` `FILL` `ADJUST_BLUR` `v2.22.0+` |
 | `input.show_clock` | _Boolean (optional)_ | Show clock |
+| `input.by_screen` | _Object (optional)_ | Independent configuration per screen `v2.23.0+` |
+| `input.by_screen.default` | _[WallpaperSettings](#wallpaper-settings) (optional)_ | Default configuration `v2.23.0+` |
+| `input.by_screen.public` | _[WallpaperSettings](#wallpaper-settings) (optional)_ | Custom configuration for the screen or **null** if using the default configuration `v2.23.0+` |
+| `input.by_screen.screen_n` | _[WallpaperSettings](#wallpaper-settings) (optional)_ | n >= 2 `v2.23.0+` |
 
 
 **Response:**
@@ -5935,10 +7261,10 @@ List of transition effect configuration
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `music` | _[TransitionEffectSettings](#transition-effect-settings)_ |  |
-| `bible` | _[TransitionEffectSettings](#transition-effect-settings)_ |  |
-| `image` | _[TransitionEffectSettings](#transition-effect-settings)_ |  |
-| `announcement` | _[TransitionEffectSettings](#transition-effect-settings)_ |  |
+| `music` | _Array&lt;[TransitionEffectSettings](#transition-effect-settings)&gt;_ |  |
+| `bible` | _Array&lt;[TransitionEffectSettings](#transition-effect-settings)&gt;_ |  |
+| `image` | _Array&lt;[TransitionEffectSettings](#transition-effect-settings)&gt;_ |  |
+| `announcement` | _Array&lt;[TransitionEffectSettings](#transition-effect-settings)&gt;_ |  |
 
 
 **Example:**
@@ -6023,7 +7349,7 @@ var r = h.hly('SetTransitionEffectSettings', {
 ### hly('GetBibleVersions')
 - v2.21.0
 
-Returns the list of available versions of the Bible, and also the associated shortcuts
+`deprecated` Replaced for: hly('GetBibleVersionsV2')<br>Returns the list of available versions of the Bible, and also the associated shortcuts
 
 
 
@@ -6031,7 +7357,7 @@ Returns the list of available versions of the Bible, and also the associated sho
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data` | _Object_ |  |
+| `data` | _Array&lt;Object&gt;_ |  |
 | `data.*.key` | _String_ | Abbreviation of the version or the name of the shortcut, if it starts with '#shortcut ' |
 | `data.*.title` | _String_ | Version name |
 | `data.*.version` | _String (optional)_ | Abbreviation of the version. Available if the item is a shortcut, that is if 'key' starts with '#shortcut ' |
@@ -6053,6 +7379,36 @@ for (var i = 0; i < r.data.length; i++) {
 ---
 
 
+### hly('GetBibleVersionsV2')
+- v2.23.0
+
+Returns the list of available versions of the Bible, and also the associated shortcuts
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;Object&gt;_ |  |
+| `data.*.key` | _String_ | Item ID |
+| `data.*.version` | _String_ | Bible version ID |
+| `data.*.title` | _String_ | Version name or shortcut name |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetBibleVersionsV2');
+for (var i = 0; i < r.data.length; i++) {
+    var o = r.data[i];
+    h.logf("ID: {}, Version: {}, Title: {}", [o.id, o.version, o.title]);
+}
+```
+
+---
+
+
 ### hly('GetBibleSettings')
 - v2.21.0
 
@@ -6064,7 +7420,7 @@ Bible module settings
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data` | _[BibleSettings](#bible-settings)_ |  |
+| `data` | _Array&lt;[BibleSettings](#bible-settings)&gt;_ |  |
 
 
 **Example:**
@@ -6105,6 +7461,59 @@ var r = h.hly('SetBibleSettings', {
     theme: {
         'public': '123'
     }
+});
+```
+
+---
+
+
+### hly('GetPresentationFooterSettings')
+- v2.23.0
+
+Presentation footer settings
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data.rows` | _Number_ | Number of lines. `1 ~ 4` |
+| `data.preview_mode` | _String_ | Accepted values: `text` `image` |
+| `data.minimized` | _Boolean_ |  |
+
+
+---
+
+
+### hly('SetPresentationFooterSettings', input)
+- v2.23.0
+
+Change the presentation footer settings
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.rows` | _Number_ | Number of lines. `1 ~ 4` |
+| `input.preview_mode` | _String_ | Accepted values: `text` `image` |
+| `input.minimized` | _Boolean_ |  |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | Return **true** or a list of errors that occurred |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('SetPresentationFooterSettings', {
+    minimized: false,
+    preview_mode: 'text',
+    rows: 2
 });
 ```
 
@@ -6359,6 +7768,30 @@ h.hly('SetInterfaceInput', {
 ---
 
 
+### hly('SelectVerse', input)
+- v2.21.0
+
+Selects a verse in the Bible window
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _String (optional)_ | Verse ID |
+| `input.reference` | _String (optional)_ | Verse reference |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('SelectVerse', { id: '43003016' });
+```
+
+---
+
+
 ### hly('OpenDrawLots', input)
 - v2.21.0
 
@@ -6448,385 +7881,183 @@ h.log(r.data.plaftormDescription);
 ---
 
 
-# Methods Player 
-### getMediaName()
-Name of current media in player
+# SecurityUtils methods 
+### encrypt(value)
+### enc(value)
+- v2.23.0
 
-
-
-**Response:**
-
-| Type  | Description |
-| :---: | ------------|
-| _String_ | Media name |
-
-
----
-
-
-### getMedia()
-Full path of media in player
-
-
-
-**Response:**
-
-| Type  | Description |
-| :---: | ------------|
-| _String_ | Full media path |
-
-
----
-
-
-### isPlaying()
-Checks if the player is running
-
-
-
-**Response:**
-
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
-
-
----
-
-
-### getDuration()
-Total time of current media in player
-
-
-
-**Response:**
-
-| Type  | Description |
-| :---: | ------------|
-| _Number_ | Total time in milliseconds |
-
-
----
-
-
-### getCurrentTime()
-Current media time in player
-
-
-
-**Response:**
-
-| Type  | Description |
-| :---: | ------------|
-| _Number_ | Current media time in milliseconds |
-
-
----
-
-
-### setCurrentTime(time)
-- v2.20.0
-
-Change the current media time in milliseconds
+Encrypt a value `String`
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `time` | _Number_ | Change the current media time in milliseconds |
-
-
-_Method does not return value_
-
----
-
-
-### getTimeElapsed()
-Elapsed time of media in player
-
+| `value` | _String_ | Value to be encrypted |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _String_ | Elapsed time in format HH:MM:SS |
+| _String_ | Value encrypted in Base64 |
 
 
----
+**Example:**
 
-
-### getTimeRemaining()
-Remaining media time in player
-
-
-
-**Response:**
-
-| Type  | Description |
-| :---: | ------------|
-| _String_ | Remaining time in format HH:MM:SS |
-
+```javascript
+var b64 = h.sec('key').encrypt('Test');
+// b64: rNFZfSWo/J+ggo11cxPNxg==
+```
 
 ---
 
 
-### play()
-Run player **play** action
+### decrypt(base64)
+### dec(base64)
+- v2.23.0
 
-
-
-_Method does not return value_
-
----
-
-
-### pause()
-Perform player **pause** action
-
-
-
-_Method does not return value_
-
----
-
-
-### stop()
-Perform player **stop** action
-
-
-
-_Method does not return value_
-
----
-
-
-### next()
-Moves to the next item in the list in the player
-
-
-
-_Method does not return value_
-
----
-
-
-### previous()
-Moves to the previous item in the list in the player
-
-
-
-_Method does not return value_
-
----
-
-
-### isRepeat()
-Checks if the **repeat** option is enabled
-
-
-
-**Response:**
-
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
-
-
----
-
-
-### setRepeat(repeat)
-Change the **repeat** option
+Decrypt a value `String`
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `repeat` | _Boolean_ |  |
-
-
-_Method does not return value_
-
----
-
-
-### isExecuteAll()
-Checks if the player is set to play items in sequence
-
+| `base64` | _String_ | Base64 value to be decrypted |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ |  |
+| _String_ | Decrypted value |
 
+
+**Example:**
+
+```javascript
+var r = h.sec('key').decrypt('rNFZfSWo/J+ggo11cxPNxg==');
+// r: Test
+```
 
 ---
 
 
-### setExecuteAll(executeAll)
-Change player setting to play items in sequence
+### encryptObj(value)
+### encObj(value)
+- v2.23.0
+
+Encrypt a value `Object`
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `executeAll` | _Boolean_ |  |
-
-
-_Method does not return value_
-
----
-
-
-### isExecuteSingle()
-Checks if the player is set to play only the current list item
-
+| `value` | _Object_ | Value to be encrypted |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ |  |
+| _String_ | Value encrypted in Base64 |
 
+
+**Example:**
+
+```javascript
+var example = {
+  a: 1,
+  b: 2
+};
+var b64 = h.sec('key').encObj(example);
+h.log(b64);
+// b64: nO2IFVws9KhnhxvQ3IBX2g==
+```
 
 ---
 
 
-### setExecuteSingle(executeSingle)
-Change player setting to play only current list item
+### decryptObj(base64)
+### decObj(base64)
+- v2.23.0
+
+Decrypt a value `Object`
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `executeSingle` | _Boolean_ |  |
-
-
-_Method does not return value_
-
----
-
-
-### isShuffle()
-Checks if the **random** option is enabled
-
+| `base64` | _String_ | Base64 value to be decrypted |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ |  |
+| _Object_ | Decrypted value |
 
+
+**Example:**
+
+```javascript
+var val = h.sec('key').dec('nO2IFVws9KhnhxvQ3IBX2g==');
+h.log(val);
+// val: { a: 1, b: 2 }
+```
 
 ---
 
 
-### setShuffle(shuffle)
-Change the **random** option
+### relativeMethods
+- v2.23.0
 
-**Parameters:**
+All the following methods have the same documentation as the respective original method.
+```
+store(key, value)
 
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-| `shuffle` | _Boolean_ |  |
+restore(key, default = null)
+
+setGlobal(key, value, ttl = 0)
+
+getGlobal(key, default = null)
+
+setGlobalNext(key, values, ttl = 0)
+
+getGlobalAndSet(key, default = null, newValue)
+
+getGlobalAndSet(key, newValue)
+
+getGlobalAndSetNext(key, values)
+
+setGlobalNextAndGet(key, values)
+```
+
+
 
 
 _Method does not return value_
 
----
+**Example:**
 
+```javascript
+var sec = h.sec('key');
 
-### isFullscreen()
-Checks if the **full screen** option is enabled
+sec.store('name', 'value');
+var r = sec.restore('name', '');
+// r: value
 
+sec.store('name2', { a: 1 });
+var r = sec.restore('name2', {});
+// r: { a: 1 }
 
+sec.setGlobal('name', 'value');
+var r = sec.getGlobal('name', '');
+// r: value
 
-**Response:**
-
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
-
-
----
-
-
-### setFullscreen(fullscreen)
-Change player **full screen** option
-
-**Parameters:**
-
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-| `fullscreen` | _Boolean_ |  |
-
-
-_Method does not return value_
-
----
-
-
-### getVolume()
-Current player volume
-
-
-
-**Response:**
-
-| Type  | Description |
-| :---: | ------------|
-| _Number_ | Volume. Minimum=0, Maximum=100 |
-
-
----
-
-
-### setVolume(volume)
-Change the volume of the player
-
-**Parameters:**
-
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-| `volume` | _Number_ | Minimum=0, Maximum=100 |
-
-
-_Method does not return value_
-
----
-
-
-### isMute()
-Checks if the **mute** option is enabled
-
-
-
-**Response:**
-
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
-
-
----
-
-
-### setMute(mute)
-Change the **mute** option
-
-**Parameters:**
-
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-| `mute` | _Boolean_ |  |
-
-
-_Method does not return value_
+sec.setGlobal('name2', { a: 1 });
+var r = sec.getGlobal('name2', {});
+// r: { a: 1 }
+```
 
 ---
 
@@ -6901,6 +8132,49 @@ if (r == null) {
     h.log("Message: " + r.message);
     h.log("Seconds: " + r.seconds);
 }
+```
+
+---
+
+
+### settings(saveTo, saveToStore, data)
+### settings(saveTo, data)
+- v2.23.0
+
+The same function as `h.input(...)`, but automatically saves the value in `setGlobal` and `store`, and also displays the current value saved previously.<br>The value will only be stored when clicking OK in the settings window
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `saveTo` | _String_ | Storage key used to save and retrieve the value of items.<br>`h.setGlobal(saveTo, ...)`<br>`h.getGlobal(saveTo, ...)`<br>`h.store(saveTo, ...)`<br>`h.restore(saveTo, ...)` |
+| `saveToStore` | _Boolean_ | **true** to save the value also in `h.store(saveTo, ...)`, meaning the configuration remains saved even after restarting the program `Default: true` |
+| `data` | _Object_ | Entries that will be requested in the interface. Can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string**.<br>`saveTo` can be the storage key if the method `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` has been called previously |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | If only one item is passed as input, the value informed by the user will be returned (can be NULL). If multiple entries are requested, an object will be returned (can be NULL) where each value will be informed in the variable of its respective ID. |
+
+
+**Example:**
+
+```javascript
+var inputs = [
+  {
+    id: 'message',
+    type: 'string'
+  }, {
+    id: 'duration',
+    type: 'number',
+    default_value: 10
+  }
+];
+var r = h.settings('settings_name', inputs);
+//r.message
+//r.duration
 ```
 
 ---
@@ -7386,7 +8660,7 @@ Open a program window
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `name` | _String_ | Window name. Can be: `main` `bible` `communication_panel` `chat` |
+| `name` | _String_ | Window name. Can be: `main` `bible` `communication_panel` `chat`<br> <br>**v2.23.0+**<br>`js_playground` `js_monitor_interval` `js_monitor_timeout` `js_monitor_trigger` `js_monitor_global` `js_monitor_timer_and_countdown`  |
 
 
 _Method does not return value_
@@ -7397,6 +8671,29 @@ _Method does not return value_
 h.openWindow('main');
 
 h.openWindow('bible');
+```
+
+---
+
+
+### repaint(id)
+- v2.23.0
+
+Forces the update of an interface component.<br>Currently available for: Favorites bar
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.repaint('favorite_id');
 ```
 
 ---
@@ -7450,18 +8747,24 @@ Complex classes used as a return in some methods
   "slides": [
     {
       "text": "Slide 1 line 1\nSlide 1 line 2",
+      "styled_text": "Slide 1 line 1\nSlide 1 line 2",
       "slide_description": "Verse 1",
-      "background_id": null
+      "background_id": null,
+      "translations": null
     },
     {
       "text": "Slide 2 line 1\nSlide 2 line 2",
+      "styled_text": "Slide 2 line 1\nSlide 2 line 2",
       "slide_description": "Chorus",
-      "background_id": null
+      "background_id": null,
+      "translations": null
     },
     {
       "text": "Slide 3 line 1\nSlide 3 line 2",
+      "styled_text": "Slide 3 line 1\nSlide 3 line 2",
       "slide_description": "Verse 3",
-      "background_id": null
+      "background_id": null,
+      "translations": null
     }
   ],
   "order": "1,2,3,2,2",
@@ -7513,15 +8816,21 @@ Complex classes used as a return in some methods
   "slides": [
     {
       "text": "Slide 1 line 1\nSlide 1 line 2",
-      "background_id": null
+      "styled_text": "Slide 1 line 1\nSlide 1 line 2",
+      "background_id": null,
+      "translations": null
     },
     {
       "text": "Slide 2 line 1\nSlide 2 line 2",
-      "background_id": null
+      "styled_text": "Slide 2 line 1\nSlide 2 line 2",
+      "background_id": null,
+      "translations": null
     },
     {
       "text": "Slide 3 line 1\nSlide 3 line 2",
-      "background_id": null
+      "styled_text": "Slide 3 line 1\nSlide 3 line 2",
+      "background_id": null,
+      "translations": null
     }
   ]
 }
@@ -7870,6 +9179,19 @@ Complex classes used as a return in some methods
 ## Automatic Presentation
 | Name | Type  | Description |
 | ---- | :---: | ------------|
+| `name` | _String_ | Item name |
+| `duration` | _Number_ | Duration in milliseconds |
+| `starts_with` | _String_ | Accepted values: `title` `blank` |
+| `song` | _[Lyrics](#lyrics)_ |  |
+| `timeline` | _Array&lt;Object&gt;_ | Information about the start and duration of each slide in the presentation |
+| `timeline.*.number` | _Number_ | number >= 0 |
+| `timeline.*.start` | _Number_ | Start time of the presentation in milliseconds |
+| `timeline.*.end` | _Number_ | End time of the presentation in milliseconds |
+| `timeline.*.duration` | _Number_ | Duration in milliseconds |
+
+## Automatic
+| Name | Type  | Description |
+| ---- | :---: | ------------|
 | `seconds` | _Number_ | Time each item will be displayed |
 | `repeat` | _Boolean_ | **true** to keep repeating the presentation (go back to the first item after the last one) |
 
@@ -7890,8 +9212,8 @@ Uses the same structure/syntax as the FunctionInput feature [documentation](http
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `id` | _String (optional)_ | Item ID |
-| `when` | _String_ | `displaying` `closing` `change` |
-| `item` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` |
+| `when` | _String_ | `displaying` `closing` `change` `event` |
+| `item` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue`<br><br>**when=event**: `new_message_chat` |
 | `action` | _Function_ | Action to be executed |
 <details>
   <summary>See example</summary>
@@ -7901,7 +9223,8 @@ Uses the same structure/syntax as the FunctionInput feature [documentation](http
   "id": "",
   "when": "displaying",
   "item": "any_song",
-  "action": function(obj) { /* TODO */ }
+  "action": function(obj) { /* TODO */ },
+  "name": "name"
 }
 ```
 </details>
@@ -8343,6 +9666,234 @@ Display settings
 ```
 </details>
 
+## Quick Presentation Slide
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `text` | _String_ | Slide text |
+| `theme` | _[ThemeFilter](#theme-filter) (optional)_ | Filter selected theme for display |
+| `custom_theme` | _[Theme](#theme) (optional)_ | Custom theme used to display the text |
+| `translations` | _[Translations](#translations) (optional)_ |  |
+| `duration` | _Number (optional)_ | Slide duration for use in automatic presentations |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "text": "text",
+  "duration": 3,
+  "translations": {
+    "key1": "value1", "key2": "value2"
+  },
+  "theme": {
+    "name": "...", "edit": {
+      "font": {
+        "name": "Arial",
+        "size": 10,
+        "bold": true,
+        "color": "FFFFFF"
+      },
+      "background": {
+        "type": "color",
+        "id": "000000"
+      }
+    }
+  }
+}
+```
+</details>
+
+## Theme Filter
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String (optional)_ | Theme or background ID |
+| `name` | _String (optional)_ | Theme name or background |
+| `edit` | _[Theme](#theme) (optional)_ | Settings to modify the selected Theme for display |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "name": "...",
+  "edit": {
+    "font": {
+      "name": "Arial",
+      "size": 10,
+      "bold": true,
+      "color": "FFFFFF"
+    },
+    "background": {
+      "type": "color",
+      "id": "000000"
+    }
+  }
+}
+```
+</details>
+
+## Translations
+Key/value pair
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `???` | _String_ | Translated value of the item, where the parameter name `???` is the name of the translation |
+| `???` | _String_ |  |
+| `...` | _String_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "key1": "value1",
+  "key2": "value2"
+}
+```
+</details>
+
+## Wallpaper Settings
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `enabled` | _Boolean_ | Show wallpaper |
+| `fill_color` | _String_ | Color in hexadecimal defined in the **fill** option. |
+| `clock` | _[ClockSettings](#clock-settings)_ | Clock settings |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "enabled": null,
+  "fill_color": null,
+  "clock": {
+    "enabled": false,
+    "font_name": "", "bold": false,
+    "italic": false,
+    "color": "FF0000", "background": "000000", "height": 12,
+    "position": "top_right", "corner": 0
+  }
+}
+```
+</details>
+
+## Clock Settings
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `enabled` | _Boolean_ |  |
+| `font_name` | _String_ | Font name |
+| `bold` | _Boolean_ | Bold |
+| `italic` | _Boolean_ | Italic |
+| `color` | _String_ | Color in hexadecimal format (RGBA) |
+| `background` | _String_ | Color in hexadecimal format (RGBA) |
+| `height` | _Number_ | Value in percentage based on the line height.<br>Accepted values: `6` `7` `8` `9` `10` `12` `14` `15` `16` `18` `20` `25` `30` `35` `40` |
+| `position` | _Boolean_ | Accepted values: `top_left` `top_center` `top_right` `middle_left` `middle_center` `middle_right` `bottom_left` `bottom_center` `bottom_right` |
+| `corner` | _Number_ | `0 ~ 100` |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "enabled": false,
+  "font_name": "",
+  "bold": false,
+  "italic": false,
+  "color": "FF0000",
+  "background": "000000",
+  "height": 12,
+  "position": "top_right",
+  "corner": 0
+}
+```
+</details>
+
+## Bible Book List
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ |  |
+| `name` | _String_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "id": "en",
+  "name": "English"
+}
+```
+</details>
+
+## Bible Book Info
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Book ID `01 ~ 66` |
+| `name` | _String_ | Book name |
+| `abbrev` | _String_ | Book abbreviation |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "id": "01",
+  "name": "Genesis",
+  "abbrev": "Gn"
+}
+```
+</details>
+
+## Verse Reference Group
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `reference` | _String_ | References. Example: **John 3:16** or **Rm 12:2** or **Gn 1:1-3 Sl 23.1** |
+| `ids` | _Array&lt;String&gt;_ | Example:  ['19023001', '43003016', '45012002'] |
+| `verses` | _Array&lt;[VerseReference](#verse-reference)&gt;_ | Detailed list of references |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "reference": "Ps 23.1-2",
+  "ids": [
+    "19023001", "19023002"
+  ],
+  "verses": [
+    {
+      "id": "19023001",
+      "book": 19,
+      "chapter": 23,
+      "verse": 1,
+      "reference": "Psalms 23.1"
+    },
+    {
+      "id": "19023002",
+      "book": 19,
+      "chapter": 23,
+      "verse": 2,
+      "reference": "Psalms 23.2"
+    }
+  ]
+}
+```
+</details>
+
+## Verse Reference
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `book` | _Number_ | Book ID `1 ~ 66` |
+| `chapter` | _Number_ | Chapter |
+| `verse` | _Number_ | Verse |
+| `reference` | _String_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "id": "19023001",
+  "book": 19,
+  "chapter": 23,
+  "verse": 1,
+  "reference": "Psalms 23.1"
+}
+```
+</details>
+
 ## AddItem
 | Name | Type  | Description |
 | ---- | :---: | ------------|
@@ -8422,7 +9973,7 @@ Display settings
 ```
 </details>
 
-## AddItemAudio
+## AddItemAddItemAudio
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `type` | _String_ | audio |
@@ -8441,7 +9992,7 @@ Display settings
 ```
 </details>
 
-## AddItemVideo
+## AddItemAddItemVideo
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `type` | _String_ | video |
@@ -8460,7 +10011,7 @@ Display settings
 ```
 </details>
 
-## AddItemImage
+## AddItemAddItemImage
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `type` | _String_ | image |
@@ -8502,7 +10053,7 @@ Display settings
 | `ids` | _Array&lt;String&gt; (optional)_ | List with the ID of each announcement |
 | `name` | _String (optional)_ | Announcement name |
 | `names` | _Array&lt;String&gt; (optional)_ | List with the name of each announcement |
-| `automatic` | _[Automatic](#automatic-presentation) (optional)_ | If informed, the presentation of the items will be automatic |
+| `automatic` | _[Automatic](#automatic) (optional)_ | If informed, the presentation of the items will be automatic |
 <details>
   <summary>See example</summary>
 
@@ -8597,7 +10148,7 @@ Display settings
 ```
 </details>
 
-## AddItemScript
+## AddItemAddItemScript
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `type` | _String_ | script |
@@ -8619,7 +10170,7 @@ Display settings
 ```
 </details>
 
-## AddItemAPI
+## AddItemAddItemAPI
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `type` | _String_ | api |
@@ -8697,16 +10248,29 @@ If there is an extra field called **Year**, it can be used like this:
 Turns into: **Title - Author, 2023**
 
 # Styled Text
-To display richly formatted text, start the text with **&lt;styled&gt;**
+To display text with advanced formatting, start the text with **<styled>**
 
 HTML tags available
 
-```
+```html
 <styled>
 <b>bold</b>
 <i>italic</i>
 <u>underlined</u>
-<color:0000FF>font color</color>
-<font:Times New Roman>font name</font>
-<size:70>relative font size 70%</size>
+<color:0000FF>Font color</color>
+<font:Arial>Font name</font>
+<size:70>Relative font size 70%</size>
+
+From v2.23.0
+<line-height:100>Line height</line-height>
+<valign:0>Vertical alignment  -200 ~ 200  </valign>
+<bgcolor:000000>Background color</bgcolor>
+<brightness-color:000000>Glow color</brightness-color>
+<brightness-weight:50>  0 ~ 100  </brightness-weight>
+<outline-color:000000>Outline color</outline-color>
+<outline-weight:50>  0 ~ 100  </outline-weight>
+<shadow-color:000000>Shadow color</shadow-color>
+<shadow-x-weight:50>  -100 ~ 100  </shadow-x-weight>
+<shadow-y-weight:-50>  -100 ~ 100  </shadow-y-weight>
+<blur>Apply blur effect</blur>
 ```
