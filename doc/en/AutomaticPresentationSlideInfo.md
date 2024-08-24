@@ -18,14 +18,14 @@
 
 
 
-**Parameters:**
-
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-|  | _Number_ | Número do slide. Começa em zero |
 
 
-_Method does not return value_
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Number_ | Número do slide. Começa em zero |
+
 
 ---
 
@@ -35,14 +35,14 @@ _Method does not return value_
 
 
 
-**Parameters:**
-
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-|  | _String_ | Slide text |
 
 
-_Method does not return value_
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Slide text |
+
 
 ---
 
@@ -52,14 +52,14 @@ _Method does not return value_
 
 
 
-**Parameters:**
-
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-|  | _String_ | Slide description |
 
 
-_Method does not return value_
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Slide description |
+
 
 ---
 
@@ -69,14 +69,14 @@ _Method does not return value_
 
 
 
-**Parameters:**
-
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-|  | _Number_ | Start time of the presentation in milliseconds |
 
 
-_Method does not return value_
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Number_ | Start time of the presentation in milliseconds |
+
 
 ---
 
@@ -86,14 +86,14 @@ _Method does not return value_
 
 
 
-**Parameters:**
-
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-|  | _Number_ | End time of the presentation in milliseconds |
 
 
-_Method does not return value_
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Number_ | End time of the presentation in milliseconds |
+
 
 ---
 
@@ -103,14 +103,14 @@ _Method does not return value_
 
 
 
-**Parameters:**
-
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-|  | _Number_ | Duration in milliseconds |
 
 
-_Method does not return value_
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Number_ | Duration in milliseconds |
+
 
 ---
 
@@ -120,13 +120,13 @@ _Method does not return value_
 
 
 
-**Parameters:**
-
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-|  | _Number_ | Tempo atual do slide. `time >= 0 && time <= duration` |
 
 
-_Method does not return value_
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Number_ | Tempo atual do slide. `time >= 0 && time <= duration` |
+
 
 ---
