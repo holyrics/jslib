@@ -1,17 +1,111 @@
 # jslib
 **PT** | [EN](README-en.md)
 
-Métodos da classe JSLib disponível para uso nos scripts do programa Holyrics.
+Métodos da classe JSLib disponível para uso nos scripts do programa Holyrics.<br>
 
 É possível utilizar a variável ```jslib``` ou a variável ```h``` para acessar os métodos disponíveis.
 
 Por exemplo:
+```javascript
+jslib.log('Exemplo');
+h.log('Exemplo');
+```
 
+## JSCommunity
+
+Para uso da biblioteca [JSCommunity](https://github.com/holyrics/JSCommunity), utilize a variável `jsc`.<br>
+
+Por exemplo:
+```javascript
+var r = jsc.utils.n3(5);
+// r: 005
 ```
-jslib.log('exemplo');
-h.log('exemplo');
+
+## ECMAScript - ECMA-262 Edition 5.1
+
+Apesar do padrão `ECMA-262 Edition 5.1` ser o utilizado para criação de código JavaScript no programa, algumas praticidades foram adicionadas na `v2.23.0` do Holyrics.
+
+### Arrow Function
+
+Compatibilidade para criação de código utilizando a sintaxe **Arrow Function**.<br>
+O programa converte o código em tempo real, transformando **Arrow Function** em **Anonymous Function**.
+
+Por exemplo:
+```javascript
+//Arrow Function
+var members = h.getMembers();
+h.stream(members)
+ .filter(m => m.name.startsWith('A'))
+ .sorted((a, b) => a.name.compareToIgnoreCase(b.name))
+ .forEach(m => h.log(m));
+
+//Anonymous Function
+var members = h.getMembers();
+h.stream(members)
+ .filter(function(m) {
+   return m.name.startsWith('A'));
+ })
+ .sorted(function(a, b) {
+   return a.name.compareToIgnoreCase(b.name);
+ })
+ .forEach(function(m) {
+   h.log(m);
+ });
 ```
+
+### Stream, Optional, ...
+
+Classes utilitárias
+
+Por exemplo:
+```javascript
+var arr = ['x', 'y', 'z', 'a', 'b', 'c'];
+var sortedArr = h.stream(arr)
+  .filter(o => o !== 'x')
+  .sorted()
+  .toArray();
+h.log(sortedArr);
+// output
+// ['a', 'b', 'c', 'y', 'z']
+
+
+var arr = ['x', 'y', 'z', 'a', 'b', 'c'];
+h.stream(arr)
+ .max((a, b) => a.compareToIgnoreCase(b))
+ .ifPresent(o => {
+   h.log(o);
+   // output
+   // z
+ });
+```
+
+### Teclas de atalho na janela de edição de código
+
+| Tecla de Atalho | Descrição |
+| ----: | ------------ |
+| `Ctrl + Space` | Exibe um submenu na janela de edição com sugestões de código baseado na localização atual do cursor |
+| `Ctrl + Shift + Up` | Duplicar linha(s) para cima |
+| `Ctrl + Shift + Down` | Duplicar linha(s) para baixo |
+| `Ctrl + F` | Localizar |
+| `Ctrl + H` | Substituir |
+| `Alt + Up` | Navegar para a ocorrência anterior |
+| `Alt + Down` | Navegar para a próxima ocorrência |
+
+`Tab`<br>
+Modelos de código podem ser criados para inserção automática na janela de edição de código após pressionar a tecla `Tab`.<br>
+Por exemplo, pressionar `Tab` após a palavra `for`, o seguinte modelo de código será inserido no local.
+```javascript
+for (var i = 0; i < /* cursor */; i++) {
+    
+}
+```
+
+Botão direito do mouse na janela de edição de código (menu de contexto), opção **Expandir com TAB**
+
+
 ---
+
+# Métodos disponíveis na biblioteca jslib
 
 - [Métodos](#métodos)
   - [log](#logobj)
@@ -93,6 +187,7 @@ h.log('exemplo');
   - [format.secondsToMS](#formatsecondstomsseconds-separator--)
   - [format.minutesToHM](#formatminutestohmminutes-separator--)
   - [format.f](#formatfformat-params)
+  - [format.rgbToHex](#formatrgbtohexred-green-blue)
   - [date.getSecondOfDay](#dategetsecondofday)
   - [date.getSecondOfDay](#dategetsecondofdayhour-minute-second)
   - [csvToArray](#csvtoarraycsv)
@@ -114,6 +209,7 @@ h.log('exemplo');
   - [trim](#trimvalue-trim)
   - [strReplace](#strreplacesearch-replace-subject)
   - [strRemoveTags](#strremovetagsvalue)
+  - [htmlExtractText](#htmlextracttexthtml-keeplinebreak--false)
   - [exportTXT](#exporttxttext-settings--null)
   - [exportXLSX](#exportxlsxdata)
   - [createByteBuffer](#createbytebuffer)
@@ -323,9 +419,9 @@ h.log('exemplo');
   - [AddItemSong](#additemsong)
   - [AddItemVerse](#additemverse)
   - [AddItemText](#additemtext)
-  - [AddItemAddItemAudio](#additemadditemaudio)
-  - [AddItemAddItemVideo](#additemadditemvideo)
-  - [AddItemAddItemImage](#additemadditemimage)
+  - [AddItemAudio](#additemaudio)
+  - [AddItemVideo](#additemvideo)
+  - [AddItemImage](#additemimage)
   - [AddItemAutomaticPresentation](#additemautomaticpresentation)
   - [AddItemAnnouncement](#additemannouncement)
   - [AddItemCountdown](#additemcountdown)
@@ -2653,6 +2749,51 @@ var r = h.format.f("Exemplo: %s, %.2f", ['abc', 100.1234]);
 ---
 
 
+### format.rgbToHex(red, green, blue)
+### format.rgbaToHex(red, green, blue, alpha)
+- v2.23.0
+
+
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `red` | _Number_ | `0 ~ 255` |
+| `green` | _Number_ | `0 ~ 255` |
+| `blue` | _Number_ | `0 ~ 255` |
+| `alpha` | _Number_ | `0 ~ 255` |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Cor no formato hexadecimal. `RRGGBB` or `RRGGBBAA`<br>Se `alpha = 255`, será retornado apenas `RRGGBB` |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.format.rgbToHex(50, 100, 150);
+// r: 326496
+
+var r = h.format.rgbaToHex(50, 100, 150, 200);
+// r: 326496C8
+
+var r = h.format.rgbaToHex(50, 100, 150, 255);
+// r: 326496
+
+var r = h.format.rgbaToHex(0, 0, 0, 0);
+// r: 00000000
+
+var r = h.format.rgbaToHex(255, 255, 255, 0);
+// r: FFFFFF00
+```
+
+---
+
+
 ### date.getSecondOfDay()
 - v2.20.0
 
@@ -3365,6 +3506,49 @@ var r = h.strRemoveTags("example <a> test</b>");
 h.log(r);
 // output
 // example  test
+```
+
+---
+
+
+### htmlExtractText(html, keepLineBreak = false)
+- v2.23.0
+
+Extrair o texto de um trecho formatado em HTML
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `html` | _String_ | Valor que será editado |
+| `keepLineBreak` | _Boolean (opcional)_ | Se **true**, as quebras de linha `\n (char 10)` serão mantidas `Padrão: false` |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var html = "<b>Exemplo</b>\n"
+        + "Exemplo - <span>Exemplo</span>\n"
+        + "<div>Exemplo</div>";
+var r = h.htmlExtractText(html);
+/*
+Exemplo Exemplo - Exemplo
+Exemplo
+*/
+
+var r = h.htmlExtractText(html, true);
+/*
+Exemplo
+Exemplo - Exemplo
+Exemplo
+*/
 ```
 
 ---
@@ -6385,9 +6569,9 @@ Retorna as informações de cor predominante de um respectivo tipo de item.<br/>
 | ---- | :---: | ------------|
 | `data` | _Array&lt;Object&gt;_ |  |
 | `data.*.hex` | _String_ | Cor no formato hexadecimal |
-| `data.*.red` | _Number_ | Vermelho  0-255 |
-| `data.*.green` | _Number_ | Verde  0-255 |
-| `data.*.blue` | _Number_ | Azul  0-255 |
+| `data.*.red` | _Number_ | Vermelho  `0 ~ 255` |
+| `data.*.green` | _Number_ | Verde  `0 ~ 255` |
+| `data.*.blue` | _Number_ | Azul  `0 ~ 255` |
 
 
 **Exemplo:**
@@ -9452,7 +9636,7 @@ Configurações de exibição
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `enabled` | _Boolean_ | Visão do palco ativada |
-| `preview_mode` | _String_ | Modo de visualização das letras. Opções disponíveis:<br/>CURRENT_SLIDE<br/>FIRST_LINE_OF_THE_NEXT_SLIDE_WITH_SEPARATOR<br/>FIRST_LINE_OF_THE_NEXT_SLIDE_WITHOUT_SEPARATOR<br/>NEXT_SLIDE<br/>CURRENT_AND_NEXT_SLIDE<br/>ALL_SLIDES |
+| `preview_mode` | _String_ | Modo de visualização das letras. Opções disponíveis:<br/>`CURRENT_SLIDE`<br/>`FIRST_LINE_OF_THE_NEXT_SLIDE_WITH_SEPARATOR`<br/>`FIRST_LINE_OF_THE_NEXT_SLIDE_WITHOUT_SEPARATOR`<br/>`NEXT_SLIDE`<br/>`CURRENT_AND_NEXT_SLIDE`<br/>`ALL_SLIDES` |
 | `uppercase` | _Boolean_ | Exibir em maiúsculo |
 | `remove_line_break` | _Boolean_ | Remover quebra de linha |
 | `show_comment` | _Boolean_ | Exibir comentários |
@@ -9973,7 +10157,7 @@ Conjunto chave/valor
 ```
 </details>
 
-## AddItemAddItemAudio
+## AddItemAudio
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `type` | _String_ | audio |
@@ -9992,7 +10176,7 @@ Conjunto chave/valor
 ```
 </details>
 
-## AddItemAddItemVideo
+## AddItemVideo
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `type` | _String_ | video |
@@ -10011,7 +10195,7 @@ Conjunto chave/valor
 ```
 </details>
 
-## AddItemAddItemImage
+## AddItemImage
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `type` | _String_ | image |
