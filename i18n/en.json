@@ -40,6 +40,10 @@
     "v": "2 seconds"
   },
   {
+    "k": "`data` pode ser `saveTo` (chave de armazenamento) caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente",
+    "v": "`data` can be `saveTo` (storage key) if the `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` method was called previously"
+  },
+  {
     "k": "A contagem regressiva do painel de comunicação está ativa",
     "v": "Communication panel countdown is active"
   },
@@ -2168,10 +2172,6 @@
     "v": "Methods"
   },
   {
-    "k": "Métodos da classe JSLib disponível para uso nos scripts do programa Holyrics.\n\nÉ possível utilizar a variável ```jslib``` ou a variável ```h``` para acessar os métodos disponíveis.\n\nPor exemplo:\n\n```\njslib.log('exemplo');\nh.log('exemplo');\n```",
-    "v": "JSLib class methods available for use in Holyrics program scripts.\n\nYou can use the ```jslib``` variable or the ```h``` variable to access the available methods.\n\nFor example:\n\n```\njslib.log('example');\nh.log('example');\n```"
-  },
-  {
     "k": "Métodos HLY",
     "v": "Methods HLY"
   },
@@ -4072,7 +4072,91 @@
     "v": "Current player volume"
   },
   {
-    "k": "`data` pode ser `saveTo` (chave de armazenamento) caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente",
-    "v": "`data` can be `saveTo` (storage key) if the `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` method was called previously"
+    "k": "or",
+    "v": "or"
+  },
+  {
+    "k": "Apesar do padrão `ECMA-262 Edition 5.1` ser o utilizado para criação de código JavaScript no programa, algumas praticidades foram adicionadas na `v2.23.0` do Holyrics",
+    "v": "Although the `ECMA-262 Edition 5.1` standard is used for creating JavaScript code in the program, some conveniences were added in `v2.23.0` of Holyrics"
+  },
+  {
+    "k": "Botão direito do mouse na janela de edição de código (menu de contexto), opção **Expandir com TAB**",
+    "v": "Right-click in the code editing window (context menu), option **Expand with TAB**"
+  },
+  {
+    "k": "Classes utilitárias",
+    "v": "Utility classes"
+  },
+  {
+    "k": "Compatibilidade para criação de código utilizando a sintaxe **Arrow Function**",
+    "v": "Compatibility for creating code using **Arrow Function** syntax"
+  },
+  {
+    "k": "Duplicar linha(s) para baixo",
+    "v": "Duplicate line(s) down"
+  },
+  {
+    "k": "Duplicar linha(s) para cima",
+    "v": "Duplicate line(s) up"
+  },
+  {
+    "k": "É possível utilizar a variável ```jslib``` ou a variável ```h``` para acessar os métodos disponíveis",
+    "v": "You can use the ```jslib``` variable or the ```h``` variable to access the available methods"
+  },
+  {
+    "k": "Exibe um submenu na janela de edição com sugestões de código baseado na localização atual do cursor",
+    "v": "Displays a submenu in the editing window with code suggestions based on the current cursor location"
+  },
+  {
+    "k": "Extrair o texto de um trecho formatado em HTML",
+    "v": "Extract text from an HTML formatted snippet"
+  },
+  {
+    "k": "Localizar",
+    "v": "Find"
+  },
+  {
+    "k": "Métodos da classe JSLib disponível para uso nos scripts do programa Holyrics",
+    "v": "JSLib class methods available for use in Holyrics program scripts"
+  },
+  {
+    "k": "Modelos de código podem ser criados para inserção automática na janela de edição de código após pressionar a tecla `Tab`",
+    "v": "Code templates can be created for automatic insertion in the code editing window after pressing the `Tab` key"
+  },
+  {
+    "k": "Navegar para a ocorrência anterior",
+    "v": "Navigate to the previous occurrence"
+  },
+  {
+    "k": "Navegar para a próxima ocorrência",
+    "v": "Navigate to the next occurrence"
+  },
+  {
+    "k": "O programa converte o código em tempo real, transformando **Arrow Function** em **Anonymous Function**",
+    "v": "The program converts the code in real-time, transforming **Arrow Function** into **Anonymous Function**"
+  },
+  {
+    "k": "Para uso da biblioteca [JSCommunity](https://github.com/holyrics/JSCommunity), utilize a variável `jsc`",
+    "v": "To use the [JSCommunity](https://github.com/holyrics/JSCommunity) library, use the `jsc` variable"
+  },
+  {
+    "k": "Por exemplo, pressionar `Tab` após a palavra `for`, o seguinte modelo de código será inserido no local",
+    "v": "For example, pressing `Tab` after the word `for`, the following code template will be inserted in place"
+  },
+  {
+    "k": "Se **true**, as quebras de linha `\\n (char 10)` serão mantidas",
+    "v": "If **true**, line breaks `\\n (char 10)` will be preserved"
+  },
+  {
+    "k": "Se `alpha = 255`, será retornado apenas `RRGGBB`",
+    "v": "If `alpha = 255`, only `RRGGBB` will be returned"
+  },
+  {
+    "k": "Substituir",
+    "v": "Replace"
+  },
+  {
+    "k": "Teclas de atalho na janela de edição de código",
+    "v": "Shortcut keys in the code editing window"
   }
 ]
