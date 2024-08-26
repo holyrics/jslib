@@ -391,7 +391,6 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [Automatic Presentation](#automatic-presentation)
   - [Automatic](#automatic)
   - [Presentation Slide Info](#presentation-slide-info)
-  - [Input Param](#input-param)
   - [Trigger Item](#trigger-item)
   - [Play Media Settings](#play-media-settings)
   - [Display Settings](#display-settings)
@@ -4023,7 +4022,7 @@ h.logf('{} {} {}', r.id, r.type, r.name);
 | ---- | :---: | ------------|
 | `key` | _String_ | Storage key used to save and retrieve the value of items.<br>`h.getGlobal(key, ...)`<br>`h.restore(key, ...)` |
 | `fromStore` | _Boolean_ | **true** to retrieve the value also in `h.restore(key, ...)` `Default: true` |
-| `inputs` | _Array&lt;[InputParam](#input-param)&gt;_ | Object with previously stored values, where each key is the `id` of the respective `input`.<br>The value defined in `default_value` of each item will be returned if there is no previously stored value |
+| `inputs` | _Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;_ | Object with previously stored values, where each key is the `id` of the respective `input`.<br>The value defined in `default_value` of each item will be returned if there is no previously stored value |
 
 
 **Response:**
@@ -8254,7 +8253,7 @@ Display a window with input fields to receive information interactively
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `param` | _Object_ | Entries that will be requested in the interface. Can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string** |
+| `param` | _Object_ | Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string** |
 | `notification` | _Boolean (optional)_ | Display a notification instead of opening the window directly |
 
 
@@ -8333,7 +8332,7 @@ The same function as `h.input(...)`, but automatically saves the value in `setGl
 | ---- | :---: | ------------|
 | `saveTo` | _String_ | Storage key used to save and retrieve the value of items.<br>`h.setGlobal(saveTo, ...)`<br>`h.getGlobal(saveTo, ...)`<br>`h.store(saveTo, ...)`<br>`h.restore(saveTo, ...)` |
 | `saveToStore` | _Boolean_ | **true** to save the value also in `h.store(saveTo, ...)`, meaning the configuration remains saved even after restarting the program `Default: true` |
-| `data` | _Object_ | Entries that will be requested in the interface. Can be string or Array&lt;[InputParam](#input-param)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string**.<br>`data` can be `saveTo` (storage key) if the `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` method was called previously |
+| `data` | _Object_ | Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string**.<br>`data` can be `saveTo` (storage key) if the `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` method was called previously |
 
 
 **Response:**
@@ -9387,10 +9386,6 @@ Complex classes used as a return in some methods
 | `theme_id` | _String_ | Slide theme ID |
 | `slide_description` | _String (optional)_ | Slide description name. Available if it is a music presentation. |
 | `preview` | _String (optional)_ | Image in base64 format |
-
-## Input Param
-[documentation](https://github.com/holyrics/Scripts/blob/main/InputParam.md)
-
 
 ## Trigger Item
 | Name | Type  | Description |

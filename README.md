@@ -391,7 +391,6 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [Automatic Presentation](#automatic-presentation)
   - [Automatic](#automatic)
   - [Presentation Slide Info](#presentation-slide-info)
-  - [Input Param](#input-param)
   - [Trigger Item](#trigger-item)
   - [Play Media Settings](#play-media-settings)
   - [Display Settings](#display-settings)
@@ -4023,7 +4022,7 @@ h.logf('{} {} {}', r.id, r.type, r.name);
 | ---- | :---: | ------------|
 | `key` | _String_ | Chave de armazenamento utilizado para salvar e recuperar o valor dos itens.<br>`h.getGlobal(key, ...)`<br>`h.restore(key, ...)` |
 | `fromStore` | _Boolean_ | **true** para recuperar o valor também em `h.restore(key, ...)` `Padrão: true` |
-| `inputs` | _Array&lt;[InputParam](#input-param)&gt;_ | Objeto com os valores previamente armazenados, onde cada chave é o `id` do respectivo `input`.<br>O valor definido em `default_value` de cada item será retornado caso não exista valor previamente armazenado |
+| `inputs` | _Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;_ | Objeto com os valores previamente armazenados, onde cada chave é o `id` do respectivo `input`.<br>O valor definido em `default_value` de cada item será retornado caso não exista valor previamente armazenado |
 
 
 **Resposta:**
@@ -8254,7 +8253,7 @@ Exibir uma janela com campos de entrada para receber informações de forma inte
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `param` | _Object_ | Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](#input-param)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string** |
+| `param` | _Object_ | Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string** |
 | `notification` | _Boolean (opcional)_ | Exibe uma notificação em vez de abrir a janela diretamente |
 
 
@@ -8333,7 +8332,7 @@ A mesma função de `h.input(...)`, porém salva automaticamente o valor em `set
 | ---- | :---: | ------------|
 | `saveTo` | _String_ | Chave de armazenamento utilizado para salvar e recuperar o valor dos itens.<br>`h.setGlobal(saveTo, ...)`<br>`h.getGlobal(saveTo, ...)`<br>`h.store(saveTo, ...)`<br>`h.restore(saveTo, ...)` |
 | `saveToStore` | _Boolean_ | **true** para salvar o valor também em `h.store(saveTo, ...)`, ou seja, a configuração se mantém salva mesmo após reiniciar o programa `Padrão: true` |
-| `data` | _Object_ | Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](#input-param)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string**.<br>`data` pode ser `saveTo` (chave de armazenamento) caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente |
+| `data` | _Object_ | Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string**.<br>`data` pode ser `saveTo` (chave de armazenamento) caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente |
 
 
 **Resposta:**
@@ -9098,7 +9097,7 @@ Classes complexas utilizadas como retorno em alguns métodos
   },
   "base_color": "FFFFFF",
   "font": {
-    "name": "Arial", "bold": false,
+    "name": "CMG Sans", "bold": true,
     "italic": false,
     "size": 10.0,
     "color": "F5F5F5", "line_spacing": 0.3,
@@ -9387,10 +9386,6 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `theme_id` | _String_ | ID do tema do slide |
 | `slide_description` | _String (opcional)_ | Nome da descrição do slide. Disponível se for uma apresentação de música. |
 | `preview` | _String (opcional)_ | Imagem no formato base64 |
-
-## Input Param
-[documentação](https://github.com/holyrics/Scripts/blob/main/InputParam.md)
-
 
 ## Trigger Item
 | Nome | Tipo  | Descrição |
