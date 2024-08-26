@@ -9098,7 +9098,7 @@ Classes complexas utilizadas como retorno em alguns métodos
   },
   "base_color": "FFFFFF",
   "font": {
-    "name": "CMG Sans", "bold": true,
+    "name": "Arial", "bold": false,
     "italic": false,
     "size": 10.0,
     "color": "F5F5F5", "line_spacing": 0.3,
@@ -9389,7 +9389,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `preview` | _String (opcional)_ | Imagem no formato base64 |
 
 ## Input Param
-Utiliza a mesma estrutura/sintaxe da funcionalidade FunctionInput [documentação](https://github.com/holyrics/Scripts/blob/main/FunctionInput.md#syntax)
+[documentação](https://github.com/holyrics/Scripts/blob/main/InputParam.md)
 
 
 ## Trigger Item

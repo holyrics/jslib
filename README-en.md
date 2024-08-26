@@ -1,9 +1,9 @@
 # jslib
 **EN** | [PT](README.md)
 
-Métodos da classe JSLib disponível para uso nos scripts do programa Holyrics.<br>
+JSLib class methods available for use in Holyrics program scripts.<br>
 
-É possível utilizar a variável ```jslib``` ou a variável ```h``` para acessar os métodos disponíveis.
+You can use the ```jslib``` variable or the ```h``` variable to access the available methods.
 
 For example:
 ```javascript
@@ -13,7 +13,7 @@ h.log('Example');
 
 ## JSCommunity
 
-Para uso da biblioteca [JSCommunity](https://github.com/holyrics/JSCommunity), utilize a variável `jsc`.<br>
+To use the [JSCommunity](https://github.com/holyrics/JSCommunity) library, use the `jsc` variable.<br>
 
 For example:
 ```javascript
@@ -23,12 +23,12 @@ var r = jsc.utils.n3(5);
 
 ## ECMAScript - ECMA-262 Edition 5.1
 
-Apesar do padrão `ECMA-262 Edition 5.1` ser o utilizado para criação de código JavaScript no programa, algumas praticidades foram adicionadas na `v2.23.0` do Holyrics.
+Although the `ECMA-262 Edition 5.1` standard is used for creating JavaScript code in the program, some conveniences were added in `v2.23.0` of Holyrics.
 
 ### Arrow Function
 
-Compatibilidade para criação de código utilizando a sintaxe **Arrow Function**.<br>
-O programa converte o código em tempo real, transformando **Arrow Function** em **Anonymous Function**.
+Compatibility for creating code using **Arrow Function** syntax.<br>
+The program converts the code in real-time, transforming **Arrow Function** into **Anonymous Function**.
 
 For example:
 ```javascript
@@ -55,7 +55,7 @@ h.stream(members)
 
 ### Stream, Optional, ...
 
-Classes utilitárias
+Utility classes
 
 For example:
 ```javascript
@@ -79,28 +79,28 @@ h.stream(arr)
  });
 ```
 
-### Teclas de atalho na janela de edição de código
+### Shortcut keys in the code editing window
 
 | Tecla de Atalho | Descrição |
 | ----: | ------------ |
-| `Ctrl + Space` | Exibe um submenu na janela de edição com sugestões de código baseado na localização atual do cursor |
-| `Ctrl + Shift + Up` | Duplicar linha(s) para cima |
-| `Ctrl + Shift + Down` | Duplicar linha(s) para baixo |
-| `Ctrl + F` | Localizar |
-| `Ctrl + H` | Substituir |
-| `Alt + Up` | Navegar para a ocorrência anterior |
-| `Alt + Down` | Navegar para a próxima ocorrência |
+| `Ctrl + Space` | Displays a submenu in the editing window with code suggestions based on the current cursor location |
+| `Ctrl + Shift + Up` | Duplicate line(s) up |
+| `Ctrl + Shift + Down` | Duplicate line(s) down |
+| `Ctrl + F` | Find |
+| `Ctrl + H` | Replace |
+| `Alt + Up` | Navigate to the previous occurrence |
+| `Alt + Down` | Navigate to the next occurrence |
 
 `Tab`<br>
-Modelos de código podem ser criados para inserção automática na janela de edição de código após pressionar a tecla `Tab`.<br>
-Por exemplo, pressionar `Tab` após a palavra `for`, o seguinte modelo de código será inserido no local.
+Code templates can be created for automatic insertion in the code editing window after pressing the `Tab` key.<br>
+For example, pressing `Tab` after the word `for`, the following code template will be inserted in place.
 ```javascript
 for (var i = 0; i < /* cursor */; i++) {
     
 }
 ```
 
-Botão direito do mouse na janela de edição de código (menu de contexto), opção **Expandir com TAB**
+Right-click in the code editing window (context menu), option **Expand with TAB**
 
 
 ---
@@ -2769,7 +2769,7 @@ var r = h.format.f("Example: %s, %.2f", ['abc', 100.1234]);
 
 | Type  | Description |
 | :---: | ------------|
-| _String_ | Color in hexadecimal format. `RRGGBB` or `RRGGBBAA`<br>Se `alpha = 255`, será retornado apenas `RRGGBB` |
+| _String_ | Color in hexadecimal format. `RRGGBB` or `RRGGBBAA`<br>If `alpha = 255`, only `RRGGBB` will be returned |
 
 
 **Example:**
@@ -3514,14 +3514,14 @@ h.log(r);
 ### htmlExtractText(html, keepLineBreak = false)
 - v2.23.0
 
-Extrair o texto de um trecho formatado em HTML
+Extract text from an HTML formatted snippet
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `html` | _String_ | Value to be edited |
-| `keepLineBreak` | _Boolean (optional)_ | Se **true**, as quebras de linha `\n (char 10)` serão mantidas `Default: false` |
+| `keepLineBreak` | _Boolean (optional)_ | If **true**, line breaks `\n (char 10)` will be preserved `Default: false` |
 
 
 **Response:**
@@ -9389,7 +9389,7 @@ Complex classes used as a return in some methods
 | `preview` | _String (optional)_ | Image in base64 format |
 
 ## Input Param
-Uses the same structure/syntax as the FunctionInput feature [documentation](https://github.com/holyrics/Scripts/blob/main/FunctionInput.md#syntax)
+[documentation](https://github.com/holyrics/Scripts/blob/main/InputParam.md)
 
 
 ## Trigger Item
