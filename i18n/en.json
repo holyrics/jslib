@@ -40,10 +40,6 @@
     "v": "2 seconds"
   },
   {
-    "k": "`C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm`",
-    "v": "`C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm`"
-  },
-  {
     "k": "`data` pode ser `saveTo` (chave de armazenamento) caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente",
     "v": "`data` can be `saveTo` (storage key) if the `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` method was called previously"
   },
@@ -1490,6 +1486,10 @@
   {
     "k": "Executado se a tarefa for cancelada",
     "v": "Executed if the task is canceled"
+  },
+  {
+    "k": "Executar ação somente se o objeto que gerou o gatilho corresponder ao objeto filter",
+    "v": "Execute action only if the object that triggered the event matches the filter object"
   },
   {
     "k": "Executar uma ação em uma apresentação de múltipla escolha",
@@ -4344,6 +4344,10 @@
     "v": "Total verses"
   },
   {
+    "k": "Traduções para o slide",
+    "v": "Translations for the slide"
+  },
+  {
     "k": "Traduções para o slide título",
     "v": "Translations for the title slide"
   },
@@ -4382,10 +4386,6 @@
   {
     "k": "URI ou ID dos streamings",
     "v": "URI or ID of the streamings"
-  },
-  {
-    "k": "Útil para ",
-    "v": "Useful for "
   },
   {
     "k": "Útil para conexões que precisam enviar um 'ping' para manter a conexão aberta",
@@ -4716,11 +4716,19 @@
     "v": "Current player volume"
   },
   {
-    "k": "Executar ação somente se o objeto que gerou o gatilho corresponder ao objeto filter",
-    "v": "Execute action only if the object that triggered the event matches the filter object"
+    "k": "Aplica uma formatação de sintaxe em trecho de código JavaScript para melhor visualização ao exibir exemplos na interface",
+    "v": "Applies syntax formatting to a piece of JavaScript code for better visualization when displaying examples in the interface"
   },
   {
-    "k": "Traduções para o slide",
-    "v": "Translations for the slide"
+    "k": "Código JavaScript",
+    "v": "JavaScript Code"
+  },
+  {
+    "k": "Retorna a lista de gatilhos salvos",
+    "v": "Returns the list of saved triggers"
+  },
+  {
+    "k": "Útil para diferenciar o dispositivo quando a sincronização em nuvem estiver ativada",
+    "v": "Useful for differentiating the device when cloud synchronization is enabled"
   }
 ]
