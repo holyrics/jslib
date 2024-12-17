@@ -206,6 +206,7 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [format.minutesToHM](#formatminutestohmminutes-separator--)
   - [format.f](#formatfformat-params)
   - [format.rgbToHex](#formatrgbtohexred-green-blue)
+  - [format.applyJSHighlightHTML](#formatapplyjshighlighthtmlcode)
   - [date.getSecondOfDay](#dategetsecondofday)
   - [date.getSecondOfDay](#dategetsecondofdayhour-minute-second)
   - [date.toMillis](#datetomillisvalue)
@@ -386,6 +387,7 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [ActionPreviousQuickPresentation](#hlyactionpreviousquickpresentation)
   - [CloseCurrentQuickPresentation](#hlyclosecurrentquickpresentation)
   - [GetCurrentQuickPresentation](#hlygetcurrentquickpresentation)
+  - [GetTriggers](#hlygettriggers)
 - [Métodos SecurityUtils](#métodos-securityutils)
   - [encrypt](#encryptvalue)
   - [decrypt](#decryptbase64)
@@ -460,9 +462,9 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [Bible Book Info](#bible-book-info)
   - [Verse Reference Group](#verse-reference-group)
   - [Verse Reference](#verse-reference)
-  - [AddItem](#additem)
   - [Translation Custom Settings](#translation-custom-settings)
   - [Translation Custom Settings Item](#translation-custom-settings-item)
+  - [AddItem](#additem)
   - [AddItemTitle](#additemtitle)
   - [AddItemSong](#additemsong)
   - [AddItemVerse](#additemverse)
@@ -479,6 +481,14 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [AddItemAddItemAPI](#additemadditemapi)
   - [AddItemURI](#additemuri)
   - [AddItemGlobalAction](#additemglobalaction)
+  - [SongInfo](#songinfo)
+  - [TextInfo](#textinfo)
+  - [AudioInfo](#audioinfo)
+  - [VideoInfo](#videoinfo)
+  - [ImageInfo](#imageinfo)
+  - [FileInfo](#fileinfo)
+  - [AutomaticPresentationInfo](#automaticpresentationinfo)
+  - [AnnouncementInfo](#announcementinfo)
 
 
 # Métodos 
@@ -2780,7 +2790,7 @@ if (h.isMinimumVersion('2.20.0')) {
 ### getDeviceID()
 - v2.24.0
 
-Retorna o ID do dispositivo. Útil para 
+Retorna o ID do dispositivo. Útil para diferenciar o dispositivo quando a sincronização em nuvem estiver ativada.
 
 
 
@@ -3190,6 +3200,38 @@ var r = h.format.rgbaToHex(0, 0, 0, 0);
 
 var r = h.format.rgbaToHex(255, 255, 255, 0);
 // r: FFFFFF00
+```
+
+---
+
+
+### format.applyJSHighlightHTML(code)
+- v2.24.0
+
+Aplica uma formatação de sintaxe em trecho de código JavaScript para melhor visualização ao exibir exemplos na interface
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `code` | _String_ | Código JavaScript |
+
+
+**Resposta:**
+
+| Tipo  |
+| :---: |
+| _String_ | 
+
+
+**Exemplo:**
+
+```javascript
+var code = "function example() {\n"
+         + "  return 'abc';\n"
+         + "}";
+var r = h.format.applyJSHighlightHTML(code);
+h.ok("<html>" + r);
 ```
 
 ---
@@ -9143,6 +9185,41 @@ _Método sem retorno_
 ---
 
 
+### hly('GetTriggers')
+- v2.24.0
+
+Retorna a lista de gatilhos salvos
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;Object&gt;_ |  |
+| `data.*.id` | _String_ | ID do item |
+| `data.*.enabled` | _String_ |  |
+| `data.*.when` | _String_ | Pode ser: `displaying` `closing` `change` `event` |
+| `data.*.type` | _String_ | Tipo do item. Pode ser:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` |
+| `data.*.item.title` | _String_ |  |
+| `data.*.item.reference` | _Object_ |  |
+| `data.*.receiver.type` | _String_ | Pode ser: `get` `post` `ws` `tcp` `udp` `midi` `obs_v4` `obs_v5` `lumikit` `vmix` `osc` `soundcraft` `ha` `ptz` `tbot` `openai` |
+| `data.*.description` | _String_ |  |
+| `data.*.tags` | _Array&lt;String&gt;_ |  |
+
+
+**Exemplo:**
+
+```javascript
+var items = h.hly('GetTriggers').data;
+for (var i = 0; i < items.length; i++) {
+    h.log("ID: " + items[i].id);
+}
+```
+
+---
+
+
 # Métodos SecurityUtils 
 ### encrypt(value)
 ### enc(value)
@@ -10467,7 +10544,7 @@ Classes complexas utilizadas como retorno em alguns métodos
   },
   "base_color": "FFFFFF",
   "font": {
-    "name": "Arial", "bold": false,
+    "name": "CMG Sans", "bold": true,
     "italic": false,
     "size": 10.0,
     "color": "F5F5F5", "line_spacing": 0.3,
@@ -11473,11 +11550,6 @@ Conjunto chave/valor
 ```
 </details>
 
-## AddItem
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script` |
-
 ## Translation Custom Settings
 Configurações customizadas da tradução
 
@@ -11500,6 +11572,11 @@ Configurações customizadas da tradução (item)
 | `style` | _String_ | Formatação customizada do texto. [Styled Text](#styled-text) |
 | `prefix` | _String_ | Texto adicionado no início de cada linha |
 | `suffix` | _String_ | Texto adicionado no final de cada linha |
+
+## AddItem
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script` |
 
 ## AddItemTitle
 | Nome | Tipo  | Descrição |
@@ -11821,6 +11898,186 @@ Configurações customizadas da tradução (item)
 | ---- | :---: | ------------|
 | `type` | _String_ | global_action |
 | `action` | _String_ | Pode ser: `slide_exit` `vlc_stop` `vlc_stop_fade_out` |
+
+## SongInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID da música |
+| `title` | _String_ | Título da música |
+| `artist` | _String_ | Artista da música |
+| `author` | _String_ | Autor da música |
+| `note` | _String_ | Anotação da música |
+| `copyright` | _String_ | Copyright da música |
+| `key` | _String_ | Tom da música.<br>Pode ser: `C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm` |
+| `bpm` | _Number_ | BPM da música |
+| `time_sig` | _String_ | Tempo da música.<br>Pode ser: `2/2` `2/4` `3/4` `4/4` `5/4` `6/4` `3/8` `6/8` `7/8` `9/8` `12/8` |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": "0",
+  "title": "",
+  "artist": "",
+  "author": "",
+  "note": "",
+  "copyright": "",
+  "key": "",
+  "bpm": 0.0,
+  "time_sig": ""
+}
+```
+</details>
+
+## TextInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID do texto |
+| `title` | _String_ | Título do texto |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": "",
+  "title": ""
+}
+```
+</details>
+
+## AudioInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `file_name` | _String_ |  |
+| `file_fullname` | _String_ |  |
+| `file_relative_path` | _String_ |  |
+| `file_path` | _String_ |  |
+| `is_dir` | _Boolean_ |  |
+| `extension` | _String_ |  |
+| `properties` | _Object_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "file_name": "file.mp3",
+  "file_fullname": "folder\\file.mp3",
+  "file_relative_path": "audio\\folder\\file.mp3",
+  "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\audio\\folder\\file.mp3",
+  "is_dir": false,
+  "extension": "mp3",
+  "properties": {}
+}
+```
+</details>
+
+## VideoInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `file_name` | _String_ |  |
+| `file_fullname` | _String_ |  |
+| `file_relative_path` | _String_ |  |
+| `file_path` | _String_ |  |
+| `is_dir` | _Boolean_ |  |
+| `extension` | _String_ |  |
+| `properties` | _Object_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "file_name": "file.mp4",
+  "file_fullname": "folder\\file.mp4",
+  "file_relative_path": "video\\folder\\file.mp4",
+  "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\video\\folder\\file.mp4",
+  "is_dir": false,
+  "extension": "mp4",
+  "properties": {}
+}
+```
+</details>
+
+## ImageInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `file_name` | _String_ |  |
+| `file_fullname` | _String_ |  |
+| `file_relative_path` | _String_ |  |
+| `file_path` | _String_ |  |
+| `is_dir` | _Boolean_ |  |
+| `extension` | _String_ |  |
+| `properties` | _Object_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "file_name": "file.jpg",
+  "file_fullname": "folder\\file.jpg",
+  "file_relative_path": "image\\folder\\file.jpg",
+  "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\image\\folder\\file.jpg",
+  "is_dir": false,
+  "extension": "jpg",
+  "properties": {}
+}
+```
+</details>
+
+## FileInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `file_name` | _String_ |  |
+| `file_fullname` | _String_ |  |
+| `file_relative_path` | _String_ |  |
+| `file_path` | _String_ |  |
+| `is_dir` | _Boolean_ |  |
+| `extension` | _String_ |  |
+| `properties` | _Object_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "file_name": "file.txt",
+  "file_fullname": "folder\\file.txt",
+  "file_relative_path": "file\\folder\\file.txt",
+  "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\file\\folder\\file.txt",
+  "is_dir": false,
+  "extension": "txt",
+  "properties": {}
+}
+```
+</details>
+
+## AutomaticPresentationInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "name": "name"
+}
+```
+</details>
+
+## AnnouncementInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _Number_ |  |
+| `name` | _String_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": 0,
+  "name": "name"
+}
+```
+</details>
 
 # Slide Additional Info Layout
 Coloque entre os caracteres **< >** os textos que deseja exibir

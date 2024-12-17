@@ -206,6 +206,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [format.minutesToHM](#formatminutestohmminutes-separator--)
   - [format.f](#formatfformat-params)
   - [format.rgbToHex](#formatrgbtohexred-green-blue)
+  - [format.applyJSHighlightHTML](#formatapplyjshighlighthtmlcode)
   - [date.getSecondOfDay](#dategetsecondofday)
   - [date.getSecondOfDay](#dategetsecondofdayhour-minute-second)
   - [date.toMillis](#datetomillisvalue)
@@ -386,6 +387,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [ActionPreviousQuickPresentation](#hlyactionpreviousquickpresentation)
   - [CloseCurrentQuickPresentation](#hlyclosecurrentquickpresentation)
   - [GetCurrentQuickPresentation](#hlygetcurrentquickpresentation)
+  - [GetTriggers](#hlygettriggers)
 - [SecurityUtils methods](#securityutils-methods)
   - [encrypt](#encryptvalue)
   - [decrypt](#decryptbase64)
@@ -460,9 +462,9 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [Bible Book Info](#bible-book-info)
   - [Verse Reference Group](#verse-reference-group)
   - [Verse Reference](#verse-reference)
-  - [AddItem](#additem)
   - [Translation Custom Settings](#translation-custom-settings)
   - [Translation Custom Settings Item](#translation-custom-settings-item)
+  - [AddItem](#additem)
   - [AddItemTitle](#additemtitle)
   - [AddItemSong](#additemsong)
   - [AddItemVerse](#additemverse)
@@ -479,6 +481,14 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [AddItemAddItemAPI](#additemadditemapi)
   - [AddItemURI](#additemuri)
   - [AddItemGlobalAction](#additemglobalaction)
+  - [SongInfo](#songinfo)
+  - [TextInfo](#textinfo)
+  - [AudioInfo](#audioinfo)
+  - [VideoInfo](#videoinfo)
+  - [ImageInfo](#imageinfo)
+  - [FileInfo](#fileinfo)
+  - [AutomaticPresentationInfo](#automaticpresentationinfo)
+  - [AnnouncementInfo](#announcementinfo)
 
 
 # Methods 
@@ -2780,7 +2790,7 @@ if (h.isMinimumVersion('2.20.0')) {
 ### getDeviceID()
 - v2.24.0
 
-Returns the device ID. Useful for 
+Returns the device ID. Useful for differentiating the device when cloud synchronization is enabled.
 
 
 
@@ -3190,6 +3200,38 @@ var r = h.format.rgbaToHex(0, 0, 0, 0);
 
 var r = h.format.rgbaToHex(255, 255, 255, 0);
 // r: FFFFFF00
+```
+
+---
+
+
+### format.applyJSHighlightHTML(code)
+- v2.24.0
+
+Applies syntax formatting to a piece of JavaScript code for better visualization when displaying examples in the interface
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `code` | _String_ | JavaScript Code |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _String_ | 
+
+
+**Example:**
+
+```javascript
+var code = "function example() {\n"
+         + "  return 'abc';\n"
+         + "}";
+var r = h.format.applyJSHighlightHTML(code);
+h.ok("<html>" + r);
 ```
 
 ---
@@ -9143,6 +9185,41 @@ _Method does not return value_
 ---
 
 
+### hly('GetTriggers')
+- v2.24.0
+
+Returns the list of saved triggers
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;Object&gt;_ |  |
+| `data.*.id` | _String_ | Item ID |
+| `data.*.enabled` | _String_ |  |
+| `data.*.when` | _String_ | Can be: `displaying` `closing` `change` `event` |
+| `data.*.type` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` |
+| `data.*.item.title` | _String_ |  |
+| `data.*.item.reference` | _Object_ |  |
+| `data.*.receiver.type` | _String_ | Can be: `get` `post` `ws` `tcp` `udp` `midi` `obs_v4` `obs_v5` `lumikit` `vmix` `osc` `soundcraft` `ha` `ptz` `tbot` `openai` |
+| `data.*.description` | _String_ |  |
+| `data.*.tags` | _Array&lt;String&gt;_ |  |
+
+
+**Example:**
+
+```javascript
+var items = h.hly('GetTriggers').data;
+for (var i = 0; i < items.length; i++) {
+    h.log("ID: " + items[i].id);
+}
+```
+
+---
+
+
 # SecurityUtils methods 
 ### encrypt(value)
 ### enc(value)
@@ -10124,7 +10201,7 @@ Opens an editing window for creating new song lyrics<br>Note: It is not possible
 | `paragraphs` | _Array&lt;Object&gt;_ | Alternative parameter for more complex values.<br>Optional if `lyrics` is declared |
 | `paragraphs.*.text` | _String_ | Paragraph text |
 | `paragraphs.*.description` | _String (optional)_ | Description of the paragraph. chorus, verse, ... |
-| `paragraphs.*.translations` | _Object (optional)_ | Traduções para o slide.<br>Key/value pair. |
+| `paragraphs.*.translations` | _Object (optional)_ | Translations for the slide.<br>Key/value pair. |
 | `author` | _String (optional)_ | Music author |
 | `artist` | _String (optional)_ | Music artist |
 | `copyright` | _String (optional)_ | Music copyright |
@@ -10183,7 +10260,7 @@ Opens an editing window for creating a new text presentation<br>Note: It is not 
 | `text` | _String_ | Presentation text.<br>Optional if `slides` is declared |
 | `slides` | _Array&lt;Object&gt;_ | Alternative parameter for more complex values.<br>Optional if `lyrics` is declared |
 | `slides.*.text` | _String_ | Paragraph text |
-| `slides.*.translations` | _Object (optional)_ | Traduções para o slide.<br>Key/value pair. |
+| `slides.*.translations` | _Object (optional)_ | Translations for the slide.<br>Key/value pair. |
 | `extras` | _Object (optional)_ | Mapa de objetos extras (adicionados pelo usuário)<br>Allowed only for already existing fields. |
 
 
@@ -10765,7 +10842,7 @@ Complex classes used as a return in some methods
 | `item` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` |
 | `action` | _Function_ | Action to be executed |
 | `name` | _String (optional)_ | Item name. Compatible value for display in **JavaScript Monitor** `v2.23.0+` |
-| `filter` | _Object (optional)_ | Executar ação somente se o objeto que gerou o gatilho corresponder ao objeto filter `v2.24.0+` |
+| `filter` | _Object (optional)_ | Execute action only if the object that triggered the event matches the filter object `v2.24.0+` |
 <details>
   <summary>See example</summary>
 
@@ -11473,11 +11550,6 @@ Key/value pair
 ```
 </details>
 
-## AddItem
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script` |
-
 ## Translation Custom Settings
 Custom translation settings
 
@@ -11500,6 +11572,11 @@ Custom translation settings (item)
 | `style` | _String_ | Custom text formatting. [Styled Text](#styled-text) |
 | `prefix` | _String_ | Text added at the beginning of each line |
 | `suffix` | _String_ | Text added at the end of each line |
+
+## AddItem
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script` |
 
 ## AddItemTitle
 | Name | Type  | Description |
@@ -11821,6 +11898,186 @@ Custom translation settings (item)
 | ---- | :---: | ------------|
 | `type` | _String_ | global_action |
 | `action` | _String_ | Can be: `slide_exit` `vlc_stop` `vlc_stop_fade_out` |
+
+## SongInfo
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Song ID |
+| `title` | _String_ | Song title |
+| `artist` | _String_ | Music artist |
+| `author` | _String_ | Music author |
+| `note` | _String_ | Music annotation |
+| `copyright` | _String_ | Music copyright |
+| `key` | _String_ | Tone of music.<br>Can be: `C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm` |
+| `bpm` | _Number_ | BPM of the song |
+| `time_sig` | _String_ | Music time.<br>Can be: `2/2` `2/4` `3/4` `4/4` `5/4` `6/4` `3/8` `6/8` `7/8` `9/8` `12/8` |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "id": "0",
+  "title": "",
+  "artist": "",
+  "author": "",
+  "note": "",
+  "copyright": "",
+  "key": "",
+  "bpm": 0.0,
+  "time_sig": ""
+}
+```
+</details>
+
+## TextInfo
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Text ID |
+| `title` | _String_ | Text title |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "id": "",
+  "title": ""
+}
+```
+</details>
+
+## AudioInfo
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `file_name` | _String_ |  |
+| `file_fullname` | _String_ |  |
+| `file_relative_path` | _String_ |  |
+| `file_path` | _String_ |  |
+| `is_dir` | _Boolean_ |  |
+| `extension` | _String_ |  |
+| `properties` | _Object_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "file_name": "file.mp3",
+  "file_fullname": "folder\\file.mp3",
+  "file_relative_path": "audio\\folder\\file.mp3",
+  "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\audio\\folder\\file.mp3",
+  "is_dir": false,
+  "extension": "mp3",
+  "properties": {}
+}
+```
+</details>
+
+## VideoInfo
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `file_name` | _String_ |  |
+| `file_fullname` | _String_ |  |
+| `file_relative_path` | _String_ |  |
+| `file_path` | _String_ |  |
+| `is_dir` | _Boolean_ |  |
+| `extension` | _String_ |  |
+| `properties` | _Object_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "file_name": "file.mp4",
+  "file_fullname": "folder\\file.mp4",
+  "file_relative_path": "video\\folder\\file.mp4",
+  "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\video\\folder\\file.mp4",
+  "is_dir": false,
+  "extension": "mp4",
+  "properties": {}
+}
+```
+</details>
+
+## ImageInfo
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `file_name` | _String_ |  |
+| `file_fullname` | _String_ |  |
+| `file_relative_path` | _String_ |  |
+| `file_path` | _String_ |  |
+| `is_dir` | _Boolean_ |  |
+| `extension` | _String_ |  |
+| `properties` | _Object_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "file_name": "file.jpg",
+  "file_fullname": "folder\\file.jpg",
+  "file_relative_path": "image\\folder\\file.jpg",
+  "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\image\\folder\\file.jpg",
+  "is_dir": false,
+  "extension": "jpg",
+  "properties": {}
+}
+```
+</details>
+
+## FileInfo
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `file_name` | _String_ |  |
+| `file_fullname` | _String_ |  |
+| `file_relative_path` | _String_ |  |
+| `file_path` | _String_ |  |
+| `is_dir` | _Boolean_ |  |
+| `extension` | _String_ |  |
+| `properties` | _Object_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "file_name": "file.txt",
+  "file_fullname": "folder\\file.txt",
+  "file_relative_path": "file\\folder\\file.txt",
+  "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\file\\folder\\file.txt",
+  "is_dir": false,
+  "extension": "txt",
+  "properties": {}
+}
+```
+</details>
+
+## AutomaticPresentationInfo
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `name` | _String_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "name": "name"
+}
+```
+</details>
+
+## AnnouncementInfo
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _Number_ |  |
+| `name` | _String_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "id": 0,
+  "name": "name"
+}
+```
+</details>
 
 # Slide Additional Info Layout
 Type between the characters **< >** the texts you want to display
