@@ -524,7 +524,7 @@ Returns the list of files from the respective tab: audio, video, image, file May
 
 | Type  |
 | :---: |
-| _Array&lt;[FileItem](#file-item)&gt;_ | 
+| _[FileItem](https://github.com/holyrics/jslib/blob/main/doc/en/FileItem.md)_ | 
 
 
 **Example:**
@@ -555,7 +555,7 @@ Returns the data of a file from the list of files in the respective tab: audio, 
 
 | Type  |
 | :---: |
-| _[FileItem](#file-item)_ | 
+| _[FileItem](https://github.com/holyrics/jslib/blob/main/doc/en/FileItem.md)_ | 
 
 
 **Example:**
