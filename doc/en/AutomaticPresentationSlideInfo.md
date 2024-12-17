@@ -24,7 +24,7 @@
 
 | Type  | Description |
 | :---: | ------------|
-| _Number_ | Número do slide. Começa em zero |
+| _Number_ | Slide number. Começa em zero |
 
 
 ---

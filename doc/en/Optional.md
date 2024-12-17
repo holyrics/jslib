@@ -69,9 +69,9 @@ var r = opt.get(); //throws exception
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Object_ |  |
+| Type  |
+| :---: |
+| _Object_ | 
 
 
 **Example:**
@@ -101,9 +101,9 @@ var r = opt.orElse("a");
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Object_ |  |
+| Type  |
+| :---: |
+| _Object_ | 
 
 
 **Example:**
@@ -159,9 +159,9 @@ var r = opt.orElseThrow(function() { throw 'error'; });
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/en/Optional.md)_ |  |
+| Type  |
+| :---: |
+| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/en/Optional.md)_ | 
 
 
 **Example:**
@@ -208,9 +208,9 @@ h.stream(arr)
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 **Example:**
@@ -238,9 +238,9 @@ if (opt.isPresent()) {
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/en/Optional.md)_ |  |
+| Type  |
+| :---: |
+| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/en/Optional.md)_ | 
 
 
 **Example:**

@@ -1,42 +1,33 @@
-# WebSocketClient
+# Process
+Objeto que representa um processo iniciado via JavaScript em execução no sistema operacional
 
 Example
 ```javascript
-function createWebSocket(receiver) {
-  var client = h.ws(receiver);
-  if (client != null) {
-    return client;
-  }
-  return h.ws(receiver, {
-    headers: {
-      key1: 'value 1',
-      key2: 'value 2'
-    },
-    on_open: function (evt) {
-      /* evt.source; evt.http_status; evt.http_status_message; */
-    },
-    on_message: function (msg) {
-      h.log(msg);
-    },
-    on_error: function (evt) {
-      /* evt.source; evt.error; */
-    },
-    on_close: function (evt) {
-      /* evt.source; evt.core; evt.reason; */
-    },
-    loop: function (evt) {
-      //evt.source
-    }
-  });
-}
+var p = h.process('filename.exe', {
+  cli: ['param 1', 'param 2'],
+  on_message: function(msg) {
+    h.log(msg.readString());
+  },
+  on_error: function(msg) {
+    h.log("error: " + msg.readString());
+  },
+  on_finish: function(code) {
+    //todo
+  },
+  timeout: 10000
+});
+p.send('example');
+p.await();
 ```
 
 ---
 
 - [Functions](#functions)
   - [send](#senddata)
+  - [await](#await)
+  - [awaitFor](#awaitfor)
   - [isOpen](#isopen)
-  - [close](#close)
+  - [destroy](#destroy)
   - [put](#putkey-value)
   - [get](#getkey-default--null)
   - [onPropertyChange](#onpropertychangekey--null-onchange)
@@ -44,37 +35,70 @@ function createWebSocket(receiver) {
 
 # Functions 
 ### send(data)
-### sendMessage(data)
 Enviar uma mensagem. May generate Exception.
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data` | _String_ | String que será enviada |
+| `data` | _Object_ | Valor que será enviado. Can be: `string`  `byte array`  `ByteBufferWriter` |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _[WebSocketClient](https://github.com/holyrics/jslib/blob/main/doc/en/WebSocketClient.md)_ | `this` |
+| _[Process](https://github.com/holyrics/jslib/blob/main/doc/en/Process.md)_ | `this` |
 
 
 **Example:**
 
 ```javascript
-var client = createWebSocket('receiver_id');
-client.send('message'); // utf-8
+p.send('example');
 
-client.send(h.toJson({ message: 'test' }));
+var buf = h.createByteBuffer()
+           .putString('message', 'Windows-1252');
+p.send(buf);
+```
+
+---
+
+
+### await()
+### waitFinish()
+Aguarda o término do processo
+
+
+
+_Method does not return value_
+
+---
+
+
+### awaitFor()
+Aguarda o término do processo e retorna o código de saída
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Number_ | Can be null |
+
+
+**Example:**
+
+```javascript
+var code = p.awaitFor();
+h.log(code);
 ```
 
 ---
 
 
 ### isOpen()
-Verifica se a conexão está ativa
+Verifica se o processo está em execução
 
 
 
@@ -88,9 +112,8 @@ Verifica se a conexão está ativa
 ---
 
 
-### close()
-### disconnect()
-Encerra a conexão
+### destroy()
+Encerra o processo
 
 
 
@@ -98,7 +121,7 @@ Encerra a conexão
 
 | Type  | Description |
 | :---: | ------------|
-| _[WebSocketClient](https://github.com/holyrics/jslib/blob/main/doc/en/WebSocketClient.md)_ | `this` |
+| _[Process](https://github.com/holyrics/jslib/blob/main/doc/en/Process.md)_ | `this` |
 
 
 ---
@@ -119,16 +142,17 @@ Armazena um valor no objeto
 
 | Type  | Description |
 | :---: | ------------|
-| _[WebSocketClient](https://github.com/holyrics/jslib/blob/main/doc/en/WebSocketClient.md)_ | `this` |
+| _[Process](https://github.com/holyrics/jslib/blob/main/doc/en/Process.md)_ | `this` |
 
 
 **Example:**
 
 ```javascript
-var client = h.ws('receiver_id', {
-  on_message: function (msg) {
+var p = h.process('filename.exe', {
+  on_message: function (buf) {
+    var msg = buf.readString();
     if (msg.startsWith('volume:')) {
-        client.put('volume', msg.substring(7).trim());
+        p.put('volume', msg.substring(7).trim());
     }
   }
 });
@@ -158,8 +182,7 @@ Obtém um valor armazenado no objeto
 **Example:**
 
 ```javascript
-var client = createWebSocket('receiver_id');
-client.get('volume');
+p.get('volume');
 ```
 
 ---
@@ -180,22 +203,20 @@ Executa uma ação sempre que uma propriedade for alterada
 
 | Type  | Description |
 | :---: | ------------|
-| _[WebSocketClient](https://github.com/holyrics/jslib/blob/main/doc/en/WebSocketClient.md)_ | `this` |
+| _[Process](https://github.com/holyrics/jslib/blob/main/doc/en/Process.md)_ | `this` |
 
 
 **Example:**
 
 ```javascript
-var client = createWebSocket('receiver_id');
-client.onPropertyChange(function(evt) {
+p.onPropertyChange(function(evt) {
     //evt.source;  evt.key;  evt.value;
     if (evt.key == 'volume') {
         h.log('volume: ' + evt.value);
     }
 });
 
-var client = createWebSocket('receiver_id');
-client.onPropertyChange('volume', function(evt) {
+p.onPropertyChange('volume', function(evt) {
     //evt.source;  evt.key;  evt.value;
     h.log('volume: ' + evt.value);
 });

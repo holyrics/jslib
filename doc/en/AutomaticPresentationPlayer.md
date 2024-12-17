@@ -48,9 +48,9 @@ Checks if the player is running
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -82,9 +82,9 @@ Checks if the **mute** option is enabled
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 ---

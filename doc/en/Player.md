@@ -90,9 +90,9 @@ Checks if the player is running
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -232,9 +232,9 @@ Checks if the **repeat** option is enabled
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -262,9 +262,9 @@ Verifica se o player está definido para executar itens em sequência
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -292,9 +292,9 @@ Checks if the player is set to play only the current list item
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -322,9 +322,9 @@ Checks if the **random** option is enabled
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -352,9 +352,9 @@ Checks if the **full screen** option is enabled
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -412,9 +412,9 @@ Checks if the **mute** option is enabled
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 ---

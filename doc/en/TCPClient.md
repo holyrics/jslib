@@ -29,7 +29,7 @@ function createTCP(receiver) {
   - [close](#close)
   - [put](#putkey-value)
   - [get](#getkey-default--null)
-  - [onPropertyChange](#onpropertychangeonchange)
+  - [onPropertyChange](#onpropertychangekey--null-onchange)
 
 
 # Functions 
@@ -72,9 +72,9 @@ Verifica se a conexão está ativa
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -142,9 +142,9 @@ Obtém um valor armazenado no objeto
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Object_ |  |
+| Type  |
+| :---: |
+| _Object_ | 
 
 
 **Example:**
@@ -157,13 +157,14 @@ client.get('volume');
 ---
 
 
-### onPropertyChange(onchange)
+### onPropertyChange(key = null, onchange)
 Executa uma ação sempre que uma propriedade for alterada
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
+| `key` | _String (optional)_ | Executa a ação somente para uma chave específica `v2.24.0+` |
 | `onchange` | _Function_ | `function(evt) { /* evt.source; evt.key; evt.value */ }` |
 
 
@@ -183,6 +184,12 @@ client.onPropertyChange(function(evt) {
     if (evt.key == 'volume') {
         h.log('volume: ' + evt.value);
     }
+});
+
+var client = createTCP('receiver_id');
+client.onPropertyChange('volume', function(evt) {
+    //evt.source;  evt.key;  evt.value;
+    h.log('volume: ' + evt.value);
 });
 ```
 

@@ -53,9 +53,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ |  |
+| Type  |
+| :---: |
+| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ | 
 
 
 **Example:**
@@ -85,9 +85,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ |  |
+| Type  |
+| :---: |
+| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ | 
 
 
 **Example:**
@@ -117,9 +117,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/en/Stream.md)_ |  |
+| Type  |
+| :---: |
+| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/en/Stream.md)_ | 
 
 
 **Example:**
@@ -145,9 +145,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ |  |
+| Type  |
+| :---: |
+| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ | 
 
 
 **Example:**
@@ -201,9 +201,9 @@ var r = h.intStreamOf(arr)
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Array&lt;Number&gt;_ |  |
+| Type  |
+| :---: |
+| _Array&lt;Number&gt;_ | 
 
 
 **Example:**
@@ -225,9 +225,9 @@ var r = h.intStreamOf(arr)
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ |  |
+| Type  |
+| :---: |
+| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ | 
 
 
 **Example:**
@@ -257,9 +257,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ |  |
+| Type  |
+| :---: |
+| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ | 
 
 
 **Example:**
@@ -285,9 +285,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[OptionalInt](https://github.com/holyrics/jslib/blob/main/doc/en/OptionalInt.md)_ |  |
+| Type  |
+| :---: |
+| _[OptionalInt](https://github.com/holyrics/jslib/blob/main/doc/en/OptionalInt.md)_ | 
 
 
 **Example:**
@@ -311,9 +311,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[OptionalInt](https://github.com/holyrics/jslib/blob/main/doc/en/OptionalInt.md)_ |  |
+| Type  |
+| :---: |
+| _[OptionalInt](https://github.com/holyrics/jslib/blob/main/doc/en/OptionalInt.md)_ | 
 
 
 **Example:**
@@ -337,9 +337,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Number_ |  |
+| Type  |
+| :---: |
+| _Number_ | 
 
 
 **Example:**
@@ -361,9 +361,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[OptionalDouble](https://github.com/holyrics/jslib/blob/main/doc/en/OptionalDouble.md)_ |  |
+| Type  |
+| :---: |
+| _[OptionalDouble](https://github.com/holyrics/jslib/blob/main/doc/en/OptionalDouble.md)_ | 
 
 
 **Example:**
@@ -392,9 +392,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 **Example:**
@@ -423,9 +423,9 @@ var r = h.intStreamOf(arr).noneMatch(o => o === 2);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 **Example:**
@@ -454,9 +454,9 @@ var r = h.intStreamOf(arr).allMatch(o => o > 1);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 **Example:**
@@ -480,9 +480,9 @@ var r = h.intStreamOf(arr).anyMatch(o => o === 4);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Number_ |  |
+| Type  |
+| :---: |
+| _Number_ | 
 
 
 **Example:**
@@ -506,9 +506,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[OptionalInt](https://github.com/holyrics/jslib/blob/main/doc/en/OptionalInt.md)_ |  |
+| Type  |
+| :---: |
+| _[OptionalInt](https://github.com/holyrics/jslib/blob/main/doc/en/OptionalInt.md)_ | 
 
 
 **Example:**
@@ -530,9 +530,9 @@ var opt = h.intStreamOf(arr)
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[OptionalInt](https://github.com/holyrics/jslib/blob/main/doc/en/OptionalInt.md)_ |  |
+| Type  |
+| :---: |
+| _[OptionalInt](https://github.com/holyrics/jslib/blob/main/doc/en/OptionalInt.md)_ | 
 
 
 **Example:**
@@ -559,9 +559,9 @@ var opt = h.intStreamOf(arr)
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ |  |
+| Type  |
+| :---: |
+| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ | 
 
 
 ---
@@ -579,9 +579,9 @@ var opt = h.intStreamOf(arr)
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ |  |
+| Type  |
+| :---: |
+| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/en/IntStream.md)_ | 
 
 
 **Example:**
@@ -612,9 +612,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _[OptionalInt](https://github.com/holyrics/jslib/blob/main/doc/en/OptionalInt.md)_ |  |
+| Type  |
+| :---: |
+| _[OptionalInt](https://github.com/holyrics/jslib/blob/main/doc/en/OptionalInt.md)_ | 
 
 
 **Example:**
@@ -644,9 +644,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Number_ |  |
+| Type  |
+| :---: |
+| _Number_ | 
 
 
 **Example:**

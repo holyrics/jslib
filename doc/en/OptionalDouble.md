@@ -61,9 +61,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Number_ |  |
+| Type  |
+| :---: |
+| _Number_ | 
 
 
 **Example:**
@@ -92,9 +92,9 @@ h.log(r);
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Number_ |  |
+| Type  |
+| :---: |
+| _Number_ | 
 
 
 **Example:**
@@ -173,9 +173,9 @@ h.intStreamOf(arr)
 
 **Response:**
 
-| Type  | Description |
-| :---: | ------------|
-| _Boolean_ |  |
+| Type  |
+| :---: |
+| _Boolean_ | 
 
 
 **Example:**
