@@ -7,32 +7,21 @@ $FIELDS$
 ---
 
 - [Functions](#functions)
-  - [name](#name)
-  - [type](#type)
-  - [filename](#filename)
-  - [is_dir](#isdir)
-  - [properties](#properties)
   - [getExtension](#getextension)
   - [isType](#istypetype)
   - [isTypeAudio](#istypeaudio)
-  - [isTypeVideo](#istypevideo)
-  - [isTypeImage](#istypeimage)
-  - [isTypeFile](#istypefile)
   - [getMetadata](#getmetadata)
   - [getThumbnail](#getthumbnail)
 
 
-# Functions 
+Fields| Name | Type  | Description |
+| ---- | :---: | ------------|
 | `name` | _String_ |  |
-
 | `type` | _String_ | `audio`  `video`  `image`  `file` |
-
 | `filename` | _String_ |  |
-
 | `is_dir` | _Boolean_ |  |
-
 | `properties` | _Object_ |  |
-
+# Functions 
 ### getExtension()
 
 
@@ -71,48 +60,12 @@ var r = h.isType('audio');
 
 
 ### isTypeAudio()
+### isTypeVideo
+### isTypeImage
+### isTypeFile
 ### isAudio
-
-
-**Response:**
-
-| Type  |
-| :---: |
-| _Boolean_ | 
-
-
----
-
-
-### isTypeVideo()
 ### isVideo
-
-
-**Response:**
-
-| Type  |
-| :---: |
-| _Boolean_ | 
-
-
----
-
-
-### isTypeImage()
 ### isImage
-
-
-**Response:**
-
-| Type  |
-| :---: |
-| _Boolean_ | 
-
-
----
-
-
-### isTypeFile()
 
 
 **Response:**
