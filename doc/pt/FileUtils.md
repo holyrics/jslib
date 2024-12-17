@@ -524,7 +524,7 @@ Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo P
 
 | Tipo  |
 | :---: |
-| _Array&lt;[FileItem](#file-item)&gt;_ | 
+| _[FileItem](https://github.com/holyrics/jslib/blob/main/doc/pt/FileItem.md)_ | 
 
 
 **Exemplo:**
@@ -555,7 +555,7 @@ Retorna os dados de um arquivo da lista de arquivos da respectiva aba: áudio, v
 
 | Tipo  |
 | :---: |
-| _[FileItem](#file-item)_ | 
+| _[FileItem](https://github.com/holyrics/jslib/blob/main/doc/pt/FileItem.md)_ | 
 
 
 **Exemplo:**
