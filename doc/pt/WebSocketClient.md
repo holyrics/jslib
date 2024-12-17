@@ -39,7 +39,7 @@ function createWebSocket(receiver) {
   - [close](#close)
   - [put](#putkey-value)
   - [get](#getkey-default--null)
-  - [onPropertyChange](#onpropertychangeonchange)
+  - [onPropertyChange](#onpropertychangekey--null-onchange)
 
 
 # Functions 
@@ -80,9 +80,9 @@ Verifica se a conexão está ativa
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -150,9 +150,9 @@ Obtém um valor armazenado no objeto
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Object_ |  |
+| Tipo  |
+| :---: |
+| _Object_ | 
 
 
 **Exemplo:**
@@ -165,13 +165,14 @@ client.get('volume');
 ---
 
 
-### onPropertyChange(onchange)
+### onPropertyChange(key = null, onchange)
 Executa uma ação sempre que uma propriedade for alterada
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
+| `key` | _String (opcional)_ | Executa a ação somente para uma chave específica `v2.24.0+` |
 | `onchange` | _Function_ | `function(evt) { /* evt.source; evt.key; evt.value */ }` |
 
 
@@ -191,6 +192,12 @@ client.onPropertyChange(function(evt) {
     if (evt.key == 'volume') {
         h.log('volume: ' + evt.value);
     }
+});
+
+var client = createWebSocket('receiver_id');
+client.onPropertyChange('volume', function(evt) {
+    //evt.source;  evt.key;  evt.value;
+    h.log('volume: ' + evt.value);
 });
 ```
 

@@ -53,9 +53,9 @@ h.log(sortedArr);
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ | 
 
 
 **Exemplo:**
@@ -85,9 +85,9 @@ h.log(arr2);
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ | 
 
 
 **Exemplo:**
@@ -112,9 +112,9 @@ h.log(arr2);
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ | 
 
 
 **Exemplo:**
@@ -144,9 +144,9 @@ h.log(arr2);
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ | 
 
 
 **Exemplo:**
@@ -199,9 +199,9 @@ h.stream(arr)
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Array&lt;Object&gt;_ |  |
+| Tipo  |
+| :---: |
+| _Array&lt;Object&gt;_ | 
 
 
 **Exemplo:**
@@ -223,9 +223,9 @@ var arr2 = h.stream(arr)
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ | 
 
 
 **Exemplo:**
@@ -255,9 +255,9 @@ h.log(arr2);
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ | 
 
 
 **Exemplo:**
@@ -288,9 +288,9 @@ h.log(arr2);
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ | 
 
 
 **Exemplo:**
@@ -325,9 +325,9 @@ h.stream(arr)
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ | 
 
 
 **Exemplo:**
@@ -362,9 +362,9 @@ h.stream(arr)
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 **Exemplo:**
@@ -393,9 +393,9 @@ var r = h.stream(arr).noneMatch(o => o === 'd');
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 **Exemplo:**
@@ -424,9 +424,9 @@ var r = h.stream(arr).allMatch(o => o.length() != 1);
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 **Exemplo:**
@@ -455,9 +455,9 @@ var r = h.stream(arr).anyMatch(o => o === 'd');
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Object_ |  |
+| Tipo  |
+| :---: |
+| _Object_ | 
 
 
 **Exemplo:**
@@ -482,9 +482,9 @@ h.log(str);
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ |  |
+| Tipo  |
+| :---: |
+| _Number_ | 
 
 
 **Exemplo:**
@@ -508,9 +508,9 @@ h.log(r);
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ | 
 
 
 **Exemplo:**
@@ -533,9 +533,9 @@ h.stream(arr)
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ | 
 
 
 **Exemplo:**
@@ -563,9 +563,9 @@ h.stream(arr)
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ | 
 
 
 **Exemplo:**
@@ -596,9 +596,9 @@ h.log(arr2);
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Stream](https://github.com/holyrics/jslib/blob/main/doc/pt/Stream.md)_ | 
 
 
 **Exemplo:**
@@ -629,9 +629,9 @@ h.log(arr2);
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ | 
 
 
 **Exemplo:**
@@ -663,9 +663,9 @@ h.stream(arr)
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Object_ |  |
+| Tipo  |
+| :---: |
+| _Object_ | 
 
 
 **Exemplo:**
@@ -696,9 +696,9 @@ h.log(r);
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/pt/IntStream.md)_ |  |
+| Tipo  |
+| :---: |
+| _[IntStream](https://github.com/holyrics/jslib/blob/main/doc/pt/IntStream.md)_ | 
 
 
 **Exemplo:**

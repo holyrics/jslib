@@ -48,9 +48,9 @@ Verifica se o player está em execução
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -82,9 +82,9 @@ Verifica se a opção **mudo** está ativada
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 ---

@@ -396,9 +396,9 @@ Quantidade atual de bytes adicionados
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ |  |
+| Tipo  |
+| :---: |
+| _Number_ | 
 
 
 **Exemplo:**
@@ -425,9 +425,9 @@ Converte os bytes adicionados em String
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _String_ |  |
+| Tipo  |
+| :---: |
+| _String_ | 
 
 
 **Exemplo:**
@@ -452,9 +452,9 @@ Converte os bytes adicionados em hexadecimal
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _String_ |  |
+| Tipo  |
+| :---: |
+| _String_ | 
 
 
 **Exemplo:**
@@ -479,9 +479,9 @@ Converte os bytes adicionados em base64
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _String_ |  |
+| Tipo  |
+| :---: |
+| _String_ | 
 
 
 **Exemplo:**
@@ -506,9 +506,9 @@ Retorna os bytes adicionados
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Array&lt;Byte&gt;_ |  |
+| Tipo  |
+| :---: |
+| _Array&lt;Byte&gt;_ | 
 
 
 **Exemplo:**

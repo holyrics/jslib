@@ -1,32 +1,33 @@
-# TCPClient
+# Process
+Objeto que representa um processo iniciado via JavaScript em execução no sistema operacional
 
 Exemplo
 ```javascript
-function createTCP(receiver) {
-  var client = h.tcp(receiver);
-  if (client != null) {
-    return client;
-  }
-  return h.tcp(receiver, {
-    on_message: function (/* ByteBuffer */ data) {
-      // data.toString();
-      // data.toHex();
-      // data.toBase64();
-      // data.toBytes();
-    },
-    on_close: function (evt) {
-      /* evt.source; */
-    }
-  });
-}
+var p = h.process('filename.exe', {
+  cli: ['param 1', 'param 2'],
+  on_message: function(msg) {
+    h.log(msg.readString());
+  },
+  on_error: function(msg) {
+    h.log("error: " + msg.readString());
+  },
+  on_finish: function(code) {
+    //todo
+  },
+  timeout: 10000
+});
+p.send('example');
+p.await();
 ```
 
 ---
 
 - [Functions](#functions)
   - [send](#senddata)
+  - [await](#await)
+  - [awaitFor](#awaitfor)
   - [isOpen](#isopen)
-  - [close](#close)
+  - [destroy](#destroy)
   - [put](#putkey-value)
   - [get](#getkey-default--null)
   - [onPropertyChange](#onpropertychangekey--null-onchange)
@@ -34,39 +35,70 @@ function createTCP(receiver) {
 
 # Functions 
 ### send(data)
-### sendMessage(data)
 Enviar uma mensagem. Pode gerar Exception.
 
 **Parâmetros:**
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `data` | _Object_ | Valor que será enviado |
+| `data` | _Object_ | Valor que será enviado. Pode ser: `string`  `byte array`  `ByteBufferWriter` |
 
 
 **Resposta:**
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _[TCPClient](https://github.com/holyrics/jslib/blob/main/doc/pt/TCPClient.md)_ | `this` |
+| _[Process](https://github.com/holyrics/jslib/blob/main/doc/pt/Process.md)_ | `this` |
 
 
 **Exemplo:**
 
 ```javascript
-var client = createTCP('receiver_id');
-client.send('message');
+p.send('example');
 
 var buf = h.createByteBuffer()
-           .putString('message', 'ascii');
-client.send(buf);
+           .putString('message', 'Windows-1252');
+p.send(buf);
+```
+
+---
+
+
+### await()
+### waitFinish()
+Aguarda o término do processo
+
+
+
+_Método sem retorno_
+
+---
+
+
+### awaitFor()
+Aguarda o término do processo e retorna o código de saída
+
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Number_ | Pode ser null |
+
+
+**Exemplo:**
+
+```javascript
+var code = p.awaitFor();
+h.log(code);
 ```
 
 ---
 
 
 ### isOpen()
-Verifica se a conexão está ativa
+Verifica se o processo está em execução
 
 
 
@@ -80,9 +112,8 @@ Verifica se a conexão está ativa
 ---
 
 
-### close()
-### disconnect()
-Encerra a conexão
+### destroy()
+Encerra o processo
 
 
 
@@ -90,7 +121,7 @@ Encerra a conexão
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _[TCPClient](https://github.com/holyrics/jslib/blob/main/doc/pt/TCPClient.md)_ | `this` |
+| _[Process](https://github.com/holyrics/jslib/blob/main/doc/pt/Process.md)_ | `this` |
 
 
 ---
@@ -111,16 +142,17 @@ Armazena um valor no objeto
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _[TCPClient](https://github.com/holyrics/jslib/blob/main/doc/pt/TCPClient.md)_ | `this` |
+| _[Process](https://github.com/holyrics/jslib/blob/main/doc/pt/Process.md)_ | `this` |
 
 
 **Exemplo:**
 
 ```javascript
-var client = h.tcp('receiver_id', {
-  on_message: function (msg) {
+var p = h.process('filename.exe', {
+  on_message: function (buf) {
+    var msg = buf.readString();
     if (msg.startsWith('volume:')) {
-        client.put('volume', msg.substring(7).trim());
+        p.put('volume', msg.substring(7).trim());
     }
   }
 });
@@ -150,8 +182,7 @@ Obtém um valor armazenado no objeto
 **Exemplo:**
 
 ```javascript
-var client = createTCP('receiver_id');
-client.get('volume');
+p.get('volume');
 ```
 
 ---
@@ -172,22 +203,20 @@ Executa uma ação sempre que uma propriedade for alterada
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _[TCPClient](https://github.com/holyrics/jslib/blob/main/doc/pt/TCPClient.md)_ | `this` |
+| _[Process](https://github.com/holyrics/jslib/blob/main/doc/pt/Process.md)_ | `this` |
 
 
 **Exemplo:**
 
 ```javascript
-var client = createTCP('receiver_id');
-client.onPropertyChange(function(evt) {
+p.onPropertyChange(function(evt) {
     //evt.source;  evt.key;  evt.value;
     if (evt.key == 'volume') {
         h.log('volume: ' + evt.value);
     }
 });
 
-var client = createTCP('receiver_id');
-client.onPropertyChange('volume', function(evt) {
+p.onPropertyChange('volume', function(evt) {
     //evt.source;  evt.key;  evt.value;
     h.log('volume: ' + evt.value);
 });

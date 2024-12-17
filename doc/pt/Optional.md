@@ -69,9 +69,9 @@ var r = opt.get(); //throws exception
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Object_ |  |
+| Tipo  |
+| :---: |
+| _Object_ | 
 
 
 **Exemplo:**
@@ -101,9 +101,9 @@ var r = opt.orElse("a");
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Object_ |  |
+| Tipo  |
+| :---: |
+| _Object_ | 
 
 
 **Exemplo:**
@@ -159,9 +159,9 @@ var r = opt.orElseThrow(function() { throw 'error'; });
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ | 
 
 
 **Exemplo:**
@@ -208,9 +208,9 @@ h.stream(arr)
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 **Exemplo:**
@@ -238,9 +238,9 @@ if (opt.isPresent()) {
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ |  |
+| Tipo  |
+| :---: |
+| _[Optional](https://github.com/holyrics/jslib/blob/main/doc/pt/Optional.md)_ | 
 
 
 **Exemplo:**

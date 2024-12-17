@@ -60,9 +60,9 @@ buf.readBytes(5); // [48, 48, 48, 48, 48]
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Array&lt;Byte&gt;_ |  |
+| Tipo  |
+| :---: |
+| _Array&lt;Byte&gt;_ | 
 
 
 **Exemplo:**
@@ -88,9 +88,9 @@ h.log(r); // [116, 101, 115]
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -104,9 +104,9 @@ h.log(r); // [116, 101, 115]
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Byte_ |  |
+| Tipo  |
+| :---: |
+| _Byte_ | 
 
 
 ---
@@ -119,9 +119,9 @@ h.log(r); // [116, 101, 115]
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ |  |
+| Tipo  |
+| :---: |
+| _Number_ | 
 
 
 ---
@@ -134,9 +134,9 @@ h.log(r); // [116, 101, 115]
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ |  |
+| Tipo  |
+| :---: |
+| _Number_ | 
 
 
 ---
@@ -149,9 +149,9 @@ h.log(r); // [116, 101, 115]
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ |  |
+| Tipo  |
+| :---: |
+| _Number_ | 
 
 
 ---
@@ -164,9 +164,9 @@ h.log(r); // [116, 101, 115]
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ |  |
+| Tipo  |
+| :---: |
+| _Number_ | 
 
 
 ---
@@ -179,9 +179,9 @@ h.log(r); // [116, 101, 115]
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ |  |
+| Tipo  |
+| :---: |
+| _Number_ | 
 
 
 ---
@@ -200,9 +200,9 @@ h.log(r); // [116, 101, 115]
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _String_ |  |
+| Tipo  |
+| :---: |
+| _String_ | 
 
 
 **Exemplo:**
@@ -233,9 +233,9 @@ Quantidade de bytes restantes a serem lidos
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Number_ |  |
+| Tipo  |
+| :---: |
+| _Number_ | 
 
 
 ---

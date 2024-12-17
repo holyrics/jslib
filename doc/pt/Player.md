@@ -90,9 +90,9 @@ Verifica se o player está em execução
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -232,9 +232,9 @@ Verifica se a opção **repetir** está ativada
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -262,9 +262,9 @@ Verifica se o player está definido para executar itens em sequência
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -292,9 +292,9 @@ Verifica se o player está definido para executar somente o item atual da lista
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -322,9 +322,9 @@ Verifica se a opção **aleatório** está ativada
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -352,9 +352,9 @@ Verifica se a opção **tela cheia** está ativada
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
@@ -412,9 +412,9 @@ Verifica se a opção **mudo** está ativada
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Boolean_ |  |
+| Tipo  |
+| :---: |
+| _Boolean_ | 
 
 
 ---
