@@ -40,8 +40,44 @@
     "v": "2 seconds"
   },
   {
+    "k": "`C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm`",
+    "v": "`C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm`"
+  },
+  {
     "k": "`data` pode ser `saveTo` (chave de armazenamento) caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente",
     "v": "`data` can be `saveTo` (storage key) if the `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` method was called previously"
+  },
+  {
+    "k": "`err` é a mensagem de erro se a execução gerou alguma `Exception`",
+    "v": "`err` is the error message if the execution generated any `Exception`"
+  },
+  {
+    "k": "`false` para ID não encontrado",
+    "v": "`false` for ID not found"
+  },
+  {
+    "k": "`id` é o id do item salvo ou `null` se o usuário fechou janela sem salvar o item",
+    "v": "`id` is the id of the saved item or `null` if the user closed the window without saving the item"
+  },
+  {
+    "k": "`response` é o objeto retornado na execução de `action`",
+    "v": "`response` is the object returned in the execution of `action`"
+  },
+  {
+    "k": "`true` para exibir o versículo através de uma janela popup de apresentação rápida",
+    "v": "`true` to display the verse through a quick presentation popup window"
+  },
+  {
+    "k": "`true` para exibir uma notificação no canto da tela faltando 1 minuto para a execução da tarefa, permitindo que o usuário cancele a execução",
+    "v": "`true` to display a notification in the corner of the screen one minute before the task execution, allowing the user to cancel the execution"
+  },
+  {
+    "k": "`true` para permitir o cancelamento da tarefa pelo usuário",
+    "v": "`true` to allow the user to cancel the task"
+  },
+  {
+    "k": "`true` para retornar o valor em Timestamp",
+    "v": "`true` to return the value in Timestamp"
   },
   {
     "k": "A contagem regressiva do painel de comunicação está ativa",
@@ -58,6 +94,10 @@
   {
     "k": "A fonte exemplo não está ativa",
     "v": "The example source is not active"
+  },
+  {
+    "k": "A lista de ações está disponível em: ",
+    "v": "The list of actions is available at: "
   },
   {
     "k": "A lista de reprodução é de um culto",
@@ -96,6 +136,10 @@
     "v": "the next line is executed only when the request is completed"
   },
   {
+    "k": "A tarefa não é persistente, ou seja, ao reiniciar o programa ela não se mantém agendada",
+    "v": "The task is not persistent, meaning that upon restarting the program it does not remain scheduled"
+  },
+  {
     "k": "A versão atual é igual ou superior a",
     "v": "The current version is equal to or greater than"
   },
@@ -108,6 +152,10 @@
     "v": "Opens the draw window from a list of items"
   },
   {
+    "k": "Abre um popup de progresso para execução de tarefas demoradas com feedback na interface",
+    "v": "Opens a progress popup for executing long tasks with feedback in the interface"
+  },
+  {
     "k": "Abre uma janela de confirmação, exibindo os botões **OK** e **Cancelar**",
     "v": "Opens a confirmation window, displaying **OK** and **Cancel** buttons"
   },
@@ -116,12 +164,28 @@
     "v": "Opens a confirmation window, displaying **Yes** and **No** buttons"
   },
   {
+    "k": "Abre uma janela de edição para criação de um novo tema",
+    "v": "Opens an editing window for creating a new theme"
+  },
+  {
+    "k": "Abre uma janela de edição para criação de uma nova apresentação de texto",
+    "v": "Opens an editing window for creating a new text presentation"
+  },
+  {
+    "k": "Abre uma janela de edição para criação de uma nova letra de música",
+    "v": "Opens an editing window for creating new song lyrics"
+  },
+  {
     "k": "Abre uma janela do programa",
     "v": "Open a program window"
   },
   {
     "k": "Abre uma janela para selecionar múltiplos itens em uma lista de valores",
     "v": "Opens a window for selecting multiple items from a list of values"
+  },
+  {
+    "k": "Abre uma janela para selecionar um arquivo",
+    "v": "Opens a window to select a file"
   },
   {
     "k": "Abre uma janela para selecionar um áudio",
@@ -142,6 +206,10 @@
   {
     "k": "Abre uma janela para selecionar um tema",
     "v": "Opens a window to select a theme"
+  },
+  {
+    "k": "Abre uma janela para selecionar um versículo",
+    "v": "Opens a window to select a verse"
   },
   {
     "k": "Abre uma janela para selecionar um vídeo",
@@ -212,6 +280,10 @@
     "v": "wait for the return, it may take a while"
   },
   {
+    "k": "Aguarde",
+    "v": "Please wait"
+  },
+  {
     "k": "Ajuste da imagem",
     "v": "Image adjustment"
   },
@@ -258,6 +330,10 @@
   {
     "k": "Altera as configurações da mensagem de alerta",
     "v": "Change alert message settings"
+  },
+  {
+    "k": "Altera as informações customizadas de um arquivo",
+    "v": "Changes the custom information of a file"
   },
   {
     "k": "Altera o ambiente de execução atual.",
@@ -444,8 +520,16 @@
     "v": "Total screen area on the system"
   },
   {
+    "k": "Argumentos que serão passados na execução do arquivo",
+    "v": "Arguments that will be passed in the execution of the file"
+  },
+  {
     "k": "arquivo",
     "v": "file"
+  },
+  {
+    "k": "Arquivo que será executado",
+    "v": "File that will be executed"
   },
   {
     "k": "array de bytes",
@@ -466,6 +550,10 @@
   {
     "k": "Array de números",
     "v": "Array of numbers"
+  },
+  {
+    "k": "Artista",
+    "v": "Artist"
   },
   {
     "k": "Artista da música",
@@ -502,6 +590,10 @@
   {
     "k": "audio ou vídeo",
     "v": "audio or vídeo"
+  },
+  {
+    "k": "Autor",
+    "v": "Author"
   },
   {
     "k": "Autor da música",
@@ -562,6 +654,10 @@
   {
     "k": "Caminho do arquivo de áudio linkado com a música",
     "v": "Path of the audio file linked to the song"
+  },
+  {
+    "k": "Caminho relativo da mídia no player",
+    "v": "Relative path of the media in the player"
   },
   {
     "k": "Caminho relativo do arquivo utilizado como papel de parede do evento",
@@ -676,6 +772,14 @@
     "v": "Class representing the program's automatic presentation player"
   },
   {
+    "k": "Classe utilitária para executar algumas ações via URI no sistema operacional, como por exemplo, executar uma track de streaming",
+    "v": "Utility class to execute some actions via URI in the operating system, such as executing a streaming track"
+  },
+  {
+    "k": "Classe utilitária para imagens",
+    "v": "Utility class for images"
+  },
+  {
     "k": "Classes",
     "v": "Classes"
   },
@@ -692,6 +796,10 @@
     "v": "Encodes an array of bytes to base64 string"
   },
   {
+    "k": "Codifica um array de bytes em string hexadecimal",
+    "v": "Encodes an array of bytes into a hexadecimal string"
+  },
+  {
     "k": "codificação da resposta da requisição, utf-8 por padrão",
     "v": "request response encoding, utf-8 by default"
   },
@@ -706,6 +814,10 @@
   {
     "k": "Codificação utilizada",
     "v": "Coding used"
+  },
+  {
+    "k": "Código de saída ou mensagem de erro",
+    "v": "Exit code or error message"
   },
   {
     "k": "Código midi",
@@ -736,6 +848,10 @@
     "v": "Compatibility for creating code using **Arrow Function** syntax"
   },
   {
+    "k": "Compatível com",
+    "v": "Compatible with"
+  },
+  {
     "k": "Configuração atual do painel de comunicação",
     "v": "Current communication panel configuration"
   },
@@ -758,6 +874,14 @@
   {
     "k": "Configurações",
     "v": "Settings"
+  },
+  {
+    "k": "Configurações customizadas da tradução",
+    "v": "Custom translation settings"
+  },
+  {
+    "k": "Configurações customizadas da tradução (item)",
+    "v": "Custom translation settings (item)"
   },
   {
     "k": "Configurações da visão do palco. (Indisponível para tela público)",
@@ -830,6 +954,10 @@
   {
     "k": "Converte um CSV (string) em um array bidimensional",
     "v": "Converts a CSV (string) into a two-dimensional array"
+  },
+  {
+    "k": "Converte um valor para timestamp (em milissegundos)",
+    "v": "Converts a value to timestamp (in milliseconds)"
   },
   {
     "k": "Converte uma string em array de bytes",
@@ -948,6 +1076,10 @@
     "v": "Color in hexadecimal format"
   },
   {
+    "k": "coro, verso, ...",
+    "v": "chorus, verse, ..."
+  },
+  {
     "k": "corpo da requisição (exceto para tipo GET)",
     "v": "request body (except for GET type)"
   },
@@ -980,6 +1112,10 @@
     "v": "requisition data"
   },
   {
+    "k": "Data da última execução do arquivo",
+    "v": "Date of the last execution of the file"
+  },
+  {
     "k": "Data de modificação do arquivo",
     "v": "File modification date"
   },
@@ -998,6 +1134,10 @@
   {
     "k": "Decodifica uma string em formato base64",
     "v": "Decodes a string in base64 format"
+  },
+  {
+    "k": "Decodifica uma string em formato hexadecimal",
+    "v": "Decodes a string in hexadecimal format"
   },
   {
     "k": "Define os tipos de apresentação que serão exibidos (disponível apenas para telas de transmissão - imagem e html)",
@@ -1020,12 +1160,28 @@
     "v": "Item description"
   },
   {
+    "k": "Descrição do parágrafo",
+    "v": "Description of the paragraph"
+  },
+  {
     "k": "Descrição do slide",
     "v": "Slide description"
   },
   {
+    "k": "Descrição exibida na notificação",
+    "v": "Description displayed in the notification"
+  },
+  {
     "k": "Descriptografar um valor",
     "v": "Decrypt a value"
+  },
+  {
+    "k": "Destacar ocorrência anterior sem mover o cursor",
+    "v": "Highlight previous occurrence without moving the cursor"
+  },
+  {
+    "k": "Destacar próxima ocorrência sem mover o cursor",
+    "v": "Highlight next occurrence without moving the cursor"
   },
   {
     "k": "Dia da semana",
@@ -1168,6 +1324,10 @@
     "v": "Encrypt a value"
   },
   {
+    "k": "Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string**",
+    "v": "Entries that will be requested in the interface. It can be a string or Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string**"
+  },
+  {
     "k": "Enviar mensagem ao chat Holyrics",
     "v": "Send message to Holyrics chat"
   },
@@ -1192,12 +1352,20 @@
     "v": "Line spacing"
   },
   {
+    "k": "Este método não simula o pressionamento da tecla de atalho, apenas executa a ação baseado no id da ação, independentemente da tecla de atalho associada",
+    "v": "This method does not simulate pressing the shortcut key, it only executes the action based on the action id, regardless of the associated shortcut key"
+  },
+  {
     "k": "Estender papel de parede",
     "v": "Extend wallpaper"
   },
   {
     "k": "Example",
     "v": "Example"
+  },
+  {
+    "k": "Executa a ação correspondente disponível na janela de teclas de atalho",
+    "v": "Executes the corresponding action available in the shortcut keys window"
   },
   {
     "k": "Executa a ação de um item **Script** existente no programa",
@@ -1236,6 +1404,10 @@
     "v": "Plays the next item in the media playlist"
   },
   {
+    "k": "Executa um arquivo",
+    "v": "Executes a file"
+  },
+  {
     "k": "Executa um áudio ou uma lista de áudios (pasta)",
     "v": "Play an audio or a list of audios (folder)"
   },
@@ -1272,6 +1444,10 @@
     "v": "Runs a function after a few milliseconds."
   },
   {
+    "k": "Executa uma função em um horário determinado",
+    "v": "Executes a function at a specified time"
+  },
+  {
     "k": "Executa uma requisição para o receptor associado de forma assíncrona. O resultado pode ser acessado criando uma função anônima como callback.",
     "v": "Executes a request to the associated receiver asynchronously. The result can be accessed by creating an anonymous function as a callback."
   },
@@ -1292,12 +1468,28 @@
     "v": "Executed when the connection is closed"
   },
   {
+    "k": "Executado ao encerrar o processo",
+    "v": "Executed when the process ends"
+  },
+  {
+    "k": "Executado ao fechar a janela de edição",
+    "v": "Executed when closing the editing window"
+  },
+  {
     "k": "Executado ao iniciar a conexão",
     "v": "Executed when the connection starts"
   },
   {
+    "k": "Executado ao terminar a execução de `action`",
+    "v": "Executed when finishing the execution of `action`"
+  },
+  {
     "k": "Executado quando ocorrer um erro",
     "v": "Executed when an error occurs"
+  },
+  {
+    "k": "Executado se a tarefa for cancelada",
+    "v": "Executed if the task is canceled"
   },
   {
     "k": "Executar uma ação em uma apresentação de múltipla escolha",
@@ -1350,6 +1542,14 @@
   {
     "k": "exibe uma janela para selecionar uma cena, exibindo a lista de todas as cenas",
     "v": "displays a window for selecting a scene, displaying the list of all scenes"
+  },
+  {
+    "k": "Exibe uma mensagem de erro em uma janela de diálogo",
+    "v": "Displays an error message in a dialog window"
+  },
+  {
+    "k": "Exibe uma mensagem em uma janela de diálogo",
+    "v": "Displays a message in a dialog window"
   },
   {
     "k": "Exibe uma notificação em vez de abrir a janela diretamente",
@@ -1500,6 +1700,10 @@
     "v": "Filter"
   },
   {
+    "k": "Filtro de busca",
+    "v": "Search filter"
+  },
+  {
     "k": "Fonte",
     "v": "Source"
   },
@@ -1516,6 +1720,18 @@
     "v": "Forces the update of an interface component"
   },
   {
+    "k": "Forçar a exibição do texto em maiúsculo",
+    "v": "Force the display of text in uppercase"
+  },
+  {
+    "k": "Forçar a exibição do texto em minúsculo",
+    "v": "Force the display of text in lowercase"
+  },
+  {
+    "k": "Formatação customizada do texto",
+    "v": "Custom text formatting"
+  },
+  {
     "k": "Formatar uma quantidade de minutos como hora|minuto.",
     "v": "Format a number of minutes as hour|minute."
   },
@@ -1528,6 +1744,10 @@
     "v": "Format a number of seconds as minute|second."
   },
   {
+    "k": "Formatos aceitos",
+    "v": "Accepted formats"
+  },
+  {
     "k": "função anônima utilizada como callback da requisição. function(response, error){}",
     "v": "anonymous function used as request callback. function(response, error){}"
   },
@@ -1536,8 +1756,16 @@
     "v": "Function that will be executed"
   },
   {
+    "k": "Funciona como `h.store()` e `h.restore()`, porém o valor salvo não é compartilhado na sincronização em nuvem, ou seja, os dados são salvos apenas para o dispositivo local",
+    "v": "Works like `h.store()` and `h.restore()`, but the saved value is not shared in cloud synchronization, meaning the data is saved only for the local device"
+  },
+  {
     "k": "funciona como apiRequest, porém de forma assíncrona",
     "v": "works like apiRequest, but asynchronously"
+  },
+  {
+    "k": "Funciona como um **setTimeout**, porém sem necessidade de calcular o tempo em milissegundos",
+    "v": "Works like a **setTimeout**, but without the need to calculate the time in milliseconds"
   },
   {
     "k": "Funções",
@@ -1628,8 +1856,16 @@
     "v": "Hour"
   },
   {
+    "k": "Horário da execução",
+    "v": "Execution time"
+  },
+  {
     "k": "Host ou IP de destino, caso esteja adicionado na lista de requisições permitidas",
     "v": "Host or destination IP, if added to the list of allowed requests"
+  },
+  {
+    "k": "Ícone exibido na notificação",
+    "v": "Icon displayed in the notification"
   },
   {
     "k": "ID da função",
@@ -1740,6 +1976,10 @@
     "v": "Verse ID"
   },
   {
+    "k": "ID do versículo atual",
+    "v": "Current verse ID"
+  },
+  {
     "k": "ID dos itens",
     "v": "Item IDs"
   },
@@ -1760,6 +2000,10 @@
     "v": "Receiver ID or name"
   },
   {
+    "k": "ID retornado do método **runAt**",
+    "v": "ID returned from the **runAt** method"
+  },
+  {
     "k": "ID retornado do método **setInterval**",
     "v": "ID returned from method **setInterval**"
   },
@@ -1774,6 +2018,10 @@
   {
     "k": "Identifica as possíveis referências bíblicas no texto informado",
     "v": "Identifies possible biblical references in the provided text"
+  },
+  {
+    "k": "Idioma",
+    "v": "Language"
   },
   {
     "k": "Idioma no formato ISO 639 two-letter",
@@ -1840,6 +2088,10 @@
     "v": "Start a stopwatch on the communication panel"
   },
   {
+    "k": "Inicia um processo no sistema operacional de um arquivo da biblioteca do programa",
+    "v": "Starts a process in the operating system from a file in the program's library"
+  },
+  {
     "k": "Inicia um timer",
     "v": "Start a timer"
   },
@@ -1882,6 +2134,10 @@
   {
     "k": "Intervalo em milissegundos entre cada execução",
     "v": "Interval in milliseconds between each run"
+  },
+  {
+    "k": "Ir para declaração",
+    "v": "Go to declaration"
   },
   {
     "k": "itálico",
@@ -1952,12 +2208,32 @@
     "v": "John 3:16"
   },
   {
+    "k": "JS Community Version y.m.d",
+    "v": "JS Community Version y.m.d"
+  },
+  {
+    "k": "lança exception para erro de execução",
+    "v": "throws exception for runtime error"
+  },
+  {
     "k": "Largura",
     "v": "Width"
   },
   {
+    "k": "Layout da informação da primeira linha",
+    "v": "Layout of the first line information"
+  },
+  {
+    "k": "Layout da informação da segunda linha",
+    "v": "Layout of the second line information"
+  },
+  {
     "k": "Ler um arquivo da biblioteca do programa",
     "v": "Read a file from the program library"
+  },
+  {
+    "k": "Letra da música",
+    "v": "Song lyrics"
   },
   {
     "k": "Letra de música",
@@ -2014,6 +2290,10 @@
   {
     "k": "Lista com os slides da apresentação atual",
     "v": "List with the slides of the current presentation"
+  },
+  {
+    "k": "Lista com os versículos da apresentação atual",
+    "v": "List of verses from the current presentation"
   },
   {
     "k": "Lista com valores padrões para o parâmetro",
@@ -2120,8 +2400,20 @@
     "v": "Find"
   },
   {
+    "k": "Mapa chave/valor com as informações que serão alteradas",
+    "v": "Key/value map with the information that will be changed"
+  },
+  {
     "k": "Mapa chave/valor onde a chave é o nome do campo **variables.*.name** da classe CustomMessage",
     "v": "Key/value map where the key is the field name **variables.*.name** of the CustomMessage class"
+  },
+  {
+    "k": "Mapa com as informações customizadas salvas no arquivo",
+    "v": "Map with the custom information saved in the file"
+  },
+  {
+    "k": "Mapa com as propriedades customizadas definidas para o arquivo",
+    "v": "Map with the custom properties defined for the file"
   },
   {
     "k": "Mapa de objetos extras (adicionados pelo usuário)",
@@ -2148,6 +2440,10 @@
     "v": "Message"
   },
   {
+    "k": "Mensagem de erro",
+    "v": "Error message"
+  },
+  {
     "k": "Mensagem de erro se *status* for igual a *error*",
     "v": "Error message if status equals *error*"
   },
@@ -2162,6 +2458,10 @@
   {
     "k": "Mensagem de texto para envio ao chat Holyrics",
     "v": "Text message to send to the Holyrics chat"
+  },
+  {
+    "k": "Mensagem inicial do popup de progresso",
+    "v": "Initial message of the progress popup"
   },
   {
     "k": "Mensagem que será exibida",
@@ -2272,6 +2572,14 @@
     "v": "Navigate to the next occurrence"
   },
   {
+    "k": "Navegar para aba anterior",
+    "v": "Navigate to the previous tab"
+  },
+  {
+    "k": "Navegar para aba seguinte",
+    "v": "Navigate to the next tab"
+  },
+  {
     "k": "negrito",
     "v": "bold"
   },
@@ -2376,6 +2684,10 @@
     "v": "File name"
   },
   {
+    "k": "Nome do arquivo (incluindo subpasta)",
+    "v": "File name (including subfolder)"
+  },
+  {
     "k": "Nome do arquivo na biblioteca",
     "v": "File name in the library"
   },
@@ -2428,12 +2740,28 @@
     "v": "Theme name or background"
   },
   {
+    "k": "Nome dos campos separados por vírgula",
+    "v": "Comma-separated field names"
+  },
+  {
+    "k": "Nome em inglês",
+    "v": "Name in English"
+  },
+  {
+    "k": "Nome no próprio idioma definido em `language`",
+    "v": "Name in the language defined in `language`"
+  },
+  {
     "k": "Nome ou abreviação da tradução utilizada",
     "v": "Name or abbreviation of the translation used"
   },
   {
     "k": "Nome que será exibido representando o item",
     "v": "Name that will be displayed representing the item"
+  },
+  {
+    "k": "Normaliza caracteres do tipo `NonspacingMark (NSM)`",
+    "v": "Normalizes characters of type `NonspacingMark (NSM)`"
   },
   {
     "k": "notificação",
@@ -2464,6 +2792,14 @@
     "v": "Number of the correct alternative. Starts at 1"
   },
   {
+    "k": "Número decodificado",
+    "v": "Decoded number"
+  },
+  {
+    "k": "Número do slide",
+    "v": "Slide number"
+  },
+  {
     "k": "Número do slide (começa em 1)",
     "v": "Slide number (starts at 1)"
   },
@@ -2476,12 +2812,32 @@
     "v": "Selected numbers"
   },
   {
+    "k": "O arquivo (ou a extensão) deve estar na lista de permissões para execução",
+    "v": "The file (or extension) must be on the execution whitelist"
+  },
+  {
+    "k": "O arquivo deve estar na respectiva aba 'arquivos' da biblioteca do programa (ou em uma subpasta)",
+    "v": "The file must be in the respective 'files' tab of the program's library (or in a subfolder)"
+  },
+  {
     "k": "O array retornado contém 8 índices, e cada índice corresponde ao trecho conforme imagem de exemplo a seguir",
     "v": "The returned array contains 8 indices, and each index corresponds to the section according to the following example image"
   },
   {
+    "k": "O ID da ação pode ser obtido clicando com o botão direito do mouse em cima do nome da ação na respectiva coluna **Ação**",
+    "v": "The action ID can be obtained by right-clicking on the action name in the respective **Action** column"
+  },
+  {
     "k": "O item de acordo com o tipo informado:",
     "v": "The item according to the type informed:"
+  },
+  {
+    "k": "O item foi salvo",
+    "v": "The item has been saved"
+  },
+  {
+    "k": "O item não foi salvo",
+    "v": "The item has not been saved"
   },
   {
     "k": "O mesmo que",
@@ -2506,6 +2862,10 @@
   {
     "k": "O número sorteado pode ser repetido",
     "v": "The number drawn can be repeated"
+  },
+  {
+    "k": "O objeto `evt` é do tipo",
+    "v": "The `evt` object is of type"
   },
   {
     "k": "O objeto `message` é do tipo: ",
@@ -2552,6 +2912,10 @@
     "v": "SecurityUtils class object"
   },
   {
+    "k": "Objeto para manipulação dinâmica dos valores armazenados em:",
+    "v": "Object for dynamic manipulation of the values stored in:"
+  },
+  {
     "k": "Objeto que será salvo",
     "v": "Object to be saved"
   },
@@ -2570,6 +2934,26 @@
   {
     "k": "OBS - Listar e alterar cena (ws v5)",
     "v": "NOTE - List and change scene (ws v5)"
+  },
+  {
+    "k": "Obs: `:SS` é opcional",
+    "v": "Note: `:SS` is optional"
+  },
+  {
+    "k": "Obs: É possível exibir, no máximo, 100 versículos diferentes em uma mesma requisição",
+    "v": "Note: It is possible to display a maximum of 100 different verses in a single request"
+  },
+  {
+    "k": "Obs: Não é possível abrir múltiplas janelas de edição simultaneamente",
+    "v": "Note: It is not possible to open multiple editing windows simultaneously"
+  },
+  {
+    "k": "Observação",
+    "v": "Observation"
+  },
+  {
+    "k": "Obtém a data do histórico de \"Música tocada\" mais próxima de uma data e hora passada por parâmetro (ou da data e hora atual do sistema)",
+    "v": "Gets the date of the \"Song played\" history closest to a date and time passed as a parameter (or the current system date and time)"
   },
   {
     "k": "Obtém a lista de reprodução atualmente selecionada no programa",
@@ -2612,6 +2996,14 @@
     "v": "optional"
   },
   {
+    "k": "Opcional se `lyrics` for declarado",
+    "v": "Optional if `lyrics` is declared"
+  },
+  {
+    "k": "Opcional se `paragraphs` for declarado",
+    "v": "Optional if `paragraphs` is declared"
+  },
+  {
     "k": "Opcional se `slides` for declarado",
     "v": "Optional if `slides` is declared"
   },
@@ -2632,8 +3024,20 @@
     "v": "Order of slides (index from 1), separated by comma"
   },
   {
+    "k": "Os valores passados serão MESCLADOS com os valores existentes",
+    "v": "The passed values will be MERGED with the existing values"
+  },
+  {
     "k": "ou",
     "v": "or"
+  },
+  {
+    "k": "ou botão scroll do mouse",
+    "v": "or mouse scroll button"
+  },
+  {
+    "k": "Ou seja, não é necessário enviar parâmetros que não serão alterados (ou removidos)",
+    "v": "That is, it is not necessary to send parameters that will not be changed (or removed)"
   },
   {
     "k": "Padrão",
@@ -2652,12 +3056,20 @@
     "v": "To avoid repetition"
   },
   {
+    "k": "Para exibir um texto com formatação avançada, inicie o texto com **&lt;styled&gt;**",
+    "v": "To display text with advanced formatting, start the text with **&lt;styled&gt;**"
+  },
+  {
     "k": "Para exibir um versículo. ID do item no formato LLCCCVVV.<br/>Exemplo: '19023001' (livro 19, capítulo 023, versículo 001)",
     "v": "To display a verse. Item ID in BBCCCVVV format.<br/>Example: '19023001' (book 19, chapter 023, verse 001)"
   },
   {
     "k": "Para exibir uma lista de versículos. Lista com o ID de cada versículo",
     "v": "To display a list of verses. List with the ID of each verse"
+  },
+  {
+    "k": "Para formatação especial, utilize a variável `@cp_countdown` no meio do texto para indicar o local de exibição da parte numérica",
+    "v": "For special formatting, use the variable `@cp_countdown` in the middle of the text to indicate the location of the numeric part"
   },
   {
     "k": "Para obter a lista dos IDs disponíveis, veja",
@@ -2682,6 +3094,10 @@
   {
     "k": "Parâmetro alternativo para apresentações mais complexas",
     "v": "Alternative parameter for more complex presentations"
+  },
+  {
+    "k": "Parâmetro alternativo para valores mais complexos",
+    "v": "Alternative parameter for more complex values"
   },
   {
     "k": "Parâmetro exibido sempre em maiúsculo",
@@ -2734,6 +3150,14 @@
   {
     "k": "permissões avançadas",
     "v": "advanced permissions"
+  },
+  {
+    "k": "Permite, por exemplo, iniciar a apresentação de um versículo sem encerrar a apresentação atual, voltando pra apresentação atual quando encerrar a apresentação do versículo",
+    "v": "Allows, for example, to start the presentation of a verse without ending the current presentation, returning to the current presentation when the verse presentation ends"
+  },
+  {
+    "k": "Permitido apenas campos já existentes",
+    "v": "Allowed only for already existing fields"
   },
   {
     "k": "Plano de fundo",
@@ -2790,6 +3214,14 @@
   {
     "k": "Por exemplo, se a permissão não estiver liberada",
     "v": "For example, if the permission is not enabled"
+  },
+  {
+    "k": "Por padrão, o texto é exibido antes da parte numérica",
+    "v": "By default, the text is displayed before the numeric part"
+  },
+  {
+    "k": "porém adiciona a hora atual no início do log",
+    "v": "but adds the current time at the beginning of the log"
   },
   {
     "k": "porém lança uma exception ao ocorrer um erro, em vez de retornar **null**",
@@ -2854,6 +3286,10 @@
   {
     "k": "Qualquer objeto para ser exibido na janela de log",
     "v": "Any object to be displayed in the log window"
+  },
+  {
+    "k": "qualquer valor mais próximo da data especificada",
+    "v": "any value closest to the specified date"
   },
   {
     "k": "Quantidade de linhas",
@@ -2988,6 +3424,10 @@
     "v": "Render text with theme outline, glow, and shadow effects, if available"
   },
   {
+    "k": "Requisição alternativa para `h.process(...)` utilizando uma abordagem mais compacta e direta",
+    "v": "Alternative request for `h.process(...)` using a more compact and direct approach"
+  },
+  {
     "k": "requisições permitidas",
     "v": "allowed requests"
   },
@@ -3028,6 +3468,10 @@
     "v": "Return **true** if it's a folder or **false** if it's a file."
   },
   {
+    "k": "Retorna a diferença entre duas datas",
+    "v": "Returns the difference between two dates"
+  },
+  {
     "k": "Retorna a duração da mídia",
     "v": "Returns the duration of the media"
   },
@@ -3050,6 +3494,10 @@
   {
     "k": "Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo",
     "v": "Returns the list of files from the respective tab: audio, video, image, file"
+  },
+  {
+    "k": "Retorna a lista de fontes disponíveis no sistema",
+    "v": "Returns the list of available sources in the system"
   },
   {
     "k": "Retorna a lista de gatilhos registrados",
@@ -3094,6 +3542,10 @@
   {
     "k": "Retorna a versão atual da biblioteca JSCommunity no programa.",
     "v": "Returns the current version of the JSCommunity library in the program."
+  },
+  {
+    "k": "Retorna a versão atual do **Holyrics Plugin**",
+    "v": "Returns the current version of **Holyrics Plugin**"
   },
   {
     "k": "Retorna a versão atual do programa.",
@@ -3150,6 +3602,10 @@
   {
     "k": "Retorna o ID da tarefa. Você pode utilizar o ID para parar a execução.",
     "v": "Returns the task ID. You can use the ID to stop the execution."
+  },
+  {
+    "k": "Retorna o ID do dispositivo",
+    "v": "Returns the device ID"
   },
   {
     "k": "Retorna o ID do item registrado (gerado automaticamente se **input.id** for **null**)",
@@ -3212,6 +3668,10 @@
     "v": "Returns the current hue value defined in the program"
   },
   {
+    "k": "Retorna os dados de um arquivo da lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo",
+    "v": "Returns the data of a file from the list of files in the respective tab: audio, video, image, file"
+  },
+  {
     "k": "Retorna os itens selecionados pelo usuário (pode ser NULL)",
     "v": "Returns items selected by the user (can be NULL)"
   },
@@ -3272,6 +3732,10 @@
     "v": "Rm 12:2  Gn 1:1-3  Ps 23"
   },
   {
+    "k": "Salva e recupera um objeto salvo em disco, que pode ser recuperado mesmo após reiniciar o programa",
+    "v": "Saves and retrieves an object saved on disk, which can be retrieved even after restarting the program"
+  },
+  {
     "k": "Salva um objeto em disco que pode ser recuperado mesmo após reiniciar o programa",
     "v": "Saves an object to disk that can be retrieved even after restarting the program"
   },
@@ -3300,6 +3764,10 @@
     "v": "If `alpha = 255`, only `RRGGBB` will be returned"
   },
   {
+    "k": "Se `result` for um número, é o código de saída da execução, se for uma `string`, é a mensagem de erro, por exemplo, 'timeout'",
+    "v": "If `result` is a number, it is the exit code of the execution; if it is a `string`, it is the error message, for example, 'timeout'"
+  },
+  {
     "k": "Se a exibição do alerta está ativada",
     "v": "Whether the alert display is enabled"
   },
@@ -3322,6 +3790,10 @@
   {
     "k": "Se está ativado ou desativado",
     "v": "Whether it is enabled or disabled"
+  },
+  {
+    "k": "Se este campo for declarado, apenas os campos especificados serão retornados",
+    "v": "If this field is declared, only the specified fields will be returned"
   },
   {
     "k": "Se for passado apenas um item como entrada, será retornado o valor informado pelo usuário (pode ser NULL). Se múltiplas entradas forem solicitadas, será retornado um objeto (pode ser NULL) onde cada valor será informado na variável do seu respectivo ID.",
@@ -3428,6 +3900,10 @@
     "v": "Separator"
   },
   {
+    "k": "Será utilizado o TimeZone atual do sistema como base para gerar o valor Timestamp",
+    "v": "The current system TimeZone will be used as a basis to generate the Timestamp value"
+  },
+  {
     "k": "Sistema operacional",
     "v": "Operational system"
   },
@@ -3444,6 +3920,10 @@
     "v": "only \"My Videos\" and tagged 'water' AND 'blue'"
   },
   {
+    "k": "Somente extensões seguras ou adicionadas na lista de exceção",
+    "v": "Only safe extensions or those added to the exception list"
+  },
+  {
     "k": "String decodificada",
     "v": "Decoded String"
   },
@@ -3454,6 +3934,14 @@
   {
     "k": "String em formato base64",
     "v": "String in base64 format"
+  },
+  {
+    "k": "String em formato hexadecimal",
+    "v": "String in hexadecimal format"
+  },
+  {
+    "k": "String em hexadecimal",
+    "v": "String in hexadecimal"
   },
   {
     "k": "String no formato CSV",
@@ -3604,6 +4092,10 @@
     "v": "Start time for execution in SS, MM:SS or HH:MM:SS format"
   },
   {
+    "k": "Tempo máximo para execução do processo",
+    "v": "Maximum time for process execution"
+  },
+  {
     "k": "Tempo para a notificação ser ocultada automaticamente. Se o valor for menor ou igual a zero a notificação não será ocultada automaticamente.",
     "v": "Time for the notification to be automatically hidden. If the value is less than or equal to zero, the notification will not be automatically hidden."
   },
@@ -3644,6 +4136,18 @@
     "v": "Text to be searched"
   },
   {
+    "k": "Texto adicionado no final de cada linha",
+    "v": "Text added at the end of each line"
+  },
+  {
+    "k": "Texto adicionado no início de cada linha",
+    "v": "Text added at the beginning of each line"
+  },
+  {
+    "k": "Texto alternativo para ser exibido quando a exibição for no alerta",
+    "v": "Alternative text to be displayed when the display is in the alert"
+  },
+  {
     "k": "Texto atual",
     "v": "Current text"
   },
@@ -3654,6 +4158,14 @@
   {
     "k": "Texto com acentuação removida",
     "v": "Text with accent removed"
+  },
+  {
+    "k": "Texto completo recebido do processo executado",
+    "v": "Full text received from the executed process"
+  },
+  {
+    "k": "Texto da apresentação",
+    "v": "Presentation text"
   },
   {
     "k": "Texto da área de transferência",
@@ -3670,6 +4182,10 @@
   {
     "k": "Texto do anúncio",
     "v": "Announcement text"
+  },
+  {
+    "k": "Texto do parágrafo",
+    "v": "Paragraph text"
   },
   {
     "k": "Texto do slide",
@@ -3690,6 +4206,10 @@
   {
     "k": "texto painel de comunicação",
     "v": "communication panel text"
+  },
+  {
+    "k": "Texto para exibição",
+    "v": "Text for display"
   },
   {
     "k": "Texto para identificação",
@@ -3820,6 +4340,14 @@
     "v": "Total slides"
   },
   {
+    "k": "Total de versículos",
+    "v": "Total verses"
+  },
+  {
+    "k": "Traduções para o slide título",
+    "v": "Translations for the title slide"
+  },
+  {
     "k": "Troca o estado atual da respectiva opção **F8 (papel de parede), F9 (tela vazia) ou F10 (tela preta)**",
     "v": "Changes the current state of the respective option **F8 (wallpaper), F9 (empty screen) or F10 (black screen)**"
   },
@@ -3856,8 +4384,16 @@
     "v": "URI or ID of the streamings"
   },
   {
+    "k": "Útil para ",
+    "v": "Useful for "
+  },
+  {
     "k": "Útil para conexões que precisam enviar um 'ping' para manter a conexão aberta",
     "v": "Useful for connections that need to send a 'ping' to keep the connection open"
+  },
+  {
+    "k": "Utiliza a sintaxe de [Icon](https://github.com/holyrics/Scripts/blob/main/Icon.md)",
+    "v": "Uses the syntax of [Icon](https://github.com/holyrics/Scripts/blob/main/Icon.md)"
   },
   {
     "k": "Utilizar o tema personalizado na opção **Apresentação Rápida**",
@@ -3872,8 +4408,20 @@
     "v": "Use custom theme in verses"
   },
   {
+    "k": "Utilize 'default' para usar o texto original",
+    "v": "Use 'default' to use the original text"
+  },
+  {
+    "k": "Utilize a sintaxe `{i18n|...}` para utilizar a mensagem traduzida conforme tabela de tradução disponível em `jsc`",
+    "v": "Use the syntax `{i18n|...}` to use the translated message according to the translation table available in `jsc`"
+  },
+  {
     "k": "utilize o nome que você deu ao receptor, ou o ID do receptor",
     "v": "use the name you gave the receiver, or the receiver ID"
+  },
+  {
+    "k": "Utilize {%t} para exibir a hora atual",
+    "v": "Use {%t} to display the current time"
   },
   {
     "k": "vai exibir uma janela para o usuário escolher um item criando a propriedade 'label'",
@@ -3944,6 +4492,14 @@
     "v": "Initial value (inclusive)"
   },
   {
+    "k": "valor mais próximo que seja anterior ou igual à data especificada",
+    "v": "The closest value that is earlier than or equal to the specified date"
+  },
+  {
+    "k": "valor mais próximo que seja igual ou posterior à data especificada",
+    "v": "The closest value that is equal to or later than the specified date"
+  },
+  {
     "k": "Valor matiz atual. Mínimo=0, Máximo=360. Retorna **null** se desativado.",
     "v": "Current hue value. Minimum=0, Maximum=360. Returns **null** if disabled."
   },
@@ -3958,6 +4514,10 @@
   {
     "k": "valor mínimo",
     "v": "minimum value"
+  },
+  {
+    "k": "Valor normalizado",
+    "v": "Normalized value"
   },
   {
     "k": "valor padrão",
@@ -3988,6 +4548,10 @@
     "v": "Value to be edited"
   },
   {
+    "k": "Valor que será normalizado",
+    "v": "Value that will be normalized"
+  },
+  {
     "k": "Valor que será pesquisado",
     "v": "Value to be searched"
   },
@@ -4002,6 +4566,10 @@
   {
     "k": "Valores que serão definidos para",
     "v": "Values that will be set for"
+  },
+  {
+    "k": "Variações",
+    "v": "Variations"
   },
   {
     "k": "Variável adicionada na posição especificada conforme valor retornado em **variables.*.position** da classe CustomMessage.",
@@ -4026,6 +4594,10 @@
   {
     "k": "Verifica se a exibição da chave está ativada",
     "v": "Checks if the display of the key is activated"
+  },
+  {
+    "k": "Verifica se a extensão está na lista de permissão para execução",
+    "v": "Checks if the extension is on the permission list for execution"
   },
   {
     "k": "Verifica se a opção **aleatório** está ativada",
@@ -4064,6 +4636,10 @@
     "v": "Checks whether the current execution environment is the same as the one passed by parameter."
   },
   {
+    "k": "Verifica se o Holyrics Plugin está aberto",
+    "v": "Checks if the Holyrics Plugin is open"
+  },
+  {
     "k": "Verifica se o idioma atual definido nas configurações do programa é igual ao valor passado por parâmetro.",
     "v": "Checks if the current language set in the program settings is equal to the value passed by parameter."
   },
@@ -4076,12 +4652,20 @@
     "v": "Checks if the player is running"
   },
   {
+    "k": "Verifica se o servidor do Holyrics Plugin está iniciado",
+    "v": "Checks if the Holyrics Plugin server is started"
+  },
+  {
     "k": "Verifica se o tema atual atual da interface é igual ao valor passado por parâmetro.",
     "v": "Checks if the current theme of the interface is equal to the value passed by parameter."
   },
   {
     "k": "Verifica se os dois caminhos são iguais, ignorando distinção de maiúsculo para Windows e considerando '\\' e '/' como iguais",
     "v": "Checks if the two paths are the same, ignoring case distinction for Windows and considering '\\' and '/' as equal"
+  },
+  {
+    "k": "Verifica se um arquivo da aba de arquivos está na lista de permissão para execução",
+    "v": "Checks if a file from the files tab is on the permission list for execution"
   },
   {
     "k": "Verifica se um gatilho com o ID específico já está registrado",
@@ -4132,591 +4716,11 @@
     "v": "Current player volume"
   },
   {
-    "k": "`audio`  `video`  `image`  `file`",
-    "v": "`audio`  `video`  `image`  `file`"
+    "k": "Executar ação somente se o objeto que gerou o gatilho corresponder ao objeto filter",
+    "v": "Execute action only if the object that triggered the event matches the filter object"
   },
   {
-    "k": "`C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm`",
-    "v": "`C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm`"
-  },
-  {
-    "k": "JS Community Version y.m.d",
-    "v": "JS Community Version y.m.d"
-  },
-  {
-    "k": "`err` é a mensagem de erro se a execução gerou alguma `Exception`",
-    "v": "`err` is the error message if the execution generated any `Exception`"
-  },
-  {
-    "k": "`false` para ID não encontrado",
-    "v": "`false` for ID not found"
-  },
-  {
-    "k": "`id` é o id do item salvo ou `null` se o usuário fechou janela sem salvar o item",
-    "v": "`id` is the id of the saved item or `null` if the user closed the window without saving the item"
-  },
-  {
-    "k": "`response` é o objeto retornado na execução de `action`",
-    "v": "`response` is the object returned in the execution of `action`"
-  },
-  {
-    "k": "`true` para exibir o versículo através de uma janela popup de apresentação rápida",
-    "v": "`true` to display the verse through a quick presentation popup window"
-  },
-  {
-    "k": "`true` para exibir uma notificação no canto da tela faltando 1 minuto para a execução da tarefa, permitindo que o usuário cancele a execução",
-    "v": "`true` to display a notification in the corner of the screen one minute before the task execution, allowing the user to cancel the execution"
-  },
-  {
-    "k": "`true` para permitir o cancelamento da tarefa pelo usuário",
-    "v": "`true` to allow the user to cancel the task"
-  },
-  {
-    "k": "`true` para retornar o valor em Timestamp",
-    "v": "`true` to return the value in Timestamp"
-  },
-  {
-    "k": "A lista de ações está disponível em: ",
-    "v": "The list of actions is available at: "
-  },
-  {
-    "k": "A tarefa não é persistente, ou seja, ao reiniciar o programa ela não se mantém agendada",
-    "v": "The task is not persistent, meaning that upon restarting the program it does not remain scheduled"
-  },
-  {
-    "k": "Abre um popup de progresso para execução de tarefas demoradas com feedback na interface",
-    "v": "Opens a progress popup for executing long tasks with feedback in the interface"
-  },
-  {
-    "k": "Abre uma janela de edição para criação de um novo tema",
-    "v": "Opens an editing window for creating a new theme"
-  },
-  {
-    "k": "Abre uma janela de edição para criação de uma nova apresentação de texto",
-    "v": "Opens an editing window for creating a new text presentation"
-  },
-  {
-    "k": "Abre uma janela de edição para criação de uma nova letra de música",
-    "v": "Opens an editing window for creating new song lyrics"
-  },
-  {
-    "k": "Abre uma janela para selecionar um arquivo",
-    "v": "Opens a window to select a file"
-  },
-  {
-    "k": "Abre uma janela para selecionar um versículo",
-    "v": "Opens a window to select a verse"
-  },
-  {
-    "k": "Aguarde",
-    "v": "Please wait"
-  },
-  {
-    "k": "Altera as informações customizadas de um arquivo",
-    "v": "Changes the custom information of a file"
-  },
-  {
-    "k": "Argumentos que serão passados na execução do arquivo",
-    "v": "Arguments that will be passed in the execution of the file"
-  },
-  {
-    "k": "Arquivo que será executado",
-    "v": "File that will be executed"
-  },
-  {
-    "k": "Artista",
-    "v": "Artist"
-  },
-  {
-    "k": "Autor",
-    "v": "Author"
-  },
-  {
-    "k": "Caminho relativo da mídia no player",
-    "v": "Relative path of the media in the player"
-  },
-  {
-    "k": "Classe utilitária para executar algumas ações via URI no sistema operacional, como por exemplo, executar uma track de streaming",
-    "v": "Utility class to execute some actions via URI in the operating system, such as executing a streaming track"
-  },
-  {
-    "k": "Classe utilitária para imagens",
-    "v": "Utility class for images"
-  },
-  {
-    "k": "Codifica um array de bytes em string hexadecimal",
-    "v": "Encodes an array of bytes into a hexadecimal string"
-  },
-  {
-    "k": "Código de saída ou mensagem de erro",
-    "v": "Exit code or error message"
-  },
-  {
-    "k": "Compatível com",
-    "v": "Compatible with"
-  },
-  {
-    "k": "Configurações customizadas da tradução",
-    "v": "Custom translation settings"
-  },
-  {
-    "k": "Configurações customizadas da tradução (item)",
-    "v": "Custom translation settings (item)"
-  },
-  {
-    "k": "Converte um valor para timestamp (em milissegundos)",
-    "v": "Converts a value to timestamp (in milliseconds)"
-  },
-  {
-    "k": "coro, verso, ...",
-    "v": "chorus, verse, ..."
-  },
-  {
-    "k": "Data da última execução do arquivo",
-    "v": "Date of the last execution of the file"
-  },
-  {
-    "k": "Decodifica uma string em formato hexadecimal",
-    "v": "Decodes a string in hexadecimal format"
-  },
-  {
-    "k": "Descrição do parágrafo",
-    "v": "Description of the paragraph"
-  },
-  {
-    "k": "Descrição exibida na notificação",
-    "v": "Description displayed in the notification"
-  },
-  {
-    "k": "Destacar ocorrência anterior sem mover o cursor",
-    "v": "Highlight previous occurrence without moving the cursor"
-  },
-  {
-    "k": "Destacar próxima ocorrência sem mover o cursor",
-    "v": "Highlight next occurrence without moving the cursor"
-  },
-  {
-    "k": "Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string**",
-    "v": "Entries that will be requested in the interface. It can be a string or Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string**"
-  },
-  {
-    "k": "Este método não simula o pressionamento da tecla de atalho, apenas executa a ação baseado no id da ação, independentemente da tecla de atalho associada",
-    "v": "This method does not simulate pressing the shortcut key, it only executes the action based on the action id, regardless of the associated shortcut key"
-  },
-  {
-    "k": "Executa a ação correspondente disponível na janela de teclas de atalho",
-    "v": "Executes the corresponding action available in the shortcut keys window"
-  },
-  {
-    "k": "Executa um arquivo",
-    "v": "Executes a file"
-  },
-  {
-    "k": "Executa uma função em um horário determinado",
-    "v": "Executes a function at a specified time"
-  },
-  {
-    "k": "Executado ao encerrar o processo",
-    "v": "Executed when the process ends"
-  },
-  {
-    "k": "Executado ao fechar a janela de edição",
-    "v": "Executed when closing the editing window"
-  },
-  {
-    "k": "Executado ao terminar a execução de `action`",
-    "v": "Executed when finishing the execution of `action`"
-  },
-  {
-    "k": "Executado se a tarefa for cancelada",
-    "v": "Executed if the task is canceled"
-  },
-  {
-    "k": "Exibe uma mensagem de erro em uma janela de diálogo",
-    "v": "Displays an error message in a dialog window"
-  },
-  {
-    "k": "Exibe uma mensagem em uma janela de diálogo",
-    "v": "Displays a message in a dialog window"
-  },
-  {
-    "k": "Filtro de busca",
-    "v": "Search filter"
-  },
-  {
-    "k": "Forçar a exibição do texto em maiúsculo",
-    "v": "Force the display of text in uppercase"
-  },
-  {
-    "k": "Forçar a exibição do texto em minúsculo",
-    "v": "Force the display of text in lowercase"
-  },
-  {
-    "k": "Formatação customizada do texto",
-    "v": "Custom text formatting"
-  },
-  {
-    "k": "Formatos aceitos",
-    "v": "Accepted formats"
-  },
-  {
-    "k": "Funciona como `h.store()` e `h.restore()`, porém o valor salvo não é compartilhado na sincronização em nuvem, ou seja, os dados são salvos apenas para o dispositivo local",
-    "v": "Works like `h.store()` and `h.restore()`, but the saved value is not shared in cloud synchronization, meaning the data is saved only for the local device"
-  },
-  {
-    "k": "Funciona como um **setTimeout**, porém sem necessidade de calcular o tempo em milissegundos",
-    "v": "Works like a **setTimeout**, but without the need to calculate the time in milliseconds"
-  },
-  {
-    "k": "Horário da execução",
-    "v": "Execution time"
-  },
-  {
-    "k": "Ícone exibido na notificação",
-    "v": "Icon displayed in the notification"
-  },
-  {
-    "k": "ID do versículo atual",
-    "v": "Current verse ID"
-  },
-  {
-    "k": "ID retornado do método **runAt**",
-    "v": "ID returned from the **runAt** method"
-  },
-  {
-    "k": "Idioma",
-    "v": "Language"
-  },
-  {
-    "k": "Inicia um processo no sistema operacional de um arquivo da biblioteca do programa",
-    "v": "Starts a process in the operating system from a file in the program's library"
-  },
-  {
-    "k": "Ir para declaração",
-    "v": "Go to declaration"
-  },
-  {
-    "k": "lança exception para erro de execução",
-    "v": "throws exception for runtime error"
-  },
-  {
-    "k": "Layout da informação da primeira linha",
-    "v": "Layout of the first line information"
-  },
-  {
-    "k": "Layout da informação da segunda linha",
-    "v": "Layout of the second line information"
-  },
-  {
-    "k": "Letra da música",
-    "v": "Song lyrics"
-  },
-  {
-    "k": "Lista com os versículos da apresentação atual",
-    "v": "List of verses from the current presentation"
-  },
-  {
-    "k": "Mapa chave/valor com as informações que serão alteradas",
-    "v": "Key/value map with the information that will be changed"
-  },
-  {
-    "k": "Mapa com as informações customizadas salvas no arquivo",
-    "v": "Map with the custom information saved in the file"
-  },
-  {
-    "k": "Mapa com as propriedades customizadas definidas para o arquivo",
-    "v": "Map with the custom properties defined for the file"
-  },
-  {
-    "k": "Mensagem de erro",
-    "v": "Error message"
-  },
-  {
-    "k": "Mensagem inicial do popup de progresso",
-    "v": "Initial message of the progress popup"
-  },
-  {
-    "k": "Navegar para aba anterior",
-    "v": "Navigate to the previous tab"
-  },
-  {
-    "k": "Navegar para aba seguinte",
-    "v": "Navigate to the next tab"
-  },
-  {
-    "k": "Nome do arquivo (incluindo subpasta)",
-    "v": "File name (including subfolder)"
-  },
-  {
-    "k": "Nome dos campos separados por vírgula",
-    "v": "Comma-separated field names"
-  },
-  {
-    "k": "Nome em inglês",
-    "v": "Name in English"
-  },
-  {
-    "k": "Nome no próprio idioma definido em `language`",
-    "v": "Name in the language defined in `language`"
-  },
-  {
-    "k": "Normaliza caracteres do tipo `NonspacingMark (NSM)`",
-    "v": "Normalizes characters of type `NonspacingMark (NSM)`"
-  },
-  {
-    "k": "Número decodificado",
-    "v": "Decoded number"
-  },
-  {
-    "k": "Número do slide",
-    "v": "Slide number"
-  },
-  {
-    "k": "O arquivo (ou a extensão) deve estar na lista de permissões para execução",
-    "v": "The file (or extension) must be on the execution whitelist"
-  },
-  {
-    "k": "O arquivo deve estar na respectiva aba 'arquivos' da biblioteca do programa (ou em uma subpasta)",
-    "v": "The file must be in the respective 'files' tab of the program's library (or in a subfolder)"
-  },
-  {
-    "k": "O ID da ação pode ser obtido clicando com o botão direito do mouse em cima do nome da ação na respectiva coluna **Ação**",
-    "v": "The action ID can be obtained by right-clicking on the action name in the respective **Action** column"
-  },
-  {
-    "k": "O item foi salvo",
-    "v": "The item has been saved"
-  },
-  {
-    "k": "O item não foi salvo",
-    "v": "The item has not been saved"
-  },
-  {
-    "k": "O objeto `evt` é do tipo",
-    "v": "The `evt` object is of type"
-  },
-  {
-    "k": "Objeto para manipulação dinâmica dos valores armazenados em:",
-    "v": "Object for dynamic manipulation of the values stored in:"
-  },
-  {
-    "k": "Obs: `:SS` é opcional",
-    "v": "Note: `:SS` is optional"
-  },
-  {
-    "k": "Obs: É possível exibir, no máximo, 100 versículos diferentes em uma mesma requisição",
-    "v": "Note: It is possible to display a maximum of 100 different verses in a single request"
-  },
-  {
-    "k": "Obs: Não é possível abrir múltiplas janelas de edição simultaneamente",
-    "v": "Note: It is not possible to open multiple editing windows simultaneously"
-  },
-  {
-    "k": "Observação",
-    "v": "Observation"
-  },
-  {
-    "k": "Obtém a data do histórico de \"Música tocada\" mais próxima de uma data e hora passada por parâmetro (ou da data e hora atual do sistema)",
-    "v": "Gets the date of the \"Song played\" history closest to a date and time passed as a parameter (or the current system date and time)"
-  },
-  {
-    "k": "Opcional se `lyrics` for declarado",
-    "v": "Optional if `lyrics` is declared"
-  },
-  {
-    "k": "Opcional se `paragraphs` for declarado",
-    "v": "Optional if `paragraphs` is declared"
-  },
-  {
-    "k": "Os valores passados serão MESCLADOS com os valores existentes",
-    "v": "The passed values will be MERGED with the existing values"
-  },
-  {
-    "k": "ou botão scroll do mouse",
-    "v": "or mouse scroll button"
-  },
-  {
-    "k": "Ou seja, não é necessário enviar parâmetros que não serão alterados (ou removidos)",
-    "v": "That is, it is not necessary to send parameters that will not be changed (or removed)"
-  },
-  {
-    "k": "Para exibir um texto com formatação avançada, inicie o texto com **&lt;styled&gt;**",
-    "v": "To display text with advanced formatting, start the text with **&lt;styled&gt;**"
-  },
-  {
-    "k": "Para formatação especial, utilize a variável `@cp_countdown` no meio do texto para indicar o local de exibição da parte numérica",
-    "v": "For special formatting, use the variable `@cp_countdown` in the middle of the text to indicate the location of the numeric part"
-  },
-  {
-    "k": "Parâmetro alternativo para valores mais complexos",
-    "v": "Alternative parameter for more complex values"
-  },
-  {
-    "k": "Permite, por exemplo, iniciar a apresentação de um versículo sem encerrar a apresentação atual, voltando pra apresentação atual quando encerrar a apresentação do versículo",
-    "v": "Allows, for example, to start the presentation of a verse without ending the current presentation, returning to the current presentation when the verse presentation ends"
-  },
-  {
-    "k": "Permitido apenas campos já existentes",
-    "v": "Allowed only for already existing fields"
-  },
-  {
-    "k": "Por padrão, o texto é exibido antes da parte numérica",
-    "v": "By default, the text is displayed before the numeric part"
-  },
-  {
-    "k": "porém adiciona a hora atual no início do log",
-    "v": "but adds the current time at the beginning of the log"
-  },
-  {
-    "k": "qualquer valor mais próximo da data especificada",
-    "v": "any value closest to the specified date"
-  },
-  {
-    "k": "Requisição alternativa para `h.process(...)` utilizando uma abordagem mais compacta e direta",
-    "v": "Alternative request for `h.process(...)` using a more compact and direct approach"
-  },
-  {
-    "k": "Retorna a diferença entre duas datas",
-    "v": "Returns the difference between two dates"
-  },
-  {
-    "k": "Retorna a lista de fontes disponíveis no sistema",
-    "v": "Returns the list of available sources in the system"
-  },
-  {
-    "k": "Retorna a versão atual do **Holyrics Plugin**",
-    "v": "Returns the current version of **Holyrics Plugin**"
-  },
-  {
-    "k": "Retorna o ID do dispositivo",
-    "v": "Returns the device ID"
-  },
-  {
-    "k": "Retorna os dados de um arquivo da lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo",
-    "v": "Returns the data of a file from the list of files in the respective tab: audio, video, image, file"
-  },
-  {
-    "k": "Salva e recupera um objeto salvo em disco, que pode ser recuperado mesmo após reiniciar o programa",
-    "v": "Saves and retrieves an object saved on disk, which can be retrieved even after restarting the program"
-  },
-  {
-    "k": "Se `result` for um número, é o código de saída da execução, se for uma `string`, é a mensagem de erro, por exemplo, 'timeout'",
-    "v": "If `result` is a number, it is the exit code of the execution; if it is a `string`, it is the error message, for example, 'timeout'"
-  },
-  {
-    "k": "Se este campo for declarado, apenas os campos especificados serão retornados",
-    "v": "If this field is declared, only the specified fields will be returned"
-  },
-  {
-    "k": "Será utilizado o TimeZone atual do sistema como base para gerar o valor Timestamp",
-    "v": "The current system TimeZone will be used as a basis to generate the Timestamp value"
-  },
-  {
-    "k": "Somente extensões seguras ou adicionadas na lista de exceção",
-    "v": "Only safe extensions or those added to the exception list"
-  },
-  {
-    "k": "String em formato hexadecimal",
-    "v": "String in hexadecimal format"
-  },
-  {
-    "k": "String em hexadecimal",
-    "v": "String in hexadecimal"
-  },
-  {
-    "k": "Tempo máximo para execução do processo",
-    "v": "Maximum time for process execution"
-  },
-  {
-    "k": "Texto adicionado no final de cada linha",
-    "v": "Text added at the end of each line"
-  },
-  {
-    "k": "Texto adicionado no início de cada linha",
-    "v": "Text added at the beginning of each line"
-  },
-  {
-    "k": "Texto alternativo para ser exibido quando a exibição for no alerta",
-    "v": "Alternative text to be displayed when the display is in the alert"
-  },
-  {
-    "k": "Texto completo recebido do processo executado",
-    "v": "Full text received from the executed process"
-  },
-  {
-    "k": "Texto da apresentação",
-    "v": "Presentation text"
-  },
-  {
-    "k": "Texto do parágrafo",
-    "v": "Paragraph text"
-  },
-  {
-    "k": "Texto para exibição",
-    "v": "Text for display"
-  },
-  {
-    "k": "Total de versículos",
-    "v": "Total verses"
-  },
-  {
-    "k": "Traduções para o slide título",
-    "v": "Translations for the title slide"
-  },
-  {
-    "k": "Útil para ",
-    "v": "Useful for "
-  },
-  {
-    "k": "Utiliza a sintaxe de [Icon](https://github.com/holyrics/Scripts/blob/main/Icon.md)",
-    "v": "Uses the syntax of [Icon](https://github.com/holyrics/Scripts/blob/main/Icon.md)"
-  },
-  {
-    "k": "Utilize 'default' para usar o texto original",
-    "v": "Use 'default' to use the original text"
-  },
-  {
-    "k": "Utilize a sintaxe `{i18n|...}` para utilizar a mensagem traduzida conforme tabela de tradução disponível em `jsc`",
-    "v": "Use the syntax `{i18n|...}` to use the translated message according to the translation table available in `jsc`"
-  },
-  {
-    "k": "Utilize {%t} para exibir a hora atual",
-    "v": "Use {%t} to display the current time"
-  },
-  {
-    "k": "valor mais próximo que seja anterior ou igual à data especificada",
-    "v": "The closest value that is earlier than or equal to the specified date"
-  },
-  {
-    "k": "valor mais próximo que seja igual ou posterior à data especificada",
-    "v": "The closest value that is equal to or later than the specified date"
-  },
-  {
-    "k": "Valor normalizado",
-    "v": "Normalized value"
-  },
-  {
-    "k": "Valor que será normalizado",
-    "v": "Value that will be normalized"
-  },
-  {
-    "k": "Variações",
-    "v": "Variations"
-  },
-  {
-    "k": "Verifica se a extensão está na lista de permissão para execução",
-    "v": "Checks if the extension is on the permission list for execution"
-  },
-  {
-    "k": "Verifica se o Holyrics Plugin está aberto",
-    "v": "Checks if the Holyrics Plugin is open"
-  },
-  {
-    "k": "Verifica se o servidor do Holyrics Plugin está iniciado",
-    "v": "Checks if the Holyrics Plugin server is started"
-  },
-  {
-    "k": "Verifica se um arquivo da aba de arquivos está na lista de permissão para execução",
-    "v": "Checks if a file from the files tab is on the permission list for execution"
+    "k": "Traduções para o slide",
+    "v": "Translations for the slide"
   }
 ]
