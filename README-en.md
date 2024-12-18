@@ -267,8 +267,8 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [SearchText](#hlysearchtext-input)
   - [ShowText](#hlyshowtext-input)
   - [ShowVerse](#hlyshowverse-input)
-  - [GetAudios - GetVideos - GetImages](#hlygetaudios-input)
-  - [GetAudio](#hlygetaudio-input)
+  - [GetAudios - GetVideos - GetImages - GetFiles](#hlygetaudios-input)
+  - [GetAudio - GetVideo - GetImage - GetFile](#hlygetaudio-input)
   - [SetAudioItemProperty](#hlysetaudioitemproperty-input)
   - [PlayAudio](#hlyplayaudio-input)
   - [PlayVideo](#hlyplayvideo-input)
@@ -5399,9 +5399,9 @@ Returns the data of a file from the list of files in the respective tab: audio, 
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data` | _Array&lt;Object&gt;_ |  |
-| `name` | _String_ | Item name |
-| `isDir` | _Boolean_ | Return **true** if it's a folder or **false** if it's a file. |
+| `data` | _Object_ |  |
+| `data.name` | _String_ | Item name |
+| `data.isDir` | _Boolean_ | Return **true** if it's a folder or **false** if it's a file. |
 | <br>Available if **include_metadata=true** |  |  |
 | `data.length` | _Number_ | File size (bytes). Available if **isDir=false** |
 | `data.modified_time` | _String_ | File modification date. Date and time format: YYYY-MM-DD HH:MM |

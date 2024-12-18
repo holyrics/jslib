@@ -267,8 +267,8 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [SearchText](#hlysearchtext-input)
   - [ShowText](#hlyshowtext-input)
   - [ShowVerse](#hlyshowverse-input)
-  - [GetAudios - GetVideos - GetImages](#hlygetaudios-input)
-  - [GetAudio](#hlygetaudio-input)
+  - [GetAudios - GetVideos - GetImages - GetFiles](#hlygetaudios-input)
+  - [GetAudio - GetVideo - GetImage - GetFile](#hlygetaudio-input)
   - [SetAudioItemProperty](#hlysetaudioitemproperty-input)
   - [PlayAudio](#hlyplayaudio-input)
   - [PlayVideo](#hlyplayvideo-input)
@@ -5399,9 +5399,9 @@ Retorna os dados de um arquivo da lista de arquivos da respectiva aba: áudio, v
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `data` | _Array&lt;Object&gt;_ |  |
-| `name` | _String_ | Nome do item |
-| `isDir` | _Boolean_ | Retorna **true** se for uma pasta ou **false** se for arquivo. |
+| `data` | _Object_ |  |
+| `data.name` | _String_ | Nome do item |
+| `data.isDir` | _Boolean_ | Retorna **true** se for uma pasta ou **false** se for arquivo. |
 | <br>Disponível se **include_metadata=true** |  |  |
 | `data.length` | _Number_ | Tamanho do arquivo (bytes). Disponível se **isDir=false** |
 | `data.modified_time` | _String_ | Data de modificação do arquivo. Data e hora no formato: YYYY-MM-DD HH:MM |
