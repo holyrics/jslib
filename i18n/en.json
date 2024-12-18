@@ -480,6 +480,10 @@
     "v": "Although the `ECMA-262 Edition 5.1` standard is used for creating JavaScript code in the program, some conveniences were added in `v2.23.0` of Holyrics"
   },
   {
+    "k": "Aplica uma formatação de sintaxe em trecho de código JavaScript para melhor visualização ao exibir exemplos na interface",
+    "v": "Applies syntax formatting to a piece of JavaScript code for better visualization when displaying examples in the interface"
+  },
+  {
     "k": "Aplicar efeito 'blur' no brilho e sombra",
     "v": "Apply 'blur' effect on brightness and shadow"
   },
@@ -814,6 +818,10 @@
   {
     "k": "Código de saída ou mensagem de erro",
     "v": "Exit code or error message"
+  },
+  {
+    "k": "Código JavaScript",
+    "v": "JavaScript Code"
   },
   {
     "k": "Código midi",
@@ -3504,6 +3512,10 @@
     "v": "Returns the list of registered triggers"
   },
   {
+    "k": "Retorna a lista de gatilhos salvos",
+    "v": "Returns the list of saved triggers"
+  },
+  {
     "k": "Retorna a lista de músicas",
     "v": "Returns the list of songs"
   },
@@ -4392,6 +4404,10 @@
     "v": "Useful for connections that need to send a 'ping' to keep the connection open"
   },
   {
+    "k": "Útil para diferenciar o dispositivo quando a sincronização em nuvem estiver ativada",
+    "v": "Useful for differentiating the device when cloud synchronization is enabled"
+  },
+  {
     "k": "Utiliza a sintaxe de [Icon](https://github.com/holyrics/Scripts/blob/main/Icon.md)",
     "v": "Uses the syntax of [Icon](https://github.com/holyrics/Scripts/blob/main/Icon.md)"
   },
@@ -4716,19 +4732,11 @@
     "v": "Current player volume"
   },
   {
-    "k": "Aplica uma formatação de sintaxe em trecho de código JavaScript para melhor visualização ao exibir exemplos na interface",
-    "v": "Applies syntax formatting to a piece of JavaScript code for better visualization when displaying examples in the interface"
+    "k": "Conteúdo de `obj` de acordo com o tipo do item",
+    "v": "Content of `obj` according to the item type"
   },
   {
-    "k": "Código JavaScript",
-    "v": "JavaScript Code"
-  },
-  {
-    "k": "Retorna a lista de gatilhos salvos",
-    "v": "Returns the list of saved triggers"
-  },
-  {
-    "k": "Útil para diferenciar o dispositivo quando a sincronização em nuvem estiver ativada",
-    "v": "Useful for differentiating the device when cloud synchronization is enabled"
+    "k": "Todos os itens de **when=change** contém:",
+    "v": "All items with **when=change** contain:"
   }
 ]
