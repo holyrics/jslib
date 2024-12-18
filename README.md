@@ -483,12 +483,29 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [AddItemGlobalAction](#additemglobalaction)
   - [SongInfo](#songinfo)
   - [TextInfo](#textinfo)
+  - [VerseInfo](#verseinfo)
   - [AudioInfo](#audioinfo)
   - [VideoInfo](#videoinfo)
   - [ImageInfo](#imageinfo)
   - [FileInfo](#fileinfo)
   - [AutomaticPresentationInfo](#automaticpresentationinfo)
   - [AnnouncementInfo](#announcementinfo)
+  - [SongSlideInfo](#songslideinfo)
+  - [TextSlideInfo](#textslideinfo)
+  - [PPTInfo](#pptinfo)
+  - [PPTSlideInfo](#pptslideinfo)
+  - [ThemeInfo](#themeinfo)
+  - [BackgroundInfo](#backgroundinfo)
+  - [TitleInfo](#titleinfo)
+  - [WebcamInfo](#webcaminfo)
+  - [CountdownInfo](#countdowninfo)
+  - [AutomaticPresentationSlideInfo](#automaticpresentationslideinfo)
+  - [PresentationModifierInfoInfo](#presentationmodifierinfoinfo)
+  - [NewChatMessageInfo](#newchatmessageinfo)
+  - [VersePresentationChangedInfo](#versepresentationchangedinfo)
+  - [PlaylistChangedInfo](#playlistchangedinfo)
+  - [FileModifiedInfo](#filemodifiedinfo)
+  - [PlayerProgressInfo](#playerprogressinfo)
 
 
 # Métodos 
@@ -5340,6 +5357,7 @@ Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo
 | `data` | _Array&lt;Object&gt;_ |  |
 | `data.*.name` | _String_ | Nome do item |
 | `data.*.isDir` | _Boolean_ | Retorna **true** se for uma pasta ou **false** se for arquivo. |
+| `data.*.properties` | _Object_ | Mapa com as propriedades customizadas definidas para o arquivo `v2.24.0+` |
 | <br>Disponível se **include_metadata=true** |  |  |
 | `data.*.length` | _Number_ | Tamanho do arquivo (bytes). Disponível se **isDir=false** `v2.22.0+` |
 | `data.*.modified_time` | _String_ | Data de modificação do arquivo. Data e hora no formato: YYYY-MM-DD HH:MM `v2.22.0+` |
@@ -5354,7 +5372,6 @@ Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo
 | `data.*.last_executed_time_millis` | _Boolean_ |  `v2.24.0+` |
 | <br>Disponível se **include_thumbnail=true** |  |  |
 | `data.*.thumbnail` | _String_ | Imagem no formato base64 `v2.22.0+` |
-| `data.*.properties` | _Object_ | Mapa com as propriedades customizadas definidas para o arquivo `v2.24.0+` |
 
 
 **Exemplo:**
@@ -5402,6 +5419,7 @@ Retorna os dados de um arquivo da lista de arquivos da respectiva aba: áudio, v
 | `data` | _Object_ |  |
 | `data.name` | _String_ | Nome do item |
 | `data.isDir` | _Boolean_ | Retorna **true** se for uma pasta ou **false** se for arquivo. |
+| `data.properties` | _Object_ | Mapa com as informações customizadas salvas no arquivo |
 | <br>Disponível se **include_metadata=true** |  |  |
 | `data.length` | _Number_ | Tamanho do arquivo (bytes). Disponível se **isDir=false** |
 | `data.modified_time` | _String_ | Data de modificação do arquivo. Data e hora no formato: YYYY-MM-DD HH:MM |
@@ -5416,7 +5434,6 @@ Retorna os dados de um arquivo da lista de arquivos da respectiva aba: áudio, v
 | `data.last_executed_time_millis` | _Number_ |  |
 | <br>Disponível se **include_thumbnail=true** |  |  |
 | `data.thumbnail` | _String_ | Imagem no formato base64 |
-| `data.properties` | _Object_ | Mapa com as informações customizadas salvas no arquivo |
 
 
 **Exemplo:**
@@ -9198,12 +9215,12 @@ Retorna a lista de gatilhos salvos
 | ---- | :---: | ------------|
 | `data` | _Array&lt;Object&gt;_ |  |
 | `data.*.id` | _String_ | ID do item |
-| `data.*.enabled` | _String_ |  |
+| `data.*.enabled` | _Boolean_ |  |
 | `data.*.when` | _String_ | Pode ser: `displaying` `closing` `change` `event` |
 | `data.*.type` | _String_ | Tipo do item. Pode ser:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` |
 | `data.*.item.title` | _String_ |  |
 | `data.*.item.reference` | _Object_ |  |
-| `data.*.receiver.type` | _String_ | Pode ser: `get` `post` `ws` `tcp` `udp` `midi` `obs_v4` `obs_v5` `lumikit` `vmix` `osc` `soundcraft` `ha` `ptz` `tbot` `openai` |
+| `data.*.receiver.type` | _String_ | Pode ser: `get` `post` `ws` `tcp` `udp` `midi` `javascript` `community` `multiple_actions` `obs_v4` `obs_v5` `lumikit` `vmix` `osc` `soundcraft` `ha` `ptz` `tbot` `openai` |
 | `data.*.description` | _String_ |  |
 | `data.*.tags` | _Array&lt;String&gt;_ |  |
 
@@ -10840,7 +10857,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `id` | _String (opcional)_ | ID do item |
 | `when` | _String_ | `displaying` `closing` `change` `event` |
 | `item` | _String_ | Tipo do item. Pode ser:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` |
-| `action` | _Function_ | Ação que será executada |
+| `action` | _Function_ | Ação que será executada.<br>`function(obj) { /*  */ }`<br>Conteúdo de `obj` de acordo com o tipo do item:<br>[`any_song`](https://github.com/holyrics/jslib#songinfo)  [`any_text`](https://github.com/holyrics/jslib#textinfo)  [`any_verse`](https://github.com/holyrics/jslib#verseinfo)  [`any_announcement`](https://github.com/holyrics/jslib#announcementinfo)  [`any_audio`](https://github.com/holyrics/jslib#audioinfo)  [`any_video`](https://github.com/holyrics/jslib#videoinfo)  [`any_image`](https://github.com/holyrics/jslib#imageinfo)  [`any_automatic_presentation`](https://github.com/holyrics/jslib#automaticpresentationinfo)  [`any_song_slide`](https://github.com/holyrics/jslib#songslideinfo)  [`any_text_slide`](https://github.com/holyrics/jslib#textslideinfo)  [`any_ppt_slide`](https://github.com/holyrics/jslib#pptslideinfo)  [`any_theme`](https://github.com/holyrics/jslib#themeinfo)  [`any_background`](https://github.com/holyrics/jslib#backgroundinfo)  [`any_title_subitem`](https://github.com/holyrics/jslib#titleinfo)  [`any_webcam`](https://github.com/holyrics/jslib#webcaminfo)  [`any_audio_folder`](https://github.com/holyrics/jslib#audioinfo)  [`any_video_folder`](https://github.com/holyrics/jslib#videoinfo)  [`any_image_folder`](https://github.com/holyrics/jslib#imageinfo)  [`any_ppt`](https://github.com/holyrics/jslib#pptinfo)  [`any_countdown`](https://github.com/holyrics/jslib#countdowninfo)  [`any_automatic_presentation_slide`](https://github.com/holyrics/jslib#automaticpresentationslideinfo)  [`f8`](https://github.com/holyrics/jslib#presentationmodifierinfoinfo)  [`f9`](https://github.com/holyrics/jslib#presentationmodifierinfoinfo)  [`f10`](https://github.com/holyrics/jslib#presentationmodifierinfoinfo)  [`new_message_chat`](https://github.com/holyrics/jslib#newchatmessageinfo)  [`verse_presentation_changed`](https://github.com/holyrics/jslib#versepresentationchangedinfo)  [`playlist_changed`](https://github.com/holyrics/jslib#playlistchangedinfo)  [`file_modified`](https://github.com/holyrics/jslib#filemodifiedinfo)  [`player_progress`](https://github.com/holyrics/jslib#playerprogressinfo)<br><br>Todos os items de **when=change** contém: `obj.id` `obj.name` `obj.old_value` `obj.new_value` |
 | `name` | _String (opcional)_ | Nome do item. Valor compatível para exibição no **JavaScript Monitor** `v2.23.0+` |
 | `filter` | _Object (opcional)_ | Executar ação somente se o objeto que gerou o gatilho corresponder ao objeto filter `v2.24.0+` |
 <details>
@@ -11945,6 +11962,15 @@ Configurações customizadas da tradução (item)
 ```
 </details>
 
+## VerseInfo
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{}
+```
+</details>
+
 ## AudioInfo
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
@@ -12075,6 +12101,410 @@ Configurações customizadas da tradução (item)
 {
   "id": 0,
   "name": "name"
+}
+```
+</details>
+
+## SongSlideInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID da música |
+| `slide_index` | _Number_ |  |
+| `slide_total` | _Number_ |  |
+| `slide_description` | _String_ |  |
+| `slide_show_index` | _Number_ |  |
+| `slide_show_total` | _Number_ |  |
+| `title` | _String_ | Título da música |
+| `artist` | _String_ | Artista da música |
+| `author` | _String_ | Autor da música |
+| `note` | _String_ | Anotação da música |
+| `copyright` | _String_ | Copyright da música |
+| `key` | _String_ | Tom da música.<br>Pode ser: `C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm` |
+| `bpm` | _Number_ | BPM da música |
+| `time_sig` | _String_ | Tempo da música.<br>Pode ser: `2/2` `2/4` `3/4` `4/4` `5/4` `6/4` `3/8` `6/8` `7/8` `9/8` `12/8` |
+| `text` | _String_ |  |
+| `comment` | _String_ |  |
+| `extra` | _String_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": "0",
+  "slide_index": 2,
+  "slide_total": 8,
+  "slide_description": "",
+  "slide_show_index": 2,
+  "slide_show_total": 12,
+  "title": "",
+  "artist": "",
+  "author": "",
+  "note": "",
+  "copyright": "",
+  "key": "",
+  "bpm": 0.0,
+  "time_sig": "",
+  "text": "",
+  "comment": "",
+  "extra": ""
+}
+```
+</details>
+
+## TextSlideInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID do texto |
+| `title` | _String_ | Título do texto |
+| `text` | _String_ |  |
+| `comment` | _String_ |  |
+| `folder` | _String_ |  |
+| `slide_index` | _String_ |  |
+| `slide_total` | _String_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": "",
+  "title": "",
+  "text": "",
+  "comment": "",
+  "folder": "",
+  "slide_index": 2,
+  "slide_total": 8
+}
+```
+</details>
+
+## PPTInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `file_name` | _String_ |  |
+| `file_fullname` | _String_ |  |
+| `file_relative_path` | _String_ |  |
+| `file_path` | _String_ |  |
+| `is_dir` | _Boolean_ |  |
+| `extension` | _String_ |  |
+| `properties` | _Object_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "file_name": "file.txt",
+  "file_fullname": "folder\\file.txt",
+  "file_relative_path": "file\\folder\\file.txt",
+  "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\file\\folder\\file.txt",
+  "is_dir": false,
+  "extension": "txt",
+  "properties": {}
+}
+```
+</details>
+
+## PPTSlideInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `file_name` | _String_ |  |
+| `slide_number` | _Number_ |  |
+| `slide_total` | _Number_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "file_name": "name",
+  "slide_number": 1,
+  "slide_total": 10
+}
+```
+</details>
+
+## ThemeInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _Number_ |  |
+| `name` | _String_ |  |
+| `from_user_list` | _Boolean_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": 0,
+  "name": "name",
+  "from_user_list": true
+}
+```
+</details>
+
+## BackgroundInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `type` | _String_ | `THEME` `MY_VIDEO` `MY_IMAGE` `VIDEO` `IMAGE` |
+| `id` | _Number_ |  |
+| `name` | _String_ |  |
+| `from_user_list` | _Boolean_ |  |
+| `color_map` | _Array&lt;Object&gt;_ |  |
+| `color_map.*.hex` | _String_ | Cor no formato hexadecimal |
+| `color_map.*.red` | _Number_ | Vermelho  `0 ~ 255` |
+| `color_map.*.green` | _Number_ | Verde  `0 ~ 255` |
+| `color_map.*.blue` | _Number_ | Azul  `0 ~ 255` |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "type": "MY_VIDEO",
+  "id": 0,
+  "name": "name",
+  "from_user_list": true,
+  "color_map": [
+    {
+      "hex": "000000",
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "hex": "000000",
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "hex": "000000",
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "hex": "000000",
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "hex": "000000",
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "hex": "000000",
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "hex": "000000",
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    },
+    {
+      "hex": "000000",
+      "red": 0,
+      "green": 0,
+      "blue": 0
+    }
+  ]
+}
+```
+</details>
+
+## TitleInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `title` | _String_ |  |
+| `subitem` | _Object_ |  |
+| `subitem_index` | _Number_ |  |
+| `playlist_index` | _Number_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "title": "",
+  "subitem": {},
+  "subitem_index": -1,
+  "playlist_index": -1
+}
+```
+</details>
+
+## WebcamInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ |  |
+| `fps` | _Number_ |  |
+| `width` | _Number_ |  |
+| `height` | _Number_ |  |
+| `mute` | _Boolean_ |  |
+| `aspect_ratio` | _String_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "name": "name",
+  "fps": 30.0,
+  "width": 1280,
+  "height": 720,
+  "mute": false,
+  "aspect_ratio": "1:1"
+}
+```
+</details>
+
+## CountdownInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `time` | _String_ |  |
+| `exact_time` | _Boolean_ |  |
+| `text_before` | _String_ |  |
+| `text_after` | _String_ |  |
+| `zero_fill` | _Boolean_ |  |
+| `countdown_relative_size` | _Number_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "time": "",
+  "exact_time": false,
+  "text_before": "",
+  "text_after": "",
+  "zero_fill": false,
+  "countdown_relative_size": 0
+}
+```
+</details>
+
+## AutomaticPresentationSlideInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ |  |
+| `slide_index` | _Number_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": "filename.ap",
+  "slide_index": 2
+}
+```
+</details>
+
+## PresentationModifierInfoInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `type` | _String_ | `WALLPAPER` `BLANK_SCREEN` `BLACK_SCREEN` |
+| `name` | _String_ | Nome do item |
+| `shortcut` | _String_ | `F8` `F9` `F10` |
+| `presentation_type` | _String_ | `SONG` `TEXT` `VERSE` `ANY_ITEM` |
+| `state` | _Boolean_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "type": "BLANK_SCREEN",
+  "name": "Blank Screen",
+  "shortcut": "F9",
+  "presentation_type": "SONG",
+  "state": false
+}
+```
+</details>
+
+## NewChatMessageInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ |  |
+| `datetime` | _Number_ |  |
+| `user_id` | _String_ |  |
+| `name` | _String_ |  |
+| `message` | _String_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": "1734539182621",
+  "datetime": 1734539182621,
+  "user_id": "-1qfe9t8wtrsb6p5",
+  "name": "example",
+  "message": "example"
+}
+```
+</details>
+
+## VersePresentationChangedInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ |  |
+| `book` | _Number_ |  |
+| `chapter` | _Number_ |  |
+| `verse` | _Number_ |  |
+| `reference` | _String_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": "01001001",
+  "book": 1,
+  "chapter": 1,
+  "verse": 1,
+  "reference": "Gn 1:1"
+}
+```
+</details>
+
+## PlaylistChangedInfo
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{}
+```
+</details>
+
+## FileModifiedInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `media_type` | _String_ |  |
+| `action` | _String_ |  |
+| `name` | _String_ |  |
+| `is_dir` | _Boolean_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "media_type": "image",
+  "action": "created",
+  "name": "image.jpg",
+  "is_dir": false
+}
+```
+</details>
+
+## PlayerProgressInfo
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `time` | _Number_ |  |
+| `total` | _Number_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "time": 0,
+  "total": 60000
 }
 ```
 </details>
