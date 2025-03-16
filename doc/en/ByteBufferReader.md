@@ -194,7 +194,7 @@ h.log(r); // [116, 101, 115]
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `length` | _Number (optional)_ | Se `length < 0` todos os bytes **restantes** serão lidos `Default: -1` |
+| `length` | _Number (optional)_ | If `length < 0` all **remaining** bytes will be read `Default: -1` |
 | `charset` | _String (optional)_ |  `Default: utf-8` |
 
 
@@ -227,7 +227,7 @@ h.log(r); // test
 
 
 ### available()
-Quantidade de bytes restantes a serem lidos
+Number of bytes remaining to be read
 
 
 
@@ -242,7 +242,7 @@ Quantidade de bytes restantes a serem lidos
 
 
 ### skip(length)
-Ignora uma quantidade de bytes a serem lidos
+Ignore a number of bytes to be read
 
 **Parameters:**
 

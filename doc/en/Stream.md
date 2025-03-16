@@ -1,5 +1,5 @@
 # Stream
-Classe para facilitar a manipulação de listas
+Class to facilitate the manipulation of lists
 
 Example
 ```javascript

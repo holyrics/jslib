@@ -1,5 +1,5 @@
 # Process
-Objeto que representa um processo iniciado via JavaScript em execução no sistema operacional
+Object that represents a process started via JavaScript running on the operating system
 
 Example
 ```javascript
@@ -26,6 +26,7 @@ p.await();
   - [send](#senddata)
   - [await](#await)
   - [awaitFor](#awaitfor)
+  - [awaitForOrThrow](#awaitfororthrow)
   - [isOpen](#isopen)
   - [destroy](#destroy)
   - [put](#putkey-value)
@@ -35,13 +36,13 @@ p.await();
 
 # Functions 
 ### send(data)
-Enviar uma mensagem. May generate Exception.
+Send a message. May generate Exception.
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data` | _Object_ | Valor que será enviado. Can be: `string`  `byte array`  `ByteBufferWriter` |
+| `data` | _Object_ | Value that will be sent. Can be: `string`  `byte array`  `ByteBufferWriter` |
 
 
 **Response:**
@@ -66,7 +67,7 @@ p.send(buf);
 
 ### await()
 ### waitFinish()
-Aguarda o término do processo
+Wait for the end of the process
 
 
 
@@ -76,7 +77,7 @@ _Method does not return value_
 
 
 ### awaitFor()
-Aguarda o término do processo e retorna o código de saída
+Waits for the process to finish and returns the exit code
 
 
 
@@ -97,8 +98,35 @@ h.log(code);
 ---
 
 
+### awaitForOrThrow()
+- v2.25.0
+
+The same as `awaitFor()`, but throws an exception instead of returning `null` when there is an execution error
+
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _Number_ | 
+
+
+**Example:**
+
+```javascript
+var r = h.awaitForOrThrow();
+//the same as
+var code = p.awaitFor();
+h.log(code);
+//but it raises an exception if code === null
+```
+
+---
+
+
 ### isOpen()
-Verifica se o processo está em execução
+Check if the process is running
 
 
 
@@ -113,7 +141,7 @@ Verifica se o processo está em execução
 
 
 ### destroy()
-Encerra o processo
+Ends the process
 
 
 
@@ -128,7 +156,7 @@ Encerra o processo
 
 
 ### put(key, value)
-Armazena um valor no objeto
+Stores a value in the object
 
 **Parameters:**
 
@@ -162,7 +190,7 @@ var p = h.process('filename.exe', {
 
 
 ### get(key, default = null)
-Obtém um valor armazenado no objeto
+Gets a value stored in the object
 
 **Parameters:**
 
@@ -189,13 +217,13 @@ p.get('volume');
 
 
 ### onPropertyChange(key = null, onchange)
-Executa uma ação sempre que uma propriedade for alterada
+Executes an action whenever a property is changed
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String (optional)_ | Executa a ação somente para uma chave específica `v2.24.0+` |
+| `key` | _String (optional)_ | Executes the action only for a specific key `v2.24.0+` |
 | `onchange` | _Function_ | `function(evt) { /* evt.source; evt.key; evt.value */ }` |
 
 

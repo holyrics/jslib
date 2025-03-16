@@ -26,6 +26,7 @@ p.await();
   - [send](#senddata)
   - [await](#await)
   - [awaitFor](#awaitfor)
+  - [awaitForOrThrow](#awaitfororthrow)
   - [isOpen](#isopen)
   - [destroy](#destroy)
   - [put](#putkey-value)
@@ -92,6 +93,33 @@ Aguarda o término do processo e retorna o código de saída
 ```javascript
 var code = p.awaitFor();
 h.log(code);
+```
+
+---
+
+
+### awaitForOrThrow()
+- v2.25.0
+
+O mesmo que `awaitFor()`, porém gera exception em vez de retornar `null` quando houver erro de execução
+
+
+
+**Resposta:**
+
+| Tipo  |
+| :---: |
+| _Number_ | 
+
+
+**Exemplo:**
+
+```javascript
+var r = h.awaitForOrThrow();
+//o mesmo que
+var code = p.awaitFor();
+h.log(code);
+//porém gera exception se code === null
 ```
 
 ---

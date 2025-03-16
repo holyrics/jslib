@@ -35,13 +35,13 @@ function createTCP(receiver) {
 # Functions 
 ### send(data)
 ### sendMessage(data)
-Enviar uma mensagem. May generate Exception.
+Send a message. May generate Exception.
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data` | _Object_ | Valor que será enviado |
+| `data` | _Object_ | Value that will be sent |
 
 
 **Response:**
@@ -66,7 +66,7 @@ client.send(buf);
 
 
 ### isOpen()
-Verifica se a conexão está ativa
+Check if the connection is active
 
 
 
@@ -82,7 +82,7 @@ Verifica se a conexão está ativa
 
 ### close()
 ### disconnect()
-Encerra a conexão
+Ends the connection
 
 
 
@@ -97,7 +97,7 @@ Encerra a conexão
 
 
 ### put(key, value)
-Armazena um valor no objeto
+Stores a value in the object
 
 **Parameters:**
 
@@ -130,7 +130,7 @@ var client = h.tcp('receiver_id', {
 
 
 ### get(key, default = null)
-Obtém um valor armazenado no objeto
+Gets a value stored in the object
 
 **Parameters:**
 
@@ -158,13 +158,13 @@ client.get('volume');
 
 
 ### onPropertyChange(key = null, onchange)
-Executa uma ação sempre que uma propriedade for alterada
+Executes an action whenever a property is changed
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String (optional)_ | Executa a ação somente para uma chave específica `v2.24.0+` |
+| `key` | _String (optional)_ | Executes the action only for a specific key `v2.24.0+` |
 | `onchange` | _Function_ | `function(evt) { /* evt.source; evt.key; evt.value */ }` |
 
 

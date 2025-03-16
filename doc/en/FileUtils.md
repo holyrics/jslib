@@ -1,5 +1,5 @@
 # FileUtils
-Classe utilitária para alguns métodos de manipulação de arquivos
+Utility class for some file manipulation methods
 
 ---
 
@@ -22,28 +22,28 @@ Classe utilitária para alguns métodos de manipulação de arquivos
   - [getImageExtensions](#getimageextensions)
   - [getAudioExtensions](#getaudioextensions)
   - [getVideoExtensions](#getvideoextensions)
-  - [getAudios](#getaudiosfolder--null)
-  - [getAudio](#getaudioname)
-  - [audioExists](#audioexistsname)
+  - [getAudios - getVideos - getImages - getFiles](#getaudiosfolder--null)
+  - [getAudio - getVideo - getImage - getFile](#getaudioname)
+  - [audioExists - videoExists - imageExists - fileExists](#audioexistsname)
   - [exists](#existsname)
 
 
 # Functions 
 ### mkdir(name)
-Criar uma nova pasta
+Create a new folder
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `name` | _String_ | Nome da pasta que será criada. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
+| `name` | _String_ | Name of the folder that will be created. Must start with:  `audio/`  `video/`  `image/`  `file/` |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `true` se foi executado com sucesso<br>`false` se foi cancelado pelo usuário<br>Exception se ocorreu algum erro |
+| _Boolean_ | `true` was executed successfully<br>`false` if it was canceled by the user<br>Exception if there was any error |
 
 
 **Example:**
@@ -56,22 +56,22 @@ var r = h.files.mkdir('image/new folder');
 
 
 ### mkdir(input)
-Criar uma nova pasta
+Create a new folder
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.file` | _Object_ | Nome da pasta que será criada. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `input.description` | _String (optional)_ | Mensagem exibida ao usuário na janela de solicitação de permissão para execução da ação |
-| `input.notification` | _Boolean (optional)_ | Exibir notificação no canto da tela em vez de abrir a janela de permissão diretamente |
+| `input.file` | _Object_ | Name of the folder that will be created. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `input.description` | _String (optional)_ | Message displayed to the user in the permission request window for performing the action |
+| `input.notification` | _Boolean (optional)_ | Show notification in the corner of the screen instead of opening the permission window directly |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `true` se foi executado com sucesso<br>`false` se foi cancelado pelo usuário<br>Exception se ocorreu algum erro |
+| _Boolean_ | `true` was executed successfully<br>`false` if it was canceled by the user<br>Exception if there was any error |
 
 
 **Example:**
@@ -86,21 +86,21 @@ var r = h.files.mkdir({
 
 
 ### rename(from, to)
-Renomear um arquivo ou pasta
+Rename a file or folder
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `from` | _String_ | Arquivo de origem. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `to` | _String_ | Arquivo de destino. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
+| `from` | _String_ | Source file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `to` | _String_ | Destination file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `true` se foi executado com sucesso<br>`false` se foi cancelado pelo usuário<br>Exception se ocorreu algum erro |
+| _Boolean_ | `true` was executed successfully<br>`false` if it was canceled by the user<br>Exception if there was any error |
 
 
 **Example:**
@@ -113,16 +113,16 @@ var r = h.files.rename('image/filename.jpg', 'image/filename renamed.jpg');
 
 
 ### rename(input)
-Renomear um arquivo ou pasta
+Rename a file or folder
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.from` | _String_ | Arquivo de origem. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `input.to` | _String_ | Arquivo de destino. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `input.description` | _String (optional)_ | Mensagem exibida ao usuário na janela de solicitação de permissão para execução da ação |
-| `input.notification` | _Boolean (optional)_ | Exibir notificação no canto da tela em vez de abrir a janela de permissão diretamente |
+| `input.from` | _String_ | Source file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `input.to` | _String_ | Destination file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `input.description` | _String (optional)_ | Message displayed to the user in the permission request window for performing the action |
+| `input.notification` | _Boolean (optional)_ | Show notification in the corner of the screen instead of opening the permission window directly |
 | `update_references` | _Boolean (optional)_ |  `Default: true` |
 
 
@@ -130,7 +130,7 @@ Renomear um arquivo ou pasta
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `true` se foi executado com sucesso<br>`false` se foi cancelado pelo usuário<br>Exception se ocorreu algum erro |
+| _Boolean_ | `true` was executed successfully<br>`false` if it was canceled by the user<br>Exception if there was any error |
 
 
 **Example:**
@@ -146,22 +146,22 @@ var r = h.files.rename({
 
 
 ### copyFile(from, to, progress = null)
-Copiar um arquivo
+Copy a file
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `from` | _String_ | Arquivo de origem. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `to` | _String_ | Arquivo de destino. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `progress` | _Function_ | Function de callback executada a cada atualização de progresso da execução `0 ~ 100` |
+| `from` | _String_ | Source file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `to` | _String_ | Destination file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `progress` | _Function_ | Callback function executed on each progress update of the execution `0 ~ 100` |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `true` se foi executado com sucesso<br>`false` se foi cancelado pelo usuário<br>Exception se ocorreu algum erro |
+| _Boolean_ | `true` was executed successfully<br>`false` if it was canceled by the user<br>Exception if there was any error |
 
 
 **Example:**
@@ -174,24 +174,24 @@ var r = h.files.copyFile('image/filename.jpg', 'image/filename copy.jpg');
 
 
 ### copyFile(input)
-Copiar um arquivo
+Copy a file
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.from` | _String_ | Arquivo de origem. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `input.to` | _String_ | Arquivo de destino. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `input.description` | _String (optional)_ | Mensagem exibida ao usuário na janela de solicitação de permissão para execução da ação |
-| `input.notification` | _Boolean (optional)_ | Exibir notificação no canto da tela em vez de abrir a janela de permissão diretamente |
-| `input.progress` | _Function (optional)_ | Function de callback executada a cada atualização de progresso da execução `0 ~ 100` |
+| `input.from` | _String_ | Source file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `input.to` | _String_ | Destination file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `input.description` | _String (optional)_ | Message displayed to the user in the permission request window for performing the action |
+| `input.notification` | _Boolean (optional)_ | Show notification in the corner of the screen instead of opening the permission window directly |
+| `input.progress` | _Function (optional)_ | Callback function executed on each progress update of the execution `0 ~ 100` |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `true` se foi executado com sucesso<br>`false` se foi cancelado pelo usuário<br>Exception se ocorreu algum erro |
+| _Boolean_ | `true` was executed successfully<br>`false` if it was canceled by the user<br>Exception if there was any error |
 
 
 **Example:**
@@ -207,22 +207,22 @@ var r = h.files.copyFile({
 
 
 ### copyFolder(from, to, progress = null)
-Copiar uma pasta
+Copy a folder
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `from` | _String_ | Arquivo de origem. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `to` | _String_ | Arquivo de destino. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `progress` | _Function (optional)_ | Function de callback executada a cada atualização de progresso da execução `0 ~ 100` |
+| `from` | _String_ | Source file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `to` | _String_ | Destination file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `progress` | _Function (optional)_ | Callback function executed on each progress update of the execution `0 ~ 100` |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `true` se foi executado com sucesso<br>`false` se foi cancelado pelo usuário<br>Exception se ocorreu algum erro |
+| _Boolean_ | `true` was executed successfully<br>`false` if it was canceled by the user<br>Exception if there was any error |
 
 
 **Example:**
@@ -237,24 +237,24 @@ var r = h.files.copyFolder('video/folder', 'video/folder', function(progress) {
 
 
 ### copyFolder(input)
-Copiar uma pasta
+Copy a folder
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.from` | _String_ | Arquivo de origem. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `input.to` | _String_ | Arquivo de destino. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `input.description` | _String (optional)_ | Mensagem exibida ao usuário na janela de solicitação de permissão para execução da ação |
-| `input.notification` | _Boolean (optional)_ | Exibir notificação no canto da tela em vez de abrir a janela de permissão diretamente |
-| `input.progress` | _Function (optional)_ | Function de callback executada a cada atualização de progresso da execução `0 ~ 100` |
+| `input.from` | _String_ | Source file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `input.to` | _String_ | Destination file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `input.description` | _String (optional)_ | Message displayed to the user in the permission request window for performing the action |
+| `input.notification` | _Boolean (optional)_ | Show notification in the corner of the screen instead of opening the permission window directly |
+| `input.progress` | _Function (optional)_ | Callback function executed on each progress update of the execution `0 ~ 100` |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `true` se foi executado com sucesso<br>`false` se foi cancelado pelo usuário<br>Exception se ocorreu algum erro |
+| _Boolean_ | `true` was executed successfully<br>`false` if it was canceled by the user<br>Exception if there was any error |
 
 
 **Example:**
@@ -273,20 +273,20 @@ var r = h.files.copyFolder({
 
 
 ### deleteFile(name)
-Apagar um arquivo
+Delete a file
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `name` | _String_ | Nome do arquivo que será apagado. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
+| `name` | _String_ | Name of the file that will be deleted. Must start with:  `audio/`  `video/`  `image/`  `file/` |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `true` se foi executado com sucesso<br>`false` se foi cancelado pelo usuário<br>Exception se ocorreu algum erro |
+| _Boolean_ | `true` was executed successfully<br>`false` if it was canceled by the user<br>Exception if there was any error |
 
 
 **Example:**
@@ -299,22 +299,22 @@ var r = h.files.deleteFile('image/filename.jpg');
 
 
 ### deleteFile(input)
-Apagar um arquivo
+Delete a file
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.file` | _String_ | Nome do arquivo que será apagado. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `input.description` | _String (optional)_ | Mensagem exibida ao usuário na janela de solicitação de permissão para execução da ação |
-| `input.notification` | _Boolean (optional)_ | Exibir notificação no canto da tela em vez de abrir a janela de permissão diretamente |
+| `input.file` | _String_ | Name of the file that will be deleted. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `input.description` | _String (optional)_ | Message displayed to the user in the permission request window for performing the action |
+| `input.notification` | _Boolean (optional)_ | Show notification in the corner of the screen instead of opening the permission window directly |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `true` se foi executado com sucesso<br>`false` se foi cancelado pelo usuário<br>Exception se ocorreu algum erro |
+| _Boolean_ | `true` was executed successfully<br>`false` if it was canceled by the user<br>Exception if there was any error |
 
 
 **Example:**
@@ -329,20 +329,20 @@ var r = h.files.deleteFile({
 
 
 ### deleteFolder(name)
-Apagar uma pasta
+Delete a folder
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `name` | _String_ | Nome da pasta que será apagada. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
+| `name` | _String_ | Name of the folder that will be deleted. Must start with:  `audio/`  `video/`  `image/`  `file/` |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `true` se foi executado com sucesso<br>`false` se foi cancelado pelo usuário<br>Exception se ocorreu algum erro |
+| _Boolean_ | `true` was executed successfully<br>`false` if it was canceled by the user<br>Exception if there was any error |
 
 
 **Example:**
@@ -355,23 +355,23 @@ var r = h.files.deleteFolder('video/folder');
 
 
 ### deleteFolder(input)
-Apagar uma pasta
+Delete a folder
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.file` | _String_ | Nome da pasta que será apagada. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
-| `input.description` | _String (optional)_ | Mensagem exibida ao usuário na janela de solicitação de permissão para execução da ação |
-| `input.notification` | _Boolean (optional)_ | Exibir notificação no canto da tela em vez de abrir a janela de permissão diretamente |
-| `recursively` | _Boolean (optional)_ | Apagar recursivamente. Se `false`, a pasta será apagada somente se estiver vazia `Default: false` |
+| `input.file` | _String_ | Name of the folder that will be deleted. Must start with:  `audio/`  `video/`  `image/`  `file/` |
+| `input.description` | _String (optional)_ | Message displayed to the user in the permission request window for performing the action |
+| `input.notification` | _Boolean (optional)_ | Show notification in the corner of the screen instead of opening the permission window directly |
+| `recursively` | _Boolean (optional)_ | Delete recursively. If `false`, the folder will be deleted only if it is empty `Default: false` |
 
 
 **Response:**
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `true` se foi executado com sucesso<br>`false` se foi cancelado pelo usuário<br>Exception se ocorreu algum erro |
+| _Boolean_ | `true` was executed successfully<br>`false` if it was canceled by the user<br>Exception if there was any error |
 
 
 **Example:**
@@ -386,7 +386,7 @@ var r = h.files.deleteFolder({
 
 
 ### hasImageExtension(path)
-Verifica se o valor informado termina com uma extensão do tipo correspondente.<br>Image (png, jpg, ...)
+Checks if the provided value ends with a corresponding type extension.<br>Image (png, jpg, ...)
 
 **Parameters:**
 
@@ -416,7 +416,7 @@ var r = h.files.hasImageExtension('path example/folder/subfolder/filename.mp3');
 
 
 ### hasAudioExtension(path)
-Verifica se o valor informado termina com uma extensão do tipo correspondente.<br>Audio (mp3, wma, ...)
+Checks if the provided value ends with a corresponding type extension.<br>Audio (mp3, wma, ...)
 
 **Parameters:**
 
@@ -436,7 +436,7 @@ Verifica se o valor informado termina com uma extensão do tipo correspondente.<
 
 
 ### hasVideoExtension(path)
-Verifica se o valor informado termina com uma extensão do tipo correspondente.<br>Vídeo (mp4, mkv, ...)
+Checks if the provided value ends with a corresponding type extension.<br>Video (mp4, mkv, ...)
 
 **Parameters:**
 
@@ -456,7 +456,7 @@ Verifica se o valor informado termina com uma extensão do tipo correspondente.<
 
 
 ### getImageExtensions()
-Lista com as extensões do tipo correspondente.<br>Image (png, jpg, ...)
+List of corresponding type extensions.<br>Image (png, jpg, ...)
 
 
 
@@ -478,7 +478,7 @@ var r = h.files.getImageExtensions();
 
 
 ### getAudioExtensions()
-Lista com as extensões do tipo correspondente.<br>Audio (mp3, wma, ...)
+List of corresponding type extensions.<br>Audio (mp3, wma, ...)
 
 
 
@@ -493,7 +493,7 @@ Lista com as extensões do tipo correspondente.<br>Audio (mp3, wma, ...)
 
 
 ### getVideoExtensions()
-Lista com as extensões do tipo correspondente.<br>Vídeo (mp4, mkv, ...)
+List of corresponding type extensions.<br>Video (mp4, mkv, ...)
 
 
 
@@ -508,9 +508,9 @@ Lista com as extensões do tipo correspondente.<br>Vídeo (mp4, mkv, ...)
 
 
 ### getAudios(folder = null)
-### getVideos(folder)
-### getImages(folder)
-### getFiles(folder)
+### getVideos(folder = null)
+### getImages(folder = null)
+### getFiles(folder = null)
 Returns the list of files from the respective tab: audio, video, image, file May generate Exception
 
 **Parameters:**
@@ -603,7 +603,7 @@ Checks if there is a file with the informed name
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `name` | _String_ | File name (including subfolder)<br>Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
+| `name` | _String_ | File name (including subfolder)<br>Must start with:  `audio/`  `video/`  `image/`  `file/` |
 
 
 **Response:**

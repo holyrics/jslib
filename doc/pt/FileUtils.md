@@ -22,9 +22,9 @@ Classe utilitária para alguns métodos de manipulação de arquivos
   - [getImageExtensions](#getimageextensions)
   - [getAudioExtensions](#getaudioextensions)
   - [getVideoExtensions](#getvideoextensions)
-  - [getAudios](#getaudiosfolder--null)
-  - [getAudio](#getaudioname)
-  - [audioExists](#audioexistsname)
+  - [getAudios - getVideos - getImages - getFiles](#getaudiosfolder--null)
+  - [getAudio - getVideo - getImage - getFile](#getaudioname)
+  - [audioExists - videoExists - imageExists - fileExists](#audioexistsname)
   - [exists](#existsname)
 
 
@@ -508,9 +508,9 @@ Lista com as extensões do tipo correspondente.<br>Vídeo (mp4, mkv, ...)
 
 
 ### getAudios(folder = null)
-### getVideos(folder)
-### getImages(folder)
-### getFiles(folder)
+### getVideos(folder = null)
+### getImages(folder = null)
+### getFiles(folder = null)
 Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo Pode gerar Exception
 
 **Parâmetros:**

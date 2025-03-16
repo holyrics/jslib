@@ -1,5 +1,5 @@
 # IntStream
-Classe para facilitar a manipulação de listas de números
+Class to facilitate the manipulation of lists of numbers
 
 Example
 ```javascript

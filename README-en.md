@@ -110,9 +110,17 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
 
 ---
 
-# Métodos disponíveis na biblioteca jslib
+# Methods and variables available in the jslib library
 
-- [Methods](#methods)
+- [General](#general)
+  - [global](#global)
+  - [storage](#storage)
+  - [files](#files)
+  - [uri](#uri)
+  - [image](#image)
+  - [stream](#stream)
+  - [local](#local)
+  - [globalSettings](#globalsettings)
   - [log](#logobj)
   - [log](#logkey--null-obj-args--null)
   - [logf](#logfobj-args--null)
@@ -152,14 +160,12 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [normalize](#normalizestr)
   - [store](#storekey-value)
   - [restore](#restorekey-default--null)
-  - [storage](#storage)
   - [setGlobal](#setglobalkey-value-ttl--0)
   - [getGlobal](#getglobalkey-default--null)
   - [setGlobalNext](#setglobalnextkey-values-ttl--0)
   - [getGlobalAndSet](#getglobalandsetkey-default--null-newvalue)
   - [getGlobalAndSetNext](#getglobalandsetnextkey-values)
   - [setGlobalNextAndGet](#setglobalnextandgetkey-values)
-  - [global](#global)
   - [random](#randommin-max-keysaferepeat--null)
   - [random](#randomx-y-z)
   - [startTimer](#starttimerkey--default)
@@ -211,13 +217,16 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [date.getSecondOfDay](#dategetsecondofdayhour-minute-second)
   - [date.toMillis](#datetomillisvalue)
   - [date.getElapsedTime](#dategetelapsedtimeunit-a-b)
+  - [date.format](#dateformatformat-date--null)
+  - [date.get](#dategetformat--null)
+  - [date.parse](#dateparseformat-value)
   - [csvToArray](#csvtoarraycsv)
   - [xmlToJson](#xmltojsonxml)
   - [addTriggerListener](#addtriggerlistenerinput)
   - [removeTriggerListener](#removetriggerlistenerid)
   - [containsTriggerListener](#containstriggerlistenerid)
   - [getTriggerListeners](#gettriggerlisteners)
-  - [addSysVar](#addsysvarname-function)
+  - [addSysVar](#addsysvarname-function-cachedelay--null)
   - [removeSysVar](#removesysvarname)
   - [getSysVar](#getsysvarvalue)
   - [applySysVar](#applysysvarvalue)
@@ -248,8 +257,6 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [registerSettings](#registersettingskey-fromstore-inputs)
   - [ws](#wsreceiver-cacheid-modeltocreate)
   - [tcp](#tcpreceiver-cacheid-modeltocreate)
-  - [uri](#uri)
-  - [img](#img)
   - [process](#processfile-input--null)
   - [executeCmdAndWait](#executecmdandwaitfile-cli--null-timeout--5000)
   - [triggerHotkey](#triggerhotkeyid)
@@ -257,6 +264,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [isAllowedExtensionToExecute](#isallowedextensiontoexecuteextension)
   - [isAllowedFileToExecute](#isallowedfiletoexecutefile)
   - [getAvailableFontFamilyNames](#getavailablefontfamilynames)
+  - [hlyOrThrow](#hlyorthrowaction-input--null)
 - [Methods HLY](#methods-hly)
   - [GetLyrics](#hlygetlyrics-input)
   - [GetSongs](#hlygetsongs-input)
@@ -339,10 +347,12 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [GetHistory](#hlygethistory-input)
   - [GetHistories](#hlygethistories-input)
   - [GetNearestHistory](#hlygetnearesthistory-input)
+  - [GetSongGroup](#hlygetsonggroup-input)
+  - [GetSongGroups](#hlygetsonggroups)
   - [GetTeams](#hlygetteams)
-  - [GetMembers](#hlygetmembers)
-  - [GetRoles](#hlygetroles)
-  - [GetServices](#hlygetservices)
+  - [GetMembers](#hlygetmembers-input)
+  - [GetRoles](#hlygetroles-input)
+  - [GetServices](#hlygetservices-input)
   - [GetEvents](#hlygetevents-input)
   - [GetAnnouncement](#hlygetannouncement-input)
   - [GetAnnouncements](#hlygetannouncements)
@@ -388,6 +398,15 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [CloseCurrentQuickPresentation](#hlyclosecurrentquickpresentation)
   - [GetCurrentQuickPresentation](#hlygetcurrentquickpresentation)
   - [GetTriggers](#hlygettriggers)
+  - [GetGlobalSettings](#hlygetglobalsettings-input)
+  - [SetGlobalSettings](#hlysetglobalsettings-input)
+  - [GetStyledModels](#hlygetstyledmodels)
+  - [GetStyledModelsAsMap](#hlygetstyledmodelsasmap)
+  - [CreateItem](#hlycreateitem-input)
+  - [EditItem](#hlyedititem-input)
+  - [DeleteItem](#hlydeleteitem-input)
+  - [AddSongsToSongGroup](#hlyaddsongstosonggroup-input)
+  - [RemoveSongsFromSongGroup](#hlyremovesongsfromsonggroup-input)
 - [SecurityUtils methods](#securityutils-methods)
   - [encrypt](#encryptvalue)
   - [decrypt](#decryptbase64)
@@ -464,6 +483,12 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [Verse Reference](#verse-reference)
   - [Translation Custom Settings](#translation-custom-settings)
   - [Translation Custom Settings Item](#translation-custom-settings-item)
+  - [Styled Model](#styled-model)
+  - [Initial Slide Settings](#initial-slide-settings)
+  - [Copyright Settings](#copyright-settings)
+  - [Image Presentation Settings](#image-presentation-settings)
+  - [Non-Latin Alphabet Support Settings](#non-latin-alphabet-support-settings)
+  - [Global Settings](#global-settings)
   - [AddItem](#additem)
   - [AddItemTitle](#additemtitle)
   - [AddItemSong](#additemsong)
@@ -472,10 +497,12 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [AddItemAudio](#additemaudio)
   - [AddItemVideo](#additemvideo)
   - [AddItemImage](#additemimage)
+  - [AddItemFile](#additemfile)
   - [AddItemAutomaticPresentation](#additemautomaticpresentation)
   - [AddItemAnnouncement](#additemannouncement)
   - [AddItemCountdown](#additemcountdown)
   - [AddItemCountdownCommunicationPanel](#additemcountdowncommunicationpanel)
+  - [AddItemPlainText](#additemplaintext)
   - [AddItemTextCommunicationPanel](#additemtextcommunicationpanel)
   - [AddItemAddItemScript](#additemadditemscript)
   - [AddItemAddItemAPI](#additemadditemapi)
@@ -508,7 +535,125 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [PlayerProgressInfo](#playerprogressinfo)
 
 
-# Methods 
+# General 
+### global
+- v2.24.0
+
+Object &nbsp;| &nbsp;Utility class for reading and saving the corresponding data of: `getGlobal(key, default)` and `setGlobal(key, value)`<br>
+However, using the JavaScript object itself as a handler.<br>
+ <br>
+```javascript
+var v = h.global.abc;
+//{{o mesmo que}}
+h.getGlobal('abc');
+
+h.global.abc = 'xyz';
+//{{o mesmo que}}
+h.setGlobal('abc', 'xyz');
+```
+
+
+
+---
+
+### storage
+- v2.24.0
+
+Object &nbsp;| &nbsp;Utility class for reading and saving the corresponding data of: `store(key, value)` and `restore(key, default)`<br>
+However, using the JavaScript object itself as a handler.<br>
+ <br>
+```javascript
+var v = h.storage.abc;
+//the same as
+var v = h.restore('abc');
+
+h.store.abc = 'xyz';
+//the same as
+h.store('abc', 'xyz');
+```
+
+
+
+---
+
+### files
+- v2.24.0
+
+[FileUtils](https://github.com/holyrics/jslib/blob/main/doc/en/FileUtils.md) &nbsp;| &nbsp;Utility class for some file manipulation methods.
+
+
+
+---
+
+### uri
+- v2.24.0
+
+[URIUtils](https://github.com/holyrics/jslib/blob/main/doc/en/URIUtils.md) &nbsp;| &nbsp;Utility class to execute some actions via URI in the operating system, such as executing a streaming track
+
+
+
+---
+
+### image
+- v2.24.0
+
+[ImageUtils](https://github.com/holyrics/jslib/blob/main/doc/en/ImageUtils.md) &nbsp;| &nbsp;Utility class for images.<br>Alternative name: `img`
+
+
+
+---
+
+### stream
+- v2.23.0
+
+[Stream](https://github.com/holyrics/jslib/blob/main/doc/en/Stream.md) &nbsp;| &nbsp;Utility class for `stream`
+
+
+
+---
+
+### local
+- v2.24.0
+
+Object &nbsp;| &nbsp;Utility class to use the same syntax of `store(key, value)` and `restore(key, default)`, but the value is only available for the local device, meaning it is not shared in cloud synchronization.<br>
+Alternative name: `device`<br>
+ <br>
+```javascript
+h.local.store(key, value);
+var v = h.local.restore(key);
+```
+
+
+
+---
+
+### globalSettings
+- v2.25.0
+
+[GlobalSettings](#global-settings) &nbsp;| &nbsp;Utility class for reading and saving the corresponding data of: `hly('GetGlobalSettings', input)` and `hly('SetGlobalSettings', input)`<br>
+However, using the JavaScript object itself as a handler.<br>
+ <br>
+Alternative name: `gs`
+ <br>
+```javascript
+var v = h.globalSettings.show_favorite_bar_main_window;
+//the same as
+var data = h.hly('GetGlobalSettings', {
+  filter: 'show_favorite_bar_main_window'
+});
+var r = data.show_favorite_bar_main_window;
+
+h.globalSettings.show_favorite_bar_main_window = false;
+//the same as
+h.hly('SetGlobalSettings', {
+  show_favorite_bar_main_window: false
+});
+```
+
+
+
+---
+
 ### log(obj)
 Display the information passed as a parameter in a log window (lower right corner of the screen, usually)
 
@@ -1526,32 +1671,6 @@ h.logfp('Item xyz: {}', r);
 ---
 
 
-### storage
-- v2.24.0
-
-Object for dynamic manipulation of the values stored in: h.store()
-
-
-
-_Method does not return value_
-
-**Example:**
-
-```javascript
-var n = h.storage.abc;
-//The same as
-//var n = h.restore('abc');
-
-//--------
-
-h.storage.abc = 'xyz';
-//The same as
-//h.store('abc', 'xyz');
-```
-
----
-
-
 ### setGlobal(key, value, ttl = 0)
 Saves an object in memory that can be retrieved, but is valid only as long as the program is open. The method is shared with all scripts in the program.
 
@@ -1742,32 +1861,6 @@ var r = h.setGlobalNextAndGet('xyz', ['a', 'b', 'c']);
 r = h.setGlobalNextAndGet('xyz', ['a', 'b', 'c']);
 //r == 'b'
 //h.getGlobal('xyz') == 'b'
-```
-
----
-
-
-### global
-- v2.24.0
-
-Object for dynamic manipulation of the values stored in: h.setGlobal()
-
-
-
-_Method does not return value_
-
-**Example:**
-
-```javascript
-var n = h.global.abc;
-//The same as
-//var n = h.getGlobal('abc');
-
-//--------
-
-h.global.abc = 'xyz';
-//The same as
-//h.setGlobal('abc', 'xyz');
 ```
 
 ---
@@ -2329,6 +2422,10 @@ var r = h.apiRequest('http://192.168.0.123', {
 
 //Parameters available for request [URL]
 var r = h.apiRequest('receiver_id', {
+    //type of request
+    //GET, POST, PATCH, PUT, DELETE, UDP, TCP, WS_JSON, WS
+    type: 'POST', /* optional */
+
     //parameter added to the end of the url defined in the receiver
     url_suffix: 'test.php?x=1&y=2&z=3', /* optional */
     
@@ -3375,6 +3472,86 @@ var r = h.date.getElapsedTime('hours', '2024-12-16 15:00:00', '2024-12-16 19:30:
 ---
 
 
+### date.format(format, date = null)
+- v2.25.0
+
+Format a date.<br>May generate Exception.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `format` | _String_ | Pattern [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) |
+| `date` | _Object (optional)_ | Can be:<br>Native JavaScript Date object or a timestamp number (compatible with seconds and milliseconds).<br>If the parameter is not declared, the current date and time on the system will be used. |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Formatted value |
+
+
+**Example:**
+
+```javascript
+var r = h.date.format('yyyy-MM-dd', Date.now());
+```
+
+---
+
+
+### date.get(format = null)
+- v2.25.0
+
+Gets the current date and time formatted.<br>May generate Exception.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `format` | _String (optional)_ | Pattern [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) `Default: yyyy-MM-dd HH:mm:ss` |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Formatted value |
+
+
+---
+
+
+### date.parse(format, value)
+- v2.25.0
+
+Converts a string to `Timestamp`.<br>May generate Exception.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `format` | _String_ | Pattern [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) |
+| `value` | _String_ | Pattern [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Number_ | Timestamp |
+
+
+**Example:**
+
+```javascript
+var r = h.date.parse('yyyy-MM-dd', '2025-03-16');
+```
+
+---
+
+
 ### csvToArray(csv)
 - v2.21.0
 
@@ -3650,7 +3827,7 @@ for (var i = 0; i < items.length; i++) {
 ---
 
 
-### addSysVar(name, function)
+### addSysVar(name, function, cacheDelay = null)
 - v2.23.0
 
 Adds a system variable that can be used within the texts displayed by the program
@@ -3661,6 +3838,7 @@ Adds a system variable that can be used within the texts displayed by the progra
 | ---- | :---: | ------------|
 | `name` | _String_ | Item name |
 | `function` | _Function_ | Function that will be executed to get the return and display the content in place of the variable declared in the presentation |
+| `cacheDelay` | _Number (optional)_ | The duration (in milliseconds) that the returned value will be cached for reuse without invoking the `function` again.<br>`500 ~ 60000` `Default: 1000` `v2.25.0+` |
 
 
 _Method does not return value_
@@ -4410,7 +4588,7 @@ h.intStreamRangeClosed(0, 10); // 0...10
 - v2.23.0
 
 Send message to Holyrics chat.<br>
-To use this action, you need to enable permission in the settings<br>file menu > settings > advanced > javascript > settings > advanced permissions
+To use this action, you need to enable permission in the settings<br>`file menu > settings > advanced > javascript > settings > advanced permissions`
 
 **Parameters:**
 
@@ -4745,47 +4923,6 @@ function createTCP(receiver) {
 ---
 
 
-### uri
-- v2.24.0
-
-Utility class to execute some actions via URI in the operating system, such as executing a streaming track
-
-
-
-**Response:**
-
-| Type  |
-| :---: |
-| _[URIUtils](https://github.com/holyrics/jslib/blob/main/doc/en/URIUtils.md)_ | 
-
-
-**Example:**
-
-```javascript
-h.uri.youtube.track('umYQpAxL4dI');
-```
-
----
-
-
-### img
-### image
-- v2.24.0
-
-Utility class for images
-
-
-
-**Response:**
-
-| Type  |
-| :---: |
-| _[ImageUtils](https://github.com/holyrics/jslib/blob/main/doc/en/ImageUtils.md)_ | 
-
-
----
-
-
 ### process(file, input = null)
 - v2.24.0
 
@@ -4999,6 +5136,39 @@ Returns the list of available sources in the system
 | :---: |
 | _Array&lt;String&gt;_ | 
 
+
+---
+
+
+### hlyOrThrow(action, input = null)
+- v2.25.0
+
+Alternative method for `hly(action, input)`, but it returns the `data` object directly and raises an exception if `status=error`
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `action` | _String_ | Action name |
+| `input` | _Object (optional)_ | Action parameters |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _Object_ | 
+
+
+**Example:**
+
+```javascript
+var data = h.hlyOrThrow('GetLyrics', { id: '123' });
+//the same as
+var r = h.hly('GetLyrics', { id: '123' });
+var data = r.data;
+//throws exception if r.status === 'error'
+```
 
 ---
 
@@ -5368,8 +5538,8 @@ Returns the list of files from the respective tab: audio, video, image, file
 | `data.*.position` | _String_ | Image adjustment. Available for images. Can be: `adjust` `extend` `fill` `v2.22.0+` |
 | `data.*.blur` | _Boolean_ | Apply blur effect `v2.22.0+` |
 | `data.*.transparent` | _Boolean_ | Display images with transparency `v2.22.0+` |
-| `data.*.last_executed_time` | _Boolean_ | Date of the last execution of the file. Date and time format: YYYY-MM-DD HH:MM `v2.24.0+` |
-| `data.*.last_executed_time_millis` | _Boolean_ |  `v2.24.0+` |
+| `data.*.last_executed_time` | _String_ | Date of the last execution of the file. Date and time format: YYYY-MM-DD HH:MM `v2.24.0+` |
+| `data.*.last_executed_time_millis` | _Number_ | Date of the last execution of the file. (timestamp) `v2.24.0+` |
 | <br>Available if **include_thumbnail=true** |  |  |
 | `data.*.thumbnail` | _String_ | Image in base64 format `v2.22.0+` |
 
@@ -5784,7 +5954,7 @@ Quick display of text
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.text` | _String_ | Text to be displayed. [Styled Text](#styled-text) from v2.19.0<br>Optional if `slides` is declared |
+| `input.text` | _String_ | Text that will be displayed [Styled Text](https://github.com/holyrics/Scripts/blob/main/StyledText.md) from v2.19.0<br>Optional if `slides` is declared |
 | `input.slides` | _Array&lt;[QuickPresentationSlide](#quick-presentation-slide)&gt;_ | Alternative parameter for more complex presentations<br>Optional if `text` is declared `v2.23.0+` |
 | `input.theme` | _[ThemeFilter](#theme-filter) (optional)_ | Filter selected theme for display |
 | `input.custom_theme` | _[Theme](#theme) (optional)_ | Custom theme used to display the text `v2.21.0+` |
@@ -5890,8 +6060,9 @@ Display a countdown on the public screen
 | `input.text_before` | _String (optional)_ | Text displayed at the top of the countdown |
 | `input.text_after` | _String (optional)_ | Text displayed at the bottom of the countdown |
 | `input.zero_fill` | _Boolean (optional)_ | Fill in the 'minute' field with zero on the left `Default: false` |
+| `input.hide_zero_minute` | _Boolean (optional)_ | Hide the display of minutes when it is zero `Default: false` `v2.25.0+` |
 | `input.countdown_relative_size` | _Number (optional)_ | Relative size of the countdown `Default: 250` |
-| `input.theme` | _String (optional)_ | Theme ID `v2.21.0+` |
+| `input.theme` | _[ThemeFilter](#theme-filter) (optional)_ | Filter selected theme for display `v2.21.0+` |
 | `input.countdown_style` | _[FontSettings](#font-settings) (optional)_ | Custom font for countdown `v2.21.0+` |
 | `input.custom_theme` | _[Theme](#theme) (optional)_ | Custom theme `v2.21.0+` |
 
@@ -7840,6 +8011,63 @@ var r = h.hly('GetNearestHistory', {
 ---
 
 
+### hly('GetSongGroup', input)
+- v2.25.0
+
+Music group
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.name` | _String_ |  |
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _[Group](#group)_| 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetSongGroup', { name: 'name' });
+r.data.songs.forEach(function(songID) {
+    //todo
+});
+```
+
+---
+
+
+### hly('GetSongGroups')
+- v2.24.0
+
+List of music groups
+
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _Array&lt;[Group](#group)&gt;_| 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetSongGroups');
+r.data.forEach(function(songGroup) {
+    //todo
+});
+```
+
+---
+
+
 ### hly('GetTeams')
 - v2.22.0
 
@@ -7866,9 +8094,14 @@ for (var i = 0; i < r.data.length; i++) {
 ---
 
 
-### hly('GetMembers')
+### hly('GetMembers', input)
 List of members
 
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.only_active` | _Boolean_ |  `Default: true` `v2.25.0+` |
 
 
 **Response:**
@@ -7890,9 +8123,14 @@ for (var i = 0; i < r.data.length; i++) {
 ---
 
 
-### hly('GetRoles')
+### hly('GetRoles', input)
 List of functions
 
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.only_active` | _Boolean_ |  `Default: true` `v2.25.0+` |
 
 
 **Response:**
@@ -7914,11 +8152,16 @@ for (var i = 0; i < r.data.length; i++) {
 ---
 
 
-### hly('GetServices')
+### hly('GetServices', input)
 - v2.22.0
 
 Service list
 
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.only_active` | _Boolean_ |  `Default: true` `v2.25.0+` |
 
 
 **Response:**
@@ -8065,6 +8308,10 @@ Current communication panel configuration
 | `data.display_vlc_player_remaining_time` | _Boolean_ | Display remaining time of the media playing in VLC Player `v2.20.0+` |
 | `data.attention_icon_color` | _String_ | Icon color of the **Attention** button `v2.23.0+` |
 | `data.attention_background_color` | _String_ | Background color of the **Attention** button icon `v2.23.0+` |
+| `data.countdown_hide_zero_minute` | _Boolean_ | Hide the display of minutes when it is zero `v2.25.0+` |
+| `data.countdown_hide_zero_hour` | _Boolean_ | Hide the display of hours when it is zero `v2.25.0+` |
+| `data.stopwatch_hide_zero_minute` | _Boolean_ | Hide the display of minutes when it is zero `v2.25.0+` |
+| `data.stopwatch_hide_zero_hour` | _Boolean_ | Hide the display of hours when it is zero `v2.25.0+` |
 
 
 **Example:**
@@ -8086,32 +8333,36 @@ if (r.data.countdown_show) {
 ### hly('SetCPSettings')
 - v2.20.0
 
-Change the current setting of the communication panel
+Change the current setting of the communication panel.
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.text` | _String (optional)_ | Current text |
-| `input.show` | _Boolean (optional)_ | Display the current text |
-| `input.display_ahead` | _Boolean (optional)_ | Option *'display ahead of everything'* |
-| `input.theme` | _Object (optional)_ | ID or name of the default theme |
-| `input.theme.id` | _String (optional)_ |  |
-| `input.theme.name` | _String (optional)_ |  |
+| `input.text` | _String_ | Current text |
+| `input.show` | _Boolean_ | Display the current text |
+| `input.display_ahead` | _Boolean_ | Option *'display ahead of everything'* |
+| `input.theme` | _Object_ | ID or name of the default theme |
+| `input.theme.id` | _String_ |  |
+| `input.theme.name` | _String_ |  |
 | `input.custom_theme` | _[Theme](#theme) (optional)_ | Custom theme `v2.21.0+` |
-| `input.alert_text` | _String (optional)_ | Current alert text |
-| `input.alert_show` | _Boolean (optional)_ | Enable the display of the alert |
-| `input.countdown_font_relative_size` | _Number (optional)_ | Relative size of the countdown |
-| `input.countdown_font_color` | _String (optional)_ | Color of the countdown font |
-| `input.stopwatch_font_color` | _String (optional)_ | Color of the stopwatch font |
-| `input.time_font_color` | _String (optional)_ | Color of the time font |
-| `input.display_clock_as_background` | _Boolean (optional)_ | Display clock as background |
-| `input.display_clock_on_alert` | _Boolean (optional)_ | Display clock in the alert |
-| `input.countdown_display_location` | _String (optional)_ | Location of the countdown or stopwatch display. `FULLSCREEN`  `FULLSCREEN_OR_ALERT`  `ALERT` |
-| `input.display_clock_with_countdown_fullscreen` | _Boolean (optional)_ | Display clock along with the countdown or stopwatch when displayed in full screen |
-| `input.display_vlc_player_remaining_time` | _Boolean (optional)_ | Display remaining time of the media playing in VLC Player |
-| `input.attention_icon_color` | _String (optional)_ | Icon color of the **Attention** button `v2.23.0+` |
-| `input.attention_background_color` | _String (optional)_ | Background color of the **Attention** button icon `v2.23.0+` |
+| `input.alert_text` | _String_ | Current alert text |
+| `input.alert_show` | _Boolean_ | Enable the display of the alert |
+| `input.countdown_font_relative_size` | _Number_ | Relative size of the countdown |
+| `input.countdown_font_color` | _String_ | Color of the countdown font |
+| `input.stopwatch_font_color` | _String_ | Color of the stopwatch font |
+| `input.time_font_color` | _String_ | Color of the time font |
+| `input.display_clock_as_background` | _Boolean_ | Display clock as background |
+| `input.display_clock_on_alert` | _Boolean_ | Display clock in the alert |
+| `input.countdown_display_location` | _String_ | Location of the countdown or stopwatch display. `FULLSCREEN`  `FULLSCREEN_OR_ALERT`  `ALERT` |
+| `input.display_clock_with_countdown_fullscreen` | _Boolean_ | Display clock along with the countdown or stopwatch when displayed in full screen |
+| `input.display_vlc_player_remaining_time` | _Boolean_ | Display remaining time of the media playing in VLC Player |
+| `input.attention_icon_color` | _String_ | Icon color of the **Attention** button `v2.23.0+` |
+| `input.attention_background_color` | _String_ | Background color of the **Attention** button icon `v2.23.0+` |
+| `input.countdown_hide_zero_minute` | _Boolean_ | Hide the display of minutes when it is zero `v2.25.0+` |
+| `input.countdown_hide_zero_hour` | _Boolean_ | Hide the display of hours when it is zero `v2.25.0+` |
+| `input.stopwatch_hide_zero_minute` | _Boolean_ | Hide the display of minutes when it is zero `v2.25.0+` |
+| `input.stopwatch_hide_zero_hour` | _Boolean_ | Hide the display of hours when it is zero `v2.25.0+` |
 
 
 _Method does not return value_
@@ -8233,7 +8484,7 @@ Change communication panel text
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.text` | _String (optional)_ | Change the text of the communication panel. [Styled Text](#styled-text) from v2.19.0 |
+| `input.text` | _String (optional)_ | Change the text of the communication panel. [Styled Text](https://github.com/holyrics/Scripts/blob/main/StyledText.md) from v2.19.0 |
 | `input.show` | _Boolean (optional)_ | Show/hide the text |
 | `input.display_ahead` | _Boolean (optional)_ | Change the *'display in front of all'* option |
 | `input.theme` | _Object (optional)_ | ID or name of the Theme used to display the text `v2.21.0+` |
@@ -8944,7 +9195,7 @@ Change the value of a field in the program interface
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | Item ID |
+| `input.id` | _String_ | Item ID. Can be: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme` |
 | `input.value` | _String_ | New value |
 | `input.focus` | _Boolean (optional)_ | Make the component receive system focus |
 
@@ -9232,6 +9483,283 @@ var items = h.hly('GetTriggers').data;
 for (var i = 0; i < items.length; i++) {
     h.log("ID: " + items[i].id);
 }
+```
+
+---
+
+
+### hly('GetGlobalSettings', input)
+- v2.25.0
+
+
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `filter` | _String (optional)_ | Name of the settings separated by comma |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _[GlobalSettings](#global-settings)_ | 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetGlobalSettings', {
+    filter: "show_favorite_bar_main_window,fade_in_out_duration"
+});
+
+h.log("show_favorite_bar_main_window: " + r.data.show_favorite_bar_main_window);
+h.log("fade_in_out_duration: " + r.data.fade_in_out_duration);
+```
+
+---
+
+
+### hly('SetGlobalSettings', input)
+- v2.25.0
+
+
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+|  | _[GlobalSettings](#global-settings)_ |  |
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _Object_ | Key/value pair with the result of the change of each item.<br>`true` if the value was successfully changed, or a `string` with the reason for the error. |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('SetGlobalSettings', {
+    show_favorite_bar_main_window: true,
+    fade_in_out_duration: 100
+});
+
+h.log(r.data.show_favorite_bar_main_window);
+//output: true
+
+h.log(r.data.fade_in_out_duration);
+//output: "invalid value: 100"
+```
+
+---
+
+
+### hly('GetStyledModels')
+- v2.25.0
+
+
+
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _[StyledModel](#styled-model)_ | 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetStyledModels');
+h.logp(r.data);
+```
+
+---
+
+
+### hly('GetStyledModelsAsMap')
+- v2.25.0
+
+
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | Key/value pair<br>`StyledModel#key : StyledModel#properties` |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetStyledModelsAsMap');
+h.logp(r.data);
+```
+
+---
+
+
+### hly('CreateItem', input)
+- v2.25.0
+
+Create a new item<br> <br>This action requires a [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) subscription to be executed<br>To use this action, you need to enable permission in the settings<br>`file menu > settings > advanced > javascript > settings > advanced permissions`<br>Or if you are using the implementation of a module, grant permission in the module settings and use the `hly` method of the **Module** class `module.hly(action, input)`<br> <br>The structure of the object passed as a parameter must be according to the table below<br><table><tr><td><p align="right">**Action**</p></td><td>Type</td></tr><tr><td><p align="right">CreateSong</p></td><td>[Lyrics](#lyrics)</td></tr><tr><td><p align="right">CreateText</p></td><td>[Text](#text)</td></tr><tr><td><p align="right">CreateTheme</p></td><td>[Theme](#theme)</td></tr><tr><td><p align="right">CreateTeam</p></td><td>[Team](#team)</td></tr><tr><td><p align="right">CreateRole</p></td><td>[Role](#role)</td></tr><tr><td><p align="right">CreateMember</p></td><td>[Member](#member)</td></tr><tr><td><p align="right">CreateEvent</p></td><td>[Event](#event)</td></tr><tr><td><p align="right">CreateSongGroup</p></td><td>[Group](#group)</td></tr></table>
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | Returns the created item |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('CreateSong', {
+  title: "Title",
+  artist: "Artist",
+  author: "Author",
+  slides: [
+    {
+      text: "Example",
+      slide_description: "Verse 1",
+      translations: {
+          pt: 'Exemplo'
+      }
+    },
+    {
+      text: "Example",
+      slide_description: "Chorus",
+      translations: {
+          pt: 'Exemplo'
+      }
+    },
+    {
+      text: "Example",
+      slide_description: "Verse 2",
+      translations: {
+          pt: 'Exemplo'
+      }
+    }
+  ],
+  title_translations: {
+    pt: 'Título'
+  },
+  order: "1,2,3,2,2",
+  key: "G",
+  bpm: 80,
+  time_sig: "4/4"
+});
+
+h.log(r.data.id + ": " + r.data.title);
+```
+
+---
+
+
+### hly('EditItem', input)
+- v2.25.0
+
+Edit an existing item<br> <br>This action requires a [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) subscription to be executed<br>To use this action, you need to enable permission in the settings<br>`file menu > settings > advanced > javascript > settings > advanced permissions`<br>Or if you are using the implementation of a module, grant permission in the module settings and use the `hly` method of the **Module** class `module.hly(action, input)`<br> <br>All parameters are optional except: `id`<br>Only the declared parameters will be changed that is, it is not necessary to provide the complete object to change just one parameter.<br>Parameters defined as `read-only` are not editable <br>The structure of the object passed as a parameter must be according to the table below<br><table><tr><td><p align="right">**Action**</p></td><td>Type</td></tr><tr><td><p align="right">EditSong</p></td><td>[Lyrics](#lyrics)</td></tr><tr><td><p align="right">EditText</p></td><td>[Text](#text)</td></tr><tr><td><p align="right">EditTheme</p></td><td>[Theme](#theme)</td></tr><tr><td><p align="right">EditTeam</p></td><td>[Team](#team)</td></tr><tr><td><p align="right">EditRole</p></td><td>[Role](#role)</td></tr><tr><td><p align="right">EditMember</p></td><td>[Member](#member)</td></tr><tr><td><p align="right">EditEvent</p></td><td>[Event](#event)</td></tr><tr><td><p align="right">EditSongGroup</p></td><td>[Group](#group)</td></tr></table>
+
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('EditSong', {
+    id: '123',
+    title: 'New Title'
+});
+
+h.log("status: " + r.status);
+```
+
+---
+
+
+### hly('DeleteItem', input)
+- v2.25.0
+
+Deletes an existing item<br> <br>This action requires a [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) subscription to be executed<br>To use this action, you need to enable permission in the settings<br>`file menu > settings > advanced > javascript > settings > advanced permissions`<br>Or if you are using the implementation of a module, grant permission in the module settings and use the `hly` method of the **Module** class `module.hly(action, input)`<br> <br>Provide the id of the respective item to remove it.<br> <br><table><tr><td><p align="right">**Action**</p></td></tr><tr><td><p align="right">DeleteSong</p></td></tr><tr><td><p align="right">DeleteText</p></td></tr><tr><td><p align="right">DeleteTheme</p></td></tr><tr><td><p align="right">DeleteTeam</p></td></tr><tr><td><p align="right">DeleteRole</p></td></tr><tr><td><p align="right">DeleteMember</p></td></tr><tr><td><p align="right">DeleteEvent</p></td></tr><tr><td><p align="right">DeleteSongGroup</p></td></tr></table>
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | ID of the respective item |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('DeleteSong', { id: '123' });
+```
+
+---
+
+
+### hly('AddSongsToSongGroup', input)
+- v2.25.0
+
+Adiciona músicas a um grupo<br> <br>This action requires a [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) subscription to be executed<br>To use this action, you need to enable permission in the settings<br>`file menu > settings > advanced > javascript > settings > advanced permissions`<br>Or if you are using the implementation of a module, grant permission in the module settings and use the `hly` method of the **Module** class `module.hly(action, input)`
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.group` | _String_ | Group name |
+| `input.songs` | _String_ | List with the id of the songs separated by comma |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('AddSongsToSongGroup', {
+    group: "Name",
+    songs: "123,456"
+});
+```
+
+---
+
+
+### hly('RemoveSongsFromSongGroup', input)
+- v2.25.0
+
+Remove músicas de um grupo<br> <br>This action requires a [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) subscription to be executed<br>To use this action, you need to enable permission in the settings<br>`file menu > settings > advanced > javascript > settings > advanced permissions`<br>Or if you are using the implementation of a module, grant permission in the module settings and use the `hly` method of the **Module** class `module.hly(action, input)`
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.group` | _String_ | Group name |
+| `input.songs` | _String_ | List with the id of the songs separated by comma |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('RemoveSongsFromSongGroup', {
+    group: "Name",
+    songs: "123"
+});
 ```
 
 ---
@@ -10357,13 +10885,16 @@ Complex classes used as a return in some methods
 | `copyright` | _String_ | Music copyright |
 | `slides` | _Array&lt;Object&gt;_ |  `v2.21.0+` |
 | `slides.*.text` | _String_ | Slide text `v2.21.0+` |
+| `slides.*.styled_text` | _String_ | Slide text with **styled** formatting (when available) `v2.24.0+` |
 | `slides.*.slide_description` | _String_ | Slide description `v2.21.1+` |
 | `slides.*.background_id` | _String_ | ID of the theme or background saved for the slide `v2.21.0+` |
+| `slides.*.translations` | _Object_ | Translations for the slide.<br>Key/value pair. `v2.25.0+` |
 | `order` | _String_ | Order of slides (index from 1), separated by comma `v2.21.0+` |
+| `title_translations` | _Object_ | Translations for the title slide.<br>Key/value pair. `v2.25.0+` |
 | `key` | _String_ | Tone of music.<br>Can be: `C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm` |
 | `bpm` | _Number_ | BPM of the song |
 | `time_sig` | _String_ | Music time.<br>Can be: `2/2` `2/4` `3/4` `4/4` `5/4` `6/4` `3/8` `6/8` `7/8` `9/8` `12/8` |
-| `groups` | _Array&lt;[Group](#group)&gt;_ | Groups where music is added |
+| `groups` | _Array&lt;[Group](#group)&gt;_ | Groups where music is added `read-only` |
 | `linked_audio_file` | _String_ | Path of the audio file linked to the song `v2.22.0+` |
 | `linked_backing_track_file` | _String_ | Path of the audio file (backing track) linked to the song `v2.22.0+` |
 | `streaming` | _Object_ | URI or ID of the streamings `v2.22.0+` |
@@ -10377,7 +10908,9 @@ Complex classes used as a return in some methods
 | `streaming.backing_track.deezer` | _String_ |  `v2.22.0+` |
 | `midi` | _[Midi](#midi)_ | Item MIDI shortcut |
 | `extras` | _Object_ | Map of extra objects (added by the user) `v2.21.0+` |
+| `theme` | _String_ | Saved theme ID for the song `v2.25.0+` |
 | `archived` | _Boolean_ | If the song is archived |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
 <details>
   <summary>See example</summary>
 
@@ -10407,16 +10940,16 @@ Complex classes used as a return in some methods
     {
       "text": "Slide 3 line 1\nSlide 3 line 2",
       "styled_text": "Slide 3 line 1\nSlide 3 line 2",
-      "slide_description": "Verse 3",
+      "slide_description": "Verse 2",
       "background_id": null,
       "translations": null
     }
   ],
   "order": "1,2,3,2,2",
+  "title_translations": null,
   "key": "",
   "bpm": 0.0,
   "time_sig": "",
-  "groups": [],
   "linked_audio_file": "",
   "linked_backing_track_file": "",
   "streaming": {
@@ -10434,6 +10967,7 @@ Complex classes used as a return in some methods
   "extras": {
     "extra": ""
   },
+  "theme": null,
   "archived": false
 }
 ```
@@ -10448,8 +10982,12 @@ Complex classes used as a return in some methods
 | `theme` | _String_ | ID of the theme saved for the text |
 | `slides` | _Array&lt;Object&gt;_ |  |
 | `slides.*.text` | _String_ | Slide text |
+| `slides.*.styled_text` | _String_ | Slide text with **styled** formatting (when available) `v2.24.0+` |
 | `slides.*.background_id` | _String_ | ID of the theme or background saved for the slide |
+| `slides.*.translations` | _Object_ | Translations for the slide.<br>Key/value pair. `v2.25.0+` |
 | `extras` | _Object_ | Map of extra objects (added by the user) `v2.24.0+` |
+| `formatting_type` | _String_ | `basic`  `styled`  `advanced` `v2.25.0+` |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
 <details>
   <summary>See example</summary>
 
@@ -10479,7 +11017,7 @@ Complex classes used as a return in some methods
       "translations": null
     }
   ],
-  "extras": {}
+  "formatting_type": "basic"
 }
 ```
 </details>
@@ -10549,6 +11087,8 @@ Complex classes used as a return in some methods
 | <br>**settings** |  | <br>Settings |
 | `settings.uppercase` | _Boolean_ | Display the text in uppercase |
 | `settings.line_break` | _String_ | Apply line break. `system`  `true`  `false`<br> `Default: system` |
+| <br>**metadata** |  | <br> |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
 <details>
   <summary>See example</summary>
 
@@ -10557,18 +11097,24 @@ Complex classes used as a return in some methods
   "id": "123",
   "name": "",
   "background": {
-    "type": "color", "id": "212121", "opacity": 100
+    "type": "color",
+    "id": "212121",
+    "opacity": 100
   },
   "base_color": "FFFFFF",
   "font": {
-    "name": "CMG Sans", "bold": true,
+    "name": "CMG Sans",
+    "bold": true,
     "italic": false,
     "size": 10.0,
-    "color": "F5F5F5", "line_spacing": 0.3,
+    "color": "F5F5F5",
+    "line_spacing": 0.3,
     "char_spacing": 0
   },
   "align": {
-    "horizontal": "center", "vertical": "middle", "margin": {
+    "horizontal": "center",
+    "vertical": "middle",
+    "margin": {
       "top": 3.0,
       "right": 3.0,
       "bottom": 3.0,
@@ -10576,15 +11122,20 @@ Complex classes used as a return in some methods
     }
   },
   "effect": {
-    "outline_color": "404040", "outline_weight": 0.0,
-    "brightness_color": "C0C0C0", "brightness_weight": 0.0,
-    "shadow_color": "404040", "shadow_x_weight": 0.0,
+    "outline_color": "404040",
+    "outline_weight": 0.0,
+    "brightness_color": "C0C0C0",
+    "brightness_weight": 0.0,
+    "shadow_color": "404040",
+    "shadow_x_weight": 0.0,
     "shadow_y_weight": 0.0,
     "blur": true
   },
   "shape_fill": {
-    "type": "box", "enabled": false,
-    "color": "000000", "margin": {
+    "type": "box",
+    "enabled": false,
+    "color": "000000",
+    "margin": {
       "top": 5.0,
       "right": 30.0,
       "bottom": 10.0,
@@ -10593,8 +11144,10 @@ Complex classes used as a return in some methods
     "corner": 0
   },
   "shape_outline": {
-    "type": "box", "enabled": false,
-    "color": "000000", "outline_thickness": 10,
+    "type": "box",
+    "enabled": false,
+    "color": "000000",
+    "outline_thickness": 10,
     "margin": {
       "top": 5.0,
       "right": 30.0,
@@ -10604,7 +11157,8 @@ Complex classes used as a return in some methods
     "corner": 0
   },
   "comment": {
-    "font_name": "Arial", "bold": false,
+    "font_name": "Arial",
+    "bold": false,
     "italic": true,
     "relative_size": 100,
     "color": "A0A0A0"
@@ -10623,6 +11177,9 @@ Complex classes used as a return in some methods
 | `id` | _String_ | Item ID |
 | `type` | _String_ | Type of item. Can be: `theme` `my_video` `my_image` `video` `image` |
 | `name` | _String_ | Item name |
+| `width` | _Number (optional)_ |  |
+| `height` | _Number (optional)_ |  |
+| `duration` | _Number (optional)_ | Duration in milliseconds |
 | `tags` | _Array&lt;String&gt;_ | Item tag list |
 | `bpm` | _Number_ | BPM value of item |
 | `midi` | _[Midi](#midi) (optional)_ | Item MIDI shortcut |
@@ -10634,7 +11191,9 @@ Complex classes used as a return in some methods
   "id": "10",
   "type": "video",
   "name": "Hexagons",
-  "tags": [],
+  "duration": "29050",
+  "width": "1280",
+  "height": "720",
   "bpm": 0.0
 }
 ```
@@ -10657,7 +11216,6 @@ Complex classes used as a return in some methods
 {
   "name": "Chorus",
   "tag": "C",
-  "aliases": [],
   "font_color": "FFFFFF",
   "bg_color": "000080",
   "background": null,
@@ -10676,8 +11234,12 @@ Complex classes used as a return in some methods
 ## Group
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `name` | _String_ | Item name |
-| `songs` | _Array&lt;Number&gt;_ | List of song IDs |
+| `id` | _String_ | Item ID. (The same value as `name`). `v2.25.0+` |
+| `name` | _String_ | Item name `read-only` |
+| `songs` | _Array&lt;String&gt;_ | List of song IDs |
+| `add_chorus_between_verses` | _Boolean_ |  `v2.25.0+` |
+| `hide_in_interface` | _Boolean_ |  `v2.25.0+` |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
 
 ## Announcement
 | Name | Type  | Description |
@@ -10712,20 +11274,28 @@ Complex classes used as a return in some methods
 ## Service
 | Name | Type  | Description |
 | ---- | :---: | ------------|
+| `id` | _String_ | Item ID `v2.25.0+` |
 | `name` | _String_ | Item name |
+| `disabled` | _Boolean_ | Returns **true** if the item is set to disabled `v2.25.0+` |
 | `week` | _String_ | Week. Can be: `all` `first` `second` `third` `fourth` `last` |
 | `day` | _String_ | Day of the week. Can be: `sun` `mon` `tue` `wed` `thu` `fri` `sat` |
 | `hour` | _Number_ | Hour [0-23] |
 | `minute` | _Number_ | Minute [0-59] |
 | `type` | _String_ | Type of item. Can be: `service` `event` |
 | `hide_week` | _Array&lt;String&gt;_ | List of hidden weeks. Available if `week=all` |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
 
 ## Event
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `name` | _String_ | Event name |
+| `id` | _String_ | Item ID `v2.25.0+` |
+| `name` | _String_ | Item name |
+| `description` | _String_ | Item description `v2.25.0+` |
 | `datetime` | _String_ | Date and time format: YYYY-MM-DD HH:MM |
+| `datetime_millis` | _String_ | timestamp `v2.24.0+` `read-only` |
 | `wallpaper` | _String_ | Relative path of the file used as the event wallpaper |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
+| `metadata.service` | _[Service](#service)_ | Regular service or event that gives rise to this event. It can be `null` if it is an individually created event. `v2.25.0+` `read-only` |
 
 ## Schedule
 | Name | Type  | Description |
@@ -10745,6 +11315,8 @@ Complex classes used as a return in some methods
 | `roles.*.name` | _String_ | Function name |
 | `roles.*.member` | _[Member](#member)_ | Member assigned to the role |
 | `notes` | _String_ | Notes `v2.21.0+` |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
+| `metadata.event` | _[Event](#event)_ | Event that gives rise to this playlist. It can be `null` if `type=temporary`. `v2.25.0+` `read-only` |
 <details>
   <summary>See example</summary>
 
@@ -10794,8 +11366,6 @@ Complex classes used as a return in some methods
     }
   ],
   "responsible": null,
-  "members": [],
-  "roles": [],
   "notes": ""
 }
 ```
@@ -10807,21 +11377,26 @@ Complex classes used as a return in some methods
 | `id` | _String_ | Item ID |
 | `name` | _String_ | Item name |
 | `description` | _String_ | Item description |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
 
 ## Member
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `id` | _String_ | Item ID |
 | `name` | _String_ | Item name |
+| `disabled` | _Boolean_ | Returns **true** if the item is set to disabled `v2.25.0+` |
 | `skills` | _String_ | Skills |
 | `roles` | _Array&lt;[Role](#role)&gt;_ | Roles |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
 
 ## Role
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `id` | _String_ | Item ID |
 | `name` | _String_ | Item name |
+| `disabled` | _Boolean_ | Returns **true** if the item is set to disabled `v2.25.0+` |
 | `team` | _[Team](#team)_ | Team |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
 
 ## Automatic Presentation
 | Name | Type  | Description |
@@ -10869,8 +11444,7 @@ Complex classes used as a return in some methods
   "when": "displaying",
   "item": "any_song",
   "action": function(obj) { /* TODO */ },
-  "name": "name",
-  "filter": {}
+  "name": "name"
 }
 ```
 </details>
@@ -11090,7 +11664,10 @@ Display settings
   "book_panel_type": "grid",
   "book_panel_order": "automatic",
   "book_panel_order_available_items": [
-    "automatic", "standard", "ru", "tyv"
+    "automatic",
+    "standard",
+    "ru",
+    "tyv"
   ],
   "multiple_verses_separator_type": "double_line_break",
   "multiple_versions_separator_type": "double_line_break",
@@ -11179,11 +11756,15 @@ Display settings
   "info_1": {
     "show_page_count": false,
     "show_slide_description": false,
-    "horizontal_align": "right", "vertical_align": "bottom"
+    "horizontal_align": "right",
+    "vertical_align": "bottom"
   },
   "info_2": {
     "show": false,
-    "layout_row_1": "<title>< (%author_or_artist%)>", "layout_text_row_1": "", "horizontal_align": "right", "vertical_align": "bottom"
+    "layout_row_1": "<title>< (%author_or_artist%)>",
+    "layout_text_row_1": "",
+    "horizontal_align": "right",
+    "vertical_align": "bottom"
   },
   "font": {
     "name": null,
@@ -11240,8 +11821,7 @@ Display settings
       "position": 2,
       "name": "nome",
       "only_number": false,
-      "uppercase": false,
-      "suggestions": []
+      "uppercase": false
     },
     {
       "position": 22,
@@ -11276,8 +11856,7 @@ Display settings
   "position": 0,
   "name": "",
   "only_number": false,
-  "uppercase": false,
-  "suggestions": []
+  "uppercase": false
 }
 ```
 </details>
@@ -11298,7 +11877,9 @@ Display settings
   "name": "",
   "title": "...",
   "alternatives": [
-    "Item 1", "Item 2", "Item 3"
+    "Item 1",
+    "Item 2",
+    "Item 3"
   ],
   "correct_alternative_number": 2,
   "source": ""
@@ -11350,10 +11931,12 @@ Display settings
   "text": "text",
   "duration": 3,
   "translations": {
-    "key1": "value1", "key2": "value2"
+    "key1": "value1",
+    "key2": "value2"
   },
   "theme": {
-    "name": "...", "edit": {
+    "name": "...",
+    "edit": {
       "font": {
         "name": "Arial",
         "size": 10,
@@ -11432,10 +12015,14 @@ Key/value pair
   "fill_color": null,
   "clock": {
     "enabled": false,
-    "font_name": "", "bold": false,
+    "font_name": "",
+    "bold": false,
     "italic": false,
-    "color": "FF0000", "background": "000000", "height": 12,
-    "position": "top_right", "corner": 0
+    "color": "FF0000",
+    "background": "000000",
+    "height": 12,
+    "position": "top_right",
+    "corner": 0
   }
 }
 ```
@@ -11523,7 +12110,8 @@ Key/value pair
 {
   "reference": "Ps 23.1-2",
   "ids": [
-    "19023001", "19023002"
+    "19023001",
+    "19023002"
   ],
   "verses": [
     {
@@ -11579,6 +12167,26 @@ Custom translation settings
 | `merge` | _Boolean_ |  |
 | `uppercase` | _Boolean_ |  |
 | `blank_line_height` | _Number_ | `0 ~ 100` |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "translation_1": {
+    "name": "default",
+    "style": "",
+    "prefix": "",
+    "suffix": ""
+  },
+  "translation_2": null,
+  "translation_3": null,
+  "translation_4": null,
+  "merge": false,
+  "uppercase": false,
+  "blank_line_height": 0
+}
+```
+</details>
 
 ## Translation Custom Settings Item
 Custom translation settings (item)
@@ -11586,9 +12194,257 @@ Custom translation settings (item)
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `name` | _String_ | translation name. Use 'default' to use the original text. |
-| `style` | _String_ | Custom text formatting. [Styled Text](#styled-text) |
+| `style` | _String_ | Custom text formatting. [Styled Text](https://github.com/holyrics/Scripts/blob/main/i18n/en/StyledText.md) |
 | `prefix` | _String_ | Text added at the beginning of each line |
 | `suffix` | _String_ | Text added at the end of each line |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "name": "default",
+  "style": "",
+  "prefix": "",
+  "suffix": ""
+}
+```
+</details>
+
+## Styled Model
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `key` | _String_ |  |
+| `properties` | _Object_ | Key/value pair |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "key": "title",
+  "properties": {
+    "b": "true",
+    "size": "120"
+  }
+}
+```
+</details>
+
+## Initial Slide Settings
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `display_mode` | _String_ | Accepted values: `title_author` `title_author_or_artist` `title` `title_artist` `blank` `remove` |
+| `uppercase` | _Boolean_ |  |
+| `automatic_line_break` | _Boolean_ |  |
+| `underlined_title` | _Boolean_ |  |
+| `title_font_relative_size` | _Number_ | `40 ~ 160` |
+| `author_or_artist_font_relative_size` | _Number_ | `40 ~ 160` |
+| `keep_ratio` | _Boolean_ |  |
+| `remove_final_slide` | _Boolean_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "display_mode": "title_author_or_artist",
+  "uppercase": false,
+  "automatic_line_break": true,
+  "underlined_title": true,
+  "title_font_relative_size": 130,
+  "author_or_artist_font_relative_size": 110,
+  "keep_ratio": true,
+  "remove_final_slide": false
+}
+```
+</details>
+
+## Copyright Settings
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `display_mode` | _String_ | Accepted values: `disabled` `first_slide` `all_slides` `last_slide` `display_for_x_seconds` |
+| `seconds` | _String_ | Available if `display_mode=display_for_x_seconds`<br>Accepted values: `5` `10` `15` `20` `30` `60` `120` |
+| `layout` | _String_ | Accepted values: `t,a` `t;a` `t,a;c` `t;a;c` |
+| `font.name` | _String_ | Font name |
+| `font.bold` | _String_ | Bold |
+| `font.italic` | _String_ | Italic |
+| `font.color` | _String_ | Color in hexadecimal format |
+| `line_height` | _Number_ | `2.0 ~ 10.0` |
+| `align` | _String_ | Accepted values: `left` `center` `right` |
+| `opaticy` | _Number_ | `30 ~ 100` |
+| `position` | _String_ | Accepted values: `top_left` `top_center` `top_right` `bottom_left` `bottom_center` `bottom_right` |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "display_mode": "all_slides",
+  "layout": "t;a;c",
+  "font": {
+    "name": "Arial",
+    "bold": true,
+    "italic": true,
+    "color": "FFFF00"
+  },
+  "line_height": 3.0,
+  "align": "left",
+  "opacity": 70,
+  "position": "top_left"
+}
+```
+</details>
+
+## Image Presentation Settings
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `adjust_type` | _String_ | `adjust` `extend` |
+| `blur` | _Object_ | Used only if: `adjust_type=adjust` |
+| `blur.enabled` | _Boolean_ |  |
+| `blur.radius` | _Number_ | `1 ~ 20` |
+| `blur.times` | _Number_ | `1 ~ 10` |
+| `blur.opacity` | _Number_ | `10 ~ 100` |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "adjust_type": "adjust",
+  "blur": {
+    "enabled": true,
+    "radius": 8,
+    "times": 5,
+    "opacity": 70
+  }
+}
+```
+</details>
+
+## Non-Latin Alphabet Support Settings
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `enabled` | _Boolean_ |  |
+| `font_or_script` | _String_ | `system` `lucida_sans` `arial_unicode_ms` `nirmala_ui` `arabic` `armenian` `bengali` `bopomofo` `cyrillic` `devanagari` `georgian` `gujarati` `gurmukhi` `han` `hebrew` `hiragana` `kannada` `katakana` `malayalam` `meetei_mayek` `ol_chiki` `oriya` `sinhala` `tamil` `telugu` `thai` |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "enabled": false,
+  "font_or_script": "system"
+}
+```
+</details>
+
+## Global Settings
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `fade_in_out_enabled` | _Boolean_ |  |
+| `fade_in_out_duration` | _Number_ | `200 ~ 1200` |
+| `show_history_main_window` | _Boolean_ |  |
+| `show_favorite_bar_main_window` | _Boolean_ |  |
+| `show_favorite_bar_bible_window` | _Boolean_ |  |
+| `show_module_bar_main_window` | _Boolean_ |  |
+| `show_module_bar_bible_window` | _Boolean_ |  |
+| `show_automatic_presentation_tab_main_window` | _Boolean_ |  |
+| `text_editor_font_name` | _String_ |  |
+| `show_comment_main_window` | _Boolean_ |  |
+| `show_comment_presentation_footer` | _Boolean_ |  |
+| `show_comment_app` | _Boolean_ |  |
+| `initial_slide` | _[InitialSlideSettings](#initial-slide-settings)_ |  |
+| `copyright` | _Object_ | Key/value pair<br>key: `public` `screen_2` `screen_3` `screen_?` `stream_image`<br>valor: [CopyrightSettings](#copyright-settings) |
+| `image_presentation` | _[ImagePresentationSettings](#image-presentation-settings)_ |  |
+| `black_screen_color` | _String_ | Color in hexadecimal format |
+| `swap_f5` | _Boolean_ |  |
+| `stage_view_modifier_enabled` | _Boolean_ |  |
+| `disable_modifier_automatically` | _Boolean_ |  |
+| `automatic_presentation_theme_chooser` | _Boolean_ |  |
+| `automatic_presentation_execution_delay` | _String_ | Accepted values: `0` `1000` `1500` `2000` `2500` `3000` |
+| `skip_slide_transition_if_equals` | _Boolean_ |  |
+| `non_latin_alphabet_support` | _[NonLatinAlphabetSupportSettings](#non-latin-alphabet-support-settings)_ |  |
+| `public_screen_expand_width` | _Number_ | `0 ~ 3840` |
+| `public_screen_rounded_border` | _Boolean_ |  |
+| `public_screen_rounded_border_size` | _Number_ | `0 ~ 540` |
+| `display_custom_formatting_enabled` | _Boolean_ |  |
+| `display_custom_background_enabled` | _Boolean_ |  |
+| `display_advanced_editor_enabled` | _Boolean_ |  |
+| `advanced_editor_block_line_break` | _Boolean_ |  |
+| `slide_description_repeat_description_for_sequence` | _Boolean_ |  |
+| `standardize_automatic_line_break` | _Boolean_ |  |
+| `allow_main_window_and_bible_window_simultaneously` | _Boolean_ |  |
+| `preferential_arrangement_collection` | _String_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "fade_in_out_enabled": true,
+  "fade_in_out_duration": 500,
+  "show_history_main_window": true,
+  "show_favorite_bar_main_window": true,
+  "show_favorite_bar_bible_window": false,
+  "show_module_bar_main_window": false,
+  "show_module_bar_bible_window": false,
+  "show_automatic_presentation_tab_main_window": false,
+  "text_editor_font_name": "Lucida Sans Unicode",
+  "show_comment_main_window": false,
+  "show_comment_presentation_footer": true,
+  "show_comment_app": true,
+  "initial_slide": {
+    "display_mode": "title_author_or_artist",
+    "uppercase": false,
+    "automatic_line_break": true,
+    "underlined_title": true,
+    "title_font_relative_size": 130,
+    "author_or_artist_font_relative_size": 110,
+    "keep_ratio": true,
+    "remove_final_slide": false
+  },
+  "copyright": {
+    "display_mode": "all_slides",
+    "layout": "t;a;c",
+    "font": {
+      "name": "Arial",
+      "bold": true,
+      "italic": true,
+      "color": "FFFF00"
+    },
+    "line_height": 3.0,
+    "align": "left",
+    "opacity": 70,
+    "position": "top_left"
+  },
+  "image_presentation": {
+    "adjust_type": "adjust",
+    "blur": {
+      "enabled": true,
+      "radius": 8,
+      "times": 5,
+      "opacity": 70
+    }
+  },
+  "black_screen_color": "1E1E1E",
+  "swap_f5": false,
+  "stage_view_modifier_enabled": true,
+  "disable_modifier_automatically": true,
+  "automatic_presentation_theme_chooser": true,
+  "automatic_presentation_execution_delay": 0,
+  "skip_slide_transition_if_equals": false,
+  "non_latin_alphabet_support": {
+    "enabled": false,
+    "font_or_script": "system"
+  },
+  "public_screen_expand_width": 0,
+  "public_screen_rounded_border": false,
+  "public_screen_rounded_border_size": 100,
+  "display_custom_formatting_enabled": true,
+  "display_custom_background_enabled": true,
+  "display_advanced_editor_enabled": true,
+  "advanced_editor_block_line_break": true,
+  "slide_description_repeat_description_for_sequence": true,
+  "standardize_automatic_line_break": false,
+  "allow_main_window_and_bible_window_simultaneously": false,
+  "preferential_arrangement_collection": ""
+}
+```
+</details>
 
 ## AddItem
 | Name | Type  | Description |
@@ -11683,8 +12539,7 @@ Custom translation settings (item)
   "id": "",
   "type": "audio",
   "name": "file.mp3",
-  "isDir": false,
-  "properties": {}
+  "isDir": false
 }
 ```
 </details>
@@ -11703,8 +12558,7 @@ Custom translation settings (item)
   "id": "",
   "type": "video",
   "name": "file.mp4",
-  "isDir": false,
-  "properties": {}
+  "isDir": false
 }
 ```
 </details>
@@ -11720,6 +12574,22 @@ Custom translation settings (item)
 ```json
 {
   "type": "image",
+  "name": "file.ext"
+}
+```
+</details>
+
+## AddItemFile
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | file |
+| `name` | _String_ | File name |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "type": "file",
   "name": "file.ext"
 }
 ```
@@ -11759,7 +12629,9 @@ Custom translation settings (item)
 {
   "type": "announcement",
   "names": [
-    "Anúncio 1", "Anúncio 2", "Anúncio 3"
+    "Anúncio 1",
+    "Anúncio 2",
+    "Anúncio 3"
   ],
   "automatic": {
     "seconds": 10,
@@ -11778,8 +12650,9 @@ Custom translation settings (item)
 | `text_before` | _String (optional)_ | Text displayed at the top of the countdown |
 | `text_after` | _String (optional)_ | Text displayed at the bottom of the countdown |
 | `zero_fill` | _Boolean (optional)_ | Fill in the 'minute' field with zero on the left `Default: false` |
+| `hide_zero_minute` | _Boolean (optional)_ | Hide the display of minutes when it is zero `Default: false` `v2.25.0+` |
 | `countdown_relative_size` | _Number (optional)_ | Relative size of the countdown `Default: 250` |
-| `theme` | _String (optional)_ | Theme ID `v2.21.0+` |
+| `theme` | _[ThemeFilter](#theme-filter) (optional)_ | Filter selected theme for display `v2.21.0+` |
 | `countdown_style` | _[FontSettings](#font-settings) (optional)_ | Custom font for countdown `v2.21.0+` |
 <details>
   <summary>See example</summary>
@@ -11799,7 +12672,8 @@ Custom translation settings (item)
     "bold": null,
     "italic": true,
     "color": null
-  }
+  },
+  "hide_zero_minute": false
 }
 ```
 </details>
@@ -11822,6 +12696,24 @@ Custom translation settings (item)
   "seconds": 0,
   "stop_at_zero": false,
   "description": ""
+}
+```
+</details>
+
+## AddItemPlainText
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | plain_text |
+| `name` | _String_ | Item name |
+| `text` | _String_ | Text |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "type": "plain_text",
+  "name": "",
+  "text": "Example"
 }
 ```
 </details>
@@ -11862,7 +12754,8 @@ Custom translation settings (item)
   "id": "xyz",
   "description": "",
   "inputs": {
-    "message": "Example", "duration": 30
+    "message": "Example",
+    "duration": 30
   }
 }
 ```
@@ -11884,7 +12777,8 @@ Custom translation settings (item)
   "id": "xyz",
   "description": "",
   "inputs": {
-    "message": "Example", "duration": 30
+    "message": "Example",
+    "duration": 30
   }
 }
 ```
@@ -11991,8 +12885,7 @@ Custom translation settings (item)
   "file_relative_path": "audio\\folder\\file.mp3",
   "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\audio\\folder\\file.mp3",
   "is_dir": false,
-  "extension": "mp3",
-  "properties": {}
+  "extension": "mp3"
 }
 ```
 </details>
@@ -12017,8 +12910,7 @@ Custom translation settings (item)
   "file_relative_path": "video\\folder\\file.mp4",
   "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\video\\folder\\file.mp4",
   "is_dir": false,
-  "extension": "mp4",
-  "properties": {}
+  "extension": "mp4"
 }
 ```
 </details>
@@ -12043,8 +12935,7 @@ Custom translation settings (item)
   "file_relative_path": "image\\folder\\file.jpg",
   "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\image\\folder\\file.jpg",
   "is_dir": false,
-  "extension": "jpg",
-  "properties": {}
+  "extension": "jpg"
 }
 ```
 </details>
@@ -12069,8 +12960,7 @@ Custom translation settings (item)
   "file_relative_path": "file\\folder\\file.txt",
   "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\file\\folder\\file.txt",
   "is_dir": false,
-  "extension": "txt",
-  "properties": {}
+  "extension": "txt"
 }
 ```
 </details>
@@ -12197,8 +13087,7 @@ Custom translation settings (item)
   "file_relative_path": "file\\folder\\file.txt",
   "file_path": "C:\\Holyrics\\Holyrics\\files\\media\\file\\folder\\file.txt",
   "is_dir": false,
-  "extension": "txt",
-  "properties": {}
+  "extension": "txt"
 }
 ```
 </details>
@@ -12227,6 +13116,8 @@ Custom translation settings (item)
 | `id` | _Number_ |  |
 | `name` | _String_ |  |
 | `from_user_list` | _Boolean_ |  |
+| `tags` | _String_ |  |
+| `bpm` | _String_ |  |
 <details>
   <summary>See example</summary>
 
@@ -12234,7 +13125,9 @@ Custom translation settings (item)
 {
   "id": 0,
   "name": "name",
-  "from_user_list": true
+  "from_user_list": true,
+  "tags": "",
+  "bpm": "0"
 }
 ```
 </details>
@@ -12246,6 +13139,8 @@ Custom translation settings (item)
 | `id` | _Number_ |  |
 | `name` | _String_ |  |
 | `from_user_list` | _Boolean_ |  |
+| `tags` | _String_ |  |
+| `bpm` | _String_ |  |
 | `color_map` | _Array&lt;Object&gt;_ |  |
 | `color_map.*.hex` | _String_ | Color in hexadecimal format |
 | `color_map.*.red` | _Number_ | Red  `0 ~ 255` |
@@ -12260,6 +13155,8 @@ Custom translation settings (item)
   "id": 0,
   "name": "name",
   "from_user_list": true,
+  "tags": "",
+  "bpm": "0",
   "color_map": [
     {
       "hex": "000000",
@@ -12327,7 +13224,6 @@ Custom translation settings (item)
 ```json
 {
   "title": "",
-  "subitem": {},
   "subitem_index": -1,
   "playlist_index": -1
 }
@@ -12367,6 +13263,7 @@ Custom translation settings (item)
 | `text_after` | _String_ |  |
 | `zero_fill` | _Boolean_ |  |
 | `countdown_relative_size` | _Number_ |  |
+| `hide_zero_minute` | _Boolean_ |  |
 <details>
   <summary>See example</summary>
 
@@ -12377,7 +13274,8 @@ Custom translation settings (item)
   "text_before": "",
   "text_after": "",
   "zero_fill": false,
-  "countdown_relative_size": 0
+  "countdown_relative_size": 0,
+  "hide_zero_minute": false
 }
 ```
 </details>
@@ -12433,8 +13331,8 @@ Custom translation settings (item)
 
 ```json
 {
-  "id": "1734539519278",
-  "datetime": 1734539519278,
+  "id": "1742142790725",
+  "datetime": 1742142790725,
   "user_id": "-1qfe9t8wtrsb6p5",
   "name": "example",
   "message": "example"
@@ -12537,31 +13435,3 @@ If there is an extra field called **Year**, it can be used like this:
 `<title>< - %author%><, %Year%>`
 <br/>
 Turns into: **Title - Author, 2023**
-
-# Styled Text
-To display text with advanced formatting, start the text with **&lt;styled&gt;**
-
-HTML tags available
-
-```html
-<styled>
-<b>bold</b>
-<i>italic</i>
-<u>underlined</u>
-<color:0000FF>Font color</color>
-<font:Arial>Font name</font>
-<size:70>Relative font size 70%</size>
-
-From v2.23.0
-<line-height:100>Line height</line-height>
-<valign:0>Vertical alignment  -200 ~ 200  </valign>
-<bgcolor:000000>Background color</bgcolor>
-<brightness-color:000000>Glow color</brightness-color>
-<brightness-weight:50>  0 ~ 100  </brightness-weight>
-<outline-color:000000>Outline color</outline-color>
-<outline-weight:50>  0 ~ 100  </outline-weight>
-<shadow-color:000000>Shadow color</shadow-color>
-<shadow-x-weight:50>  -100 ~ 100  </shadow-x-weight>
-<shadow-y-weight:-50>  -100 ~ 100  </shadow-y-weight>
-<blur>Apply blur effect</blur>
-```

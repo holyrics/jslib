@@ -25,7 +25,7 @@ Porém ao executar uma PLAYLIST, o Spotify não toca a primeira faixa automatica
 ### youtube.track(id)
 ### spotify.track(id)
 ### deezer.track(id)
-Executa uma faixa de áudio
+Plays an audio track
 
 **Parameters:**
 
@@ -38,7 +38,7 @@ Executa uma faixa de áudio
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `false` para erro. ID inválido, por exemplo. |
+| _Boolean_ | `false` for error Invalid ID for example. |
 
 
 ---
@@ -47,7 +47,7 @@ Executa uma faixa de áudio
 ### youtube.playlist(id)
 ### spotify.playlist(id)
 ### deezer.playlist(id)
-Executa uma playlist
+Plays a playlist
 
 **Parameters:**
 
@@ -60,7 +60,7 @@ Executa uma playlist
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `false` para erro. ID inválido, por exemplo. |
+| _Boolean_ | `false` for error Invalid ID for example. |
 
 
 ---
@@ -69,7 +69,7 @@ Executa uma playlist
 ### youtube.album(id)
 ### spotify.album(id)
 ### deezer.album(id)
-Executa um álbum
+Plays an album
 
 **Parameters:**
 
@@ -82,7 +82,7 @@ Executa um álbum
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `false` para erro. ID inválido, por exemplo. |
+| _Boolean_ | `false` for error Invalid ID for example. |
 
 
 ---
@@ -90,7 +90,7 @@ Executa um álbum
 
 ### spotify.artist(id)
 ### deezer.artist(id)
-Abre a página do artista
+Open the artist's page
 
 **Parameters:**
 
@@ -103,7 +103,7 @@ Abre a página do artista
 
 | Type  | Description |
 | :---: | ------------|
-| _Boolean_ | `false` para erro. ID inválido, por exemplo. |
+| _Boolean_ | `false` for error Invalid ID for example. |
 
 
 ---

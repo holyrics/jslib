@@ -24,7 +24,7 @@
 
 | Type  | Description |
 | :---: | ------------|
-| _Number_ | Slide number. Começa em zero |
+| _Number_ | Slide number. Starts at zero |
 
 
 ---
@@ -126,7 +126,7 @@
 
 | Type  | Description |
 | :---: | ------------|
-| _Number_ | Tempo atual do slide. `time >= 0 && time <= duration` |
+| _Number_ | Current slide time. `time >= 0 && time <= duration` |
 
 
 ---

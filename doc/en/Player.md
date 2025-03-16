@@ -62,7 +62,7 @@ Name of current media in player
 
 | Type  | Description |
 | :---: | ------------|
-| _String_ | Nome da mídia |
+| _String_ | Media name |
 
 
 ---
@@ -77,7 +77,7 @@ Full path of media in player
 
 | Type  | Description |
 | :---: | ------------|
-| _String_ | Caminho completo da mídia |
+| _String_ | Full media path |
 
 
 ---
@@ -99,7 +99,7 @@ Checks if the player is running
 
 
 ### getDuration()
-Tempo total da mídia atual no player
+Total media time in the player
 
 
 
@@ -114,7 +114,7 @@ Tempo total da mídia atual no player
 
 
 ### getCurrentTime()
-Tempo atual da mídia no player
+Current media time in the player
 
 
 
@@ -146,7 +146,7 @@ _Method does not return value_
 
 
 ### getTimeElapsed()
-Tempo decorrido da mídia no player
+Elapsed media time in the player
 
 
 
@@ -161,7 +161,7 @@ Tempo decorrido da mídia no player
 
 
 ### getTimeRemaining()
-Tempo restante da mídia no player
+Remaining media time in the player
 
 
 
@@ -176,7 +176,7 @@ Tempo restante da mídia no player
 
 
 ### play()
-Executar a ação **play** do player
+Execute the **play** action of the player
 
 
 
@@ -186,7 +186,7 @@ _Method does not return value_
 
 
 ### pause()
-Executar a ação **pause** do player
+Execute the **pause** action of the player
 
 
 
@@ -196,7 +196,7 @@ _Method does not return value_
 
 
 ### stop()
-Executar a ação **stop** do player
+Execute the **stop** action of the player
 
 
 
@@ -206,7 +206,7 @@ _Method does not return value_
 
 
 ### next()
-Passa para o próximo item da lista no player
+Move to the next item in the list in the player
 
 
 
@@ -216,7 +216,7 @@ _Method does not return value_
 
 
 ### previous()
-Passa para o item anterior da lista no player
+Go to the previous item in the list in the player
 
 
 
@@ -256,7 +256,7 @@ _Method does not return value_
 
 
 ### isExecuteAll()
-Verifica se o player está definido para executar itens em sequência
+Check if the player is set to execute items in sequence
 
 
 
@@ -271,7 +271,7 @@ Verifica se o player está definido para executar itens em sequência
 
 
 ### setExecuteAll(executeAll)
-Altera a configuração do player para executar itens em sequência
+Changes the player settings to play items in sequence
 
 **Parameters:**
 
@@ -384,7 +384,7 @@ Current player volume
 
 | Type  | Description |
 | :---: | ------------|
-| _Number_ | Volume. Mínimo=0, Máximo=100 |
+| _Number_ | Volume Minimum=0 Maximum=100 |
 
 
 ---

@@ -1,5 +1,5 @@
 # PopupWorkerUpdater
-Objeto que representa um PopupWorker em execução
+Object that represents a running PopupWorker
 
 ---
 
@@ -13,13 +13,13 @@ Objeto que representa um PopupWorker em execução
 
 # Functions 
 ### setProgress(progress)
-Atualiza o valor da barra de progresso
+Updates the value of the progress bar
 
 **Parameters:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `progress` | _Number_ | Valor da barra de progresso. `0 ~ 100` |
+| `progress` | _Number_ | Progress bar value. `0 ~ 100` |
 
 
 **Response:**
@@ -39,7 +39,7 @@ evt.setProgress(70);
 
 
 ### setProgress(current, total)
-Atualiza o valor da barra de progresso. O valor será calculado de forma proporcional. `current / total * 100`
+Updates the value of the progress bar. The value will be calculated proportionally. `current / total * 100`
 
 **Parameters:**
 
@@ -66,7 +66,7 @@ evt.setProgress(15, 40);
 
 
 ### setMessage(message)
-Altera a mensagem exibida na janela de progresso
+Changes the message displayed in the progress window
 
 **Parameters:**
 
@@ -92,7 +92,7 @@ evt.setMessage('Message');
 
 
 ### setLog(log)
-Altera a mensagem exibida em cima da barra de progresso
+Changes the message displayed above the progress bar
 
 **Parameters:**
 
@@ -118,7 +118,7 @@ evt.setLog('log');
 
 
 ### cancel()
-Cancela a execução da tarefa
+Cancels the execution of the task
 
 
 

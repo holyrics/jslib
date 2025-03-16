@@ -33,7 +33,7 @@ Name of current media in player
 
 | Type  | Description |
 | :---: | ------------|
-| _String_ | Nome da mídia |
+| _String_ | Media name |
 
 
 ---
@@ -67,7 +67,7 @@ Current player volume
 
 | Type  | Description |
 | :---: | ------------|
-| _Number_ | Volume. Mínimo=0, Máximo=100 |
+| _Number_ | Volume Minimum=0 Maximum=100 |
 
 
 ---
@@ -93,7 +93,7 @@ Checks if the **mute** option is enabled
 ### getTime()
 - v2.23.0
 
-Tempo atual da mídia no player
+Current media time in the player
 
 
 
@@ -110,7 +110,7 @@ Tempo atual da mídia no player
 ### getDuration()
 - v2.23.0
 
-Tempo total da mídia atual no player
+Total media time in the player
 
 
 
@@ -127,7 +127,7 @@ Tempo total da mídia atual no player
 ### getSlide()
 - v2.23.0
 
-Informação sobre o slide atual em exibição
+Information about the current slide being displayed
 
 
 
@@ -135,7 +135,7 @@ Informação sobre o slide atual em exibição
 
 | Type  | Description |
 | :---: | ------------|
-| _[AutomaticPresentationSlideInfo](https://github.com/holyrics/jslib/blob/main/doc/en/AutomaticPresentationSlideInfo.md)_ | Slide atual em exibição. Can be null. |
+| _[AutomaticPresentationSlideInfo](https://github.com/holyrics/jslib/blob/main/doc/en/AutomaticPresentationSlideInfo.md)_ | Current slide being displayed. Can be null. |
 
 
 ---
