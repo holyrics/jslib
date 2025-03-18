@@ -2290,7 +2290,7 @@ Executes the action of an existing **Script** item in the program
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `id` | _String_ | item id |
-| `input` | _Object (optional)_ | Values that will be set for [Function Input](https://github.com/holyrics/Scripts/blob/main/FunctionInput.md) `v2.20.0+` |
+| `input` | _Object (optional)_ | Values that will be set for [Function Input](https://github.com/holyrics/Scripts/blob/main/i18n/en/FunctionInput.md) `v2.20.0+` |
 
 
 **Response:**
@@ -2332,7 +2332,7 @@ Executes the action of an existing API item in the program
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `id` | _String_ | item id |
-| `input` | _Object (optional)_ | Values that will be set for [Function Input](https://github.com/holyrics/Scripts/blob/main/FunctionInput.md) `v2.20.0+` |
+| `input` | _Object (optional)_ | Values that will be set for [Function Input](https://github.com/holyrics/Scripts/blob/main/i18n/en/FunctionInput.md) `v2.20.0+` |
 
 
 **Response:**
@@ -2720,7 +2720,7 @@ The task is not persistent, meaning that upon restarting the program it does not
 | `input.notification` | _Boolean (optional)_ | `true` to display a notification in the corner of the screen one minute before the task execution, allowing the user to cancel the execution |
 | <br>Available if **notification=true** |  |  |
 | `input.description` | _String (optional)_ | Description displayed in the notification |
-| `input.icon` | _String (optional)_ | Icon displayed in the notification.<br>Uses the syntax of [Icon](https://github.com/holyrics/Scripts/blob/main/Icon.md). |
+| `input.icon` | _String (optional)_ | Icon displayed in the notification.<br>Uses the syntax of [Icon](https://github.com/holyrics/Scripts/blob/main/i18n/en/Icon.md). |
 
 
 **Response:**
@@ -5954,7 +5954,7 @@ Quick display of text
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.text` | _String_ | Text that will be displayed [Styled Text](https://github.com/holyrics/Scripts/blob/main/StyledText.md) from v2.19.0<br>Optional if `slides` is declared |
+| `input.text` | _String_ | Text that will be displayed [Styled Text](https://github.com/holyrics/Scripts/blob/main/i18n/en/StyledText.md) from v2.19.0<br>Optional if `slides` is declared |
 | `input.slides` | _Array&lt;[QuickPresentationSlide](#quick-presentation-slide)&gt;_ | Alternative parameter for more complex presentations<br>Optional if `text` is declared `v2.23.0+` |
 | `input.theme` | _[ThemeFilter](#theme-filter) (optional)_ | Filter selected theme for display |
 | `input.custom_theme` | _[Theme](#theme) (optional)_ | Custom theme used to display the text `v2.21.0+` |
@@ -8484,7 +8484,7 @@ Change communication panel text
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.text` | _String (optional)_ | Change the text of the communication panel. [Styled Text](https://github.com/holyrics/Scripts/blob/main/StyledText.md) from v2.19.0 |
+| `input.text` | _String (optional)_ | Change the text of the communication panel. [Styled Text](https://github.com/holyrics/Scripts/blob/main/i18n/en/StyledText.md) from v2.19.0 |
 | `input.show` | _Boolean (optional)_ | Show/hide the text |
 | `input.display_ahead` | _Boolean (optional)_ | Change the *'display in front of all'* option |
 | `input.theme` | _Object (optional)_ | ID or name of the Theme used to display the text `v2.21.0+` |
@@ -9954,7 +9954,7 @@ Display a window with input fields to receive information interactively
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `param` | _Object_ | Entries that will be requested in the interface. It can be a string or Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string** |
+| `param` | _Object_ | Entries that will be requested in the interface. It can be a string or Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/i18n/en/InputParam.md)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string** |
 | `notification` | _Boolean (optional)_ | Display a notification instead of opening the window directly |
 
 
@@ -10033,7 +10033,7 @@ The same function as `h.input(...)`, but automatically saves the value in `setGl
 | ---- | :---: | ------------|
 | `saveTo` | _String_ | Storage key used to save and retrieve the value of items.<br>`h.setGlobal(saveTo, ...)`<br>`h.getGlobal(saveTo, ...)`<br>`h.store(saveTo, ...)`<br>`h.restore(saveTo, ...)` |
 | `saveToStore` | _Boolean_ | **true** to save the value also in `h.store(saveTo, ...)`, meaning the configuration remains saved even after restarting the program `Default: true` |
-| `data` | _Object_ | Entries that will be requested in the interface. It can be a string or Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string**.<br>`data` can be `saveTo` (storage key) if the `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` method was called previously |
+| `data` | _Object_ | Entries that will be requested in the interface. It can be a string or Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/i18n/en/InputParam.md)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string**.<br>`data` can be `saveTo` (storage key) if the `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` method was called previously |
 
 
 **Response:**
@@ -10763,7 +10763,7 @@ Opens an editing window for creating new song lyrics<br>Note: It is not possible
 | `streaming.backing_track.spotify` | _String_ |  |
 | `streaming.backing_track.youtube` | _String_ |  |
 | `streaming.backing_track.deezer` | _String_ |  |
-| `extras` | _Object (optional)_ | Mapa de objetos extras (adicionados pelo usuário)<br>Allowed only for already existing fields. |
+| `extras` | _Object (optional)_ | Map of extra objects (added by the user)<br>Allowed only for already existing fields. |
 | `title_translations` | _Object_ | Translations for the title slide.<br>Key/value pair. |
 
 
@@ -10889,6 +10889,7 @@ Complex classes used as a return in some methods
 | `slides.*.slide_description` | _String_ | Slide description `v2.21.1+` |
 | `slides.*.background_id` | _String_ | ID of the theme or background saved for the slide `v2.21.0+` |
 | `slides.*.translations` | _Object_ | Translations for the slide.<br>Key/value pair. `v2.25.0+` |
+| `formatting_type` | _String_ | `basic`  `styled`  `advanced`<br> <br>When using this object in creation or editing methods, if `formatting_type=basic` is used, the value of the variable `slides.*.text` will be used; otherwise, the value of the variable `slides.*.styled_text` will be used `Default: basic` `v2.25.0+` |
 | `order` | _String_ | Order of slides (index from 1), separated by comma `v2.21.0+` |
 | `title_translations` | _Object_ | Translations for the title slide.<br>Key/value pair. `v2.25.0+` |
 | `key` | _String_ | Tone of music.<br>Can be: `C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm` |
@@ -10945,6 +10946,7 @@ Complex classes used as a return in some methods
       "translations": null
     }
   ],
+  "formatting_type": "basic",
   "order": "1,2,3,2,2",
   "title_translations": null,
   "key": "",
@@ -10985,8 +10987,8 @@ Complex classes used as a return in some methods
 | `slides.*.styled_text` | _String_ | Slide text with **styled** formatting (when available) `v2.24.0+` |
 | `slides.*.background_id` | _String_ | ID of the theme or background saved for the slide |
 | `slides.*.translations` | _Object_ | Translations for the slide.<br>Key/value pair. `v2.25.0+` |
+| `formatting_type` | _String_ | `basic`  `styled`  `advanced`<br> <br>When using this object in creation or editing methods, if `formatting_type=basic` is used, the value of the variable `slides.*.text` will be used; otherwise, the value of the variable `slides.*.styled_text` will be used `Default: basic` `v2.25.0+` |
 | `extras` | _Object_ | Map of extra objects (added by the user) `v2.24.0+` |
-| `formatting_type` | _String_ | `basic`  `styled`  `advanced` `v2.25.0+` |
 | `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
 <details>
   <summary>See example</summary>
@@ -11432,7 +11434,7 @@ Complex classes used as a return in some methods
 | `id` | _String (optional)_ | Item ID |
 | `when` | _String_ | `displaying` `closing` `change` `event` |
 | `item` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` |
-| `action` | _Function_ | Action to be executed.<br>`function(obj) { /*  */ }`<br>Content of `obj` according to the item type:<br>[`any_song`](https://github.com/holyrics/jslib#songinfo)  [`any_text`](https://github.com/holyrics/jslib#textinfo)  [`any_verse`](https://github.com/holyrics/jslib#verseinfo)  [`any_announcement`](https://github.com/holyrics/jslib#announcementinfo)  [`any_audio`](https://github.com/holyrics/jslib#audioinfo)  [`any_video`](https://github.com/holyrics/jslib#videoinfo)  [`any_image`](https://github.com/holyrics/jslib#imageinfo)  [`any_automatic_presentation`](https://github.com/holyrics/jslib#automaticpresentationinfo)  [`any_song_slide`](https://github.com/holyrics/jslib#songslideinfo)  [`any_text_slide`](https://github.com/holyrics/jslib#textslideinfo)  [`any_ppt_slide`](https://github.com/holyrics/jslib#pptslideinfo)  [`any_theme`](https://github.com/holyrics/jslib#themeinfo)  [`any_background`](https://github.com/holyrics/jslib#backgroundinfo)  [`any_title_subitem`](https://github.com/holyrics/jslib#titleinfo)  [`any_webcam`](https://github.com/holyrics/jslib#webcaminfo)  [`any_audio_folder`](https://github.com/holyrics/jslib#audioinfo)  [`any_video_folder`](https://github.com/holyrics/jslib#videoinfo)  [`any_image_folder`](https://github.com/holyrics/jslib#imageinfo)  [`any_ppt`](https://github.com/holyrics/jslib#pptinfo)  [`any_countdown`](https://github.com/holyrics/jslib#countdowninfo)  [`any_automatic_presentation_slide`](https://github.com/holyrics/jslib#automaticpresentationslideinfo)  [`f8`](https://github.com/holyrics/jslib#presentationmodifierinfoinfo)  [`f9`](https://github.com/holyrics/jslib#presentationmodifierinfoinfo)  [`f10`](https://github.com/holyrics/jslib#presentationmodifierinfoinfo)  [`new_message_chat`](https://github.com/holyrics/jslib#newchatmessageinfo)  [`verse_presentation_changed`](https://github.com/holyrics/jslib#versepresentationchangedinfo)  [`playlist_changed`](https://github.com/holyrics/jslib#playlistchangedinfo)  [`file_modified`](https://github.com/holyrics/jslib#filemodifiedinfo)  [`player_progress`](https://github.com/holyrics/jslib#playerprogressinfo)<br><br>All items with **when=change** contain: `obj.id` `obj.name` `obj.old_value` `obj.new_value` |
+| `action` | _Function_ | Action to be executed.<br>`function(obj) { /*  */ }`<br>Content of `obj` according to the item type:<br>[`any_song`](https://github.com/holyrics/jslib/blob/main/README-en.md#songinfo)  [`any_text`](https://github.com/holyrics/jslib/blob/main/README-en.md#textinfo)  [`any_verse`](https://github.com/holyrics/jslib/blob/main/README-en.md#verseinfo)  [`any_announcement`](https://github.com/holyrics/jslib/blob/main/README-en.md#announcementinfo)  [`any_audio`](https://github.com/holyrics/jslib/blob/main/README-en.md#audioinfo)  [`any_video`](https://github.com/holyrics/jslib/blob/main/README-en.md#videoinfo)  [`any_image`](https://github.com/holyrics/jslib/blob/main/README-en.md#imageinfo)  [`any_automatic_presentation`](https://github.com/holyrics/jslib/blob/main/README-en.md#automaticpresentationinfo)  [`any_song_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#songslideinfo)  [`any_text_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#textslideinfo)  [`any_ppt_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#pptslideinfo)  [`any_theme`](https://github.com/holyrics/jslib/blob/main/README-en.md#themeinfo)  [`any_background`](https://github.com/holyrics/jslib/blob/main/README-en.md#backgroundinfo)  [`any_title_subitem`](https://github.com/holyrics/jslib/blob/main/README-en.md#titleinfo)  [`any_webcam`](https://github.com/holyrics/jslib/blob/main/README-en.md#webcaminfo)  [`any_audio_folder`](https://github.com/holyrics/jslib/blob/main/README-en.md#audioinfo)  [`any_video_folder`](https://github.com/holyrics/jslib/blob/main/README-en.md#videoinfo)  [`any_image_folder`](https://github.com/holyrics/jslib/blob/main/README-en.md#imageinfo)  [`any_ppt`](https://github.com/holyrics/jslib/blob/main/README-en.md#pptinfo)  [`any_countdown`](https://github.com/holyrics/jslib/blob/main/README-en.md#countdowninfo)  [`any_automatic_presentation_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#automaticpresentationslideinfo)  [`f8`](https://github.com/holyrics/jslib/blob/main/README-en.md#presentationmodifierinfoinfo)  [`f9`](https://github.com/holyrics/jslib/blob/main/README-en.md#presentationmodifierinfoinfo)  [`f10`](https://github.com/holyrics/jslib/blob/main/README-en.md#presentationmodifierinfoinfo)  [`new_message_chat`](https://github.com/holyrics/jslib/blob/main/README-en.md#newchatmessageinfo)  [`verse_presentation_changed`](https://github.com/holyrics/jslib/blob/main/README-en.md#versepresentationchangedinfo)  [`playlist_changed`](https://github.com/holyrics/jslib/blob/main/README-en.md#playlistchangedinfo)  [`file_modified`](https://github.com/holyrics/jslib/blob/main/README-en.md#filemodifiedinfo)  [`player_progress`](https://github.com/holyrics/jslib/blob/main/README-en.md#playerprogressinfo)<br><br>All items with **when=change** contain: `obj.id` `obj.name` `obj.old_value` `obj.new_value` |
 | `name` | _String (optional)_ | Item name. Compatible value for display in **JavaScript Monitor** `v2.23.0+` |
 | `filter` | _Object (optional)_ | Execute action only if the object that triggered the event matches the filter object `v2.24.0+` |
 <details>
@@ -12744,7 +12746,7 @@ Custom translation settings (item)
 | `type` | _String_ | script |
 | `id` | _String_ | Item ID |
 | `description` | _String_ | Item description |
-| `inputs` | _Object (optional)_ | Default value for [Function Input](https://github.com/holyrics/Scripts/blob/main/FunctionInput.md) |
+| `inputs` | _Object (optional)_ | Default value for [Function Input](https://github.com/holyrics/Scripts/blob/main/i18n/en/FunctionInput.md) |
 <details>
   <summary>See example</summary>
 
@@ -12767,7 +12769,7 @@ Custom translation settings (item)
 | `type` | _String_ | api |
 | `id` | _String_ | Item ID |
 | `description` | _String_ | Item description |
-| `inputs` | _Object (optional)_ | Default value for [Function Input](https://github.com/holyrics/Scripts/blob/main/FunctionInput.md) |
+| `inputs` | _Object (optional)_ | Default value for [Function Input](https://github.com/holyrics/Scripts/blob/main/i18n/en/FunctionInput.md) |
 <details>
   <summary>See example</summary>
 
