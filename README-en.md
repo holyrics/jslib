@@ -260,7 +260,6 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [process](#processfile-input--null)
   - [executeCmdAndWait](#executecmdandwaitfile-cli--null-timeout--5000)
   - [triggerHotkey](#triggerhotkeyid)
-  - [device](#device)
   - [isAllowedExtensionToExecute](#isallowedextensiontoexecuteextension)
   - [isAllowedFileToExecute](#isallowedfiletoexecutefile)
   - [getAvailableFontFamilyNames](#getavailablefontfamilynames)
@@ -447,6 +446,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [Slide Description](#slide-description)
   - [Item](#item)
   - [Group](#group)
+  - [Song Arrangement](#song-arrangement)
   - [Announcement](#announcement)
   - [Midi](#midi)
   - [Favorite Item](#favorite-item)
@@ -1166,8 +1166,7 @@ Decodes a string in hexadecimal format
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `str` | _String_ | String in hexadecimal |
-| `charset` | _String (optional)_ | Charset for conversion of decoded bytes |
+| `hex` | _String_ | String in hexadecimal |
 
 
 **Response:**
@@ -1189,8 +1188,8 @@ Decodes a string in hexadecimal format
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `str` | _String_ | String in hexadecimal |
-| `charset` | _String (optional)_ | Charset for conversion of decoded bytes `Default: utf-8` |
+| `hex` | _String_ | String in hexadecimal |
+| `charset` | _String (optional)_ | Charset for conversion of decoded bytes `Default: utf-8` |
 
 
 **Response:**
@@ -1212,7 +1211,7 @@ Decodes a string in hexadecimal format
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `str` | _String_ | String in hexadecimal |
+| `hex` | _String_ | String in hexadecimal |
 
 
 **Response:**
@@ -1993,7 +1992,7 @@ Start a timer
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String (optional)_ | Timer key `Default: 'default'` |
+| `key` | _String (optional)_ | Timer key `Default: 'default'` |
 
 
 _Method does not return value_
@@ -2019,7 +2018,7 @@ Retrieves how much time has elapsed on a timer according to the **key** value. I
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String (optional)_ | Timer key `Default: 'default'` |
+| `key` | _String (optional)_ | Timer key `Default: 'default'` |
 
 
 **Response:**
@@ -2092,7 +2091,7 @@ Start a countdown
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String (optional)_ | Key/id of the countdown `Default: 'default'` |
+| `key` | _String (optional)_ | Key/id of the countdown `Default: 'default'` |
 | `seconds` | _Number_ | Total duration of the countdown in seconds |
 
 
@@ -2121,7 +2120,7 @@ Recovers how much time is left in a countdown according to the **key** value.
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `key` | _String (optional)_ | Key/id of the countdown `Default: 'default'` |
+| `key` | _String (optional)_ | Key/id of the countdown `Default: 'default'` |
 
 
 **Response:**
@@ -3141,7 +3140,7 @@ Format a number of seconds as hour|minute|second.
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `seconds` | _Number_ | Total amount of seconds |
-| `separator` | _String (optional)_ | Separator `Default: ':'` |
+| `separator` | _String (optional)_ | Separator `Default: ':'` |
 
 
 **Response:**
@@ -3180,7 +3179,7 @@ Format a number of seconds as minute|second.
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `seconds` | _Number_ | Total amount of seconds |
-| `separator` | _String (optional)_ | Separator `Default: ':'` |
+| `separator` | _String (optional)_ | Separator `Default: ':'` |
 
 
 **Response:**
@@ -3217,7 +3216,7 @@ Format a number of minutes as hour|minute.
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `minutes` | _Number_ | Total amount of minutes |
-| `separator` | _String (optional)_ | Separator `Default: ':'` |
+| `separator` | _String (optional)_ | Separator `Default: ':'` |
 
 
 **Response:**
@@ -3510,7 +3509,7 @@ Gets the current date and time formatted.<br>May generate Exception.
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `format` | _String (optional)_ | Pattern [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) `Default: yyyy-MM-dd HH:mm:ss` |
+| `format` | _String (optional)_ | Pattern [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) `Default: yyyy-MM-dd HH:mm:ss` |
 
 
 **Response:**
@@ -3838,7 +3837,7 @@ Adds a system variable that can be used within the texts displayed by the progra
 | ---- | :---: | ------------|
 | `name` | _String_ | Item name |
 | `function` | _Function_ | Function that will be executed to get the return and display the content in place of the variable declared in the presentation |
-| `cacheDelay` | _Number (optional)_ | The duration (in milliseconds) that the returned value will be cached for reuse without invoking the `function` again.<br>`500 ~ 60000` `Default: 1000` `v2.25.0+` |
+| `cacheDelay` | _Number (optional)_ | The duration (in milliseconds) that the returned value will be cached for reuse without invoking the `function` again.<br>`500 ~ 60000` `Default: 1000` `v2.25.0+` |
 
 
 _Method does not return value_
@@ -4086,7 +4085,7 @@ Convert a byte array to a string
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `bytes` | _Array&lt;byte&gt;_ | Byte array |
-| `charset` | _String (optional)_ | Coding used `Default: UTF-8` |
+| `charset` | _String (optional)_ | Coding used `Default: UTF-8` |
 
 
 **Response:**
@@ -4109,7 +4108,7 @@ Converts a string to a byte array
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `string` | _String_ | Text that will be encoded |
-| `charset` | _String (optional)_ | Coding used `Default: UTF-8` |
+| `charset` | _String (optional)_ | Coding used `Default: UTF-8` |
 
 
 **Response:**
@@ -4267,7 +4266,7 @@ Extract text from an HTML formatted snippet
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `html` | _String_ | Value to be edited |
-| `keepLineBreak` | _Boolean (optional)_ | If **true**, line breaks `\n (char 10)` will be preserved `Default: false` |
+| `keepLineBreak` | _Boolean (optional)_ | If **true**, line breaks `\n (char 10)` will be preserved `Default: false` |
 
 
 **Response:**
@@ -4311,8 +4310,8 @@ Save content to a TXT file. May generate Exception.
 | ---- | :---: | ------------|
 | `text` | _String_ | Text that will be saved |
 | `settings` | _Object (optional)_ | Settings |
-| `settings.name` | _String (optional)_ | File name `Default: YYYY-MM-DD_HH-MM-SS` |
-| `settings.charset` | _String (optional)_ | Text encoding `Default: UTF-8` |
+| `settings.name` | _String (optional)_ | File name `Default: YYYY-MM-DD_HH-MM-SS` |
+| `settings.charset` | _String (optional)_ | Text encoding `Default: UTF-8` |
 
 
 _Method does not return value_
@@ -4337,7 +4336,7 @@ Save content to an XLSX spreadsheet. May generate Exception.
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `data.name` | _String (optional)_ | File name `Default: YYYY-MM-DD_HH-MM-SS` |
+| `data.name` | _String (optional)_ | File name `Default: YYYY-MM-DD_HH-MM-SS` |
 | `data.sheets` | _Array&lt;Object&gt;_ | Tabs |
 | `data.sheets.*.name` | _String_ | Tab name |
 | `data.sheets.*.header` | _String_ | Header |
@@ -4768,7 +4767,7 @@ h.logf('{} {} {}', r.id, r.type, r.name);
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `key` | _String_ | Storage key used to save and retrieve the value of items.<br>`h.getGlobal(key, ...)`<br>`h.restore(key, ...)` |
-| `fromStore` | _Boolean_ | **true** to retrieve the value also in `h.restore(key, ...)` `Default: true` |
+| `fromStore` | _Boolean_ | **true** to retrieve the value also in `h.restore(key, ...)` `Default: true` |
 | `inputs` | _Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;_ | Object with previously stored values, where each key is the `id` of the respective `input`.<br>The value defined in `default_value` of each item will be returned if there is no previously stored value |
 
 
@@ -4941,7 +4940,7 @@ May generate Exception
 | `input.on_message` | _Function_ | Executed for each new message received `stdout`<br>The `message` object is of the type:  [ByteBufferReader](https://github.com/holyrics/jslib/blob/main/doc/en/ByteBufferReader.md)<br>`function(message) { ... }` |
 | `input.on_error` | _Function_ | Executed for each new message received `stderr`<br>The `message` object is of the type:  [ByteBufferReader](https://github.com/holyrics/jslib/blob/main/doc/en/ByteBufferReader.md)<br>`function(message) { ... }` |
 | `input.on_finish` | _Function_ | Executed when the process ends<br>`function(result) { }`<br>If `result` is a number, it is the exit code of the execution; if it is a `string`, it is the error message, for example, 'timeout' |
-| `input.timeout` | _Number_ | Maximum time for process execution `Default: 5000` |
+| `input.timeout` | _Number_ | Maximum time for process execution `Default: 5000` |
 
 
 **Response:**
@@ -4985,7 +4984,7 @@ Alternative request for `h.process(...)` using a more compact and direct approac
 | ---- | :---: | ------------|
 | `file` | _String_ | File that will be executed. The file must be in the respective 'files' tab of the program's library (or in a subfolder). |
 | `cli` | _Array&lt;String&gt;_ | Arguments that will be passed in the execution of the file |
-| `timeout` | _Number_ | Maximum time for process execution `Default: 5000` |
+| `timeout` | _Number_ | Maximum time for process execution `Default: 5000` |
 
 
 **Response:**
@@ -5040,26 +5039,6 @@ Observation: This method does not simulate pressing the shortcut key, it only ex
 
 ```javascript
 h.triggerHotkey('favorites_enable_disable');
-```
-
----
-
-
-### device
-- v2.24.0
-
-Saves and retrieves an object saved on disk, which can be retrieved even after restarting the program<br>Works like `h.store()` and `h.restore()`, but the saved value is not shared in cloud synchronization, meaning the data is saved only for the local device.
-
-
-
-_Method does not return value_
-
-**Example:**
-
-```javascript
-h.device.store('key', 'value');
-
-var r = h.device.restore('key');
 ```
 
 ---
@@ -5196,7 +5175,7 @@ Returns a song.
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | Song ID |
-| `fields` | _String (optional)_ | Comma-separated field names. If this field is declared, only the specified fields will be returned `v2.24.0+` |
+| `input.fields` | _String (optional)_ | Comma-separated field names. If this field is declared, only the specified fields will be returned `v2.24.0+` |
 
 
 **Response:**
@@ -5230,7 +5209,7 @@ Returns the list of songs
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `fields` | _String (optional)_ | Comma-separated field names. If this field is declared, only the specified fields will be returned `v2.24.0+` |
+| `input.fields` | _String (optional)_ | Comma-separated field names. If this field is declared, only the specified fields will be returned `v2.24.0+` |
 
 
 **Response:**
@@ -5263,12 +5242,12 @@ Performs a search in the user's lyrics list
 | ---- | :---: | ------------|
 | `input` | _String_ | Filter |
 | `input.text` | _String_ | Text to be searched |
-| `input.title` | _Boolean (optional)_ |  `Default: true` |
-| `input.artist` | _Boolean (optional)_ |  `Default: true` |
-| `input.note` | _Boolean (optional)_ |  `Default: true` |
-| `input.lyrics` | _Boolean (optional)_ |  `Default: false` |
+| `input.title` | _Boolean (optional)_ |  `Default: true` |
+| `input.artist` | _Boolean (optional)_ |  `Default: true` |
+| `input.note` | _Boolean (optional)_ |  `Default: true` |
+| `input.lyrics` | _Boolean (optional)_ |  `Default: false` |
 | `input.group` | _String (optional)_ |  |
-| `fields` | _String (optional)_ | Comma-separated field names. If this field is declared, only the specified fields will be returned `v2.24.0+` |
+| `input.fields` | _String (optional)_ | Comma-separated field names. If this field is declared, only the specified fields will be returned `v2.24.0+` |
 
 
 **Response:**
@@ -5307,7 +5286,7 @@ Starts a lyric show.
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | Item ID |
-| `input.initial_index` | _Number (optional)_ | Initial index of the presentation `Default: 0` `v2.23.0+` |
+| `input.initial_index` | _Number (optional)_ | Initial index of the presentation `Default: 0` `v2.23.0+` |
 
 
 _Method does not return value_
@@ -5345,7 +5324,7 @@ Returns a text.
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | Text ID |
-| `fields` | _String (optional)_ | Comma-separated field names. If this field is declared, only the specified fields will be returned `v2.24.0+` |
+| `input.fields` | _String (optional)_ | Comma-separated field names. If this field is declared, only the specified fields will be returned `v2.24.0+` |
 
 
 **Response:**
@@ -5379,7 +5358,7 @@ Returns the list of texts
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `fields` | _String (optional)_ | Comma-separated field names. If this field is declared, only the specified fields will be returned `v2.24.0+` |
+| `input.fields` | _String (optional)_ | Comma-separated field names. If this field is declared, only the specified fields will be returned `v2.24.0+` |
 
 
 **Response:**
@@ -5413,7 +5392,7 @@ Performs a search in the user's text list
 | ---- | :---: | ------------|
 | `input` | _String_ | Filter |
 | `input.text` | _String_ | Text to be searched |
-| `fields` | _String (optional)_ | Comma-separated field names. If this field is declared, only the specified fields will be returned `v2.24.0+` |
+| `input.fields` | _String (optional)_ | Comma-separated field names. If this field is declared, only the specified fields will be returned `v2.24.0+` |
 
 
 **Response:**
@@ -5447,7 +5426,7 @@ Starts a presentation of a text tab item.
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | Item ID |
-| `input.initial_index` | _Number (optional)_ | Initial index of the presentation `Default: 0` `v2.23.0+` |
+| `input.initial_index` | _Number (optional)_ | Initial index of the presentation `Default: 0` `v2.23.0+` |
 
 
 _Method does not return value_
@@ -5476,7 +5455,7 @@ Starts a Bible verse presentation.<br>Note: It is possible to display a maximum 
 | `input.ids` | _Array&lt;String&gt; (optional)_ | To display a list of verses. List with the ID of each verse.<br/>Example: ['19023001', '43003016', '45012002'] |
 | `input.references` | _String (optional)_ | References. Example: **John 3:16** or **Rm 12:2** or **Gn 1:1-3 Sl 23.1** |
 | `input.version` | _String (optional)_ | Name or abbreviation of the translation used `v2.21.0+` |
-| `input.quick_presentation` | _Boolean (optional)_ | `true` to display the verse through a quick presentation popup window.<br>Allows, for example, to start the presentation of a verse without ending the current presentation, returning to the current presentation when the verse presentation ends. `Default: false` `v2.24.0+` |
+| `input.quick_presentation` | _Boolean (optional)_ | `true` to display the verse through a quick presentation popup window.<br>Allows, for example, to start the presentation of a verse without ending the current presentation, returning to the current presentation when the verse presentation ends. `Default: false` `v2.24.0+` |
 
 
 _Method does not return value_
@@ -5516,8 +5495,8 @@ Returns the list of files from the respective tab: audio, video, image, file
 | ---- | :---: | ------------|
 | `input.folder` | _String (optional)_ | Subfolder name to list files |
 | `input.filter` | _String (optional)_ | Filter files by name |
-| `input.include_metadata` | _Boolean (optional)_ | Add metadata to the response `Default: false` `v2.22.0+` |
-| `input.include_thumbnail` | _Boolean (optional)_ | Add thumbnail to response (80x45) `Default: false` `v2.22.0+` |
+| `input.include_metadata` | _Boolean (optional)_ | Add metadata to the response `Default: false` `v2.22.0+` |
+| `input.include_thumbnail` | _Boolean (optional)_ | Add thumbnail to response (80x45) `Default: false` `v2.22.0+` |
 
 
 **Response:**
@@ -5578,8 +5557,8 @@ Returns the data of a file from the list of files in the respective tab: audio, 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.name` | _String_ | File name (including subfolder) |
-| `input.include_metadata` | _Boolean (optional)_ | Add metadata to the response `Default: false` |
-| `input.include_thumbnail` | _Boolean (optional)_ | Add thumbnail to response (80x45) `Default: false` |
+| `input.include_metadata` | _Boolean (optional)_ | Add metadata to the response `Default: false` |
+| `input.include_thumbnail` | _Boolean (optional)_ | Add thumbnail to response (80x45) `Default: false` |
 
 
 **Response:**
@@ -5959,7 +5938,7 @@ Quick display of text
 | `input.theme` | _[ThemeFilter](#theme-filter) (optional)_ | Filter selected theme for display |
 | `input.custom_theme` | _[Theme](#theme) (optional)_ | Custom theme used to display the text `v2.21.0+` |
 | `input.automatic` | _[Automatic](#automatic) (optional)_ | If informed, the presentation of the items will be automatic |
-| `input.initial_index` | _Number (optional)_ | Initial index of the presentation `Default: 0` `v2.23.0+` |
+| `input.initial_index` | _Number (optional)_ | Initial index of the presentation `Default: 0` `v2.23.0+` |
 
 
 _Method does not return value_
@@ -6056,12 +6035,12 @@ Display a countdown on the public screen
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.time` | _String_ | HH:MM or MM:SS |
-| `input.exact_time` | _Boolean (optional)_ | If **true**, `time` should be HH:MM (exact hour and minute). If **false**, `time` should be MM:SS (amount of minutes and seconds) `Default: false` |
+| `input.exact_time` | _Boolean (optional)_ | If **true**, `time` should be HH:MM (exact hour and minute). If **false**, `time` should be MM:SS (amount of minutes and seconds) `Default: false` |
 | `input.text_before` | _String (optional)_ | Text displayed at the top of the countdown |
 | `input.text_after` | _String (optional)_ | Text displayed at the bottom of the countdown |
-| `input.zero_fill` | _Boolean (optional)_ | Fill in the 'minute' field with zero on the left `Default: false` |
-| `input.hide_zero_minute` | _Boolean (optional)_ | Hide the display of minutes when it is zero `Default: false` `v2.25.0+` |
-| `input.countdown_relative_size` | _Number (optional)_ | Relative size of the countdown `Default: 250` |
+| `input.zero_fill` | _Boolean (optional)_ | Fill in the 'minute' field with zero on the left `Default: false` |
+| `input.hide_zero_minute` | _Boolean (optional)_ | Hide the display of minutes when it is zero `Default: false` `v2.25.0+` |
+| `input.countdown_relative_size` | _Number (optional)_ | Relative size of the countdown `Default: 250` |
 | `input.theme` | _[ThemeFilter](#theme-filter) (optional)_ | Filter selected theme for display `v2.21.0+` |
 | `input.countdown_style` | _[FontSettings](#font-settings) (optional)_ | Custom font for countdown `v2.21.0+` |
 | `input.custom_theme` | _[Theme](#theme) (optional)_ | Custom theme `v2.21.0+` |
@@ -6460,8 +6439,8 @@ Add song lyrics to playlist
 | ---- | :---: | ------------|
 | `input.id` | _String (optional)_ | Lyrics ID |
 | `input.ids` | _Array&lt;String&gt; (optional)_ | List with id of each lyics |
-| `input.index` | _Number (optional)_ | Position in the list where the item will be added (starts at zero). Items are added to the end of the list by default. `Default: -1` |
-| `input.media_playlist` | _Boolean (optional)_ | Add the lyrics to the media playlist `Default: false` |
+| `input.index` | _Number (optional)_ | Position in the list where the item will be added (starts at zero). Items are added to the end of the list by default. `Default: -1` |
+| `input.media_playlist` | _Boolean (optional)_ | Add the lyrics to the media playlist `Default: false` |
 
 
 _Method does not return value_
@@ -6801,8 +6780,8 @@ Add items to the media playlist
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.items` | _Array&lt;[AddItem](#add-item)&gt;_ | List with the items that will be added |
-| `input.index` | _Number (optional)_ | Position in the list where the item will be added (starts at zero). Items are added to the end of the list by default. `Default: -1` |
-| `input.ignore_duplicates` | _Boolean (optional)_ | Do not duplicate items when adding new items, that is, do not add an item if it is already on the list. `Default: false` |
+| `input.index` | _Number (optional)_ | Position in the list where the item will be added (starts at zero). Items are added to the end of the list by default. `Default: -1` |
+| `input.ignore_duplicates` | _Boolean (optional)_ | Do not duplicate items when adding new items, that is, do not add an item if it is already on the list. `Default: false` |
 
 
 _Method does not return value_
@@ -7226,10 +7205,10 @@ Item currently being presented or **null** if no presentation is being displayed
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.include_slides` | _Boolean (optional)_ | Return the list of slides from the current presentation. Unavailable for verse presentation. `Default: false` `v2.21.0+` |
-| `input.include_slide_comment` | _Boolean (optional)_ | Include comments (if any) in the slide text. Available if **include_slides=true**. `Default: false` `v2.21.0+` |
-| `input.include_slide_preview` | _Boolean (optional)_ | Include slide preview image. Available if **include_slides=true**. `Default: false` `v2.21.0+` |
-| `input.slide_preview_size` | _String (optional)_ | Preview size in WxH format (ex. 320x180). (max 640x360)<br>Available if **include_slide_preview=true** `Default: false` `v2.21.0+` |
+| `input.include_slides` | _Boolean (optional)_ | Return the list of slides from the current presentation. Unavailable for verse presentation. `Default: false` `v2.21.0+` |
+| `input.include_slide_comment` | _Boolean (optional)_ | Include comments (if any) in the slide text. Available if **include_slides=true**. `Default: false` `v2.21.0+` |
+| `input.include_slide_preview` | _Boolean (optional)_ | Include slide preview image. Available if **include_slides=true**. `Default: false` `v2.21.0+` |
+| `input.slide_preview_size` | _String (optional)_ | Preview size in WxH format (ex. 320x180). (max 640x360)<br>Available if **include_slide_preview=true** `Default: false` `v2.21.0+` |
 
 
 **Response:**
@@ -7502,7 +7481,7 @@ List of themes and backgrounds
 | `input.type` | _String (optional)_ | Can be: `theme` `my_video` `my_image` `video` `image` |
 | `input.tag` | _String (optional)_ |  |
 | `input.tags` | _Array&lt;String&gt; (optional)_ |  |
-| `input.intersection` | _Boolean (optional)_ | If the **input.tags** field is populated with multiple items, the **input.intersection** option defines the type of junction. If **true**, the filter will only return items that contain **all** the informed tags, if **false**, the filter will return the items that have at least one tag of the informed tags `Default: false` |
+| `input.intersection` | _Boolean (optional)_ | If the **input.tags** field is populated with multiple items, the **input.intersection** option defines the type of junction. If **true**, the filter will only return items that contain **all** the informed tags, if **false**, the filter will return the items that have at least one tag of the informed tags `Default: false` |
 
 
 **Response:**
@@ -7550,7 +7529,7 @@ Changes the background (or theme) of the current presentation. If more than one 
 | `input.type` | _String (optional)_ | Can be: `theme` `my_video` `my_image` `video` `image` |
 | `input.tag` | _String (optional)_ |  |
 | `input.tags` | _Array&lt;String&gt; (optional)_ |  |
-| `input.intersection` | _Boolean (optional)_ | If the **input.tags** field is populated with multiple items, the **input.intersection** option defines the type of junction. If **true**, the filter will only return items that contain **all** the informed tags, if **false**, the filter will return the items that have at least one tag of the informed tags `Default: false` |
+| `input.intersection` | _Boolean (optional)_ | If the **input.tags** field is populated with multiple items, the **input.intersection** option defines the type of junction. If **true**, the filter will only return items that contain **all** the informed tags, if **false**, the filter will return the items that have at least one tag of the informed tags `Default: false` |
 | `input.edit` | _[Theme](#theme) (optional)_ | Settings to modify the selected Theme for display `v2.21.0+` |
 | `input.custom_theme` | _[Theme](#theme) (optional)_ | Custom theme `v2.21.0+` |
 
@@ -7943,7 +7922,7 @@ History of all tags for "Music played"
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `in_millis` | _Boolean (optional)_ | `true` to return the value in Timestamp `v2.24.0+` |
+| `input.in_millis` | _Boolean (optional)_ | `true` to return the value in Timestamp `v2.24.0+` |
 
 
 **Response:**
@@ -7978,8 +7957,8 @@ Gets the date of the "Song played" history closest to a date and time passed as 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | Song lyric ID |
-| `input.datetime` | _String (optional)_ | Accepted formats: `timestamp` `YYYY-MM-DD` `YYYY/MM/DD` `YYYY-MM-DD HH:MM:SS` `YYYY/MM/DD HH:MM:SS` `DD-MM-YYYY` `DD/MM/YYYY` `DD-MM-YYYY HH:MM:SS` `DD/MM/YYYY HH:MM:SS` `Default: Date.now()` |
-| `input.type` | _String (optional)_ | Search filter. Can be:<br>`any` any value closest to the specified date<br>`before_datetime` The closest value that is earlier than or equal to the specified date (value <= datetime)<br>`after_datetime` The closest value that is equal to or later than the specified date (value >= datetime) `Default: any` |
+| `input.datetime` | _String (optional)_ | Accepted formats: `timestamp` `YYYY-MM-DD` `YYYY/MM/DD` `YYYY-MM-DD HH:MM:SS` `YYYY/MM/DD HH:MM:SS` `DD-MM-YYYY` `DD/MM/YYYY` `DD-MM-YYYY HH:MM:SS` `DD/MM/YYYY HH:MM:SS` `Default: Date.now()` |
+| `input.type` | _String (optional)_ | Search filter. Can be:<br>`any` any value closest to the specified date<br>`before_datetime` The closest value that is earlier than or equal to the specified date (value <= datetime)<br>`after_datetime` The closest value that is equal to or later than the specified date (value >= datetime) `Default: any` |
 
 
 **Response:**
@@ -8101,7 +8080,7 @@ List of members
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.only_active` | _Boolean_ |  `Default: true` `v2.25.0+` |
+| `input.only_active` | _Boolean_ |  `Default: true` `v2.25.0+` |
 
 
 **Response:**
@@ -8130,7 +8109,7 @@ List of functions
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.only_active` | _Boolean_ |  `Default: true` `v2.25.0+` |
+| `input.only_active` | _Boolean_ |  `Default: true` `v2.25.0+` |
 
 
 **Response:**
@@ -8161,7 +8140,7 @@ Service list
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.only_active` | _Boolean_ |  `Default: true` `v2.25.0+` |
+| `input.only_active` | _Boolean_ |  `Default: true` `v2.25.0+` |
 
 
 **Response:**
@@ -8390,7 +8369,7 @@ Starts a countdown on the communication panel
 | `input.minutes` | _Number_ | Number of minutes |
 | `input.seconds` | _Number_ | Number of seconds |
 | `input.yellow_starts_at` | _Number (optional)_ | Value in seconds to define how long the countdown will be yellow from |
-| `input.stop_at_zero` | _Boolean (optional)_ | Stop the countdown when it reaches zero `Default: false` |
+| `input.stop_at_zero` | _Boolean (optional)_ | Stop the countdown when it reaches zero `Default: false` |
 | `input.text` | _String (optional)_ | Text for display. By default, the text is displayed before the numeric part. For special formatting, use the variable `@cp_countdown` in the middle of the text to indicate the location of the numeric part. `v2.24.0+` |
 | `input.alert_text` | _String (optional)_ | Alternative text to be displayed when the display is in the alert. By default, the text is displayed before the numeric part. For special formatting, use the variable `@cp_countdown` in the middle of the text to indicate the location of the numeric part. `v2.24.0+` |
 
@@ -9497,7 +9476,7 @@ for (var i = 0; i < items.length; i++) {
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `filter` | _String (optional)_ | Name of the settings separated by comma |
+| `input.filter` | _String (optional)_ | Name of the settings separated by comma |
 
 
 **Response:**
@@ -9530,7 +9509,7 @@ h.log("fade_in_out_duration: " + r.data.fade_in_out_duration);
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-|  | _[GlobalSettings](#global-settings)_ |  |
+| `input` | _[GlobalSettings](#global-settings)_ |  |
 
 
 **Response:**
@@ -10032,7 +10011,7 @@ The same function as `h.input(...)`, but automatically saves the value in `setGl
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `saveTo` | _String_ | Storage key used to save and retrieve the value of items.<br>`h.setGlobal(saveTo, ...)`<br>`h.getGlobal(saveTo, ...)`<br>`h.store(saveTo, ...)`<br>`h.restore(saveTo, ...)` |
-| `saveToStore` | _Boolean_ | **true** to save the value also in `h.store(saveTo, ...)`, meaning the configuration remains saved even after restarting the program `Default: true` |
+| `saveToStore` | _Boolean_ | **true** to save the value also in `h.store(saveTo, ...)`, meaning the configuration remains saved even after restarting the program `Default: true` |
 | `data` | _Object_ | Entries that will be requested in the interface. It can be a string or Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/i18n/en/InputParam.md)&gt;. If a string is passed, it will be the name of the item and the type of the item will be **string**.<br>`data` can be `saveTo` (storage key) if the `h.registerSettings(saveTo, ...)` or `h.loadSettings(saveTo, ...)` method was called previously |
 
 
@@ -10700,11 +10679,11 @@ Opens a progress popup for executing long tasks with feedback in the interface
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `title` | _String (optional)_ | Initial message of the progress popup |
-| `cancelable` | _Boolean (optional)_ | `true` to allow the user to cancel the task `Default: false` |
-| `action` | _Function_ | Action to be executed.<br>`function(evt) { /* */ }`<br>The `evt` object is of type [PopupWorkerUpdater](https://github.com/holyrics/jslib/blob/main/doc/en/PopupWorkerUpdater.md) |
-| `callback` | _Function (optional)_ | Executed when finishing the execution of `action`.<br>`function(response, err) { /* */ }`<br>`response` is the object returned in the execution of `action`<br>`err` is the error message if the execution generated any `Exception` |
-| `on_cancel` | _Function_ | Executed if the task is canceled |
+| `input.title` | _String (optional)_ | Initial message of the progress popup |
+| `input.cancelable` | _Boolean (optional)_ | `true` to allow the user to cancel the task `Default: false` |
+| `input.action` | _Function_ | Action to be executed.<br>`function(evt) { /* */ }`<br>The `evt` object is of type [PopupWorkerUpdater](https://github.com/holyrics/jslib/blob/main/doc/en/PopupWorkerUpdater.md) |
+| `input.callback` | _Function (optional)_ | Executed when finishing the execution of `action`.<br>`function(response, err) { /* */ }`<br>`response` is the object returned in the execution of `action`<br>`err` is the error message if the execution generated any `Exception` |
+| `input.on_cancel` | _Function_ | Executed if the task is canceled |
 
 
 _Method does not return value_
@@ -10741,30 +10720,31 @@ Opens an editing window for creating new song lyrics<br>Note: It is not possible
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `callback` | _Function (optional)_ | Executed when closing the editing window.<br>`function(id) { /* */ }`<br>`id` is the id of the saved item or `null` if the user closed the window without saving the item |
-| `title` | _String_ | Song title |
-| `lyrics` | _String_ | Song lyrics.<br>Optional if `paragraphs` is declared |
-| `paragraphs` | _Array&lt;Object&gt;_ | Alternative parameter for more complex values.<br>Optional if `lyrics` is declared |
-| `paragraphs.*.text` | _String_ | Paragraph text |
-| `paragraphs.*.description` | _String (optional)_ | Description of the paragraph. chorus, verse, ... |
-| `paragraphs.*.translations` | _Object (optional)_ | Translations for the slide.<br>Key/value pair. |
-| `author` | _String (optional)_ | Music author |
-| `artist` | _String (optional)_ | Music artist |
-| `copyright` | _String (optional)_ | Music copyright |
-| `note` | _String (optional)_ | Music annotation |
-| `key` | _String (optional)_ | Tone of music.<br>Can be: `C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm` |
-| `bpm` | _Number (optional)_ | BPM of the song |
-| `time_sig` | _String (optional)_ | Music time.<br>Can be: `2/2` `2/4` `3/4` `4/4` `5/4` `6/4` `3/8` `6/8` `7/8` `9/8` `12/8` |
-| `streaming` | _Object_ | URI or ID of the streamings |
-| `streaming.audio` | _Object_ | Audio |
-| `streaming.audio.spotify` | _String_ |  |
-| `streaming.audio.youtube` | _String_ |  |
-| `streaming.audio.deezer` | _String_ |  |
-| `streaming.backing_track` | _Object_ | Backing track |
-| `streaming.backing_track.spotify` | _String_ |  |
-| `streaming.backing_track.youtube` | _String_ |  |
-| `streaming.backing_track.deezer` | _String_ |  |
-| `extras` | _Object (optional)_ | Map of extra objects (added by the user)<br>Allowed only for already existing fields. |
-| `title_translations` | _Object_ | Translations for the title slide.<br>Key/value pair. |
+| `song` | _Object_ |  |
+| `song.title` | _String_ | Song title |
+| `song.lyrics` | _String_ | Song lyrics.<br>Optional if `paragraphs` is declared |
+| `song.paragraphs` | _Array&lt;Object&gt;_ | Alternative parameter for more complex values.<br>Optional if `lyrics` is declared |
+| `song.paragraphs.*.text` | _String_ | Paragraph text |
+| `song.paragraphs.*.description` | _String (optional)_ | Description of the paragraph. chorus, verse, ... |
+| `song.paragraphs.*.translations` | _Object (optional)_ | Translations for the slide.<br>Key/value pair. |
+| `song.author` | _String (optional)_ | Music author |
+| `song.artist` | _String (optional)_ | Music artist |
+| `song.copyright` | _String (optional)_ | Music copyright |
+| `song.note` | _String (optional)_ | Music annotation |
+| `song.key` | _String (optional)_ | Tone of music.<br>Can be: `C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm` |
+| `song.bpm` | _Number (optional)_ | BPM of the song |
+| `song.time_sig` | _String (optional)_ | Music time.<br>Can be: `2/2` `2/4` `3/4` `4/4` `5/4` `6/4` `3/8` `6/8` `7/8` `9/8` `12/8` |
+| `song.streaming` | _Object_ | URI or ID of the streamings |
+| `song.streaming.audio` | _Object_ | Audio |
+| `song.streaming.audio.spotify` | _String_ |  |
+| `song.streaming.audio.youtube` | _String_ |  |
+| `song.streaming.audio.deezer` | _String_ |  |
+| `song.streaming.backing_track` | _Object_ | Backing track |
+| `song.streaming.backing_track.spotify` | _String_ |  |
+| `song.streaming.backing_track.youtube` | _String_ |  |
+| `song.streaming.backing_track.deezer` | _String_ |  |
+| `song.extras` | _Object (optional)_ | Map of extra objects (added by the user)<br>Allowed only for already existing fields. |
+| `song.title_translations` | _Object_ | Translations for the title slide.<br>Key/value pair. |
 
 
 _Method does not return value_
@@ -10800,13 +10780,14 @@ Opens an editing window for creating a new text presentation<br>Note: It is not 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `callback` | _Function (optional)_ | Executed when closing the editing window.<br>`function(id) { /* */ }`<br>`id` is the id of the saved item or `null` if the user closed the window without saving the item |
-| `title` | _String_ | Text title |
-| `folder` | _String_ | Path of the location folder |
+| `text` | _Object_ |  |
+| `text.title` | _String_ | Text title |
+| `text.folder` | _String_ | Path of the location folder |
 | `text` | _String_ | Presentation text.<br>Optional if `slides` is declared |
-| `slides` | _Array&lt;Object&gt;_ | Alternative parameter for more complex values.<br>Optional if `lyrics` is declared |
-| `slides.*.text` | _String_ | Paragraph text |
-| `slides.*.translations` | _Object (optional)_ | Translations for the slide.<br>Key/value pair. |
-| `extras` | _Object (optional)_ | Mapa de objetos extras (adicionados pelo usuário)<br>Allowed only for already existing fields. |
+| `text.slides` | _Array&lt;Object&gt;_ | Alternative parameter for more complex values.<br>Optional if `lyrics` is declared |
+| `text.slides.*.text` | _String_ | Paragraph text |
+| `text.slides.*.translations` | _Object (optional)_ | Translations for the slide.<br>Key/value pair. |
+| `text.extras` | _Object (optional)_ | Mapa de objetos extras (adicionados pelo usuário)<br>Allowed only for already existing fields. |
 
 
 _Method does not return value_
@@ -10889,8 +10870,9 @@ Complex classes used as a return in some methods
 | `slides.*.slide_description` | _String_ | Slide description `v2.21.1+` |
 | `slides.*.background_id` | _String_ | ID of the theme or background saved for the slide `v2.21.0+` |
 | `slides.*.translations` | _Object_ | Translations for the slide.<br>Key/value pair. `v2.25.0+` |
-| `formatting_type` | _String_ | `basic`  `styled`  `advanced`<br> <br>When using this object in creation or editing methods, if `formatting_type=basic` is used, the value of the variable `slides.*.text` will be used; otherwise, the value of the variable `slides.*.styled_text` will be used `Default: basic` `v2.25.0+` |
+| `formatting_type` | _String_ | `basic`  `styled`  `advanced`<br> <br>When using this object in creation or editing methods, if `formatting_type=basic` is used, the value of the variable `slides.*.text` will be used; otherwise, the value of the variable `slides.*.styled_text` will be used `Default: basic` `v2.25.0+` |
 | `order` | _String_ | Order of slides (index from 1), separated by comma `v2.21.0+` |
+|  | _Array&lt;[SongArrangement](#song-arrangement)&gt;_ |  `v2.25.1+` |
 | `title_translations` | _Object_ | Translations for the title slide.<br>Key/value pair. `v2.25.0+` |
 | `key` | _String_ | Tone of music.<br>Can be: `C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm` |
 | `bpm` | _Number_ | BPM of the song |
@@ -10987,7 +10969,7 @@ Complex classes used as a return in some methods
 | `slides.*.styled_text` | _String_ | Slide text with **styled** formatting (when available) `v2.24.0+` |
 | `slides.*.background_id` | _String_ | ID of the theme or background saved for the slide |
 | `slides.*.translations` | _Object_ | Translations for the slide.<br>Key/value pair. `v2.25.0+` |
-| `formatting_type` | _String_ | `basic`  `styled`  `advanced`<br> <br>When using this object in creation or editing methods, if `formatting_type=basic` is used, the value of the variable `slides.*.text` will be used; otherwise, the value of the variable `slides.*.styled_text` will be used `Default: basic` `v2.25.0+` |
+| `formatting_type` | _String_ | `basic`  `styled`  `advanced`<br> <br>When using this object in creation or editing methods, if `formatting_type=basic` is used, the value of the variable `slides.*.text` will be used; otherwise, the value of the variable `slides.*.styled_text` will be used `Default: basic` `v2.25.0+` |
 | `extras` | _Object_ | Map of extra objects (added by the user) `v2.24.0+` |
 | `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
 <details>
@@ -11088,7 +11070,7 @@ Complex classes used as a return in some methods
 | `comment.color` | _String_ | Color in hexadecimal format |
 | <br>**settings** |  | <br>Settings |
 | `settings.uppercase` | _Boolean_ | Display the text in uppercase |
-| `settings.line_break` | _String_ | Apply line break. `system`  `true`  `false`<br> `Default: system` |
+| `settings.line_break` | _String_ | Apply line break. `system`  `true`  `false`<br> `Default: system` |
 | <br>**metadata** |  | <br> |
 | `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
 <details>
@@ -11242,6 +11224,23 @@ Complex classes used as a return in some methods
 | `add_chorus_between_verses` | _Boolean_ |  `v2.25.0+` |
 | `hide_in_interface` | _Boolean_ |  `v2.25.0+` |
 | `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
+
+## Song Arrangement
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `name` | _String_ | Item name |
+| `sequence` | _String_ | Order of slides (index from 1), separated by comma |
+| `collections` | _Array&lt;String&gt;_ | Short name of the item |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "name": "",
+  "sequence": "1,2,3,2,2"
+}
+```
+</details>
 
 ## Announcement
 | Name | Type  | Description |
@@ -11685,10 +11684,10 @@ Display settings
 ## Font Settings
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `font_name` | _String (optional)_ | Font name `Default: null` |
-| `bold` | _Boolean (optional)_ | Bold `Default: null` |
-| `italic` | _Boolean (optional)_ | Italic `Default: null` |
-| `color` | _String (optional)_ | Color in hexadecimal `Default: null` |
+| `font_name` | _String (optional)_ | Font name `Default: null` |
+| `bold` | _Boolean (optional)_ | Bold `Default: null` |
+| `italic` | _Boolean (optional)_ | Italic `Default: null` |
+| `color` | _String (optional)_ | Color in hexadecimal `Default: null` |
 
 ## Stage View
 | Name | Type  | Description |
@@ -11869,7 +11868,7 @@ Display settings
 | `name` | _String_ | Item name `v2.24.0+` |
 | `title` | _String_ | Question |
 | `alternatives` | _Array&lt;String&gt;_ | Alternatives |
-| `correct_alternative_number` | _Number (optional)_ | Number of the correct alternative. Starts at 1 `Default: 1` |
+| `correct_alternative_number` | _Number (optional)_ | Number of the correct alternative. Starts at 1 `Default: 1` |
 | `source` | _String (optional)_ | Answer font |
 <details>
   <summary>See example</summary>
@@ -11896,10 +11895,10 @@ Display settings
 | `correct_answer_color_background` | _String (optional)_ | Background color for the correct answer |
 | `incorrect_answer_color_font` | _String (optional)_ | Font color for the incorrect answer |
 | `incorrect_answer_color_background` | _String (optional)_ | Background color for the incorrect answer |
-| `question_and_alternatives_different_slides` | _Boolean (optional)_ | Display the question and alternatives on separate slides `Default: false` |
-| `display_alternatives_one_by_one` | _Boolean (optional)_ | Display the alternatives one by one `Default: true` |
-| `alternative_char_type` | _String (optional)_ | Type of character to list the alternatives `number (1, 2, 3...)`  `alpha (A, B, C...)` `Default: 'alpha'` |
-| `alternative_separator_char` | _String (optional)_ | Separator character. Allowed values:  ` `  `.`  `)`  `-`  `:` `Default: '.'` |
+| `question_and_alternatives_different_slides` | _Boolean (optional)_ | Display the question and alternatives on separate slides `Default: false` |
+| `display_alternatives_one_by_one` | _Boolean (optional)_ | Display the alternatives one by one `Default: true` |
+| `alternative_char_type` | _String (optional)_ | Type of character to list the alternatives `number (1, 2, 3...)`  `alpha (A, B, C...)` `Default: 'alpha'` |
+| `alternative_separator_char` | _String (optional)_ | Separator character. Allowed values:  ` `  `.`  `)`  `-`  `:` `Default: '.'` |
 <details>
   <summary>See example</summary>
 
@@ -12459,7 +12458,7 @@ Custom translation settings (item)
 | `type` | _String_ | title |
 | `name` | _String_ | Item name |
 | `background_color` | _String (optional)_ | Background color in hexadecimal, example: 000080 |
-| `collapsed` | _Boolean (optional)_ |  `Default: false` |
+| `collapsed` | _Boolean (optional)_ |  `Default: false` |
 <details>
   <summary>See example</summary>
 
@@ -12648,12 +12647,12 @@ Custom translation settings (item)
 | ---- | :---: | ------------|
 | `type` | _String_ | countdown |
 | `time` | _String_ | HH:MM or MM:SS |
-| `exact_time` | _Boolean (optional)_ | If **true**, `time` should be HH:MM (exact hour and minute). If **false**, `time` should be MM:SS (amount of minutes and seconds) `Default: false` |
+| `exact_time` | _Boolean (optional)_ | If **true**, `time` should be HH:MM (exact hour and minute). If **false**, `time` should be MM:SS (amount of minutes and seconds) `Default: false` |
 | `text_before` | _String (optional)_ | Text displayed at the top of the countdown |
 | `text_after` | _String (optional)_ | Text displayed at the bottom of the countdown |
-| `zero_fill` | _Boolean (optional)_ | Fill in the 'minute' field with zero on the left `Default: false` |
-| `hide_zero_minute` | _Boolean (optional)_ | Hide the display of minutes when it is zero `Default: false` `v2.25.0+` |
-| `countdown_relative_size` | _Number (optional)_ | Relative size of the countdown `Default: 250` |
+| `zero_fill` | _Boolean (optional)_ | Fill in the 'minute' field with zero on the left `Default: false` |
+| `hide_zero_minute` | _Boolean (optional)_ | Hide the display of minutes when it is zero `Default: false` `v2.25.0+` |
+| `countdown_relative_size` | _Number (optional)_ | Relative size of the countdown `Default: 250` |
 | `theme` | _[ThemeFilter](#theme-filter) (optional)_ | Filter selected theme for display `v2.21.0+` |
 | `countdown_style` | _[FontSettings](#font-settings) (optional)_ | Custom font for countdown `v2.21.0+` |
 <details>
@@ -12686,7 +12685,7 @@ Custom translation settings (item)
 | `type` | _String_ | countdown_cp |
 | `minutes` | _Number_ | Number of minutes |
 | `seconds` | _Number_ | Number of seconds |
-| `stop_at_zero` | _Boolean (optional)_ | Stop the countdown when it reaches zero `Default: false` |
+| `stop_at_zero` | _Boolean (optional)_ | Stop the countdown when it reaches zero `Default: false` |
 | `description` | _String_ | Item description |
 <details>
   <summary>See example</summary>

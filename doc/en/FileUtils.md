@@ -123,7 +123,7 @@ Rename a file or folder
 | `input.to` | _String_ | Destination file. Must start with:  `audio/`  `video/`  `image/`  `file/` |
 | `input.description` | _String (optional)_ | Message displayed to the user in the permission request window for performing the action |
 | `input.notification` | _Boolean (optional)_ | Show notification in the corner of the screen instead of opening the permission window directly |
-| `update_references` | _Boolean (optional)_ |  `Default: true` |
+| `update_references` | _Boolean (optional)_ |  `Default: true` |
 
 
 **Response:**
@@ -364,7 +364,7 @@ Delete a folder
 | `input.file` | _String_ | Name of the folder that will be deleted. Must start with:  `audio/`  `video/`  `image/`  `file/` |
 | `input.description` | _String (optional)_ | Message displayed to the user in the permission request window for performing the action |
 | `input.notification` | _Boolean (optional)_ | Show notification in the corner of the screen instead of opening the permission window directly |
-| `recursively` | _Boolean (optional)_ | Delete recursively. If `false`, the folder will be deleted only if it is empty `Default: false` |
+| `recursively` | _Boolean (optional)_ | Delete recursively. If `false`, the folder will be deleted only if it is empty `Default: false` |
 
 
 **Response:**
@@ -517,7 +517,7 @@ Returns the list of files from the respective tab: audio, video, image, file May
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `Nome da pasta` | _String (optional)_ |  |
+| `folder` | _String (optional)_ | Folder name |
 
 
 **Response:**

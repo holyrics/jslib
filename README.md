@@ -260,7 +260,6 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [process](#processfile-input--null)
   - [executeCmdAndWait](#executecmdandwaitfile-cli--null-timeout--5000)
   - [triggerHotkey](#triggerhotkeyid)
-  - [device](#device)
   - [isAllowedExtensionToExecute](#isallowedextensiontoexecuteextension)
   - [isAllowedFileToExecute](#isallowedfiletoexecutefile)
   - [getAvailableFontFamilyNames](#getavailablefontfamilynames)
@@ -447,6 +446,7 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [Slide Description](#slide-description)
   - [Item](#item)
   - [Group](#group)
+  - [Song Arrangement](#song-arrangement)
   - [Announcement](#announcement)
   - [Midi](#midi)
   - [Favorite Item](#favorite-item)
@@ -1166,8 +1166,7 @@ Decodifica uma string em formato hexadecimal
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `str` | _String_ | String em hexadecimal |
-| `charset` | _String (opcional)_ | Charset para conversão dos bytes decodificados |
+| `hex` | _String_ | String em hexadecimal |
 
 
 **Resposta:**
@@ -1189,8 +1188,8 @@ Decodifica uma string em formato hexadecimal
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `str` | _String_ | String em hexadecimal |
-| `charset` | _String (opcional)_ | Charset para conversão dos bytes decodificados `Padrão: utf-8` |
+| `hex` | _String_ | String em hexadecimal |
+| `charset` | _String (opcional)_ | Charset para conversão dos bytes decodificados `Padrão: utf-8` |
 
 
 **Resposta:**
@@ -1212,7 +1211,7 @@ Decodifica uma string em formato hexadecimal
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `str` | _String_ | String em hexadecimal |
+| `hex` | _String_ | String em hexadecimal |
 
 
 **Resposta:**
@@ -1993,7 +1992,7 @@ Inicia um timer
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `key` | _String (opcional)_ | Chave/id do timer `Padrão: 'default'` |
+| `key` | _String (opcional)_ | Chave/id do timer `Padrão: 'default'` |
 
 
 _Método sem retorno_
@@ -2019,7 +2018,7 @@ Recupera quanto tempo foi decorrido em um timer de acordo com o valor **key**. S
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `key` | _String (opcional)_ | Chave/id do timer `Padrão: 'default'` |
+| `key` | _String (opcional)_ | Chave/id do timer `Padrão: 'default'` |
 
 
 **Resposta:**
@@ -2092,7 +2091,7 @@ Inicia uma contagem regressiva
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `key` | _String (opcional)_ | Chave/id da contagem regressiva `Padrão: 'default'` |
+| `key` | _String (opcional)_ | Chave/id da contagem regressiva `Padrão: 'default'` |
 | `seconds` | _Number_ | Duração total da contagem regressiva em segundos |
 
 
@@ -2121,7 +2120,7 @@ Recupera quanto tempo resta em uma contagem regressiva de acordo com o valor **k
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `key` | _String (opcional)_ | Chave/id da contagem regressiva `Padrão: 'default'` |
+| `key` | _String (opcional)_ | Chave/id da contagem regressiva `Padrão: 'default'` |
 
 
 **Resposta:**
@@ -3141,7 +3140,7 @@ Formatar uma quantidade de segundos como hora|minuto|segundo.
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `seconds` | _Number_ | Quantidade total de segundos |
-| `separator` | _String (opcional)_ | Separador `Padrão: ':'` |
+| `separator` | _String (opcional)_ | Separador `Padrão: ':'` |
 
 
 **Resposta:**
@@ -3180,7 +3179,7 @@ Formatar uma quantidade de segundos como minuto|segundo.
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `seconds` | _Number_ | Quantidade total de segundos |
-| `separator` | _String (opcional)_ | Separador `Padrão: ':'` |
+| `separator` | _String (opcional)_ | Separador `Padrão: ':'` |
 
 
 **Resposta:**
@@ -3217,7 +3216,7 @@ Formatar uma quantidade de minutos como hora|minuto.
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `minutes` | _Number_ | Quantidade total de minutos |
-| `separator` | _String (opcional)_ | Separador `Padrão: ':'` |
+| `separator` | _String (opcional)_ | Separador `Padrão: ':'` |
 
 
 **Resposta:**
@@ -3510,7 +3509,7 @@ Obtém a data e hora atual formatada.<br>Pode gerar Exception.
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `format` | _String (opcional)_ | Pattern [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) `Padrão: yyyy-MM-dd HH:mm:ss` |
+| `format` | _String (opcional)_ | Pattern [SimpleDateFormat](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) `Padrão: yyyy-MM-dd HH:mm:ss` |
 
 
 **Resposta:**
@@ -3838,7 +3837,7 @@ Adiciona uma variável do sistema que pode ser utilizada dentro dos textos exibi
 | ---- | :---: | ------------|
 | `name` | _String_ | Nome do item |
 | `function` | _Function_ | Function que será executada para obter o retorno e exibir o conteúdo no lugar da variável declarada na apresentação |
-| `cacheDelay` | _Number (opcional)_ | A duração (em milissegundos) que o valor retornado ficará em cache para reutilização sem invocar a `function` novamente.<br>`500 ~ 60000` `Padrão: 1000` `v2.25.0+` |
+| `cacheDelay` | _Number (opcional)_ | A duração (em milissegundos) que o valor retornado ficará em cache para reutilização sem invocar a `function` novamente.<br>`500 ~ 60000` `Padrão: 1000` `v2.25.0+` |
 
 
 _Método sem retorno_
@@ -4086,7 +4085,7 @@ Converte um array de bytes em string
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `bytes` | _Array&lt;byte&gt;_ | Array de bytes |
-| `charset` | _String (opcional)_ | Codificação utilizada `Padrão: UTF-8` |
+| `charset` | _String (opcional)_ | Codificação utilizada `Padrão: UTF-8` |
 
 
 **Resposta:**
@@ -4109,7 +4108,7 @@ Converte uma string em array de bytes
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `string` | _String_ | Texto que será codificado |
-| `charset` | _String (opcional)_ | Codificação utilizada `Padrão: UTF-8` |
+| `charset` | _String (opcional)_ | Codificação utilizada `Padrão: UTF-8` |
 
 
 **Resposta:**
@@ -4267,7 +4266,7 @@ Extrair o texto de um trecho formatado em HTML
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `html` | _String_ | Valor que será editado |
-| `keepLineBreak` | _Boolean (opcional)_ | Se **true**, as quebras de linha `\n (char 10)` serão mantidas `Padrão: false` |
+| `keepLineBreak` | _Boolean (opcional)_ | Se **true**, as quebras de linha `\n (char 10)` serão mantidas `Padrão: false` |
 
 
 **Resposta:**
@@ -4311,8 +4310,8 @@ Salvar um conteúdo em um arquivo TXT. Pode gerar Exception.
 | ---- | :---: | ------------|
 | `text` | _String_ | Texto que será salvo |
 | `settings` | _Object (opcional)_ | Configurações |
-| `settings.name` | _String (opcional)_ | Nome do arquivo `Padrão: YYYY-MM-DD_HH-MM-SS` |
-| `settings.charset` | _String (opcional)_ | Codificação do texto `Padrão: UTF-8` |
+| `settings.name` | _String (opcional)_ | Nome do arquivo `Padrão: YYYY-MM-DD_HH-MM-SS` |
+| `settings.charset` | _String (opcional)_ | Codificação do texto `Padrão: UTF-8` |
 
 
 _Método sem retorno_
@@ -4337,7 +4336,7 @@ Salvar um conteúdo em uma planilha XLSX. Pode gerar Exception.
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `data.name` | _String (opcional)_ | Nome do arquivo `Padrão: YYYY-MM-DD_HH-MM-SS` |
+| `data.name` | _String (opcional)_ | Nome do arquivo `Padrão: YYYY-MM-DD_HH-MM-SS` |
 | `data.sheets` | _Array&lt;Object&gt;_ | Abas |
 | `data.sheets.*.name` | _String_ | Nome da aba |
 | `data.sheets.*.header` | _String_ | Cabeçalho |
@@ -4768,7 +4767,7 @@ h.logf('{} {} {}', r.id, r.type, r.name);
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `key` | _String_ | Chave de armazenamento utilizado para salvar e recuperar o valor dos itens.<br>`h.getGlobal(key, ...)`<br>`h.restore(key, ...)` |
-| `fromStore` | _Boolean_ | **true** para recuperar o valor também em `h.restore(key, ...)` `Padrão: true` |
+| `fromStore` | _Boolean_ | **true** para recuperar o valor também em `h.restore(key, ...)` `Padrão: true` |
 | `inputs` | _Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;_ | Objeto com os valores previamente armazenados, onde cada chave é o `id` do respectivo `input`.<br>O valor definido em `default_value` de cada item será retornado caso não exista valor previamente armazenado |
 
 
@@ -4941,7 +4940,7 @@ Pode gerar Exception
 | `input.on_message` | _Function_ | Executado a cada nova mensagem recebida `stdout`<br>O objeto `message` é do tipo:  [ByteBufferReader](https://github.com/holyrics/jslib/blob/main/doc/pt/ByteBufferReader.md)<br>`function(message) { ... }` |
 | `input.on_error` | _Function_ | Executado a cada nova mensagem recebida `stderr`<br>O objeto `message` é do tipo:  [ByteBufferReader](https://github.com/holyrics/jslib/blob/main/doc/pt/ByteBufferReader.md)<br>`function(message) { ... }` |
 | `input.on_finish` | _Function_ | Executado ao encerrar o processo<br>`function(result) { }`<br>Se `result` for um número, é o código de saída da execução, se for uma `string`, é a mensagem de erro, por exemplo, 'timeout' |
-| `input.timeout` | _Number_ | Tempo máximo para execução do processo `Padrão: 5000` |
+| `input.timeout` | _Number_ | Tempo máximo para execução do processo `Padrão: 5000` |
 
 
 **Resposta:**
@@ -4985,7 +4984,7 @@ Requisição alternativa para `h.process(...)` utilizando uma abordagem mais com
 | ---- | :---: | ------------|
 | `file` | _String_ | Arquivo que será executado. O arquivo deve estar na respectiva aba 'arquivos' da biblioteca do programa (ou em uma subpasta). |
 | `cli` | _Array&lt;String&gt;_ | Argumentos que serão passados na execução do arquivo |
-| `timeout` | _Number_ | Tempo máximo para execução do processo `Padrão: 5000` |
+| `timeout` | _Number_ | Tempo máximo para execução do processo `Padrão: 5000` |
 
 
 **Resposta:**
@@ -5040,26 +5039,6 @@ Observação: Este método não simula o pressionamento da tecla de atalho, apen
 
 ```javascript
 h.triggerHotkey('favorites_enable_disable');
-```
-
----
-
-
-### device
-- v2.24.0
-
-Salva e recupera um objeto salvo em disco, que pode ser recuperado mesmo após reiniciar o programa<br>Funciona como `h.store()` e `h.restore()`, porém o valor salvo não é compartilhado na sincronização em nuvem, ou seja, os dados são salvos apenas para o dispositivo local.
-
-
-
-_Método sem retorno_
-
-**Exemplo:**
-
-```javascript
-h.device.store('key', 'value');
-
-var r = h.device.restore('key');
 ```
 
 ---
@@ -5196,7 +5175,7 @@ Retorna uma música.
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | ID da música |
-| `fields` | _String (opcional)_ | Nome dos campos separados por vírgula. Se este campo for declarado, apenas os campos especificados serão retornados `v2.24.0+` |
+| `input.fields` | _String (opcional)_ | Nome dos campos separados por vírgula. Se este campo for declarado, apenas os campos especificados serão retornados `v2.24.0+` |
 
 
 **Resposta:**
@@ -5230,7 +5209,7 @@ Retorna a lista de músicas
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `fields` | _String (opcional)_ | Nome dos campos separados por vírgula. Se este campo for declarado, apenas os campos especificados serão retornados `v2.24.0+` |
+| `input.fields` | _String (opcional)_ | Nome dos campos separados por vírgula. Se este campo for declarado, apenas os campos especificados serão retornados `v2.24.0+` |
 
 
 **Resposta:**
@@ -5263,12 +5242,12 @@ Realiza uma busca na lista de letras do usuário
 | ---- | :---: | ------------|
 | `input` | _String_ | Filtro |
 | `input.text` | _String_ | Texto a ser pesquisado |
-| `input.title` | _Boolean (opcional)_ |  `Padrão: true` |
-| `input.artist` | _Boolean (opcional)_ |  `Padrão: true` |
-| `input.note` | _Boolean (opcional)_ |  `Padrão: true` |
-| `input.lyrics` | _Boolean (opcional)_ |  `Padrão: false` |
+| `input.title` | _Boolean (opcional)_ |  `Padrão: true` |
+| `input.artist` | _Boolean (opcional)_ |  `Padrão: true` |
+| `input.note` | _Boolean (opcional)_ |  `Padrão: true` |
+| `input.lyrics` | _Boolean (opcional)_ |  `Padrão: false` |
 | `input.group` | _String (opcional)_ |  |
-| `fields` | _String (opcional)_ | Nome dos campos separados por vírgula. Se este campo for declarado, apenas os campos especificados serão retornados `v2.24.0+` |
+| `input.fields` | _String (opcional)_ | Nome dos campos separados por vírgula. Se este campo for declarado, apenas os campos especificados serão retornados `v2.24.0+` |
 
 
 **Resposta:**
@@ -5307,7 +5286,7 @@ Inicia uma apresentação de letra de música.
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | ID do item |
-| `input.initial_index` | _Number (opcional)_ | Índice inicial da apresentação `Padrão: 0` `v2.23.0+` |
+| `input.initial_index` | _Number (opcional)_ | Índice inicial da apresentação `Padrão: 0` `v2.23.0+` |
 
 
 _Método sem retorno_
@@ -5345,7 +5324,7 @@ Retorna um texto.
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | ID do texto |
-| `fields` | _String (opcional)_ | Nome dos campos separados por vírgula. Se este campo for declarado, apenas os campos especificados serão retornados `v2.24.0+` |
+| `input.fields` | _String (opcional)_ | Nome dos campos separados por vírgula. Se este campo for declarado, apenas os campos especificados serão retornados `v2.24.0+` |
 
 
 **Resposta:**
@@ -5379,7 +5358,7 @@ Retorna a lista de textos
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `fields` | _String (opcional)_ | Nome dos campos separados por vírgula. Se este campo for declarado, apenas os campos especificados serão retornados `v2.24.0+` |
+| `input.fields` | _String (opcional)_ | Nome dos campos separados por vírgula. Se este campo for declarado, apenas os campos especificados serão retornados `v2.24.0+` |
 
 
 **Resposta:**
@@ -5413,7 +5392,7 @@ Realiza uma busca na lista de textos do usuário
 | ---- | :---: | ------------|
 | `input` | _String_ | Filtro |
 | `input.text` | _String_ | Texto a ser pesquisado |
-| `fields` | _String (opcional)_ | Nome dos campos separados por vírgula. Se este campo for declarado, apenas os campos especificados serão retornados `v2.24.0+` |
+| `input.fields` | _String (opcional)_ | Nome dos campos separados por vírgula. Se este campo for declarado, apenas os campos especificados serão retornados `v2.24.0+` |
 
 
 **Resposta:**
@@ -5447,7 +5426,7 @@ Inicia uma apresentação de um item da aba texto.
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | ID do item |
-| `input.initial_index` | _Number (opcional)_ | Índice inicial da apresentação `Padrão: 0` `v2.23.0+` |
+| `input.initial_index` | _Number (opcional)_ | Índice inicial da apresentação `Padrão: 0` `v2.23.0+` |
 
 
 _Método sem retorno_
@@ -5476,7 +5455,7 @@ Inicia uma apresentação de versículo da Bíblia.<br>Obs: É possível exibir,
 | `input.ids` | _Array&lt;String&gt; (opcional)_ | Para exibir uma lista de versículos. Lista com o ID de cada versículo.<br/>Exemplo: ['19023001', '43003016', '45012002'] |
 | `input.references` | _String (opcional)_ | Referências. Exemplo: **João 3:16** ou **Rm 12:2** ou **Gn 1:1-3 Sl 23.1** |
 | `input.version` | _String (opcional)_ | Nome ou abreviação da tradução utilizada `v2.21.0+` |
-| `input.quick_presentation` | _Boolean (opcional)_ | `true` para exibir o versículo através de uma janela popup de apresentação rápida.<br>Permite, por exemplo, iniciar a apresentação de um versículo sem encerrar a apresentação atual, voltando pra apresentação atual quando encerrar a apresentação do versículo. `Padrão: false` `v2.24.0+` |
+| `input.quick_presentation` | _Boolean (opcional)_ | `true` para exibir o versículo através de uma janela popup de apresentação rápida.<br>Permite, por exemplo, iniciar a apresentação de um versículo sem encerrar a apresentação atual, voltando pra apresentação atual quando encerrar a apresentação do versículo. `Padrão: false` `v2.24.0+` |
 
 
 _Método sem retorno_
@@ -5516,8 +5495,8 @@ Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo
 | ---- | :---: | ------------|
 | `input.folder` | _String (opcional)_ | Nome da subpasta para listar os arquivos |
 | `input.filter` | _String (opcional)_ | Filtrar arquivos pelo nome |
-| `input.include_metadata` | _Boolean (opcional)_ | Adicionar metadados na resposta `Padrão: false` `v2.22.0+` |
-| `input.include_thumbnail` | _Boolean (opcional)_ | Adicionar thumbnail na resposta (80x45) `Padrão: false` `v2.22.0+` |
+| `input.include_metadata` | _Boolean (opcional)_ | Adicionar metadados na resposta `Padrão: false` `v2.22.0+` |
+| `input.include_thumbnail` | _Boolean (opcional)_ | Adicionar thumbnail na resposta (80x45) `Padrão: false` `v2.22.0+` |
 
 
 **Resposta:**
@@ -5578,8 +5557,8 @@ Retorna os dados de um arquivo da lista de arquivos da respectiva aba: áudio, v
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.name` | _String_ | Nome do arquivo (incluindo subpasta) |
-| `input.include_metadata` | _Boolean (opcional)_ | Adicionar metadados na resposta `Padrão: false` |
-| `input.include_thumbnail` | _Boolean (opcional)_ | Adicionar thumbnail na resposta (80x45) `Padrão: false` |
+| `input.include_metadata` | _Boolean (opcional)_ | Adicionar metadados na resposta `Padrão: false` |
+| `input.include_thumbnail` | _Boolean (opcional)_ | Adicionar thumbnail na resposta (80x45) `Padrão: false` |
 
 
 **Resposta:**
@@ -5959,7 +5938,7 @@ Apresentação rápida de um texto
 | `input.theme` | _[ThemeFilter](#theme-filter) (opcional)_ | Filtrar tema selecionado para exibição |
 | `input.custom_theme` | _[Theme](#theme) (opcional)_ | Tema personalizado utilizado para exibir o texto `v2.21.0+` |
 | `input.automatic` | _[Automatic](#automatic) (opcional)_ | Se informado, a apresentação dos itens será automática |
-| `input.initial_index` | _Number (opcional)_ | Índice inicial da apresentação `Padrão: 0` `v2.23.0+` |
+| `input.initial_index` | _Number (opcional)_ | Índice inicial da apresentação `Padrão: 0` `v2.23.0+` |
 
 
 _Método sem retorno_
@@ -6056,12 +6035,12 @@ Exibir uma contagem regressiva na tela público
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.time` | _String_ | HH:MM ou MM:SS |
-| `input.exact_time` | _Boolean (opcional)_ | Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos) `Padrão: false` |
+| `input.exact_time` | _Boolean (opcional)_ | Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos) `Padrão: false` |
 | `input.text_before` | _String (opcional)_ | Texto exibido na parte superior da contagem regressiva |
 | `input.text_after` | _String (opcional)_ | Texto exibido na parte inferior da contagem regressiva |
-| `input.zero_fill` | _Boolean (opcional)_ | Preencher o campo 'minuto' com zero à esquerda `Padrão: false` |
-| `input.hide_zero_minute` | _Boolean (opcional)_ | Ocultar a exibição dos minutos quando for zero `Padrão: false` `v2.25.0+` |
-| `input.countdown_relative_size` | _Number (opcional)_ | Tamanho relativo da contagem regressiva `Padrão: 250` |
+| `input.zero_fill` | _Boolean (opcional)_ | Preencher o campo 'minuto' com zero à esquerda `Padrão: false` |
+| `input.hide_zero_minute` | _Boolean (opcional)_ | Ocultar a exibição dos minutos quando for zero `Padrão: false` `v2.25.0+` |
+| `input.countdown_relative_size` | _Number (opcional)_ | Tamanho relativo da contagem regressiva `Padrão: 250` |
 | `input.theme` | _[ThemeFilter](#theme-filter) (opcional)_ | Filtrar tema selecionado para exibição `v2.21.0+` |
 | `input.countdown_style` | _[FontSettings](#font-settings) (opcional)_ | Fonte personalizada para a contagem regressiva `v2.21.0+` |
 | `input.custom_theme` | _[Theme](#theme) (opcional)_ | Tema personalizado `v2.21.0+` |
@@ -6460,8 +6439,8 @@ Adicionar letra de música na lista de reprodução
 | ---- | :---: | ------------|
 | `input.id` | _String (opcional)_ | ID da letra |
 | `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada letra |
-| `input.index` | _Number (opcional)_ | Posição na lista onde o item será adicionado (inicia em zero). Os itens são adicionados no final da lista por padrão. `Padrão: -1` |
-| `input.media_playlist` | _Boolean (opcional)_ | Adicionar as letras na lista de reprodução de mídia `Padrão: false` |
+| `input.index` | _Number (opcional)_ | Posição na lista onde o item será adicionado (inicia em zero). Os itens são adicionados no final da lista por padrão. `Padrão: -1` |
+| `input.media_playlist` | _Boolean (opcional)_ | Adicionar as letras na lista de reprodução de mídia `Padrão: false` |
 
 
 _Método sem retorno_
@@ -6801,8 +6780,8 @@ Adicionar itens à lista de reprodução de mídias
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.items` | _Array&lt;[AddItem](#add-item)&gt;_ | Lista com os itens que serão adicionados |
-| `input.index` | _Number (opcional)_ | Posição na lista onde o item será adicionado (inicia em zero). Os itens são adicionados no final da lista por padrão. `Padrão: -1` |
-| `input.ignore_duplicates` | _Boolean (opcional)_ | Não duplicar itens ao adicionar novos itens, ou seja, não adiciona um item se ele já estiver na lista. `Padrão: false` |
+| `input.index` | _Number (opcional)_ | Posição na lista onde o item será adicionado (inicia em zero). Os itens são adicionados no final da lista por padrão. `Padrão: -1` |
+| `input.ignore_duplicates` | _Boolean (opcional)_ | Não duplicar itens ao adicionar novos itens, ou seja, não adiciona um item se ele já estiver na lista. `Padrão: false` |
 
 
 _Método sem retorno_
@@ -7226,10 +7205,10 @@ Item sendo apresentado no momento ou **null** se não tiver apresentação sendo
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.include_slides` | _Boolean (opcional)_ | Retornar a lista de slides da apresentação atual. Indisponível para apresentação de versículos. `Padrão: false` `v2.21.0+` |
-| `input.include_slide_comment` | _Boolean (opcional)_ | Incluir comentários (se houver) no texto dos slides. Disponível se **include_slides=true**. `Padrão: false` `v2.21.0+` |
-| `input.include_slide_preview` | _Boolean (opcional)_ | Incluir imagem preview do slide. Disponível se **include_slides=true**. `Padrão: false` `v2.21.0+` |
-| `input.slide_preview_size` | _String (opcional)_ | Tamanho do preview no formato WxH (ex. 320x180). (max 640x360)<br>Disponível se **include_slide_preview=true** `Padrão: false` `v2.21.0+` |
+| `input.include_slides` | _Boolean (opcional)_ | Retornar a lista de slides da apresentação atual. Indisponível para apresentação de versículos. `Padrão: false` `v2.21.0+` |
+| `input.include_slide_comment` | _Boolean (opcional)_ | Incluir comentários (se houver) no texto dos slides. Disponível se **include_slides=true**. `Padrão: false` `v2.21.0+` |
+| `input.include_slide_preview` | _Boolean (opcional)_ | Incluir imagem preview do slide. Disponível se **include_slides=true**. `Padrão: false` `v2.21.0+` |
+| `input.slide_preview_size` | _String (opcional)_ | Tamanho do preview no formato WxH (ex. 320x180). (max 640x360)<br>Disponível se **include_slide_preview=true** `Padrão: false` `v2.21.0+` |
 
 
 **Resposta:**
@@ -7502,7 +7481,7 @@ Lista dos temas e planos de fundo
 | `input.type` | _String (opcional)_ | Pode ser: `theme` `my_video` `my_image` `video` `image` |
 | `input.tag` | _String (opcional)_ |  |
 | `input.tags` | _Array&lt;String&gt; (opcional)_ |  |
-| `input.intersection` | _Boolean (opcional)_ | Se o campo **input.tags** estiver preenchido com múltiplos itens, a opção **input.intersection** define o tipo de junção. Se **true**, o filtro retornará apenas itens que contém **todas** as tags informadas, se **false**, o filtro retornará os itens que têm pelo menos uma tag das tags informadas `Padrão: false` |
+| `input.intersection` | _Boolean (opcional)_ | Se o campo **input.tags** estiver preenchido com múltiplos itens, a opção **input.intersection** define o tipo de junção. Se **true**, o filtro retornará apenas itens que contém **todas** as tags informadas, se **false**, o filtro retornará os itens que têm pelo menos uma tag das tags informadas `Padrão: false` |
 
 
 **Resposta:**
@@ -7550,7 +7529,7 @@ Altera o plano de fundo (ou tema) da apresentação atual. Se mais de um item fo
 | `input.type` | _String (opcional)_ | Pode ser: `theme` `my_video` `my_image` `video` `image` |
 | `input.tag` | _String (opcional)_ |  |
 | `input.tags` | _Array&lt;String&gt; (opcional)_ |  |
-| `input.intersection` | _Boolean (opcional)_ | Se o campo **input.tags** estiver preenchido com múltiplos itens, a opção **input.intersection** define o tipo de junção. Se **true**, o filtro retornará apenas itens que contém **todas** as tags informadas, se **false**, o filtro retornará os itens que têm pelo menos uma tag das tags informadas `Padrão: false` |
+| `input.intersection` | _Boolean (opcional)_ | Se o campo **input.tags** estiver preenchido com múltiplos itens, a opção **input.intersection** define o tipo de junção. Se **true**, o filtro retornará apenas itens que contém **todas** as tags informadas, se **false**, o filtro retornará os itens que têm pelo menos uma tag das tags informadas `Padrão: false` |
 | `input.edit` | _[Theme](#theme) (opcional)_ | Configurações para modificar o Tema selecionado para exibição `v2.21.0+` |
 | `input.custom_theme` | _[Theme](#theme) (opcional)_ | Tema personalizado `v2.21.0+` |
 
@@ -7943,7 +7922,7 @@ Histórico de todas as marcações de "Música tocada"
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `in_millis` | _Boolean (opcional)_ | `true` para retornar o valor em Timestamp `v2.24.0+` |
+| `input.in_millis` | _Boolean (opcional)_ | `true` para retornar o valor em Timestamp `v2.24.0+` |
 
 
 **Resposta:**
@@ -7978,8 +7957,8 @@ Obtém a data do histórico de "Música tocada" mais próxima de uma data e hora
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `input.id` | _String_ | ID da letra da música |
-| `input.datetime` | _String (opcional)_ | Formatos aceitos: `timestamp` `YYYY-MM-DD` `YYYY/MM/DD` `YYYY-MM-DD HH:MM:SS` `YYYY/MM/DD HH:MM:SS` `DD-MM-YYYY` `DD/MM/YYYY` `DD-MM-YYYY HH:MM:SS` `DD/MM/YYYY HH:MM:SS` `Padrão: Date.now()` |
-| `input.type` | _String (opcional)_ | Filtro de busca. Pode ser:<br>`any` qualquer valor mais próximo da data especificada<br>`before_datetime` valor mais próximo que seja anterior ou igual à data especificada (value <= datetime)<br>`after_datetime` valor mais próximo que seja igual ou posterior à data especificada (value >= datetime) `Padrão: any` |
+| `input.datetime` | _String (opcional)_ | Formatos aceitos: `timestamp` `YYYY-MM-DD` `YYYY/MM/DD` `YYYY-MM-DD HH:MM:SS` `YYYY/MM/DD HH:MM:SS` `DD-MM-YYYY` `DD/MM/YYYY` `DD-MM-YYYY HH:MM:SS` `DD/MM/YYYY HH:MM:SS` `Padrão: Date.now()` |
+| `input.type` | _String (opcional)_ | Filtro de busca. Pode ser:<br>`any` qualquer valor mais próximo da data especificada<br>`before_datetime` valor mais próximo que seja anterior ou igual à data especificada (value <= datetime)<br>`after_datetime` valor mais próximo que seja igual ou posterior à data especificada (value >= datetime) `Padrão: any` |
 
 
 **Resposta:**
@@ -8101,7 +8080,7 @@ Lista de integrantes
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.only_active` | _Boolean_ |  `Padrão: true` `v2.25.0+` |
+| `input.only_active` | _Boolean_ |  `Padrão: true` `v2.25.0+` |
 
 
 **Resposta:**
@@ -8130,7 +8109,7 @@ Lista de funções
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.only_active` | _Boolean_ |  `Padrão: true` `v2.25.0+` |
+| `input.only_active` | _Boolean_ |  `Padrão: true` `v2.25.0+` |
 
 
 **Resposta:**
@@ -8161,7 +8140,7 @@ Lista de cultos
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.only_active` | _Boolean_ |  `Padrão: true` `v2.25.0+` |
+| `input.only_active` | _Boolean_ |  `Padrão: true` `v2.25.0+` |
 
 
 **Resposta:**
@@ -8390,7 +8369,7 @@ Inicia uma contagem regressiva no painel de comunicação
 | `input.minutes` | _Number_ | Quantidade de minutos |
 | `input.seconds` | _Number_ | Quantidade de segundos |
 | `input.yellow_starts_at` | _Number (opcional)_ | Valor em segundos para definir a partir de quanto tempo a contagem regressiva ficará amarela |
-| `input.stop_at_zero` | _Boolean (opcional)_ | Parar a contagem regressiva ao chegar em zero `Padrão: false` |
+| `input.stop_at_zero` | _Boolean (opcional)_ | Parar a contagem regressiva ao chegar em zero `Padrão: false` |
 | `input.text` | _String (opcional)_ | Texto para exibição. Por padrão, o texto é exibido antes da parte numérica. Para formatação especial, utilize a variável `@cp_countdown` no meio do texto para indicar o local de exibição da parte numérica. `v2.24.0+` |
 | `input.alert_text` | _String (opcional)_ | Texto alternativo para ser exibido quando a exibição for no alerta. Por padrão, o texto é exibido antes da parte numérica. Para formatação especial, utilize a variável `@cp_countdown` no meio do texto para indicar o local de exibição da parte numérica. `v2.24.0+` |
 
@@ -9497,7 +9476,7 @@ for (var i = 0; i < items.length; i++) {
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `filter` | _String (opcional)_ | Nome das configurações, separadas por vírgula |
+| `input.filter` | _String (opcional)_ | Nome das configurações, separadas por vírgula |
 
 
 **Resposta:**
@@ -9530,7 +9509,7 @@ h.log("fade_in_out_duration: " + r.data.fade_in_out_duration);
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-|  | _[GlobalSettings](#global-settings)_ |  |
+| `input` | _[GlobalSettings](#global-settings)_ |  |
 
 
 **Resposta:**
@@ -10032,7 +10011,7 @@ A mesma função de `h.input(...)`, porém salva automaticamente o valor em `set
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `saveTo` | _String_ | Chave de armazenamento utilizado para salvar e recuperar o valor dos itens.<br>`h.setGlobal(saveTo, ...)`<br>`h.getGlobal(saveTo, ...)`<br>`h.store(saveTo, ...)`<br>`h.restore(saveTo, ...)` |
-| `saveToStore` | _Boolean_ | **true** para salvar o valor também em `h.store(saveTo, ...)`, ou seja, a configuração se mantém salva mesmo após reiniciar o programa `Padrão: true` |
+| `saveToStore` | _Boolean_ | **true** para salvar o valor também em `h.store(saveTo, ...)`, ou seja, a configuração se mantém salva mesmo após reiniciar o programa `Padrão: true` |
 | `data` | _Object_ | Entradas que serão solicitadas na interface. Pode ser string ou Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;. Se for passada uma string, ela será o nome do item e o tipo do item será **string**.<br>`data` pode ser `saveTo` (chave de armazenamento) caso o método `h.registerSettings(saveTo, ...)` ou `h.loadSettings(saveTo, ...)` tenha sido chamado anteriormente |
 
 
@@ -10700,11 +10679,11 @@ Abre um popup de progresso para execução de tarefas demoradas com feedback na 
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `title` | _String (opcional)_ | Mensagem inicial do popup de progresso |
-| `cancelable` | _Boolean (opcional)_ | `true` para permitir o cancelamento da tarefa pelo usuário `Padrão: false` |
-| `action` | _Function_ | Ação que será executada.<br>`function(evt) { /* */ }`<br>O objeto `evt` é do tipo [PopupWorkerUpdater](https://github.com/holyrics/jslib/blob/main/doc/pt/PopupWorkerUpdater.md) |
-| `callback` | _Function (opcional)_ | Executado ao terminar a execução de `action`.<br>`function(response, err) { /* */ }`<br>`response` é o objeto retornado na execução de `action`<br>`err` é a mensagem de erro se a execução gerou alguma `Exception` |
-| `on_cancel` | _Function_ | Executado se a tarefa for cancelada |
+| `input.title` | _String (opcional)_ | Mensagem inicial do popup de progresso |
+| `input.cancelable` | _Boolean (opcional)_ | `true` para permitir o cancelamento da tarefa pelo usuário `Padrão: false` |
+| `input.action` | _Function_ | Ação que será executada.<br>`function(evt) { /* */ }`<br>O objeto `evt` é do tipo [PopupWorkerUpdater](https://github.com/holyrics/jslib/blob/main/doc/pt/PopupWorkerUpdater.md) |
+| `input.callback` | _Function (opcional)_ | Executado ao terminar a execução de `action`.<br>`function(response, err) { /* */ }`<br>`response` é o objeto retornado na execução de `action`<br>`err` é a mensagem de erro se a execução gerou alguma `Exception` |
+| `input.on_cancel` | _Function_ | Executado se a tarefa for cancelada |
 
 
 _Método sem retorno_
@@ -10741,30 +10720,31 @@ Abre uma janela de edição para criação de uma nova letra de música<br>Obs: 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `callback` | _Function (opcional)_ | Executado ao fechar a janela de edição.<br>`function(id) { /* */ }`<br>`id` é o id do item salvo ou `null` se o usuário fechou janela sem salvar o item |
-| `title` | _String_ | Título da música |
-| `lyrics` | _String_ | Letra da música.<br>Opcional se `paragraphs` for declarado |
-| `paragraphs` | _Array&lt;Object&gt;_ | Parâmetro alternativo para valores mais complexos.<br>Opcional se `lyrics` for declarado |
-| `paragraphs.*.text` | _String_ | Texto do parágrafo |
-| `paragraphs.*.description` | _String (opcional)_ | Descrição do parágrafo. coro, verso, ... |
-| `paragraphs.*.translations` | _Object (opcional)_ | Traduções para o slide.<br>Conjunto chave/valor. |
-| `author` | _String (opcional)_ | Autor da música |
-| `artist` | _String (opcional)_ | Artista da música |
-| `copyright` | _String (opcional)_ | Copyright da música |
-| `note` | _String (opcional)_ | Anotação da música |
-| `key` | _String (opcional)_ | Tom da música.<br>Pode ser: `C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm` |
-| `bpm` | _Number (opcional)_ | BPM da música |
-| `time_sig` | _String (opcional)_ | Tempo da música.<br>Pode ser: `2/2` `2/4` `3/4` `4/4` `5/4` `6/4` `3/8` `6/8` `7/8` `9/8` `12/8` |
-| `streaming` | _Object_ | URI ou ID dos streamings |
-| `streaming.audio` | _Object_ | Áudio |
-| `streaming.audio.spotify` | _String_ |  |
-| `streaming.audio.youtube` | _String_ |  |
-| `streaming.audio.deezer` | _String_ |  |
-| `streaming.backing_track` | _Object_ | Playback |
-| `streaming.backing_track.spotify` | _String_ |  |
-| `streaming.backing_track.youtube` | _String_ |  |
-| `streaming.backing_track.deezer` | _String_ |  |
-| `extras` | _Object (opcional)_ | Mapa de objetos extras (adicionados pelo usuário)<br>Permitido apenas campos já existentes. |
-| `title_translations` | _Object_ | Traduções para o slide título.<br>Conjunto chave/valor. |
+| `song` | _Object_ |  |
+| `song.title` | _String_ | Título da música |
+| `song.lyrics` | _String_ | Letra da música.<br>Opcional se `paragraphs` for declarado |
+| `song.paragraphs` | _Array&lt;Object&gt;_ | Parâmetro alternativo para valores mais complexos.<br>Opcional se `lyrics` for declarado |
+| `song.paragraphs.*.text` | _String_ | Texto do parágrafo |
+| `song.paragraphs.*.description` | _String (opcional)_ | Descrição do parágrafo. coro, verso, ... |
+| `song.paragraphs.*.translations` | _Object (opcional)_ | Traduções para o slide.<br>Conjunto chave/valor. |
+| `song.author` | _String (opcional)_ | Autor da música |
+| `song.artist` | _String (opcional)_ | Artista da música |
+| `song.copyright` | _String (opcional)_ | Copyright da música |
+| `song.note` | _String (opcional)_ | Anotação da música |
+| `song.key` | _String (opcional)_ | Tom da música.<br>Pode ser: `C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm` |
+| `song.bpm` | _Number (opcional)_ | BPM da música |
+| `song.time_sig` | _String (opcional)_ | Tempo da música.<br>Pode ser: `2/2` `2/4` `3/4` `4/4` `5/4` `6/4` `3/8` `6/8` `7/8` `9/8` `12/8` |
+| `song.streaming` | _Object_ | URI ou ID dos streamings |
+| `song.streaming.audio` | _Object_ | Áudio |
+| `song.streaming.audio.spotify` | _String_ |  |
+| `song.streaming.audio.youtube` | _String_ |  |
+| `song.streaming.audio.deezer` | _String_ |  |
+| `song.streaming.backing_track` | _Object_ | Playback |
+| `song.streaming.backing_track.spotify` | _String_ |  |
+| `song.streaming.backing_track.youtube` | _String_ |  |
+| `song.streaming.backing_track.deezer` | _String_ |  |
+| `song.extras` | _Object (opcional)_ | Mapa de objetos extras (adicionados pelo usuário)<br>Permitido apenas campos já existentes. |
+| `song.title_translations` | _Object_ | Traduções para o slide título.<br>Conjunto chave/valor. |
 
 
 _Método sem retorno_
@@ -10800,13 +10780,14 @@ Abre uma janela de edição para criação de uma nova apresentação de texto<b
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `callback` | _Function (opcional)_ | Executado ao fechar a janela de edição.<br>`function(id) { /* */ }`<br>`id` é o id do item salvo ou `null` se o usuário fechou janela sem salvar o item |
-| `title` | _String_ | Título do texto |
-| `folder` | _String_ | Caminho da pasta de localização |
+| `text` | _Object_ |  |
+| `text.title` | _String_ | Título do texto |
+| `text.folder` | _String_ | Caminho da pasta de localização |
 | `text` | _String_ | Texto da apresentação.<br>Opcional se `slides` for declarado |
-| `slides` | _Array&lt;Object&gt;_ | Parâmetro alternativo para valores mais complexos.<br>Opcional se `lyrics` for declarado |
-| `slides.*.text` | _String_ | Texto do parágrafo |
-| `slides.*.translations` | _Object (opcional)_ | Traduções para o slide.<br>Conjunto chave/valor. |
-| `extras` | _Object (opcional)_ | Mapa de objetos extras (adicionados pelo usuário)<br>Permitido apenas campos já existentes. |
+| `text.slides` | _Array&lt;Object&gt;_ | Parâmetro alternativo para valores mais complexos.<br>Opcional se `lyrics` for declarado |
+| `text.slides.*.text` | _String_ | Texto do parágrafo |
+| `text.slides.*.translations` | _Object (opcional)_ | Traduções para o slide.<br>Conjunto chave/valor. |
+| `text.extras` | _Object (opcional)_ | Mapa de objetos extras (adicionados pelo usuário)<br>Permitido apenas campos já existentes. |
 
 
 _Método sem retorno_
@@ -10889,8 +10870,9 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `slides.*.slide_description` | _String_ | Descrição do slide `v2.21.1+` |
 | `slides.*.background_id` | _String_ | ID do tema ou plano de fundo salvo para o slide `v2.21.0+` |
 | `slides.*.translations` | _Object_ | Traduções para o slide.<br>Conjunto chave/valor. `v2.25.0+` |
-| `formatting_type` | _String_ | `basic`  `styled`  `advanced`<br> <br>Ao utilizar este objeto em métodos de criação ou edição, se `formatting_type=basic` for utilizado, o valor da variável `slides.*.text` será utilizado, caso contrário, o valor da variável `slides.*.styled_text` será utilizado `Padrão: basic` `v2.25.0+` |
+| `formatting_type` | _String_ | `basic`  `styled`  `advanced`<br> <br>Ao utilizar este objeto em métodos de criação ou edição, se `formatting_type=basic` for utilizado, o valor da variável `slides.*.text` será utilizado, caso contrário, o valor da variável `slides.*.styled_text` será utilizado `Padrão: basic` `v2.25.0+` |
 | `order` | _String_ | Ordem dos slides (índice a partir do 1), separado por vírgula `v2.21.0+` |
+|  | _Array&lt;[SongArrangement](#song-arrangement)&gt;_ |  `v2.25.1+` |
 | `title_translations` | _Object_ | Traduções para o slide título.<br>Conjunto chave/valor. `v2.25.0+` |
 | `key` | _String_ | Tom da música.<br>Pode ser: `C` `C#` `Db` `D` `D#` `Eb` `E` `F` `F#` `Gb` `G` `G#` `Ab` `A` `A#` `Bb` `B` `Cm` `C#m` `Dbm` `Dm` `D#m` `Ebm` `Em` `Fm` `F#m` `Gbm` `Gm` `G#m` `Abm` `Am` `A#m` `Bbm` `Bm` |
 | `bpm` | _Number_ | BPM da música |
@@ -10987,7 +10969,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `slides.*.styled_text` | _String_ | Texto do slide com formatação **styled** (quanto disponível) `v2.24.0+` |
 | `slides.*.background_id` | _String_ | ID do tema ou plano de fundo salvo para o slide |
 | `slides.*.translations` | _Object_ | Traduções para o slide.<br>Conjunto chave/valor. `v2.25.0+` |
-| `formatting_type` | _String_ | `basic`  `styled`  `advanced`<br> <br>Ao utilizar este objeto em métodos de criação ou edição, se `formatting_type=basic` for utilizado, o valor da variável `slides.*.text` será utilizado, caso contrário, o valor da variável `slides.*.styled_text` será utilizado `Padrão: basic` `v2.25.0+` |
+| `formatting_type` | _String_ | `basic`  `styled`  `advanced`<br> <br>Ao utilizar este objeto em métodos de criação ou edição, se `formatting_type=basic` for utilizado, o valor da variável `slides.*.text` será utilizado, caso contrário, o valor da variável `slides.*.styled_text` será utilizado `Padrão: basic` `v2.25.0+` |
 | `extras` | _Object_ | Mapa de objetos extras (adicionados pelo usuário) `v2.24.0+` |
 | `metadata.modified_time_millis` | _Number_ | Data de modificação do arquivo. (timestamp) `v2.25.0+` `read-only` |
 <details>
@@ -11088,7 +11070,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `comment.color` | _String_ | Cor no formato hexadecimal |
 | <br>**settings** |  | <br>Configurações |
 | `settings.uppercase` | _Boolean_ | Exibir o texto em maiúsculo |
-| `settings.line_break` | _String_ | Aplicar quebra de linha. `system`  `true`  `false`<br> `Padrão: system` |
+| `settings.line_break` | _String_ | Aplicar quebra de linha. `system`  `true`  `false`<br> `Padrão: system` |
 | <br>**metadata** |  | <br> |
 | `metadata.modified_time_millis` | _Number_ | Data de modificação do arquivo. (timestamp) `v2.25.0+` `read-only` |
 <details>
@@ -11242,6 +11224,23 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `add_chorus_between_verses` | _Boolean_ |  `v2.25.0+` |
 | `hide_in_interface` | _Boolean_ |  `v2.25.0+` |
 | `metadata.modified_time_millis` | _Number_ | Data de modificação do arquivo. (timestamp) `v2.25.0+` `read-only` |
+
+## Song Arrangement
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ | Nome do item |
+| `sequence` | _String_ | Ordem dos slides (índice a partir do 1), separado por vírgula |
+| `collections` | _Array&lt;String&gt;_ | Nome curto do item |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "name": "",
+  "sequence": "1,2,3,2,2"
+}
+```
+</details>
 
 ## Announcement
 | Nome | Tipo  | Descrição |
@@ -11685,10 +11684,10 @@ Configurações de exibição
 ## Font Settings
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `font_name` | _String (opcional)_ | Nome da fonte `Padrão: null` |
-| `bold` | _Boolean (opcional)_ | Negrito `Padrão: null` |
-| `italic` | _Boolean (opcional)_ | Itálico `Padrão: null` |
-| `color` | _String (opcional)_ | Cor em hexadecimal `Padrão: null` |
+| `font_name` | _String (opcional)_ | Nome da fonte `Padrão: null` |
+| `bold` | _Boolean (opcional)_ | Negrito `Padrão: null` |
+| `italic` | _Boolean (opcional)_ | Itálico `Padrão: null` |
+| `color` | _String (opcional)_ | Cor em hexadecimal `Padrão: null` |
 
 ## Stage View
 | Nome | Tipo  | Descrição |
@@ -11869,7 +11868,7 @@ Configurações de exibição
 | `name` | _String_ | Nome do item `v2.24.0+` |
 | `title` | _String_ | Pergunta |
 | `alternatives` | _Array&lt;String&gt;_ | Alternativas |
-| `correct_alternative_number` | _Number (opcional)_ | Número da alternativa correta. Começa em 1 `Padrão: 1` |
+| `correct_alternative_number` | _Number (opcional)_ | Número da alternativa correta. Começa em 1 `Padrão: 1` |
 | `source` | _String (opcional)_ | Fonte da resposta |
 <details>
   <summary>Ver exemplo</summary>
@@ -11896,10 +11895,10 @@ Configurações de exibição
 | `correct_answer_color_background` | _String (opcional)_ | Cor de fundo para a resposta correta |
 | `incorrect_answer_color_font` | _String (opcional)_ | Cor da fonte para a resposta incorreta |
 | `incorrect_answer_color_background` | _String (opcional)_ | Cor de fundo para a resposta incorreta |
-| `question_and_alternatives_different_slides` | _Boolean (opcional)_ | Exibir a pergunta e as alternativas em slides separados `Padrão: false` |
-| `display_alternatives_one_by_one` | _Boolean (opcional)_ | Exibir as alternativas uma a uma `Padrão: true` |
-| `alternative_char_type` | _String (opcional)_ | Tipo de caractere para listar as alternativas `number (1, 2, 3...)`  `alpha (A, B, C...)` `Padrão: 'alpha'` |
-| `alternative_separator_char` | _String (opcional)_ | Caractere separador. Valores permitidos:  ` `  `.`  `)`  `-`  `:` `Padrão: '.'` |
+| `question_and_alternatives_different_slides` | _Boolean (opcional)_ | Exibir a pergunta e as alternativas em slides separados `Padrão: false` |
+| `display_alternatives_one_by_one` | _Boolean (opcional)_ | Exibir as alternativas uma a uma `Padrão: true` |
+| `alternative_char_type` | _String (opcional)_ | Tipo de caractere para listar as alternativas `number (1, 2, 3...)`  `alpha (A, B, C...)` `Padrão: 'alpha'` |
+| `alternative_separator_char` | _String (opcional)_ | Caractere separador. Valores permitidos:  ` `  `.`  `)`  `-`  `:` `Padrão: '.'` |
 <details>
   <summary>Ver exemplo</summary>
 
@@ -12459,7 +12458,7 @@ Configurações customizadas da tradução (item)
 | `type` | _String_ | title |
 | `name` | _String_ | Nome do item |
 | `background_color` | _String (opcional)_ | Cor de fundo em hexadecimal, exemplo: 000080 |
-| `collapsed` | _Boolean (opcional)_ |  `Padrão: false` |
+| `collapsed` | _Boolean (opcional)_ |  `Padrão: false` |
 <details>
   <summary>Ver exemplo</summary>
 
@@ -12648,12 +12647,12 @@ Configurações customizadas da tradução (item)
 | ---- | :---: | ------------|
 | `type` | _String_ | countdown |
 | `time` | _String_ | HH:MM ou MM:SS |
-| `exact_time` | _Boolean (opcional)_ | Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos) `Padrão: false` |
+| `exact_time` | _Boolean (opcional)_ | Se **true**, `time` deve ser HH:MM (hora e minuto exato). Se **false**, `time` deve ser MM:SS (quantidade de minutos e segundos) `Padrão: false` |
 | `text_before` | _String (opcional)_ | Texto exibido na parte superior da contagem regressiva |
 | `text_after` | _String (opcional)_ | Texto exibido na parte inferior da contagem regressiva |
-| `zero_fill` | _Boolean (opcional)_ | Preencher o campo 'minuto' com zero à esquerda `Padrão: false` |
-| `hide_zero_minute` | _Boolean (opcional)_ | Ocultar a exibição dos minutos quando for zero `Padrão: false` `v2.25.0+` |
-| `countdown_relative_size` | _Number (opcional)_ | Tamanho relativo da contagem regressiva `Padrão: 250` |
+| `zero_fill` | _Boolean (opcional)_ | Preencher o campo 'minuto' com zero à esquerda `Padrão: false` |
+| `hide_zero_minute` | _Boolean (opcional)_ | Ocultar a exibição dos minutos quando for zero `Padrão: false` `v2.25.0+` |
+| `countdown_relative_size` | _Number (opcional)_ | Tamanho relativo da contagem regressiva `Padrão: 250` |
 | `theme` | _[ThemeFilter](#theme-filter) (opcional)_ | Filtrar tema selecionado para exibição `v2.21.0+` |
 | `countdown_style` | _[FontSettings](#font-settings) (opcional)_ | Fonte personalizada para a contagem regressiva `v2.21.0+` |
 <details>
@@ -12686,7 +12685,7 @@ Configurações customizadas da tradução (item)
 | `type` | _String_ | countdown_cp |
 | `minutes` | _Number_ | Quantidade de minutos |
 | `seconds` | _Number_ | Quantidade de segundos |
-| `stop_at_zero` | _Boolean (opcional)_ | Parar a contagem regressiva ao chegar em zero `Padrão: false` |
+| `stop_at_zero` | _Boolean (opcional)_ | Parar a contagem regressiva ao chegar em zero `Padrão: false` |
 | `description` | _String_ | Descrição do item |
 <details>
   <summary>Ver exemplo</summary>

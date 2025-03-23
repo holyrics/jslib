@@ -123,7 +123,7 @@ Renomear um arquivo ou pasta
 | `input.to` | _String_ | Arquivo de destino. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
 | `input.description` | _String (opcional)_ | Mensagem exibida ao usuário na janela de solicitação de permissão para execução da ação |
 | `input.notification` | _Boolean (opcional)_ | Exibir notificação no canto da tela em vez de abrir a janela de permissão diretamente |
-| `update_references` | _Boolean (opcional)_ |  `Padrão: true` |
+| `update_references` | _Boolean (opcional)_ |  `Padrão: true` |
 
 
 **Resposta:**
@@ -364,7 +364,7 @@ Apagar uma pasta
 | `input.file` | _String_ | Nome da pasta que será apagada. Deve começar com:  `audio/`  `video/`  `image/`  `file/` |
 | `input.description` | _String (opcional)_ | Mensagem exibida ao usuário na janela de solicitação de permissão para execução da ação |
 | `input.notification` | _Boolean (opcional)_ | Exibir notificação no canto da tela em vez de abrir a janela de permissão diretamente |
-| `recursively` | _Boolean (opcional)_ | Apagar recursivamente. Se `false`, a pasta será apagada somente se estiver vazia `Padrão: false` |
+| `recursively` | _Boolean (opcional)_ | Apagar recursivamente. Se `false`, a pasta será apagada somente se estiver vazia `Padrão: false` |
 
 
 **Resposta:**
@@ -517,7 +517,7 @@ Retorna a lista de arquivos da respectiva aba: áudio, vídeo, imagem, arquivo P
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `Nome da pasta` | _String (opcional)_ |  |
+| `folder` | _String (opcional)_ | Nome da pasta |
 
 
 **Resposta:**

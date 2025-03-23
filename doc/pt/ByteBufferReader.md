@@ -194,8 +194,8 @@ h.log(r); // [116, 101, 115]
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `length` | _Number (opcional)_ | Se `length < 0` todos os bytes **restantes** serão lidos `Padrão: -1` |
-| `charset` | _String (opcional)_ |  `Padrão: utf-8` |
+| `length` | _Number (opcional)_ | Se `length < 0` todos os bytes **restantes** serão lidos `Padrão: -1` |
+| `charset` | _String (opcional)_ |  `Padrão: utf-8` |
 
 
 **Resposta:**

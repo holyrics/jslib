@@ -254,7 +254,7 @@ var bytes = buf.toBytes();
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `value` | _String_ |  |
-| `charset` | _String (optional)_ |  `Default: utf-8` |
+| `charset` | _String (optional)_ |  `Default: utf-8` |
 
 
 **Response:**
@@ -286,7 +286,7 @@ Adds a value and fills the remaining space with the value of `fill`.<br>For exam
 | ---- | :---: | ------------|
 | `value` | _Array&lt;Byte&gt;_ |  |
 | `length` | _Number_ |  |
-| `fill` | _Number (optional)_ |  `Default: 0` |
+| `fill` | _Number (optional)_ |  `Default: 0` |
 
 
 **Response:**
@@ -308,8 +308,8 @@ Adds a value and fills the remaining space with the value of `fill`.<br>Follows 
 | ---- | :---: | ------------|
 | `value` | _String_ |  |
 | `length` | _Number_ |  |
-| `fill` | _Number (optional)_ |  `Default: 0` |
-| `charset` | _String (optional)_ |  `Default: utf-8` |
+| `fill` | _Number (optional)_ |  `Default: 0` |
+| `charset` | _String (optional)_ |  `Default: utf-8` |
 
 
 **Response:**
@@ -420,7 +420,7 @@ Converts the added bytes into String
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `charset` | _String (optional)_ |  `Default: utf-8` |
+| `charset` | _String (optional)_ |  `Default: utf-8` |
 
 
 **Response:**

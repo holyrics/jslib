@@ -254,7 +254,7 @@ var bytes = buf.toBytes();
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `value` | _String_ |  |
-| `charset` | _String (opcional)_ |  `Padrão: utf-8` |
+| `charset` | _String (opcional)_ |  `Padrão: utf-8` |
 
 
 **Resposta:**
@@ -286,7 +286,7 @@ Adiciona um valor e preenche o restante do espaço com o valor de `fill`.<br>Por
 | ---- | :---: | ------------|
 | `value` | _Array&lt;Byte&gt;_ |  |
 | `length` | _Number_ |  |
-| `fill` | _Number (opcional)_ |  `Padrão: 0` |
+| `fill` | _Number (opcional)_ |  `Padrão: 0` |
 
 
 **Resposta:**
@@ -308,8 +308,8 @@ Adiciona um valor e preenche o restante do espaço com o valor de `fill`.<br>Seg
 | ---- | :---: | ------------|
 | `value` | _String_ |  |
 | `length` | _Number_ |  |
-| `fill` | _Number (opcional)_ |  `Padrão: 0` |
-| `charset` | _String (opcional)_ |  `Padrão: utf-8` |
+| `fill` | _Number (opcional)_ |  `Padrão: 0` |
+| `charset` | _String (opcional)_ |  `Padrão: utf-8` |
 
 
 **Resposta:**
@@ -420,7 +420,7 @@ Converte os bytes adicionados em String
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `charset` | _String (opcional)_ |  `Padrão: utf-8` |
+| `charset` | _String (opcional)_ |  `Padrão: utf-8` |
 
 
 **Resposta:**
