@@ -13,7 +13,7 @@ h.log('Exemplo');
 
 ## JSCommunity
 
-Para uso da biblioteca [JSCommunity](https://github.com/holyrics/JSCommunity), utilize a variável `jsc`.<br>
+Para uso da biblioteca [JSCommunity](https://github.com/holyrics/JSCommunity/blob/main/README.md), utilize a variável `jsc`.<br>
 
 Por exemplo:
 ```javascript

@@ -13,7 +13,7 @@ h.log('Example');
 
 ## JSCommunity
 
-To use the [JSCommunity](https://github.com/holyrics/JSCommunity) library, use the `jsc` variable.<br>
+To use the [JSCommunity](https://github.com/holyrics/JSCommunity/blob/main/README-en.md) library, use the `jsc` variable.<br>
 
 For example:
 ```javascript
@@ -4768,7 +4768,7 @@ h.logf('{} {} {}', r.id, r.type, r.name);
 | ---- | :---: | ------------|
 | `key` | _String_ | Storage key used to save and retrieve the value of items.<br>`h.getGlobal(key, ...)`<br>`h.restore(key, ...)` |
 | `fromStore` | _Boolean_ | **true** to retrieve the value also in `h.restore(key, ...)` `Default: true` |
-| `inputs` | _Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/InputParam.md)&gt;_ | Object with previously stored values, where each key is the `id` of the respective `input`.<br>The value defined in `default_value` of each item will be returned if there is no previously stored value |
+| `inputs` | _Array&lt;[InputParam](https://github.com/holyrics/Scripts/blob/main/i18n/en/InputParam.md)&gt;_ | Object with previously stored values, where each key is the `id` of the respective `input`.<br>The value defined in `default_value` of each item will be returned if there is no previously stored value |
 
 
 **Response:**
