@@ -4284,15 +4284,15 @@ var html = "<b>Example</b>\n"
         + "<div>Example</div>";
 var r = h.htmlExtractText(html);
 /*
-Exemplo Exemplo - Exemplo
-Exemplo
+Example Example - Example
+Example
 */
 
 var r = h.htmlExtractText(html, true);
 /*
-Exemplo
-Exemplo - Exemplo
-Exemplo
+Example
+Example - Example
+Example
 */
 ```
 
