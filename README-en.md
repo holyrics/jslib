@@ -95,6 +95,8 @@ h.stream(arr)
 | `Ctrl + B` | Go to declaration __(or mouse scroll button)__ `v2.24.0+` |
 | `Ctrl + Tab` | Navigate to the next tab `v2.24.0+` |
 | `Ctrl + Shift + Tab` | Navigate to the previous tab `v2.24.0+` |
+| `Tab` | Add spaces to the left (selected lines) `v2.26.0+` |
+| `Shift + Tab` | Remove leading spaces (selected lines) `v2.26.0+` |
 
 `Tab`<br>
 Code templates can be created for automatic insertion in the code editing window after pressing the `Tab` key.<br>
@@ -187,7 +189,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [apiRequestEx](#apirequestexid-raw)
   - [setTimeout](#settimeoutfunction-timeout-name--null)
   - [clearTimeout](#cleartimeoutid)
-  - [setInterval](#setintervalfunction-timeout-name--null)
+  - [setInterval](#setintervalfunction-delay-name--null)
   - [clearInterval](#clearintervalid)
   - [runAt](#runatinput)
   - [cancelRunAt](#cancelrunatid)
@@ -243,6 +245,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [htmlExtractText](#htmlextracttexthtml-keeplinebreak--false)
   - [exportTXT](#exporttxttext-settings--null)
   - [exportXLSX](#exportxlsxdata)
+  - [exportJSON](#exportjsonobject-settings)
   - [createByteBuffer](#createbytebuffer)
   - [createByteBufferToRead](#createbytebuffertoreadreader)
   - [stream](#streamobj)
@@ -251,6 +254,9 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [intStreamRangeClosed](#intstreamrangeclosedstartinclusive-endinclusive)
   - [chat.sendMessage](#chatsendmessagemessage)
   - [identifyVerseReferences](#identifyversereferencesvalue-languageid--null)
+  - [parseVerseID2VerseReference](#parseverseid2versereferenceid-languageid--null)
+  - [parseVerseID2VerseReference](#parseverseid2versereferencebook-chapter-verse-languageid--null)
+  - [parseVerseID2VerseReferenceGroup](#parseverseid2versereferencegroupitems-languageid--null)
   - [getAvailableBibleBooks](#getavailablebiblebooks)
   - [getBibleBooks](#getbiblebookslanguageid)
   - [getReceiverInfo](#getreceiverinfoid)
@@ -264,6 +270,11 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [isAllowedFileToExecute](#isallowedfiletoexecutefile)
   - [getAvailableFontFamilyNames](#getavailablefontfamilynames)
   - [hlyOrThrow](#hlyorthrowaction-input--null)
+  - [createMidiSequence](#createmidisequenceticksperbeat--1000)
+  - [getModules](#getmodules)
+  - [getModulesByCommunityID](#getmodulesbycommunityidid)
+  - [getModule](#getmodulemoduleid)
+  - [getModuleAction](#getmoduleactionmoduleid-actionid)
 - [Methods HLY](#methods-hly)
   - [GetLyrics](#hlygetlyrics-input)
   - [GetSongs](#hlygetsongs-input)
@@ -287,6 +298,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [ShowCustomMessage](#hlyshowcustommessage-input)
   - [ShowQuickPresentation](#hlyshowquickpresentation-input)
   - [ShowCountdown](#hlyshowcountdown-input)
+  - [GetQuizList](#hlygetquizlist)
   - [ShowQuiz](#hlyshowquiz-input)
   - [QuizAction](#hlyquizaction-input)
   - [GetAutomaticPresentations](#hlygetautomaticpresentations)
@@ -322,6 +334,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [ApiAction](#hlyapiaction-input)
   - [ScriptAction](#hlyscriptaction-input)
   - [ApiRequest](#hlyapirequest-input)
+  - [ModuleAction](#hlymoduleaction-input)
   - [GetCurrentPresentation](#hlygetcurrentpresentation-input)
   - [CloseCurrentPresentation](#hlyclosecurrentpresentation)
   - [GetF8 - F9 - F10](#hlygetf8)
@@ -334,6 +347,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [GetCurrentBackground](#hlygetcurrentbackground)
   - [GetCurrentTheme](#hlygetcurrenttheme)
   - [GetBackgrounds](#hlygetbackgrounds-input)
+  - [GetBackgroundTags](#hlygetbackgroundtags-input)
   - [SetCurrentBackground](#hlysetcurrentbackground-input)
   - [GetThumbnail](#hlygetthumbnail-input)
   - [GetColorMap](#hlygetcolormap-input)
@@ -355,6 +369,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [GetEvents](#hlygetevents-input)
   - [GetAnnouncement](#hlygetannouncement-input)
   - [GetAnnouncements](#hlygetannouncements)
+  - [GetModules](#hlygetmodules-input)
   - [GetCommunicationPanelInfo](#hlygetcommunicationpanelinfo)
   - [SetCommunicationPanelSettings](#hlysetcommunicationpanelsettings-input)
   - [StartCountdownCommunicationPanel](#hlystartcountdowncommunicationpanel-input)
@@ -368,6 +383,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [SetWallpaperSettings](#hlysetwallpapersettings-input)
   - [GetDisplaySettings](#hlygetdisplaysettings)
   - [SetDisplaySettings](#hlysetdisplaysettings-input)
+  - [GetDisplaySettingsPresets](#hlygetdisplaysettingspresets-input)
   - [GetTransitionEffectSettings](#hlygettransitioneffectsettings)
   - [SetTransitionEffectSettings](#hlysettransitioneffectsettings-input)
   - [GetBibleVersions](#hlygetbibleversions)
@@ -390,6 +406,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [OpenDrawLots](#hlyopendrawlots-input)
   - [GetMediaDuration](#hlygetmediaduration-input)
   - [GetVersion](#hlygetversion)
+  - [GetAPIServerInfo](#hlygetapiserverinfo)
   - [GetRealTimeSongKey](#hlygetrealtimesongkey-input)
   - [SetRealTimeSongKey](#hlysetrealtimesongkey-input)
   - [ActionNextQuickPresentation](#hlyactionnextquickpresentation)
@@ -397,15 +414,24 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [CloseCurrentQuickPresentation](#hlyclosecurrentquickpresentation)
   - [GetCurrentQuickPresentation](#hlygetcurrentquickpresentation)
   - [GetTriggers](#hlygettriggers)
+  - [GetScheduledTasks](#hlygetscheduledtasks)
   - [GetGlobalSettings](#hlygetglobalsettings-input)
   - [SetGlobalSettings](#hlysetglobalsettings-input)
   - [GetStyledModels](#hlygetstyledmodels)
   - [GetStyledModelsAsMap](#hlygetstyledmodelsasmap)
+  - [GetMidiSettings](#hlygetmidisettings)
+  - [GetRuleGroupList](#hlygetrulegrouplist)
+  - [GetRuleGroup](#hlygetrulegroup-input)
+  - [TestRuleGroup](#hlytestrulegroup-input)
+  - [GetTransitionEffectTemplateSettingsList](#hlygettransitioneffecttemplatesettingslist-input)
+  - [GetTransitionEffectTemplateSettings](#hlygettransitioneffecttemplatesettings-input)
+  - [SetTransitionEffectTemplateSettings](#hlysettransitioneffecttemplatesettings-input)
   - [CreateItem](#hlycreateitem-input)
   - [EditItem](#hlyedititem-input)
   - [DeleteItem](#hlydeleteitem-input)
   - [AddSongsToSongGroup](#hlyaddsongstosonggroup-input)
   - [RemoveSongsFromSongGroup](#hlyremovesongsfromsonggroup-input)
+  - [SetCurrentSchedule](#hlysetcurrentschedule-input)
 - [SecurityUtils methods](#securityutils-methods)
   - [encrypt](#encryptvalue)
   - [decrypt](#decryptbase64)
@@ -414,7 +440,9 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [relativeMethods](#relativemethods)
 - [User input Methods](#user-input-methods)
   - [input](#inputparam-notification--false)
+  - [inputV2](#inputv2param-notification--false)
   - [settings](#settingssaveto-savetostore-data)
+  - [settingsV2](#settingsv2saveto-savetostore-data)
   - [inputTextArea](#inputtextareatitle-notification--false)
   - [itemChooser](#itemchoosertitle-items-notification--false)
   - [multipleItemChooser](#multipleitemchoosertitle-items-notification--false)
@@ -432,6 +460,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [fileChooser](#filechooser)
   - [backgroundChooser](#backgroundchooser)
   - [verseChooser](#versechooser)
+  - [iconChooser](#iconchooser)
   - [openWindow](#openwindowname)
   - [repaint](#repaintid)
   - [popupWorker](#popupworkerinput)
@@ -448,6 +477,8 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [Group](#group)
   - [Song Arrangement](#song-arrangement)
   - [Announcement](#announcement)
+  - [Module](#module)
+  - [Module Action](#module-action)
   - [Midi](#midi)
   - [Favorite Item](#favorite-item)
   - [Service](#service)
@@ -460,16 +491,23 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [Automatic](#automatic)
   - [Presentation Slide Info](#presentation-slide-info)
   - [Trigger Item](#trigger-item)
+  - [Scheduled Task](#scheduled-task)
+  - [Rule](#rule)
+  - [Rule Group](#rule-group)
   - [Play Media Settings](#play-media-settings)
   - [Display Settings](#display-settings)
+  - [Display Settings Preset](#display-settings-preset)
   - [Transition Effect Settings](#transition-effect-settings)
+  - [Transition Effect Template Settings](#transition-effect-template-settings)
   - [Bible Settings](#bible-settings)
   - [Font Settings](#font-settings)
   - [Stage View](#stage-view)
   - [Slide Additional Info](#slide-additional-info)
+  - [Stage View HTML Settings](#stage-view-html-settings)
   - [Rectangle](#rectangle)
   - [Custom Message](#custom-message)
   - [Custom Message Param](#custom-message-param)
+  - [Quiz Group](#quiz-group)
   - [Quiz Question](#quiz-question)
   - [Quiz Settings](#quiz-settings)
   - [Quick Presentation Slide](#quick-presentation-slide)
@@ -504,8 +542,9 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [AddItemCountdownCommunicationPanel](#additemcountdowncommunicationpanel)
   - [AddItemPlainText](#additemplaintext)
   - [AddItemTextCommunicationPanel](#additemtextcommunicationpanel)
-  - [AddItemAddItemScript](#additemadditemscript)
-  - [AddItemAddItemAPI](#additemadditemapi)
+  - [AddItemScript](#additemscript)
+  - [AddItemAPI](#additemapi)
+  - [AddItemModuleAction](#additemmoduleaction)
   - [AddItemURI](#additemuri)
   - [AddItemGlobalAction](#additemglobalaction)
   - [SongInfo](#songinfo)
@@ -533,6 +572,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [PlaylistChangedInfo](#playlistchangedinfo)
   - [FileModifiedInfo](#filemodifiedinfo)
   - [PlayerProgressInfo](#playerprogressinfo)
+  - [DrawLotsItemDrawnInfo](#drawlotsitemdrawninfo)
 
 
 # General 
@@ -2641,7 +2681,7 @@ h.clearTimeout(id);
 ---
 
 
-### setInterval(function, timeout, name = null)
+### setInterval(function, delay, name = null)
 - v2.19.0
 
 Runs a function every X milliseconds. Use **clearInterval** to stop execution.
@@ -2651,7 +2691,7 @@ Runs a function every X milliseconds. Use **clearInterval** to stop execution.
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `function` | _Function_ | Function that will be executed |
-| `timeout` | _Number_ | Interval in milliseconds between each run |
+| `delay` | _Number_ | Interval in milliseconds between each run |
 | `name` | _String (optional)_ | Item name. Compatible value for display in **JavaScript Monitor** `v2.23.0+` |
 
 
@@ -4312,6 +4352,7 @@ Save content to a TXT file. May generate Exception.
 | `settings` | _Object (optional)_ | Settings |
 | `settings.name` | _String (optional)_ | File name `Default: YYYY-MM-DD_HH-MM-SS` |
 | `settings.charset` | _String (optional)_ | Text encoding `Default: UTF-8` |
+| `settings.ignore_notification` | _Boolean (optional)_ | Ignore saved file notification `Default: false` `v2.26.0+` |
 
 
 _Method does not return value_
@@ -4342,6 +4383,7 @@ Save content to an XLSX spreadsheet. May generate Exception.
 | `data.sheets.*.header` | _String_ | Header |
 | `data.sheets.*.cols_name` | _Array&lt;String&gt;_ | Column titles |
 | `data.sheets.*.grid` | _Array&lt;Array&lt;String&gt;&gt;_ | Tabs |
+| `data.ignore_notification` | _Boolean (optional)_ | Ignore saved file notification `Default: false` `v2.26.0+` |
 
 
 _Method does not return value_
@@ -4364,6 +4406,39 @@ h.exportXLSX({
          ]
       }
     ]
+});
+```
+
+---
+
+
+### exportJSON(object, settings)
+- v2.26.0
+
+Save an object in JSON format. It may throw an Exception.
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `object` | _Object_ | Object that will be converted to JSON `(string)` |
+| `settings` | _Object (optional)_ |  |
+| `settings.pretty` | _Boolean (optional)_ | Generate the file with indentation and line breaks `Default: true` |
+| `settings.name` | _Boolean (optional)_ | File name `Default: YYYY-MM-DD_HH-MM-SS` |
+| `settings.ignore_notification` | _Boolean (optional)_ | Ignore saved file notification `Default: false` |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+var object = {
+    a: 'abc',
+    b: 'xyz'
+};
+h.exportJSON(object, {
+    name: "json filename"
 });
 ```
 
@@ -4652,6 +4727,124 @@ r.forEach(function(g) {
 // 19023004
 // 19023005
 // 19023006
+```
+
+---
+
+
+### parseVerseID2VerseReference(id, languageID = null)
+- v2.26.0
+
+Convert the ID of a Bible verse into a reference
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Verse ID |
+| `languageID` | _String (optional)_ | Language ID of the book set.<br>If an ID is not provided, the list of books from the main Bible selected in the program will be used.<br>To get the list of available IDs, see: `h.getAvailableBibleBooks()` |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _[VerseReference](#verse-reference)_ | 
+
+
+**Example:**
+
+```javascript
+var r = h.parseVerseID2VerseReference("19023001", "en");
+//r.id=19023001
+//r.book=19
+//r.chapter=23
+//r.verse=1
+//r.reference=Psalms 23:1
+```
+
+---
+
+
+### parseVerseID2VerseReference(book, chapter, verse, languageID = null)
+- v2.26.0
+
+Convert a Bible verse into a reference
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `book` | _Number_ | Book `1 ~ 66` |
+| `chapter` | _Number_ | Chapter |
+| `verse` | _Number_ | Verse |
+| `languageID` | _String (optional)_ | Language ID of the book set.<br>If an ID is not provided, the list of books from the main Bible selected in the program will be used.<br>To get the list of available IDs, see: `h.getAvailableBibleBooks()` |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _[VerseReference](#verse-reference)_ | 
+
+
+**Example:**
+
+```javascript
+var r = h.parseVerseID2VerseReference(19, 23, 1, "en");
+//r.id=19023001
+//r.book=19
+//r.chapter=23
+//r.verse=1
+//r.reference=Psalms 23:1
+```
+
+---
+
+
+### parseVerseID2VerseReferenceGroup(items, languageID = null)
+- v2.26.0
+
+Convert a list of Bible verse IDs into references
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `items` | _Array&lt;Object&gt;_ | It can be a `string` with the ID of each verse separated by a comma.<br>It can be an `array` of `string` with each ID.<br>It can be an `array` of objects with each object containing the `id` parameter with the verse ID |
+| `languageID` | _String (optional)_ | Language ID of the book set.<br>If an ID is not provided, the list of books from the main Bible selected in the program will be used.<br>To get the list of available IDs, see: `h.getAvailableBibleBooks()` |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _[VerseReferenceGroup](#verse-reference-group)_ | 
+
+
+**Example:**
+
+```javascript
+var r = h.parseVerseID2VerseReferenceGroup("19023001,19023002", languageID = null);
+/*
+{
+  "reference": "Psalms 23:1-2",
+  "ids": [ "19023001", "19023002" ],
+  "verses": [{
+      "id": "19023001",
+      "book": 19,
+      "chapter": 23,
+      "verse": 1,
+      "reference": "Psalms 23:1"
+    }, {
+      "id": "19023002",
+      "book": 19,
+      "chapter": 23,
+      "verse": 2,
+      "reference": "Psalms 23:2"
+  }]
+}
+*/
 ```
 
 ---
@@ -5147,6 +5340,165 @@ var data = h.hlyOrThrow('GetLyrics', { id: '123' });
 var r = h.hly('GetLyrics', { id: '123' });
 var data = r.data;
 //throws exception if r.status === 'error'
+```
+
+---
+
+
+### createMidiSequence(ticksPerBeat = 1000)
+- v2.26.0
+
+
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `ticksPerBeat` | _Number (optional)_ |  `Default: 1000` |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _[MidiSequence](https://github.com/holyrics/jslib/blob/main/doc/en/MidiSequence.md)_ | Class to generate a MIDI sequence. |
+
+
+**Example:**
+
+```javascript
+var seq = h.createMidiSequence();
+var track = seq.createTrack(120);
+var data = {
+    code: 10,
+    velocity: 127,
+    time_ms: 1000
+};
+track.add(data);
+track.add("15,127,2000");
+seq.save({
+    name: 'filename'
+});
+```
+
+---
+
+
+### getModules()
+- v2.26.0
+
+List of modules
+
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _Array&lt;[Module](https://github.com/holyrics/jslib/blob/main/doc/en/Module.md)&gt;_ | 
+
+
+**Example:**
+
+```javascript
+var modules = h.getModules();
+for (var i = 0; i < modules.length; i++) {
+    h.log(modules[i].id + " | " + modules[i].name);
+}
+```
+
+---
+
+
+### getModulesByCommunityID(id)
+- v2.26.0
+
+List of modules.<br>Filter by the global module ID in the JSCommunity repository
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Global module ID in the JSCommunity repository |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _Array&lt;[Module](https://github.com/holyrics/jslib/blob/main/doc/en/Module.md)&gt;_ | 
+
+
+**Example:**
+
+```javascript
+var modules = h.getModulesByCommunityID('id');
+for (var i = 0; i < modules.length; i++) {
+    h.log(modules[i].id + " | " + modules[i].name);
+}
+```
+
+---
+
+
+### getModule(moduleID)
+- v2.26.0
+
+Returns a specific module
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `moduleID` | _String_ | Module ID |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _[Module](https://github.com/holyrics/jslib/blob/main/doc/en/Module.md)_ | 
+
+
+**Example:**
+
+```javascript
+var m = h.getModule('id');
+if (m) {
+    h.log(m.id + " | " + m.name);
+}
+```
+
+---
+
+
+### getModuleAction(moduleID, actionID)
+- v2.26.0
+
+Returns a specific action from a module
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `moduleID` | _String_ | Module ID |
+| `actionID` | _String_ | Module action ID |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _[ModuleAction](https://github.com/holyrics/jslib/blob/main/doc/en/ModuleAction.md)_ | 
+
+
+**Example:**
+
+```javascript
+var mAction = h.getModuleAction('module_id', 'action_id');
+if (mAction) {
+    mAction.call();
+}
 ```
 
 ---
@@ -6069,6 +6421,32 @@ h.hly('ShowCountdown', {
 ---
 
 
+### hly('GetQuizList')
+- v2.26.0
+
+Get the existing multiple choice groups
+
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _Array&lt;[QuizGroup](#quiz-group)&gt;_| 
+
+
+**Example:**
+
+```javascript
+var list = h.hly('GetQuizList').data;
+for (var i = 0; i < list.length; i++) {
+    h.log(list[i].name);
+}
+```
+
+---
+
+
 ### hly('ShowQuiz', input)
 - v2.20.0
 
@@ -6441,6 +6819,7 @@ Add song lyrics to playlist
 | `input.ids` | _Array&lt;String&gt; (optional)_ | List with id of each lyics |
 | `input.index` | _Number (optional)_ | Position in the list where the item will be added (starts at zero). Items are added to the end of the list by default. `Default: -1` |
 | `input.media_playlist` | _Boolean (optional)_ | Add the lyrics to the media playlist `Default: false` |
+| `event_id` | _String (optional)_ | To change the playlist of a specific worship or event.<br>When `event_id` is not declared, the currently selected playlist in the interface will be edited.<br>Attention, available only from version `2.26.0`, which means that in previous versions this method will always change the currently selected playlist in the interface, ignoring this parameter `event_id` `Default: null` `v2.26.0+` |
 
 
 _Method does not return value_
@@ -6479,6 +6858,7 @@ Remove lyrics from playlist
 | `input.ids` | _Array&lt;String&gt; (optional)_ | List with id of each lyics |
 | `input.index` | _Number (optional)_ | Position of the item in the list to be removed (starts at zero). |
 | `input.indexes` | _Array&lt;Number&gt; (optional)_ | List with the position of each item in the list that will be removed. (Starts at zero) |
+| `event_id` | _String (optional)_ | To change the playlist of a specific worship or event.<br>When `event_id` is not declared, the currently selected playlist in the interface will be edited.<br>Attention, available only from version `2.26.0`, which means that in previous versions this method will always change the currently selected playlist in the interface, ignoring this parameter `event_id` `Default: null` `v2.26.0+` |
 
 
 _Method does not return value_
@@ -6510,6 +6890,7 @@ Change a Lyrics Playlist Item
 | ---- | :---: | ------------|
 | `input.index` | _Number_ | Index of the item in the list |
 | `input.song_id` | _String_ | New item |
+| `event_id` | _String (optional)_ | To change the playlist of a specific worship or event.<br>When `event_id` is not declared, the currently selected playlist in the interface will be edited.<br>Attention, available only from version `2.26.0`, which means that in previous versions this method will always change the currently selected playlist in the interface, ignoring this parameter `event_id` `Default: null` `v2.26.0+` |
 
 
 _Method does not return value_
@@ -6562,6 +6943,7 @@ Change a media playlist item
 | ---- | :---: | ------------|
 | `input.index` | _Number_ | Index of the item in the list |
 | `input.item` | _[AddItem](#add-item)_ | New item |
+| `event_id` | _String (optional)_ | To change the playlist of a specific worship or event.<br>When `event_id` is not declared, the currently selected playlist in the interface will be edited.<br>Attention, available only from version `2.26.0`, which means that in previous versions this method will always change the currently selected playlist in the interface, ignoring this parameter `event_id` `Default: null` `v2.26.0+` |
 
 
 _Method does not return value_
@@ -6782,6 +7164,7 @@ Add items to the media playlist
 | `input.items` | _Array&lt;[AddItem](#add-item)&gt;_ | List with the items that will be added |
 | `input.index` | _Number (optional)_ | Position in the list where the item will be added (starts at zero). Items are added to the end of the list by default. `Default: -1` |
 | `input.ignore_duplicates` | _Boolean (optional)_ | Do not duplicate items when adding new items, that is, do not add an item if it is already on the list. `Default: false` |
+| `event_id` | _String (optional)_ | To change the playlist of a specific worship or event.<br>When `event_id` is not declared, the currently selected playlist in the interface will be edited.<br>Attention, available only from version `2.26.0`, which means that in previous versions this method will always change the currently selected playlist in the interface, ignoring this parameter `event_id` `Default: null` `v2.26.0+` |
 
 
 _Method does not return value_
@@ -6905,6 +7288,7 @@ Remove items from media playlist
 | `input.ids` | _Array&lt;String&gt; (optional)_ | List with id of each item |
 | `input.index` | _Number (optional)_ | Position of the item in the list to be removed (starts at zero). |
 | `input.indexes` | _Array&lt;Number&gt; (optional)_ | List with the position of each item in the list that will be removed. (Starts at zero) |
+| `event_id` | _String (optional)_ | To change the playlist of a specific worship or event.<br>When `event_id` is not declared, the currently selected playlist in the interface will be edited.<br>Attention, available only from version `2.26.0`, which means that in previous versions this method will always change the currently selected playlist in the interface, ignoring this parameter `event_id` `Default: null` `v2.26.0+` |
 
 
 _Method does not return value_
@@ -7191,6 +7575,47 @@ if (r.status == 'ok') {
 } else {
     h.log('Error: ' + r.error);
 }
+```
+
+---
+
+
+### hly('ModuleAction', input)
+- v2.26.0
+
+Execute a public action of a module
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.module_id` | _String_ | module id |
+| `input.action_id` | _String_ | action ID |
+| `input.action_type` | _String (optional)_ | Accepted values: `call` `open`<br>**call:** Performs the action<br>**open:** Abre uma janela popup para o usuário inserir/editar os parâmetros e executar a ação `Default: call` |
+| `input.async` | _Boolean (optional)_ | Execute the action asynchronously, that is, without returning the response of the action. Available if `action_type=call` `Default: false` |
+| `input.timeout` | _Number (optional)_ | `100 ~ 4000` Timeout for action execution. Available if `action_type=call` `Default: 500` |
+| `input.notification` | _Boolean (optional)_ | Exibir uma notificação em vez de exibir o popup diretamente na tela para o usuário. Available if `action_type=open` `Default: false` |
+| `input.input` | _Object (optional)_ | Key/value map with the parameters for executing the action, where each key is the respective id of the input declared in the module's action |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | Response to the action. Available if `action_type=call && async=false` |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('ModuleAction', {
+    module_id: 'abc',
+    action_id: 'xyz',
+    input: {
+        a: 'abc',
+        b: 'xyz'
+    }
+});
 ```
 
 ---
@@ -7511,6 +7936,36 @@ for (var i = 0; i < r.data.length; i++) {
     var bg = r.data[i];
     h.log(bg.name);
 }
+```
+
+---
+
+
+### hly('GetBackgroundTags', input)
+- v2.26.0
+
+List of Tags created for organizing Themes and Backgrounds
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input` | _Object (optional)_ | Filter |
+| `input.type` | _String (optional)_ | Can be: `theme` `my_video` `my_image` `video` `image` |
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;String&gt;_ | List with the names of the Tags |
+
+
+**Example:**
+
+```javascript
+var tags = h.hly('GetBackgroundTags');
+h.log(tags);
 ```
 
 ---
@@ -7872,6 +8327,7 @@ Populates the media list of the currently selected playlist in the program with 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `input.name` | _String_ | Saved playlist name |
+| `input.merge` | _Boolean_ | Adds the items to the end of the list instead of replacing `Default: false` `v2.24.0+` |
 
 
 _Method does not return value_
@@ -8249,6 +8705,44 @@ Announcement list
 var r = h.hly('GetAnnouncements');
 for (var i = 0; i < r.data.length; i++) {
     h.log(r.data[i].name);
+}
+```
+
+---
+
+
+### hly('GetModules', input)
+- v2.26.0
+
+List of modules
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input` | _Object (optional)_ | Filter |
+| `input.id` | _String (optional)_ |  |
+| `input.name` | _String (optional)_ |  |
+| `input.jscommunity_id` | _String (optional)_ |  |
+| `input.info_id` | _String (optional)_ |  |
+| `input.active` | _Boolean (optional)_ |  |
+| `input.enabled_by_user` | _Boolean (optional)_ |  |
+| `input.conditional_execution` | _Boolean (optional)_ |  |
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _Array&lt;[Module](#module)&gt;_| 
+
+
+**Example:**
+
+```javascript
+var modules = h.hly('GetModules').data;
+for (var i = 0; i < modules.length; i++) {
+    h.log(modules[i].id + " | " + modules[i].name);
 }
 ```
 
@@ -8666,6 +9160,39 @@ var r = h.hly('SetDisplaySettings', {
         top: 10, right: 5, bottom: 10, left: 5
     }
 });
+```
+
+---
+
+
+### hly('GetDisplaySettingsPresets', input)
+- v2.26.0
+
+List of saved display configuration models
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.type` | _Object_ | Preset type. Accepted values: `public` `return` `image` `html` |
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _Array&lt;[DisplaySettingsPreset](#display-settings-preset)&gt;_| 
+
+
+**Example:**
+
+```javascript
+var list = h.hly('GetDisplaySettingsPresets', {
+    type: 'public'
+}).data;
+for (var i = 0; i < list.length; i++) {
+    h.log(list[i].id + " | " + list[i].name);
+}
 ```
 
 ---
@@ -9144,7 +9671,7 @@ Returns the value of a field from the program interface
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | Item ID. Can be: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme` |
+| `input.id` | _String_ | Item ID. Can be: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event` |
 
 
 **Response:**
@@ -9174,7 +9701,7 @@ Change the value of a field in the program interface
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | Item ID. Can be: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme` |
+| `input.id` | _String_ | Item ID. Can be: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event` |
 | `input.value` | _String_ | New value |
 | `input.focus` | _Boolean (optional)_ | Make the component receive system focus |
 
@@ -9300,8 +9827,10 @@ Returns information about the version of the running program
 | `data.platformDescription` | _String_ | Detailed operating system name |
 | `data.baseDir` | _String_ |  `v2.24.0+` |
 | `data.language` | _String_ |  `v2.24.0+` |
+| `data.platformLanguage` | _String_ |  `v2.26.0+` |
 | `data.theme` | _String_ | One of the following values: `DEFAULT` `DARK_SOFT` `DARK_MEDIUM` `DARK_STRONG` `v2.24.0+` |
 | `data.jscVersion` | _String_ | JS Community Version y.m.d `v2.24.0+` |
+| `data.ip_list` | _Array&lt;String&gt;_ |  `v2.26.0+` |
 
 
 **Example:**
@@ -9312,6 +9841,26 @@ h.log(r.data.version);
 h.log(r.data.plaftorm);
 h.log(r.data.plaftormDescription);
 ```
+
+---
+
+
+### hly('GetAPIServerInfo')
+- v2.26.0
+
+Returns information from the API server
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data.enabled_local` | _Boolean_ | If it is enabled for local access |
+| `data.enabled_web` | _Boolean_ | If it is enabled for internet access |
+| `data.port` | _Number_ |  |
+| `data.ip_list` | _Array&lt;String&gt;_ |  |
+
 
 ---
 
@@ -9447,7 +9996,7 @@ Returns the list of saved triggers
 | `data.*.id` | _String_ | Item ID |
 | `data.*.enabled` | _Boolean_ |  |
 | `data.*.when` | _String_ | Can be: `displaying` `closing` `change` `event` |
-| `data.*.type` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` |
+| `data.*.type` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle` `bible_version_1` `bible_version_2` `bible_version_3` `bible_any_version`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` `draw_lots_item_drawn` |
 | `data.*.item.title` | _String_ |  |
 | `data.*.item.reference` | _Object_ |  |
 | `data.*.receiver.type` | _String_ | Can be: `get` `post` `ws` `tcp` `udp` `midi` `javascript` `community` `multiple_actions` `obs_v4` `obs_v5` `lumikit` `vmix` `osc` `soundcraft` `ha` `ptz` `tbot` `openai` |
@@ -9461,6 +10010,32 @@ Returns the list of saved triggers
 var items = h.hly('GetTriggers').data;
 for (var i = 0; i < items.length; i++) {
     h.log("ID: " + items[i].id);
+}
+```
+
+---
+
+
+### hly('GetScheduledTasks')
+- v2.26.0
+
+Returns the list of scheduled tasks
+
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _Array&lt;[ScheduledTask](#scheduled-task)&gt;_| 
+
+
+**Example:**
+
+```javascript
+var list = h.hly('GetScheduledTasks').data;
+for (var i = 0; i < list.length; i++) {
+    h.logp(list[i]);
 }
 ```
 
@@ -9580,6 +10155,207 @@ h.logp(r.data);
 ```javascript
 var r = h.hly('GetStyledModelsAsMap');
 h.logp(r.data);
+```
+
+---
+
+
+### hly('GetMidiSettings')
+- v2.26.0
+
+
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data.codes` | _Object_ | Key/value pair<br>The key is the id of the respective action and the value is the MIDI code `0 ~ 127`<br>Available IDs: `presentation_action_next` `presentation_action_previous` `presentation_action_exit` `presentation_action_blank` `presentation_action_black` `presentation_action_wallpaper` `presentation_action_next_playlist_item` `presentation_action_previous_playlist_item` `media_player_play_pause` `media_player_stop` `media_player_next` `media_player_previous` `media_player_mute` `media_player_fullscreen` `media_player_volume` `presentation_action_go_to_slide` `select_item_from_song_playlist` `select_item_from_media_playlist` `multiple_choice` `shortcut_1` `shortcut_2` `shortcut_3` `shortcut_4` `shortcut_5` `shortcut_6` `shortcut_7` `shortcut_8` `shortcut_9` `shortcut_10` `shortcut_11` `shortcut_12` `shortcut_13` `shortcut_14` `shortcut_15` `shortcut_16` |
+| `data.settings` | _Object_ | Settings |
+| `data.settings.base_octave` | _Object_ | Base number for the start of the octave for midi code = 0 (zero).<br>That is, if `base_octave=-1`, then `midi code=0` is equal to `C-1`<br>It can be -1 or -2 |
+
+
+---
+
+
+### hly('GetRuleGroupList')
+- v2.26.0
+
+Returns the saved rule groups
+
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _Array&lt;[RuleGroup](#rule-group)&gt;_| 
+
+
+**Example:**
+
+```javascript
+var list = h.hly('GetRuleGroupList').data;
+for (var i = 0; i < list.length; i++) {
+    h.log(list[i].id + " | " + list[i].name);
+}
+```
+
+---
+
+
+### hly('GetRuleGroup', input)
+- v2.26.0
+
+Returns a saved group of rules
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | Rule group ID |
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _[RuleGroup](#rule-group)_| 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetRuleGroup', { id: 'abcxyz' }).data;
+if (r) {
+    h.log(r.id + " | " + r.name);
+}
+```
+
+---
+
+
+### hly('TestRuleGroup', input)
+- v2.26.0
+
+Returns the result of the test of a group of saved rules (or a specific rule from the respective group)
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | Rule group ID |
+| `input.rule_id` | _String (optional)_ | ID of the specific rule to be tested instead of testing the entire group |
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data` | _Boolean_ | `true` or `false` |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('TestRuleGroup', { id: 'abcxyz' }).data;
+if (r) {
+    //...
+}
+```
+
+---
+
+
+### hly('GetTransitionEffectTemplateSettingsList', input)
+- v2.26.0
+
+Returns the list of transition effect models
+
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _Array&lt;[TransitionEffectTemplateSettings](#transition-effect-template-settings)&gt;_| 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetTransitionEffectTemplateSettingsList').data;
+for (var i = 0; i < list.length; i++) {
+    h.log(list[i].id + " | " + list[i].name);
+}
+```
+
+---
+
+
+### hly('GetTransitionEffectTemplateSettings', input)
+- v2.26.0
+
+Returns a transition effect model
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | Model ID |
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _[TransitionEffectTemplateSettings](#transition-effect-template-settings)_| 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetTransitionEffectTemplateSettings', { id: 'abcxyz' });
+if (r) {
+    h.log(r.id + " | " + r.name);
+}
+```
+
+---
+
+
+### hly('SetTransitionEffectTemplateSettings', input)
+- v2.26.0
+
+Change the settings of a transition effect template
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _Object_ | Item ID |
+| `input.settings` | _[TransitionEffectSettings](#transition-effect-settings)_ | New settings. Settings are individually optional. Fill in only the fields you want to change. |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | Return **true** or a list of errors that occurred |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('SetTransitionEffectTemplateSettings', {
+    id: 'abcxyz',
+    settings: {
+        enabled: true,
+        type: 'fade',
+        duration: 700
+    }
+});
 ```
 
 ---
@@ -9738,6 +10514,31 @@ _Method does not return value_
 h.hly('RemoveSongsFromSongGroup', {
     group: "Name",
     songs: "123"
+});
+```
+
+---
+
+
+### hly('SetCurrentSchedule', input)
+- v2.26.0
+
+Alterar o culto ou evento atualmente selecionado na interface<br> <br>This action requires a [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) subscription to be executed
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.event_id` | _String_ | Event ID Can be obtained from a **Schedule** object |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('SetCurrentSchedule', {
+    event_id: 'abcxyz'
 });
 ```
 
@@ -10000,6 +10801,29 @@ if (r == null) {
 ---
 
 
+### inputV2(param, notification = false)
+- v2.26.0
+
+The same as `input(...)`, but the response will always be a key/value map, even if there is only one item as input
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `param` | _Object_ |  |
+| `notification` | _Boolean_ |  |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _Object_ | 
+
+
+---
+
+
 ### settings(saveTo, saveToStore, data)
 ### settings(saveTo, data)
 - v2.23.0
@@ -10039,6 +10863,30 @@ var r = h.settings('settings_name', inputs);
 //r.message
 //r.duration
 ```
+
+---
+
+
+### settingsV2(saveTo, saveToStore, data)
+- v2.26.0
+
+The same as `settings(...)`, but the response will always be a key/value map, even if there is only one item as input
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `saveTo` | _String_ |  |
+| `saveToStore` | _Boolean_ |  |
+| `data` | _Object_ |  |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _Object_ | 
+
 
 ---
 
@@ -10622,6 +11470,32 @@ if (r == null) {
 ---
 
 
+### iconChooser()
+- v2.26.0
+
+Opens a window to select an icon
+
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _String_ | Returns the item selected by the user (can be NULL) |
+
+
+**Example:**
+
+```javascript
+var r = h.iconChooser();
+if (r) {
+    h.log(r);
+}
+```
+
+---
+
+
 ### openWindow(name)
 - v2.22.0
 
@@ -10911,6 +11785,7 @@ Complex classes used as a return in some methods
       "styled_text": "Slide 1 line 1\nSlide 1 line 2",
       "slide_description": "Verse 1",
       "background_id": null,
+      "transition_settings_id": null,
       "translations": null
     },
     {
@@ -10918,6 +11793,7 @@ Complex classes used as a return in some methods
       "styled_text": "Slide 2 line 1\nSlide 2 line 2",
       "slide_description": "Chorus",
       "background_id": null,
+      "transition_settings_id": null,
       "translations": null
     },
     {
@@ -10925,6 +11801,7 @@ Complex classes used as a return in some methods
       "styled_text": "Slide 3 line 1\nSlide 3 line 2",
       "slide_description": "Verse 2",
       "background_id": null,
+      "transition_settings_id": null,
       "translations": null
     }
   ],
@@ -10952,6 +11829,7 @@ Complex classes used as a return in some methods
     "extra": ""
   },
   "theme": null,
+  "transition_settings_id": null,
   "archived": false
 }
 ```
@@ -10981,23 +11859,27 @@ Complex classes used as a return in some methods
   "title": "",
   "folder": "",
   "theme": null,
+  "transition_settings_id": null,
   "slides": [
     {
       "text": "Slide 1 line 1\nSlide 1 line 2",
       "styled_text": "Slide 1 line 1\nSlide 1 line 2",
       "background_id": null,
+      "transition_settings_id": null,
       "translations": null
     },
     {
       "text": "Slide 2 line 1\nSlide 2 line 2",
       "styled_text": "Slide 2 line 1\nSlide 2 line 2",
       "background_id": null,
+      "transition_settings_id": null,
       "translations": null
     },
     {
       "text": "Slide 3 line 1\nSlide 3 line 2",
       "styled_text": "Slide 3 line 1\nSlide 3 line 2",
       "background_id": null,
+      "transition_settings_id": null,
       "translations": null
     }
   ],
@@ -11149,7 +12031,8 @@ Complex classes used as a return in some methods
   },
   "settings": {
     "uppercase": false,
-    "line_break": "system"
+    "line_break": "system",
+    "transition_settings_id": null
   }
 }
 ```
@@ -11212,7 +12095,7 @@ Complex classes used as a return in some methods
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `id` | _String_ | Item ID |
-| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script` |
+| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script`  `module_action` |
 | `name` | _String_ | Item name |
 
 ## Group
@@ -11248,7 +12131,33 @@ Complex classes used as a return in some methods
 | `id` | _String_ | Item ID |
 | `name` | _String_ | Item name |
 | `text` | _String_ | Announcement text |
+| `shuffle` | _Boolean_ | Display the list of ads randomly `v2.26.0+` |
 | `archived` | _Boolean_ | If the item is archived |
+
+## Module
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `jscommunity_id` | _String_ | Global ID of the item in the JSCommunity repository |
+| `info_id` | _String_ | ID defined for the item in `function info()`<br>If the module is from the JSCommunity source, the value is the same as `jscommunity_id` |
+| `name` | _String_ | Module name |
+| `active` | _Boolean_ | If the module is active. active is a result of `enabled_by_user && conditional_execution` |
+| `enabled_by_user` | _Boolean_ | If the module is enabled by the user (checkbox in the interface) |
+| `conditional_execution` | _Boolean_ | If the module is activated based on the possible conditional executions defined for it by the user |
+| `show_panel` | _Boolean_ | Display the module in the Modules panel |
+| `available_in_main_window` | _Boolean_ | Module available for use in the main window panel |
+| `available_in_bible_window` | _Boolean_ | Module available for use in the Bible window panel |
+| `actions` | _Array&lt;[Module Action](#module- -action)&gt;_ | Public actions available for the module |
+
+## Module Action
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `name` | _String_ | Item name |
+| `description` | _String_ | Item description |
+| `available_for` | _String_ | Lista de origens que a ação está disponível.<br>If the field is empty, it means that the action is available for all sources.<br>Available values: `ui` `trigger` `jslib_call` `jslib_open` `add_to_playlist` |
+| `unavailable_for` | _String_ | Lista de origens que a ação está indisponível.<br>Available values: `ui` `trigger` `jslib_call` `jslib_open` `add_to_playlist` |
+| `input` | _Array&lt;Object&gt;_ | List of required parameters for action execution |
 
 ## Midi
 | Name | Type  | Description |
@@ -11271,6 +12180,8 @@ Complex classes used as a return in some methods
 | ---- | :---: | ------------|
 | `id` | _String_ | Item ID |
 | `name` | _String_ | Item name |
+| `folders` | _Array&lt;String&gt;_ |  `v2.26.0+` |
+| `item` | _Object_ |  `v2.26.0+` |
 
 ## Service
 | Name | Type  | Description |
@@ -11432,8 +12343,8 @@ Complex classes used as a return in some methods
 | ---- | :---: | ------------|
 | `id` | _String (optional)_ | Item ID |
 | `when` | _String_ | `displaying` `closing` `change` `event` |
-| `item` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` |
-| `action` | _Function_ | Action to be executed.<br>`function(obj) { /*  */ }`<br>Content of `obj` according to the item type:<br>[`any_song`](https://github.com/holyrics/jslib/blob/main/README-en.md#songinfo)  [`any_text`](https://github.com/holyrics/jslib/blob/main/README-en.md#textinfo)  [`any_verse`](https://github.com/holyrics/jslib/blob/main/README-en.md#verseinfo)  [`any_announcement`](https://github.com/holyrics/jslib/blob/main/README-en.md#announcementinfo)  [`any_audio`](https://github.com/holyrics/jslib/blob/main/README-en.md#audioinfo)  [`any_video`](https://github.com/holyrics/jslib/blob/main/README-en.md#videoinfo)  [`any_image`](https://github.com/holyrics/jslib/blob/main/README-en.md#imageinfo)  [`any_automatic_presentation`](https://github.com/holyrics/jslib/blob/main/README-en.md#automaticpresentationinfo)  [`any_song_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#songslideinfo)  [`any_text_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#textslideinfo)  [`any_ppt_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#pptslideinfo)  [`any_theme`](https://github.com/holyrics/jslib/blob/main/README-en.md#themeinfo)  [`any_background`](https://github.com/holyrics/jslib/blob/main/README-en.md#backgroundinfo)  [`any_title_subitem`](https://github.com/holyrics/jslib/blob/main/README-en.md#titleinfo)  [`any_webcam`](https://github.com/holyrics/jslib/blob/main/README-en.md#webcaminfo)  [`any_audio_folder`](https://github.com/holyrics/jslib/blob/main/README-en.md#audioinfo)  [`any_video_folder`](https://github.com/holyrics/jslib/blob/main/README-en.md#videoinfo)  [`any_image_folder`](https://github.com/holyrics/jslib/blob/main/README-en.md#imageinfo)  [`any_ppt`](https://github.com/holyrics/jslib/blob/main/README-en.md#pptinfo)  [`any_countdown`](https://github.com/holyrics/jslib/blob/main/README-en.md#countdowninfo)  [`any_automatic_presentation_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#automaticpresentationslideinfo)  [`f8`](https://github.com/holyrics/jslib/blob/main/README-en.md#presentationmodifierinfoinfo)  [`f9`](https://github.com/holyrics/jslib/blob/main/README-en.md#presentationmodifierinfoinfo)  [`f10`](https://github.com/holyrics/jslib/blob/main/README-en.md#presentationmodifierinfoinfo)  [`new_message_chat`](https://github.com/holyrics/jslib/blob/main/README-en.md#newchatmessageinfo)  [`verse_presentation_changed`](https://github.com/holyrics/jslib/blob/main/README-en.md#versepresentationchangedinfo)  [`playlist_changed`](https://github.com/holyrics/jslib/blob/main/README-en.md#playlistchangedinfo)  [`file_modified`](https://github.com/holyrics/jslib/blob/main/README-en.md#filemodifiedinfo)  [`player_progress`](https://github.com/holyrics/jslib/blob/main/README-en.md#playerprogressinfo)<br><br>All items with **when=change** contain: `obj.id` `obj.name` `obj.old_value` `obj.new_value` |
+| `item` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle` `bible_version_1` `bible_version_2` `bible_version_3` `bible_any_version`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` `draw_lots_item_drawn` |
+| `action` | _Function_ | Action to be executed.<br>`function(obj) { /*  */ }`<br>Content of `obj` according to the item type:<br>[`any_song`](https://github.com/holyrics/jslib/blob/main/README-en.md#songinfo)  [`any_text`](https://github.com/holyrics/jslib/blob/main/README-en.md#textinfo)  [`any_verse`](https://github.com/holyrics/jslib/blob/main/README-en.md#verseinfo)  [`any_announcement`](https://github.com/holyrics/jslib/blob/main/README-en.md#announcementinfo)  [`any_audio`](https://github.com/holyrics/jslib/blob/main/README-en.md#audioinfo)  [`any_video`](https://github.com/holyrics/jslib/blob/main/README-en.md#videoinfo)  [`any_image`](https://github.com/holyrics/jslib/blob/main/README-en.md#imageinfo)  [`any_automatic_presentation`](https://github.com/holyrics/jslib/blob/main/README-en.md#automaticpresentationinfo)  [`any_song_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#songslideinfo)  [`any_text_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#textslideinfo)  [`any_ppt_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#pptslideinfo)  [`any_theme`](https://github.com/holyrics/jslib/blob/main/README-en.md#themeinfo)  [`any_background`](https://github.com/holyrics/jslib/blob/main/README-en.md#backgroundinfo)  [`any_title_subitem`](https://github.com/holyrics/jslib/blob/main/README-en.md#titleinfo)  [`any_webcam`](https://github.com/holyrics/jslib/blob/main/README-en.md#webcaminfo)  [`any_audio_folder`](https://github.com/holyrics/jslib/blob/main/README-en.md#audioinfo)  [`any_video_folder`](https://github.com/holyrics/jslib/blob/main/README-en.md#videoinfo)  [`any_image_folder`](https://github.com/holyrics/jslib/blob/main/README-en.md#imageinfo)  [`any_ppt`](https://github.com/holyrics/jslib/blob/main/README-en.md#pptinfo)  [`any_countdown`](https://github.com/holyrics/jslib/blob/main/README-en.md#countdowninfo)  [`any_automatic_presentation_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#automaticpresentationslideinfo)  [`f8`](https://github.com/holyrics/jslib/blob/main/README-en.md#presentationmodifierinfoinfo)  [`f9`](https://github.com/holyrics/jslib/blob/main/README-en.md#presentationmodifierinfoinfo)  [`f10`](https://github.com/holyrics/jslib/blob/main/README-en.md#presentationmodifierinfoinfo)  [`new_message_chat`](https://github.com/holyrics/jslib/blob/main/README-en.md#newchatmessageinfo)  [`verse_presentation_changed`](https://github.com/holyrics/jslib/blob/main/README-en.md#versepresentationchangedinfo)  [`playlist_changed`](https://github.com/holyrics/jslib/blob/main/README-en.md#playlistchangedinfo)  [`file_modified`](https://github.com/holyrics/jslib/blob/main/README-en.md#filemodifiedinfo)  [`player_progress`](https://github.com/holyrics/jslib/blob/main/README-en.md#playerprogressinfo)  [`draw_lots_item_drawn`](https://github.com/holyrics/jslib/blob/main/README-en.md#drawlotsitemdrawninfo)<br><br>All items with **when=change** contain: `obj.id` `obj.name` `obj.old_value` `obj.new_value` |
 | `name` | _String (optional)_ | Item name. Compatible value for display in **JavaScript Monitor** `v2.23.0+` |
 | `filter` | _Object (optional)_ | Execute action only if the object that triggered the event matches the filter object `v2.24.0+` |
 <details>
@@ -11449,6 +12360,43 @@ Complex classes used as a return in some methods
 }
 ```
 </details>
+
+## Scheduled Task
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `enabled` | _Boolean_ |  |
+| `time` | _String_ | time in format: HH:MM:SS |
+| `days` | _Array&lt;String&gt;_ | Accepted values: `sun` `mon` `tue` `wed` `thu` `fri` `sat` |
+| `item` | _Object_ |  |
+| `tags` | _Array&lt;String&gt;_ |  |
+
+## Rule
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `enabled` | _Boolean_ |  |
+| `description` | _String_ |  |
+| `type` | _Object_ |  |
+| `type.id` | _String_ | Accepted values: `none` `rule_group_model` `rule_group` `javascript` `javascript_model` `jscommunity` `services` `events` `date` `time` `datetime` `day_of_week` `day_of_month` `hour_of_day` `day_of_week_in_month` `runtime_environment` |
+| `type.name` | _String_ |  |
+| `type.settings_type` | _String_ | `native` `custom` |
+| <br>**type.settings_type=native** |  |  |
+| `type.native_type` | _String_ | Available values: `unknown` `string` `number` `date` `time` `datetime` |
+| `type.operator` | _String_ | Available values: `equals` `is_between` `contains` `greater` `greater_or_equals` `less` `less_or_equals` `matches_regex` `not_equals` `is_not_between` `not_contains` `not_matches_regex` |
+| `data` | _Object_ |  |
+| <br>**type.settings_type=native** |  |  |
+| `data.values` | _Array&lt;String&gt;_ | Values used for comparisons<br>The array can contain 1 or more items, depending on `type.operator` |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
+
+## Rule Group
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `name` | _String_ | Item name |
+| `match_mode` | _String_ | `any` `all` |
+| `rules` | _Array&lt;[Rule](#rule)&gt;_ | Rules |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
 
 ## Play Media Settings
 Settings for media execution
@@ -11481,6 +12429,7 @@ Display settings
 | ---- | :---: | ------------|
 | `id` | _String_ | Item ID. `public` `screen_2` `screen_3` `screen_?` `stream_image` `stream_html_1` `stream_html_2` `stream_html_3` |
 | `name` | _String_ | Item name |
+| `screen` | _String_ | Screen coordinate x,y defined as public. Available only for `id=public` |
 | `stage_view` | _[StageView](#stage-view)_ | Stage view settings. (Unavailable for public screen) |
 | `slide_info` | _[SlideAdditionalInfo](#slide-additional-info)_ | Additional slide info |
 | `slide_translation` | _String_ | translation name |
@@ -11499,6 +12448,7 @@ Display settings
 | `show_items.announcement` | _Boolean_ | Announcement |
 | `media_player.show` | _Boolean_ | Display VLC Player `v2.20.0+` |
 | `media_player.margin` | _[Rectangle](#rectangle)_ | Margin for displaying videos by VLC Player `v2.20.0+` |
+| `html_settings` | _[StageViewHTMLSettings](stage-view-html-settings)_ | HTML Settings. Available only for HTML outputs. |
 <details>
   <summary>See example</summary>
 
@@ -11582,6 +12532,15 @@ Display settings
 ```
 </details>
 
+## Display Settings Preset
+Display settings (Default template)
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `name` | _String_ | Item name |
+| `settings` | _[DisplaySettings](#display-settings)_ | Settings |
+
 ## Transition Effect Settings
 | Name | Type  | Description |
 | ---- | :---: | ------------|
@@ -11627,6 +12586,15 @@ Display settings
 ```
 </details>
 
+## Transition Effect Template Settings
+It is an object with the same parameters available in **Transition Effect Settings**, but with some additional parameters
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `name` | _String_ | Item name |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `read-only` |
+
 ## Bible Settings
 | Name | Type  | Description |
 | ---- | :---: | ------------|
@@ -11642,8 +12610,8 @@ Display settings
 | `book_panel_type` | _String_ | Type of view of the books of the Bible `grid` `list` |
 | `book_panel_order` | _String_ | Type of sorting of the books of the Bible |
 | `book_panel_order_available_items` | _Array&lt;String&gt;_ |  |
-| `multiple_verses_separator_type` | _String_ | Type of separation in the display of multiple verses. Can be: no_line_break, single_line_break, double_line_break |
-| `multiple_versions_separator_type` | _String_ | Separation type in multiple version view. Can be: no_line_break, single_line_break, double_line_break `v2.22.0+` |
+| `multiple_verses_separator_type` | _String_ | Type of separation in the display of multiple verses. Can be: no_line_break, single_line_break, double_line_break, solid_separator_line |
+| `multiple_versions_separator_type` | _String_ | Separation type in multiple version view. Can be: no_line_break, single_line_break, double_line_break, solid_separator_line `v2.22.0+` |
 | `versification` | _Boolean_ | Apply verse mapping |
 | `theme` | _Object_ | Display Theme ID for the different system screens |
 | `theme.public` | _String_ |  |
@@ -11779,6 +12747,85 @@ Display settings
 ```
 </details>
 
+## Stage View HTML Settings
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `font` | _Object_ |  |
+| `font.name` | _String_ | Font name |
+| `font.bold` | _Boolean_ | Bold |
+| `font.size` | _Number_ | Relative font size `2 ~ 50` |
+| `font.color` | _String_ | Color in hexadecimal format |
+| `background_color` | _String_ | Color in hexadecimal format |
+| `horizontal_align` | _String_ | `left`  `center`  `right` |
+| `vertical_align` | _String_ | `top`  `middle`  `bottom` |
+| `block_line_break` | _Boolean_ | Block line break |
+| `transparent_background` | _Boolean_ | Transparent background color |
+| `show_page_count` | _Boolean_ | Display page counter |
+| `image_format` | _String_ | `jpg`  `png` |
+| `image_resolution` | _String_ | `960x540` `1280x720` `1440x810` `1600x900` `1920x1080` |
+| `show_bible_version` | _Boolean_ | Accepted values: `none` `full` `full_single_line` `abbreviated` `abbreviated_end_of_text` |
+| `add_hly_data` | _Boolean_ | Add advanced tags on the page |
+| `alert` | _Object_ |  |
+| `alert.font` | _Object_ |  |
+| `alert.font.name` | _String_ | Font name |
+| `alert.font.bold` | _Boolean_ | Bold |
+| `alert.font.italic` | _Boolean_ | Italic |
+| `alert.font.size` | _Number_ | Relative font size. `10 ~ 20` |
+| `alert.font.color` | _String_ | Color in hexadecimal format |
+| `alert.background_color` | _String_ | Color in hexadecimal format |
+| `alert.velocity` | _Number_ | Alert speed `5 ~ 100` |
+| `comment` | _Object_ |  |
+| `comment.font` | _Object_ |  |
+| `comment.font.name` | _String_ | Font name |
+| `comment.font.bold` | _Boolean_ | Bold |
+| `comment.font.italic` | _Boolean_ | Italic |
+| `comment.font.size` | _Number_ | Relative font size `40 ~ 100` |
+| `comment.font.color` | _String_ | Color in hexadecimal format |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "font": {
+    "name": "Arial",
+    "bold": false,
+    "size": 15.0,
+    "color": "FAFAFA"
+  },
+  "background_color": "000000",
+  "horizontal_align": "center",
+  "vertical_align": "middle",
+  "block_line_break": false,
+  "transparent_background": true,
+  "show_page_count": false,
+  "image_format": "jpg",
+  "image_resolution": "1440x810",
+  "show_bible_version": "none",
+  "add_hly_data": false,
+  "alert": {
+    "font": {
+      "name": "Arial",
+      "bold": false,
+      "italic": false,
+      "size": 15.0,
+      "color": "FAFAFA"
+    },
+    "background_color": "000000",
+    "velocity": 40
+  },
+  "comment": {
+    "font": {
+      "name": "Arial",
+      "bold": false,
+      "italic": true,
+      "size": 100.0,
+      "color": "FF7000"
+    }
+  }
+}
+```
+</details>
+
 ## Rectangle
 | Name | Type  | Description |
 | ---- | :---: | ------------|
@@ -11858,6 +12905,43 @@ Display settings
   "name": "",
   "only_number": false,
   "uppercase": false
+}
+```
+</details>
+
+## Quiz Group
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `name` | _String_ | Item name |
+| `questions` | _Array&lt;[QuizQuestion](#quiz-question)&gt;_ |  |
+| `settings` | _[QuizSettings](#quiz-settings)_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "name": "",
+  "questions": {
+    "name": "",
+    "title": "...",
+    "alternatives": [
+      "Item 1",
+      "Item 2",
+      "Item 3"
+    ],
+    "correct_alternative_number": 2,
+    "source": ""
+  },
+  "settings": {
+    "correct_answer_color_font": "00796B",
+    "correct_answer_color_background": "CCFFCC",
+    "incorrect_answer_color_font": "721C24",
+    "incorrect_answer_color_background": "F7D7DB",
+    "question_and_alternatives_different_slides": false,
+    "display_alternatives_one_by_one": true,
+    "alternative_separator_char": ".",
+    "alternative_char_type": "alpha"
+  }
 }
 ```
 </details>
@@ -12322,7 +13406,7 @@ Custom translation settings (item)
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `enabled` | _Boolean_ |  |
-| `font_or_script` | _String_ | `system` `lucida_sans` `arial_unicode_ms` `nirmala_ui` `arabic` `armenian` `bengali` `bopomofo` `cyrillic` `devanagari` `georgian` `gujarati` `gurmukhi` `han` `hebrew` `hiragana` `kannada` `katakana` `malayalam` `meetei_mayek` `ol_chiki` `oriya` `sinhala` `tamil` `telugu` `thai` |
+| `font_or_script` | _String_ | `system` `lucida_sans` `arial_unicode_ms` `nirmala_ui` `arabic` `armenian` `bengali` `bopomofo` `cyrillic` `devanagari` `georgian` `greek` `gujarati` `gurmukhi` `han` `hangul` `hebrew` `hiragana` `kannada` `katakana` `lao` `malayalam` `meetei_mayek` `ol_chiki` `oriya` `sinhala` `tamil` `telugu` `thai` `tibetan` |
 <details>
   <summary>See example</summary>
 
@@ -12338,7 +13422,7 @@ Custom translation settings (item)
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `fade_in_out_enabled` | _Boolean_ |  |
-| `fade_in_out_duration` | _Number_ | `200 ~ 1200` |
+| `fade_in_out_duration` | _Number_ | `200 ~ 1500` |
 | `show_history_main_window` | _Boolean_ |  |
 | `show_favorite_bar_main_window` | _Boolean_ |  |
 | `show_favorite_bar_bible_window` | _Boolean_ |  |
@@ -12366,6 +13450,8 @@ Custom translation settings (item)
 | `display_custom_formatting_enabled` | _Boolean_ |  |
 | `display_custom_background_enabled` | _Boolean_ |  |
 | `display_advanced_editor_enabled` | _Boolean_ |  |
+| `display_saved_theme_for_lyrics_enabled` | _Boolean_ |  `v2.26.0+` |
+| `display_saved_theme_for_text_enabled` | _Boolean_ |  `v2.26.0+` |
 | `advanced_editor_block_line_break` | _Boolean_ |  |
 | `slide_description_repeat_description_for_sequence` | _Boolean_ |  |
 | `standardize_automatic_line_break` | _Boolean_ |  |
@@ -12438,6 +13524,8 @@ Custom translation settings (item)
   "display_custom_formatting_enabled": true,
   "display_custom_background_enabled": true,
   "display_advanced_editor_enabled": true,
+  "display_saved_theme_for_lyrics_enabled": true,
+  "display_saved_theme_for_text_enabled": true,
   "advanced_editor_block_line_break": true,
   "slide_description_repeat_description_for_sequence": true,
   "standardize_automatic_line_break": false,
@@ -12450,7 +13538,7 @@ Custom translation settings (item)
 ## AddItem
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script` |
+| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script`  `module_action` |
 
 ## AddItemTitle
 | Name | Type  | Description |
@@ -12623,6 +13711,7 @@ Custom translation settings (item)
 | `name` | _String (optional)_ | Announcement name |
 | `names` | _Array&lt;String&gt; (optional)_ | List with the name of each announcement |
 | `automatic` | _[Automatic](#automatic) (optional)_ | If informed, the presentation of the items will be automatic |
+| `shuffle` | _Boolean_ | Display the list of ads randomly `Default: false` `v2.26.0+` |
 <details>
   <summary>See example</summary>
 
@@ -12637,7 +13726,8 @@ Custom translation settings (item)
   "automatic": {
     "seconds": 10,
     "repeat": true
-  }
+  },
+  "shuffle": true
 }
 ```
 </details>
@@ -12739,7 +13829,7 @@ Custom translation settings (item)
 ```
 </details>
 
-## AddItemAddItemScript
+## AddItemScript
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `type` | _String_ | script |
@@ -12762,7 +13852,7 @@ Custom translation settings (item)
 ```
 </details>
 
-## AddItemAddItemAPI
+## AddItemAPI
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `type` | _String_ | api |
@@ -12777,6 +13867,29 @@ Custom translation settings (item)
   "type": "api",
   "id": "xyz",
   "description": "",
+  "inputs": {
+    "message": "Example",
+    "duration": 30
+  }
+}
+```
+</details>
+
+## AddItemModuleAction
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | module_action |
+| `id` | _String_ | Module ID |
+| `module_action_id` | _String_ | Module action ID |
+| `inputs` | _Object (optional)_ | Default value to execute the action |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "type": "module_action",
+  "id": "abc",
+  "module_action_id": "xyz",
   "inputs": {
     "message": "Example",
     "duration": 30
@@ -13117,7 +14230,7 @@ Custom translation settings (item)
 | `id` | _Number_ |  |
 | `name` | _String_ |  |
 | `from_user_list` | _Boolean_ |  |
-| `tags` | _String_ |  |
+| `tags` | _Array&lt;String&gt;_ |  |
 | `bpm` | _String_ |  |
 <details>
   <summary>See example</summary>
@@ -13127,7 +14240,6 @@ Custom translation settings (item)
   "id": 0,
   "name": "name",
   "from_user_list": true,
-  "tags": "",
   "bpm": "0"
 }
 ```
@@ -13140,7 +14252,7 @@ Custom translation settings (item)
 | `id` | _Number_ |  |
 | `name` | _String_ |  |
 | `from_user_list` | _Boolean_ |  |
-| `tags` | _String_ |  |
+| `tags` | _Array&lt;String&gt;_ |  |
 | `bpm` | _String_ |  |
 | `color_map` | _Array&lt;Object&gt;_ |  |
 | `color_map.*.hex` | _String_ | Color in hexadecimal format |
@@ -13156,7 +14268,6 @@ Custom translation settings (item)
   "id": 0,
   "name": "name",
   "from_user_list": true,
-  "tags": "",
   "bpm": "0",
   "color_map": [
     {
@@ -13404,6 +14515,21 @@ Custom translation settings (item)
 {
   "time": 0,
   "total": 60000
+}
+```
+</details>
+
+## DrawLotsItemDrawnInfo
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `collection_type` | _String_ |  |
+| `drawn_items` | _Array&lt;String&gt;_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "collection_type": "text"
 }
 ```
 </details>
