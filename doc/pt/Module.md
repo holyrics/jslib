@@ -27,8 +27,8 @@ Objeto que representa um módulo adicionado no programa
   - [getID](#getid)
   - [getName](#getname)
   - [getActions](#getactions)
-  - [getAction](#getactionactionid)
-  - [adminAction](#adminactionactiontype-securitytoken)
+  - [getAction](#getactionaction_id)
+  - [adminAction](#adminactionaction_type-security_token)
 
 
 # Functions 
