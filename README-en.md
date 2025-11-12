@@ -123,6 +123,8 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [stream](#stream)
   - [local](#local)
   - [globalSettings](#globalsettings)
+  - [state](#state)
+  - [chord](#chord)
   - [log](#logobj)
   - [log](#logkey--null-obj-args--null)
   - [logf](#logfobj-args--null)
@@ -187,6 +189,8 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [getApiRequestLastError](#getapirequestlasterror)
   - [apiRequestAsync](#apirequestasyncid-raw-callback--null)
   - [apiRequestEx](#apirequestexid-raw)
+  - [runActions](#runactionsopts)
+  - [runActionsOrThrow](#runactionsorthrowopts)
   - [setTimeout](#settimeoutfunction-timeout-name--null)
   - [clearTimeout](#cleartimeoutid)
   - [setInterval](#setintervalfunction-delay-name--null)
@@ -335,6 +339,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [ScriptAction](#hlyscriptaction-input)
   - [ApiRequest](#hlyapirequest-input)
   - [ModuleAction](#hlymoduleaction-input)
+  - [RunActions](#hlyrunactions-input)
   - [GetCurrentPresentation](#hlygetcurrentpresentation-input)
   - [CloseCurrentPresentation](#hlyclosecurrentpresentation)
   - [GetF8 - F9 - F10](#hlygetf8)
@@ -346,6 +351,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [ActionGoToSlideDescription](#hlyactiongotoslidedescription-input)
   - [GetCurrentBackground](#hlygetcurrentbackground)
   - [GetCurrentTheme](#hlygetcurrenttheme)
+  - [GetThemes](#hlygetthemes)
   - [GetBackgrounds](#hlygetbackgrounds-input)
   - [GetBackgroundTags](#hlygetbackgroundtags-input)
   - [SetCurrentBackground](#hlysetcurrentbackground-input)
@@ -386,6 +392,9 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [GetDisplaySettingsPresets](#hlygetdisplaysettingspresets-input)
   - [GetTransitionEffectSettings](#hlygettransitioneffectsettings)
   - [SetTransitionEffectSettings](#hlysettransitioneffectsettings-input)
+  - [GetTranslationPresetList](#hlygettranslationpresetlist)
+  - [GetTranslationPreset](#hlygettranslationpreset-input)
+  - [ApplyTranslationPreset](#hlyapplytranslationpreset-input)
   - [GetBibleVersions](#hlygetbibleversions)
   - [GetBibleVersionsV2](#hlygetbibleversionsv2)
   - [GetBibleSettings](#hlygetbiblesettings)
@@ -414,6 +423,11 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [CloseCurrentQuickPresentation](#hlyclosecurrentquickpresentation)
   - [GetCurrentQuickPresentation](#hlygetcurrentquickpresentation)
   - [GetTriggers](#hlygettriggers)
+  - [GetTriggerTags](#hlygettriggertags)
+  - [GetTriggerPauseStateForTag](#hlygettriggerpausestatefortag-input)
+  - [SetTriggerPauseStateForTag](#hlysettriggerpausestatefortag-input)
+  - [GetTriggerPauseStateForReceiver](#hlygettriggerpausestateforreceiver-input)
+  - [SetTriggerPauseStateForReceiver](#hlysettriggerpausestateforreceiver-input)
   - [GetScheduledTasks](#hlygetscheduledtasks)
   - [GetGlobalSettings](#hlygetglobalsettings-input)
   - [SetGlobalSettings](#hlysetglobalsettings-input)
@@ -521,12 +535,14 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [Verse Reference](#verse-reference)
   - [Translation Custom Settings](#translation-custom-settings)
   - [Translation Custom Settings Item](#translation-custom-settings-item)
+  - [Translation Custom Settings Preset](#translation-custom-settings-preset)
   - [Styled Model](#styled-model)
   - [Initial Slide Settings](#initial-slide-settings)
   - [Copyright Settings](#copyright-settings)
   - [Image Presentation Settings](#image-presentation-settings)
   - [Non-Latin Alphabet Support Settings](#non-latin-alphabet-support-settings)
   - [Global Settings](#global-settings)
+  - [Simulate Projection Settings](#simulate-projection-settings)
   - [AddItem](#additem)
   - [AddItemTitle](#additemtitle)
   - [AddItemSong](#additemsong)
@@ -547,6 +563,9 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [AddItemModuleAction](#additemmoduleaction)
   - [AddItemURI](#additemuri)
   - [AddItemGlobalAction](#additemglobalaction)
+  - [AddItemAddItemAlert](#additemadditemalert)
+  - [AddItemAddItemAlertCommunicationPanel](#additemadditemalertcommunicationpanel)
+  - [AddItemActions](#additemactions)
   - [SongInfo](#songinfo)
   - [TextInfo](#textinfo)
   - [VerseInfo](#verseinfo)
@@ -584,12 +603,27 @@ However, using the JavaScript object itself as a handler.<br>
  <br>
 ```javascript
 var v = h.global.abc;
-//{{o mesmo que}}
+//the same as
 h.getGlobal('abc');
 
 h.global.abc = 'xyz';
-//{{o mesmo que}}
+//the same as
 h.setGlobal('abc', 'xyz');
+
+
+v2.27.0+
+var globalID = 'abc';
+
+//ID to prevent duplication
+//If the ID already exists, the listener will be replaced
+var onchangeID = 'xyz';
+//Executar a respectiva function sempre que o valor da variável global for alterado (de qualquer origem)
+h.addOnChange(globalID, onchangeID, function(evt) {
+  //evt.key
+  //evt.previous
+  //evt.value
+});
+h.removeOnChange(globalID, onchangeID);
 ```
 
 
@@ -689,6 +723,45 @@ h.hly('SetGlobalSettings', {
   show_favorite_bar_main_window: false
 });
 ```
+
+
+
+---
+
+### state
+- v2.27.0
+
+[State](https://github.com/holyrics/jslib/blob/main/doc/en/State.md) &nbsp;| &nbsp;Utility class for reading and saving **boolean** states that can be used in rules and added to the program interface, such as a button in the favorites bar<br>
+ <br>
+```javascript
+h.state.example = true;
+h.state.example = false;
+if (h.state.example) {
+  //TODO
+}
+
+var stateID = 'example';
+
+//ID to prevent duplication
+//If the ID already exists, the listener will be replaced
+var onchangeID = 'xyz';
+//Executar a respectiva function sempre que o estado (boolean) for alterado (de qualquer origem)
+h.addOnChange(stateID, onchangeID, function(evt) {
+  //evt.key
+  //evt.previous
+  //evt.value
+});
+h.removeOnChange(stateID, onchangeID);
+```
+
+
+
+---
+
+### chord
+- v2.27.0
+
+[ChordUtils](https://github.com/holyrics/jslib/blob/main/doc/en/ChordUtils.md) &nbsp;| &nbsp;Utility class for some methods of identification and manipulation of chords
 
 
 
@@ -2617,6 +2690,71 @@ O mesmo que}} `apiRequest(id, raw)`, but throws an exception when an error occur
 | :---: | ------------|
 | _Object_ | Request return |
 
+
+---
+
+
+### runActions(opts)
+### runActions(action_id, settings)
+- v2.27.0
+
+Executes an action of type **Actions** in the program<br>Available actions: [HolyricsActions](https://github.com/holyrics/jslib/blob/main/doc/en/HolyricsActions.md)
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `opts.action_id` | _String_ | action ID |
+| `opts.settings` | _Object_ | action input |
+
+
+**Response:**
+
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | **true** if the action was executed or **string** with the error information |
+
+
+**Example:**
+
+```javascript
+h.runActions({
+  action_id: "interface_bible_select_verse",
+  settings: {
+    verse: "43003016"
+  }
+});
+```
+
+---
+
+
+### runActionsOrThrow(opts)
+### runActionsOrThrow(action_id, settings)
+- v2.27.0
+
+O mesmo que}} `runActions(opts)`, but throws an exception when an error occurs, instead of returning **string**
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `opts.action_id` | _String_ | action ID |
+| `opts.settings` | _Object_ | action input |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.runActionsOrThrow({
+  action_id: "interface_bible_select_verse",
+  settings: {
+    verse: "43003016"
+  }
+});
+```
 
 ---
 
@@ -7621,6 +7759,35 @@ var r = h.hly('ModuleAction', {
 ---
 
 
+### hly('RunActions', input)
+- v2.27.0
+
+Execute an action of the 'Actions' type<br>Available actions: [HolyricsActions](https://github.com/holyrics/jslib/blob/main/doc/en/HolyricsActions.md)
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.action_id` | _String_ |  |
+| `input.settings` | _Object_ | Key/value map |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('RunActions', {
+  action_id: "interface_bible_select_verse",
+  settings: {
+    verse: "43003016"
+  }
+});
+```
+
+---
+
+
 ### hly('GetCurrentPresentation', input)
 - v2.19.0
 
@@ -7895,6 +8062,33 @@ if (r.data != null) {
 ---
 
 
+### hly('GetThemes')
+- v2.27.0
+
+List of topics
+
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _Array&lt;[Theme](#theme)&gt;_| 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetThemes');
+for (var i = 0; i < r.data.length; i++) {
+    var t = r.data[i];
+    h.log(t.type + ": " + t.name);
+}
+```
+
+---
+
+
 ### hly('GetBackgrounds', input)
 List of themes and backgrounds
 
@@ -8108,8 +8302,8 @@ Returns the information of the predominant color of a respective type of item.<b
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.type` | _String_ | One of the following values:<br/>**background** - um item de tema ou plano de fundo<br/>**presentation** - apresentação atual em exibição<br/>**image** - uma imagem da aba 'imagens'<br/>**video** - um vídeo da aba 'vídeos'<br/>**printscreen** - um printscreen atual de uma tela do sistema<br/> |
-| `input.source` | _Object (optional)_ | The item according to the type informed:<br/>**background** - ID do tema ou plano de fundo<br/>**presentation** - não é necessário informar um valor, a apresentação da tela público será retornada<br/>**image** - o nome do arquivo da aba 'imagens'<br/>**video** - o nome do arquivo da aba 'vídeos'<br/>**printscreen** `opcional` -  the name of the screen (public, screen_2, screen_3, ...); o padrão é `public`<br/> |
+| `input.type` | _String_ | One of the following values:<br/>**background** - an item of theme or background<br/>**presentation** - current presentation on display<br/>**image** - an image of the 'images' tab<br/>**video** - a video from the 'videos' tab<br/>**printscreen** - a current screenshot of a system screen<br/> |
+| `input.source` | _Object (optional)_ | The item according to the type informed:<br/>**background** - Theme or background ID<br/>**presentation** - it is not necessary to provide a value, the public screen presentation will be returned<br/>**image** - the name of the file in the 'images' tab<br/>**video** - the name of the file in the 'videos' tab<br/>**printscreen** `optional` -  the name of the screen (public, screen_2, screen_3, ...); the default is `public`<br/> |
 
 
 **Response:**
@@ -8179,6 +8373,7 @@ Returns alert message settings
 | ---- | :---: | ------------|
 | `data.text` | _String_ | Current alert text |
 | `data.show` | _Boolean_ | Whether the alert display is enabled |
+| `data.display_ahead` | _Boolean_ | Whether the *'display in front of all'* option is enabled `v2.27.0+` |
 
 
 **Example:**
@@ -8200,6 +8395,8 @@ Change alert message settings
 | ---- | :---: | ------------|
 | `input.text` | _String (optional)_ | Change alert text |
 | `input.show` | _Boolean (optional)_ | Show/hide the alert |
+| `input.display_ahead` | _Boolean (optional)_ | Change the *'display in front of all'* option `Default: true` `v2.27.0+` |
+| `input.close_after_seconds` | _Number (optional)_ | Automatically remove alert text after X seconds. `0 ~ 3600` `Default: 0` `v2.27.0+` |
 
 
 _Method does not return value_
@@ -8860,8 +9057,9 @@ Starts a countdown on the communication panel
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.minutes` | _Number_ | Number of minutes |
-| `input.seconds` | _Number_ | Number of seconds |
+| `input.minutes` | _Number_ | Number of minutes. Optional if `exact_time` is declared |
+| `input.seconds` | _Number_ | Number of seconds. Optional if `exact_time` is declared |
+| `input.exact_time` | _String_ | Set a specific time. Can be: `HH:MM:SS` or `HH:MM`. Optional if `minutes` or `seconds` are declared `v2.27.0+` |
 | `input.yellow_starts_at` | _Number (optional)_ | Value in seconds to define how long the countdown will be yellow from |
 | `input.stop_at_zero` | _Boolean (optional)_ | Stop the countdown when it reaches zero `Default: false` |
 | `input.text` | _String (optional)_ | Text for display. By default, the text is displayed before the numeric part. For special formatting, use the variable `@cp_countdown` in the middle of the text to indicate the location of the numeric part. `v2.24.0+` |
@@ -8992,6 +9190,7 @@ Change communication panel alert settings
 | ---- | :---: | ------------|
 | `input.text` | _String (optional)_ | Change alert text |
 | `input.show` | _Boolean (optional)_ | Show/hide the alert |
+| `input.close_after_seconds` | _Number (optional)_ | Automatically remove alert text after X seconds. `0 ~ 3600` `Default: 0` `v2.27.0+` |
 
 
 _Method does not return value_
@@ -9288,6 +9487,93 @@ var r = h.hly('SetTransitionEffectSettings', {
               curtain: true
         }
     }
+});
+```
+
+---
+
+
+### hly('GetTranslationPresetList')
+- v2.27.0
+
+List of saved translation configuration models
+
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _Array&lt;[Translation Custom Settings Preset](#translation- -custom- -settings- -preset)&gt;_ | 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetTranslationPresetList');
+for (var i = 0; i < r.data.length; i++) {
+    var o = r.data[i];
+    h.log(o.id + ": " + o.name);
+}
+```
+
+---
+
+
+### hly('GetTranslationPreset', input)
+- v2.27.0
+
+Returns a translation configuration model
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _String (optional)_ | Item ID |
+| `input.name` | _String (optional)_ | Item name |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _[Translation Custom Settings Preset](#translation- -custom- -settings- -preset)_ | 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetTranslationPreset', {
+    id: 'xyz'
+});
+if (r.data) {
+    h.log(r.data.name);
+}
+```
+
+---
+
+
+### hly('ApplyTranslationPreset', input)
+- v2.27.0
+
+Applies translation settings from a template
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _String (optional)_ | Item ID |
+| `input.name` | _String (optional)_ | Item name |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('ApplyTranslationPreset', {
+    name: 'example'
 });
 ```
 
@@ -9671,7 +9957,7 @@ Returns the value of a field from the program interface
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | Item ID. Can be: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event` |
+| `input.id` | _String_ | Item ID. Can be: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event`<br> <br>`2.27.0`<br><br>`main_song_tab_selected_item`<br>`main_text_tab_selected_item`<br>`main_text_tab_selected_folder`<br>`main_audio_tab_selected_item`<br>`main_video_tab_selected_item`<br>`main_image_tab_selected_item`<br>`main_file_tab_selected_item`<br>`main_custom_message_tab_selected_item`<br>`main_automatic_presentation_tab_selected_item` |
 
 
 **Response:**
@@ -9701,7 +9987,7 @@ Change the value of a field in the program interface
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | Item ID. Can be: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event` |
+| `input.id` | _String_ | Item ID. Can be: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event`<br> <br>`2.27.0`<br><br>`main_song_tab_selected_item`<br>`main_text_tab_selected_item`<br>`main_text_tab_selected_folder`<br>`main_audio_tab_selected_item`<br>`main_video_tab_selected_item`<br>`main_image_tab_selected_item`<br>`main_file_tab_selected_item`<br>`main_custom_message_tab_selected_item`<br>`main_automatic_presentation_tab_selected_item` |
 | `input.value` | _String_ | New value |
 | `input.focus` | _Boolean (optional)_ | Make the component receive system focus |
 
@@ -10011,6 +10297,146 @@ var items = h.hly('GetTriggers').data;
 for (var i = 0; i < items.length; i++) {
     h.log("ID: " + items[i].id);
 }
+```
+
+---
+
+
+### hly('GetTriggerTags')
+- v2.27.0
+
+Returns the list of trigger tags
+
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _Array&lt;String&gt;_| 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetTriggerTags');
+h.log(r.data);
+```
+
+---
+
+
+### hly('GetTriggerPauseStateForTag', input)
+- v2.27.0
+
+Returns the 'pause' state of the execution of triggers for a specific tag
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.tag` | _String_ |  |
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _Boolean_| 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetTriggerPauseStateForTag', {
+    tag: 'example'
+});
+h.log(r.data); //boolean
+```
+
+---
+
+
+### hly('SetTriggerPauseStateForTag', input)
+- v2.27.0
+
+Changes the 'pause' state of the execution of triggers for a specific tag
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.tag` | _String_ |  |
+| `input.pause` | _Boolean_ |  |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('SetTriggerPauseStateForTag', {
+    tag: 'example',
+    pause: true
+});
+```
+
+---
+
+
+### hly('GetTriggerPauseStateForReceiver', input)
+- v2.27.0
+
+Returns the 'pause' state of the trigger execution of a specific receiver
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.receiver` | _String_ | Receiver ID |
+
+
+**Response:**
+
+| Name | Type  |
+| ---- | :---: |
+| `data` | _Boolean_| 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetTriggerPauseStateForReceiver', {
+    receiver: 'id'
+});
+h.log(r.data); //boolean
+```
+
+---
+
+
+### hly('SetTriggerPauseStateForReceiver', input)
+- v2.27.0
+
+Changes the 'pause' state of the execution of triggers for a specific receiver
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.receiver` | _String_ | Receiver ID |
+| `input.pause` | _Boolean_ |  |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('SetTriggerPauseStateForReceiver', {
+    receiver: 'id',
+    pause: true
+});
 ```
 
 ---
@@ -11779,6 +12205,7 @@ Complex classes used as a return in some methods
   "author": "",
   "note": "",
   "copyright": "",
+  "language": "",
   "slides": [
     {
       "text": "Slide 1 line 1\nSlide 1 line 2",
@@ -11857,6 +12284,7 @@ Complex classes used as a return in some methods
 {
   "id": "",
   "title": "",
+  "language": "",
   "folder": "",
   "theme": null,
   "transition_settings_id": null,
@@ -12095,7 +12523,7 @@ Complex classes used as a return in some methods
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `id` | _String_ | Item ID |
-| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script`  `module_action` |
+| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `actions`  `global_action`  `alert`  `cp_alert`  `api`  `script`  `module_action` |
 | `name` | _String_ | Item name |
 
 ## Group
@@ -12378,7 +12806,7 @@ Complex classes used as a return in some methods
 | `enabled` | _Boolean_ |  |
 | `description` | _String_ |  |
 | `type` | _Object_ |  |
-| `type.id` | _String_ | Accepted values: `none` `rule_group_model` `rule_group` `javascript` `javascript_model` `jscommunity` `services` `events` `date` `time` `datetime` `day_of_week` `day_of_month` `hour_of_day` `day_of_week_in_month` `runtime_environment` |
+| `type.id` | _String_ | Accepted values: `none` `rule_group_model` `rule_group` `javascript` `javascript_model` `jscommunity` `services` `events` `current_event_time` `date` `time` `datetime` `day_of_week` `day_of_month` `hour_of_day` `day_of_week_in_month` `runtime_environment` `javascript_state` |
 | `type.name` | _String_ |  |
 | `type.settings_type` | _String_ | `native` `custom` |
 | <br>**type.settings_type=native** |  |  |
@@ -12493,7 +12921,8 @@ Display settings
     "translation_4": null,
     "merge": true,
     "uppercase": false,
-    "blank_line_height": 40
+    "blank_line_height": 40,
+    "translation_number_to_display_interface": 1
   },
   "margin": {
     "top": 0.0,
@@ -13295,6 +13724,28 @@ Custom translation settings (item)
 ```
 </details>
 
+## Translation Custom Settings Preset
+Translation configuration model
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `name` | _String_ | Item name |
+| `alternative_name` | _String_ | Alternative name (short name to be displayed in the interface) |
+| `preset` | _Object_ | Key/value map<br>Each key is the `id` of the screen (id of the respective **Display Settings**).<br>Each value is an `object` that contains `translation_name` and optionally contains `translation_custom_settings` if `translation_name=custom`. |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "id": "",
+  "name": "",
+  "alternative_name": ""
+}
+```
+</details>
+
 ## Styled Model
 | Name | Type  | Description |
 | ---- | :---: | ------------|
@@ -13361,18 +13812,23 @@ Custom translation settings (item)
 
 ```json
 {
-  "display_mode": "all_slides",
-  "layout": "t;a;c",
-  "font": {
-    "name": "Arial",
-    "bold": true,
-    "italic": true,
-    "color": "FFFF00"
+  "public": {
+    "display_mode": "all_slides",
+    "layout": "t;a;c",
+    "font": {
+      "name": "Arial",
+      "bold": true,
+      "italic": true,
+      "color": "FFFF00"
+    },
+    "line_height": 3.0,
+    "align": "left",
+    "opacity": 70,
+    "position": "top_left"
   },
-  "line_height": 3.0,
-  "align": "left",
-  "opacity": 70,
-  "position": "top_left"
+  "screen_2": "{...}",
+  "screen_3": "{...}",
+  "stream_image": "{...}"
 }
 ```
 </details>
@@ -13457,6 +13913,7 @@ Custom translation settings (item)
 | `standardize_automatic_line_break` | _Boolean_ |  |
 | `allow_main_window_and_bible_window_simultaneously` | _Boolean_ |  |
 | `preferential_arrangement_collection` | _String_ |  |
+| `simulate_projection` | _Object_ | Key/value pair<br>key: `screen_1` `screen_2` `screen_3`<br>valor: [SimulateProjectionSettings](#simulate-projection-settings) `v2.27.0+` |
 <details>
   <summary>See example</summary>
 
@@ -13485,18 +13942,23 @@ Custom translation settings (item)
     "remove_final_slide": false
   },
   "copyright": {
-    "display_mode": "all_slides",
-    "layout": "t;a;c",
-    "font": {
-      "name": "Arial",
-      "bold": true,
-      "italic": true,
-      "color": "FFFF00"
+    "public": {
+      "display_mode": "all_slides",
+      "layout": "t;a;c",
+      "font": {
+        "name": "Arial",
+        "bold": true,
+        "italic": true,
+        "color": "FFFF00"
+      },
+      "line_height": 3.0,
+      "align": "left",
+      "opacity": 70,
+      "position": "top_left"
     },
-    "line_height": 3.0,
-    "align": "left",
-    "opacity": 70,
-    "position": "top_left"
+    "screen_2": "{...}",
+    "screen_3": "{...}",
+    "stream_image": "{...}"
   },
   "image_presentation": {
     "adjust_type": "adjust",
@@ -13530,7 +13992,69 @@ Custom translation settings (item)
   "slide_description_repeat_description_for_sequence": true,
   "standardize_automatic_line_break": false,
   "allow_main_window_and_bible_window_simultaneously": false,
-  "preferential_arrangement_collection": ""
+  "preferential_arrangement_collection": "",
+  "simulate_projection": {
+    "screen_1": {
+      "enabled": true,
+      "hide_screen": false,
+      "position": "user",
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 180,
+      "metadata": {
+        "available_positions": [
+          "user",
+          "public"
+        ],
+        "area": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 180
+        }
+      }
+    },
+    "screen_2": "{...}",
+    "screen_3": "{...}"
+  }
+}
+```
+</details>
+
+## Simulate Projection Settings
+Settings for the 'simulate projection' option
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `enabled` | _Boolean_ |  |
+| `hide_screen` | _Boolean_ |  |
+| `position` | _String_ | Can be: Accepted values: `user` `public` `on_the_right_simulation_1` `on_the_right_simulation_2` |
+| `x` | _Number_ | `0 ~ 9999` |
+| `y` | _Number_ | `0 ~ 9999` |
+| `width` | _Number_ | `1 ~ 3840` |
+| `height` | _Number_ | `1 ~ 3840` |
+| `area` | _[Rectangle](#rectangle)_ | Simulated screen area |
+| `metadata` | _Object_ |  |
+| `available_positions` | _Array&lt;String&gt;_ | Available positions for the respective item |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "enabled": false,
+  "hide_screen": false,
+  "position": "",
+  "x": 0,
+  "y": 0,
+  "width": 0,
+  "height": 0,
+  "area": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  }
 }
 ```
 </details>
@@ -13538,7 +14062,7 @@ Custom translation settings (item)
 ## AddItem
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script`  `module_action` |
+| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `actions`  `global_action`  `alert`  `cp_alert`  `api`  `script`  `module_action` |
 
 ## AddItemTitle
 | Name | Type  | Description |
@@ -13565,13 +14089,17 @@ Custom translation settings (item)
 | ---- | :---: | ------------|
 | `type` | _String_ | song |
 | `id` | _String_ | Item ID |
+| `arrangement_name` | _String (optional)_ |  `v2.27.0+` |
+| `translation_preset_id` | _String (optional)_ |  `v2.27.0+` |
 <details>
   <summary>See example</summary>
 
 ```json
 {
   "type": "song",
-  "id": "123"
+  "id": "123",
+  "arrangement_name": "",
+  "translation_preset_id": ""
 }
 ```
 </details>
@@ -13603,13 +14131,15 @@ Custom translation settings (item)
 | ---- | :---: | ------------|
 | `type` | _String_ | text |
 | `id` | _String_ | Item ID |
+| `translation_preset_id` | _String (optional)_ |  `v2.27.0+` |
 <details>
   <summary>See example</summary>
 
 ```json
 {
   "type": "text",
-  "id": "xyz"
+  "id": "xyz",
+  "translation_preset_id": ""
 }
 ```
 </details>
@@ -13773,8 +14303,8 @@ Custom translation settings (item)
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `type` | _String_ | countdown_cp |
-| `minutes` | _Number_ | Number of minutes |
-| `seconds` | _Number_ | Number of seconds |
+| `minutes` | _Number_ | Number of minutes. Optional if `exact_time` is declared |
+| `seconds` | _Number_ | Number of seconds. Optional if `exact_time` is declared |
 | `stop_at_zero` | _Boolean (optional)_ | Stop the countdown when it reaches zero `Default: false` |
 | `description` | _String_ | Item description |
 <details>
@@ -13797,6 +14327,8 @@ Custom translation settings (item)
 | `type` | _String_ | plain_text |
 | `name` | _String_ | Item name |
 | `text` | _String_ | Text |
+| `theme` | _String (optional)_ | Theme ID used to display the text `v2.27.0+` |
+| `background` | _String (optional)_ | Background ID used to display the text `v2.27.0+` |
 <details>
   <summary>See example</summary>
 
@@ -13804,7 +14336,9 @@ Custom translation settings (item)
 {
   "type": "plain_text",
   "name": "",
-  "text": "Example"
+  "text": "Example",
+  "theme": "",
+  "background": ""
 }
 ```
 </details>
@@ -13923,6 +14457,34 @@ Custom translation settings (item)
 | ---- | :---: | ------------|
 | `type` | _String_ | global_action |
 | `action` | _String_ | Can be: `slide_exit` `vlc_stop` `vlc_stop_fade_out` |
+
+## AddItemAddItemAlert
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `name` | _String_ | Item name |
+| `text` | _String_ | Alert text |
+| `close_after_seconds` | _Number_ | Hide the alert after X seconds |
+
+## AddItemAddItemAlertCommunicationPanel
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `name` | _String_ | Item name |
+| `text` | _String_ | Alert text |
+| `display_ahead` | _String_ | Change the *'display in front of all'* option |
+| `close_after_seconds` | _Number_ | Hide the alert after X seconds |
+
+## AddItemActions
+Available actions: [HolyricsActions](https://github.com/holyrics/jslib/blob/main/doc/en/HolyricsActions.md)
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `action_id` | _String_ | Item ID |
+| `alternative_name` | _String (optional)_ | Alternative name. Name that will be displayed in place of the default (native) action name. |
+| `icon` | _String (optional)_ |  |
+| `icon_color` | _String (optional)_ | Color in hexadecimal format |
+| `active_icon` | _String (optional)_ |  |
+| `active_icon_color` | _String (optional)_ | Color in hexadecimal format |
+| `settings` | _Object (optional)_ | Key/value map |
 
 ## SongInfo
 | Name | Type  | Description |
@@ -14328,6 +14890,7 @@ Custom translation settings (item)
 | ---- | :---: | ------------|
 | `title` | _String_ |  |
 | `subitem` | _Object_ |  |
+| `title_index` | _Number_ |  |
 | `subitem_index` | _Number_ |  |
 | `playlist_index` | _Number_ |  |
 <details>
@@ -14336,6 +14899,7 @@ Custom translation settings (item)
 ```json
 {
   "title": "",
+  "title_index": -1,
   "subitem_index": -1,
   "playlist_index": -1
 }

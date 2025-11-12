@@ -123,6 +123,8 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [stream](#stream)
   - [local](#local)
   - [globalSettings](#globalsettings)
+  - [state](#state)
+  - [chord](#chord)
   - [log](#logobj)
   - [log](#logkey--null-obj-args--null)
   - [logf](#logfobj-args--null)
@@ -187,6 +189,8 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [getApiRequestLastError](#getapirequestlasterror)
   - [apiRequestAsync](#apirequestasyncid-raw-callback--null)
   - [apiRequestEx](#apirequestexid-raw)
+  - [runActions](#runactionsopts)
+  - [runActionsOrThrow](#runactionsorthrowopts)
   - [setTimeout](#settimeoutfunction-timeout-name--null)
   - [clearTimeout](#cleartimeoutid)
   - [setInterval](#setintervalfunction-delay-name--null)
@@ -335,6 +339,7 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [ScriptAction](#hlyscriptaction-input)
   - [ApiRequest](#hlyapirequest-input)
   - [ModuleAction](#hlymoduleaction-input)
+  - [RunActions](#hlyrunactions-input)
   - [GetCurrentPresentation](#hlygetcurrentpresentation-input)
   - [CloseCurrentPresentation](#hlyclosecurrentpresentation)
   - [GetF8 - F9 - F10](#hlygetf8)
@@ -346,6 +351,7 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [ActionGoToSlideDescription](#hlyactiongotoslidedescription-input)
   - [GetCurrentBackground](#hlygetcurrentbackground)
   - [GetCurrentTheme](#hlygetcurrenttheme)
+  - [GetThemes](#hlygetthemes)
   - [GetBackgrounds](#hlygetbackgrounds-input)
   - [GetBackgroundTags](#hlygetbackgroundtags-input)
   - [SetCurrentBackground](#hlysetcurrentbackground-input)
@@ -386,6 +392,9 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [GetDisplaySettingsPresets](#hlygetdisplaysettingspresets-input)
   - [GetTransitionEffectSettings](#hlygettransitioneffectsettings)
   - [SetTransitionEffectSettings](#hlysettransitioneffectsettings-input)
+  - [GetTranslationPresetList](#hlygettranslationpresetlist)
+  - [GetTranslationPreset](#hlygettranslationpreset-input)
+  - [ApplyTranslationPreset](#hlyapplytranslationpreset-input)
   - [GetBibleVersions](#hlygetbibleversions)
   - [GetBibleVersionsV2](#hlygetbibleversionsv2)
   - [GetBibleSettings](#hlygetbiblesettings)
@@ -414,6 +423,11 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [CloseCurrentQuickPresentation](#hlyclosecurrentquickpresentation)
   - [GetCurrentQuickPresentation](#hlygetcurrentquickpresentation)
   - [GetTriggers](#hlygettriggers)
+  - [GetTriggerTags](#hlygettriggertags)
+  - [GetTriggerPauseStateForTag](#hlygettriggerpausestatefortag-input)
+  - [SetTriggerPauseStateForTag](#hlysettriggerpausestatefortag-input)
+  - [GetTriggerPauseStateForReceiver](#hlygettriggerpausestateforreceiver-input)
+  - [SetTriggerPauseStateForReceiver](#hlysettriggerpausestateforreceiver-input)
   - [GetScheduledTasks](#hlygetscheduledtasks)
   - [GetGlobalSettings](#hlygetglobalsettings-input)
   - [SetGlobalSettings](#hlysetglobalsettings-input)
@@ -521,12 +535,14 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [Verse Reference](#verse-reference)
   - [Translation Custom Settings](#translation-custom-settings)
   - [Translation Custom Settings Item](#translation-custom-settings-item)
+  - [Translation Custom Settings Preset](#translation-custom-settings-preset)
   - [Styled Model](#styled-model)
   - [Initial Slide Settings](#initial-slide-settings)
   - [Copyright Settings](#copyright-settings)
   - [Image Presentation Settings](#image-presentation-settings)
   - [Non-Latin Alphabet Support Settings](#non-latin-alphabet-support-settings)
   - [Global Settings](#global-settings)
+  - [Simulate Projection Settings](#simulate-projection-settings)
   - [AddItem](#additem)
   - [AddItemTitle](#additemtitle)
   - [AddItemSong](#additemsong)
@@ -547,6 +563,9 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [AddItemModuleAction](#additemmoduleaction)
   - [AddItemURI](#additemuri)
   - [AddItemGlobalAction](#additemglobalaction)
+  - [AddItemAddItemAlert](#additemadditemalert)
+  - [AddItemAddItemAlertCommunicationPanel](#additemadditemalertcommunicationpanel)
+  - [AddItemActions](#additemactions)
   - [SongInfo](#songinfo)
   - [TextInfo](#textinfo)
   - [VerseInfo](#verseinfo)
@@ -584,12 +603,27 @@ Porém utilizando o próprio objeto JavaScript como manipulador.<br>
  <br>
 ```javascript
 var v = h.global.abc;
-//{{o mesmo que}}
+//o mesmo que
 h.getGlobal('abc');
 
 h.global.abc = 'xyz';
-//{{o mesmo que}}
+//o mesmo que
 h.setGlobal('abc', 'xyz');
+
+
+v2.27.0+
+var globalID = 'abc';
+
+//ID para evitar duplicação
+//Caso o ID já exista, o listener será substituído
+var onchangeID = 'xyz';
+//Executar a respectiva function sempre que o valor da variável global for alterado (de qualquer origem)
+h.addOnChange(globalID, onchangeID, function(evt) {
+  //evt.key
+  //evt.previous
+  //evt.value
+});
+h.removeOnChange(globalID, onchangeID);
 ```
 
 
@@ -689,6 +723,45 @@ h.hly('SetGlobalSettings', {
   show_favorite_bar_main_window: false
 });
 ```
+
+
+
+---
+
+### state
+- v2.27.0
+
+[State](https://github.com/holyrics/jslib/blob/main/doc/pt/State.md) &nbsp;| &nbsp;Classe utilitária para ler e salvar estados **boolean** que podem ser utilizados em regras e adicionados na interface do programa, como por exemplo, um botão na barra de favoritos<br>
+ <br>
+```javascript
+h.state.example = true;
+h.state.example = false;
+if (h.state.example) {
+  //TODO
+}
+
+var stateID = 'example';
+
+//ID para evitar duplicação
+//Caso o ID já exista, o listener será substituído
+var onchangeID = 'xyz';
+//Executar a respectiva function sempre que o estado (boolean) for alterado (de qualquer origem)
+h.addOnChange(stateID, onchangeID, function(evt) {
+  //evt.key
+  //evt.previous
+  //evt.value
+});
+h.removeOnChange(stateID, onchangeID);
+```
+
+
+
+---
+
+### chord
+- v2.27.0
+
+[ChordUtils](https://github.com/holyrics/jslib/blob/main/doc/pt/ChordUtils.md) &nbsp;| &nbsp;Classe utilitária para alguns métodos de identificação e manipulação de acordes
 
 
 
@@ -2617,6 +2690,71 @@ O mesmo que}} `apiRequest(id, raw)`, porém lança uma exception ao ocorrer um e
 | :---: | ------------|
 | _Object_ | Retorno da requisição |
 
+
+---
+
+
+### runActions(opts)
+### runActions(action_id, settings)
+- v2.27.0
+
+Executa uma ação do tipo **Actions** no programa<br>Ações disponíveis: [HolyricsActions](https://github.com/holyrics/jslib/blob/main/doc/pt/HolyricsActions.md)
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `opts.action_id` | _String_ | id da ação |
+| `opts.settings` | _Object_ | input da ação |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | **true** se a ação foi executada ou **string** com a informação de erro |
+
+
+**Exemplo:**
+
+```javascript
+h.runActions({
+  action_id: "interface_bible_select_verse",
+  settings: {
+    verse: "43003016"
+  }
+});
+```
+
+---
+
+
+### runActionsOrThrow(opts)
+### runActionsOrThrow(action_id, settings)
+- v2.27.0
+
+O mesmo que}} `runActions(opts)`, porém lança uma exception ao ocorrer um erro, em vez de retornar **string**
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `opts.action_id` | _String_ | id da ação |
+| `opts.settings` | _Object_ | input da ação |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.runActionsOrThrow({
+  action_id: "interface_bible_select_verse",
+  settings: {
+    verse: "43003016"
+  }
+});
+```
 
 ---
 
@@ -7621,6 +7759,35 @@ var r = h.hly('ModuleAction', {
 ---
 
 
+### hly('RunActions', input)
+- v2.27.0
+
+Executar uma ação do tipo 'Actions'<br>Ações disponíveis: [HolyricsActions](https://github.com/holyrics/jslib/blob/main/doc/pt/HolyricsActions.md)
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.action_id` | _String_ |  |
+| `input.settings` | _Object_ | Mapa chave/valor |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('RunActions', {
+  action_id: "interface_bible_select_verse",
+  settings: {
+    verse: "43003016"
+  }
+});
+```
+
+---
+
+
 ### hly('GetCurrentPresentation', input)
 - v2.19.0
 
@@ -7889,6 +8056,33 @@ if (r.data != null) {
     h.log('ID do tema atual: ' + r.data.id);
 } else {
     h.log('Não há apresentação em exibição');
+}
+```
+
+---
+
+
+### hly('GetThemes')
+- v2.27.0
+
+Lista de temas
+
+
+
+**Resposta:**
+
+| Nome | Tipo  |
+| ---- | :---: |
+| `data` | _Array&lt;[Theme](#theme)&gt;_| 
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetThemes');
+for (var i = 0; i < r.data.length; i++) {
+    var t = r.data[i];
+    h.log(t.type + ": " + t.name);
 }
 ```
 
@@ -8179,6 +8373,7 @@ Retorna as configurações da mensagem de alerta
 | ---- | :---: | ------------|
 | `data.text` | _String_ | Texto atual do alerta |
 | `data.show` | _Boolean_ | Se a exibição do alerta está ativada |
+| `data.display_ahead` | _Boolean_ | Se a opção *'exibir à frente de tudo'* está ativada `v2.27.0+` |
 
 
 **Exemplo:**
@@ -8200,6 +8395,8 @@ Altera as configurações da mensagem de alerta
 | ---- | :---: | ------------|
 | `input.text` | _String (opcional)_ | Alterar o texto de alerta |
 | `input.show` | _Boolean (opcional)_ | Exibir/ocultar o alerta |
+| `input.display_ahead` | _Boolean (opcional)_ | Alterar a opção *'exibir à frente de tudo'* `Padrão: true` `v2.27.0+` |
+| `input.close_after_seconds` | _Number (opcional)_ | Remover texto de alerta automaticamente após X segundos. `0 ~ 3600` `Padrão: 0` `v2.27.0+` |
 
 
 _Método sem retorno_
@@ -8860,8 +9057,9 @@ Inicia uma contagem regressiva no painel de comunicação
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.minutes` | _Number_ | Quantidade de minutos |
-| `input.seconds` | _Number_ | Quantidade de segundos |
+| `input.minutes` | _Number_ | Quantidade de minutos. Opcional se `exact_time` for declarado |
+| `input.seconds` | _Number_ | Quantidade de segundos. Opcional se `exact_time` for declarado |
+| `input.exact_time` | _String_ | Definir uma hora exata. Pode ser: `HH:MM:SS` ou `HH:MM`. Opcional se `minutes` ou `seconds` forem declarados `v2.27.0+` |
 | `input.yellow_starts_at` | _Number (opcional)_ | Valor em segundos para definir a partir de quanto tempo a contagem regressiva ficará amarela |
 | `input.stop_at_zero` | _Boolean (opcional)_ | Parar a contagem regressiva ao chegar em zero `Padrão: false` |
 | `input.text` | _String (opcional)_ | Texto para exibição. Por padrão, o texto é exibido antes da parte numérica. Para formatação especial, utilize a variável `@cp_countdown` no meio do texto para indicar o local de exibição da parte numérica. `v2.24.0+` |
@@ -8992,6 +9190,7 @@ Alterar as configurações de alerta do painel de comunicação
 | ---- | :---: | ------------|
 | `input.text` | _String (opcional)_ | Alterar o texto de alerta |
 | `input.show` | _Boolean (opcional)_ | Exibir/ocultar o alerta |
+| `input.close_after_seconds` | _Number (opcional)_ | Remover texto de alerta automaticamente após X segundos. `0 ~ 3600` `Padrão: 0` `v2.27.0+` |
 
 
 _Método sem retorno_
@@ -9288,6 +9487,93 @@ var r = h.hly('SetTransitionEffectSettings', {
               curtain: true
         }
     }
+});
+```
+
+---
+
+
+### hly('GetTranslationPresetList')
+- v2.27.0
+
+Lista com os modelos salvos de configuração de tradução
+
+
+
+**Resposta:**
+
+| Tipo  |
+| :---: |
+| _Array&lt;[Translation Custom Settings Preset](#translation- -custom- -settings- -preset)&gt;_ | 
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetTranslationPresetList');
+for (var i = 0; i < r.data.length; i++) {
+    var o = r.data[i];
+    h.log(o.id + ": " + o.name);
+}
+```
+
+---
+
+
+### hly('GetTranslationPreset', input)
+- v2.27.0
+
+Retorna um modelo de configuração de tradução
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String (opcional)_ | ID do item |
+| `input.name` | _String (opcional)_ | Nome do item |
+
+
+**Resposta:**
+
+| Tipo  |
+| :---: |
+| _[Translation Custom Settings Preset](#translation- -custom- -settings- -preset)_ | 
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetTranslationPreset', {
+    id: 'xyz'
+});
+if (r.data) {
+    h.log(r.data.name);
+}
+```
+
+---
+
+
+### hly('ApplyTranslationPreset', input)
+- v2.27.0
+
+Aplica as configurações de tradução a partir de um modelo
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String (opcional)_ | ID do item |
+| `input.name` | _String (opcional)_ | Nome do item |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('ApplyTranslationPreset', {
+    name: 'example'
 });
 ```
 
@@ -9671,7 +9957,7 @@ Retorna o valor de um campo da interface do programa
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID do item. Pode ser: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event` |
+| `input.id` | _String_ | ID do item. Pode ser: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event`<br> <br>`2.27.0`<br><br>`main_song_tab_selected_item`<br>`main_text_tab_selected_item`<br>`main_text_tab_selected_folder`<br>`main_audio_tab_selected_item`<br>`main_video_tab_selected_item`<br>`main_image_tab_selected_item`<br>`main_file_tab_selected_item`<br>`main_custom_message_tab_selected_item`<br>`main_automatic_presentation_tab_selected_item` |
 
 
 **Resposta:**
@@ -9701,7 +9987,7 @@ Altera o valor de um campo da interface do programa
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID do item. Pode ser: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event` |
+| `input.id` | _String_ | ID do item. Pode ser: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event`<br> <br>`2.27.0`<br><br>`main_song_tab_selected_item`<br>`main_text_tab_selected_item`<br>`main_text_tab_selected_folder`<br>`main_audio_tab_selected_item`<br>`main_video_tab_selected_item`<br>`main_image_tab_selected_item`<br>`main_file_tab_selected_item`<br>`main_custom_message_tab_selected_item`<br>`main_automatic_presentation_tab_selected_item` |
 | `input.value` | _String_ | Novo valor |
 | `input.focus` | _Boolean (opcional)_ | Fazer o componente receber o foco do sistema |
 
@@ -10011,6 +10297,146 @@ var items = h.hly('GetTriggers').data;
 for (var i = 0; i < items.length; i++) {
     h.log("ID: " + items[i].id);
 }
+```
+
+---
+
+
+### hly('GetTriggerTags')
+- v2.27.0
+
+Retorna a lista de tags dos gatilhos
+
+
+
+**Resposta:**
+
+| Nome | Tipo  |
+| ---- | :---: |
+| `data` | _Array&lt;String&gt;_| 
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetTriggerTags');
+h.log(r.data);
+```
+
+---
+
+
+### hly('GetTriggerPauseStateForTag', input)
+- v2.27.0
+
+Retorna o estado do 'pause' da execução de gatilhos de uma tag específica
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.tag` | _String_ |  |
+
+
+**Resposta:**
+
+| Nome | Tipo  |
+| ---- | :---: |
+| `data` | _Boolean_| 
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetTriggerPauseStateForTag', {
+    tag: 'example'
+});
+h.log(r.data); //boolean
+```
+
+---
+
+
+### hly('SetTriggerPauseStateForTag', input)
+- v2.27.0
+
+Altera o estado do 'pause' da execução de gatilhos de uma tag específica
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.tag` | _String_ |  |
+| `input.pause` | _Boolean_ |  |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('SetTriggerPauseStateForTag', {
+    tag: 'example',
+    pause: true
+});
+```
+
+---
+
+
+### hly('GetTriggerPauseStateForReceiver', input)
+- v2.27.0
+
+Retorna o estado do 'pause' da execução de gatilhos de um receptor específico
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.receiver` | _String_ | ID do receptor |
+
+
+**Resposta:**
+
+| Nome | Tipo  |
+| ---- | :---: |
+| `data` | _Boolean_| 
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetTriggerPauseStateForReceiver', {
+    receiver: 'id'
+});
+h.log(r.data); //boolean
+```
+
+---
+
+
+### hly('SetTriggerPauseStateForReceiver', input)
+- v2.27.0
+
+Altera o estado do 'pause' da execução de gatilhos de um receptor específico
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.receiver` | _String_ | ID do receptor |
+| `input.pause` | _Boolean_ |  |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('SetTriggerPauseStateForReceiver', {
+    receiver: 'id',
+    pause: true
+});
 ```
 
 ---
@@ -11779,6 +12205,7 @@ Classes complexas utilizadas como retorno em alguns métodos
   "author": "",
   "note": "",
   "copyright": "",
+  "language": "",
   "slides": [
     {
       "text": "Slide 1 line 1\nSlide 1 line 2",
@@ -11857,6 +12284,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 {
   "id": "",
   "title": "",
+  "language": "",
   "folder": "",
   "theme": null,
   "transition_settings_id": null,
@@ -12095,7 +12523,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `id` | _String_ | ID do item |
-| `type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script`  `module_action` |
+| `type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `actions`  `global_action`  `alert`  `cp_alert`  `api`  `script`  `module_action` |
 | `name` | _String_ | Nome do item |
 
 ## Group
@@ -12378,7 +12806,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `enabled` | _Boolean_ |  |
 | `description` | _String_ |  |
 | `type` | _Object_ |  |
-| `type.id` | _String_ | Valores aceitos: `none` `rule_group_model` `rule_group` `javascript` `javascript_model` `jscommunity` `services` `events` `date` `time` `datetime` `day_of_week` `day_of_month` `hour_of_day` `day_of_week_in_month` `runtime_environment` |
+| `type.id` | _String_ | Valores aceitos: `none` `rule_group_model` `rule_group` `javascript` `javascript_model` `jscommunity` `services` `events` `current_event_time` `date` `time` `datetime` `day_of_week` `day_of_month` `hour_of_day` `day_of_week_in_month` `runtime_environment` `javascript_state` |
 | `type.name` | _String_ |  |
 | `type.settings_type` | _String_ | `native` `custom` |
 | <br>**type.settings_type=native** |  |  |
@@ -12493,7 +12921,8 @@ Configurações de exibição
     "translation_4": null,
     "merge": true,
     "uppercase": false,
-    "blank_line_height": 40
+    "blank_line_height": 40,
+    "translation_number_to_display_interface": 1
   },
   "margin": {
     "top": 0.0,
@@ -13295,6 +13724,28 @@ Configurações customizadas da tradução (item)
 ```
 </details>
 
+## Translation Custom Settings Preset
+Modelo de configuração de tradução
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID do item |
+| `name` | _String_ | Nome do item |
+| `alternative_name` | _String_ | Nome alternativo (nome curto para ser exibido na interface) |
+| `preset` | _Object_ | Mapa chave/valor<br>Cada chave é o `id` da tela (id do respectivo **Display Settings**).<br>Cada valor é um `object` que contém `translation_name` e opcionalmente contém `translation_custom_settings` se `translation_name=custom`. |
+| `metadata.modified_time_millis` | _Number_ | Data de modificação do arquivo. (timestamp) `v2.25.0+` `read-only` |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": "",
+  "name": "",
+  "alternative_name": ""
+}
+```
+</details>
+
 ## Styled Model
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
@@ -13361,18 +13812,23 @@ Configurações customizadas da tradução (item)
 
 ```json
 {
-  "display_mode": "all_slides",
-  "layout": "t;a;c",
-  "font": {
-    "name": "Arial",
-    "bold": true,
-    "italic": true,
-    "color": "FFFF00"
+  "public": {
+    "display_mode": "all_slides",
+    "layout": "t;a;c",
+    "font": {
+      "name": "Arial",
+      "bold": true,
+      "italic": true,
+      "color": "FFFF00"
+    },
+    "line_height": 3.0,
+    "align": "left",
+    "opacity": 70,
+    "position": "top_left"
   },
-  "line_height": 3.0,
-  "align": "left",
-  "opacity": 70,
-  "position": "top_left"
+  "screen_2": "{...}",
+  "screen_3": "{...}",
+  "stream_image": "{...}"
 }
 ```
 </details>
@@ -13457,6 +13913,7 @@ Configurações customizadas da tradução (item)
 | `standardize_automatic_line_break` | _Boolean_ |  |
 | `allow_main_window_and_bible_window_simultaneously` | _Boolean_ |  |
 | `preferential_arrangement_collection` | _String_ |  |
+| `simulate_projection` | _Object_ | Conjunto chave/valor<br>chave: `screen_1` `screen_2` `screen_3`<br>valor: [SimulateProjectionSettings](#simulate-projection-settings) `v2.27.0+` |
 <details>
   <summary>Ver exemplo</summary>
 
@@ -13485,18 +13942,23 @@ Configurações customizadas da tradução (item)
     "remove_final_slide": false
   },
   "copyright": {
-    "display_mode": "all_slides",
-    "layout": "t;a;c",
-    "font": {
-      "name": "Arial",
-      "bold": true,
-      "italic": true,
-      "color": "FFFF00"
+    "public": {
+      "display_mode": "all_slides",
+      "layout": "t;a;c",
+      "font": {
+        "name": "Arial",
+        "bold": true,
+        "italic": true,
+        "color": "FFFF00"
+      },
+      "line_height": 3.0,
+      "align": "left",
+      "opacity": 70,
+      "position": "top_left"
     },
-    "line_height": 3.0,
-    "align": "left",
-    "opacity": 70,
-    "position": "top_left"
+    "screen_2": "{...}",
+    "screen_3": "{...}",
+    "stream_image": "{...}"
   },
   "image_presentation": {
     "adjust_type": "adjust",
@@ -13530,7 +13992,69 @@ Configurações customizadas da tradução (item)
   "slide_description_repeat_description_for_sequence": true,
   "standardize_automatic_line_break": false,
   "allow_main_window_and_bible_window_simultaneously": false,
-  "preferential_arrangement_collection": ""
+  "preferential_arrangement_collection": "",
+  "simulate_projection": {
+    "screen_1": {
+      "enabled": true,
+      "hide_screen": false,
+      "position": "user",
+      "x": 0,
+      "y": 0,
+      "width": 320,
+      "height": 180,
+      "metadata": {
+        "available_positions": [
+          "user",
+          "public"
+        ],
+        "area": {
+          "x": 0,
+          "y": 0,
+          "width": 320,
+          "height": 180
+        }
+      }
+    },
+    "screen_2": "{...}",
+    "screen_3": "{...}"
+  }
+}
+```
+</details>
+
+## Simulate Projection Settings
+Configurações da opção 'simular projeção'
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `enabled` | _Boolean_ |  |
+| `hide_screen` | _Boolean_ |  |
+| `position` | _String_ | Pode ser: Valores aceitos: `user` `public` `on_the_right_simulation_1` `on_the_right_simulation_2` |
+| `x` | _Number_ | `0 ~ 9999` |
+| `y` | _Number_ | `0 ~ 9999` |
+| `width` | _Number_ | `1 ~ 3840` |
+| `height` | _Number_ | `1 ~ 3840` |
+| `area` | _[Rectangle](#rectangle)_ | Área da tela simulada |
+| `metadata` | _Object_ |  |
+| `available_positions` | _Array&lt;String&gt;_ | Posições disponíveis para o respectivo item |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "enabled": false,
+  "hide_screen": false,
+  "position": "",
+  "x": 0,
+  "y": 0,
+  "width": 0,
+  "height": 0,
+  "area": {
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0
+  }
 }
 ```
 </details>
@@ -13538,7 +14062,7 @@ Configurações customizadas da tradução (item)
 ## AddItem
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `global_action`  `api`  `script`  `module_action` |
+| `type` | _String_ | Tipo do item. Pode ser: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `actions`  `global_action`  `alert`  `cp_alert`  `api`  `script`  `module_action` |
 
 ## AddItemTitle
 | Nome | Tipo  | Descrição |
@@ -13565,13 +14089,17 @@ Configurações customizadas da tradução (item)
 | ---- | :---: | ------------|
 | `type` | _String_ | song |
 | `id` | _String_ | ID do item |
+| `arrangement_name` | _String (opcional)_ |  `v2.27.0+` |
+| `translation_preset_id` | _String (opcional)_ |  `v2.27.0+` |
 <details>
   <summary>Ver exemplo</summary>
 
 ```json
 {
   "type": "song",
-  "id": "123"
+  "id": "123",
+  "arrangement_name": "",
+  "translation_preset_id": ""
 }
 ```
 </details>
@@ -13603,13 +14131,15 @@ Configurações customizadas da tradução (item)
 | ---- | :---: | ------------|
 | `type` | _String_ | text |
 | `id` | _String_ | ID do item |
+| `translation_preset_id` | _String (opcional)_ |  `v2.27.0+` |
 <details>
   <summary>Ver exemplo</summary>
 
 ```json
 {
   "type": "text",
-  "id": "xyz"
+  "id": "xyz",
+  "translation_preset_id": ""
 }
 ```
 </details>
@@ -13773,8 +14303,8 @@ Configurações customizadas da tradução (item)
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `type` | _String_ | countdown_cp |
-| `minutes` | _Number_ | Quantidade de minutos |
-| `seconds` | _Number_ | Quantidade de segundos |
+| `minutes` | _Number_ | Quantidade de minutos. Opcional se `exact_time` for declarado |
+| `seconds` | _Number_ | Quantidade de segundos. Opcional se `exact_time` for declarado |
 | `stop_at_zero` | _Boolean (opcional)_ | Parar a contagem regressiva ao chegar em zero `Padrão: false` |
 | `description` | _String_ | Descrição do item |
 <details>
@@ -13797,6 +14327,8 @@ Configurações customizadas da tradução (item)
 | `type` | _String_ | plain_text |
 | `name` | _String_ | Nome do item |
 | `text` | _String_ | Texto |
+| `theme` | _String (opcional)_ | ID do tema utilizado para exibir o texto `v2.27.0+` |
+| `background` | _String (opcional)_ | ID do plano de fundo utilizado para exibir o texto `v2.27.0+` |
 <details>
   <summary>Ver exemplo</summary>
 
@@ -13804,7 +14336,9 @@ Configurações customizadas da tradução (item)
 {
   "type": "plain_text",
   "name": "",
-  "text": "Exemplo"
+  "text": "Exemplo",
+  "theme": "",
+  "background": ""
 }
 ```
 </details>
@@ -13923,6 +14457,34 @@ Configurações customizadas da tradução (item)
 | ---- | :---: | ------------|
 | `type` | _String_ | global_action |
 | `action` | _String_ | Pode ser: `slide_exit` `vlc_stop` `vlc_stop_fade_out` |
+
+## AddItemAddItemAlert
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ | Nome do item |
+| `text` | _String_ | Texto de alerta |
+| `close_after_seconds` | _Number_ | Ocultar o alerta após X segundos |
+
+## AddItemAddItemAlertCommunicationPanel
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `name` | _String_ | Nome do item |
+| `text` | _String_ | Texto de alerta |
+| `display_ahead` | _String_ | Alterar a opção *'exibir à frente de tudo'* |
+| `close_after_seconds` | _Number_ | Ocultar o alerta após X segundos |
+
+## AddItemActions
+Ações disponíveis: [HolyricsActions](https://github.com/holyrics/jslib/blob/main/doc/pt/HolyricsActions.md)
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `action_id` | _String_ | ID do item |
+| `alternative_name` | _String (opcional)_ | Nome alternativo. Nome que será exibido no lugar do nome (nativo) padrão da ação. |
+| `icon` | _String (opcional)_ |  |
+| `icon_color` | _String (opcional)_ | Cor no formato hexadecimal |
+| `active_icon` | _String (opcional)_ |  |
+| `active_icon_color` | _String (opcional)_ | Cor no formato hexadecimal |
+| `settings` | _Object (opcional)_ | Mapa chave/valor |
 
 ## SongInfo
 | Nome | Tipo  | Descrição |
@@ -14328,6 +14890,7 @@ Configurações customizadas da tradução (item)
 | ---- | :---: | ------------|
 | `title` | _String_ |  |
 | `subitem` | _Object_ |  |
+| `title_index` | _Number_ |  |
 | `subitem_index` | _Number_ |  |
 | `playlist_index` | _Number_ |  |
 <details>
@@ -14336,6 +14899,7 @@ Configurações customizadas da tradução (item)
 ```json
 {
   "title": "",
+  "title_index": -1,
   "subitem_index": -1,
   "playlist_index": -1
 }
