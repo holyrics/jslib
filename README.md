@@ -2674,7 +2674,7 @@ h.apiRequestAsync('abcxyz', {
 ### apiRequestEx(id, raw)
 - v2.21.0
 
-O mesmo que}} `apiRequest(id, raw)`, porém lança uma exception ao ocorrer um erro, em vez de retornar **null**
+O mesmo que `apiRequest(id, raw)`, porém lança uma exception ao ocorrer um erro, em vez de retornar **null**
 
 **Parâmetros:**
 
@@ -2733,7 +2733,7 @@ h.runActions({
 ### runActionsOrThrow(action_id, settings)
 - v2.27.0
 
-O mesmo que}} `runActions(opts)`, porém lança uma exception ao ocorrer um erro, em vez de retornar **string**
+O mesmo que `runActions(opts)`, porém lança uma exception ao ocorrer um erro, em vez de retornar **string**
 
 **Parâmetros:**
 
@@ -9504,7 +9504,7 @@ Lista com os modelos salvos de configuração de tradução
 
 | Tipo  |
 | :---: |
-| _Array&lt;[Translation Custom Settings Preset](#translation- -custom- -settings- -preset)&gt;_ | 
+| _Array&lt;[TranslationCustomSettingsPreset](#translation-custom-settings-preset)&gt;_ | 
 
 
 **Exemplo:**
@@ -9537,7 +9537,7 @@ Retorna um modelo de configuração de tradução
 
 | Tipo  |
 | :---: |
-| _[Translation Custom Settings Preset](#translation- -custom- -settings- -preset)_ | 
+| _[TranslationCustomSettingsPreset](#translation-custom-settings-preset)_ | 
 
 
 **Exemplo:**
