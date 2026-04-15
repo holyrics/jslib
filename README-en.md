@@ -12865,7 +12865,7 @@ Complex classes used as a return in some methods
 | `show_panel` | _Boolean_ | Display the module in the Modules panel |
 | `available_in_main_window` | _Boolean_ | Module available for use in the main window panel |
 | `available_in_bible_window` | _Boolean_ | Module available for use in the Bible window panel |
-| `actions` | _Array&lt;[Module Action](#module- -action)&gt;_ | Public actions available for the module |
+| `actions` | _Array&lt;[ModuleAction](https://github.com/holyrics/jslib/blob/main/doc/en/ModuleAction.md)&gt;_ | Public actions available for the module |
 
 ## Module Action
 | Name | Type  | Description |
