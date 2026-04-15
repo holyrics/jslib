@@ -33,7 +33,7 @@ Classe utilit√°ria para criar alguns objetos nativos Java (para melhor manipula√
 **Exemplo:**
 
 ```javascript
-var list = h.list();
+var list = h.j.list();
 ```
 
 ---
@@ -54,7 +54,7 @@ var list = h.list();
 **Exemplo:**
 
 ```javascript
-var list = h.list('item 1', 'item 2', 'item 3');
+var list = h.j.list('item 1', 'item 2', 'item 3');
 ```
 
 ---
@@ -75,7 +75,7 @@ var list = h.list('item 1', 'item 2', 'item 3');
 **Exemplo:**
 
 ```javascript
-var set = h.set();
+var set = h.j.set();
 ```
 
 ---
@@ -96,7 +96,7 @@ var set = h.set();
 **Exemplo:**
 
 ```javascript
-var set = h.set('item 1', 'item 2', 'item 3');
+var set = h.j.set('item 1', 'item 2', 'item 3');
 ```
 
 ---
@@ -117,7 +117,7 @@ var set = h.set('item 1', 'item 2', 'item 3');
 **Exemplo:**
 
 ```javascript
-var map = h.map();
+var map = h.j.map();
 ```
 
 ---
@@ -138,7 +138,7 @@ var map = h.map();
 **Exemplo:**
 
 ```javascript
-var lmap = h.lmap();
+var lmap = h.j.lmap();
 ```
 
 ---
@@ -160,7 +160,7 @@ Converte um array nativo JavaScript em ArrayList Java
 
 ```javascript
 var arr = [1, 2, 3];
-var list = h.toList(arr);
+var list = h.j.toList(arr);
 ```
 
 ---
@@ -182,7 +182,7 @@ Converte um array nativo JavaScript em HashSet Java
 
 ```javascript
 var arr = [1, 2, 3];
-var set = h.toSet(arr);
+var set = h.j.toSet(arr);
 ```
 
 ---
@@ -208,7 +208,7 @@ var m = {
     b: 2,
     c: 3
 };
-var map = h.toMap(m);
+var map = h.j.toMap(m);
 ```
 
 ---
@@ -234,7 +234,7 @@ var m = {
     b: 2,
     c: 3
 };
-var lmap = h.toLMap(m);
+var lmap = h.j.toLMap(m);
 ```
 
 ---
@@ -256,7 +256,7 @@ Optional Java
 **Exemplo:**
 
 ```javascript
-var opt = h.optional(obj);
+var opt = h.j.optional(obj);
 ```
 
 ---
