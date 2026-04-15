@@ -786,7 +786,7 @@ h.state.removeOnChange(stateID, onchangeID);
 ### db
 - v2.28.0
 
-[DBUtils](https://github.com/holyrics/jslib/blob/main/doc/pt/DBUtils.md) &nbsp;| &nbsp;Classe utilitária para acessar os principais dados do programa.<br><br>Itens disponíveis:<br>**`song`**<br>**`text`**<br>**`theme`**<br>**`announcement`**<br>**`bg`**<br>**`ap`**<br>**`slide_description`**<br>**`favorite`**<br>**`api`**<br>**`script`**<br>**`saved_playlist`**<br>**`song_group`**<br>**`team`**<br>**`member`**<br>**`role`**<br>**`service`**<br>**`trigger`**<br>**`scheduled_task`**<br>**`bible_version`**<br><br>Acessar um item pelo ID:<br>`var song = h.db.song['123'];`
+[DBUtils](https://github.com/holyrics/jslib/blob/main/doc/pt/DBUtils.md) &nbsp;| &nbsp;Classe utilitária para acessar os principais dados do programa.<br><br>Itens disponíveis:<br>**`song`**  **`songs`**<br>**`text`**  **`texts`**<br>**`theme`**  **`themes`**<br>**`announcement`**  **`announcements`**<br>**`background`**  **`backgrounds`**  **`bg`**  **`bgs`**<br>**`automatic_presentation`**  **`automatic_presentations`**  **`ap`**  **`aps`**<br>**`slide_description`**  **`slide_descriptions`**<br>**`favorite`**  **`favorites`**<br>**`api`**  **`apis`**<br>**`script`**  **`scripts`**<br>**`saved_playlist`**  **`saved_playlists`**<br>**`song_group`**  **`song_groups`**<br>**`team`**  **`teams`**<br>**`member`**  **`members`**<br>**`role`**  **`roles`**<br>**`service`**  **`services`**<br>**`trigger`**  **`triggers`**<br>**`scheduled_task`**  **`scheduled_tasks`**<br>**`bible_version`**  **`bible_versions`**<br><br>Acessar um item pelo ID:<br>`var song = h.db.song['123'];`
 
 
 

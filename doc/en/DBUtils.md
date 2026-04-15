@@ -1,5 +1,10 @@
 # DBUtils
-Utility class for accessing the main data of the program
+Utility class for accessing the main data of the program<br>
+<br>
+Access an item by ID:
+```javascript
+var song = h.db.song['123'];
+```
 
 ---
 

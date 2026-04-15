@@ -1,5 +1,10 @@
 # DBUtils
-Classe utilitária para acessar os principais dados do programa
+Classe utilitária para acessar os principais dados do programa<br>
+<br>
+Acessar um item pelo ID:
+```javascript
+var song = h.db.song['123'];
+```
 
 ---
 
