@@ -123,19 +123,21 @@ Execute an advanced action in a module<br>The security token can be obtained in 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `action_type` | _String_ | Type of action<br>`update_panel` `repaint_panel` `restart` `enable` `disable` |
+| `security_token` | _String_ | Security token |
 
 
 **Response:**
 
-| Name | Type  | Description |
-| ---- | :---: | ------------|
-| `security_token` | _String_ | Security token |
+| Type  | Description |
+| :---: | ------------|
+| _Object_ | boolean or error (string) |
 
 
 **Example:**
 
 ```javascript
-h.adminAction('restart', 'abcxyz');
+var module = h.getModule('id');
+var r = module.adminAction('restart', 'abcxyz');
 ```
 
 ---

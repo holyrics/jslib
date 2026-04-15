@@ -123,19 +123,21 @@ Executar uma ação avançada em um módulo<br>O token de segurança pode ser ob
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `action_type` | _String_ | Tipo da ação<br>`update_panel` `repaint_panel` `restart` `enable` `disable` |
+| `security_token` | _String_ | Token de segurança |
 
 
 **Resposta:**
 
-| Nome | Tipo  | Descrição |
-| ---- | :---: | ------------|
-| `security_token` | _String_ | Token de segurança |
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | boolean or error (string) |
 
 
 **Exemplo:**
 
 ```javascript
-h.adminAction('restart', 'abcxyz');
+var module = h.getModule('id');
+var r = module.adminAction('restart', 'abcxyz');
 ```
 
 ---

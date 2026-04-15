@@ -125,6 +125,8 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [globalSettings](#globalsettings)
   - [state](#state)
   - [chord](#chord)
+  - [db](#db)
+  - [j](#j)
   - [log](#logobj)
   - [log](#logkey--null-obj-args--null)
   - [logf](#logfobj-args--null)
@@ -330,6 +332,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [AddToPlaylist](#hlyaddtoplaylist-input)
   - [RemoveFromMediaPlaylist](#hlyremovefrommediaplaylist-input)
   - [SetPlaylistItemDuration](#hlysetplaylistitemduration-input)
+  - [SetPlaylistItemMidiTimeCode](#hlysetplaylistitemmiditimecode-input)
   - [GetSlideDescriptions](#hlygetslidedescriptions)
   - [GetFavorites](#hlygetfavorites)
   - [FavoriteAction](#hlyfavoriteaction-input)
@@ -395,6 +398,12 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [GetTranslationPresetList](#hlygettranslationpresetlist)
   - [GetTranslationPreset](#hlygettranslationpreset-input)
   - [ApplyTranslationPreset](#hlyapplytranslationpreset-input)
+  - [GetLogoSettingsPresetList](#hlygetlogosettingspresetlist)
+  - [GetLogoSettingsPreset](#hlygetlogosettingspreset-input)
+  - [ApplyLogoSettingsPreset](#hlyapplylogosettingspreset-input)
+  - [GetBibleResponsiveReadingSettingsPresetList](#hlygetbibleresponsivereadingsettingspresetlist)
+  - [GetBibleResponsiveReadingSettingsPreset](#hlygetbibleresponsivereadingsettingspreset-input)
+  - [ApplyBibleResponsiveReadingSettingsPreset](#hlyapplybibleresponsivereadingsettingspreset-input)
   - [GetBibleVersions](#hlygetbibleversions)
   - [GetBibleVersionsV2](#hlygetbibleversionsv2)
   - [GetBibleSettings](#hlygetbiblesettings)
@@ -415,6 +424,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [OpenDrawLots](#hlyopendrawlots-input)
   - [GetMediaDuration](#hlygetmediaduration-input)
   - [GetVersion](#hlygetversion)
+  - [GetHolyricsPlanInfo](#hlygetholyricsplaninfo)
   - [GetAPIServerInfo](#hlygetapiserverinfo)
   - [GetRealTimeSongKey](#hlygetrealtimesongkey-input)
   - [SetRealTimeSongKey](#hlysetrealtimesongkey-input)
@@ -465,6 +475,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [ok](#okmsg-title--confirm-notification--false)
   - [error](#errormsg-notification--false)
   - [notification](#notificationmsg-duration--0)
+  - [notificationAction](#notificationactiontitle-action)
   - [lyricsChooser](#lyricschooser)
   - [textChooser](#textchooser)
   - [themeChooser](#themechooser)
@@ -536,6 +547,10 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [Translation Custom Settings](#translation-custom-settings)
   - [Translation Custom Settings Item](#translation-custom-settings-item)
   - [Translation Custom Settings Preset](#translation-custom-settings-preset)
+  - [Logo Settings](#logo-settings)
+  - [Logo Settings Preset](#logo-settings-preset)
+  - [Bible Responsive Reading Settings](#bible-responsive-reading-settings)
+  - [Bible Responsive Reading Settings Preset](#bible-responsive-reading-settings-preset)
   - [Styled Model](#styled-model)
   - [Initial Slide Settings](#initial-slide-settings)
   - [Copyright Settings](#copyright-settings)
@@ -566,6 +581,7 @@ Right-click in the code editing window (context menu), option **Expand with TAB*
   - [AddItemAddItemAlert](#additemadditemalert)
   - [AddItemAddItemAlertCommunicationPanel](#additemadditemalertcommunicationpanel)
   - [AddItemActions](#additemactions)
+  - [AddItemThemeBackground](#additemthemebackground)
   - [SongInfo](#songinfo)
   - [TextInfo](#textinfo)
   - [VerseInfo](#verseinfo)
@@ -746,12 +762,12 @@ var stateID = 'example';
 //If the ID already exists, the listener will be replaced
 var onchangeID = 'xyz';
 //Executar a respectiva function sempre que o estado (boolean) for alterado (de qualquer origem)
-h.addOnChange(stateID, onchangeID, function(evt) {
+h.state.addOnChange(stateID, onchangeID, function(evt) {
   //evt.key
   //evt.previous
   //evt.value
 });
-h.removeOnChange(stateID, onchangeID);
+h.state.removeOnChange(stateID, onchangeID);
 ```
 
 
@@ -762,6 +778,24 @@ h.removeOnChange(stateID, onchangeID);
 - v2.27.0
 
 [ChordUtils](https://github.com/holyrics/jslib/blob/main/doc/en/ChordUtils.md) &nbsp;| &nbsp;Utility class for some methods of identification and manipulation of chords
+
+
+
+---
+
+### db
+- v2.28.0
+
+[DBUtils](https://github.com/holyrics/jslib/blob/main/doc/en/DBUtils.md) &nbsp;| &nbsp;Utility class for accessing the main data of the program.<br><br>Itens disponíveis:<br>**`song`**<br>**`text`**<br>**`theme`**<br>**`announcement`**<br>**`bg`**<br>**`ap`**<br>**`slide_description`**<br>**`favorite`**<br>**`api`**<br>**`script`**<br>**`saved_playlist`**<br>**`song_group`**<br>**`team`**<br>**`member`**<br>**`role`**<br>**`service`**<br>**`trigger`**<br>**`scheduled_task`**<br>**`bible_version`**<br><br>Access an item by ID:<br>`var song = h.db.song['123'];`
+
+
+
+---
+
+### j
+- v2.28.0
+
+[JavaUtils](https://github.com/holyrics/jslib/blob/main/doc/en/JavaUtils.md) &nbsp;| &nbsp;Utility class for creating some native Java objects (for better manipulation than native JavaScript objects)
 
 
 
@@ -5946,6 +5980,8 @@ Starts a Bible verse presentation.<br>Note: It is possible to display a maximum 
 | `input.references` | _String (optional)_ | References. Example: **John 3:16** or **Rm 12:2** or **Gn 1:1-3 Sl 23.1** |
 | `input.version` | _String (optional)_ | Name or abbreviation of the translation used `v2.21.0+` |
 | `input.quick_presentation` | _Boolean (optional)_ | `true` to display the verse through a quick presentation popup window.<br>Allows, for example, to start the presentation of a verse without ending the current presentation, returning to the current presentation when the verse presentation ends. `Default: false` `v2.24.0+` |
+| `input.show_x_verses` | _Number (optional)_ | Number of verses displayed in the projection `v2.28.0+` |
+| `input.default_action` | _String (optional)_ | Standard action `default` `responsive_reading` `only_reference` `Default: default` `v2.28.0+` |
 
 
 _Method does not return value_
@@ -7468,6 +7504,35 @@ _Method does not return value_
 h.hly('SetPlaylistItemDuration', {
     id: 'abc',
     duration: 300
+});
+```
+
+---
+
+
+### hly('SetPlaylistItemMidiTimeCode', input)
+### hly('SetPlaylistItemMTC', input)
+- v2.28.0
+
+Change the timecode of an item in the media playlist.<br>Note: Currently available only for audio and video
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _String (optional)_ | Item ID |
+| `input.index` | _Number (optional)_ | Item position in the list (starts at zero). |
+| `input.midi_time_code` | _Number_ | Time in milliseconds |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('SetPlaylistItemMidiTimeCode', {
+    id: 'abc',
+    midi_time_code: 120000
 });
 ```
 
@@ -9580,6 +9645,180 @@ h.hly('ApplyTranslationPreset', {
 ---
 
 
+### hly('GetLogoSettingsPresetList')
+- v2.28.0
+
+List of saved Logo configuration models
+
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _Array&lt;[LogoSettingsPreset](#logo-settings-preset)&gt;_ | 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetLogoSettingsPresetList');
+for (var i = 0; i < r.data.length; i++) {
+    var o = r.data[i];
+    h.log(o.id + ": " + o.name);
+}
+```
+
+---
+
+
+### hly('GetLogoSettingsPreset', input)
+- v2.28.0
+
+Returns a logo configuration model
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _String (optional)_ | Item ID |
+| `input.name` | _String (optional)_ | Item name |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _[LogoSettingsPreset](#logo-settings-preset)_ | 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetLogoSettingsPreset', {
+    id: 'xyz'
+});
+if (r.data) {
+    h.log(r.data.name);
+}
+```
+
+---
+
+
+### hly('ApplyLogoSettingsPreset', input)
+- v2.28.0
+
+Applies the Logo settings from a template
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _String (optional)_ | Item ID |
+| `input.name` | _String (optional)_ | Item name |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('ApplyLogoSettingsPreset', {
+    name: 'example'
+});
+```
+
+---
+
+
+### hly('GetBibleResponsiveReadingSettingsPresetList')
+- v2.28.0
+
+List of saved models for alternate Bible verse reading configuration
+
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _Array&lt;[BibleResponsiveReadingSettingsPreset](#bible-responsive-reading-settings-preset)&gt;_ | 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetBibleResponsiveReadingSettingsPresetList');
+for (var i = 0; i < r.data.length; i++) {
+    var o = r.data[i];
+    h.log(o.id + ": " + o.name);
+}
+```
+
+---
+
+
+### hly('GetBibleResponsiveReadingSettingsPreset', input)
+- v2.28.0
+
+Returns a model for alternating reading configuration of Bible verses
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _String (optional)_ | Item ID |
+| `input.name` | _String (optional)_ | Item name |
+
+
+**Response:**
+
+| Type  |
+| :---: |
+| _[BibleResponsiveReadingSettingsPreset](#bible-responsive-reading-settings-preset)_ | 
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetBibleResponsiveReadingSettingsPreset', {
+    id: 'xyz'
+});
+if (r.data) {
+    h.log(r.data.name);
+}
+```
+
+---
+
+
+### hly('ApplyBibleResponsiveReadingSettingsPreset', input)
+- v2.28.0
+
+Applies the alternate reading settings for Bible verses based on a template
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `input.id` | _String (optional)_ | Item ID |
+| `input.name` | _String (optional)_ | Item name |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.hly('ApplyBibleResponsiveReadingSettingsPreset', {
+    name: 'example'
+});
+```
+
+---
+
+
 ### hly('GetBibleVersions')
 - v2.21.0
 
@@ -10131,6 +10370,31 @@ h.log(r.data.plaftormDescription);
 ---
 
 
+### hly('GetHolyricsPlanInfo')
+- v2.28.0
+
+Returns information about the current subscription
+
+
+
+**Response:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `data.type` | _String_ | `none` `basic` `advanced` `advanced_content` |
+| `data.name` | _String_ |  |
+
+
+**Example:**
+
+```javascript
+var r = h.hly('GetHolyricsPlanInfo');
+h.log(r.type + " | " + r.name);
+```
+
+---
+
+
 ### hly('GetAPIServerInfo')
 - v2.26.0
 
@@ -10282,7 +10546,7 @@ Returns the list of saved triggers
 | `data.*.id` | _String_ | Item ID |
 | `data.*.enabled` | _Boolean_ |  |
 | `data.*.when` | _String_ | Can be: `displaying` `closing` `change` `event` |
-| `data.*.type` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle` `bible_version_1` `bible_version_2` `bible_version_3` `bible_any_version`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` `draw_lots_item_drawn` |
+| `data.*.type` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle` `bible_version_1` `bible_version_2` `bible_version_3` `bible_any_version`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` `draw_lots_item_drawn` `software_startup` `software_shutdown` |
 | `data.*.item.title` | _String_ |  |
 | `data.*.item.reference` | _Object_ |  |
 | `data.*.receiver.type` | _String_ | Can be: `get` `post` `ws` `tcp` `udp` `midi` `javascript` `community` `multiple_actions` `obs_v4` `obs_v5` `lumikit` `vmix` `osc` `soundcraft` `ha` `ptz` `tbot` `openai` |
@@ -11631,6 +11895,32 @@ h.notification("Task accomplished");
 ---
 
 
+### notificationAction(title, action)
+- v2.28.0
+
+Displays a notification in the corner of the screen and performs an action when clicking on the notification
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `title` | _String_ | Message displayed in the notification |
+| `action` | _Function_ | Action that will be executed when the notification is clicked |
+
+
+_Method does not return value_
+
+**Example:**
+
+```javascript
+h.notificationAction('title', function () {
+    //impl
+});
+```
+
+---
+
+
 ### lyricsChooser()
 ### songChooser()
 - v2.19.0
@@ -12523,7 +12813,7 @@ Complex classes used as a return in some methods
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `id` | _String_ | Item ID |
-| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `actions`  `global_action`  `alert`  `cp_alert`  `api`  `script`  `module_action` |
+| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `actions`  `global_action`  `alert`  `cp_alert`  `theme_background`  `api`  `script`  `module_action` |
 | `name` | _String_ | Item name |
 
 ## Group
@@ -12771,7 +13061,7 @@ Complex classes used as a return in some methods
 | ---- | :---: | ------------|
 | `id` | _String (optional)_ | Item ID |
 | `when` | _String_ | `displaying` `closing` `change` `event` |
-| `item` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle` `bible_version_1` `bible_version_2` `bible_version_3` `bible_any_version`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` `draw_lots_item_drawn` |
+| `item` | _String_ | Type of item. Can be:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle` `bible_version_1` `bible_version_2` `bible_version_3` `bible_any_version`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` `draw_lots_item_drawn` `software_startup` `software_shutdown` |
 | `action` | _Function_ | Action to be executed.<br>`function(obj) { /*  */ }`<br>Content of `obj` according to the item type:<br>[`any_song`](https://github.com/holyrics/jslib/blob/main/README-en.md#songinfo)  [`any_text`](https://github.com/holyrics/jslib/blob/main/README-en.md#textinfo)  [`any_verse`](https://github.com/holyrics/jslib/blob/main/README-en.md#verseinfo)  [`any_announcement`](https://github.com/holyrics/jslib/blob/main/README-en.md#announcementinfo)  [`any_audio`](https://github.com/holyrics/jslib/blob/main/README-en.md#audioinfo)  [`any_video`](https://github.com/holyrics/jslib/blob/main/README-en.md#videoinfo)  [`any_image`](https://github.com/holyrics/jslib/blob/main/README-en.md#imageinfo)  [`any_automatic_presentation`](https://github.com/holyrics/jslib/blob/main/README-en.md#automaticpresentationinfo)  [`any_song_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#songslideinfo)  [`any_text_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#textslideinfo)  [`any_ppt_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#pptslideinfo)  [`any_theme`](https://github.com/holyrics/jslib/blob/main/README-en.md#themeinfo)  [`any_background`](https://github.com/holyrics/jslib/blob/main/README-en.md#backgroundinfo)  [`any_title_subitem`](https://github.com/holyrics/jslib/blob/main/README-en.md#titleinfo)  [`any_webcam`](https://github.com/holyrics/jslib/blob/main/README-en.md#webcaminfo)  [`any_audio_folder`](https://github.com/holyrics/jslib/blob/main/README-en.md#audioinfo)  [`any_video_folder`](https://github.com/holyrics/jslib/blob/main/README-en.md#videoinfo)  [`any_image_folder`](https://github.com/holyrics/jslib/blob/main/README-en.md#imageinfo)  [`any_ppt`](https://github.com/holyrics/jslib/blob/main/README-en.md#pptinfo)  [`any_countdown`](https://github.com/holyrics/jslib/blob/main/README-en.md#countdowninfo)  [`any_automatic_presentation_slide`](https://github.com/holyrics/jslib/blob/main/README-en.md#automaticpresentationslideinfo)  [`f8`](https://github.com/holyrics/jslib/blob/main/README-en.md#presentationmodifierinfoinfo)  [`f9`](https://github.com/holyrics/jslib/blob/main/README-en.md#presentationmodifierinfoinfo)  [`f10`](https://github.com/holyrics/jslib/blob/main/README-en.md#presentationmodifierinfoinfo)  [`new_message_chat`](https://github.com/holyrics/jslib/blob/main/README-en.md#newchatmessageinfo)  [`verse_presentation_changed`](https://github.com/holyrics/jslib/blob/main/README-en.md#versepresentationchangedinfo)  [`playlist_changed`](https://github.com/holyrics/jslib/blob/main/README-en.md#playlistchangedinfo)  [`file_modified`](https://github.com/holyrics/jslib/blob/main/README-en.md#filemodifiedinfo)  [`player_progress`](https://github.com/holyrics/jslib/blob/main/README-en.md#playerprogressinfo)  [`draw_lots_item_drawn`](https://github.com/holyrics/jslib/blob/main/README-en.md#drawlotsitemdrawninfo)<br><br>All items with **when=change** contain: `obj.id` `obj.name` `obj.old_value` `obj.new_value` |
 | `name` | _String (optional)_ | Item name. Compatible value for display in **JavaScript Monitor** `v2.23.0+` |
 | `filter` | _Object (optional)_ | Execute action only if the object that triggered the event matches the filter object `v2.24.0+` |
@@ -12806,7 +13096,7 @@ Complex classes used as a return in some methods
 | `enabled` | _Boolean_ |  |
 | `description` | _String_ |  |
 | `type` | _Object_ |  |
-| `type.id` | _String_ | Accepted values: `none` `rule_group_model` `rule_group` `javascript` `javascript_model` `jscommunity` `services` `events` `current_event_time` `date` `time` `datetime` `day_of_week` `day_of_month` `hour_of_day` `day_of_week_in_month` `runtime_environment` `javascript_state` |
+| `type.id` | _String_ | Accepted values: `none` `rule_group_model` `rule_group` `javascript` `javascript_model` `jscommunity` `services` `events` `current_event_time` `date` `time` `datetime` `day_of_week` `day_of_month` `hour_of_day` `day_of_week_in_month` `runtime_environment` `javascript_state` `origin` |
 | `type.name` | _String_ |  |
 | `type.settings_type` | _String_ | `native` `custom` |
 | <br>**type.settings_type=native** |  |  |
@@ -12884,6 +13174,7 @@ Display settings
 {
   "id": "public",
   "name": "Público",
+  "simulation": false,
   "screen": "1920,0",
   "slide_info": {
     "info_1": {
@@ -12923,6 +13214,14 @@ Display settings
     "uppercase": false,
     "blank_line_height": 40,
     "translation_number_to_display_interface": 1
+  },
+  "show_items": {
+    "lyrics": true,
+    "text": true,
+    "verse": true,
+    "image": true,
+    "alert": true,
+    "announcement": true
   },
   "margin": {
     "top": 0.0,
@@ -13045,6 +13344,7 @@ It is an object with the same parameters available in **Transition Effect Settin
 | `theme` | _Object_ | Display Theme ID for the different system screens |
 | `theme.public` | _String_ |  |
 | `theme.screen_n` | _String_ | n >= 2 |
+| `responsive_reading` | _[BibleResponsiveReadingSettings](#bible-responsive-reading-settings)_ |  `v2.28.0+` |
 <details>
   <summary>See example</summary>
 
@@ -13073,6 +13373,15 @@ It is an object with the same parameters available in **Transition Effect Settin
   "theme": {
     "public": 123,
     "screen_n": null
+  },
+  "responsive_reading": {
+    "display_two_verses": false,
+    "descriptions": "",
+    "font_color": "",
+    "underline": false,
+    "use_theme_effects": false,
+    "change_description_last_verse": false,
+    "description_last_verse": ""
   }
 }
 ```
@@ -13101,6 +13410,11 @@ It is an object with the same parameters available in **Transition Effect Settin
 | `apply_custom_theme_to_bible` | _Boolean_ | Use custom theme in verses |
 | `apply_custom_theme_to_text` | _Boolean_ | Use custom theme in texts |
 | `apply_custom_theme_to_quick_presentation` | _Boolean_ | Use the custom theme in the **Quick Presentation** option `v2.21.0+` |
+| `show_next_verse.enabled` | _Boolean_ | Enable the display of the beginning of the next verse on the current slide `v2.28.0+` |
+| `show_next_verse.max_length` | _Boolean_ | Maximum number of characters. `40 ~ 500` `v2.28.0+` |
+| `show_next_verse.line_break_type` | _Boolean_ | `no_line_break`, `single_line_break`, `double_line_break` `v2.28.0+` |
+| `show_next_verse.style_enabled` | _Boolean_ | Enable custom text formatting `v2.28.0+` |
+| `show_next_verse.style` | _Boolean_ | Custom text formatting. [Styled Text](https://github.com/holyrics/Scripts/blob/main/i18n/en/StyledText.md) `v2.28.0+` |
 <details>
   <summary>See example</summary>
 
@@ -13118,7 +13432,14 @@ It is an object with the same parameters available in **Transition Effect Settin
   "custom_theme": null,
   "apply_custom_theme_to_bible": true,
   "apply_custom_theme_to_text": true,
-  "apply_custom_theme_to_quick_presentation": false
+  "apply_custom_theme_to_quick_presentation": false,
+  "show_next_verse": {
+    "enabled": false,
+    "max_length": 100,
+    "line_break_type": "double_line_break",
+    "style_enabled": true,
+    "style": "<i><size:60>"
+  }
 }
 ```
 </details>
@@ -13536,7 +13857,9 @@ Key/value pair
     "background": "000000",
     "height": 12,
     "position": "top_right",
-    "corner": 0
+    "corner": 0,
+    "horizontal_margin": 0.0,
+    "vertical_margin": 0.0
   }
 }
 ```
@@ -13554,6 +13877,8 @@ Key/value pair
 | `height` | _Number_ | Value in percentage based on the line height.<br>Accepted values: `6` `7` `8` `9` `10` `12` `14` `15` `16` `18` `20` `25` `30` `35` `40` |
 | `position` | _Boolean_ | Accepted values: `top_left` `top_center` `top_right` `middle_left` `middle_center` `middle_right` `bottom_left` `bottom_center` `bottom_right` |
 | `corner` | _Number_ | `0 ~ 100` |
+| `horizontal_margin` | _Number_ | Horizontal margin `-100 ~ 100` `v2.28.0+` |
+| `vertical_margin` | _Number_ | Vertical margin `-100 ~ 100` `v2.28.0+` |
 <details>
   <summary>See example</summary>
 
@@ -13567,7 +13892,9 @@ Key/value pair
   "background": "000000",
   "height": 12,
   "position": "top_right",
-  "corner": 0
+  "corner": 0,
+  "horizontal_margin": 0.0,
+  "vertical_margin": 0.0
 }
 ```
 </details>
@@ -13742,6 +14069,138 @@ Translation configuration model
   "id": "",
   "name": "",
   "alternative_name": ""
+}
+```
+</details>
+
+## Logo Settings
+Logo Configuration
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `enabled` | _Boolean_ |  |
+| `position` | _String_ | Accepted values: `top_left` `top_center` `top_right` `middle_left` `middle_center` `middle_right` `bottom_left` `bottom_center` `bottom_right` |
+| `opacity` | _Number_ | `0 ~ 100` |
+| `horizontal_margin` | _Number_ | `0 ~ 49` |
+| `vertical_margin` | _Number_ | `0 ~ 49` |
+| `auto_hide` | _Boolean_ |  |
+| `auto_display` | _Boolean_ |  |
+| `centralize_with_blank_screen_music_or_tex` | _Boolean_ |  |
+| `centralize_with_blank_screen_bible` | _Boolean_ |  |
+| `centralize_with_blank_screen_animation` | _Boolean_ |  |
+| `fade` | _Boolean_ |  |
+| `centralize_without_presentation` | _Boolean_ |  |
+| `display_with_vlc_player` | _Boolean_ |  |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "enabled": false,
+  "position": "",
+  "opacity": 0,
+  "horizontal_margin": 0,
+  "vertical_margin": 0,
+  "auto_hide": false,
+  "auto_display": false,
+  "centralize_with_blank_screen_music_or_tex": false,
+  "centralize_with_blank_screen_bible": false,
+  "centralize_with_blank_screen_animation": false,
+  "fade": false,
+  "centralize_without_presentation": false,
+  "display_with_vlc_player": false
+}
+```
+</details>
+
+## Logo Settings Preset
+Logo configuration model
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `name` | _String_ | Item name |
+| `preset` | _[LogoSettings](#logo-settings)_ |  |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "id": "",
+  "name": "",
+  "preset": {
+    "enabled": false,
+    "position": "",
+    "opacity": 0,
+    "horizontal_margin": 0,
+    "vertical_margin": 0,
+    "auto_hide": false,
+    "auto_display": false,
+    "centralize_with_blank_screen_music_or_tex": false,
+    "centralize_with_blank_screen_bible": false,
+    "centralize_with_blank_screen_animation": false,
+    "fade": false,
+    "centralize_without_presentation": false,
+    "display_with_vlc_player": false
+  }
+}
+```
+</details>
+
+## Bible Responsive Reading Settings
+Configuration of alternate Bible verse reading
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `display_two_verses` | _Boolean_ | Display two verses |
+| `descriptions` | _String_ | Description of each reading. Items separated by line break. |
+| `font_color` | _String_ | Font color in hexadecimal. If it is **null**, use the theme's default font color |
+| `underline` | _Boolean_ | Display underlined description |
+| `use_theme_effects` | _Boolean_ | Display description with the effects of the theme (outline, glow, shadow, ...) |
+| `change_description_last_verse` | _Boolean_ | Change the description of the last verse |
+| `description_last_verse` | _String_ | Description of the last verse |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "display_two_verses": false,
+  "descriptions": "",
+  "font_color": "",
+  "underline": false,
+  "use_theme_effects": false,
+  "change_description_last_verse": false,
+  "description_last_verse": ""
+}
+```
+</details>
+
+## Bible Responsive Reading Settings Preset
+Configuration model for alternating Bible verse reading
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `id` | _String_ | Item ID |
+| `name` | _String_ | Item name |
+| `preset` | _[BibleResponsiveReadingSettings](#bible-responsive-reading-settings)_ |  |
+| `metadata.modified_time_millis` | _Number_ | File modification date. (timestamp) `v2.25.0+` `read-only` |
+<details>
+  <summary>See example</summary>
+
+```json
+{
+  "id": "",
+  "name": "",
+  "preset": {
+    "display_two_verses": false,
+    "descriptions": "",
+    "font_color": "",
+    "underline": false,
+    "use_theme_effects": false,
+    "change_description_last_verse": false,
+    "description_last_verse": ""
+  }
 }
 ```
 </details>
@@ -14029,7 +14488,7 @@ Settings for the 'simulate projection' option
 | ---- | :---: | ------------|
 | `enabled` | _Boolean_ |  |
 | `hide_screen` | _Boolean_ |  |
-| `position` | _String_ | Can be: Accepted values: `user` `public` `on_the_right_simulation_1` `on_the_right_simulation_2` |
+| `position` | _String_ | Can be: `user` `public` `on_the_right_simulation_1` `on_the_right_simulation_2` |
 | `x` | _Number_ | `0 ~ 9999` |
 | `y` | _Number_ | `0 ~ 9999` |
 | `width` | _Number_ | `1 ~ 3840` |
@@ -14062,7 +14521,7 @@ Settings for the 'simulate projection' option
 ## AddItem
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `actions`  `global_action`  `alert`  `cp_alert`  `api`  `script`  `module_action` |
+| `type` | _String_ | Type of item. It can be: `title`  `song`  `verse`  `text`  `audio`  `video`  `image`  `file`  `announcement`  `automatic_presentation`  `countdown`  `countdown_cp`  `cp_text`  `plain_text`  `uri`  `actions`  `global_action`  `alert`  `cp_alert`  `theme_background`  `api`  `script`  `module_action` |
 
 ## AddItemTitle
 | Name | Type  | Description |
@@ -14114,6 +14573,8 @@ Settings for the 'simulate projection' option
 | `ids` | _Array&lt;String&gt; (optional)_ | To display a list of verses. List with the ID of each verse.<br/>Example: ['19023001', '43003016', '45012002'] |
 | `references` | _String (optional)_ | References. Example: **John 3:16** or **Rm 12:2** or **Gn 1:1-3 Sl 23.1** |
 | `version` | _String (optional)_ | Name or abbreviation of the translation used `v2.21.0+` |
+| `show_x_verses` | _Number (optional)_ | Number of verses displayed in the projection `v2.28.0+` |
+| `default_action` | _String (optional)_ | Standard action `default` `responsive_reading` `only_reference` `Default: default` `v2.28.0+` |
 <details>
   <summary>See example</summary>
 
@@ -14121,7 +14582,9 @@ Settings for the 'simulate projection' option
 {
   "type": "verse",
   "references": "Ps 23.1-6 Rm 12.2",
-  "version": "en_kjv"
+  "version": "en_kjv",
+  "show_x_verses": 0,
+  "default_action": ""
 }
 ```
 </details>
@@ -14485,6 +14948,14 @@ Available actions: [HolyricsActions](https://github.com/holyrics/jslib/blob/main
 | `active_icon` | _String (optional)_ |  |
 | `active_icon_color` | _String (optional)_ | Color in hexadecimal format |
 | `settings` | _Object (optional)_ | Key/value map |
+
+## AddItemThemeBackground
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `background_type` | _String_ | Type of background. Can be: `color`  `my_video`  `my_image`  `video`  `image`  `pattern`  `transparent`  `image_file`  `video_file` |
+| `background_id` | _String_ | <table><tr><td><p align="right">**Type**</p></td><td>Value</td></tr><tr><td><p align="right">color</p></td><td>Color in hexadecimal format</td></tr><tr><td><p align="right">my_video</p></td><td>Item ID</td></tr><tr><td><p align="right">my_image</p></td><td>Item ID</td></tr><tr><td><p align="right">video</p></td><td>Item ID</td></tr><tr><td><p align="right">image</p></td><td>Item ID</td></tr><tr><td><p align="right">pattern</p></td><td>Item ID</td></tr><tr><td><p align="right">transparent</p></td><td>"transparent"</td></tr><tr><td><p align="right">image_file</p></td><td>File name in the library</td></tr><tr><td><p align="right">video_file</p></td><td>File name in the library</td></tr></table> |
+| `adjust_type` | _String_ | `fill` `extend` `adjust` `side_by_side` `center`<br>Available for: **type=my_image**, **type=image** |
+| `velocity` | _Number_ | Available for: **type=my_video**, **type=video**<br>`0.25 ~ 4.0` |
 
 ## SongInfo
 | Name | Type  | Description |

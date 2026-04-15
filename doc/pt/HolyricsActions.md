@@ -42,6 +42,14 @@
   - [settings_trigger_pause_for_tag](#settings_trigger_pause_for_tag)
   - [settings_trigger_pause_for_receiver](#settings_trigger_pause_for_receiver)
   - [settings_javascript_boolean_state](#settings_javascript_boolean_state)
+  - [settings_misc_load_display_settings_preset_public](#settings_misc_load_display_settings_preset_public)
+  - [settings_misc_load_display_settings_preset_return](#settings_misc_load_display_settings_preset_return)
+  - [settings_misc_load_display_settings_preset_image](#settings_misc_load_display_settings_preset_image)
+  - [settings_misc_load_display_settings_preset_html](#settings_misc_load_display_settings_preset_html)
+  - [settings_misc_load_translation_settings_preset](#settings_misc_load_translation_settings_preset)
+  - [settings_misc_load_logo_settings_preset](#settings_misc_load_logo_settings_preset)
+  - [settings_misc_load_bible_responsive_reading_settings_preset](#settings_misc_load_bible_responsive_reading_settings_preset)
+  - [settings_misc_midi_time_code_sync_media_player](#settings_misc_midi_time_code_sync_media_player)
   - [interface_open_window_holyrics](#interface_open_window_holyrics)
   - [interface_open_window_bible](#interface_open_window_bible)
   - [interface_open_window_quick_presentation](#interface_open_window_quick_presentation)
@@ -348,7 +356,7 @@ _Nenhum parâmetro é necessário_
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `tab` | _String_ | `general` `verse_description` `show_version` `alternate_reading` `theme` |
+| `tab` | _String_ | `general` `verse_description` `show_version` `responsive_reading` `theme` `layout` |
 
 
 ---
@@ -462,6 +470,98 @@ _Nenhum parâmetro é necessário_
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `state_id` | _String_ | Estado (ID) |
+| `action` | _String_ | `toggle` `on` `off` |
+
+
+---
+
+
+### settings_misc_load_display_settings_preset_public
+**Settings:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `target_screen_id` | _String_ | `public` |
+| `preset_id` | _String_ | `` `gGH5oFRrl0uTl8fo` `g3PiBj5vP5B6at5L` `sKYnZzU5BMWN36oB` |
+
+
+---
+
+
+### settings_misc_load_display_settings_preset_return
+**Settings:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `target_screen_id` | _String_ | `screen_2` `screen_3` `screen_4` |
+| `preset_id` | _String_ | `` `Y9VqPMGpSl90sjCR` |
+
+
+---
+
+
+### settings_misc_load_display_settings_preset_image
+**Settings:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `target_screen_id` | _String_ | `stream_image` |
+| `preset_id` | _String_ | `` `jvQvXjiBexQBfIe4` |
+
+
+---
+
+
+### settings_misc_load_display_settings_preset_html
+**Settings:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `target_screen_id` | _String_ | `stream_html_1` `stream_html_2` `stream_html_3` |
+| `preset_id` | _String_ | `` `64qD6XE9LOcpRJx1` `YGPNr1qpkVg5DRXu` |
+
+
+---
+
+
+### settings_misc_load_translation_settings_preset
+**Settings:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `preset_id` | _String_ | `` `tfRW6Rcqs3J3nrh6` `WXQXhfyf7sK8fN44` `K4DwpC8KQQc4rrDj` `RB6vg3s8wqrTkQyr` `GdVG6cRvMBbNfcmw` `RYDhBznb8Mfk` |
+
+
+---
+
+
+### settings_misc_load_logo_settings_preset
+**Settings:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `preset_id` | _String_ | `` `XjvWCqCrHFJq` `tBtgVCwzWzfk` `zqcQbTGJWRX7` `p4JN4jY9nqyH` `nvngsbjFvfwQ` `DRghbkNzmDpn` |
+
+
+---
+
+
+### settings_misc_load_bible_responsive_reading_settings_preset
+**Settings:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `preset_id` | _String_ | `` `68d4xM8rGJYc` `yBP9hfdxPjwg` |
+
+
+---
+
+
+### settings_misc_midi_time_code_sync_media_player
+**Settings:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
 | `action` | _String_ | `toggle` `on` `off` |
 
 
