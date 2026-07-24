@@ -6595,9 +6595,9 @@ Exibir uma mensagem personalizada sem a necessidade que o objeto de referência 
 | `input.params.*.key` | _String_ | ID da variável |
 | `input.params.*.label` | _String_ | Nome da variável |
 | `input.params.*.default_value` | _String (opcional)_ | Valor padrão/inicial da variável |
-| `input.params.*.only_number` | _String (opcional)_ | Aceitar somente números |
-| `input.params.*.uppercase` | _String (opcional)_ | Aceitar somente caracteres em maiúsculo |
-| `input.params.*.suggestions` | _String (opcional)_ | Lista de sugestões |
+| `input.params.*.only_number` | _Boolean (opcional)_ | Aceitar somente números |
+| `input.params.*.uppercase` | _Boolean (opcional)_ | Aceitar somente caracteres em maiúsculo |
+| `input.params.*.suggestions` | _Array&lt;String&gt; (opcional)_ | Lista de sugestões |
 
 
 _Método sem retorno_

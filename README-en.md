@@ -6595,9 +6595,9 @@ Display a custom message without the need for the reference object to exist. Not
 | `input.params.*.key` | _String_ | Variable ID |
 | `input.params.*.label` | _String_ | Variable name |
 | `input.params.*.default_value` | _String (optional)_ | Default/initial value of the variable |
-| `input.params.*.only_number` | _String (optional)_ | Accept only numbers |
-| `input.params.*.uppercase` | _String (optional)_ | Accept only uppercase characters |
-| `input.params.*.suggestions` | _String (optional)_ | List of suggestions |
+| `input.params.*.only_number` | _Boolean (optional)_ | Accept only numbers |
+| `input.params.*.uppercase` | _Boolean (optional)_ | Accept only uppercase characters |
+| `input.params.*.suggestions` | _Array&lt;String&gt; (optional)_ | List of suggestions |
 
 
 _Method does not return value_
