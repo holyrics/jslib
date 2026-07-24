@@ -6590,7 +6590,7 @@ Exibir uma mensagem personalizada sem a necessidade que o objeto de referência 
 | `input.name` | _String_ | Nome |
 | `input.message` | _String_ | Mensagem modelo.<br>Coloque o id da variável entre chaves no texto, exemplo: "Proprietário do carro de placa {placa}, favor comparecer ao estacionamento" |
 | `input.note` | _String_ | Informação extra exibida na janela popup para o operador |
-| `<br>**params**` |  |  |
+| ``<br>**params**` |  |  |
 | `input.params` | _Array&lt;Object&gt;_ | Lista de variáveis da mensagem |
 | `input.params.*.key` | _String_ | ID da variável |
 | `input.params.*.label` | _String_ | Nome da variável |
@@ -12052,12 +12052,12 @@ Abre uma janela para selecionar itens em uma lista de valores exibidos em grade
 | ---- | :---: | ------------|
 | `title` | _String (opcional)_ | Título da janela |
 | `renderer` | _Function (opcional)_ | `function (item, index) { /* ... */ }`<br>Método que retorna o tema base que é utilizado para renderizar o respectivo item.<br>Se declarado, deve retornar um objeto do tipo: [Theme](#theme) |
-| `item_size` | _String (opcional)_ | Largura e altura do item. {width}x{height} `32 ~ 512` `Padrão: 64x64` |
+| `item_size` | _String (opcional)_ | Largura e altura do item. `{width}x{height}` `32 ~ 512` `Padrão: 64x64` |
 | `multiple_selection` | _Boolean (opcional)_ | Permitir seleção de múltiplos itens `Padrão: false` |
 | `on_change` | _Function (opcional)_ | Método executado sempre que os itens selecionados forem alterados |
 | `default_selection` | _Array&lt;Object&gt; (opcional)_ | Lista com o `items.*.id` ou índice dos objetos que serão pré-selecionados por padrão. |
 | `items` | _Array&lt;Object&gt;_ | Itens que serão exibidos.<br>Cada item pode ser uma objeto simples (string, number, etc) em vez de objeto complexo. |
-|  |  | <br>Para itens complexos |
+|  |  | <br>Para objetos complexos |
 | `items.*.label` | _String (opcional)_ | Nome que será exibido representando o item |
 
 
@@ -12065,7 +12065,7 @@ Abre uma janela para selecionar itens em uma lista de valores exibidos em grade
 
 | Tipo  | Descrição |
 | :---: | ------------|
-| _Object_ | Retorna os itens selecionados pelo usuário (pode ser NULL).<br>Se `multiple_selection=false`, retorna o objeto ou `null`.<br>Se `multiple_selection=true`, retorna a lista de objetos selecionados (mesmo que seja apenas um objeto) ou `null` |
+| _Object_ | Retorna os itens selecionados pelo usuário (pode ser `null`).<br>Se `multiple_selection=false`, retorna o objeto ou `null`.<br>Se `multiple_selection=true`, retorna a lista de objetos selecionados (mesmo que seja apenas um objeto) ou `null` |
 
 
 **Exemplo:**
@@ -13687,11 +13687,11 @@ Configurações de uma saída NDI®
 | `transparent_background` | _Boolean_ |  |
 | `transition_effect_enabled` | _Boolean_ |  |
 | `custom_theme` | _Object_ | Tema personalizado |
-| `custom_theme._default` | _Object_ |  |
-| `custom_theme.music` | _Object_ |  |
-| `custom_theme.text` | _Object_ |  |
-| `custom_theme.bible` | _Object_ |  |
-| `custom_theme.quick_presentation` | _Object_ |  |
+| `custom_theme._default` | _String_ | ID do item |
+| `custom_theme.music` | _String_ | ID do item |
+| `custom_theme.text` | _String_ | ID do item |
+| `custom_theme.bible` | _String_ | ID do item |
+| `custom_theme.quick_presentation` | _String_ | ID do item |
 | `display_settings` | _[DisplaySettings](#display-settings)_ |  |
 <details>
   <summary>Ver exemplo</summary>

@@ -6590,7 +6590,7 @@ Display a custom message without the need for the reference object to exist. Not
 | `input.name` | _String_ | Name |
 | `input.message` | _String_ | Template message.<br>Place the variable id in braces in the text, for example: "Owner of the car with license plate {plate}, please come to the parking lot" |
 | `input.note` | _String_ | Extra information displayed in popup window for operator |
-| `<br>**params**` |  |  |
+| ``<br>**params**` |  |  |
 | `input.params` | _Array&lt;Object&gt;_ | List of message variables |
 | `input.params.*.key` | _String_ | Variable ID |
 | `input.params.*.label` | _String_ | Variable name |
@@ -12052,12 +12052,12 @@ Opens a window to select items from a list of values displayed in a grid
 | ---- | :---: | ------------|
 | `title` | _String (optional)_ | Window title |
 | `renderer` | _Function (optional)_ | `function (item, index) { /* ... */ }`<br>Method that returns the base theme used to render the respective item.<br>If declared, it should return an object of the type: [Theme](#theme) |
-| `item_size` | _String (optional)_ | Width and height of the item. {width}x{height} `32 ~ 512` `Default: 64x64` |
+| `item_size` | _String (optional)_ | Width and height of the item. `{width}x{height}` `32 ~ 512` `Default: 64x64` |
 | `multiple_selection` | _Boolean (optional)_ | Allow selection of multiple items `Default: false` |
 | `on_change` | _Function (optional)_ | Method executed whenever the selected items are changed |
 | `default_selection` | _Array&lt;Object&gt; (optional)_ | List with the `items.*.id` or index of the objects that will be pre-selected by default. |
 | `items` | _Array&lt;Object&gt;_ | Items that will be displayed.<br>Each item can be a simple object (string, number, etc.) instead of a complex object. |
-|  |  | <br>For complex items |
+|  |  | <br>For complex objects |
 | `items.*.label` | _String (optional)_ | Name that will be displayed representing the item |
 
 
@@ -12065,7 +12065,7 @@ Opens a window to select items from a list of values displayed in a grid
 
 | Type  | Description |
 | :---: | ------------|
-| _Object_ | Returns the items selected by the user (can be NULL).<br>If `multiple_selection=false`, returns the object or `null`.<br>If `multiple_selection=true`, returns the list of selected objects (even if it is just one object) or `null` |
+| _Object_ | Returns the items selected by the user (can be `null`).<br>If `multiple_selection=false`, returns the object or `null`.<br>If `multiple_selection=true`, returns the list of selected objects (even if it is just one object) or `null` |
 
 
 **Example:**
@@ -13687,11 +13687,11 @@ NDI® output settings
 | `transparent_background` | _Boolean_ |  |
 | `transition_effect_enabled` | _Boolean_ |  |
 | `custom_theme` | _Object_ | Custom theme |
-| `custom_theme._default` | _Object_ |  |
-| `custom_theme.music` | _Object_ |  |
-| `custom_theme.text` | _Object_ |  |
-| `custom_theme.bible` | _Object_ |  |
-| `custom_theme.quick_presentation` | _Object_ |  |
+| `custom_theme._default` | _String_ | Item ID |
+| `custom_theme.music` | _String_ | Item ID |
+| `custom_theme.text` | _String_ | Item ID |
+| `custom_theme.bible` | _String_ | Item ID |
+| `custom_theme.quick_presentation` | _String_ | Item ID |
 | `display_settings` | _[DisplaySettings](#display-settings)_ |  |
 <details>
   <summary>See example</summary>
