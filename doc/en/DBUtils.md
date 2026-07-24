@@ -13,8 +13,8 @@ var song = h.db.song['123'];
 # Fields 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `list` | _Object_ | List with all the data |
-| `ids` | _Object_ | List of all IDs |
+| `list` | _Array&lt;Object&gt;_ | List with all the data |
+| `ids` | _Array&lt;Object&gt;_ | List of all IDs |
 
 
 ---
@@ -93,7 +93,7 @@ var size = h.db.song.getSize();
 
 
 ### getOptional(id)
-### getOpt
+### getOpt(id)
 Gets an item inside an `Optional` from the ID
 
 **Parameters:**

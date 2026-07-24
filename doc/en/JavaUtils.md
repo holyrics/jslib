@@ -42,6 +42,11 @@ var list = h.j.list();
 ### list(...args)
 
 
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `args` | _Array&lt;Object&gt;_ |  |
 
 
 **Response:**
@@ -84,6 +89,11 @@ var set = h.j.set();
 ### set(...args)
 
 
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `args` | _Array&lt;Object&gt;_ |  |
 
 
 **Response:**
@@ -147,6 +157,11 @@ var lmap = h.j.lmap();
 ### toList(array)
 Converts a native JavaScript array into a Java ArrayList
 
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `array` | _Array&lt;Object&gt;_ |  |
 
 
 **Response:**
@@ -169,6 +184,11 @@ var list = h.j.toList(arr);
 ### toSet(array)
 Converts a native JavaScript array into a Java HashSet
 
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `array` | _Array&lt;Object&gt;_ |  |
 
 
 **Response:**
@@ -191,6 +211,11 @@ var set = h.j.toSet(arr);
 ### toMap(obj)
 Converts a native JavaScript object into a Java HashMap
 
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `obj` | _Object_ |  |
 
 
 **Response:**
@@ -217,6 +242,11 @@ var map = h.j.toMap(m);
 ### toLMap(obj)
 Converts a native JavaScript object into a Java LinkedHashMap
 
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `obj` | _Object_ |  |
 
 
 **Response:**
@@ -244,6 +274,11 @@ var lmap = h.j.toLMap(m);
 ### opt(obj)
 Optional Java
 
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `obj` | _Object_ |  |
 
 
 **Response:**

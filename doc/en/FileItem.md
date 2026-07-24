@@ -5,6 +5,7 @@ var f = h.files.getImage('image.jpg');
 h.log(f.name);
 h.log(f.properties.abc);
 f.properties.abc = 'xyz';
+h.log(f.tags.contains('example'));
 ```
 
 
@@ -17,6 +18,7 @@ f.properties.abc = 'xyz';
 | `filename` | _String_ |  |
 | `is_dir` | _Boolean_ |  |
 | `properties` | _Object_ |  |
+| `tags` | _Array&lt;String&gt;_ |  `v2.29.0+` |
 
 
 ---

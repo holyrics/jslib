@@ -42,6 +42,7 @@
   - [settings_trigger_pause_for_tag](#settings_trigger_pause_for_tag)
   - [settings_trigger_pause_for_receiver](#settings_trigger_pause_for_receiver)
   - [settings_javascript_boolean_state](#settings_javascript_boolean_state)
+  - [settings_javascript_log_by_key_enabled](#settings_javascript_log_by_key_enabled)
   - [settings_misc_load_display_settings_preset_public](#settings_misc_load_display_settings_preset_public)
   - [settings_misc_load_display_settings_preset_return](#settings_misc_load_display_settings_preset_return)
   - [settings_misc_load_display_settings_preset_image](#settings_misc_load_display_settings_preset_image)
@@ -75,6 +76,7 @@
   - [interface_open_window_telegram_questions](#interface_open_window_telegram_questions)
   - [interface_open_window_telegram_poll](#interface_open_window_telegram_poll)
   - [interface_open_window_telegram_files](#interface_open_window_telegram_files)
+  - [interface_open_window_js_monitor](#interface_open_window_js_monitor)
   - [interface_select_item_song](#interface_select_item_song)
   - [interface_select_item_text](#interface_select_item_text)
   - [interface_select_folder_text](#interface_select_folder_text)
@@ -94,6 +96,7 @@
   - [interface_open_folder_file](#interface_open_folder_file)
   - [interface_playlist_expand_collapse_title](#interface_playlist_expand_collapse_title)
   - [interface_playlist_load_saved_list](#interface_playlist_load_saved_list)
+  - [interface_playlist_download_external_playlist](#interface_playlist_download_external_playlist)
   - [interface_bible_change_version](#interface_bible_change_version)
   - [interface_bible_set_displayed_verses](#interface_bible_set_displayed_verses)
   - [interface_bible_split_long_verses](#interface_bible_split_long_verses)
@@ -476,13 +479,25 @@ _No parameters are required_
 ---
 
 
+### settings_javascript_log_by_key_enabled
+**Settings:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `log_key` | _String_ | ID |
+| `action` | _String_ | `toggle` `on` `off` |
+
+
+---
+
+
 ### settings_misc_load_display_settings_preset_public
 **Settings:**
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `target_screen_id` | _String_ | `public` |
-| `preset_id` | _String_ | `` `gGH5oFRrl0uTl8fo` `g3PiBj5vP5B6at5L` `sKYnZzU5BMWN36oB` |
+| `preset_id` | _String_ | Preset |
 
 
 ---
@@ -494,7 +509,7 @@ _No parameters are required_
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `target_screen_id` | _String_ | `screen_2` `screen_3` `screen_4` |
-| `preset_id` | _String_ | `` `Y9VqPMGpSl90sjCR` |
+| `preset_id` | _String_ | Preset |
 
 
 ---
@@ -506,7 +521,7 @@ _No parameters are required_
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `target_screen_id` | _String_ | `stream_image` |
-| `preset_id` | _String_ | `` `jvQvXjiBexQBfIe4` |
+| `preset_id` | _String_ | Preset |
 
 
 ---
@@ -518,7 +533,7 @@ _No parameters are required_
 | Name | Type  | Description |
 | ---- | :---: | ------------|
 | `target_screen_id` | _String_ | `stream_html_1` `stream_html_2` `stream_html_3` |
-| `preset_id` | _String_ | `` `64qD6XE9LOcpRJx1` `YGPNr1qpkVg5DRXu` |
+| `preset_id` | _String_ | Preset |
 
 
 ---
@@ -529,7 +544,7 @@ _No parameters are required_
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `preset_id` | _String_ | `` `tfRW6Rcqs3J3nrh6` `WXQXhfyf7sK8fN44` `K4DwpC8KQQc4rrDj` `RB6vg3s8wqrTkQyr` `GdVG6cRvMBbNfcmw` `RYDhBznb8Mfk` |
+| `preset_id` | _String_ | Preset |
 
 
 ---
@@ -540,7 +555,7 @@ _No parameters are required_
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `preset_id` | _String_ | `` `XjvWCqCrHFJq` `tBtgVCwzWzfk` `zqcQbTGJWRX7` `p4JN4jY9nqyH` `nvngsbjFvfwQ` `DRghbkNzmDpn` |
+| `preset_id` | _String_ | Preset |
 
 
 ---
@@ -551,7 +566,7 @@ _No parameters are required_
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `preset_id` | _String_ | `` `68d4xM8rGJYc` `yBP9hfdxPjwg` |
+| `preset_id` | _String_ | Preset |
 
 
 ---
@@ -605,13 +620,30 @@ _No parameters are required_
 
 
 ### interface_open_window_multiple_choice
-_No parameters are required_
+**Settings:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `tab` | _String_ | Tab |
+
 
 ---
 
 
 ### interface_open_window_draw_lots
-_No parameters are required_
+**Settings:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `type` | _String_ | `number` `text` |
+| `set_initial_values` | _Object_ | Set initial values |
+| `number_start` | _String_ | number_start |
+| `number_end` | _String_ | number_end |
+| `number_zero_fill` | _String_ | number_zero_fill |
+| `number_except` | _String_ | number_except |
+| `text_content` | _String_ | text_content |
+| `text_remove_duplicate` | _String_ | text_remove_duplicate |
+
 
 ---
 
@@ -714,6 +746,17 @@ _No parameters are required_
 
 ### interface_open_window_telegram_files
 _No parameters are required_
+
+---
+
+
+### interface_open_window_js_monitor
+**Settings:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `tab` | _String_ | Tab |
+
 
 ---
 
@@ -904,6 +947,17 @@ _No parameters are required_
 | ---- | :---: | ------------|
 | `model_id` | _String_ | List |
 | `mode` | _String_ | `replace` `merge` |
+
+
+---
+
+
+### interface_playlist_download_external_playlist
+**Settings:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `source_id` | _String_ | Source |
 
 
 ---

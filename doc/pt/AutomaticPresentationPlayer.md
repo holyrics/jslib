@@ -18,11 +18,17 @@ if (r.isPlaying()) {
   - [isMute](#ismute)
   - [getTime](#gettime)
   - [getDuration](#getduration)
+  - [play](#play)
+  - [pause](#pause)
+  - [stop](#stop)
+  - [setVolume](#setvolumevolume)
+  - [setMute](#setmutemute)
+  - [setCurrentTime](#setcurrenttimetime)
   - [getSlide](#getslide)
 
 
 # Functions 
-### getName()
+### getName
 - v2.23.0
 
 Nome da mídia atual no player
@@ -120,6 +126,93 @@ Tempo total da mídia atual no player
 | :---: | ------------|
 | _Number_ | Tempo total em milissegundos |
 
+
+---
+
+
+### play()
+- v2.29.0
+
+Executar a ação **play** do player
+
+
+
+_Método sem retorno_
+
+---
+
+
+### pause()
+- v2.29.0
+
+Executar a ação **pause** do player
+
+
+
+_Método sem retorno_
+
+---
+
+
+### stop()
+- v2.29.0
+
+Executar a ação **stop** do player
+
+
+
+_Método sem retorno_
+
+---
+
+
+### setVolume(volume)
+- v2.29.0
+
+Altera o volume do player
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `volume` | _Number_ | Mínimo=0, Máximo=100 |
+
+
+_Método sem retorno_
+
+---
+
+
+### setMute(mute)
+- v2.29.0
+
+Altera a opção **mudo**
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `mute` | _Boolean_ |  |
+
+
+_Método sem retorno_
+
+---
+
+
+### setCurrentTime(time)
+- v2.29.0
+
+Alterar o tempo atual da mídia em milissegundos
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `time` | _Number_ | Alterar o tempo atual da mídia em milissegundos |
+
+
+_Método sem retorno_
 
 ---
 

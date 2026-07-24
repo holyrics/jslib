@@ -25,6 +25,8 @@ Porém ao executar uma PLAYLIST, o Spotify não toca a primeira faixa automatica
 ### youtube.track(id)
 ### spotify.track(id)
 ### deezer.track(id)
+### apple_music.track(id)
+### amazon_music.track(id)
 Plays an audio track
 
 **Parameters:**
@@ -47,6 +49,8 @@ Plays an audio track
 ### youtube.playlist(id)
 ### spotify.playlist(id)
 ### deezer.playlist(id)
+### apple_music.playlist(id)
+### amazon_music.playlist(id)
 Plays a playlist
 
 **Parameters:**
@@ -69,6 +73,8 @@ Plays a playlist
 ### youtube.album(id)
 ### spotify.album(id)
 ### deezer.album(id)
+### apple_music.album(id)
+### amazon_music.album(id)
 Plays an album
 
 **Parameters:**
@@ -90,6 +96,8 @@ Plays an album
 
 ### spotify.artist(id)
 ### deezer.artist(id)
+### apple_music.artist(id)
+### amazon_music.artist(id)
 Open the artist's page
 
 **Parameters:**

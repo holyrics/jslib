@@ -18,11 +18,17 @@ if (r.isPlaying()) {
   - [isMute](#ismute)
   - [getTime](#gettime)
   - [getDuration](#getduration)
+  - [play](#play)
+  - [pause](#pause)
+  - [stop](#stop)
+  - [setVolume](#setvolumevolume)
+  - [setMute](#setmutemute)
+  - [setCurrentTime](#setcurrenttimetime)
   - [getSlide](#getslide)
 
 
 # Functions 
-### getName()
+### getName
 - v2.23.0
 
 Name of current media in player
@@ -120,6 +126,93 @@ Total media time in the player
 | :---: | ------------|
 | _Number_ | Total time in milliseconds |
 
+
+---
+
+
+### play()
+- v2.29.0
+
+Execute the **play** action of the player
+
+
+
+_Method does not return value_
+
+---
+
+
+### pause()
+- v2.29.0
+
+Execute the **pause** action of the player
+
+
+
+_Method does not return value_
+
+---
+
+
+### stop()
+- v2.29.0
+
+Execute the **stop** action of the player
+
+
+
+_Method does not return value_
+
+---
+
+
+### setVolume(volume)
+- v2.29.0
+
+Change the volume of the player
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `volume` | _Number_ | Minimum=0, Maximum=100 |
+
+
+_Method does not return value_
+
+---
+
+
+### setMute(mute)
+- v2.29.0
+
+Change the **mute** option
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `mute` | _Boolean_ |  |
+
+
+_Method does not return value_
+
+---
+
+
+### setCurrentTime(time)
+- v2.29.0
+
+Change the current media time in milliseconds
+
+**Parameters:**
+
+| Name | Type  | Description |
+| ---- | :---: | ------------|
+| `time` | _Number_ | Change the current media time in milliseconds |
+
+
+_Method does not return value_
 
 ---
 

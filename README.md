@@ -228,6 +228,9 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [date.format](#dateformatformat-date--null)
   - [date.get](#dategetformat--null)
   - [date.parse](#dateparseformat-value)
+  - [date.formatDateStyle](#dateformatdatestyledateformat-datetime)
+  - [date.formatTimeStyle](#dateformattimestyletimeformat-datetime)
+  - [date.formatDateTimeStyle](#dateformatdatetimestyledateformat-timeformat-datetime)
   - [csvToArray](#csvtoarraycsv)
   - [xmlToJson](#xmltojsonxml)
   - [addTriggerListener](#addtriggerlistenerinput)
@@ -293,6 +296,7 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [ShowVerse](#hlyshowverse-input)
   - [GetAudios - GetVideos - GetImages - GetFiles](#hlygetaudios-input)
   - [GetAudio - GetVideo - GetImage - GetFile](#hlygetaudio-input)
+  - [GetFileTags](#hlygetfiletags)
   - [SetAudioItemProperty](#hlysetaudioitemproperty-input)
   - [PlayAudio](#hlyplayaudio-input)
   - [PlayVideo](#hlyplayvideo-input)
@@ -302,6 +306,7 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [ShowAnnouncement](#hlyshowannouncement-input)
   - [GetCustomMessages](#hlygetcustommessages)
   - [ShowCustomMessage](#hlyshowcustommessage-input)
+  - [ShowCustomMessageStandalone](#hlyshowcustommessagestandalone-input)
   - [ShowQuickPresentation](#hlyshowquickpresentation-input)
   - [ShowCountdown](#hlyshowcountdown-input)
   - [GetQuizList](#hlygetquizlist)
@@ -393,6 +398,9 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [GetDisplaySettings](#hlygetdisplaysettings)
   - [SetDisplaySettings](#hlysetdisplaysettings-input)
   - [GetDisplaySettingsPresets](#hlygetdisplaysettingspresets-input)
+  - [GetNDISettingsList](#hlygetndisettingslist)
+  - [GetNDISettings](#hlygetndisettings-input)
+  - [SetNDISettings](#hlysetndisettings-input)
   - [GetTransitionEffectSettings](#hlygettransitioneffectsettings)
   - [SetTransitionEffectSettings](#hlysettransitioneffectsettings-input)
   - [GetTranslationPresetList](#hlygettranslationpresetlist)
@@ -420,6 +428,7 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [GetSyncStatus](#hlygetsyncstatus)
   - [GetInterfaceInput](#hlygetinterfaceinput-input)
   - [SetInterfaceInput](#hlysetinterfaceinput-input)
+  - [GetOpenedWindow](#hlygetopenedwindow)
   - [SelectVerse](#hlyselectverse-input)
   - [OpenDrawLots](#hlyopendrawlots-input)
   - [GetMediaDuration](#hlygetmediaduration-input)
@@ -470,6 +479,7 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [inputTextArea](#inputtextareatitle-notification--false)
   - [itemChooser](#itemchoosertitle-items-notification--false)
   - [multipleItemChooser](#multipleitemchoosertitle-items-notification--false)
+  - [itemGridChooser](#itemgridchooseropts)
   - [confirm](#confirmmsg-title--confirm-notification--false)
   - [yesNo](#yesnomsg-title--confirm-notification--false)
   - [ok](#okmsg-title--confirm-notification--false)
@@ -486,6 +496,7 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [backgroundChooser](#backgroundchooser)
   - [verseChooser](#versechooser)
   - [iconChooser](#iconchooser)
+  - [popupAPIAuth](#popupapiauthopts)
   - [openWindow](#openwindowname)
   - [repaint](#repaintid)
   - [popupWorker](#popupworkerinput)
@@ -522,6 +533,7 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [Play Media Settings](#play-media-settings)
   - [Display Settings](#display-settings)
   - [Display Settings Preset](#display-settings-preset)
+  - [NDI Settings](#ndi-settings)
   - [Transition Effect Settings](#transition-effect-settings)
   - [Transition Effect Template Settings](#transition-effect-template-settings)
   - [Bible Settings](#bible-settings)
@@ -786,7 +798,7 @@ h.state.removeOnChange(stateID, onchangeID);
 ### db
 - v2.28.0
 
-[DBUtils](https://github.com/holyrics/jslib/blob/main/doc/pt/DBUtils.md) &nbsp;| &nbsp;Classe utilitária para acessar os principais dados do programa.<br><br>Itens disponíveis:<br>**`song`**  **`songs`**<br>**`text`**  **`texts`**<br>**`theme`**  **`themes`**<br>**`announcement`**  **`announcements`**<br>**`background`**  **`backgrounds`**  **`bg`**  **`bgs`**<br>**`automatic_presentation`**  **`automatic_presentations`**  **`ap`**  **`aps`**<br>**`slide_description`**  **`slide_descriptions`**<br>**`favorite`**  **`favorites`**<br>**`api`**  **`apis`**<br>**`script`**  **`scripts`**<br>**`saved_playlist`**  **`saved_playlists`**<br>**`song_group`**  **`song_groups`**<br>**`team`**  **`teams`**<br>**`member`**  **`members`**<br>**`role`**  **`roles`**<br>**`service`**  **`services`**<br>**`trigger`**  **`triggers`**<br>**`scheduled_task`**  **`scheduled_tasks`**<br>**`bible_version`**  **`bible_versions`**<br><br>Acessar um item pelo ID:<br>`var song = h.db.song['123'];`
+[DBUtils](https://github.com/holyrics/jslib/blob/main/doc/pt/DBUtils.md) &nbsp;| &nbsp;Classe utilitária para acessar os principais dados do programa.<br><br>Itens disponíveis:<br>**`song`**  **`songs`**<br>**`text`**  **`texts`**<br>**`theme`**  **`themes`**<br>**`announcement`**  **`announcements`**<br>**`background`**  **`backgrounds`**  **`bg`**  **`bgs`**<br>**`automatic_presentation`**  **`automatic_presentations`**  **`ap`**  **`aps`**<br>**`slide_description`**  **`slide_descriptions`**<br>**`favorite`**  **`favorites`**<br>**`api`**  **`apis`**<br>**`script`**  **`scripts`**<br>**`saved_playlist`**  **`saved_playlists`**<br>**`song_group`**  **`song_groups`**<br>**`team`**  **`teams`**<br>**`member`**  **`members`**<br>**`role`**  **`roles`**<br>**`service`**  **`services`**<br>**`trigger`**  **`triggers`**<br>**`scheduled_task`**  **`scheduled_tasks`**<br>**`bible_version`**  **`bible_versions`**
 
 
 
@@ -3763,6 +3775,94 @@ var r = h.date.parse('yyyy-MM-dd', '2025-03-16');
 ---
 
 
+### date.formatDateStyle(dateFormat, datetime)
+- v2.29.0
+
+Obtém a data formatada de acordo com as configurações de localização do sistema.<br>Pode gerar Exception.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `dateFormat` | _String_ | Valores aceitos: `short` `medium` `long` `full` |
+| `datetime` | _Object_ | Pode ser:<br>Objeto Date nativo JavaScript ou um número timestamp (timestamp compatível com segundos e milissegundos). |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Valor formatado |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.date.formatDateStyle('long', Date.now());
+```
+
+---
+
+
+### date.formatTimeStyle(timeFormat, datetime)
+- v2.29.0
+
+Obtém a hora formatada de acordo com as configurações de localização do sistema.<br>Pode gerar Exception.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `timeFormat` | _String_ | Valores aceitos: `short` `medium` `long` `full` |
+| `datetime` | _Object_ | Pode ser:<br>Objeto Date nativo JavaScript ou um número timestamp (timestamp compatível com segundos e milissegundos). |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Valor formatado |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.date.formatTimeStyle('medium', Date.now());
+```
+
+---
+
+
+### date.formatDateTimeStyle(dateFormat, timeFormat, datetime)
+- v2.29.0
+
+Obtém a data e a hora formatada de acordo com as configurações de localização do sistema.<br>Pode gerar Exception.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `dateFormat` | _String_ | Valores aceitos: `short` `medium` `long` `full` |
+| `timeFormat` | _String_ | Valores aceitos: `short` `medium` `long` `full` |
+| `datetime` | _Object_ | Pode ser:<br>Objeto Date nativo JavaScript ou um número timestamp (timestamp compatível com segundos e milissegundos). |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | Valor formatado |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.date.formatDateTimeStyle('long', 'medium', Date.now());
+```
+
+---
+
+
 ### csvToArray(csv)
 - v2.21.0
 
@@ -5249,6 +5349,7 @@ Cria uma conexão TCP. Pode gerar Exception.
 | `modelToCreate` | _Object (opcional)_ | Ações utilizadas ao criar uma nova conexão |
 | `modelToCreate.on_message` | _Function_ | Executado a cada nova mensagem recebida<br>O objeto `message` é do tipo:  [ByteBufferReader](https://github.com/holyrics/jslib/blob/main/doc/pt/ByteBufferReader.md)<br>`function(message) { ... }` |
 | `modelToCreate.on_close` | _Function (opcional)_ | Executado ao encerrar a conexão<br>`function(evt) { /* evt.source; */ }` |
+| `modelToCreate.loop` | _Function (opcional)_ | Executado a cada 1 segundo enquanto a conexão estiver aberta<br>Útil para conexões que precisam enviar um 'ping' para manter a conexão aberta<br>`function(evt) { /* evt.source; */ }` `v2.29.0+` |
 
 
 **Resposta:**
@@ -6095,6 +6196,7 @@ Retorna os dados de um arquivo da lista de arquivos da respectiva aba: áudio, v
 | `data.name` | _String_ | Nome do item |
 | `data.isDir` | _Boolean_ | Retorna **true** se for uma pasta ou **false** se for arquivo. |
 | `data.properties` | _Object_ | Mapa com as informações customizadas salvas no arquivo |
+| `data.tags` | _Array&lt;String&gt;_ |  `v2.29.0+` |
 | <br>Disponível se **include_metadata=true** |  |  |
 | `data.length` | _Number_ | Tamanho do arquivo (bytes). Disponível se **isDir=false** |
 | `data.modified_time` | _String_ | Data de modificação do arquivo. Data e hora no formato: YYYY-MM-DD HH:MM |
@@ -6117,6 +6219,30 @@ Retorna os dados de um arquivo da lista de arquivos da respectiva aba: áudio, v
 var r = h.hly('GetAudio', {
     name: 'audio.mp3'
 });
+```
+
+---
+
+
+### hly('GetFileTags')
+- v2.29.0
+
+Retorna a lista de todas as tags existentes utilizadas nos arquivos
+
+
+
+**Resposta:**
+
+| Nome | Tipo  |
+| ---- | :---: |
+| `data` | _Array&lt;String&gt;_| 
+
+
+**Exemplo:**
+
+```javascript
+var tags = h.hly('GetFileTags').data;
+h.logp(tags);
 ```
 
 ---
@@ -6446,6 +6572,50 @@ h.hly('ShowCustomMessage', {
         abc_2: 'Value 4'
     },
     note: 'Com urgência'
+});
+```
+
+---
+
+
+### hly('ShowCustomMessageStandalone', input)
+- v2.29.0
+
+Exibir uma mensagem personalizada sem a necessidade que o objeto de referência exista. Obs.: Uma mensagem personalizada não é exibida diretamente na tela. é criada uma notificação no canto da tela para o operador aceitar e exibir.
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.name` | _String_ | Nome |
+| `input.message` | _String_ | Mensagem modelo.<br>Coloque o id da variável entre chaves no texto, exemplo: "Proprietário do carro de placa {placa}, favor comparecer ao estacionamento" |
+| `input.note` | _String_ | Informação extra exibida na janela popup para o operador |
+| `<br>**params**` |  |  |
+| `input.params` | _Array&lt;Object&gt;_ | Lista de variáveis da mensagem |
+| `input.params.*.key` | _String_ | ID da variável |
+| `input.params.*.label` | _String_ | Nome da variável |
+| `input.params.*.default_value` | _String (opcional)_ | Valor padrão/inicial da variável |
+| `input.params.*.only_number` | _String (opcional)_ | Aceitar somente números |
+| `input.params.*.uppercase` | _String (opcional)_ | Aceitar somente caracteres em maiúsculo |
+| `input.params.*.suggestions` | _String (opcional)_ | Lista de sugestões |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+h.hly('ShowCustomMessageStandalone', {
+    name: 'Mensagem Personalizada',
+    message: 'Owner of the car with license plate {license_plate}, please come to the parking lot.',
+    note: '...',
+    params: [
+        {
+            key: 'license_plate',
+            label: 'License Plate',
+            default_value: 'abc'
+        }
+    ]
 });
 ```
 
@@ -6993,7 +7163,7 @@ Adicionar letra de música na lista de reprodução
 | `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada letra |
 | `input.index` | _Number (opcional)_ | Posição na lista onde o item será adicionado (inicia em zero). Os itens são adicionados no final da lista por padrão. `Padrão: -1` |
 | `input.media_playlist` | _Boolean (opcional)_ | Adicionar as letras na lista de reprodução de mídia `Padrão: false` |
-| `event_id` | _String (opcional)_ | Para alterar a lista de reprodução de um culto ou evento específico.<br>Quando `event_id` não for declarado, a lista de reprodução atualmente selecionada na interface será editada.<br>Atenção, disponível somente a partir da versão `2.26.0`, significa que em versões anteriores este método sempre vai alterar a lista de reprodução atualmente selecionada na interface, ignorando este parâmetro `event_id` `Padrão: null` `v2.26.0+` |
+| `event_id` | _String (opcional)_ | Para alterar a lista de reprodução de um culto ou evento específico.<br>Quando `event_id` não for declarado, a lista de reprodução atualmente selecionada na interface será editada.<br>Atenção, disponível somente a partir da versão `2.26.0`, significa que em versões anteriores este método sempre vai alterar a lista de reprodução atualmente selecionada na interface, ignorando este parâmetro `event_id`<br><br>Esta ação requer uma assinatura [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) para ser executada `Padrão: null` `v2.26.0+` |
 
 
 _Método sem retorno_
@@ -7032,7 +7202,7 @@ Remover letra de música na lista de reprodução
 | `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada letra |
 | `input.index` | _Number (opcional)_ | Posição do item na lista que será removido (inicia em zero). |
 | `input.indexes` | _Array&lt;Number&gt; (opcional)_ | Lista com a posição de cada item na lista que será removido. (Inicia em zero) |
-| `event_id` | _String (opcional)_ | Para alterar a lista de reprodução de um culto ou evento específico.<br>Quando `event_id` não for declarado, a lista de reprodução atualmente selecionada na interface será editada.<br>Atenção, disponível somente a partir da versão `2.26.0`, significa que em versões anteriores este método sempre vai alterar a lista de reprodução atualmente selecionada na interface, ignorando este parâmetro `event_id` `Padrão: null` `v2.26.0+` |
+| `event_id` | _String (opcional)_ | Para alterar a lista de reprodução de um culto ou evento específico.<br>Quando `event_id` não for declarado, a lista de reprodução atualmente selecionada na interface será editada.<br>Atenção, disponível somente a partir da versão `2.26.0`, significa que em versões anteriores este método sempre vai alterar a lista de reprodução atualmente selecionada na interface, ignorando este parâmetro `event_id`<br><br>Esta ação requer uma assinatura [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) para ser executada `Padrão: null` `v2.26.0+` |
 
 
 _Método sem retorno_
@@ -7064,7 +7234,7 @@ Alterar um item da lista de reprodução de letra de música
 | ---- | :---: | ------------|
 | `input.index` | _Number_ | Índice do item na lista |
 | `input.song_id` | _String_ | Novo item |
-| `event_id` | _String (opcional)_ | Para alterar a lista de reprodução de um culto ou evento específico.<br>Quando `event_id` não for declarado, a lista de reprodução atualmente selecionada na interface será editada.<br>Atenção, disponível somente a partir da versão `2.26.0`, significa que em versões anteriores este método sempre vai alterar a lista de reprodução atualmente selecionada na interface, ignorando este parâmetro `event_id` `Padrão: null` `v2.26.0+` |
+| `event_id` | _String (opcional)_ | Para alterar a lista de reprodução de um culto ou evento específico.<br>Quando `event_id` não for declarado, a lista de reprodução atualmente selecionada na interface será editada.<br>Atenção, disponível somente a partir da versão `2.26.0`, significa que em versões anteriores este método sempre vai alterar a lista de reprodução atualmente selecionada na interface, ignorando este parâmetro `event_id`<br><br>Esta ação requer uma assinatura [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) para ser executada `Padrão: null` `v2.26.0+` |
 
 
 _Método sem retorno_
@@ -7117,7 +7287,7 @@ Alterar um item da lista de reprodução de mídia
 | ---- | :---: | ------------|
 | `input.index` | _Number_ | Índice do item na lista |
 | `input.item` | _[AddItem](#add-item)_ | Novo item |
-| `event_id` | _String (opcional)_ | Para alterar a lista de reprodução de um culto ou evento específico.<br>Quando `event_id` não for declarado, a lista de reprodução atualmente selecionada na interface será editada.<br>Atenção, disponível somente a partir da versão `2.26.0`, significa que em versões anteriores este método sempre vai alterar a lista de reprodução atualmente selecionada na interface, ignorando este parâmetro `event_id` `Padrão: null` `v2.26.0+` |
+| `event_id` | _String (opcional)_ | Para alterar a lista de reprodução de um culto ou evento específico.<br>Quando `event_id` não for declarado, a lista de reprodução atualmente selecionada na interface será editada.<br>Atenção, disponível somente a partir da versão `2.26.0`, significa que em versões anteriores este método sempre vai alterar a lista de reprodução atualmente selecionada na interface, ignorando este parâmetro `event_id`<br><br>Esta ação requer uma assinatura [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) para ser executada `Padrão: null` `v2.26.0+` |
 
 
 _Método sem retorno_
@@ -7338,7 +7508,7 @@ Adicionar itens à lista de reprodução de mídias
 | `input.items` | _Array&lt;[AddItem](#add-item)&gt;_ | Lista com os itens que serão adicionados |
 | `input.index` | _Number (opcional)_ | Posição na lista onde o item será adicionado (inicia em zero). Os itens são adicionados no final da lista por padrão. `Padrão: -1` |
 | `input.ignore_duplicates` | _Boolean (opcional)_ | Não duplicar itens ao adicionar novos itens, ou seja, não adiciona um item se ele já estiver na lista. `Padrão: false` |
-| `event_id` | _String (opcional)_ | Para alterar a lista de reprodução de um culto ou evento específico.<br>Quando `event_id` não for declarado, a lista de reprodução atualmente selecionada na interface será editada.<br>Atenção, disponível somente a partir da versão `2.26.0`, significa que em versões anteriores este método sempre vai alterar a lista de reprodução atualmente selecionada na interface, ignorando este parâmetro `event_id` `Padrão: null` `v2.26.0+` |
+| `event_id` | _String (opcional)_ | Para alterar a lista de reprodução de um culto ou evento específico.<br>Quando `event_id` não for declarado, a lista de reprodução atualmente selecionada na interface será editada.<br>Atenção, disponível somente a partir da versão `2.26.0`, significa que em versões anteriores este método sempre vai alterar a lista de reprodução atualmente selecionada na interface, ignorando este parâmetro `event_id`<br><br>Esta ação requer uma assinatura [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) para ser executada `Padrão: null` `v2.26.0+` |
 
 
 _Método sem retorno_
@@ -7462,7 +7632,7 @@ Remover itens da lista de reprodução de mídia
 | `input.ids` | _Array&lt;String&gt; (opcional)_ | Lista com id de cada item |
 | `input.index` | _Number (opcional)_ | Posição do item na lista que será removido (inicia em zero). |
 | `input.indexes` | _Array&lt;Number&gt; (opcional)_ | Lista com a posição de cada item na lista que será removido. (Inicia em zero) |
-| `event_id` | _String (opcional)_ | Para alterar a lista de reprodução de um culto ou evento específico.<br>Quando `event_id` não for declarado, a lista de reprodução atualmente selecionada na interface será editada.<br>Atenção, disponível somente a partir da versão `2.26.0`, significa que em versões anteriores este método sempre vai alterar a lista de reprodução atualmente selecionada na interface, ignorando este parâmetro `event_id` `Padrão: null` `v2.26.0+` |
+| `event_id` | _String (opcional)_ | Para alterar a lista de reprodução de um culto ou evento específico.<br>Quando `event_id` não for declarado, a lista de reprodução atualmente selecionada na interface será editada.<br>Atenção, disponível somente a partir da versão `2.26.0`, significa que em versões anteriores este método sempre vai alterar a lista de reprodução atualmente selecionada na interface, ignorando este parâmetro `event_id`<br><br>Esta ação requer uma assinatura [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) para ser executada `Padrão: null` `v2.26.0+` |
 
 
 _Método sem retorno_
@@ -9336,7 +9506,7 @@ Alterar as configurações do papel de parede
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.file` | _String (opcional)_ | Local do arquivo na aba **Imagens** |
+| `input.file` | _String (opcional)_ | Local do arquivo na aba **Imagens**<br>A partir da `v2.29.0` é possível utilizar neste parâmetro `file` a sintaxe: `background:id` onde `id` é o ID do tema ou plano de fundo que será utilizado como imagem do papel de parede. Exemplo: 'background:1234' |
 | `input.enabled` | _Boolean (opcional)_ | Exibir papel de parede |
 | `input.fill_color` | _String (opcional)_ | Cor em hexadecimal definida na opção **preencher**. **NULL** para desativar |
 | `input.extend` | _Boolean (opcional)_ | `deprecated` Substituído por `adjust_type`<br>Estender papel de parede |
@@ -9410,9 +9580,9 @@ Alterar as configurações de exibição de uma tela
 
 **Resposta:**
 
-| Tipo  | Descrição |
-| :---: | ------------|
-| _Object_ | Retorna **true** ou uma lista com os erros ocorridos |
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Object_ | Retorna **true** ou uma lista com os erros ocorridos |
 
 
 **Exemplo:**
@@ -9457,6 +9627,99 @@ var list = h.hly('GetDisplaySettingsPresets', {
 for (var i = 0; i < list.length; i++) {
     h.log(list[i].id + " | " + list[i].name);
 }
+```
+
+---
+
+
+### hly('GetNDISettingsList')
+- v2.29.0
+
+Lista das configurações de saída NDI®
+
+
+
+**Resposta:**
+
+| Nome | Tipo  |
+| ---- | :---: |
+| `data` | _Array&lt;[NDISettings](#ndi-settings)&gt;_| 
+
+
+**Exemplo:**
+
+```javascript
+var list = h.hly('GetNDISettingsList').data;
+for (var i = 0; i < list.length; i++) {
+    h.log(list[i].name);
+}
+```
+
+---
+
+
+### hly('GetNDISettings', input)
+- v2.29.0
+
+Configurações de uma saída NDI® específica
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String (opcional)_ | ID do item |
+| `input.name` | _String (opcional)_ | Nome do item |
+
+
+**Resposta:**
+
+| Nome | Tipo  |
+| ---- | :---: |
+| `data` | _[NDISettings](#ndi-settings)_| 
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetNDISettings', {
+    name: '...'
+});
+if (r.data) {
+    h.logp(r.data);
+} else {
+    h.log(r.error);
+}
+```
+
+---
+
+
+### hly('SetNDISettings', input)
+- v2.29.0
+
+Alterar as configurações de uma saída NDI®
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input` | _[NDISettings](#ndi-settings)_ | Novas configurações. As configurações são individualmente opcionais. Preencha apenas os campos que deseja alterar.<br>O campo `id` ou `name` é obrigatório. |
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Object_ | Retorna **true** ou uma lista com os erros ocorridos |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('SetNDISettings', {
+    name: '...',
+    enabled: true
+});
 ```
 
 ---
@@ -10196,7 +10459,7 @@ Retorna o valor de um campo da interface do programa
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID do item. Pode ser: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event`<br> <br>`2.27.0`<br><br>`main_song_tab_selected_item`<br>`main_text_tab_selected_item`<br>`main_text_tab_selected_folder`<br>`main_audio_tab_selected_item`<br>`main_video_tab_selected_item`<br>`main_image_tab_selected_item`<br>`main_file_tab_selected_item`<br>`main_custom_message_tab_selected_item`<br>`main_automatic_presentation_tab_selected_item` |
+| `input.id` | _String_ | ID do item. Pode ser: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event`<br> <br>`2.27.0`<br><br>`main_song_tab_selected_item`<br>`main_text_tab_selected_item`<br>`main_text_tab_selected_folder`<br>`main_audio_tab_selected_item`<br>`main_video_tab_selected_item`<br>`main_image_tab_selected_item`<br>`main_file_tab_selected_item`<br>`main_custom_message_tab_selected_item`<br>`main_automatic_presentation_tab_selected_item`<br> <br>`2.29.0`<br><br>`main_selected_library_tab` |
 
 
 **Resposta:**
@@ -10226,7 +10489,7 @@ Altera o valor de um campo da interface do programa
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `input.id` | _String_ | ID do item. Pode ser: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event`<br> <br>`2.27.0`<br><br>`main_song_tab_selected_item`<br>`main_text_tab_selected_item`<br>`main_text_tab_selected_folder`<br>`main_audio_tab_selected_item`<br>`main_video_tab_selected_item`<br>`main_image_tab_selected_item`<br>`main_file_tab_selected_item`<br>`main_custom_message_tab_selected_item`<br>`main_automatic_presentation_tab_selected_item` |
+| `input.id` | _String_ | ID do item. Pode ser: <br>`main_lyrics_tab_search`<br>`main_text_tab_search`<br>`main_audio_tab_search`<br>`main_video_tab_search`<br>`main_image_tab_search`<br>`main_file_tab_search`<br>`main_automatic_presentation_tab_search`<br>`main_selected_theme`<br>`main_selected_song_group_filter`<br>`main_selected_tab_event`<br> <br>`2.27.0`<br><br>`main_song_tab_selected_item`<br>`main_text_tab_selected_item`<br>`main_text_tab_selected_folder`<br>`main_audio_tab_selected_item`<br>`main_video_tab_selected_item`<br>`main_image_tab_selected_item`<br>`main_file_tab_selected_item`<br>`main_custom_message_tab_selected_item`<br>`main_automatic_presentation_tab_selected_item`<br> <br>`2.29.0`<br><br>`main_selected_library_tab` |
 | `input.value` | _String_ | Novo valor |
 | `input.focus` | _Boolean (opcional)_ | Fazer o componente receber o foco do sistema |
 
@@ -10246,6 +10509,32 @@ h.hly('SetInterfaceInput', {
     id: 'main_selected_theme',
     value: '123' //Theme ID
 });
+```
+
+---
+
+
+### hly('GetOpenedWindow')
+- v2.29.0
+
+Lista de janelas abertas no momento (lista limitada)
+
+
+
+**Resposta:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `data` | _Array&lt;String&gt; (opcional)_ | Valores aceitos: `main` `bible` `song_editor` `text_editor` |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetOpenedWindow');
+if (r.data.contains('bible')) {
+    //...
+}
 ```
 
 ---
@@ -10546,7 +10835,7 @@ Retorna a lista de gatilhos salvos
 | `data.*.id` | _String_ | ID do item |
 | `data.*.enabled` | _Boolean_ |  |
 | `data.*.when` | _String_ | Pode ser: `displaying` `closing` `change` `event` |
-| `data.*.type` | _String_ | Tipo do item. Pode ser:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle` `bible_version_1` `bible_version_2` `bible_version_3` `bible_any_version`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` `draw_lots_item_drawn` |
+| `data.*.type` | _String_ | Tipo do item. Pode ser:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_music_tag` `any_text_tag` `any_audio_tag` `any_video_tag` `any_image_tag` `any_playback_tag` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_music_tag` `any_text_tag` `any_audio_tag` `any_video_tag` `any_image_tag` `any_playback_tag` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle` `bible_version_1` `bible_version_2` `bible_version_3` `bible_any_version`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` `draw_lots_item_drawn` |
 | `data.*.item.title` | _String_ |  |
 | `data.*.item.reference` | _Object_ |  |
 | `data.*.receiver.type` | _String_ | Pode ser: `get` `post` `ws` `tcp` `udp` `midi` `javascript` `community` `multiple_actions` `obs_v4` `obs_v5` `lumikit` `vmix` `osc` `soundcraft` `ha` `ptz` `tbot` `openai` |
@@ -11752,6 +12041,73 @@ if (r == null) {
 ---
 
 
+### itemGridChooser(opts)
+- v2.29.0
+
+Abre uma janela para selecionar itens em uma lista de valores exibidos em grade
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `title` | _String (opcional)_ | Título da janela |
+| `renderer` | _Function (opcional)_ | `function (item, index) { /* ... */ }`<br>Método que retorna o tema base que é utilizado para renderizar o respectivo item.<br>Se declarado, deve retornar um objeto do tipo: [Theme](#theme) |
+| `item_size` | _String (opcional)_ | Largura e altura do item. {width}x{height} `32 ~ 512` `Padrão: 64x64` |
+| `multiple_selection` | _Boolean (opcional)_ | Permitir seleção de múltiplos itens `Padrão: false` |
+| `on_change` | _Function (opcional)_ | Método executado sempre que os itens selecionados forem alterados |
+| `default_selection` | _Array&lt;Object&gt; (opcional)_ | Lista com o `items.*.id` ou índice dos objetos que serão pré-selecionados por padrão. |
+| `items` | _Array&lt;Object&gt;_ | Itens que serão exibidos.<br>Cada item pode ser uma objeto simples (string, number, etc) em vez de objeto complexo. |
+|  |  | <br>Para itens complexos |
+| `items.*.label` | _String (opcional)_ | Nome que será exibido representando o item |
+
+
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _Object_ | Retorna os itens selecionados pelo usuário (pode ser NULL).<br>Se `multiple_selection=false`, retorna o objeto ou `null`.<br>Se `multiple_selection=true`, retorna a lista de objetos selecionados (mesmo que seja apenas um objeto) ou `null` |
+
+
+**Exemplo:**
+
+```javascript
+var r = h.itemGridChooser({
+    title: 'Title',
+    item_size: "128x64",
+    renderer: function(item, index) {
+        var flag = parseInt(index % 2) === 1;
+        var bgColor = flag ? 'FFFFFF' : '000000';
+        var fontColor = flag ? '000000' : 'FFFFFF';
+        return {
+            background: {
+                type: 'color',
+                id: bgColor
+            },
+            font: {
+                color: fontColor
+            }
+        };
+    },
+    multiple_selection: true,
+    default_selection: [2, 5],
+    items: [
+        { id: 'a', label: 'Item 1' },
+        { id: 'b', label: 'Item 2' },
+        { id: 'c', label: 'Item 3' },
+        { id: 'd', label: 'Item 4' },
+        { id: 'e', label: 'Item 5' },
+        { id: 'f', label: 'Item 6' },
+        { id: 'g', label: 'Item 7' },
+        { id: 'h', label: 'Item 8' },
+        { id: 'i', label: 'Item 9' }
+    ]
+});
+h.logp(r);
+```
+
+---
+
+
 ### confirm(msg, title = 'Confirm', notification = false)
 - v2.19.0
 
@@ -12212,6 +12568,48 @@ if (r) {
 ---
 
 
+### popupAPIAuth(opts)
+- v2.29.0
+
+Método utilitário para receber um payload de um serviço externo lendo um QR Code.<br>Por exemplo, útil para fazer login, recebendo um token de autenticação.<br>Documentação do serviço: [API Auth](https://github.com/holyrics/Scripts/blob/main/APIAuth.md)<br><br>Esta ação requer uma assinatura [Holyrics Plan](https://holyrics.com.br/holyrics_plan.html) para ser executada
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `opts` | _Object_ |  |
+| `opts.window_title` | _String (opcional)_ | Título da janela |
+| `opts.header` | _String (opcional)_ | Mensagem exibida junto do QR Code exibido |
+| `opts.secret` | _String (opcional)_ | Chave para gerar uma assinatura de autenticidade baseado em HmacSHA256 |
+| `opts.callback` | _Function_ | Método executado ao receber o payload da comunicação. |
+| `opts.on_error` | _Function (opcional)_ | Método executado ao ocorrer algum erro |
+| `opts.on_cancel` | _Function (opcional)_ | Método executado ao fechar a janela antes de receber um payload ou ocorrer algum erro |
+
+
+_Método sem retorno_
+
+**Exemplo:**
+
+```javascript
+var header = "<html><div style='text-align:center;width:400pt'>"
+             + "Texto de ajuda para o usuário saber o que fazer para ler o QR Code";
+h.popupAPIAuth({
+  window_title: 'QR Code Auth Test',
+  header: header,
+  callback: function(payload) {
+    h.log("payload");
+    h.logp(payload);
+  },
+  on_error: function(err) {
+    h.log(err);
+  },
+  secret: 'EJbMZOnfEsZEal05T1OBqHnd3DqcYs1g'
+});
+```
+
+---
+
+
 ### openWindow(name)
 - v2.22.0
 
@@ -12483,6 +12881,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `extras` | _Object_ | Mapa de objetos extras (adicionados pelo usuário) `v2.21.0+` |
 | `theme` | _String_ | ID do tema salvo para a música `v2.25.0+` |
 | `archived` | _Boolean_ | Se a música está arquivada |
+| `tags` | _Array&lt;String&gt;_ |  `v2.29.0+` |
 | `metadata.modified_time_millis` | _Number_ | Data de modificação do arquivo. (timestamp) `v2.25.0+` `read-only` |
 <details>
   <summary>Ver exemplo</summary>
@@ -12534,12 +12933,16 @@ Classes complexas utilizadas como retorno em alguns métodos
     "audio": {
       "spotify": "",
       "youtube": "",
-      "deezer": ""
+      "deezer": "",
+      "apple_music": "",
+      "amazon_music": ""
     },
     "backing_track": {
       "spotify": "",
       "youtube": "",
-      "deezer": ""
+      "deezer": "",
+      "apple_music": "",
+      "amazon_music": ""
     }
   },
   "extras": {
@@ -12566,6 +12969,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `slides.*.translations` | _Object_ | Traduções para o slide.<br>Conjunto chave/valor. `v2.25.0+` |
 | `formatting_type` | _String_ | `basic`  `styled`  `advanced`<br> <br>Ao utilizar este objeto em métodos de criação ou edição, se `formatting_type=basic` for utilizado, o valor da variável `slides.*.text` será utilizado, caso contrário, o valor da variável `slides.*.styled_text` será utilizado `Padrão: basic` `v2.25.0+` |
 | `extras` | _Object_ | Mapa de objetos extras (adicionados pelo usuário) `v2.24.0+` |
+| `tags` | _Array&lt;String&gt;_ |  `v2.29.0+` |
 | `metadata.modified_time_millis` | _Number_ | Data de modificação do arquivo. (timestamp) `v2.25.0+` `read-only` |
 <details>
   <summary>Ver exemplo</summary>
@@ -12623,7 +13027,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `font.name` | _String_ | Nome da fonte |
 | `font.bold` | _Boolean_ | Negrito |
 | `font.italic` | _Boolean_ | Itálico |
-| `font.size` | _Number_ | Tamanho `0.0 ~ 0.4`<br>Valor em porcentagem, baseado na altura do slide. |
+| `font.size` | _Number_ | Tamanho `0 ~ 50`<br>Valor em porcentagem, baseado na altura do slide. |
 | `font.color` | _String_ | Cor no formato hexadecimal |
 | `font.line_spacing` | _Number_ | Espaçamento entre linhas. `-0.5 ~ 1.0`<br>Valor em porcentagem baseado na altura da linha. |
 | `font.char_spacing` | _Number_ | Espaçamento entre caracteres. `-40 ~ 120` |
@@ -13061,8 +13465,8 @@ Classes complexas utilizadas como retorno em alguns métodos
 | ---- | :---: | ------------|
 | `id` | _String (opcional)_ | ID do item |
 | `when` | _String_ | `displaying` `closing` `change` `event` |
-| `item` | _String_ | Tipo do item. Pode ser:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle` `bible_version_1` `bible_version_2` `bible_version_3` `bible_any_version`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` `draw_lots_item_drawn` |
-| `action` | _Function_ | Ação que será executada.<br>`function(obj) { /*  */ }`<br>Conteúdo de `obj` de acordo com o tipo do item:<br>[`any_song`](https://github.com/holyrics/jslib#songinfo)  [`any_text`](https://github.com/holyrics/jslib#textinfo)  [`any_verse`](https://github.com/holyrics/jslib#verseinfo)  [`any_announcement`](https://github.com/holyrics/jslib#announcementinfo)  [`any_audio`](https://github.com/holyrics/jslib#audioinfo)  [`any_video`](https://github.com/holyrics/jslib#videoinfo)  [`any_image`](https://github.com/holyrics/jslib#imageinfo)  [`any_automatic_presentation`](https://github.com/holyrics/jslib#automaticpresentationinfo)  [`any_song_slide`](https://github.com/holyrics/jslib#songslideinfo)  [`any_text_slide`](https://github.com/holyrics/jslib#textslideinfo)  [`any_ppt_slide`](https://github.com/holyrics/jslib#pptslideinfo)  [`any_theme`](https://github.com/holyrics/jslib#themeinfo)  [`any_background`](https://github.com/holyrics/jslib#backgroundinfo)  [`any_title_subitem`](https://github.com/holyrics/jslib#titleinfo)  [`any_webcam`](https://github.com/holyrics/jslib#webcaminfo)  [`any_audio_folder`](https://github.com/holyrics/jslib#audioinfo)  [`any_video_folder`](https://github.com/holyrics/jslib#videoinfo)  [`any_image_folder`](https://github.com/holyrics/jslib#imageinfo)  [`any_ppt`](https://github.com/holyrics/jslib#pptinfo)  [`any_countdown`](https://github.com/holyrics/jslib#countdowninfo)  [`any_automatic_presentation_slide`](https://github.com/holyrics/jslib#automaticpresentationslideinfo)  [`f8`](https://github.com/holyrics/jslib#presentationmodifierinfoinfo)  [`f9`](https://github.com/holyrics/jslib#presentationmodifierinfoinfo)  [`f10`](https://github.com/holyrics/jslib#presentationmodifierinfoinfo)  [`new_message_chat`](https://github.com/holyrics/jslib#newchatmessageinfo)  [`verse_presentation_changed`](https://github.com/holyrics/jslib#versepresentationchangedinfo)  [`playlist_changed`](https://github.com/holyrics/jslib#playlistchangedinfo)  [`file_modified`](https://github.com/holyrics/jslib#filemodifiedinfo)  [`player_progress`](https://github.com/holyrics/jslib#playerprogressinfo)  [`draw_lots_item_drawn`](https://github.com/holyrics/jslib#drawlotsitemdrawninfo)<br><br>Todos os itens de **when=change** contém: `obj.id` `obj.name` `obj.old_value` `obj.new_value` |
+| `item` | _String_ | Tipo do item. Pode ser:<br>**when=displaying**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_song_slide` `any_text_slide` `any_ppt_slide` `any_theme` `any_background` `any_title_subitem` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_music_tag` `any_text_tag` `any_audio_tag` `any_video_tag` `any_image_tag` `any_playback_tag` `any_countdown` `any_automatic_presentation_slide` `f8` `f9` `f10`<br><br>**when=closing**: `any_song` `any_text` `any_verse` `any_announcement` `any_audio` `any_video` `any_image` `any_automatic_presentation` `any_webcam` `any_audio_folder` `any_video_folder` `any_image_folder` `any_ppt` `any_music_tag` `any_text_tag` `any_audio_tag` `any_video_tag` `any_image_tag` `any_playback_tag` `f8` `f9` `f10`<br><br>**when=change**: `countdown_seconds_public` `countdown_seconds_communication_panel` `timer_seconds_communication_panel` `wallpaper` `wallpaper_service` `stage` `playlist` `bpm` `hue` `player_volume` `player_mute` `player_pause` `player_repeat` `player_list_or_single` `player_shuffle` `bible_version_1` `bible_version_2` `bible_version_3` `bible_any_version`<br><br>**when=event**: `new_message_chat` `verse_presentation_changed` `playlist_changed` `file_modified` `player_progress` `draw_lots_item_drawn` |
+| `action` | _Function_ | Ação que será executada.<br>`function(obj) { /*  */ }`<br>Conteúdo de `obj` de acordo com o tipo do item:<br>[`any_song`](https://github.com/holyrics/jslib#songinfo)  [`any_text`](https://github.com/holyrics/jslib#textinfo)  [`any_verse`](https://github.com/holyrics/jslib#verseinfo)  [`any_announcement`](https://github.com/holyrics/jslib#announcementinfo)  [`any_audio`](https://github.com/holyrics/jslib#audioinfo)  [`any_video`](https://github.com/holyrics/jslib#videoinfo)  [`any_image`](https://github.com/holyrics/jslib#imageinfo)  [`any_automatic_presentation`](https://github.com/holyrics/jslib#automaticpresentationinfo)  [`any_song_slide`](https://github.com/holyrics/jslib#songslideinfo)  [`any_text_slide`](https://github.com/holyrics/jslib#textslideinfo)  [`any_ppt_slide`](https://github.com/holyrics/jslib#pptslideinfo)  [`any_theme`](https://github.com/holyrics/jslib#themeinfo)  [`any_background`](https://github.com/holyrics/jslib#backgroundinfo)  [`any_title_subitem`](https://github.com/holyrics/jslib#titleinfo)  [`any_webcam`](https://github.com/holyrics/jslib#webcaminfo)  [`any_audio_folder`](https://github.com/holyrics/jslib#audioinfo)  [`any_video_folder`](https://github.com/holyrics/jslib#videoinfo)  [`any_image_folder`](https://github.com/holyrics/jslib#imageinfo)  [`any_ppt`](https://github.com/holyrics/jslib#pptinfo)  [`any_music_tag`](https://github.com/holyrics/jslib#songinfo)  [`any_text_tag`](https://github.com/holyrics/jslib#textinfo)  [`any_audio_tag`](https://github.com/holyrics/jslib#audioinfo)  [`any_video_tag`](https://github.com/holyrics/jslib#videoinfo)  [`any_image_tag`](https://github.com/holyrics/jslib#imageinfo)  [`any_playback_tag`](https://github.com/holyrics/jslib#automaticpresentationinfo)  [`any_countdown`](https://github.com/holyrics/jslib#countdowninfo)  [`any_automatic_presentation_slide`](https://github.com/holyrics/jslib#automaticpresentationslideinfo)  [`f8`](https://github.com/holyrics/jslib#presentationmodifierinfoinfo)  [`f9`](https://github.com/holyrics/jslib#presentationmodifierinfoinfo)  [`f10`](https://github.com/holyrics/jslib#presentationmodifierinfoinfo)  [`new_message_chat`](https://github.com/holyrics/jslib#newchatmessageinfo)  [`verse_presentation_changed`](https://github.com/holyrics/jslib#versepresentationchangedinfo)  [`playlist_changed`](https://github.com/holyrics/jslib#playlistchangedinfo)  [`file_modified`](https://github.com/holyrics/jslib#filemodifiedinfo)  [`player_progress`](https://github.com/holyrics/jslib#playerprogressinfo)  [`draw_lots_item_drawn`](https://github.com/holyrics/jslib#drawlotsitemdrawninfo)<br><br>Todos os itens de **when=change** contém: `obj.id` `obj.name` `obj.old_value` `obj.new_value` |
 | `name` | _String (opcional)_ | Nome do item. Valor compatível para exibição no **JavaScript Monitor** `v2.23.0+` |
 | `filter` | _Object (opcional)_ | Executar ação somente se o objeto que gerou o gatilho corresponder ao objeto filter `v2.24.0+` |
 <details>
@@ -13096,7 +13500,7 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `enabled` | _Boolean_ |  |
 | `description` | _String_ |  |
 | `type` | _Object_ |  |
-| `type.id` | _String_ | Valores aceitos: `none` `rule_group_model` `rule_group` `javascript` `javascript_model` `jscommunity` `services` `events` `current_event_time` `date` `time` `datetime` `day_of_week` `day_of_month` `hour_of_day` `day_of_week_in_month` `runtime_environment` `javascript_state` `origin` |
+| `type.id` | _String_ | Valores aceitos: `none` `rule_group_model` `rule_group` `javascript` `javascript_model` `jscommunity` `services` `events` `current_event_time` `date` `time` `datetime` `day_of_week` `day_of_month` `hour_of_day` `day_of_week_in_month` `runtime_environment` `javascript_state` `origin` `tag` |
 | `type.name` | _String_ |  |
 | `type.settings_type` | _String_ | `native` `custom` |
 | <br>**type.settings_type=native** |  |  |
@@ -13268,6 +13672,123 @@ Configurações de exibição (Modelo predefinido)
 | `id` | _String_ | ID do item |
 | `name` | _String_ | Nome do item |
 | `settings` | _[DisplaySettings](#display-settings)_ | Configurações |
+
+## NDI Settings
+Configurações de uma saída NDI®
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `id` | _String_ | ID do item |
+| `name` | _String_ | Nome do item |
+| `enabled` | _Boolean_ |  |
+| `width` | _Number_ |  |
+| `height` | _Number_ |  |
+| `fps` | _Number_ | Valores aceitos: `60` `30` `24` `20` `15` `10` `5` |
+| `transparent_background` | _Boolean_ |  |
+| `transition_effect_enabled` | _Boolean_ |  |
+| `custom_theme` | _Object_ | Tema personalizado |
+| `custom_theme._default` | _Object_ |  |
+| `custom_theme.music` | _Object_ |  |
+| `custom_theme.text` | _Object_ |  |
+| `custom_theme.bible` | _Object_ |  |
+| `custom_theme.quick_presentation` | _Object_ |  |
+| `display_settings` | _[DisplaySettings](#display-settings)_ |  |
+<details>
+  <summary>Ver exemplo</summary>
+
+```json
+{
+  "id": "...",
+  "name": "Holyrics - NDI 1",
+  "enabled": true,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "transparent_background": true,
+  "transition_effect_enabled": true,
+  "custom_theme": {
+    "_default": "",
+    "music": "",
+    "text": "",
+    "bible": "",
+    "quick_presentation": ""
+  },
+  "display_settings": {
+    "id": "stream_image",
+    "name": "HTML - Imagem",
+    "simulation": false,
+    "stage_view": {
+      "enabled": false,
+      "preview_mode": "FIRST_LINE_OF_THE_NEXT_SLIDE_WITH_SEPARATOR",
+      "uppercase": false,
+      "uppercase_mode": "text_and_comment",
+      "remove_line_break": false,
+      "show_comment": true,
+      "show_advanced_editor": false,
+      "show_communication_panel": true,
+      "show_next_image": false,
+      "show_next_verse": {
+        "enabled": false,
+        "max_length": 100,
+        "line_break_type": "double_line_break",
+        "style_enabled": true,
+        "style": "<i><size:60>"
+      }
+    },
+    "slide_info": {
+      "info_1": {
+        "show_page_count": false,
+        "show_slide_description": false,
+        "horizontal_align": "right",
+        "vertical_align": "bottom"
+      },
+      "info_2": {
+        "show": false,
+        "layout_row_1": "<title>< (%author_or_artist%)>",
+        "layout_text_row_1": "",
+        "horizontal_align": "right",
+        "vertical_align": "bottom"
+      },
+      "font": {
+        "name": null,
+        "bold": null,
+        "italic": null,
+        "color": null
+      },
+      "height": 7,
+      "paint_theme_effect": true
+    },
+    "slide_translation": null,
+    "slide_translation_custom_settings": {
+      "translation_1": {
+        "name": "default",
+        "style": "",
+        "prefix": "",
+        "suffix": ""
+      },
+      "translation_2": null,
+      "translation_3": null,
+      "translation_4": null,
+      "merge": true,
+      "uppercase": false,
+      "blank_line_height": 40
+    },
+    "bible_version_tab": 1,
+    "show_items": {
+      "lyrics": true,
+      "text": true,
+      "verse": true,
+      "image": true,
+      "quick_presentation": true,
+      "announcement": true
+    }
+  },
+  "metadata": {
+    "modified_time_millis": "0"
+  }
+}
+```
+</details>
 
 ## Transition Effect Settings
 | Nome | Tipo  | Descrição |
@@ -13733,6 +14254,8 @@ Configurações de exibição (Modelo predefinido)
 | `display_alternatives_one_by_one` | _Boolean (opcional)_ | Exibir as alternativas uma a uma `Padrão: true` |
 | `alternative_char_type` | _String (opcional)_ | Tipo de caractere para listar as alternativas `number (1, 2, 3...)`  `alpha (A, B, C...)` `Padrão: 'alpha'` |
 | `alternative_separator_char` | _String (opcional)_ | Caractere separador. Valores permitidos:  ` `  `.`  `)`  `-`  `:` `Padrão: '.'` |
+| `theme_question` | _[Theme](#theme) (opcional)_ |  `v2.29.0+` |
+| `theme_options` | _[Theme](#theme) (opcional)_ |  `v2.29.0+` |
 <details>
   <summary>Ver exemplo</summary>
 
@@ -14900,7 +15423,7 @@ Configurações da opção 'simular projeção'
 | ---- | :---: | ------------|
 | `type` | _String_ | uri |
 | `title` | _String_ | Título do item |
-| `uri_type` | _String_ | Pode ser: `spotify` `youtube` `deezer` |
+| `uri_type` | _String_ | Pode ser: `spotify` `youtube` `deezer` `apple_music` `amazon_music` |
 | `value` | _String_ | URI |
 <details>
   <summary>Ver exemplo</summary>
@@ -15021,6 +15544,7 @@ Ações disponíveis: [HolyricsActions](https://github.com/holyrics/jslib/blob/m
 | `file_path` | _String_ |  |
 | `is_dir` | _Boolean_ |  |
 | `extension` | _String_ |  |
+| `tags` | _Array&lt;String&gt;_ |  |
 | `properties` | _Object_ |  |
 <details>
   <summary>Ver exemplo</summary>
@@ -15046,6 +15570,7 @@ Ações disponíveis: [HolyricsActions](https://github.com/holyrics/jslib/blob/m
 | `file_path` | _String_ |  |
 | `is_dir` | _Boolean_ |  |
 | `extension` | _String_ |  |
+| `tags` | _Array&lt;String&gt;_ |  |
 | `properties` | _Object_ |  |
 <details>
   <summary>Ver exemplo</summary>
@@ -15071,6 +15596,7 @@ Ações disponíveis: [HolyricsActions](https://github.com/holyrics/jslib/blob/m
 | `file_path` | _String_ |  |
 | `is_dir` | _Boolean_ |  |
 | `extension` | _String_ |  |
+| `tags` | _Array&lt;String&gt;_ |  |
 | `properties` | _Object_ |  |
 <details>
   <summary>Ver exemplo</summary>
@@ -15096,6 +15622,7 @@ Ações disponíveis: [HolyricsActions](https://github.com/holyrics/jslib/blob/m
 | `file_path` | _String_ |  |
 | `is_dir` | _Boolean_ |  |
 | `extension` | _String_ |  |
+| `tags` | _Array&lt;String&gt;_ |  |
 | `properties` | _Object_ |  |
 <details>
   <summary>Ver exemplo</summary>
@@ -15116,6 +15643,7 @@ Ações disponíveis: [HolyricsActions](https://github.com/holyrics/jslib/blob/m
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `name` | _String_ |  |
+| `tags` | _Array&lt;String&gt;_ |  |
 <details>
   <summary>Ver exemplo</summary>
 
@@ -15223,6 +15751,7 @@ Ações disponíveis: [HolyricsActions](https://github.com/holyrics/jslib/blob/m
 | `file_path` | _String_ |  |
 | `is_dir` | _Boolean_ |  |
 | `extension` | _String_ |  |
+| `tags` | _Array&lt;String&gt;_ |  |
 | `properties` | _Object_ |  |
 <details>
   <summary>Ver exemplo</summary>
