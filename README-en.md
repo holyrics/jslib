@@ -12050,15 +12050,15 @@ Opens a window to select items from a list of values displayed in a grid
 
 | Name | Type  | Description |
 | ---- | :---: | ------------|
-| `title` | _String (optional)_ | Window title |
-| `renderer` | _Function (optional)_ | `function (item, index) { /* ... */ }`<br>Method that returns the base theme used to render the respective item.<br>If declared, it should return an object of the type: [Theme](#theme) |
-| `item_size` | _String (optional)_ | Width and height of the item. `{width}x{height}` `32 ~ 512` `Default: 64x64` |
-| `multiple_selection` | _Boolean (optional)_ | Allow selection of multiple items `Default: false` |
-| `on_change` | _Function (optional)_ | Method executed whenever the selected items are changed |
-| `default_selection` | _Array&lt;Object&gt; (optional)_ | List with the `items.*.id` or index of the objects that will be pre-selected by default. |
-| `items` | _Array&lt;Object&gt;_ | Items that will be displayed.<br>Each item can be a simple object (string, number, etc.) instead of a complex object. |
+| `opts.title` | _String (optional)_ | Window title |
+| `opts.renderer` | _Function (optional)_ | `function (item, index) { /* ... */ }`<br>Method that returns the base theme used to render the respective item.<br>If declared, it should return an object of the type: [Theme](#theme) |
+| `opts.item_size` | _String (optional)_ | Width and height of the item. `{width}x{height}` `32 ~ 512` `Default: 64x64` |
+| `opts.multiple_selection` | _Boolean (optional)_ | Allow selection of multiple items `Default: false` |
+| `opts.on_change` | _Function (optional)_ | Method executed whenever the selected items are changed |
+| `opts.default_selection` | _Array&lt;Object&gt; (optional)_ | List with the `items.*.id` or index of the objects that will be pre-selected by default. |
+| `opts.items` | _Array&lt;Object&gt;_ | Items that will be displayed.<br>Each item can be a simple object (string, number, etc.) instead of a complex object. |
 |  |  | <br>For complex objects |
-| `items.*.label` | _String (optional)_ | Name that will be displayed representing the item |
+| `opts.items.*.label` | _String (optional)_ | Name that will be displayed representing the item |
 
 
 **Response:**
@@ -12727,10 +12727,14 @@ Opens an editing window for creating new song lyrics<br>Note: It is not possible
 | `song.streaming.audio.spotify` | _String_ |  |
 | `song.streaming.audio.youtube` | _String_ |  |
 | `song.streaming.audio.deezer` | _String_ |  |
+| `song.streaming.audio.apple_music` | _String_ |  |
+| `song.streaming.audio.amazon_music` | _String_ |  |
 | `song.streaming.backing_track` | _Object_ | Backing track |
 | `song.streaming.backing_track.spotify` | _String_ |  |
 | `song.streaming.backing_track.youtube` | _String_ |  |
 | `song.streaming.backing_track.deezer` | _String_ |  |
+| `song.streaming.backing_track.apple_music` | _String_ |  |
+| `song.streaming.backing_track.amazon_music` | _String_ |  |
 | `song.extras` | _Object (optional)_ | Map of extra objects (added by the user)<br>Allowed only for already existing fields. |
 | `song.title_translations` | _Object_ | Translations for the title slide.<br>Key/value pair. |
 
@@ -12873,10 +12877,14 @@ Complex classes used as a return in some methods
 | `streaming.audio.spotify` | _String_ |  `v2.22.0+` |
 | `streaming.audio.youtube` | _String_ |  `v2.22.0+` |
 | `streaming.audio.deezer` | _String_ |  `v2.22.0+` |
+| `streaming.audio.apple_music` | _String_ |  `v2.29.0+` |
+| `streaming.audio.amazon_music` | _String_ |  `v2.29.0+` |
 | `streaming.backing_track` | _Object_ | Backing track `v2.22.0+` |
 | `streaming.backing_track.spotify` | _String_ |  `v2.22.0+` |
 | `streaming.backing_track.youtube` | _String_ |  `v2.22.0+` |
 | `streaming.backing_track.deezer` | _String_ |  `v2.22.0+` |
+| `streaming.backing_track.apple_music` | _String_ |  `v2.29.0+` |
+| `streaming.backing_track.amazon_music` | _String_ |  `v2.29.0+` |
 | `midi` | _[Midi](#midi)_ | Item MIDI shortcut |
 | `extras` | _Object_ | Map of extra objects (added by the user) `v2.21.0+` |
 | `theme` | _String_ | Saved theme ID for the song `v2.25.0+` |

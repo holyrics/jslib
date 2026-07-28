@@ -12050,15 +12050,15 @@ Abre uma janela para selecionar itens em uma lista de valores exibidos em grade
 
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
-| `title` | _String (opcional)_ | Título da janela |
-| `renderer` | _Function (opcional)_ | `function (item, index) { /* ... */ }`<br>Método que retorna o tema base que é utilizado para renderizar o respectivo item.<br>Se declarado, deve retornar um objeto do tipo: [Theme](#theme) |
-| `item_size` | _String (opcional)_ | Largura e altura do item. `{width}x{height}` `32 ~ 512` `Padrão: 64x64` |
-| `multiple_selection` | _Boolean (opcional)_ | Permitir seleção de múltiplos itens `Padrão: false` |
-| `on_change` | _Function (opcional)_ | Método executado sempre que os itens selecionados forem alterados |
-| `default_selection` | _Array&lt;Object&gt; (opcional)_ | Lista com o `items.*.id` ou índice dos objetos que serão pré-selecionados por padrão. |
-| `items` | _Array&lt;Object&gt;_ | Itens que serão exibidos.<br>Cada item pode ser uma objeto simples (string, number, etc) em vez de objeto complexo. |
+| `opts.title` | _String (opcional)_ | Título da janela |
+| `opts.renderer` | _Function (opcional)_ | `function (item, index) { /* ... */ }`<br>Método que retorna o tema base que é utilizado para renderizar o respectivo item.<br>Se declarado, deve retornar um objeto do tipo: [Theme](#theme) |
+| `opts.item_size` | _String (opcional)_ | Largura e altura do item. `{width}x{height}` `32 ~ 512` `Padrão: 64x64` |
+| `opts.multiple_selection` | _Boolean (opcional)_ | Permitir seleção de múltiplos itens `Padrão: false` |
+| `opts.on_change` | _Function (opcional)_ | Método executado sempre que os itens selecionados forem alterados |
+| `opts.default_selection` | _Array&lt;Object&gt; (opcional)_ | Lista com o `items.*.id` ou índice dos objetos que serão pré-selecionados por padrão. |
+| `opts.items` | _Array&lt;Object&gt;_ | Itens que serão exibidos.<br>Cada item pode ser uma objeto simples (string, number, etc) em vez de objeto complexo. |
 |  |  | <br>Para objetos complexos |
-| `items.*.label` | _String (opcional)_ | Nome que será exibido representando o item |
+| `opts.items.*.label` | _String (opcional)_ | Nome que será exibido representando o item |
 
 
 **Resposta:**
@@ -12727,10 +12727,14 @@ Abre uma janela de edição para criação de uma nova letra de música<br>Obs: 
 | `song.streaming.audio.spotify` | _String_ |  |
 | `song.streaming.audio.youtube` | _String_ |  |
 | `song.streaming.audio.deezer` | _String_ |  |
+| `song.streaming.audio.apple_music` | _String_ |  |
+| `song.streaming.audio.amazon_music` | _String_ |  |
 | `song.streaming.backing_track` | _Object_ | Playback |
 | `song.streaming.backing_track.spotify` | _String_ |  |
 | `song.streaming.backing_track.youtube` | _String_ |  |
 | `song.streaming.backing_track.deezer` | _String_ |  |
+| `song.streaming.backing_track.apple_music` | _String_ |  |
+| `song.streaming.backing_track.amazon_music` | _String_ |  |
 | `song.extras` | _Object (opcional)_ | Mapa de objetos extras (adicionados pelo usuário)<br>Permitido apenas campos já existentes. |
 | `song.title_translations` | _Object_ | Traduções para o slide título.<br>Conjunto chave/valor. |
 
@@ -12873,10 +12877,14 @@ Classes complexas utilizadas como retorno em alguns métodos
 | `streaming.audio.spotify` | _String_ |  `v2.22.0+` |
 | `streaming.audio.youtube` | _String_ |  `v2.22.0+` |
 | `streaming.audio.deezer` | _String_ |  `v2.22.0+` |
+| `streaming.audio.apple_music` | _String_ |  `v2.29.0+` |
+| `streaming.audio.amazon_music` | _String_ |  `v2.29.0+` |
 | `streaming.backing_track` | _Object_ | Playback `v2.22.0+` |
 | `streaming.backing_track.spotify` | _String_ |  `v2.22.0+` |
 | `streaming.backing_track.youtube` | _String_ |  `v2.22.0+` |
 | `streaming.backing_track.deezer` | _String_ |  `v2.22.0+` |
+| `streaming.backing_track.apple_music` | _String_ |  `v2.29.0+` |
+| `streaming.backing_track.amazon_music` | _String_ |  `v2.29.0+` |
 | `midi` | _[Midi](#midi)_ | Atalho MIDI do item |
 | `extras` | _Object_ | Mapa de objetos extras (adicionados pelo usuário) `v2.21.0+` |
 | `theme` | _String_ | ID do tema salvo para a música `v2.25.0+` |
