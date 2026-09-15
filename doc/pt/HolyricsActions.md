@@ -51,6 +51,7 @@
   - [settings_misc_load_logo_settings_preset](#settings_misc_load_logo_settings_preset)
   - [settings_misc_load_bible_responsive_reading_settings_preset](#settings_misc_load_bible_responsive_reading_settings_preset)
   - [settings_misc_midi_time_code_sync_media_player](#settings_misc_midi_time_code_sync_media_player)
+  - [settings_misc_enable_disable_midi_device](#settings_misc_enable_disable_midi_device)
   - [interface_open_window_holyrics](#interface_open_window_holyrics)
   - [interface_open_window_bible](#interface_open_window_bible)
   - [interface_open_window_quick_presentation](#interface_open_window_quick_presentation)
@@ -578,6 +579,18 @@ _Nenhum parâmetro é necessário_
 | Nome | Tipo  | Descrição |
 | ---- | :---: | ------------|
 | `action` | _String_ | `toggle` `on` `off` |
+
+
+---
+
+
+### settings_misc_enable_disable_midi_device
+**Settings:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `action` | _String_ | `toggle` `on` `off` |
+| `device_name` | _String_ | Nome |
 
 
 ---

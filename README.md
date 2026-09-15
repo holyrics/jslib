@@ -307,6 +307,7 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [GetCustomMessages](#hlygetcustommessages)
   - [ShowCustomMessage](#hlyshowcustommessage-input)
   - [ShowCustomMessageStandalone](#hlyshowcustommessagestandalone-input)
+  - [GetCustomMessageDisplayInfo](#hlygetcustommessagedisplayinfo-input)
   - [ShowQuickPresentation](#hlyshowquickpresentation-input)
   - [ShowCountdown](#hlyshowcountdown-input)
   - [GetQuizList](#hlygetquizlist)
@@ -416,6 +417,11 @@ Botão direito do mouse na janela de edição de código (menu de contexto), op�
   - [GetBibleVersionsV2](#hlygetbibleversionsv2)
   - [GetBibleSettings](#hlygetbiblesettings)
   - [SetBibleSettings](#hlysetbiblesettings-input)
+  - [GetAvailableBibleBooks](#hlygetavailablebiblebooks)
+  - [GetBibleBooks](#hlygetbiblebooks-input)
+  - [IdentifyVerseReferences](#hlyidentifyversereferences-input)
+  - [ParseVerseID2VerseReference](#hlyparseverseid2versereference-input)
+  - [ParseVerseID2VerseReferenceGroup](#hlyparseverseid2versereferencegroup-input)
   - [GetPresentationFooterSettings](#hlygetpresentationfootersettings)
   - [SetPresentationFooterSettings](#hlysetpresentationfootersettings-input)
   - [GetBpm](#hlygetbpm)
@@ -5284,7 +5290,8 @@ Cria uma conexão WebSocket. Pode gerar Exception.
 | `modelToCreate.on_message` | _Function_ | Executado a cada nova mensagem recebida<br>O objeto `message` é do tipo:  string<br>`function(message) { ... }` |
 | `modelToCreate.on_error` | _Function (opcional)_ | Executado quando ocorrer um erro<br>`function(evt) { /* evt.source; evt.error; */ }` |
 | `modelToCreate.on_close` | _Function (opcional)_ | Executado ao encerrar a conexão<br>`function(evt) { /* evt.source; evt.code; evt.reason; */ }` |
-| `modelToCreate.loop` | _Function (opcional)_ | Executado a cada 1 segundo enquanto a conexão estiver aberta<br>Útil para conexões que precisam enviar um 'ping' para manter a conexão aberta<br>`function(evt) { /* evt.source; */ }` |
+| `modelToCreate.loop` | _Function (opcional)_ | Executado a cada X segundo(s) enquanto a conexão estiver aberta<br>Útil para conexões que precisam enviar um 'ping' para manter a conexão aberta<br>`function(evt) { /* evt.source; */ }` |
+| `modelToCreate.loop_delay` | _Number (opcional)_ |  `Padrão: 1` `v2.30.0+` |
 
 
 **Resposta:**
@@ -5349,7 +5356,8 @@ Cria uma conexão TCP. Pode gerar Exception.
 | `modelToCreate` | _Object (opcional)_ | Ações utilizadas ao criar uma nova conexão |
 | `modelToCreate.on_message` | _Function_ | Executado a cada nova mensagem recebida<br>O objeto `message` é do tipo:  [ByteBufferReader](https://github.com/holyrics/jslib/blob/main/doc/pt/ByteBufferReader.md)<br>`function(message) { ... }` |
 | `modelToCreate.on_close` | _Function (opcional)_ | Executado ao encerrar a conexão<br>`function(evt) { /* evt.source; */ }` |
-| `modelToCreate.loop` | _Function (opcional)_ | Executado a cada 1 segundo enquanto a conexão estiver aberta<br>Útil para conexões que precisam enviar um 'ping' para manter a conexão aberta<br>`function(evt) { /* evt.source; */ }` `v2.29.0+` |
+| `modelToCreate.loop` | _Function (opcional)_ | Executado a cada X segundo(s) (de acordo com o valor definido em `loop_delay`) enquanto a conexão estiver aberta<br>Útil para conexões que precisam enviar um 'ping' para manter a conexão aberta<br>`function(evt) { /* evt.source; */ }` `v2.29.0+` |
+| `modelToCreate.loop_delay` | _Number (opcional)_ |  `Padrão: 1` `v2.30.0+` |
 
 
 **Resposta:**
@@ -6551,7 +6559,12 @@ Exibir uma mensagem personalizada. Obs.: Uma mensagem personalizada não é exib
 | `input.note` | _String_ | Informação extra exibida na janela popup para o operador |
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | ID da apresentação |
+
 
 **Exemplo:**
 
@@ -6600,7 +6613,12 @@ Exibir uma mensagem personalizada sem a necessidade que o objeto de referência 
 | `input.params.*.suggestions` | _Array&lt;String&gt; (opcional)_ | Lista de sugestões |
 
 
-_Método sem retorno_
+**Resposta:**
+
+| Tipo  | Descrição |
+| :---: | ------------|
+| _String_ | ID da apresentação |
+
 
 **Exemplo:**
 
@@ -6617,6 +6635,47 @@ h.hly('ShowCustomMessageStandalone', {
         }
     ]
 });
+```
+
+---
+
+
+### hly('GetCustomMessageDisplayInfo', input)
+- v2.30.0
+
+Obter informação de uma mensagem personalizada enviada para exibição
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.display_id` | _String_ | ID da apresentação |
+| `data.display_id` | _String_ |  |
+| `data.custom_message_id` | _String_ |  |
+| `data.status` | _String_ | `pending` `displayed` `ignored` |
+
+
+**Resposta:**
+
+| Nome | Tipo  |
+| ---- | :---: |
+| `data` | _Array&lt;Object&gt;_| 
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('GetCustomMessageDisplayInfo', {
+    display_id: 'abcxyz'
+});
+switch (r.data.status.displayed) {
+    case 'pending':
+        break;
+    case 'displayed':
+        break;
+    case 'ignored':
+        break;
+}
 ```
 
 ---
@@ -10213,6 +10272,202 @@ var r = h.hly('SetBibleSettings', {
 ---
 
 
+### hly('GetAvailableBibleBooks')
+- v2.30.0
+
+Retorna a lista do conjunto de livros disponíveis em diferentes idiomas
+
+
+
+**Resposta:**
+
+| Tipo  |
+| :---: |
+| _Array&lt;[BibleBookList](#bible-book-list)&gt;_ | 
+
+
+**Exemplo:**
+
+```javascript
+h.hly('GetAvailableBibleBooks')
+  .data
+  .forEach(function(o) {
+    h.logf('{}: {}', o.id, o.name);
+  });
+```
+
+---
+
+
+### hly('GetBibleBooks', input)
+- v2.30.0
+
+Retorna um conjunto de livros da Bíblia
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.language_id` | _String_ | ID do idioma do conjunto de livros |
+
+
+**Resposta:**
+
+| Tipo  |
+| :---: |
+| _Array&lt;[BibleBookInfo](#bible-book-info)&gt;_ | 
+
+
+**Exemplo:**
+
+```javascript
+h.hly('GetBibleBooks', { language_id: 'en' })
+  .data
+  .forEach(function(b) {
+    h.logf('{}: {} - {}', b.id, b.name, b.abbrev);
+  });
+```
+
+---
+
+
+### hly('IdentifyVerseReferences', input)
+- v2.30.0
+
+Identifica as possíveis referências bíblicas no texto informado
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.value` | _String_ | Texto para identificação |
+| `input.language_id` | _String (opcional)_ | ID do idioma do conjunto de livros.<br>Caso um id não seja informado, será utilizada a lista de livros da Bíblia principal selecionada no programa.<br>Para obter a lista dos IDs disponíveis, veja: `h.getAvailableBibleBooks()` |
+
+
+**Resposta:**
+
+| Tipo  |
+| :---: |
+| _Array&lt;[VerseReferenceGroup](#verse-reference-group)&gt;_ | 
+
+
+**Exemplo:**
+
+```javascript
+h.hly('IdentifyVerseReferences', {
+    value: "... ... Rm 12:2  Gn 1:1-3  Sl 23 ... ..."
+  })
+  .data
+  .forEach(function(g) {
+    g.verses.forEach(function(v) {
+        h.log(v.id);
+    });
+  });
+// output
+// 45012002
+// 01001001
+// 01001002
+// 01001003
+// 19023001
+// 19023002
+// 19023003
+// 19023004
+// 19023005
+// 19023006
+```
+
+---
+
+
+### hly('ParseVerseID2VerseReference', input)
+- v2.30.0
+
+Converter o ID de um versículo da Bíblia em uma referência
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.id` | _String_ | ID do versículo |
+| `input.language_id` | _String (opcional)_ | ID do idioma do conjunto de livros.<br>Caso um id não seja informado, será utilizada a lista de livros da Bíblia principal selecionada no programa.<br>Para obter a lista dos IDs disponíveis, veja: `h.getAvailableBibleBooks()` |
+
+
+**Resposta:**
+
+| Tipo  |
+| :---: |
+| _[VerseReference](#verse-reference)_ | 
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('ParseVerseID2VerseReference', {
+    id: "19023001",
+    language_id: "en"
+});
+//r.data.id=19023001
+//r.data.book=19
+//r.data.chapter=23
+//r.data.verse=1
+//r.data.reference=Psalms 23:1
+```
+
+---
+
+
+### hly('ParseVerseID2VerseReferenceGroup', input)
+- v2.30.0
+
+Converter uma lista de IDs de versículo da Bíblia em referências
+
+**Parâmetros:**
+
+| Nome | Tipo  | Descrição |
+| ---- | :---: | ------------|
+| `input.items` | _Array&lt;Object&gt;_ | Pode ser uma `string` com o ID de cada versículo separado por vírgula.<br>Pode ser um `array` de `string` com cada ID.<br>Pode ser um `array` de objeto com cada objeto contendo o parâmetro `id` com o ID do versículo |
+| `input.language_id` | _String (opcional)_ | ID do idioma do conjunto de livros.<br>Caso um id não seja informado, será utilizada a lista de livros da Bíblia principal selecionada no programa.<br>Para obter a lista dos IDs disponíveis, veja: `h.getAvailableBibleBooks()` |
+
+
+**Resposta:**
+
+| Tipo  |
+| :---: |
+| _[VerseReferenceGroup](#verse-reference-group)_ | 
+
+
+**Exemplo:**
+
+```javascript
+var r = h.hly('ParseVerseID2VerseReferenceGroup', {
+    items: "19023001,19023002",
+    language_id: "en"
+});
+h.logp(r.data);
+/*
+{
+  "reference": "Psalms 23:1-2",
+  "ids": [ "19023001", "19023002" ],
+  "verses": [{
+      "id": "19023001",
+      "book": 19,
+      "chapter": 23,
+      "verse": 1,
+      "reference": "Psalms 23:1"
+    }, {
+      "id": "19023002",
+      "book": 19,
+      "chapter": 23,
+      "verse": 2,
+      "reference": "Psalms 23:2"
+  }]
+}
+*/
+```
+
+---
+
+
 ### hly('GetPresentationFooterSettings')
 - v2.23.0
 
@@ -12638,7 +12893,7 @@ h.openWindow('bible');
 ### repaint(id)
 - v2.23.0
 
-Força a atualização de um componente da interface.<br>Disponível atualmente para: Barra de favoritos
+Força a atualização de um componente da interface.<br>`id` pode ser:<br>`song_library` `text_library` `audio_library` `video_library` `image_library` `file_library` `automatic_presentation` `song_playlist` `media_playlist`<br> <br>Pode ser também o ID de um item da barra de favoritos
 
 **Parâmetros:**
 
@@ -14904,6 +15159,7 @@ Modelo de configuração da leitura alternada de versículos da Bíblia
 | `allow_main_window_and_bible_window_simultaneously` | _Boolean_ |  |
 | `preferential_arrangement_collection` | _String_ |  |
 | `simulate_projection` | _Object_ | Conjunto chave/valor<br>chave: `screen_1` `screen_2` `screen_3`<br>valor: [SimulateProjectionSettings](#simulate-projection-settings) `v2.27.0+` |
+| `display_multiple_verses_current_chapter_only` | _Boolean_ |  |
 <details>
   <summary>Ver exemplo</summary>
 
@@ -15007,7 +15263,8 @@ Modelo de configuração da leitura alternada de versículos da Bíblia
     },
     "screen_2": "{...}",
     "screen_3": "{...}"
-  }
+  },
+  "display_multiple_verses_current_chapter_only": true
 }
 ```
 </details>
